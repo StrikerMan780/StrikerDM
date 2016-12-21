@@ -1,0 +1,186 @@
+gamevar IMMORTAL_BABES 1 0
+gamevar FORCE_RESPAWN 0 0
+
+define RESPAWNPROPTIME 768
+
+define MAXFLAMETHROWERAMMO 99
+define FLAMETHROWERAMMOAMOUNT 25
+define FLAMETHROWER_WEAPON_STRENGTH 20
+
+define MAXPLASMARIFLEAMMO 25
+define PLASMARIFLEAMMOAMOUNT 5
+define PLASMARIFLE_WEAPON_STRENGTH 60
+
+define DEVASTATOR_WEAPON_STRENGTH 35
+define DEVASTATORBLASTRADIUS 890
+
+definequote 125		HEALTH VIAL: +2
+definequote 126		AMMO FOR FLAMETHROWER
+definequote 127		FLAMETHROWER!
+definequote 128		ARMOR HELMET: +2
+definequote 129		PLASMA RIFLE!
+definequote 130		AMMO FOR PLASMA RIFLE
+definequote 500		PLACEHOLDER QUOTE
+
+define GM_DUKEMATCH 0
+define GM_COOPERATIVE 1
+define GM_DUKEMATCH_NOSPAWN 2
+define GM_TEAMDUKEMATCH 3
+define GM_TEAMDUKEMATCH_NOSPAWN 4
+define GM_DUKEMATCH_WEAPONSTAY 5
+define GM_TEAMDUKEMATCH_WEAPONSTAY 6
+define GM_ROIDMATCH 7
+definegametype GM_DUKEMATCH 19480 Dukematch
+definegametype GM_COOPERATIVE 46051 Cooperative
+definegametype GM_DUKEMATCH_NOSPAWN 16410 Dukematch (no spawn)
+definegametype GM_TEAMDUKEMATCH 216088 Team Dukematch
+definegametype GM_TEAMDUKEMATCH_NOSPAWN 213018 Team Dukematch (no spawn)
+definegametype GM_DUKEMATCH_WEAPONSTAY 19482 Dukematch (Weapons Stay)
+definegametype GM_TEAMDUKEMATCH_WEAPONSTAY 216090 Team Dukematch (Weapons Stay)
+definegametype GM_ROIDMATCH 19480 Roidmatch
+
+definevolumename 0 STRIKERDM Series
+definelevelname 0 0 ktc.map 66:60 66:60 Killer Titty Club
+definelevelname 0 1 space.map 66:60 66:60 Space Station Alpha
+definelevelname 0 7 E1L8.map 99:99 99:99 Some Fucking Usermap
+
+music 1 sexwthex.ogg darkmatt.mid dynami.ogg
+
+definevolumename 1 WGDM Series
+definelevelname 1 0 wgdm1.map 66:60 66:60 WGDM1 (6P)
+definelevelname 1 1 wgdm2.map 66:60 66:60 WGDM2
+definelevelname 1 2 wgdm3.map 66:60 66:60 WGDM3
+definelevelname 1 3 wgdm4v2.map 66:60 66:60 WGDM4
+definelevelname 1 4 wgdm5.map 66:60 66:60 WGDM5
+definelevelname 1 5 wgdm6.map 66:60 66:60 WGDM6
+definelevelname 1 6 wgdm7.map 66:60 66:60 WGDM7
+definelevelname 1 7 wgdm8v4.map 66:60 66:60 WGDM8
+
+music 2
+alienz.mid // WGDM1
+kickbuta.mid // WGDM2
+snake1.mid // WGDM3
+whomp2.mid // WGDM4
+lemchill.mid // WGDM5
+watrwld1.mid // WGDM6
+warehaus.mid // WGDM7
+inhiding.mid // WGDM8
+	   
+definevolumename 2 Duke Tournament
+definelevelname 2 0 DTDM1.map 02:30 01:19 Yards
+definelevelname 2 1 DTDM2.map 02:30 01:26 Jailbreak
+definelevelname 2 2 DTDM3.map 05:00 02:26 Tournament Gate
+definelevelname 2 3 DTDM4.map 04:30 02:14 Halls of mystery
+definelevelname 2 4 DTDM5.map 03:00 01:26 Hi-tech assault
+definelevelname 2 5 DTDM6.map 02:30 01:04 Overlord's Port
+definelevelname 2 6 DTDM7.map 04:45 02:15 Tournament Towers
+definelevelname 2 7 LATISHA.map 11:30 04:59 Latisha canyon
+
+music 3
+sirius.mid // Yards
+bruising.mid // Jailbreak
+xheart.mid // Tournament Gate
+hero.mid // Halls of mystery
+dukina.ogg // Hi-tech assault
+pob.mid // Overlord's Port
+warehaus.mid // Tournament Towers
+layers.mid // Latisha Canyon
+	   
+definevolumename 3 Duke XTreme DM
+definelevelname 3 0 DX-6SPIRES.map 02:30 01:19 6 Spires
+definelevelname 3 1 DX-ANSLEMX.map 02:30 01:26 Anslem X
+definelevelname 3 2 DX-CONAM.map 05:00 02:26 Con-Am
+definelevelname 3 3 DX-CONVFEUD.map 04:30 02:14 Convenience Store Feud
+definelevelname 3 4 DX-EYEOFRA.map 03:00 01:26 Eye of Ra
+definelevelname 3 5 DX-GAMESHOW.map 02:30 01:04 Game Show
+definelevelname 3 6 DX-LIBRARY.map 04:45 02:15 Library
+definelevelname 3 7 DX-MINIDOOM.map 11:30 04:59 Mini-DOOM
+definelevelname 3 8 DX-MOHAVE.map 11:30 04:59 Mohave
+definelevelname 3 9 DX-OLDHOUSE.map 11:30 04:59 Old House
+definelevelname 3 10 DX-ONHIGH.map 11:30 04:59 On High
+definelevelname 3 11 DX-REDORBIT.map 11:30 04:59 Red Orbit
+
+music 4 d_the_da.mid gaze.mid dirty.mid rocket.mid sebek.ogg kisgirla.mid d_stalks.mid mglodoom.mid supfnord.mid gotham.mid d_e2m1.mid pj.mid
+
+definevolumename 6 Original Dukematch Maps
+definelevelname 6 0 E1L1.map 01:45 00:53 HOLLYWOOD HOLOCAUST
+definelevelname 6 1 E1L2.map 05:10 03:21 RED LIGHT DISTRICT
+definelevelname 6 2 E1L7.map 00:00 00:00 FACES OF DEATH
+definelevelname 6 3 E2L1.map 02:30 01:19 SPACEPORT
+definelevelname 6 4 E2L10.map 03:00 01:19 SPIN CYCLE
+definelevelname 6 5 E2L11.map 03:00 00:52 LUNATIC FRINGE
+definelevelname 6 6 E3L1.map 02:30 01:11 RAW MEAT
+definelevelname 6 7 E3L4.map 03:15 01:46 L.A. RUMBLE
+definelevelname 6 8 E3L6.map 03:30 01:30 RABID TRANSIT
+definelevelname 6 9 E3L7.map 02:00 00:55 FAHRENHEIT
+definelevelname 6 10 E3L8.map 02:15 01:09 HOTEL HELL
+definelevelname 6 11 E3L9.map 02:45 01:17 STADIUM
+definelevelname 6 12 E3L10.map 00:45 00:10 TIER DROPS
+definelevelname 6 13 E4L1.map 03:04 01:32 IT'S IMPOSSIBLE
+definelevelname 6 14 E4L2.map 04:00 02:00 DUKE-BURGER
+definelevelname 6 15 E4L10.map 10:50 05:25 THE QUEEN
+
+music 7
+stalker.mid // HOLLYWOOD HOLOCAUST
+dethtoll.mid // RED LIGHT DISTRICT
+ahgeez.mid // FACES OF DEATH
+futurmil.mid // SPACEPORT
+gloomy.mid // SPIN CYCLE
+intents.mid // LUNATIC FRINGE
+inhiding.mid // RAW MEAT
+subway.mid // LA RUMBLE
+gotham.mid // RABID TRANSIT
+233c.mid // FAHRENHEIT
+lordofla.mid // HOTEL HELL
+urban.mid // STADIUM
+spook.mid // TIER DROPS
+missimp.mid // IT'S IMPOSSIBLE
+prepd.mid // DUKE BURGER
+depart.mid // THE QUEEN
+	   
+// Sounds	   
+definesound DSITEMUP sounds/items/dsitemup.wav 0 0 255 0 0
+definesound FLAMETHROWER_START sounds/FLAMESTR.OGG 0 0 255 0 0
+definesound FLAMETHROWER_FIRE sounds/FLAMETHR.OGG 0 0 255 0 0
+definesound TOASTY sounds/TOASTY.WAV 0 0 255 0 0
+definesound DEVASTATOR_FIRERIGHT sounds/DSDEVIRG.OGG 0 128 4 0 0
+definesound DEVASTATOR_FIRELEFT sounds/DSDEVILF.OGG 0 128 4 0 0
+definesound PLASMARIFLE_FIRE sounds/PLASFIRE.OGG 0 64 4 0 0
+definesound PLASMARIFLE_CHARGE sounds/PLASCHRG.OGG 0 0 4 0 0
+definesound PLASMARIFLE_HIT sounds/PLASHIT.WAV 0 64 4 0 0
+definesound FREEZETHROWER_FIRE sounds/FREEZETH.WAV 0 64 4 0 0
+
+definesound CASING1 sounds/casings/dscasin1.ogg 0 0 0 0 8192
+definesound CASING2 sounds/casings/dscasin2.ogg 0 0 0 0 8192
+definesound CASING3 sounds/casings/dscasin3.ogg 0 0 0 0 8192
+definesound CASING4 sounds/casings/dscasin4.ogg 0 0 0 0 8192
+definesound CASING5 sounds/casings/dscasin5.ogg 0 0 0 0 8192
+definesound CASING6 sounds/casings/dscasin6.ogg 0 0 0 0 8192
+
+// Duke Talk
+definesound STOMP01 sounds/duke/stomp/DUKE_StompLine_01.ogg 0 0 255 0 0
+definesound STOMP02 sounds/duke/stomp/DUKE_StompLine_02.ogg 0 0 255 0 0
+definesound STOMP03 sounds/duke/stomp/DUKE_StompLine_03.ogg 0 0 255 0 0
+definesound STOMP04 sounds/duke/stomp/DUKE_StompLine_04.ogg 0 0 255 0 0
+definesound STOMP05 sounds/duke/stomp/DUKE_StompLine_05.ogg 0 0 255 0 0
+definesound STOMP06 sounds/duke/stomp/DUKE_StompLine_06.ogg 0 0 255 0 0
+definesound STOMP07 sounds/duke/stomp/DUKE_StompLine_07.ogg 0 0 255 0 0
+definesound STOMP08 sounds/duke/stomp/DUKE_StompLine_08.ogg 0 0 255 0 0
+definesound STOMP09 sounds/duke/stomp/DUKE_StompLine_09.ogg 0 0 255 0 0
+definesound STOMP10 sounds/duke/stomp/DUKE_StompLine_10.ogg 0 0 255 0 0
+definesound STOMP11 sounds/duke/stomp/DUKE_StompLine_11.ogg 0 0 255 0 0
+definesound STOMP12 sounds/duke/stomp/DUKE_StompLine_12.ogg 0 0 255 0 0
+definesound STOMP13 sounds/duke/stomp/DUKE_StompLine_13.ogg 0 0 255 0 0
+definesound STOMP14 sounds/duke/stomp/DUKE_StompLine_14.ogg 0 0 255 0 0
+definesound STOMP15 sounds/duke/stomp/DUKE_StompLine_15.ogg 0 0 255 0 0
+definesound STOMP16 sounds/duke/stomp/DUKE_StompLine_16.ogg 0 0 255 0 0
+definesound STOMP17 sounds/duke/stomp/DUKE_StompLine_17.ogg 0 0 255 0 0
+definesound STOMP18 sounds/duke/stomp/DUKE_StompLine_18.ogg 0 0 255 0 0
+definesound STOMP19 sounds/duke/stomp/DUKE_StompLine_19.ogg 0 0 255 0 0
+definesound STOMP20 sounds/duke/stomp/DUKE_EatSize14_01.ogg 0 0 255 0 0
+
+definesound FREEZE01 sounds/duke/freeze/DSDNFR01.wav 0 0 255 0 0
+definesound FREEZE02 sounds/duke/freeze/DSDNFR02.wav 0 0 255 0 0
+definesound FREEZE03 sounds/duke/freeze/DSDNFR03.wav 0 0 255 0 0
+definesound FREEZE04 sounds/duke/freeze/Duke_MP_Execute_02.ogg 0 0 255 0 0
+definesound FREEZE05 sounds/duke/freeze/Duke_MP_Execute_03.ogg 0 0 255 0 0

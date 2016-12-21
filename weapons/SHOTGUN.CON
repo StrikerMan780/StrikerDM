@@ -1,0 +1,140 @@
+state draw_shotgun // SHOTGUN_WEAPON:
+    state reset_hud_weapon_coordinates
+    
+    subvar hud_x 8
+
+    switch weaponcount
+        case 1
+        case 2
+            setvarvar hud_temp4 currentweapon
+            shiftvarl hud_temp4 1
+            guniqhudid hud_temp4
+            
+            addvar hud_x 168
+            addvar hud_y 201
+            
+            setvar hud_shade -128
+            
+            setvar hud_tilenum SHOTGUN
+            addvar hud_tilenum 2
+            
+            state G_DrawWeaponTile
+                             
+            subvar hud_x 168
+            subvar hud_y 201
+            setvarvar hud_shade gs
+        case 0
+        case 6
+        case 7
+        case 8
+            guniqhudid currentweapon
+            
+            addvar hud_x 146
+            addvar hud_y 202
+            
+            setvar hud_tilenum SHOTGUN 
+            
+            state G_DrawWeaponTile
+            
+            guniqhudid 0
+            break
+        case 3
+        case 4
+        case 5
+        case 9
+        case 10
+        case 11
+        case 12
+            ifvarg weaponcount 1
+                ifvarl weaponcount 5
+                {
+                    addvar hud_y 40
+                    addvar hud_x 20
+
+                    setvarvar hud_temp4 currentweapon
+                    shiftvarl hud_temp4 1
+                    guniqhudid hud_temp4
+                    
+                    addvar hud_x 178
+                    addvar hud_y 194
+                    
+                    setvar hud_shade -128
+                    
+                    setvarvar hud_tilenum weaponcount
+                    subvar hud_tilenum 1
+                    shiftvarr hud_tilenum 1
+                    addvar hud_tilenum SHOTGUN
+                    addvar hud_tilenum 1
+                    
+                    state G_DrawWeaponTile
+                    
+                    subvar hud_x 178
+                    subvar hud_y 194
+                    setvarvar hud_shade gs
+                }
+            
+            guniqhudid currentweapon
+            
+            addvar hud_x 158
+            
+            addvar hud_y 220
+            
+            setvar hud_tilenum SHOTGUN
+            addvar hud_tilenum 3
+            
+            state G_DrawWeaponTile
+            
+            guniqhudid 0
+            break
+        case 13
+        case 14
+        case 15
+        case 28
+        case 29
+        case 30
+            guniqhudid currentweapon
+            
+            addvar hud_x 198 // 32 + 166
+            addvar hud_y 210
+            
+            setvar hud_tilenum SHOTGUN
+            addvar hud_tilenum 4
+            
+            state G_DrawWeaponTile
+            
+            guniqhudid 0
+            break
+        case 16
+        case 17
+        case 18
+        case 19
+        case 24
+        case 25
+        case 26
+        case 27
+            guniqhudid currentweapon
+            
+            addvar hud_x 234 // 64 + 170
+            addvar hud_y 196
+            
+            setvar hud_tilenum SHOTGUN
+            addvar hud_tilenum 5
+            
+            state G_DrawWeaponTile
+            break
+        case 20
+        case 21
+        case 22
+        case 23
+            guniqhudid currentweapon
+            
+            addvar hud_x 240 // 64 + 176
+            addvar hud_y 196
+            
+            setvar hud_tilenum SHOTGUN
+            addvar hud_tilenum 6
+            
+            state G_DrawWeaponTile
+            break
+    endswitch
+ends

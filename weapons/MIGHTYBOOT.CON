@@ -1,0 +1,104 @@
+state draw_quick_kick // Quick Kick
+	getplayer[THISACTOR].quick_kick OLDMP_TEMP
+    setvar hud_temp 14
+    subvarvar hud_temp OLDMP_TEMP
+    
+    setvar hud_temp2 0
+	getplayer[THISACTOR].last_quick_kick OLDMP_TEMP
+    ifvarn hud_temp 14 setvar hud_temp2 1
+    ifvarn OLDMP_TEMP 0 setvar hud_temp2 1
+    ifvare hud_temp2 1
+    {
+        getactor[playerid].pal hud_pal
+        ifvarn hud_pal 1
+        {
+            getplayer[THISACTOR].cursectnum hud_temp2
+            ifvarg hud_temp2 -1
+                getsector[hud_temp2].floorpal hud_pal
+            ifvare hud_pal 0
+                getplayer[THISACTOR].palookup hud_pal
+        }
+
+        guniqhudid 100
+        
+        // common calculations
+        state reset_hud_weapon_coordinates
+        
+        setvar hud_tilenum KNEE
+        
+        setvar hud_orientation 262148 // o|4|262144
+        
+        setvar hud_temp3 0
+        
+        ifvarg hud_temp 5
+            ifvarl hud_temp 13
+            {
+                addvar hud_x 144 // 160-16
+                
+                addvar hud_y 214
+                
+                addvar hud_tilenum 1
+                
+                state G_DrawTileScaled
+                
+                setvar hud_temp3 1
+            }
+        
+        ifvare hud_temp3 0
+        {
+            addvar hud_x 80
+            
+            addvar hud_y 250
+            
+            state G_DrawTileScaled
+        }
+    }
+ends
+
+// weapon code
+
+state draw_kick // KNEE_WEAPON:
+    ifvarg weaponcount 0
+    {
+        guniqhudid currentweapon
+        
+        state reset_hud_weapon_coordinates
+        
+        getactor[playerid].pal hud_pal
+        ifvarn hud_pal 1
+        {
+            getplayer[THISACTOR].cursectnum hud_temp2
+            ifvarg hud_temp2 -1
+                getsector[hud_temp2].floorpal hud_pal
+            ifvare hud_pal 0
+                getplayer[THISACTOR].palookup hud_pal
+        }
+        
+        setvar hud_tilenum KNEE
+        
+        setvar hud_temp3 0
+        
+        ifvarg weaponcount 4
+            ifvarl weaponcount 10
+            {
+            addvar hud_x 160
+            
+            addvar hud_y 214
+            
+            addvar hud_tilenum 1
+            
+            state G_DrawTileScaled
+            
+            setvar hud_temp3 1
+            }
+        
+        ifvare hud_temp3 0
+        {
+            addvar hud_x 220
+            
+            addvar hud_y 250
+            
+            state G_DrawTileScaled
+        }
+    }
+ends

@@ -1,0 +1,83 @@
+gamevar ITEM_TEMP1 0 2
+
+state getcode_doomitem
+  globalsound DSITEMUP
+  palfrom 16 32 32 8
+  ifrespawn
+  {
+    move RESPAWN_ACTOR_FLAG
+    spawn RESPAWNMARKERRED
+    cstat 32768
+  }
+  else
+    killit
+ends
+
+state quikget_doomitem
+  globalsound DSITEMUP
+  palfrom 16 32 32 8
+  killit
+ends
+
+useractor notenemy HEALTHBONER WEAK
+  sizeat 32 28
+  fall
+  state init_pickup
+  state despawn_item_from_can
+  ifmove RESPAWN_ACTOR_FLAG
+    state respawnit
+  else
+    ifp pshrunk nullop
+    else
+      ifp palive
+        ifpdistl RETRIEVEDISTANCE
+          ifcount 6
+            ifphealthl 200
+              ifcanseetarget
+      {
+		setplayer[THISACTOR].max_player_health 200
+        addphealth 2
+		setplayer[THISACTOR].max_player_health MAXPLAYERHEALTH
+        quote 125
+        ifspawnedby HEALTHBONER
+          state getcode_doomitem
+        else
+          state quikget_doomitem
+      }
+enda
+
+useractor notenemy ARMORBONER WEAK
+  sizeat 32 28
+  fall
+  state init_pickup
+  state despawn_item_from_can
+  ifmove RESPAWN_ACTOR_FLAG
+    state respawnit
+  else
+    ifp pshrunk nullop
+    else
+      ifp palive
+        ifpdistl RETRIEVEDISTANCE
+          ifcount 6
+              ifcanseetarget
+      {
+		getplayer[THISACTOR].shield_amount ITEM_TEMP1
+		ifvarl ITEM_TEMP1 200
+		{
+			setplayer[THISACTOR].max_shield_amount 200
+			addinventory GET_SHIELD 2
+			setplayer[THISACTOR].max_shield_amount SHIELD_AMOUNT
+			quote 128
+			
+			ifvarg ITEM_TEMP1 200
+			{
+				setplayer[THISACTOR].shield_amount 200
+			}
+			
+			ifspawnedby ARMORBONER
+			  state getcode_doomitem
+			else
+			  state quikget_doomitem
+		}
+      }
+enda

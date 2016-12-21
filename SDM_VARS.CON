@@ -1,0 +1,58 @@
+gamevar SPAWN_ORIGX 0 2
+gamevar SPAWN_ORIGY 0 2
+gamevar SPAWN_ORIGZ 0 2
+gamevar SPAWN_ORIGANG 0 2
+gamevar HITAG_MEMORY 0 2
+gamevar LOTAG_MEMORY 0 2
+gamevar EXTRA_MEMORY 0 2
+gamevar STATNUM_MEMORY 0 2
+gamevar XREPEAT_MEMORY 0 2
+gamevar YREPEAT_MEMORY 0 2
+gamevar CLIPDIST_MEMORY 0 2
+gamevar PICNUM_MEMORY 0 2
+gamevar CSTAT_MEMORY 0 2
+gamevar PAL_MEMORY 0 2
+
+gamevar ISADULT 0 2
+gamevar NORESPAWN 0 2
+gamevar CURSPRITE 0 2
+gamevar LASTSPRITE 0 2
+gamevar OWNER -1 2
+gamevar SPAWNED 0 2
+gamevar FROMCAN 0 2
+gamevar LASTHITBY 0 2
+gamevar ANGLE 0 2
+gamevar TEMP 0 2
+gamevar TEMP2 0 2
+gamevar TEMP3 0 2
+
+gamevar CL_TEMP1 0 0
+gamevar CL_TEMP2 0 0
+gamevar CL_TEMP3 0 0
+gamevar CL_TEMP4 0 0
+gamevar CL_TEMP5 0 0
+gamevar CL_TEMP6 0 0
+
+gamevar DUKELINE 0 0
+gamevar SPEAK 0 2
+gamevar SPEAKTYPE 0 2
+gamevar KILLTYPE 0 2
+
+gamevar HAS_FREEZETHROWER 0 1
+gamevar HAS_FLAMETHROWER 0 1
+gamevar USING_FLAMETHROWER 0 1
+gamevar FLAMETHROWER_AMMO 0 1
+gamevar FREEZETHROWER_AMMO 0 1
+gamevar HAS_RIPPER 0 1
+gamevar HAS_PLASMARIFLE 0 1
+gamevar USING_PLASMARIFLE 0 1
+gamevar RIPPER_AMMO 0 1
+gamevar PLASMARIFLE_AMMO 0 1
+gamevar PLAYER_TEMP 0 1
+gamevar AMMO_TEMP1 0 2
+gamevar AMMO_TEMP2 0 2
+
+define KILL_NONE 0
+define KILL_SHRINKER 1
+define KILL_FREEZER 2
+define KILL_EXPANDER 3

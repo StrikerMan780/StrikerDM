@@ -1,0 +1,193 @@
+state draw_pistol // PISTOL_WEAPON:
+    // hud_temp4 = FIREDELAY
+    // hud_temp3 = RELOAD
+    
+    state reset_hud_weapon_y_coordinate
+    
+    setvar hud_tilenum FIRSTGUN
+    
+    addvar hud_totaltime 1
+    ifvarvarl weaponcount hud_totaltime
+    {
+        setvar hud_x 183 // 195-12
+        addvarvar hud_x weapon_xoffset
+        subvarvar hud_x looking_angSR1
+        
+        addvar hud_y 244
+        
+        ifvarvare weaponcount hud_temp4
+            subvar hud_x 3
+        
+        ifvarl weaponcount 3
+            addvarvar hud_tilenum weaponcount
+        
+        setvar hud_orientation 2
+        
+        guniqhudid currentweapon
+        
+        state G_DrawWeaponTile
+        
+        guniqhudid 0
+    }
+    else
+    {
+        subvarvar hud_temp3 weaponcount
+        
+        ifvarg hud_temp3 17
+        {
+            guniqhudid currentweapon
+            
+            setvar hud_x 194
+            subvarvar hud_x looking_angSR1
+            
+            addvar hud_y 230
+            
+            addvar hud_tilenum 4
+            
+            state G_DrawWeaponTile
+            
+            guniqhudid 0
+        }
+        else ifvarg hud_temp3 12
+        {
+            addvar hud_tilenum 6
+            
+            setvarvar hud_temp weaponcount
+            shiftvarl hud_temp 3
+            
+            setvar hud_x 244
+            subvarvar hud_x hud_temp
+            subvarvar hud_x looking_angSR1
+            
+            setvarvar hud_temp2 weaponcount
+            shiftvarl hud_temp2 4
+            
+            addvar hud_y 130
+            addvarvar hud_y hud_temp2
+            
+            state G_DrawWeaponTile
+            
+            subvar hud_y 130
+            subvarvar hud_y hud_temp2
+            subvar hud_tilenum 6
+            
+            guniqhudid currentweapon
+            
+            setvar hud_x 224
+            subvarvar hud_x looking_angSR1
+            
+            addvar hud_y 220
+            
+            addvar hud_tilenum 5
+            
+            state G_DrawWeaponTile
+            
+            guniqhudid 0
+        }
+        else ifvarg hud_temp3 7
+        {
+            addvar hud_tilenum 6
+            
+            setvarvar hud_temp weaponcount
+            shiftvarl hud_temp 1
+            
+            setvar hud_x 124
+            addvarvar hud_x hud_temp
+            subvarvar hud_x looking_angSR1
+            
+            setvarvar hud_temp2 weaponcount
+            shiftvarl hud_temp2 3
+            
+            addvar hud_y 430
+            subvarvar hud_y hud_temp2
+            
+            state G_DrawWeaponTile
+            
+            subvar hud_y 430
+            addvarvar hud_y hud_temp2
+            subvar hud_tilenum 6
+            
+            guniqhudid currentweapon
+            
+            setvar hud_x 224
+            subvarvar hud_x looking_angSR1
+            
+            addvar hud_y 220
+            
+            addvar hud_tilenum 5
+            
+            state G_DrawWeaponTile
+            
+            guniqhudid 0
+        }
+        else ifvarg hud_temp3 4
+        {
+            setvar hud_x 184
+            subvarvar hud_x looking_angSR1
+            
+            addvar hud_y 235
+            
+            addvar hud_tilenum 8
+            
+            state G_DrawWeaponTile
+            
+            subvar hud_y 235
+            subvar hud_tilenum 8
+            
+            guniqhudid currentweapon
+            
+            setvar hud_x 224
+            subvarvar hud_x looking_angSR1
+            
+            addvar hud_y 210
+            
+            addvar hud_tilenum 5
+            
+            state G_DrawWeaponTile
+            
+            guniqhudid 0
+        }
+        else ifvarg hud_temp3 2
+        {
+            setvar hud_x 164
+            subvarvar hud_x looking_angSR1
+            
+            addvar hud_y 245
+            
+            addvar hud_tilenum 8
+            
+            state G_DrawWeaponTile
+            
+            subvar hud_y 245
+            subvar hud_tilenum 8
+            
+            guniqhudid currentweapon
+            
+            setvar hud_x 224
+            subvarvar hud_x looking_angSR1
+            
+            addvar hud_y 220
+            
+            addvar hud_tilenum 5
+            
+            state G_DrawWeaponTile
+            
+            guniqhudid 0
+        }
+        else ifvarg hud_temp3 0
+        {
+            guniqhudid currentweapon
+            
+            setvar hud_x 194
+            subvarvar hud_x looking_angSR1
+            
+            addvar hud_y 235
+            
+            addvar hud_tilenum 5
+            
+            state G_DrawWeaponTile
+            
+            guniqhudid 0
+        }
+    }
+ends

@@ -27,8 +27,14 @@ any .CON files before making any changes.
 
 include DEFS.CON
 include USER.CON
+include SDM_VARS.CON
+include SDM_DEFS.CON
+include SDM_USER.CON
 
 action ANULLACTION 0
+
+include SDM_STATES.CON
+include SDM_EVENTS.CON
 
 // Below is example code that ADDS enemies/items in Duke Nukem 3D.
 
@@ -499,6 +505,8 @@ actor BLIMP 1
       state blimphitstate
     ifwasweapon RPG
       state blimphitstate
+	ifwasweapon DEVASTATORMISSILE
+      state blimphitstate
     strength 1
   }
 enda
@@ -529,6 +537,21 @@ move MOUSEVELS 32
 
 action RUBCANDENT 1 1 1 1 1
 
+state rubbercan_break
+	ifvarn LOTAG_MEMORY 0
+	{
+		espawnvar LOTAG_MEMORY
+		setvar RETURN 0
+	}
+		
+	state rats
+	ifrnd 48
+		spawn BURNING
+		debris SCRAP3 12
+	  
+	killit
+ends
+
 actor RUBBERCAN WEAK
   ifaction RUBCANDENT
   {
@@ -544,14 +567,20 @@ actor RUBBERCAN WEAK
   {
     ifwasweapon RADIUSEXPLOSION
     {
-      state rats
-      ifrnd 48
-        spawn BURNING
-      debris SCRAP3 12
-      killit
+	  state rubbercan_break
     }
+	else ifwasweapon DEVASTATORMISSILE
+	{
+	  state rubbercan_break
+	}
+	else ifwasweapon RPG
+	{
+	  state rubbercan_break
+	}
     else
+	{
       action RUBCANDENT
+	}
   }
 enda
 
@@ -581,7 +610,6 @@ ends
 state jibfood
   sound SQUISHED
   guts JIBS6 3
-  killit
 ends
 
 state breakobject
@@ -667,6 +695,12 @@ state breakobject
       else
         ifactor ROBOTDOG2
       {
+	    // Unblock instead of killing this adorable pup.
+		ifvarg IMMORTAL_BABES 0
+		{
+			cstat 0
+			break
+		}
         soundonce DEAD_DOG
         guts JIBS2 1
         guts JIBS3 2
@@ -1117,30 +1151,31 @@ state headhitstate
 
 ends
 
-
 action EXPBARRELFRAME     0   2   1   1   15
 actor EXPLODINGBARREL 26
-  fall
-  ifaction EXPBARRELFRAME
-  {
-    ifactioncount 2
-    {
-      hitradius 1024 WEAKEST WEAK MEDIUMSTRENGTH TOUGH
-      spawn EXPLOSION2
-      debris SCRAP2 2
-      sound PIPEBOMB_EXPLODE
-      killit
-    }
-    break
-  }
-  ifsquished
-  {
-    debris SCRAP1 5
-    killit
-    break
-  }
-  ifhitweapon
-    action EXPBARRELFRAME
+	fall
+	ifaction EXPBARRELFRAME
+	{
+		ifactioncount 2
+		{
+			hitradius 1024 WEAKEST WEAK MEDIUMSTRENGTH TOUGH
+			spawn EXPLOSION2
+			debris SCRAP2 2
+			sound PIPEBOMB_EXPLODE
+			killit
+		}
+		break
+	}
+	ifsquished
+	{
+		debris SCRAP1 5
+		killit
+		break
+	}
+	ifhitweapon
+	{
+		action EXPBARRELFRAME
+	}
 enda
 
 action BURNING_FLAME  0   12   1   1   2
@@ -1200,7 +1235,6 @@ state burningstate
       palfrom 24 16
     }
   }
-
 ends
 
 actor BURNING WEAK BURNING_FLAME
@@ -1369,6 +1403,8 @@ actor SMALLSMOKE 0 SMOKEFRAMES
       move SMOKEVEL geth getv faceplayer
     ifspawnedby RPG
       cstat 2
+	ifspawnedby DEVASTATORMISSILE
+	  cstat 514
   }
   ifpdistl 1596
     ifspawnedby RPG
@@ -1652,34 +1688,37 @@ state getcode
     killit
 ends
 
-state randgetweapsnds
-  ifrnd 64
-    globalsound DUKE_GETWEAPON1
-  else
-    ifrnd 96
-      globalsound DUKE_GETWEAPON2
-  else
-    ifrnd 128
-      globalsound DUKE_GETWEAPON3
-  else
-    ifrnd 140
-      globalsound DUKE_GETWEAPON4
-  else
-    globalsound DUKE_GETWEAPON6
-ends
-
 state getweaponcode
 
   state randgetweapsnds
 
   palfrom 32 0 32
-  ifgotweaponce 1
+  ifactor HBOMBAMMO
+	nullop
+  else ifactor TRIPBOMBSPRITE
+    nullop
+  else ifgotweaponce 1
     break
   ifrespawn
   {
     move RESPAWN_ACTOR_FLAG
     spawn RESPAWNMARKERRED
     cstat 32768
+  }
+  else ifvare COOP GM_COOPERATIVE
+  {
+	ifactor HBOMBAMMO
+	{
+		move RESPAWN_ACTOR_FLAG
+		spawn RESPAWNMARKERRED
+		cstat 32768
+	}
+	else ifactor TRIPBOMBSPRITE
+	{
+		move RESPAWN_ACTOR_FLAG
+		spawn RESPAWNMARKERRED
+		cstat 32768
+	}
   }
   else
     killit
@@ -1715,6 +1754,7 @@ ends
 
 actor STEROIDS
   fall
+  state despawn_item_from_can
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -1738,6 +1778,7 @@ enda
 
 actor BOOTS
   fall
+  state despawn_item_from_can
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -1761,6 +1802,7 @@ enda
 
 actor HEATSENSOR
   fall
+  state despawn_item_from_can
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -1784,6 +1826,7 @@ enda
 
 actor SHIELD
   fall
+  state despawn_item_from_can
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -1792,33 +1835,38 @@ actor SHIELD
       ifp palive
         ifcount 6
           ifpdistl RETRIEVEDISTANCE
-            ifpinventory GET_SHIELD SHIELD_AMOUNT
               ifcanseetarget
       {
-        ifspawnedby PIGCOP
-        {
-          ifrnd 128
-            addinventory GET_SHIELD PIG_SHIELD_AMOUNT1
-          else
-            addinventory GET_SHIELD PIG_SHIELD_AMOUNT2
-          quote 104
-          sound KICK_HIT
-          palfrom 24 0 32
-          killit
-        }
-        else
-          addinventory GET_SHIELD SHIELD_AMOUNT
-        quote 38
-        ifspawnedby SHIELD
-          state getcode
-        else
-          state quikget
+		getplayer[THISACTOR].shield_amount TEMP
+		ifvarl TEMP SHIELD_AMOUNT
+		{
+			
+			ifspawnedby PIGCOP
+			{
+			  ifrnd 128
+				addinventory GET_SHIELD PIG_SHIELD_AMOUNT1
+			  else
+				addinventory GET_SHIELD PIG_SHIELD_AMOUNT2
+			  quote 104
+			  sound KICK_HIT
+			  palfrom 24 0 32
+			  killit
+			}
+			else
+			  addinventory GET_SHIELD SHIELD_AMOUNT
+			quote 38
+			ifspawnedby SHIELD
+			  state getcode
+			else
+			  state quikget
+		  }
       }
 enda
 
 
 actor AIRTANK
   fall
+  state despawn_item_from_can
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -1842,6 +1890,7 @@ enda
 action HOLODUKE_FRAMES 0 4 1 1 8
 actor HOLODUKE 0 HOLODUKE_FRAMES
   fall
+  state despawn_item_from_can
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -1864,6 +1913,7 @@ enda
 
 actor JETPACK
   fall
+  state despawn_item_from_can
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -1886,6 +1936,7 @@ enda
 
 actor ACCESSCARD
   fall
+  state despawn_item_from_can
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -1906,6 +1957,7 @@ enda
 
 actor AMMO
   fall
+  state despawn_item_from_can
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -1926,28 +1978,42 @@ actor AMMO
 enda
 
 actor FREEZEAMMO
-  fall
-  ifmove RESPAWN_ACTOR_FLAG
-    state respawnit
-  else
-    ifp pshrunk nullop
-    else
-      ifp palive
-        ifcount 6
-          ifpdistl RETRIEVEDISTANCE
-            ifcanseetarget
-      {
-        addammo FREEZE_WEAPON FREEZEAMMOAMOUNT
-        quote 66
-        ifspawnedby FREEZEAMMO
-          state getcode
-        else
-          state quikget
-      }
+	fall
+	state despawn_item_from_can
+    ifmove RESPAWN_ACTOR_FLAG
+	{
+        state respawnit
+    }
+    else ifp pshrunk
+	{
+    }
+    else ifp palive ifcount 6 ifpdistl RETRIEVEDISTANCE ifcanseetarget 
+    {
+		getplayervar[THISACTOR].FREEZETHROWER_AMMO AMMO_TEMP1
+		ifvarl AMMO_TEMP1 MAXFREEZEAMMO
+		{
+			addvarvar AMMO_TEMP1 FREEZEAMMOAMOUNT
+			ifvarg AMMO_TEMP1 MAXFREEZEAMMO
+			{
+				setvar AMMO_TEMP1 MAXFREEZEAMMO
+			}
+			
+			setplayervar[THISACTOR].FREEZETHROWER_AMMO AMMO_TEMP1
+			
+			quote 66
+			ifspawnedby FREEZEAMMO {
+				state getcode
+			}
+			else {
+				state quikget
+			}
+		}
+    }
 enda
 
 actor SHOTGUNAMMO
   fall
+  state despawn_item_from_can
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -1969,6 +2035,7 @@ enda
 
 actor AMMOLOTS
   fall
+  state despawn_item_from_can
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -1990,6 +2057,7 @@ enda
 
 actor CRYSTALAMMO
   fall
+  state despawn_item_from_can
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -2011,6 +2079,7 @@ enda
 
 actor GROWAMMO
   fall
+  state despawn_item_from_can
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -2031,28 +2100,42 @@ actor GROWAMMO
 enda
 
 actor BATTERYAMMO
-  fall
-  ifmove RESPAWN_ACTOR_FLAG
-    state respawnit
-  else
-    ifp pshrunk nullop
-    else
-      ifp palive
-        ifpdistl RETRIEVEDISTANCE
-          ifcount 6
-            ifcanseetarget
-      {
-        addammo CHAINGUN_WEAPON CHAINGUNAMMOAMOUNT
-          quote 63
-        ifspawnedby BATTERYAMMO
-          state getcode
-        else
-          state quikget
-      }
+	fall
+	state despawn_item_from_can
+    ifmove RESPAWN_ACTOR_FLAG
+	{
+        state respawnit
+    }
+    else ifp pshrunk
+	{
+    }
+    else ifp palive ifcount 6 ifpdistl RETRIEVEDISTANCE ifcanseetarget 
+    {
+		getplayervar[THISACTOR].RIPPER_AMMO AMMO_TEMP1
+		ifvarl AMMO_TEMP1 MAXCHAINGUNAMMO
+		{
+			addvarvar AMMO_TEMP1 CHAINGUNAMMOAMOUNT
+			ifvarg AMMO_TEMP1 MAXCHAINGUNAMMO
+			{
+				setvar AMMO_TEMP1 MAXCHAINGUNAMMO
+			}
+			
+			setplayervar[THISACTOR].RIPPER_AMMO AMMO_TEMP1
+			
+			quote 63
+			ifspawnedby BATTERYAMMO {
+				state getcode
+			}
+			else {
+				state quikget
+			}
+		}
+    }
 enda
 
 actor DEVISTATORAMMO
   fall
+  state despawn_item_from_can
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -2074,6 +2157,7 @@ enda
 
 actor RPGAMMO
   fall
+  state despawn_item_from_can
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -2094,6 +2178,7 @@ enda
 
 actor HBOMBAMMO
   fall
+  state despawn_item_from_can
   ifmove RESPAWN_ACTOR_FLAG state respawnit
   else
     ifp pshrunk nullop
@@ -2103,8 +2188,8 @@ actor HBOMBAMMO
           ifcount 6
             ifcanseetarget
       {
-        ifgotweaponce 0
-          break
+        //ifgotweaponce 0 // [SM] Need to be able to pick up more than 5 pipebombs
+        //  break
 
         addweapon HANDBOMB_WEAPON HANDBOMBBOX
         quote 55
@@ -2119,6 +2204,7 @@ enda
 
 actor RPGSPRITE
   fall
+  state despawn_item_from_can
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -2143,6 +2229,7 @@ enda
 
 actor SHOTGUNSPRITE
   fall
+  state despawn_item_from_can
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -2184,6 +2271,7 @@ enda
 
 actor SIXPAK
   fall
+  state despawn_item_from_can
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -2206,6 +2294,7 @@ enda
 
 actor COLA
   fall
+  state despawn_item_from_can
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -2228,6 +2317,7 @@ enda
 
 actor ATOMICHEALTH
   fall
+  state despawn_item_from_can
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -2253,6 +2343,7 @@ enda
 
 actor FIRSTAID
   fall
+  state despawn_item_from_can
   ifmove RESPAWN_ACTOR_FLAG state respawnit
   else
     ifp pshrunk nullop
@@ -2276,6 +2367,7 @@ enda
 
 actor FIRSTGUNSPRITE
   fall
+  state despawn_item_from_can
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -2299,6 +2391,7 @@ enda
 
 actor TRIPBOMBSPRITE
   fall
+  state despawn_item_from_can
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -2309,8 +2402,8 @@ actor TRIPBOMBSPRITE
           ifcount 6
             ifcanseetarget
       {
-        ifgotweaponce 0
-          break
+        //ifgotweaponce 0 // [SM] Don't want this, need to be able to pick up multiple tripbombs.
+        //  break
 
         addweapon TRIPBOMB_WEAPON 1
         quote 58
@@ -2322,33 +2415,62 @@ actor TRIPBOMBSPRITE
 enda
 
 actor CHAINGUNSPRITE
-  fall
-  ifmove RESPAWN_ACTOR_FLAG
-    state respawnit
-  else
-    ifp pshrunk nullop
-    else
-      ifp palive
-        ifpdistl RETRIEVEDISTANCE
-          ifcount 6
-            ifcanseetarget
-      {
+    fall
+	state despawn_item_from_can
+    ifmove RESPAWN_ACTOR_FLAG
+	{
+        state respawnit
+	}
+    else ifp pshrunk
+	{
+	}
+    else ifp palive ifpdistl RETRIEVEDISTANCE ifcount 6 ifcanseetarget
+    {
         ifgotweaponce 0
-          break
-
-        addweapon CHAINGUN_WEAPON 50
+            break
+		
+		getplayervar[THISACTOR].RIPPER_AMMO AMMO_TEMP1
+		getplayervar[THISACTOR].HAS_RIPPER AMMO_TEMP2
+		ifvarl AMMO_TEMP1 MAXCHAINGUNAMMO // Ammo under max?
+		{
+			addvarvar AMMO_TEMP1 CHAINGUNAMMOAMOUNT
+			ifvarg AMMO_TEMP1 MAXCHAINGUNAMMO // If over, cap it.
+			{
+				setvar AMMO_TEMP1 MAXCHAINGUNAMMO
+			}
+			
+			setplayervar[THISACTOR].RIPPER_AMMO AMMO_TEMP1
+		}
+		else
+		{
+			ifvare AMMO_TEMP2 1 // Has freezethrower?
+			{
+				break // Has weapon, and full ammo. Stop here.
+			}
+		}
+		
+		setplayervar[THISACTOR].HAS_RIPPER 1 // Give it
+		
         quote 54
         ifspawnedby CHAINGUNSPRITE
-          state getweaponcode
+		{
+            state getweaponcode
+			addweapon CHAINGUN_WEAPON 0
+		}
         else
-          state quikweaponget
-      }
+		{
+            state quikweaponget_custom
+			addweapon CHAINGUN_WEAPON 0
+			killit
+		}
+    }
 enda
 
 
 
 actor SHRINKERSPRITE
   fall
+  state despawn_item_from_can
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -2371,31 +2493,60 @@ actor SHRINKERSPRITE
 enda
 
 actor FREEZESPRITE
-  fall
-  ifmove RESPAWN_ACTOR_FLAG
-    state respawnit
-  else
-    ifp pshrunk nullop
-    else
-      ifp palive
-        ifpdistl RETRIEVEDISTANCE
-          ifcount 6
-            ifcanseetarget
-      {
+    fall
+	state despawn_item_from_can
+    ifmove RESPAWN_ACTOR_FLAG
+	{
+        state respawnit
+	}
+    else ifp pshrunk
+	{
+	}
+    else ifp palive ifpdistl RETRIEVEDISTANCE ifcount 6 ifcanseetarget
+    {
         ifgotweaponce 0
-          break
-
-        addweapon FREEZE_WEAPON FREEZEAMMOAMOUNT
+            break
+		
+		getplayervar[THISACTOR].FREEZETHROWER_AMMO AMMO_TEMP1
+		getplayervar[THISACTOR].HAS_FREEZETHROWER AMMO_TEMP2
+		ifvarl AMMO_TEMP1 MAXFREEZEAMMO // Ammo under max?
+		{
+			addvarvar AMMO_TEMP1 FREEZEAMMOAMOUNT
+			ifvarg AMMO_TEMP1 MAXFREEZEAMMO // If over, cap it.
+			{
+				setvar AMMO_TEMP1 MAXFREEZEAMMO
+			}
+			
+			setplayervar[THISACTOR].FREEZETHROWER_AMMO AMMO_TEMP1
+		}
+		else
+		{
+			ifvare AMMO_TEMP2 1 // Has freezethrower?
+			{
+				break // Has weapon, and full ammo. Stop here.
+			}
+		}
+		
+		setplayervar[THISACTOR].HAS_FREEZETHROWER 1 // Give it
+		
         quote 59
         ifspawnedby FREEZESPRITE
-          state getweaponcode
+		{
+            state getweaponcode
+			addweapon FREEZE_WEAPON 0
+		}
         else
-          state quikweaponget
-      }
+		{
+            state quikweaponget_custom
+			addweapon FREEZE_WEAPON 0
+			killit
+		}
+    }
 enda
 
 actor DEVISTATORSPRITE
   fall
+  state despawn_item_from_can
   ifmove RESPAWN_ACTOR_FLAG state respawnit
   else
     ifp pshrunk nullop
@@ -2726,8 +2877,14 @@ state femcode
 
   ifhitweapon
   {
+	// [SM] Immortal Babes
+	ifvarg IMMORTAL_BABES 0
+	{
+		break
+	}
+	
     ifdead
-    {
+    { 
       ifwasweapon GROWSPARK
       {
         cstat 0
@@ -2988,7 +3145,7 @@ state liz_body_jibs
 ends
 
 action BLOODFRAMES 0 4 1 1 15
-actor BLOOD 0 BLOODFRAMES
+actor BLOOD 0 BLOODFRAMES	
   sizeto 72 72 sizeto 72 72 sizeto 72 72
   ifpdistg 3144 killit
   ifactioncount 4 killit
@@ -3204,6 +3361,7 @@ state standard_pjibs
   guts DUKELEG 2
   guts DUKEGUN 1
   ifrnd 16 money 1
+  state make_attacker_speak
 ends
 
 move DUKENOTMOVING
@@ -3295,12 +3453,17 @@ state check_pstandard
       action PDUCKING
 ends
 
-
+state reset_player
+	action PSTAND
+	resetplayer
+ends
 
 move PGROWINGPOP        // Used only as a variable
 
 actor APLAYER MAXPLAYERHEALTH PSTAND 0 0
-
+state update_lasthitby // [SM] For Duke one-liners and such.
+state player_updateweapons
+state checkspeak
   ifaction 0
     action PSTAND
 
@@ -3318,6 +3481,11 @@ actor APLAYER MAXPLAYERHEALTH PSTAND 0 0
       {
         ifwasweapon FREEZEBLAST
           break
+		
+		resetcount
+		setvar KILLTYPE KILL_FREEZER
+		state make_attacker_speak
+		
         lotsofglass 60
         ifrnd 84
           spawn BLOODPOOL
@@ -3335,6 +3503,10 @@ actor APLAYER MAXPLAYERHEALTH PSTAND 0 0
     {
       cstat 32768
       quote 13
+	  
+	  ifvare FORCE_RESPAWN 1
+		state reset_player
+	  
       ifhitspace
       {
         action PSTAND
@@ -3371,6 +3543,10 @@ actor APLAYER MAXPLAYERHEALTH PSTAND 0 0
       ifmove PGROWINGPOP
       {
         quote 13
+		
+		ifvare FORCE_RESPAWN 1
+			state reset_player
+		
         ifhitspace
         {
           action 0
@@ -3391,10 +3567,9 @@ actor APLAYER MAXPLAYERHEALTH PSTAND 0 0
           guts JIBS6 20
           move PGROWINGPOP
           cstat 32768
-          tossweapon
+          state player_tossweapon
 
           hitradius 2048 60 70 80 90
-
         }
         else
           sizeto MAXXSTRETCH MAXYSTRETCH
@@ -3434,6 +3609,10 @@ actor APLAYER MAXPLAYERHEALTH PSTAND 0 0
       ifactioncount 3
         move PSTOPED
       quote 13
+	  
+	  ifvare FORCE_RESPAWN 1
+		state reset_player
+		
       ifhitspace
       {
         action PSTAND
@@ -3459,6 +3638,10 @@ actor APLAYER MAXPLAYERHEALTH PSTAND 0 0
     ifaction PEXPLODEAD
     {
       quote 13
+	  
+	  ifvare FORCE_RESPAWN 1
+		state reset_player
+		
       ifhitspace
       {
         resetplayer
@@ -3478,6 +3661,9 @@ actor APLAYER MAXPLAYERHEALTH PSTAND 0 0
 
     ifp pshrunk
     {
+		state get_squisher
+	  setvar KILLTYPE KILL_SHRINKER
+	  
       state standard_pjibs
       spawn BLOODPOOL
 
@@ -3506,7 +3692,7 @@ actor APLAYER MAXPLAYERHEALTH PSTAND 0 0
       }
     }
 
-    tossweapon
+    state player_tossweapon
 
     break
   }
@@ -3632,31 +3818,45 @@ actor APLAYER MAXPLAYERHEALTH PSTAND 0 0
       ifp pstanding
         action PFLINTCHING
     }
+	
+	ifwasweapon FIREBALL
+	{
+		ifdead
+		{
+			sound TOASTY
+		}
+	}
 
     ifwasweapon RPG
     {
       ifrnd 32
         spawn BLOOD
-      ifdead
-        state standard_pjibs
       palfrom 48 52
       break
     }
+	ifwasweapon DEVASTATORMISSILE
+	{
+	  ifrnd 32
+        spawn BLOOD
+      palfrom 48 52
+      break
+	}
     ifwasweapon RADIUSEXPLOSION
     {
       ifrnd 32
         spawn BLOOD
-      ifdead
-        state standard_pjibs
       palfrom 48 52
       break
     }
+	ifwasweapon PLASMABALL
+	{
+		palfrom 32 8 8 48
+			break
+	}
     ifwasweapon FIREEXT
     {
       ifrnd 32
         spawn BLOOD
-      ifdead
-        state standard_pjibs
       palfrom 48 52
       break
     }
@@ -3675,7 +3875,9 @@ actor APLAYER MAXPLAYERHEALTH PSTAND 0 0
       break
     }
     ifwasweapon SHOTSPARK1
+	{
       palfrom 24 48
+	}
     ifwasweapon FREEZEBLAST
     {
       palfrom 48 0 0 48
@@ -3698,7 +3900,7 @@ actor APLAYER MAXPLAYERHEALTH PSTAND 0 0
     ifdead
     {
       action PTHROWNBACK
-      tossweapon
+      state player_tossweapon
     }
 
     state random_wall_jibs
@@ -4400,6 +4602,13 @@ state checktroophit
       state standard_jibs
       killit
     }
+	else ifwasweapon DEVASTATORMISSILE
+	{
+	  sound SQUISHED
+      state troop_body_jibs
+      state standard_jibs
+      killit
+	}
     else
       ifwasweapon RADIUSEXPLOSION
     {
@@ -5043,6 +5252,13 @@ state checklizhit
       state standard_jibs
       killit
     }
+	else ifwasweapon DEVASTATORMISSILE
+    {
+      sound SQUISHED
+      state liz_body_jibs
+      state standard_jibs
+      killit
+    }
     else
       ifwasweapon RADIUSEXPLOSION
     {
@@ -5538,6 +5754,12 @@ state checkoctahitstate
         state standard_jibs
         killit
       }
+	  else ifwasweapon DEVASTATORMISSILE
+      {
+        sound SQUISHED
+        state standard_jibs
+        killit
+      }
       else
         ifwasweapon RADIUSEXPLOSION
       {
@@ -5563,6 +5785,13 @@ state checkoctahitstate
     else
     {
       ifwasweapon RPG
+      {
+        sound OCTA_DYING
+        addkills 1
+        state standard_jibs
+        killit
+      }
+	  else ifwasweapon DEVASTATORMISSILE
       {
         sound OCTA_DYING
         addkills 1
@@ -6005,6 +6234,12 @@ state checkpighitstate
     }
     else
       ifwasweapon RPG
+    {
+      sound SQUISHED
+      state standard_jibs
+      killit
+    }
+	else ifwasweapon DEVASTATORMISSILE
     {
       sound SQUISHED
       state standard_jibs
@@ -7183,6 +7418,13 @@ state checkcommhitstate
         state standard_jibs
         killit
       }
+	  else ifwasweapon DEVASTATORMISSILE
+      {
+        sound SQUISHED
+        spawn BLOODPOOL
+        state standard_jibs
+        killit
+      }
 
       sound COMM_DYING
       ai AICOMMDYING
@@ -8005,7 +8247,7 @@ useractor enemy NEWBEASTHANG NEWBEASTSTRENGTH
 enda
 
 action ANEWBEASTHANGDEAD      -1  1  5
-useractor enemy NEWBEASTHANGDEAD TOUGH
+useractor notenemy NEWBEASTHANGDEAD TOUGH
 
   ifaction 0
   {
@@ -8295,6 +8537,13 @@ state checknewbeasthit
       state standard_jibs
       killit
     }
+	else ifwasweapon DEVASTATORMISSILE
+    {
+      sound SQUISHED
+      state liz_body_jibs
+      state standard_jibs
+      killit
+    }
     else
       ifwasweapon RADIUSEXPLOSION
     {
@@ -8528,3 +8777,8 @@ useractor enemy NEWBEAST NEWBEASTSTRENGTH
   }
 enda
 
+include SDM_PROPS.CON
+include SDM_BABES.CON
+include SDM_ITEMS.CON
+include SDM_FX.CON
+include WEAPONS.CON

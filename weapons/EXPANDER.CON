@@ -1,0 +1,100 @@
+state draw_expander // GROW_WEAPON:
+    state reset_hud_weapon_coordinates
+    
+    addvar hud_x 28
+    addvar hud_y 18
+    
+    setvarvar hud_temp4 hud_pal
+    setvar hud_pal 2
+    
+    setvarvar hud_temp3 currentweapon
+    shiftvarl hud_temp3 1
+    
+    setvar hud_temp2 0
+    
+    ifvarg weaponcount 0
+    {
+        ifvarvarl weaponcount hud_totaltime
+        {
+            state determine_animation
+            ifvarn hud_temp 1
+            {
+                displayrand hud_temp
+                andvar hud_temp 3
+				
+				addvarvar hud_x hud_temp
+
+                displayrand hud_temp
+                andvar hud_temp 3
+
+                subvarvar hud_y hud_temp
+            }
+            
+            addvar hud_x 184
+            addvar hud_y 240
+            
+            setvarvar hud_tilenum weaponcount
+            andvar hud_tilenum 3
+            addvar hud_tilenum SHRINKER
+            addvar hud_tilenum 3
+            
+            setvar hud_shade -32
+        
+            guniqhudid hud_temp3
+            
+            state G_DrawWeaponTile_crystal
+            
+            guniqhudid currentweapon
+            
+            addvar hud_x 4
+            
+            setvar hud_tilenum SHRINKER
+            subvar hud_tilenum 1
+            
+            setvarvar hud_shade gs
+            
+            setvarvar hud_pal hud_temp4
+            
+            state G_DrawWeaponTile
+            
+            guniqhudid 0
+    
+            setvar hud_temp2 1
+        }
+    }
+    ifvare hud_temp2 0
+    {
+        addvar hud_x 184
+        
+        addvar hud_y 240
+        
+        setvar hud_tilenum SHRINKER
+        addvar hud_tilenum 2
+        
+        getplayer[THISACTOR].random_club_frame hud_shade
+        andvar hud_shade 2047
+        sin hud_shade hud_shade
+        shiftvarr hud_shade 10
+        mulvar hud_shade -1
+        addvar hud_shade 16
+        
+        guniqhudid hud_temp3
+        
+        state G_DrawWeaponTile_crystal
+        
+        guniqhudid currentweapon
+        
+        addvar hud_x 4
+        
+        setvar hud_tilenum SHRINKER
+        subvar hud_tilenum 2
+        
+        setvarvar hud_shade gs
+        
+        setvarvar hud_pal hud_temp4
+        
+        state G_DrawWeaponTile
+        
+        guniqhudid 0
+    }
+ends

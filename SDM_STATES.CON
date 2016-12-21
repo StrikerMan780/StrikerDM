@@ -1,0 +1,337 @@
+state pass_on_respawn_vars
+	setactorvar[RETURN].PICNUM_MEMORY PICNUM_MEMORY
+	setactorvar[RETURN].HITAG_MEMORY HITAG_MEMORY
+	setactorvar[RETURN].LOTAG_MEMORY LOTAG_MEMORY
+	setactorvar[RETURN].XREPEAT_MEMORY XREPEAT_MEMORY
+	setactorvar[RETURN].YREPEAT_MEMORY YREPEAT_MEMORY
+	setactorvar[RETURN].CLIPDIST_MEMORY CLIPDIST_MEMORY
+	setactorvar[RETURN].EXTRA_MEMORY EXTRA_MEMORY
+	setactorvar[RETURN].CSTAT_MEMORY CSTAT_MEMORY
+	setactorvar[RETURN].PAL_MEMORY PAL_MEMORY
+	setactorvar[RETURN].STATNUM_MEMORY STATNUM_MEMORY
+	setactorvar[RETURN].SPAWN_ORIGX SPAWN_ORIGX
+	setactorvar[RETURN].SPAWN_ORIGY SPAWN_ORIGY
+	setactorvar[RETURN].SPAWN_ORIGZ SPAWN_ORIGZ
+	setactorvar[RETURN].SPAWN_ORIGANG SPAWN_ORIGANG
+ends
+
+state prepare_respawn_hardcoded
+	ifvare COOP GM_COOPERATIVE
+	{
+		break // Do not respawn stuff in COOP.
+	}
+	
+	espawn RESPAWNHANDLER
+	state pass_on_respawn_vars
+	setvar RETURN 0
+ends
+
+actor RESPAWNHANDLER WEAK
+{
+	ifcount RESPAWNPROPTIME
+	{
+			espawnvar PICNUM_MEMORY
+			state pass_on_respawn_vars
+			setactor[RETURN].picnum PICNUM_MEMORY
+			setactor[RETURN].hitag HITAG_MEMORY
+			setactor[RETURN].lotag LOTAG_MEMORY
+			setactor[RETURN].xrepeat XREPEAT_MEMORY
+			setactor[RETURN].yrepeat YREPEAT_MEMORY
+			setactor[RETURN].clipdist CLIPDIST_MEMORY
+			setactor[RETURN].extra EXTRA_MEMORY
+			setactor[RETURN].cstat CSTAT_MEMORY
+			setactor[RETURN].pal PAL_MEMORY
+			setactor[RETURN].x SPAWN_ORIGX
+			setactor[RETURN].y SPAWN_ORIGY
+			setactor[RETURN].z SPAWN_ORIGZ
+			setactor[RETURN].ang SPAWN_ORIGANG
+			changespritestat RETURN STATNUM_MEMORY
+			setvar RETURN 0
+			
+			ifvarand CSTAT_MEMORY 32768
+			{
+				// Do nothing
+			}
+			else
+			{
+				spawn TRANSPORTERSTAR
+			}
+			killit
+	}
+}
+enda
+
+state init_pickup
+	ifcount 1
+		nullop
+	else ifcount 0
+	{
+		cstat 0
+		getactor[THISACTOR].htowner TEMP
+		ifvarvarn THISACTOR TEMP
+		{
+			ifvare SPAWNED 0
+			{
+				getactor[THISACTOR].z SPAWN_ORIGZ
+				subvar SPAWN_ORIGZ 8192
+			
+				setactor[THISACTOR].z SPAWN_ORIGZ
+				setactor[THISACTOR].zvel -1024
+				setvar SPAWNED 1
+			}
+		}
+	}
+ends
+
+state despawn_item_from_can
+	ifvare FROMCAN 0
+	{
+		ifspawnedby CANWITHSOMETHING setvar FROMCAN 1
+		else ifspawnedby CANWITHSOMETHING2 setvar FROMCAN 1
+		else ifspawnedby CANWITHSOMETHING3 setvar FROMCAN 1
+		else ifspawnedby CANWITHSOMETHING4 setvar FROMCAN 1
+		else ifspawnedby RUBBERCAN setvar FROMCAN 1
+	}
+	
+	ifvare FROMCAN 1
+	{
+		ifcount RESPAWNPROPTIME
+		{
+			killit
+		}
+	}
+ends
+
+state checkspeak
+	ifactor APLAYER
+	{
+		ifvare SPEAK 1
+		{
+			setvar SPEAK 0
+			
+			ifdead
+			{
+			}
+			else ifrnd SWEARFREQUENCY
+			{
+				ifvare SPEAKTYPE KILL_FREEZER
+				{
+					randvar DUKELINE 4
+					switch DUKELINE
+						case 0: sound FREEZE01 break
+						case 1: sound FREEZE02 break
+						case 2: sound FREEZE03 break
+						case 3: sound FREEZE04 break
+						case 4: sound FREEZE05 break
+					endswitch
+				}
+				else ifvare SPEAKTYPE KILL_SHRINKER
+				{
+					randvar DUKELINE 19
+					switch DUKELINE
+						case 0: sound STOMP01 break
+						case 1: sound STOMP02 break
+						case 2: sound STOMP03 break
+						case 3: sound STOMP04 break
+						case 4: sound STOMP05 break
+						case 5: sound STOMP06 break
+						case 6: sound STOMP07 break
+						case 7: sound STOMP08 break
+						case 8: sound STOMP09 break
+						case 9: sound STOMP10 break
+						case 10: sound STOMP11 break
+						case 11: sound STOMP12 break
+						case 12: sound STOMP13 break
+						case 13: sound STOMP14 break
+						case 14: sound STOMP15 break
+						case 15: sound STOMP16 break
+						case 16: sound STOMP17 break
+						case 17: sound STOMP18 break
+						case 18: sound STOMP19 break
+						case 19: sound STOMP20 break
+					endswitch
+				}
+				else
+				{
+					randvar DUKELINE 16
+					switch DUKELINE
+						case 0: sound JIBBED_ACTOR1 break
+						case 1: sound JIBBED_ACTOR2 break
+						case 2: sound JIBBED_ACTOR3 break
+						case 3: sound JIBBED_ACTOR4 break
+						case 4: sound JIBBED_ACTOR5 break
+						case 5: sound JIBBED_ACTOR6 break
+						case 6: sound JIBBED_ACTOR7 break
+						case 7: sound JIBBED_ACTOR8 break
+						case 8: sound JIBBED_ACTOR9 break
+						case 9: sound JIBBED_ACTOR10 break
+						case 10: sound JIBBED_ACTOR11 break
+						case 11: sound JIBBED_ACTOR12 break
+						case 12: sound JIBBED_ACTOR13 break
+						case 13: sound JIBBED_ACTOR14 break
+						case 14: sound JIBBED_ACTOR15 break
+						case 15: sound SMACKED break
+						case 16: sound MDEVSPEECH break
+					endswitch
+				}
+			}
+		}
+	}
+ends
+
+state make_attacker_speak
+	ifvarvarn THISACTOR LASTHITBY
+	{
+		setactorvar[LASTHITBY].SPEAKTYPE KILLTYPE
+		
+		setvar KILLTYPE KILL_NONE
+		setactorvar[LASTHITBY].SPEAK 1
+	}
+ends
+
+state randgetweapsnds
+	randvar DUKELINE 4
+	switch DUKELINE
+		case 0: globalsound DUKE_GETWEAPON1 break
+		case 1: globalsound DUKE_GETWEAPON2 break
+		case 2: globalsound DUKE_GETWEAPON3 break
+		case 3: globalsound DUKE_GETWEAPON4 break
+		case 4: globalsound DUKE_GETWEAPON6 break
+	endswitch
+ends
+
+state quikweaponget_custom
+  state randgetweapsnds
+  palfrom 32 0 32
+ends
+
+state update_lasthitby
+	getactor[THISACTOR].htextra TEMP
+	ifvarg TEMP 0 // if the actor is set to take some damage from a weapon...
+	{
+		getactor[THISACTOR].htowner TEMP
+		setvarvar LASTHITBY TEMP
+	}
+ends
+
+state get_squisher
+	findotherplayer TEMP
+	getplayer[RETURN].i TEMP2
+	setvarvar LASTHITBY TEMP2
+ends
+
+state setflamethrower
+	setvar WEAPON9_SHOOTS FIREBALL
+	setvar WEAPON9_TOTALTIME 4
+	setvar WEAPON9_FIRESOUND 0
+	setvar WEAPON9_INITIALSOUND FLAMETHROWER_START
+	setvar USING_FLAMETHROWER 1
+ends
+
+state setfreezethrower
+	setvar WEAPON9_SHOOTS FREEZEBLAST
+	setvar WEAPON9_TOTALTIME 5
+	setvar WEAPON9_FIRESOUND FREEZETHROWER_FIRE
+	setvar WEAPON9_INITIALSOUND FREEZETHROWER_FIRE
+	setvar USING_FLAMETHROWER 0
+ends
+
+state setripper
+	setvar WEAPON3_FLAGS 73812
+	setvar WEAPON3_SHOOTS CHAINGUN
+	setvar WEAPON3_FIREDELAY 3
+	setvar WEAPON3_TOTALTIME 12
+	setvar WEAPON3_HOLDDELAY 3
+	setvar WEAPON3_SPAWN SHELL
+	setvar WEAPON3_SPAWNTIME 1
+	setvar WEAPON3_FIRESOUND CHAINGUN_FIRE
+	setvar WEAPON3_INITIALSOUND 0
+	setvar USING_PLASMARIFLE 0
+ends
+
+state setplasmarifle
+	setvar WEAPON3_FLAGS 0
+	setvar WEAPON3_SHOOTS PLASMABALL
+	setvar WEAPON3_FIREDELAY 10
+	setvar WEAPON3_TOTALTIME 16
+	setvar WEAPON3_HOLDDELAY 0
+	setvar WEAPON3_SPAWN 0
+	setvar WEAPON3_SPAWNTIME 0
+	setvar WEAPON3_FIRESOUND PLASMARIFLE_FIRE
+	setvar WEAPON3_INITIALSOUND PLASMARIFLE_CHARGE
+	setvar USING_PLASMARIFLE 1
+ends
+
+state player_updateweapons
+	ifvare WEAPON FREEZE_WEAPON
+	{
+		ifvare USING_FLAMETHROWER 1
+		{
+			setplayer[THISACTOR].ammo_amount FREEZE_WEAPON FLAMETHROWER_AMMO
+		}
+		else
+		{
+			setplayer[THISACTOR].ammo_amount FREEZE_WEAPON FREEZETHROWER_AMMO
+			
+			ifvare HAS_FREEZETHROWER 0
+			ifvare HAS_FLAMETHROWER 1
+			{
+				state setflamethrower
+			}
+		}
+	}
+	else ifvare WEAPON CHAINGUN_WEAPON
+	{
+		ifvare USING_PLASMARIFLE 1
+		{
+			setplayer[THISACTOR].ammo_amount CHAINGUN_WEAPON PLASMARIFLE_AMMO
+		}
+		else
+		{
+			setplayer[THISACTOR].ammo_amount CHAINGUN_WEAPON RIPPER_AMMO
+			
+			ifvare HAS_RIPPER 0
+			ifvare HAS_PLASMARIFLE 1
+			{
+				state setplasmarifle
+			}
+		}
+	}
+	
+	ifvare COOP GM_ROIDMATCH
+	{
+		setplayer[THISACTOR].jetpack_amount 1600
+		setplayer[THISACTOR].steroids_amount 399
+		setplayer[THISACTOR].falling_counter 0
+		setplayer[THISACTOR].gotweapon DEVISTATOR_WEAPON 1
+		setplayer[THISACTOR].ammo_amount DEVISTATOR_WEAPON MAXDEVISTATORAMMO
+		setplayer[THISACTOR].curr_weapon DEVISTATOR_WEAPON
+	}
+ends
+
+state player_tossweapon
+	switch WEAPON
+		case PISTOL_WEAPON: spawn FIRSTGUNSPRITE break
+		case SHOTGUN_WEAPON: spawn SHOTGUNSPRITE break
+		case CHAINGUN_WEAPON:
+			getplayervar[THISACTOR].USING_PLASMARIFLE PLAYER_TEMP
+			ifvare PLAYER_TEMP 1
+				spawn PLASMASPRITE
+			else
+				spawn CHAINGUNSPRITE
+			break
+		case RPG_WEAPON: spawn RPGSPRITE break
+		case HANDBOMB_WEAPON: spawn HBOMBAMMO break
+		case SHRINKER_WEAPON: spawn SHRINKERSPRITE break
+		case DEVISTATOR_WEAPON: spawn DEVISTATORSPRITE break
+		case TRIPBOMB_WEAPON: spawn TRIPBOMBSPRITE break
+		case FREEZE_WEAPON:
+			getplayervar[THISACTOR].USING_FLAMETHROWER PLAYER_TEMP
+			ifvare PLAYER_TEMP 1
+				spawn FLAMETHROWERSPRITE
+			else
+				spawn FREEZESPRITE
+			break
+		case GROW_WEAPON: spawn GROWAMMO break
+	endswitch
+ends

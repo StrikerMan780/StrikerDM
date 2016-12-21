@@ -1,0 +1,123 @@
+tilefromtexture 3584 { file "tiles/3584.png" }
+tilefromtexture 3585 { file "tiles/3585.png" }
+tilefromtexture 3586 { file "tiles/3586.png" }
+tilefromtexture 3587 { file "tiles/3587.png" }
+texture 3587 { pal 0 { file "highres/doomtex/3587_BIGBRIK2.PNG" } nocompress nodownsize }
+tilefromtexture 3588 { file "tiles/3588.png" }
+tilefromtexture 3589 { file "tiles/3589.png" }
+tilefromtexture 3590 { file "tiles/3590.png" }
+tilefromtexture 3591 { file "tiles/3591.png" }
+tilefromtexture 3592 { file "tiles/3592.png" }
+tilefromtexture 3593 { file "tiles/3593.png" }
+tilefromtexture 3594 { file "tiles/3594.png" }
+tilefromtexture 3595 { file "tiles/3595.png" }
+tilefromtexture 3596 { file "tiles/3596.png" }
+tilefromtexture 3597 { file "tiles/3597.png" }
+tilefromtexture 3598 { file "tiles/3598.png" }
+tilefromtexture 3599 { file "tiles/3599.png" }
+tilefromtexture 3600 { file "tiles/3600.png" }
+tilefromtexture 3601 { file "tiles/3601.png" }
+texture 3601 { pal 0 { file "highres/doomtex/3601_W17_1.PNG" } nocompress nodownsize }
+tilefromtexture 3602 { file "tiles/3602.png" }
+texture 3602 { pal 0 { file "highres/doomtex/3602_W28_5.PNG" } nocompress nodownsize }
+tilefromtexture 3603 { file "tiles/3603.png" }
+texture 3603 { pal 0 { file "highres/doomtex/3603_W28_6.PNG" } nocompress nodownsize }
+tilefromtexture 3604 { file "tiles/3604.png" }
+tilefromtexture 3605 { file "tiles/3605.png" }
+tilefromtexture 3606 { file "tiles/3606.png" }
+tilefromtexture 3607 { file "tiles/3607.png" }
+tilefromtexture 3608 { file "tiles/3608.png" }
+tilefromtexture 3609 { file "tiles/3609.png" }
+tilefromtexture 3610 { file "tiles/3610.png" }
+tilefromtexture 3611 { file "tiles/3611.png" }
+tilefromtexture 3612 { file "tiles/3612.png" }
+tilefromtexture 3613 { file "tiles/3613.png" }
+tilefromtexture 3614 { file "tiles/3614.png" }
+tilefromtexture 3615 { file "tiles/3615.png" }
+tilefromtexture 3616 { file "tiles/3616.png" }
+tilefromtexture 3617 { file "tiles/3617.png" }
+tilefromtexture 3618 { file "tiles/3618.png" }
+tilefromtexture 3619 { file "tiles/3619.png" }
+tilefromtexture 3620 { file "tiles/3620.png" }
+tilefromtexture 3621 { file "tiles/3621.png" }
+tilefromtexture 3622 { file "tiles/3622.png" }
+tilefromtexture 3623 { file "tiles/3623.png" }
+tilefromtexture 3624 { file "tiles/3624.png" }
+tilefromtexture 3625 { file "tiles/3625.png" yoffset 30 }
+tilefromtexture 3626 { file "tiles/3626.png" }
+tilefromtexture 3627 { file "tiles/3627.png" }
+tilefromtexture 3628 { file "tiles/3628.png" }
+tilefromtexture 3629 { file "tiles/3629.png" }
+tilefromtexture 3630 { file "tiles/3630.png" }
+tilefromtexture 3631 { file "tiles/3631.png" }
+tilefromtexture 3632 { file "tiles/3632.png" }
+tilefromtexture 3633 { file "tiles/3633.png" }
+tilefromtexture 3634 { file "tiles/3634.png" }
+tilefromtexture 3635 { file "tiles/3635.png" }
+tilefromtexture 3636 { file "tiles/3636.png" }
+tilefromtexture 3637 { file "tiles/3637.png" }
+tilefromtexture 3638 { file "tiles/3638.png" }
+tilefromtexture 3639 { file "tiles/3639.png" }
+tilefromtexture 3640 { file "tiles/3640.png" }
+tilefromtexture 3641 { file "tiles/3641.png" }
+tilefromtexture 3642 { file "tiles/3642.png" }
+tilefromtexture 3643 { file "tiles/3643.png" }
+tilefromtexture 3644 { file "tiles/3644.png" }
+animtilerange 3645 3647 4 ANIM_FORWARD
+tilefromtexture 3645 { file "tiles/3645.png" }
+tilefromtexture 3646 { file "tiles/3646.png" }
+tilefromtexture 3647 { file "tiles/3647.png" }
+animtilerange 3648 3651 4 ANIM_FORWARD
+tilefromtexture 3648 { file "tiles/3648.png" }
+tilefromtexture 3649 { file "tiles/3649.png" }
+tilefromtexture 3650 { file "tiles/3650.png" }
+tilefromtexture 3651 { file "tiles/3651.png" }
+animtilerange 3652 3656 5 ANIM_FORWARD
+tilefromtexture 3652 { file "tiles/3652.png" }
+tilefromtexture 3653 { file "tiles/3653.png" }
+tilefromtexture 3654 { file "tiles/3654.png" }
+tilefromtexture 3655 { file "tiles/3655.png" }
+tilefromtexture 3656 { file "tiles/3656.png" }
+tilefromtexture 3657 { file "tiles/3657.png" }
+tilefromtexture 3658 { file "tiles/3658.png" }
+tilefromtexture 3659 { file "tiles/3659.png" }
+animtilerange 3660 3667 4 ANIM_FORWARD
+tilefromtexture 3660 { file "tiles/3660.png" }
+tilefromtexture 3661 { file "tiles/3661.png" }
+tilefromtexture 3662 { file "tiles/3662.png" }
+tilefromtexture 3663 { file "tiles/3663.png" }
+tilefromtexture 3664 { file "tiles/3664.png" }
+tilefromtexture 3665 { file "tiles/3665.png" }
+tilefromtexture 3666 { file "tiles/3666.png" }
+tilefromtexture 3667 { file "tiles/3667.png" }
+tilefromtexture 3668 { file "tiles/3668.png" }
+tilefromtexture 3669 { file "tiles/3669.png" }
+animtilerange 3670 3677 4 ANIM_FORWARD
+tilefromtexture 3670 { file "tiles/3670.png" }
+tilefromtexture 3671 { file "tiles/3671.png" }
+tilefromtexture 3672 { file "tiles/3672.png" }
+tilefromtexture 3673 { file "tiles/3673.png" }
+tilefromtexture 3674 { file "tiles/3674.png" }
+tilefromtexture 3675 { file "tiles/3675.png" }
+tilefromtexture 3676 { file "tiles/3676.png" }
+tilefromtexture 3677 { file "tiles/3677.png" }
+tilefromtexture 3678 { file "tiles/3678.png" }
+tilefromtexture 3679 { file "tiles/3679.png" }
+tilefromtexture 3680 { file "tiles/3680.png" }
+tilefromtexture 3681 { file "tiles/3681.png" }
+tilefromtexture 3682 { file "tiles/3682.png" }
+tilefromtexture 3683 { file "tiles/3683.png" }
+tilefromtexture 3684 { file "tiles/3684.png" }
+tilefromtexture 3686 { file "tiles/3686.png" }
+tilefromtexture 3687 { file "tiles/3687.png" }
+tilefromtexture 3688 { file "tiles/3688.png" }
+tilefromtexture 3689 { file "tiles/3689.png" }
+tilefromtexture 3690 { file "tiles/3690.png" }
+tilefromtexture 3691 { file "tiles/3691.png" }
+tilefromtexture 3692 { file "tiles/3692.png" }
+animtilerange 3694 3698 4 ANIM_FORWARD
+tilefromtexture 3694 { file "tiles/3694.png" }
+tilefromtexture 3695 { file "tiles/3695.png" }
+tilefromtexture 3696 { file "tiles/3696.png" }
+tilefromtexture 3697 { file "tiles/3697.png" }
+tilefromtexture 3698 { file "tiles/3698.png" }

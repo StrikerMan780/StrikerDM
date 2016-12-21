@@ -1,0 +1,50 @@
+spritenoshade LDEXPLOSION
+action LAMEDUKE_EXPLOSION_FRAMES 0 10 1 1 4
+action LAMEDUKE_EXPLOSION_FRAMES_FAST 0 10 1 1 2
+actor LDEXPLOSION 1 LAMEDUKE_EXPLOSION_FRAMES
+  ifactioncount 10
+    killit
+	
+  ifcount 1
+	nullop
+  else ifcount 0
+  {
+	setactor[THISACTOR].shade -127
+	cstat 128
+	ifspawnedby PLASMABALL
+	{
+		action LAMEDUKE_EXPLOSION_FRAMES_FAST
+		spritepal 1
+		cstator 2
+	}
+  }
+enda
+
+action GIBBLOODFRAMES -1 4 1 1 15
+actor GIBBLOOD 0 GIBBLOODFRAMES	
+  ifcount 1
+  {
+  }
+  else
+  {
+	cstator 128
+	cstator 2
+	
+	ifrnd 128
+		sizeat 32 32
+	else ifrnd 128
+		sizeat 24 24
+	
+	ifrnd 128
+	{
+		cstator 4
+	}
+	ifrnd 128
+	{
+		cstator 8
+	}
+  }
+  
+  sizeto 72 72 sizeto 72 72 sizeto 72 72
+  ifactioncount 4 killit
+enda

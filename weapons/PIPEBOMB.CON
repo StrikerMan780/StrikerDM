@@ -1,0 +1,120 @@
+state draw_pipebomb // HANDBOMB_WEAPON:
+    state reset_hud_weapon_coordinates
+    
+    guniqhudid currentweapon
+            
+    setvar hud_tilenum HANDTHROW
+    
+    ifvarn weaponcount 0
+    {
+        ifvarvarl weaponcount hud_totaltime
+        {
+            ifvarl weaponcount 7
+            {   
+                setvarvar hud_temp weaponcount
+                mulvar hud_temp 10
+                addvarvar hud_y hud_temp // D
+            }
+            else ifvarl weaponcount 12
+            {
+                setvarvar hud_temp weaponcount
+                subvar hud_temp 10
+                mulvar hud_temp 20
+                subvarvar hud_y hud_temp // U
+            }
+            else ifvarl weaponcount 20
+            {
+                setvarvar hud_temp weaponcount
+                subvar hud_temp 14
+                mulvar hud_temp 9
+                addvarvar hud_y hud_temp // D
+            }
+            
+            addvar hud_x 190
+            
+            addvar hud_y 250
+            
+            switch weaponcount
+                /*
+                case 0
+                case 1
+                case 2
+                case 3
+                case 4
+                    addvar hud_tilenum 0
+                    break
+                */
+                case 5
+                case 6
+                case 7
+                case 8
+                case 9
+                case 10
+                case 11
+                    addvar hud_tilenum 1
+                    break
+                case 12
+                case 13
+                case 14
+                case 15
+                case 16
+                case 17
+                case 18
+                case 19
+                case 20
+                    addvar hud_tilenum 2
+                    break
+            endswitch
+            
+            state G_DrawWeaponTile
+        }
+    }
+    else
+    {
+        addvar hud_x 190
+        
+        addvar hud_y 260
+        
+        state G_DrawWeaponTile
+    }
+        
+    guniqhudid 0
+ends
+
+state draw_detonator // HANDREMOTE_WEAPON:
+    state reset_hud_weapon_coordinates
+    
+    guniqhudid currentweapon
+    
+    addvar hud_x 102 // -48+150
+    
+    addvar hud_y 258
+    
+    setvar hud_tilenum HANDREMOTE
+    
+    switch weaponcount
+        /*
+        case 0
+        case 6
+        case 7
+        case 8
+        case 9
+        case 10
+            addvar hud_tilenum 0
+            break
+        */
+        case 1
+        case 2
+        case 4
+        case 5
+            addvar hud_tilenum 1
+            break
+        case 3
+            addvar hud_tilenum 2
+            break
+    endswitch
+    
+    state G_DrawWeaponTile
+        
+    guniqhudid 0
+ends

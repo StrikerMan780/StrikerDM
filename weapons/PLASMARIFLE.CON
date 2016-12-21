@@ -1,0 +1,170 @@
+state draw_plasmarifle // PLASMARIFLE_WEAPON:
+    state reset_hud_weapon_coordinates
+    
+    // base
+    addvar hud_x 168
+    addvar hud_y 260
+	
+	ifvarg weaponcount 0
+	ifvarl weaponcount 10
+	ifvarn hud_temp 1
+	{
+		displayrand hud_temp
+		andvar hud_temp 3
+				
+		addvarvar hud_x hud_temp
+
+		displayrand hud_temp
+		andvar hud_temp 3
+
+		subvarvar hud_y hud_temp
+	}
+	
+	ifvarl weaponcount 10
+		setvar hud_tilenum PLASMARIFLE1
+    else ifvarl weaponcount 11
+		setvar hud_tilenum PLASMARIFLE2
+    else ifvarl weaponcount 12
+		setvar hud_tilenum PLASMARIFLE3
+    else ifvarl weaponcount 13
+		setvar hud_tilenum PLASMARIFLE4
+    else ifvarl weaponcount 14
+		setvar hud_tilenum PLASMARIFLE5
+	else ifvarg weaponcount 14
+		setvar hud_tilenum PLASMARIFLE1
+	
+	state G_DrawWeaponTile
+	
+	//subvar hud_x 168
+    //subvar hud_y 260
+ends
+
+
+actor PLASMASPRITE
+    fall
+	state init_pickup
+	state despawn_item_from_can
+	sizeat 32 32
+    ifmove RESPAWN_ACTOR_FLAG
+	{
+        state respawnit
+	}
+    else ifp pshrunk
+	{
+	}
+    else ifp palive ifpdistl RETRIEVEDISTANCE ifcount 6 ifcanseetarget
+    {
+		getplayervar[THISACTOR].HAS_PLASMARIFLE AMMO_TEMP2
+		ifspawnedby PLASMASPRITE
+		{
+			ifmultiplayer
+			ifvarn COOP GM_DUKEMATCH
+			ifvarn COOP GM_DUKEMATCH_NOSPAWN
+			ifvarn COOP GM_TEAMDUKEMATCH
+			ifvarn COOP GM_TEAMDUKEMATCH_NOSPAWN
+			ifvare AMMO_TEMP2 1
+			{
+				break
+			}
+		}
+		
+		getplayervar[THISACTOR].PLASMARIFLE_AMMO AMMO_TEMP1
+		ifvarl AMMO_TEMP1 MAXPLASMARIFLEAMMO // Ammo under max?
+		{
+			addvarvar AMMO_TEMP1 PLASMARIFLEAMMOAMOUNT
+			ifvarg AMMO_TEMP1 MAXPLASMARIFLEAMMO // If over, cap it.
+			{
+				setvar AMMO_TEMP1 MAXPLASMARIFLEAMMO
+			}
+			
+			setplayervar[THISACTOR].PLASMARIFLE_AMMO AMMO_TEMP1
+		}
+		else
+		{
+			ifvare AMMO_TEMP2 1 // Has plasma rifle?
+			{
+				break // Has weapon, and full ammo. Stop here.
+			}
+		}
+		
+		setplayervar[THISACTOR].HAS_PLASMARIFLE 1 // Give it
+		
+        quote 129
+        ifspawnedby PLASMASPRITE
+		{
+            state getweaponcode
+			addweapon CHAINGUN_WEAPON 0
+		}
+        else
+		{
+            state quikweaponget_custom
+			addweapon CHAINGUN_WEAPON 0
+			killit
+		}
+    }
+enda
+
+actor PLASMAAMMO
+    fall
+	state init_pickup
+	state despawn_item_from_can
+	sizeat 32 32
+    ifmove RESPAWN_ACTOR_FLAG
+	{
+        state respawnit
+    }
+    else ifp pshrunk
+	{
+    }
+    else ifp palive ifcount 6 ifpdistl RETRIEVEDISTANCE ifcanseetarget 
+    {
+		getplayervar[THISACTOR].PLASMARIFLE_AMMO AMMO_TEMP1
+		ifvarl AMMO_TEMP1 MAXPLASMARIFLEAMMO
+		{
+			addvarvar AMMO_TEMP1 PLASMARIFLEAMMOAMOUNT
+			ifvarg AMMO_TEMP1 MAXPLASMARIFLEAMMO
+			{
+				setvar AMMO_TEMP1 MAXPLASMARIFLEAMMO
+			}
+			
+			setplayervar[THISACTOR].PLASMARIFLE_AMMO AMMO_TEMP1
+			
+			quote 130
+			ifspawnedby PLASMAAMMO {
+				state getcode
+			}
+			else {
+				state quikget
+			}
+		}
+    }
+enda
+
+spritenoshade PLASMABALL
+defineprojectile PLASMABALL PROJ_WORKSLIKE 36866 // 32770
+defineprojectile PLASMABALL PROJ_CSTAT 128
+defineprojectile PLASMABALL PROJ_VEL 1000
+defineprojectile PLASMABALL PROJ_VEL_MULT 3
+defineprojectile PLASMABALL PROJ_XREPEAT 16
+defineprojectile PLASMABALL PROJ_YREPEAT 16
+defineprojectile PLASMABALL PROJ_EXTRA PLASMARIFLE_WEAPON_STRENGTH
+defineprojectile PLASMABALL PROJ_CLIPDIST 40
+defineprojectile PLASMABALL PROJ_HITRADIUS 0
+defineprojectile PLASMABALL PROJ_SHADE -127
+defineprojectile PLASMABALL PROJ_ISOUND PLASMARIFLE_HIT
+defineprojectile PLASMABALL PROJ_SPAWNS LDEXPLOSION
+defineprojectile PLASMABALL PROJ_SXREPEAT 24
+defineprojectile PLASMABALL PROJ_SYREPEAT 24
+defineprojectile PLASMABALL PROJ_TRAIL PLASMATRAIL
+defineprojectile PLASMABALL PROJ_TXREPEAT 16
+defineprojectile PLASMABALL PROJ_TYREPEAT 16
+actor PLASMABALL WEAK enda
+
+spritenoshade PLASMATRAIL
+actor PLASMATRAIL WEAK
+	ifcount 2
+		killit
+	else ifcount 0
+		cstat 130
+		setactor[THISACTOR].shade -127
+enda

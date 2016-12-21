@@ -1,0 +1,61 @@
+state draw_shrunk_fists // Shrunk Running Fists
+    // common calculations
+    state reset_hud_weapon_x_coordinate
+    
+    setvarvar hud_temp3 looking_arc
+	
+	getplayer[THISACTOR].jetpack_on OLDMP_TEMP
+    ifvare OLDMP_TEMP 0
+    {
+        getactor[playerid].xvel hud_temp2
+        shiftvarr hud_temp2 3
+        addvar hud_temp3 32
+        subvarvar hud_temp3 hud_temp2
+        addvarvar hud_fistsign hud_temp2
+    }
+    // common calculations continued        
+    setvarvar hud_temp2 hud_fistsign
+    andvar hud_temp2 2047
+    sin hud_temp2 hud_temp2
+    setvarvar hud_temp4 hud_temp2
+    shiftvarr hud_temp2 10
+    shiftvarr hud_temp4 8
+    ifvarl hud_temp4 0
+        mulvar hud_temp4 -1
+    
+    // right fist
+    guniqhudid 101
+    
+    addvarvar hud_x hud_temp2
+    addvar hud_x 250
+    
+    setvarvar hud_y hud_temp3
+    addvar hud_y 258
+    subvarvar hud_y hud_temp4
+    
+    setvar hud_tilenum FIST
+    
+    state G_DrawTile
+    
+    // cleanup
+    subvar hud_x 250
+    
+    // left fist
+    guniqhudid 102
+    
+    subvarvar hud_x hud_temp2
+    addvar hud_x 40
+    
+    setvarvar hud_y hud_temp3
+    addvar hud_y 200
+    addvarvar hud_y hud_temp4
+    
+    addvar hud_orientation 4
+    
+    state G_DrawTile
+    
+    // cleanup
+    setvar hud_orientation 0
+    setvar hud_angle 0
+    guniqhudid 0
+ends

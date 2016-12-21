@@ -1,0 +1,163 @@
+state draw_chaingun // CHAINGUN_WEAPON:
+    // hud_temp4 = FIREDELAY
+    state reset_hud_weapon_coordinates
+    
+    ifvarg weaponcount 0
+    {
+        setvarvar hud_temp weaponcount
+        shiftvarl hud_temp 7
+        sin hud_temp hud_temp
+        shiftvarr hud_temp 12
+        addvarvar hud_y hud_temp
+        
+        state determine_animation
+        ifvarn hud_temp 1
+        {
+            displayrand hud_temp
+            andvar hud_temp 3
+            mulvar hud_temp -1
+            addvar hud_temp 1
+            addvarvar hud_x hud_temp
+        }
+    }
+    
+    // base
+    addvar hud_x 168
+    addvar hud_y 260
+    
+    setvar hud_tilenum CHAINGUN
+
+    state G_DrawWeaponTile
+    
+    subvar hud_x 168
+    subvar hud_y 260
+    
+    switch weaponcount
+        case 0
+            addvar hud_x 178
+            addvar hud_y 233
+            addvar hud_tilenum 1 // relative
+            
+            state G_DrawWeaponTile
+            break
+        default
+            state determine_animation
+
+            ifvarvarg weaponcount hud_temp4
+                ifvarvarl weaponcount hud_totaltime
+                {
+                    // muzzleflash 1
+                    ifvarn hud_temp 1
+                    {
+                        displayrand hud_temp3
+                        andvar hud_temp3 7
+                    }
+                    else
+                        setvar hud_temp3 0
+
+                    addvar hud_x 136 // -4+140
+                    addvarvar hud_x hud_temp3
+
+                    setvarvar hud_temp2 weaponcount
+                    shiftvarr hud_temp2 1
+
+                    addvarvar hud_y hud_temp3
+                    subvarvar hud_y hud_temp2
+                    addvar hud_y 208
+
+                    setvarvar hud_tilenum weaponcount
+                    subvar hud_tilenum 4
+                    divvar hud_tilenum 5
+                    addvar hud_tilenum CHAINGUN
+                    addvar hud_tilenum 5
+
+                    state G_DrawWeaponTile
+
+                    // cleanup
+                    subvarvar hud_x hud_temp3
+                    subvarvar hud_y hud_temp3
+
+                    // muzzleflash 3
+                    ifvarn hud_temp 1
+                    {
+                        displayrand hud_temp3
+                        andvar hud_temp3 7
+                    }
+
+                    addvar hud_x 44 // relative
+                    addvarvar hud_x hud_temp3
+                    addvarvar hud_y hud_temp3
+
+                    state G_DrawWeaponTile
+
+                    // cleanup
+                    subvar hud_x 180 // -4+140 + 44
+                    subvar hud_y 208
+                    subvarvar hud_x hud_temp3
+                    subvarvar hud_y hud_temp3
+                    addvarvar hud_y hud_temp2
+                }
+
+            subvar hud_totaltime 4
+            ifvarvarl weaponcount hud_totaltime
+            {
+                // muzzleflash 2
+                ifvarn hud_temp 1
+                {
+                    displayrand hud_temp3
+                    andvar hud_temp3 7
+                }
+                else
+                    setvar hud_temp3 0
+
+                setvarvar hud_temp2 weaponcount
+                shiftvarr hud_temp2 1
+
+                addvarvar hud_x hud_temp3
+                addvar hud_x 158 // -4+162
+
+                addvarvar hud_y hud_temp3
+                subvarvar hud_y hud_temp2
+                addvar hud_y 208
+
+                setvarvar hud_tilenum weaponcount
+                subvar hud_tilenum 2
+                divvar hud_tilenum 5
+                addvar hud_tilenum CHAINGUN
+                addvar hud_tilenum 5
+
+                state G_DrawWeaponTile
+
+                // cleanup
+                subvarvar hud_x hud_temp3
+                subvar hud_x 158
+                subvarvar hud_y hud_temp3
+                addvarvar hud_y hud_temp2
+                subvar hud_y 208
+
+                // barrels (hot)
+                addvar hud_x 178
+
+                addvar hud_y 233
+
+                setvar hud_tilenum CHAINGUN
+                addvar hud_tilenum 1
+                addvarvar hud_tilenum hud_temp2
+
+                state G_DrawWeaponTile
+            }
+            else
+            {
+                // barrels
+                addvar hud_x 178
+
+                addvar hud_y 233
+
+                setvar hud_tilenum CHAINGUN
+                addvar hud_tilenum 1
+
+                state G_DrawWeaponTile
+            }
+            break
+    endswitch
+ends

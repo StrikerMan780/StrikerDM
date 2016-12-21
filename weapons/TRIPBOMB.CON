@@ -1,0 +1,68 @@
+state draw_tripbomb // TRIPBOMB_WEAPON:
+    state reset_hud_weapon_coordinates
+    
+    addvar hud_x 8
+    addvar hud_y 10
+
+    ifvarg weaponcount 6
+    {
+        setvarvar hud_temp weaponcount
+        shiftvarl hud_temp 3
+        addvarvar hud_y hud_temp
+    }
+    else ifvarl weaponcount 4
+    {
+        setvarvar hud_temp currentweapon
+        shiftvarl currentweapon 2
+        guniqhudid hud_temp
+        
+        addvar hud_x 142
+        addvar hud_y 234
+        
+        setvar hud_tilenum HANDHOLDINGLASER
+        addvar hud_tilenum 3
+        
+        state G_DrawWeaponTile
+        
+        // undo
+        subvar hud_x 142
+        subvar hud_y 234
+    }
+    
+    // common to both hands
+    
+    addvar hud_y 249
+    
+    setvarvar hud_tilenum weaponcount
+    shiftvarr hud_tilenum 2
+    addvar hud_tilenum HANDHOLDINGLASER
+    
+    // left hand
+    guniqhudid currentweapon
+    
+    addvar hud_x 130
+    
+    state G_DrawWeaponTile
+    
+    // right hand
+    setvarvar hud_temp3 currentweapon
+    shiftvarl hud_temp3 1
+    guniqhudid hud_temp3
+    
+    /*
+    // absolute method
+    subvar hud_x 130 // undo
+    addvar hud_x 152
+    */
+    // relative method
+    addvar hud_x 22
+    
+    ifvarand hud_orientation 4 nullop else
+        addvar hud_orientation 4
+    
+    state G_DrawWeaponTile
+    
+    ifvarand hud_orientation 4
+        subvar hud_orientation 4
+    guniqhudid 0
+ends

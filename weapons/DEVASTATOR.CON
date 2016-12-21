@@ -1,0 +1,210 @@
+state draw_devastator // DEVISTATOR_WEAPON:
+    state reset_hud_weapon_coordinates
+    
+    // for guniqhudid
+    setvarvar hud_temp4 currentweapon
+    shiftvarl hud_temp4 1
+    
+    setvar hud_tilenum DEVISTATOR
+    
+    setvar hud_temp -1 // flag
+	
+	// [SM] Make devastator match player color
+	getactor[playerid].pal hud_pal
+	ifvarn hud_pal 1
+	{
+		getplayer[THISACTOR].cursectnum hud_temp2
+		ifvarg hud_temp2 -1
+			getsector[hud_temp2].floorpal hud_pal
+		ifvare hud_pal 0
+			getplayer[THISACTOR].palookup hud_pal
+	}
+	
+    ifvarg weaponcount 0
+    {
+        addvar hud_totaltime 1
+        ifvarvarl weaponcount hud_totaltime
+        {
+            setvar hud_temp 0
+            
+            switch weaponcount
+                default
+                    addlogvar weaponcount // debug
+                    break
+                    /*
+                case 0
+                case 6
+                    setvar hud_temp 0
+                    break
+                    */
+                case 1
+                case 5
+                    setvar hud_temp 4
+                    break
+                case 2
+                case 4
+                    setvar hud_temp 12
+                    break
+                case 3
+                    setvar hud_temp 24
+                    break
+            endswitch
+            
+            setvarvar hud_temp2 weaponcount
+            shiftvarr hud_temp2 2
+            // sign function:
+            ifvare hud_temp2 0
+                setvar hud_temp3 0
+            else ifvarg hud_temp2 0
+                setvar hud_temp3 1
+            else ifvarl hud_temp2 0
+                setvar hud_temp3 -1
+            
+			getplayer[THISACTOR].hbomb_hold_delay OLDMP_TEMP
+            ifvarn OLDMP_TEMP 0
+            {
+                guniqhudid currentweapon
+                
+                setvarvar hud_temp2 hud_temp
+                shiftvarr hud_temp2 1
+                addvarvar hud_x hud_temp2
+                addvar hud_x 268
+                
+                addvarvar hud_y hud_temp
+                addvar hud_y 238
+                
+                addvarvar hud_tilenum hud_temp3
+                
+                setvar hud_shade -32
+                
+                state G_DrawWeaponTile
+                
+                // cleanup
+                /*
+                subvar hud_x 268
+                subvarvar hud_x hud_temp2
+                subvar hud_y 238
+                subvarvar hud_y hud_temp
+                */
+                state reset_hud_weapon_coordinates
+                subvarvar hud_tilenum hud_temp3
+                setvarvar hud_shade gs
+                
+                guniqhudid hud_temp4
+                
+                addvar hud_x 30
+                
+                addvar hud_y 240
+                
+                ifvarand hud_orientation 4 nullop else
+                    addvar hud_orientation 4
+                
+                state G_DrawWeaponTile
+                
+                ifvarand hud_orientation 4
+                    subvar hud_orientation 4
+                
+                guniqhudid 0
+            }
+            else
+            {
+                guniqhudid hud_temp4
+                
+                addvar hud_x 30
+                setvarvar hud_temp2 hud_temp
+                shiftvarr hud_temp2 1
+                subvarvar hud_x hud_temp2
+                
+                addvar hud_y 240
+                addvarvar hud_y hud_temp
+                
+                addvarvar hud_tilenum hud_temp3
+                
+                setvar hud_shade -32
+                
+                ifvarand hud_orientation 4 nullop else
+                    addvar hud_orientation 4
+                
+                state G_DrawWeaponTile
+                
+                // cleanup
+                /*
+                subvar hud_x 30
+                addvarvar hud_x hud_temp2
+                subvar hud_y 240
+                subvarvar hud_y hud_temp
+                */
+                state reset_hud_weapon_coordinates
+                subvarvar hud_tilenum hud_temp3
+                setvarvar hud_shade gs
+                ifvarand hud_orientation 4
+                    subvar hud_orientation 4
+                
+                guniqhudid currentweapon
+                
+                addvar hud_x 268
+                
+                addvar hud_y 238
+                
+                state G_DrawWeaponTile
+                
+                guniqhudid 0
+            }
+        break
+        }
+    }
+    
+    ifvare hud_temp -1
+    {
+        guniqhudid currentweapon
+        
+        addvar hud_x 268
+        
+        addvar hud_y 238
+        
+        state G_DrawWeaponTile
+        
+        subvar hud_x 268
+        subvar hud_y 238
+        
+        guniqhudid hud_temp4
+        
+        addvar hud_x 30
+        
+        addvar hud_y 240
+                
+        ifvarand hud_orientation 4 nullop else
+            addvar hud_orientation 4
+            
+        state G_DrawWeaponTile
+        
+        ifvarand hud_orientation 4
+            subvar hud_orientation 4
+        
+        guniqhudid 0
+    }
+ends
+
+
+spritenoshade DEVASTATORMISSILE
+gamevar WEAPON7_SHOOTS DEVASTATORMISSILE 1
+gamevar WEAPON7_INITIALSOUND 0 1
+defineprojectile DEVASTATORMISSILE PROJ_WORKSLIKE 32770
+defineprojectile DEVASTATORMISSILE PROJ_CSTAT 128
+defineprojectile DEVASTATORMISSILE PROJ_VEL 680
+defineprojectile DEVASTATORMISSILE PROJ_XREPEAT 8
+defineprojectile DEVASTATORMISSILE PROJ_YREPEAT 8
+defineprojectile DEVASTATORMISSILE PROJ_EXTRA DEVASTATOR_WEAPON_STRENGTH
+defineprojectile DEVASTATORMISSILE PROJ_HITRADIUS DEVASTATORBLASTRADIUS
+defineprojectile DEVASTATORMISSILE PROJ_SHADE -127
+defineprojectile DEVASTATORMISSILE PROJ_OFFSET 14354 // Centered, offset handled in EVENT_EGS
+defineprojectile DEVASTATORMISSILE PROJ_ISOUND RPG_EXPLODE
+defineprojectile DEVASTATORMISSILE PROJ_SPAWNS EXPLOSION2
+defineprojectile DEVASTATORMISSILE PROJ_SXREPEAT 8
+defineprojectile DEVASTATORMISSILE PROJ_SYREPEAT 8
+defineprojectile DEVASTATORMISSILE PROJ_TRAIL SMALLSMOKE
+defineprojectile DEVASTATORMISSILE PROJ_TXREPEAT 8
+defineprojectile DEVASTATORMISSILE PROJ_TYREPEAT 8
+
+action MISSILEANGLES 0 1 7 1 1 
+actor DEVASTATORMISSILE WEAK MISSILEANGLES enda

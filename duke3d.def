@@ -1,0 +1,361 @@
+//include duke3d_hrp.def
+include defs.con
+include sdm_defs.con
+
+define ANIM_NONE 0
+define ANIM_OSCILLATING 1
+define ANIM_FORWARD 2
+define ANIM_BACKWARD 3
+
+tint { pal 1 red 100 green 120 blue 148 flags 1 }
+tint { pal 2 red 255 green  48 blue   0 flags 0 }
+tint { pal 4 red   0 green   0 blue   0 flags 0 }
+tint { pal 6 red 224 green 255 blue 112 flags 3 }
+tint { pal 7 red 172 green 157 blue 140 flags 0 }
+tint { pal 8 red 199 green 226 blue 113 flags 1 }
+
+include dt_tiles014.def
+include wt_tiles021.def
+include wt_tiles022.def
+
+// XXX Pack
+tilefromtexture 577 { file "tiles/577.png" }
+tilefromtexture 603 { file "tiles/603.png" yoff -85 }
+tilefromtexture 766 { file "tiles/766.png" }
+tilefromtexture 4498 { file "tiles/4498.png" }
+tilefromtexture 4510 { file "tiles/4510.png" }
+tilefromtexture 4511 { file "tiles/4511.png" xoff 11 }
+tilefromtexture 4514 { file "tiles/4514.png" }
+tilefromtexture 4515 { file "tiles/4515.png" xoff 9 }
+tilefromtexture 4864 { file "tiles/4864.png" }
+tilefromtexture 4865 { file "tiles/4865.png" }
+tilefromtexture 4866 { file "tiles/4866.png" }
+tilefromtexture 4867 { file "tiles/4867.png" }
+tilefromtexture 4868 { file "tiles/4868.png" xoff 1 }
+tilefromtexture 4869 { file "tiles/4869.png" xoff -13 }
+tilefromtexture 4870 { file "tiles/4870.png" xoff -1 }
+tilefromtexture 4874 { file "tiles/4874.png" }
+tilefromtexture 4875 { file "tiles/4875.png" xoff 5 }
+tilefromtexture 4876 { file "tiles/4876.png" xoff 4 }
+tilefromtexture 4955 { file "tiles/4955.png" }
+
+// New XXX
+tilefromtexture 3699 { file "tiles/3699.png" }
+tilefromtexture 3700 { file "tiles/3700.png" }
+tilefromtexture 4959 { file "tiles/4959.png" }
+tilefromtexture 4960 { file "tiles/4960.png" }
+tilefromtexture 4961 { file "tiles/4961.png" }
+tilefromtexture 4962 { file "tiles/4962.png" }
+tilefromtexture 4963 { file "tiles/4963.png" }
+tilefromtexture 4964 { file "tiles/4964.png" }
+tilefromtexture 4965 { file "tiles/4965.png" }
+texture 3699 { pal 0 { file "tiles/3699.png" } }
+texture 4959 { pal 0 { file "highres/xxx/4959_geecku.jpg" } }
+texture 4960 { pal 0 { file "highres/xxx/4960_sharonm.tga" } }
+texture 4961 { pal 0 { file "highres/xxx/4961_strikerxhelen.tga" } }
+texture 4962 { pal 0 { file "highres/xxx/4962_striker.tga" } }
+texture 4963 { pal 0 { file "highres/xxx/4963_sharonm2.jpg" } }
+texture 4964 { pal 0 { file "highres/xxx/4964_mikhaila.jpg" } }
+texture 4965 { pal 0 { file "highres/xxx/4965_champagne.jpg" } }
+
+// XXX Animations
+animtilerange 6000 6028 3 ANIM_FORWARD
+tilefromtexture 6000 { file "tiles/6000.png" }
+tilefromtexture 6001 { file "tiles/6001.png" }
+tilefromtexture 6002 { file "tiles/6002.png" }
+tilefromtexture 6003 { file "tiles/6003.png" }
+tilefromtexture 6004 { file "tiles/6004.png" }
+tilefromtexture 6005 { file "tiles/6005.png" }
+tilefromtexture 6006 { file "tiles/6006.png" }
+tilefromtexture 6007 { file "tiles/6007.png" }
+tilefromtexture 6008 { file "tiles/6008.png" }
+tilefromtexture 6009 { file "tiles/6009.png" }
+tilefromtexture 6010 { file "tiles/6010.png" }
+tilefromtexture 6011 { file "tiles/6011.png" }
+tilefromtexture 6012 { file "tiles/6012.png" }
+tilefromtexture 6013 { file "tiles/6013.png" }
+tilefromtexture 6014 { file "tiles/6014.png" }
+tilefromtexture 6015 { file "tiles/6015.png" }
+tilefromtexture 6016 { file "tiles/6016.png" }
+tilefromtexture 6017 { file "tiles/6017.png" }
+tilefromtexture 6018 { file "tiles/6018.png" }
+tilefromtexture 6019 { file "tiles/6019.png" }
+tilefromtexture 6020 { file "tiles/6020.png" }
+tilefromtexture 6021 { file "tiles/6021.png" }
+tilefromtexture 6022 { file "tiles/6022.png" }
+tilefromtexture 6023 { file "tiles/6023.png" }
+tilefromtexture 6024 { file "tiles/6024.png" }
+tilefromtexture 6025 { file "tiles/6025.png" }
+tilefromtexture 6026 { file "tiles/6026.png" }
+tilefromtexture 6027 { file "tiles/6027.png" }
+tilefromtexture 6028 { file "tiles/6028.png" }
+texture 6000 { pal 0 { file "tiles/6000.png" } nocompress nodownsize }
+texture 6001 { pal 0 { file "tiles/6001.png" } nocompress nodownsize }
+texture 6002 { pal 0 { file "tiles/6002.png" } nocompress nodownsize }
+texture 6003 { pal 0 { file "tiles/6003.png" } nocompress nodownsize }
+texture 6004 { pal 0 { file "tiles/6004.png" } nocompress nodownsize }
+texture 6005 { pal 0 { file "tiles/6005.png" } nocompress nodownsize }
+texture 6006 { pal 0 { file "tiles/6006.png" } nocompress nodownsize }
+texture 6007 { pal 0 { file "tiles/6007.png" } nocompress nodownsize }
+texture 6008 { pal 0 { file "tiles/6008.png" } nocompress nodownsize }
+texture 6009 { pal 0 { file "tiles/6009.png" } nocompress nodownsize }
+texture 6010 { pal 0 { file "tiles/6010.png" } nocompress nodownsize }
+texture 6011 { pal 0 { file "tiles/6011.png" } nocompress nodownsize }
+texture 6012 { pal 0 { file "tiles/6012.png" } nocompress nodownsize }
+texture 6013 { pal 0 { file "tiles/6013.png" } nocompress nodownsize }
+texture 6014 { pal 0 { file "tiles/6014.png" } nocompress nodownsize }
+texture 6015 { pal 0 { file "tiles/6015.png" } nocompress nodownsize }
+texture 6016 { pal 0 { file "tiles/6016.png" } nocompress nodownsize }
+texture 6017 { pal 0 { file "tiles/6017.png" } nocompress nodownsize }
+texture 6018 { pal 0 { file "tiles/6018.png" } nocompress nodownsize }
+texture 6019 { pal 0 { file "tiles/6019.png" } nocompress nodownsize }
+texture 6020 { pal 0 { file "tiles/6020.png" } nocompress nodownsize }
+texture 6021 { pal 0 { file "tiles/6021.png" } nocompress nodownsize }
+texture 6022 { pal 0 { file "tiles/6022.png" } nocompress nodownsize }
+texture 6023 { pal 0 { file "tiles/6023.png" } nocompress nodownsize }
+texture 6024 { pal 0 { file "tiles/6024.png" } nocompress nodownsize }
+texture 6025 { pal 0 { file "tiles/6025.png" } nocompress nodownsize }
+texture 6026 { pal 0 { file "tiles/6026.png" } nocompress nodownsize }
+texture 6027 { pal 0 { file "tiles/6027.png" } nocompress nodownsize }
+texture 6028 { pal 0 { file "tiles/6028.png" } nocompress nodownsize }
+
+animtilerange 6029 6036 3 ANIM_FORWARD
+tilefromtexture 6029 { file "tiles/6029.png" }
+tilefromtexture 6030 { file "tiles/6030.png" }
+tilefromtexture 6031 { file "tiles/6031.png" }
+tilefromtexture 6032 { file "tiles/6032.png" }
+tilefromtexture 6033 { file "tiles/6033.png" }
+tilefromtexture 6034 { file "tiles/6034.png" }
+tilefromtexture 6035 { file "tiles/6035.png" }
+tilefromtexture 6036 { file "tiles/6036.png" }
+texture 6029 { pal 0 { file "tiles/6029.png" } nocompress nodownsize }
+texture 6030 { pal 0 { file "tiles/6030.png" } nocompress nodownsize }
+texture 6031 { pal 0 { file "tiles/6031.png" } nocompress nodownsize }
+texture 6032 { pal 0 { file "tiles/6032.png" } nocompress nodownsize }
+texture 6033 { pal 0 { file "tiles/6033.png" } nocompress nodownsize }
+texture 6034 { pal 0 { file "tiles/6034.png" } nocompress nodownsize }
+texture 6035 { pal 0 { file "tiles/6035.png" } nocompress nodownsize }
+texture 6036 { pal 0 { file "tiles/6036.png" } nocompress nodownsize }
+
+animtilerange 6037 6050 4 ANIM_FORWARD
+tilefromtexture 6037 { file "tiles/6037.png" }
+tilefromtexture 6038 { file "tiles/6038.png" }
+tilefromtexture 6039 { file "tiles/6039.png" }
+tilefromtexture 6040 { file "tiles/6040.png" }
+tilefromtexture 6041 { file "tiles/6041.png" }
+tilefromtexture 6042 { file "tiles/6042.png" }
+tilefromtexture 6043 { file "tiles/6043.png" }
+tilefromtexture 6044 { file "tiles/6044.png" }
+tilefromtexture 6045 { file "tiles/6045.png" }
+tilefromtexture 6046 { file "tiles/6046.png" }
+tilefromtexture 6047 { file "tiles/6047.png" }
+tilefromtexture 6048 { file "tiles/6048.png" }
+tilefromtexture 6049 { file "tiles/6049.png" }
+tilefromtexture 6050 { file "tiles/6050.png" }
+
+animtilerange 6051 6060 4 ANIM_FORWARD
+tilefromtexture 6051 { file "tiles/6051.png" }
+tilefromtexture 6052 { file "tiles/6052.png" }
+tilefromtexture 6053 { file "tiles/6053.png" }
+tilefromtexture 6054 { file "tiles/6054.png" }
+tilefromtexture 6055 { file "tiles/6055.png" }
+tilefromtexture 6056 { file "tiles/6056.png" }
+tilefromtexture 6057 { file "tiles/6057.png" }
+tilefromtexture 6058 { file "tiles/6058.png" }
+tilefromtexture 6059 { file "tiles/6059.png" }
+tilefromtexture 6060 { file "tiles/6060.png" }
+texture 6051 { pal 0 { file "tiles/6051.png" } nocompress nodownsize }
+texture 6052 { pal 0 { file "tiles/6052.png" } nocompress nodownsize }
+texture 6053 { pal 0 { file "tiles/6053.png" } nocompress nodownsize }
+texture 6054 { pal 0 { file "tiles/6054.png" } nocompress nodownsize }
+texture 6055 { pal 0 { file "tiles/6055.png" } nocompress nodownsize }
+texture 6056 { pal 0 { file "tiles/6056.png" } nocompress nodownsize }
+texture 6057 { pal 0 { file "tiles/6057.png" } nocompress nodownsize }
+texture 6058 { pal 0 { file "tiles/6058.png" } nocompress nodownsize }
+texture 6059 { pal 0 { file "tiles/6059.png" } nocompress nodownsize }
+texture 6060 { pal 0 { file "tiles/6060.png" } nocompress nodownsize }
+
+// Spinball cart
+tilefromtexture 3693 { file "tiles/3693.png" }
+texture 3693 { pal 0 { file "tiles/3693.png" } nocompress nodownsize }
+
+// Bonuses
+animtilerange 4991 4994 4 ANIM_OSCILLATING
+tilefromtexture 4991 { file "tiles/4991.png" }
+tilefromtexture 4992 { file "tiles/4992.png" }
+tilefromtexture 4993 { file "tiles/4993.png" }
+tilefromtexture 4994 { file "tiles/4994.png" }
+texture 4991 { pal 0 { file "highres/items/4991_healthvial.png" } nocompress nodownsize }
+texture 4992 { pal 0 { file "highres/items/4992_healthvial.png" } nocompress nodownsize }
+texture 4993 { pal 0 { file "highres/items/4993_healthvial.png" } nocompress nodownsize }
+texture 4994 { pal 0 { file "highres/items/4994_healthvial.png" } nocompress nodownsize }
+
+animtilerange 4995 4998 4 ANIM_OSCILLATING
+tilefromtexture 4995 { file "tiles/4995.png" }
+tilefromtexture 4996 { file "tiles/4996.png" }
+tilefromtexture 4997 { file "tiles/4997.png" }
+tilefromtexture 4998 { file "tiles/4998.png" }
+texture 4995 { pal 0 { file "highres/items/4995_armorhelmet.png" } nocompress nodownsize }
+texture 4996 { pal 0 { file "highres/items/4996_armorhelmet.png" } nocompress nodownsize }
+texture 4997 { pal 0 { file "highres/items/4997_armorhelmet.png" } nocompress nodownsize }
+texture 4998 { pal 0 { file "highres/items/4998_armorhelmet.png" } nocompress nodownsize }
+
+// Devastator Missile
+tilefromtexture 4999 { file "tiles/4999.png" }
+tilefromtexture 5000 { file "tiles/5000.png" }
+tilefromtexture 5001 { file "tiles/5001.png" }
+tilefromtexture 5002 { file "tiles/5002.png" }
+tilefromtexture 5003 { file "tiles/5003.png" }
+tilefromtexture 5004 { file "tiles/5004.png" }
+tilefromtexture 5005 { file "tiles/5005.png" }
+
+// Devastator
+tilefromtexture 29 { file "tiles/29.png" }
+tilefromtexture 2510 { file "tiles/2510.png" }
+tilefromtexture 2511 { file "tiles/2511.png" }
+
+// Widescreen fixes
+tilefromtexture 2325 { file "tiles/2325.png" xoffset 24 }
+tilefromtexture 2326 { file "tiles/2326.png" xoffset 16 }
+tilefromtexture 2528 { file "tiles/2528.png" xoffset -28 yoffset 2 }
+tilefromtexture 2529 { file "tiles/2529.png" xoffset -70 yoffset 8 }
+tilefromtexture 2544 { file "tiles/2544.png" xoffset -115 yoffset -67 }
+tilefromtexture 2548 { file "tiles/2548.png" xoff -68 yoff 15 }
+tilefromtexture 2550 { file "tiles/2550.png" xoff -7 yoff 18 }
+tilefromtexture 2554 { file "tiles/2554.png" xoffset -4 }
+tilefromtexture 2555 { file "tiles/2555.png" xoffset -4 }
+tilefromtexture 2556 { file "tiles/2556.png" xoffset -1 yoffset -2 }
+tilefromtexture 2557 { file "tiles/2557.png" xoffset -1 yoffset -2 }
+tilefromtexture 2563 { file "tiles/2563.png" xoffset 90 }
+
+// Plasma Rifle
+tilefromtexture 19 { file "tiles/19.png" }
+tilefromtexture 2599 { file "tiles/2599.png" xoffset 10 yoffset 15 }
+tilefromtexture 2600 { file "tiles/2600.png" xoffset 10 yoffset 25 }
+tilefromtexture 2601 { file "tiles/2601.png" xoffset 0 yoffset 26 }
+tilefromtexture 2602 { file "tiles/2602.png" xoffset 10 yoffset 17 }
+tilefromtexture 2603 { file "tiles/2603.png" xoffset 10 yoffset 15 }
+animtilerange 1385 1386 2 ANIM_FORWARD
+animtilerange 1387 1388 2 ANIM_FORWARD
+
+// Plasma Ammo
+tilefromtexture 34 { file "tiles/34.png" }
+tilefromtexture 35 { file "tiles/35.png" }
+tilefromtexture 36 { file "tiles/36.png" }
+animtilerange 34 36 2 ANIM_FORWARD
+
+// LameDuke Explosion
+tilefromtexture 2080 { file "tiles/2080.png" }
+tilefromtexture 2081 { file "tiles/2081.png" }
+tilefromtexture 2082 { file "tiles/2082.png" }
+tilefromtexture 2083 { file "tiles/2083.png" }
+tilefromtexture 2084 { file "tiles/2084.png" }
+tilefromtexture 2085 { file "tiles/2085.png" }
+tilefromtexture 2086 { file "tiles/2086.png" }
+tilefromtexture 2087 { file "tiles/2087.png" }
+tilefromtexture 2088 { file "tiles/2088.png" }
+tilefromtexture 2089 { file "tiles/2089.png" }
+
+// Screens
+tilefromtexture 3281 { file "tiles/3281.png" }
+tilefromtexture 3282 { file "tiles/3282.png" }
+//texture 3281 { pal 0 { file "highres/3281_loadscreen.tga" } }
+
+// Name bar
+tilefromtexture 2459 { file "tiles/2459.png" }
+
+// Flamethrower pickup
+tilefromtexture 5134 { file "tiles/5134.png" xoff 3 yoff -5 }
+
+// Flamethrower ammo
+animtilerange 5135 5137 4 ANIM_FORWARD
+tilefromtexture 5135 { file "tiles/5135.png" }
+tilefromtexture 5136 { file "tiles/5136.png" }
+tilefromtexture 5137 { file "tiles/5137.png" }
+
+// Flamethrower HUD
+tilefromtexture 5138 { file "tiles/5138.png" xoff -68 yoff 15 }
+tilefromtexture 5139 { file "tiles/5139.png" xoff -7 yoff 18 }
+tilefromtexture 5140 { file "tiles/5140.png" xoff 29 yoff 27 }
+tilefromtexture 5141 { file "tiles/5141.png" xoff 29 yoff 27 }
+tilefromtexture 5142 { file "tiles/5142.png" xoff 29 yoff 27 }
+
+// Smoke
+tilefromtexture 5143 { file "tiles/5143.png" }
+tilefromtexture 5144 { file "tiles/5144.png" }
+tilefromtexture 5145 { file "tiles/5145.png" }
+tilefromtexture 5146 { file "tiles/5146.png" }
+tilefromtexture 5147 { file "tiles/5147.png" }
+tilefromtexture 5148 { file "tiles/5148.png" }
+tilefromtexture 5149 { file "tiles/5149.png" }
+tilefromtexture 5150 { file "tiles/5150.png" }
+tilefromtexture 5151 { file "tiles/5151.png" }
+
+// Flame
+tilefromtexture 5152 { file "tiles/5152.png" }
+tilefromtexture 5153 { file "tiles/5153.png" }
+tilefromtexture 5154 { file "tiles/5154.png" }
+tilefromtexture 5155 { file "tiles/5155.png" }
+tilefromtexture 5156 { file "tiles/5156.png" }
+tilefromtexture 5157 { file "tiles/5157.png" }
+tilefromtexture 5158 { file "tiles/5158.png" }
+tilefromtexture 5159 { file "tiles/5159.png" }
+tilefromtexture 5160 { file "tiles/5160.png" }
+tilefromtexture 5161 { file "tiles/5161.png" }
+tilefromtexture 5162 { file "tiles/5162.png" }
+
+// Fireball
+animtilerange 5163 5166 4 ANIM_FORWARD
+tilefromtexture 5163 { file "tiles/5163.png" }
+tilefromtexture 5164 { file "tiles/5164.png" }
+tilefromtexture 5165 { file "tiles/5165.png" }
+tilefromtexture 5166 { file "tiles/5166.png" }
+
+// Burnt corpse
+tilefromtexture 5173 { file "tiles/5173.png" }
+
+// Roasting nuts
+animtilerange 5367 5369 5 ANIM_FORWARD
+tilefromtexture 5367 { file "tiles/5367.png" }
+tilefromtexture 5368 { file "tiles/5368.png" }
+tilefromtexture 5369 { file "tiles/5369.png" }
+
+skybox {
+tile 89 pal 0
+back "skybox/la/la_fr.tga" nocompress
+right "skybox/la/la_rt.tga"  nocompress
+front "skybox/la/la_bk.tga" nocompress
+left "skybox/la/la_lf.tga" nocompress
+top "skybox/la/la_up.tga" nocompress
+down "skybox/la/la_dn.tga" nocompress
+}
+
+skybox {
+tile 94 pal 0
+back "skybox/clear/clearsky0_sides.png" nocompress
+right "skybox/clear/clearsky0_sides.png"  nocompress
+front "skybox/clear/clearsky0_sides.png" nocompress
+left "skybox/clear/clearsky0_sides.png" nocompress
+top "skybox/clear/clearsky0_top.png" nocompress
+down "skybox/clear/clearsky0_bottom.png" nocompress
+}
+
+skybox {
+tile 94 pal 1
+back "skybox/clear/clearsky1_sides.png" nocompress
+right "skybox/clear/clearsky1_sides.png"  nocompress
+front "skybox/clear/clearsky1_sides.png" nocompress
+left "skybox/clear/clearsky1_sides.png" nocompress
+top "skybox/clear/clearsky1_top.png" nocompress
+down "skybox/clear/clearsky0_bottom.png" nocompress
+}
+
+skybox {
+tile 94 pal 2
+back "skybox/clear/clearsky2_sides.png" nocompress
+right "skybox/clear/clearsky2_sides.png"  nocompress
+front "skybox/clear/clearsky2_sides.png" nocompress
+left "skybox/clear/clearsky2_sides.png" nocompress
+top "skybox/clear/clearsky2_top.png" nocompress
+down "skybox/clear/clearsky2_bottom.png" nocompress
+}

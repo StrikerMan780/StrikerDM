@@ -1,0 +1,560 @@
+onevent EVENT_KILLIT
+	ifactor FIREBALL
+	{
+		espawn ONFIRE
+		getactor[THISACTOR].owner OWNER
+		setactor[RETURN].owner OWNER
+		setvar RETURN 0
+		break
+	}
+	
+	// Use a quick-access var here later.
+	getactor[THISACTOR].picnum TEMP
+	switch TEMP
+		case BOTTLE1:
+		case BOTTLE2:
+		case BOTTLE3:
+		case BOTTLE4:
+		case BOTTLE5:
+		case BOTTLE6:
+		case BOTTLE7:
+		case BOTTLE8:
+		case BOTTLE10:
+		case BOTTLE11:
+		case BOTTLE12:
+		case BOTTLE13:
+		case BOTTLE14:
+		case BOTTLE15:
+		case BOTTLE16:
+		case BOTTLE17:
+		case BOTTLE18:
+		case BOTTLE19:
+		case FOODOBJECT1:
+		case FOODOBJECT2:
+		case FOODOBJECT3:
+		case FOODOBJECT4:
+		case FOODOBJECT5:
+		case FOODOBJECT6:
+		case FOODOBJECT7:
+		case FOODOBJECT8:
+		case FOODOBJECT9:
+		case FOODOBJECT10:
+		case FOODOBJECT11:
+		case FOODOBJECT12:
+		case FOODOBJECT13:
+		case FOODOBJECT14:
+		case FOODOBJECT15:
+		case FOODOBJECT16:
+		case FOODOBJECT17:
+		case FOODOBJECT18:
+		case FOODOBJECT19:
+		case FOODOBJECT20:
+		case JOLLYMEAL:
+		case COFFEEMUG:
+		case COFFEEMACHINE:
+		case RUBBERCAN:
+		case CANWITHSOMETHING:
+		case CANWITHSOMETHING2:
+		case CANWITHSOMETHING3:
+		case CANWITHSOMETHING4:
+		case EXPLODINGBARREL:
+		case FIREBARREL:
+		case FIREVASE:
+		case DUKEBURGER:
+		case GUNPOWDERBARREL:
+		case ROBOTDOG:
+		case ROBOTDOG2:
+		case FEATHEREDCHICKEN:
+		case SKINNEDCHICKEN:
+		case DESKLAMP:
+		case MAILBAG:
+		case CLOCK:
+		case VACUUM:
+		case DOMELITE:
+		case CAMERALIGHT:
+		case MOVIECAMERA:
+		case TRIPODCAMERA:
+		case CHAIR3:
+		case DURRPLANT:
+		case BONG:
+			state prepare_respawn_hardcoded
+			break
+	endswitch
+	
+	ifactor SHELL
+	{
+		randvar DUKELINE 5
+		switch DUKELINE
+			case 0: sound CASING1 break
+			case 1: sound CASING2 break
+			case 2: sound CASING3 break
+			case 3: sound CASING4 break
+			case 4: sound CASING5 break
+			case 5: sound CASING6 break
+		endswitch
+		break
+	}
+	
+	ifactor OOZFILTER
+	{
+		ifvare NORESPAWN 1
+		{
+			setvar RETURN 0
+		}
+		else
+		{
+			state prepare_respawn_hardcoded
+		}
+	}
+	else ifactor SEENINE
+	{
+		ifvare NORESPAWN 1
+		{
+			setvar RETURN 0
+		}
+		else
+		{
+			state prepare_respawn_hardcoded
+		}
+	}
+	else ifactor 1249 // SEENINEDEAD+1
+	{
+		ifvare NORESPAWN 1
+		{
+			setvar RETURN 0
+		}
+		else
+		{
+			state prepare_respawn_hardcoded
+		}
+	}
+endevent
+
+onevent EVENT_EGS
+	// TODO: Change this to quick-access vars once EDuke32 gets better MP.
+	ifactor FIREBALL
+	{
+		// Calculate horizontal spread
+		getactor[THISACTOR].ang TEMP
+		addvar TEMP 8
+		randvar TEMP2 16
+		subvarvar TEMP TEMP2
+		setactor[THISACTOR].ang TEMP
+		
+		// Calculate vertical spread
+		getactor[THISACTOR].zvel TEMP
+		addvar TEMP 128
+		randvar TEMP2 256
+		subvarvar TEMP TEMP2
+		setactor[THISACTOR].zvel TEMP
+	}
+	else ifactor DEVASTATORMISSILE
+	{
+		// Calculate horizontal spread
+		getactor[THISACTOR].ang TEMP
+		addvar TEMP 16
+		randvar TEMP2 32
+		subvarvar TEMP TEMP2
+		setactor[THISACTOR].ang TEMP
+		
+		// Calculate vertical spread
+		getactor[THISACTOR].zvel TEMP
+		addvar TEMP 256
+		randvar TEMP2 512
+		subvarvar TEMP TEMP2
+		setactor[THISACTOR].zvel TEMP
+		
+		// Get angle and barrel
+		getplayer[THISACTOR].hbomb_hold_delay TEMP3
+		getplayer[THISACTOR].ang ANGLE
+		
+		// Calculate X position
+		setvarvar TEMP ANGLE
+		andvar TEMP 2047
+		sin TEMP2 TEMP
+		divvar TEMP2 512
+		
+		// Set X position
+		getactor[THISACTOR].x TEMP
+		ifvare TEMP3 1 // Check barrel
+		{
+			subvarvar TEMP TEMP2
+		}
+		else
+		{
+			addvarvar TEMP TEMP2
+		}
+		setactor[THISACTOR].x TEMP
+		
+		// Calculate Y position
+		setvarvar TEMP ANGLE
+		addvar TEMP 1536
+		andvar TEMP 2047
+		sin TEMP2 TEMP
+		divvar TEMP2 512
+		
+		// Set Y position
+		getactor[THISACTOR].y TEMP
+		ifvare TEMP3 1 // Check barrel
+		{
+			subvarvar TEMP TEMP2
+		}
+		else
+		{
+			addvarvar TEMP TEMP2
+		}
+		setactor[THISACTOR].y TEMP
+		
+		ifvare COOP GM_ROIDMATCH
+		{
+			setprojectile[DEVASTATORMISSILE].velmult 2
+		}
+	}
+endevent
+
+onevent EVENT_GAME
+	ifactor TRIPBOMB
+	{
+		getactor[THISACTOR].cstat TEMP	
+		ifvare TEMP 16
+		{
+			cstator 256
+			setactor[THISACTOR].htflags 136
+		}
+	}
+	
+	getactor[THISACTOR].picnum TEMP	
+	switch TEMP
+		case JIBS1:
+		case JIBS2:
+		case JIBS3:
+		case JIBS4:
+		case JIBS5:
+		case DUKETORSO:
+		case DUKELEG:
+			getactor[THISACTOR].pal TEMP
+			espawn GIBBLOOD
+			setactor[RETURN].pal TEMP
+			break
+	endswitch
+endevent
+
+eventloadactor MASTERSWITCH
+	getactor[THISACTOR].hitag HITAG_MEMORY
+	getactor[THISACTOR].lotag LOTAG_MEMORY
+enda
+
+eventloadactor SECTOREFFECTOR
+	getactor[THISACTOR].hitag HITAG_MEMORY
+	getactor[THISACTOR].lotag LOTAG_MEMORY
+enda
+
+state set_norespawn
+		ifactor SECTOREFFECTOR
+		{
+			setvarvar TEMP3 HITAG_MEMORY
+		}
+		else
+		{
+			setvarvar TEMP3 LOTAG_MEMORY
+		}
+				
+		getactor[CURSPRITE].hitag TEMP2
+		ifvarvare TEMP3 TEMP2
+		{
+			setactorvar[CURSPRITE].NORESPAWN 1
+		}
+ends
+
+state explosive_search_iterator
+	getactor[CURSPRITE].picnum TEMP
+	ifvare TEMP SEENINE
+	{
+		state set_norespawn
+	}
+	else ifvare TEMP OOZFILTER
+	{
+		state set_norespawn
+	}
+		
+	nextspritestat CURSPRITE LASTSPRITE
+	setvarvar LASTSPRITE CURSPRITE
+ends
+
+state search_for_explosive
+		headspritestat CURSPRITE 0
+		setvarvar LASTSPRITE CURSPRITE
+		whilevarn CURSPRITE -1
+		{
+			state explosive_search_iterator
+		}
+		
+		headspritestat CURSPRITE 6
+		setvarvar LASTSPRITE CURSPRITE
+		whilevarn CURSPRITE -1
+		{
+			state explosive_search_iterator
+		}
+ends
+
+onevent EVENT_SPAWN
+	ifactor MASTERSWITCH
+	{
+		state search_for_explosive
+		break
+	}
+	else ifactor SECTOREFFECTOR
+	{
+		ifvarn LOTAG_MEMORY 13
+		{
+			break
+		}
+		state search_for_explosive
+		break
+	}
+	
+	// Memorize attributes for respawning
+	getactor[THISACTOR].picnum PICNUM_MEMORY
+	getactor[THISACTOR].hitag HITAG_MEMORY
+	getactor[THISACTOR].lotag LOTAG_MEMORY
+	getactor[THISACTOR].xrepeat XREPEAT_MEMORY
+	getactor[THISACTOR].yrepeat YREPEAT_MEMORY
+	getactor[THISACTOR].clipdist CLIPDIST_MEMORY
+	getactor[THISACTOR].extra EXTRA_MEMORY
+	getactor[THISACTOR].cstat CSTAT_MEMORY
+	getactor[THISACTOR].pal PAL_MEMORY
+	getactor[THISACTOR].statnum STATNUM_MEMORY
+	getactor[THISACTOR].x SPAWN_ORIGX
+	getactor[THISACTOR].y SPAWN_ORIGY
+	getactor[THISACTOR].z SPAWN_ORIGZ
+	getactor[THISACTOR].ang SPAWN_ORIGANG
+	
+	// Mark certain tiles for Adult Mode
+	getactor[THISACTOR].picnum TEMP
+	switch TEMP
+		case STRIPPERFLASH:
+		case FLESHLIGHT:
+		case PIRATE1A:
+		case GEECKU:
+		case SHARONM:
+		case STRIKERXHELEN:
+		case STRIKER:
+		case SHARONM2:
+		case MIKHAILA:
+		case CHAMPAGNE:
+		case DAWNSEXANIM:
+			setactor[THISACTOR].mdflags 16
+			setvar ISADULT 1
+			break
+	endswitch
+	
+	ifvare COOP GM_ROIDMATCH // Roidmatch
+	{
+		getactor[THISACTOR].picnum TEMP
+		switch TEMP
+			case FIRSTGUNSPRITE:
+			case SHOTGUNSPRITE:
+			case DEVISTATORSPRITE:
+			case CHAINGUNSPRITE:
+			case SHRINKERSPRITE:
+			case HBOMBAMMO:
+			case RPGSPRITE:
+			case TRIPBOMBSPRITE:
+			case FREEZESPRITE:
+			case PLASMASPRITE:
+			case FLAMETHROWERSPRITE:
+			case AMMO:
+			case AMMOLOTS:
+			case BATTERYAMMO:
+			case FREEZEAMMO:
+			case SHOTGUNAMMO:
+			case CRYSTALAMMO:
+			case GROWAMMO:
+			case RPGAMMO:
+			case DEVISTATORAMMO:
+			case PLASMAAMMO:
+			case FLAMETHROWERAMMO:
+			case JETPACK:
+				killit
+				break
+		endswitch
+	}
+endevent
+
+onevent EVENT_ANIMATESPRITES
+	ifvare ISADULT 1
+	{
+		getuserdef[].lockout TEMP
+		ifvare TEMP 1
+		{
+			settspr[THISACTOR].tsprxrepeat 0
+		}
+	}
+endevent
+
+/* // Re-enable this when EDuke32 gets better multiplayer
+onevent EVENT_ACTIVATECHEAT
+	ifvare RETURN 1
+	ifvare RETURN 21
+	{
+		setvar HAS_FREEZETHROWER 1
+		setvar HAS_FLAMETHROWER 1
+		setvar FLAMETHROWER_AMMO MAXFREEZEAMMO
+		setvar FREEZETHROWER_AMMO MAXFLAMETHROWERAMMO
+	}
+endevent
+*/
+
+onevent EVENT_CHEATGETBOOT
+	setvar HAS_FREEZETHROWER 1
+	setvar HAS_FLAMETHROWER 1
+	setvar FLAMETHROWER_AMMO MAXFREEZEAMMO
+	setvar FREEZETHROWER_AMMO MAXFLAMETHROWERAMMO
+	setvar HAS_RIPPER 1
+	setvar HAS_PLASMARIFLE 1
+	setvar RIPPER_AMMO MAXCHAINGUNAMMO
+	setvar PLASMARIFLE_AMMO MAXPLASMARIFLEAMMO
+endevent
+
+onevent EVENT_RESETPLAYER
+	setvar HAS_FREEZETHROWER 0
+	setvar HAS_FLAMETHROWER 0
+	setvar FLAMETHROWER_AMMO 0
+	setvar FREEZETHROWER_AMMO 0
+	state setfreezethrower
+	
+	setvar HAS_RIPPER 0
+	setvar HAS_PLASMARIFLE 0
+	setvar RIPPER_AMMO 0
+	setvar PLASMARIFLE_AMMO 0
+	state setripper
+endevent
+
+onevent EVENT_STRAFELEFT
+ifp pjetpack
+{
+	getplayer[THISACTOR].rotscrnang TEMP
+	
+	ifp prunning
+		addvar TEMP 6
+	else
+		addvar TEMP 3
+	
+	ifvarg TEMP 45
+	{
+		setvar TEMP 45
+	}
+	setplayer[THISACTOR].rotscrnang TEMP 
+}
+endevent
+
+onevent EVENT_STRAFERIGHT
+ifp pjetpack
+{
+	getplayer[THISACTOR].rotscrnang TEMP
+	
+	ifp prunning
+		subvar TEMP 6
+	else
+		subvar TEMP 3
+		
+	ifvarl TEMP -45
+	{
+		setvar TEMP -45
+	}
+	setplayer[THISACTOR].rotscrnang TEMP 
+}
+endevent
+
+state jetpack_turn
+	getplayer[THISACTOR].rotscrnang TEMP	
+	getinput[THISACTOR].avel TEMP2
+	mulvar TEMP2 -1
+	divvar TEMP2 4
+	addvarvar TEMP TEMP2
+	
+	ifvarl TEMP -45
+	{
+		setvar TEMP -45
+	}
+	else ifvarg TEMP 45
+	{
+		setvar TEMP 45
+	}
+	
+	setplayer[THISACTOR].rotscrnang TEMP 
+ends
+
+onevent EVENT_TURNLEFT
+	ifp pjetpack
+	{
+		state jetpack_turn
+	}
+	else ifinwater
+	{
+		state jetpack_turn
+	}
+endevent
+
+onevent EVENT_TURNRIGHT
+	ifp pjetpack
+	{
+		state jetpack_turn
+	}
+	else ifinwater
+	{
+		state jetpack_turn
+	}
+endevent
+
+onevent EVENT_GETLOADTILE
+	ifvare COOP GM_ROIDMATCH
+	{
+		setvar RETURN ROIDLOAD
+	}
+endevent
+
+onevent EVENT_DISPLAYREST
+	ifvare WEAPON FREEZE_WEAPON
+	{
+		ifvare USING_FLAMETHROWER 1
+		{
+			rotatesprite 254 180 32768 0 FLAMETHROWERAMMO_ICON -127 0 536 windowx1 windowy1 windowx2 windowy2
+		}
+	}
+	else ifvare WEAPON CHAINGUN_WEAPON
+	{
+		ifvare USING_PLASMARIFLE 1
+		{
+			rotatesprite 254 180 32768 0 PLASMAAMMO_ICON -127 0 536 windowx1 windowy1 windowx2 windowy2
+		}
+	}
+	
+	// SO MANY FUCKING TEMP VARS
+	ifmultiplayer
+	ifvarn COOP GM_COOPERATIVE
+	{
+		getuserdef[].multimode CL_TEMP1
+		setvar CL_TEMP2 0
+		setvar CL_TEMP4 8
+		whilevarvarn CL_TEMP1 CL_TEMP2
+		{
+			myos 267 CL_TEMP4 NAMEBAR -127 569
+			getplayer[CL_TEMP2].palookup CL_TEMP3
+			getpname 500 CL_TEMP2
+			minitext 268 CL_TEMP4 500 -127 CL_TEMP3
+			//screentext 3072 268 CL_TEMP4 65536 0 0 500 -127 CL_TEMP3 536 0 3 5 1 1 8192 0 0 xdim ydim 
+			
+			getplayer[CL_TEMP2].frag CL_TEMP5
+			getplayer[CL_TEMP2].fraggedself CL_TEMP6
+			subvarvar CL_TEMP5 CL_TEMP6
+			redefinequote 500 %d
+			qsprintf 500 500 CL_TEMP5
+			minitext 311 CL_TEMP4 500 -127 CL_TEMP3
+			//screentext 3072 318 CL_TEMP4 65536 0 0 500 -127 CL_TEMP3 536 0 3 5 1 1 8193 0 0 xdim ydim 
+			
+			addvar CL_TEMP2 1
+			addvar CL_TEMP4 6
+		}
+	}
+endevent

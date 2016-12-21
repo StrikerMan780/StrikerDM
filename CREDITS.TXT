@@ -1,0 +1,15 @@
+Striker - CON Coding, StrikerDM Maps, Map Fixes, Sounds.
+HMNDuke93 - Improved Incinerator Sprites
+Minigunner - DNF-Style Devastator Sprites
+Perkristan - Some of the HD Sounds
+Hendricks266 - CON Coding Help / Answering many EDuke32-related questions.
+Trooper Dan - CON Coding Help
+James Stanfield & Radar1013 - Jetpack Tilt Code
+William Gee - WGDM Maps
+Mikko Sandt, Dean Lillie, Chris Pufahl - Duke Tournament Maps
+Jon St. John - DNF/Manhattan/World Tour Duke Voices
+Gearbox - World Tour Textures
+
+Tools used:
+------------
+Mapster32, SLADE, BAFed, WAD2MAP, Audacity, SynthFont, GIMP.
