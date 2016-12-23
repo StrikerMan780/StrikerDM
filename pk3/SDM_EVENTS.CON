@@ -77,6 +77,7 @@ onevent EVENT_KILLIT
 		case CHAIR3:
 		case DURRPLANT:
 		case BONG:
+		case DILDO:
 			state prepare_respawn_hardcoded
 			break
 	endswitch
@@ -332,8 +333,10 @@ onevent EVENT_SPAWN
 	// Mark certain tiles for Adult Mode
 	getactor[THISACTOR].picnum TEMP
 	switch TEMP
+		case EXOTICA:
 		case STRIPPERFLASH:
 		case FLESHLIGHT:
+		case DILDO:
 		case PIRATE1A:
 		case GEECKU:
 		case SHARONM:
@@ -343,6 +346,9 @@ onevent EVENT_SPAWN
 		case MIKHAILA:
 		case CHAMPAGNE:
 		case DAWNSEXANIM:
+		case SALLYMASTURBATE:
+		case PUSSYGRIND:
+		case HENTAIANIM:
 			setactor[THISACTOR].mdflags 16
 			setvar ISADULT 1
 			break

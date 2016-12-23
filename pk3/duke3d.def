@@ -152,6 +152,20 @@ tilefromtexture 6047 { file "tiles/6047.png" }
 tilefromtexture 6048 { file "tiles/6048.png" }
 tilefromtexture 6049 { file "tiles/6049.png" }
 tilefromtexture 6050 { file "tiles/6050.png" }
+texture 6037 { pal 0 { file "tiles/6037.png" } nocompress nodownsize }
+texture 6038 { pal 0 { file "tiles/6038.png" } nocompress nodownsize }
+texture 6039 { pal 0 { file "tiles/6039.png" } nocompress nodownsize }
+texture 6040 { pal 0 { file "tiles/6040.png" } nocompress nodownsize }
+texture 6041 { pal 0 { file "tiles/6041.png" } nocompress nodownsize }
+texture 6042 { pal 0 { file "tiles/6042.png" } nocompress nodownsize }
+texture 6043 { pal 0 { file "tiles/6043.png" } nocompress nodownsize }
+texture 6044 { pal 0 { file "tiles/6044.png" } nocompress nodownsize }
+texture 6045 { pal 0 { file "tiles/6045.png" } nocompress nodownsize }
+texture 6046 { pal 0 { file "tiles/6046.png" } nocompress nodownsize }
+texture 6047 { pal 0 { file "tiles/6047.png" } nocompress nodownsize }
+texture 6048 { pal 0 { file "tiles/6048.png" } nocompress nodownsize }
+texture 6049 { pal 0 { file "tiles/6049.png" } nocompress nodownsize }
+texture 6050 { pal 0 { file "tiles/6050.png" } nocompress nodownsize }
 
 animtilerange 6051 6060 4 ANIM_FORWARD
 tilefromtexture 6051 { file "tiles/6051.png" }
@@ -174,6 +188,82 @@ texture 6057 { pal 0 { file "tiles/6057.png" } nocompress nodownsize }
 texture 6058 { pal 0 { file "tiles/6058.png" } nocompress nodownsize }
 texture 6059 { pal 0 { file "tiles/6059.png" } nocompress nodownsize }
 texture 6060 { pal 0 { file "tiles/6060.png" } nocompress nodownsize }
+
+animtilerange 6061 6097 3 ANIM_FORWARD
+tilefromtexture 6061 { file "tiles/6061.png" }
+tilefromtexture 6062 { file "tiles/6062.png" }
+tilefromtexture 6063 { file "tiles/6063.png" }
+tilefromtexture 6064 { file "tiles/6064.png" }
+tilefromtexture 6065 { file "tiles/6065.png" }
+tilefromtexture 6066 { file "tiles/6066.png" }
+tilefromtexture 6067 { file "tiles/6067.png" }
+tilefromtexture 6068 { file "tiles/6068.png" }
+tilefromtexture 6069 { file "tiles/6069.png" }
+tilefromtexture 6070 { file "tiles/6070.png" }
+tilefromtexture 6071 { file "tiles/6071.png" }
+tilefromtexture 6072 { file "tiles/6072.png" }
+tilefromtexture 6073 { file "tiles/6073.png" }
+tilefromtexture 6074 { file "tiles/6074.png" }
+tilefromtexture 6075 { file "tiles/6075.png" }
+tilefromtexture 6076 { file "tiles/6076.png" }
+tilefromtexture 6077 { file "tiles/6077.png" }
+tilefromtexture 6078 { file "tiles/6078.png" }
+tilefromtexture 6079 { file "tiles/6079.png" }
+tilefromtexture 6080 { file "tiles/6080.png" }
+tilefromtexture 6081 { file "tiles/6081.png" }
+tilefromtexture 6082 { file "tiles/6082.png" }
+tilefromtexture 6083 { file "tiles/6083.png" }
+tilefromtexture 6084 { file "tiles/6084.png" }
+tilefromtexture 6085 { file "tiles/6085.png" }
+tilefromtexture 6086 { file "tiles/6086.png" }
+tilefromtexture 6087 { file "tiles/6087.png" }
+tilefromtexture 6088 { file "tiles/6088.png" }
+tilefromtexture 6089 { file "tiles/6089.png" }
+tilefromtexture 6090 { file "tiles/6090.png" }
+tilefromtexture 6091 { file "tiles/6091.png" }
+tilefromtexture 6092 { file "tiles/6092.png" }
+tilefromtexture 6093 { file "tiles/6093.png" }
+tilefromtexture 6094 { file "tiles/6094.png" }
+tilefromtexture 6095 { file "tiles/6095.png" }
+tilefromtexture 6096 { file "tiles/6096.png" }
+tilefromtexture 6097 { file "tiles/6097.png" }
+texture 6061 { pal 0 { file "tiles/6061.png" } nocompress nodownsize }
+texture 6062 { pal 0 { file "tiles/6062.png" } nocompress nodownsize }
+texture 6063 { pal 0 { file "tiles/6063.png" } nocompress nodownsize }
+texture 6064 { pal 0 { file "tiles/6064.png" } nocompress nodownsize }
+texture 6065 { pal 0 { file "tiles/6065.png" } nocompress nodownsize }
+texture 6066 { pal 0 { file "tiles/6066.png" } nocompress nodownsize }
+texture 6067 { pal 0 { file "tiles/6067.png" } nocompress nodownsize }
+texture 6068 { pal 0 { file "tiles/6068.png" } nocompress nodownsize }
+texture 6069 { pal 0 { file "tiles/6069.png" } nocompress nodownsize }
+texture 6070 { pal 0 { file "tiles/6070.png" } nocompress nodownsize }
+texture 6071 { pal 0 { file "tiles/6071.png" } nocompress nodownsize }
+texture 6072 { pal 0 { file "tiles/6072.png" } nocompress nodownsize }
+texture 6073 { pal 0 { file "tiles/6073.png" } nocompress nodownsize }
+texture 6074 { pal 0 { file "tiles/6074.png" } nocompress nodownsize }
+texture 6075 { pal 0 { file "tiles/6075.png" } nocompress nodownsize }
+texture 6076 { pal 0 { file "tiles/6076.png" } nocompress nodownsize }
+texture 6077 { pal 0 { file "tiles/6077.png" } nocompress nodownsize }
+texture 6078 { pal 0 { file "tiles/6078.png" } nocompress nodownsize }
+texture 6079 { pal 0 { file "tiles/6079.png" } nocompress nodownsize }
+texture 6080 { pal 0 { file "tiles/6080.png" } nocompress nodownsize }
+texture 6081 { pal 0 { file "tiles/6081.png" } nocompress nodownsize }
+texture 6082 { pal 0 { file "tiles/6082.png" } nocompress nodownsize }
+texture 6083 { pal 0 { file "tiles/6083.png" } nocompress nodownsize }
+texture 6084 { pal 0 { file "tiles/6084.png" } nocompress nodownsize }
+texture 6085 { pal 0 { file "tiles/6085.png" } nocompress nodownsize }
+texture 6086 { pal 0 { file "tiles/6086.png" } nocompress nodownsize }
+texture 6087 { pal 0 { file "tiles/6087.png" } nocompress nodownsize }
+texture 6088 { pal 0 { file "tiles/6088.png" } nocompress nodownsize }
+texture 6089 { pal 0 { file "tiles/6089.png" } nocompress nodownsize }
+texture 6090 { pal 0 { file "tiles/6090.png" } nocompress nodownsize }
+texture 6091 { pal 0 { file "tiles/6091.png" } nocompress nodownsize }
+texture 6092 { pal 0 { file "tiles/6092.png" } nocompress nodownsize }
+texture 6093 { pal 0 { file "tiles/6093.png" } nocompress nodownsize }
+texture 6094 { pal 0 { file "tiles/6094.png" } nocompress nodownsize }
+texture 6095 { pal 0 { file "tiles/6095.png" } nocompress nodownsize }
+texture 6096 { pal 0 { file "tiles/6096.png" } nocompress nodownsize }
+texture 6097 { pal 0 { file "tiles/6097.png" } nocompress nodownsize }
 
 // Spinball cart
 tilefromtexture 3693 { file "tiles/3693.png" }
