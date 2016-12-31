@@ -335,3 +335,62 @@ state player_tossweapon
 		case GROW_WEAPON: spawn GROWAMMO break
 	endswitch
 ends
+
+state randomize_colored_scrap
+	randvar TEMP 256
+	randvar TEMP2 -4096
+	randvar TEMP3 2048
+	setactor[RETURN].xvel TEMP
+	setactor[RETURN].zvel TEMP2
+	setactor[RETURN].ang TEMP3
+	
+	ifactor FLESHLIGHT
+	{
+		setthisprojectile[RETURN].pal 2
+	}
+	else
+	{
+		setthisprojectile[RETURN].pal PAL_MEMORY
+	}
+	
+	setvar RETURN 0
+ends
+
+state toss_colored_scrap
+	eshoot COLORSCRAP1
+	state randomize_colored_scrap
+	eshoot COLORSCRAP2
+	state randomize_colored_scrap
+	eshoot COLORSCRAP3
+	state randomize_colored_scrap
+	eshoot COLORSCRAP4
+	state randomize_colored_scrap
+ends
+
+state coloredprop_break
+	ifaction 0
+	{
+		action ANULLACTION
+		cstator 257
+	}
+	
+	ifhitweapon
+	ifdead
+	{
+		cstat 32768
+		
+		state toss_colored_scrap
+		
+		ifactor FLESHLIGHT
+		{
+			sound SQUISHED
+			sound VENT_BUST
+			lotsofglass 5
+			debris SCRAP1 2
+			debris SCRAP2 2
+			debris SCRAP3 2
+		}
+		
+		killit
+	}
+ends

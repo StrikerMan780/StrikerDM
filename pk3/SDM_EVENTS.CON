@@ -78,6 +78,7 @@ onevent EVENT_KILLIT
 		case DURRPLANT:
 		case BONG:
 		case DILDO:
+		case FLESHLIGHT:
 			state prepare_respawn_hardcoded
 			break
 	endswitch
