@@ -564,4 +564,17 @@ onevent EVENT_DISPLAYREST
 			addvar CL_TEMP4 6
 		}
 	}
+	
+	/*
+	// Test code for EDuke32_Multiplayer
+	getplayer[THISACTOR].posx CL_TEMP1
+	getplayer[THISACTOR].posy CL_TEMP2
+	getplayer[THISACTOR].posz CL_TEMP3
+	getplayer[THISACTOR].ang CL_TEMP4
+	getplayer[THISACTOR].horiz CL_TEMP5
+	getplayer[THISACTOR].horizoff CL_TEMP6
+	addvarvar CL_TEMP5 CL_TEMP6
+	updatesectorz CL_TEMP1 CL_TEMP2 CL_TEMP3 CL_TEMP7
+	showviewunbiased CL_TEMP1 CL_TEMP2 CL_TEMP3 CL_TEMP4 CL_TEMP5 CL_TEMP7 16 8 56 39
+	*/
 endevent

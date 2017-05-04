@@ -14,6 +14,7 @@ tint { pal 6 red 224 green 255 blue 112 flags 3 }
 tint { pal 7 red 172 green 157 blue 140 flags 0 }
 tint { pal 8 red 199 green 226 blue 113 flags 1 }
 
+include doomtex.def
 include dt_tiles014.def
 include wt_tiles021.def
 include wt_tiles022.def

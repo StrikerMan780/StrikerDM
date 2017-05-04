@@ -346,10 +346,12 @@ state randomize_colored_scrap
 	
 	ifactor FLESHLIGHT
 	{
+		setactor[RETURN].pal 2
 		setthisprojectile[RETURN].pal 2
 	}
 	else
 	{
+		setactor[RETURN].pal PAL_MEMORY
 		setthisprojectile[RETURN].pal PAL_MEMORY
 	}
 	

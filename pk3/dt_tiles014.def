@@ -1,27 +1,10 @@
 tilefromtexture 3584 { file "tiles/3584.png" }
 tilefromtexture 3585 { file "tiles/3585.png" }
 tilefromtexture 3586 { file "tiles/3586.png" }
-tilefromtexture 3587 { file "tiles/3587.png" }
-texture 3587 { pal 0 { file "highres/doomtex/3587_BIGBRIK2.PNG" } nocompress nodownsize }
-tilefromtexture 3588 { file "tiles/3588.png" }
-tilefromtexture 3589 { file "tiles/3589.png" }
-tilefromtexture 3590 { file "tiles/3590.png" }
 tilefromtexture 3591 { file "tiles/3591.png" }
 tilefromtexture 3592 { file "tiles/3592.png" }
-tilefromtexture 3593 { file "tiles/3593.png" }
-tilefromtexture 3594 { file "tiles/3594.png" }
 tilefromtexture 3595 { file "tiles/3595.png" }
-tilefromtexture 3596 { file "tiles/3596.png" }
-tilefromtexture 3597 { file "tiles/3597.png" }
-tilefromtexture 3598 { file "tiles/3598.png" }
-tilefromtexture 3599 { file "tiles/3599.png" }
 tilefromtexture 3600 { file "tiles/3600.png" }
-tilefromtexture 3601 { file "tiles/3601.png" }
-texture 3601 { pal 0 { file "highres/doomtex/3601_W17_1.PNG" } nocompress nodownsize }
-tilefromtexture 3602 { file "tiles/3602.png" }
-texture 3602 { pal 0 { file "highres/doomtex/3602_W28_5.PNG" } nocompress nodownsize }
-tilefromtexture 3603 { file "tiles/3603.png" }
-texture 3603 { pal 0 { file "highres/doomtex/3603_W28_6.PNG" } nocompress nodownsize }
 tilefromtexture 3604 { file "tiles/3604.png" }
 tilefromtexture 3605 { file "tiles/3605.png" }
 tilefromtexture 3606 { file "tiles/3606.png" }
@@ -44,7 +27,6 @@ tilefromtexture 3622 { file "tiles/3622.png" }
 tilefromtexture 3623 { file "tiles/3623.png" }
 tilefromtexture 3624 { file "tiles/3624.png" }
 tilefromtexture 3625 { file "tiles/3625.png" yoffset 30 }
-tilefromtexture 3626 { file "tiles/3626.png" }
 tilefromtexture 3627 { file "tiles/3627.png" }
 tilefromtexture 3628 { file "tiles/3628.png" }
 tilefromtexture 3629 { file "tiles/3629.png" }

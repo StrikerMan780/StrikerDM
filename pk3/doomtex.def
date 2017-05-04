@@ -1,0 +1,31 @@
+// Textures
+tilefromtexture 3587 { file "tiles/3587.png" }
+tilefromtexture 3588 { file "tiles/3588.png" }
+tilefromtexture 3589 { file "tiles/3589.png" }
+tilefromtexture 3590 { file "tiles/3590.png" }
+tilefromtexture 3593 { file "tiles/3593.png" }
+tilefromtexture 3594 { file "tiles/3594.png" }
+tilefromtexture 3596 { file "tiles/3596.png" }
+tilefromtexture 3597 { file "tiles/3597.png" }
+tilefromtexture 3598 { file "tiles/3598.png" }
+tilefromtexture 3599 { file "tiles/3599.png" }
+tilefromtexture 3601 { file "tiles/3601.png" }
+tilefromtexture 3602 { file "tiles/3602.png" }
+tilefromtexture 3603 { file "tiles/3603.png" }
+texture 3587 { pal 0 { file "highres/doomtex/3587_BIGBRIK2.PNG" } nocompress nodownsize }
+texture 3588 { pal 0 { file "highres/doomtex/3588_RW25_1.PNG" } nocompress nodownsize }
+texture 3589 { pal 0 { file "highres/doomtex/3589_SILVER2.PNG" } nocompress nodownsize }
+texture 3590 { pal 0 { file "highres/doomtex/3590_BIGDOOR2.PNG" } nocompress nodownsize }
+texture 3593 { pal 0 { file "highres/doomtex/3593_SGCRATE2.PNG" } nocompress nodownsize }
+texture 3594 { pal 0 { file "highres/doomtex/3594_MIDBARS1.PNG" } nocompress nodownsize }
+texture 3596 { pal 0 { file "highres/doomtex/3596_SW11_1.PNG" } nocompress nodownsize }
+texture 3597 { pal 0 { file "highres/doomtex/3597_SUP2.PNG" } nocompress nodownsize }
+texture 3598 { pal 0 { file "highres/doomtex/3598_TOMW2_1.PNG" } nocompress nodownsize }
+texture 3599 { pal 0 { file "highres/doomtex/3599_TOMW2_2.PNG" } nocompress nodownsize }
+texture 3601 { pal 0 { file "highres/doomtex/3601_W17_1.PNG" } nocompress nodownsize }
+texture 3602 { pal 0 { file "highres/doomtex/3602_W28_5.PNG" } nocompress nodownsize }
+texture 3603 { pal 0 { file "highres/doomtex/3603_W28_6.PNG" } nocompress nodownsize }
+
+// Sprites
+tilefromtexture 3626 { file "tiles/3626.png" }
+texture 3626 { pal 0 { file "tiles/3626.png" } nocompress nodownsize }

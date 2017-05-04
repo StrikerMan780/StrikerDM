@@ -32,6 +32,7 @@ gamevar CL_TEMP3 0 0
 gamevar CL_TEMP4 0 0
 gamevar CL_TEMP5 0 0
 gamevar CL_TEMP6 0 0
+gamevar CL_TEMP7 0 0
 
 gamevar DUKELINE 0 0
 gamevar SPEAK 0 2
