@@ -1,7 +1,7 @@
 Striker - CON Coding, StrikerDM Maps, Map Fixes, Sounds.
 HMNuke93 - Improved Incinerator Sprites
 Minigunner - DNF-Style Devastator Sprites
-Perkristan - Some of the HD Sounds
+Perkristian - Some of the HD Sounds
 Hendricks266 - CON Coding Help / Answering many EDuke32-related questions.
 Trooper Dan - CON Coding Help
 James Stanfield & Radar1013 - Jetpack Tilt Code
