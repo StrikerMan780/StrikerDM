@@ -130,6 +130,39 @@ onevent EVENT_KILLIT
 			state prepare_respawn_hardcoded
 		}
 	}
+	
+	ifactor APLAYER
+	{
+		findplayer TEMP
+		switch RETURN
+			case 0:
+				setvar PLAYER1_INGAME 0
+				break
+			case 1:
+				setvar PLAYER2_INGAME 0
+				break
+			case 2:
+				setvar PLAYER3_INGAME 0
+				break
+			case 3:
+				setvar PLAYER4_INGAME 0
+				break
+			case 4:
+				setvar PLAYER5_INGAME 0
+				break
+			case 5:
+				setvar PLAYER6_INGAME 0
+				break
+			case 6:
+				setvar PLAYER7_INGAME 0
+				break
+			case 7:
+				setvar PLAYER8_INGAME 0
+				break
+		endswitch
+		setvar RETURN 0
+	}
+	
 endevent
 
 onevent EVENT_EGS
@@ -541,27 +574,66 @@ onevent EVENT_DISPLAYREST
 	ifmultiplayer
 	ifvarn COOP GM_COOPERATIVE
 	{
-		getuserdef[].multimode CL_TEMP1
-		setvar CL_TEMP2 0
-		setvar CL_TEMP4 8
-		whilevarvarn CL_TEMP1 CL_TEMP2
+		setvar SCORE_PLAYERINDEX 0
+		setvar SCORE_YOFFSET 8
+		whilevarn SCORE_PLAYERINDEX 8
 		{
-			myos 267 CL_TEMP4 NAMEBAR -127 569
-			getplayer[CL_TEMP2].palookup CL_TEMP3
-			getpname 500 CL_TEMP2
-			minitext 268 CL_TEMP4 500 -127 CL_TEMP3
-			//screentext 3072 268 CL_TEMP4 65536 0 0 500 -127 CL_TEMP3 536 0 3 5 1 1 8192 0 0 xdim ydim 
+			setvar SCORE_PLAYERINGAME 0
+			switch SCORE_PLAYERINDEX
+				case 0:
+					ifvare PLAYER1_INGAME 1 setvar SCORE_PLAYERINGAME 1
+					break
+				case 1:
+					ifvare PLAYER2_INGAME 1 setvar SCORE_PLAYERINGAME 1
+					break
+				case 2:
+					ifvare PLAYER3_INGAME 1 setvar SCORE_PLAYERINGAME 1
+					break
+				case 3:
+					ifvare PLAYER4_INGAME 1 setvar SCORE_PLAYERINGAME 1
+					break
+				case 4:
+					ifvare PLAYER5_INGAME 1 setvar SCORE_PLAYERINGAME 1
+					break
+				case 5:
+					ifvare PLAYER6_INGAME 1 setvar SCORE_PLAYERINGAME 1
+					break
+				case 6:
+					ifvare PLAYER7_INGAME 1 setvar SCORE_PLAYERINGAME 1
+					break
+				case 7:
+					ifvare PLAYER8_INGAME 1 setvar SCORE_PLAYERINGAME 1
+					break
+			endswitch
 			
-			getplayer[CL_TEMP2].frag CL_TEMP5
-			getplayer[CL_TEMP2].fraggedself CL_TEMP6
-			subvarvar CL_TEMP5 CL_TEMP6
-			redefinequote 500 %d
-			qsprintf 500 500 CL_TEMP5
-			minitext 311 CL_TEMP4 500 -127 CL_TEMP3
-			//screentext 3072 318 CL_TEMP4 65536 0 0 500 -127 CL_TEMP3 536 0 3 5 1 1 8193 0 0 xdim ydim 
+			ifvare SCORE_PLAYERINGAME 1 // Isn't disconnected
+			{
+				// Print Background Bar
+				myos 267 SCORE_YOFFSET NAMEBAR -127 569
+				
+				// Get palette
+				getplayer[SCORE_PLAYERINDEX].palookup SCORE_PLAYERPAL
+				
+				// Get and print name
+				getpname 500 SCORE_PLAYERINDEX
+				minitext 268 SCORE_YOFFSET 500 -127 SCORE_PLAYERPAL
+				//screentext 3072 268 SCORE_YOFFSET 65536 0 0 500 -127 SCORE_PLAYERPAL 536 0 3 5 1 1 8192 0 0 xdim ydim 
+				
+				// Get and print frags
+				getplayer[SCORE_PLAYERINDEX].frag SCORE_FRAGS
+				getplayer[SCORE_PLAYERINDEX].fraggedself SCORE_SUICIDES
+				subvarvar SCORE_FRAGS SCORE_SUICIDES
+				redefinequote 500 %d
+				qsprintf 500 500 SCORE_FRAGS
+				minitext 311 SCORE_YOFFSET 500 -127 SCORE_PLAYERPAL
+				//screentext 3072 318 SCORE_YOFFSET 65536 0 0 500 -127 SCORE_PLAYERPAL 536 0 3 5 1 1 8193 0 0 xdim ydim 
+				
+				// Move y offset down
+				addvar SCORE_YOFFSET 6
+			}
 			
-			addvar CL_TEMP2 1
-			addvar CL_TEMP4 6
+			// Move on to the next player
+			addvar SCORE_PLAYERINDEX 1
 		}
 	}
 	
@@ -577,4 +649,23 @@ onevent EVENT_DISPLAYREST
 	updatesectorz CL_TEMP1 CL_TEMP2 CL_TEMP3 CL_TEMP7
 	showviewunbiased CL_TEMP1 CL_TEMP2 CL_TEMP3 CL_TEMP4 CL_TEMP5 CL_TEMP7 16 8 56 39
 	*/
+endevent
+
+onevent EVENT_ENTERLEVEL
+	setvar PLAYER1_INGAME 1
+	
+	ifvarg MULTIMODE 1
+		setvar PLAYER2_INGAME 1	
+	ifvarg MULTIMODE 2
+		setvar PLAYER3_INGAME 1
+	ifvarg MULTIMODE 3
+		setvar PLAYER4_INGAME 1
+	ifvarg MULTIMODE 4
+		setvar PLAYER5_INGAME 1
+	ifvarg MULTIMODE 5
+		setvar PLAYER6_INGAME 1
+	ifvarg MULTIMODE 6
+		setvar PLAYER7_INGAME 1
+	ifvarg MULTIMODE 7
+		setvar PLAYER8_INGAME 1
 endevent
