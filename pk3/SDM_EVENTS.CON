@@ -131,38 +131,6 @@ onevent EVENT_KILLIT
 		}
 	}
 	
-	ifactor APLAYER
-	{
-		findplayer TEMP
-		switch RETURN
-			case 0:
-				setvar PLAYER1_INGAME 0
-				break
-			case 1:
-				setvar PLAYER2_INGAME 0
-				break
-			case 2:
-				setvar PLAYER3_INGAME 0
-				break
-			case 3:
-				setvar PLAYER4_INGAME 0
-				break
-			case 4:
-				setvar PLAYER5_INGAME 0
-				break
-			case 5:
-				setvar PLAYER6_INGAME 0
-				break
-			case 6:
-				setvar PLAYER7_INGAME 0
-				break
-			case 7:
-				setvar PLAYER8_INGAME 0
-				break
-		endswitch
-		setvar RETURN 0
-	}
-	
 endevent
 
 onevent EVENT_EGS
@@ -574,39 +542,13 @@ onevent EVENT_DISPLAYREST
 	ifmultiplayer
 	ifvarn COOP GM_COOPERATIVE
 	{
+		setvar SCORE_COUNTER 0
 		setvar SCORE_PLAYERINDEX 0
 		setvar SCORE_YOFFSET 8
-		whilevarn SCORE_PLAYERINDEX 8
+		whilevarvarn SCORE_COUNTER MULTIMODE
 		{
-			setvar SCORE_PLAYERINGAME 0
-			switch SCORE_PLAYERINDEX
-				case 0:
-					ifvare PLAYER1_INGAME 1 setvar SCORE_PLAYERINGAME 1
-					break
-				case 1:
-					ifvare PLAYER2_INGAME 1 setvar SCORE_PLAYERINGAME 1
-					break
-				case 2:
-					ifvare PLAYER3_INGAME 1 setvar SCORE_PLAYERINGAME 1
-					break
-				case 3:
-					ifvare PLAYER4_INGAME 1 setvar SCORE_PLAYERINGAME 1
-					break
-				case 4:
-					ifvare PLAYER5_INGAME 1 setvar SCORE_PLAYERINGAME 1
-					break
-				case 5:
-					ifvare PLAYER6_INGAME 1 setvar SCORE_PLAYERINGAME 1
-					break
-				case 6:
-					ifvare PLAYER7_INGAME 1 setvar SCORE_PLAYERINGAME 1
-					break
-				case 7:
-					ifvare PLAYER8_INGAME 1 setvar SCORE_PLAYERINGAME 1
-					break
-			endswitch
-			
-			ifvare SCORE_PLAYERINGAME 1 // Isn't disconnected
+			getplayer[SCORE_PLAYERINDEX].connected SCORE_PLAYERCONNECTED
+			ifvare SCORE_PLAYERCONNECTED 1 // Is connected
 			{
 				// Print Background Bar
 				myos 267 SCORE_YOFFSET NAMEBAR -127 569
@@ -630,6 +572,7 @@ onevent EVENT_DISPLAYREST
 				
 				// Move y offset down
 				addvar SCORE_YOFFSET 6
+				addvar SCORE_COUNTER 1
 			}
 			
 			// Move on to the next player
@@ -649,23 +592,4 @@ onevent EVENT_DISPLAYREST
 	updatesectorz CL_TEMP1 CL_TEMP2 CL_TEMP3 CL_TEMP7
 	showviewunbiased CL_TEMP1 CL_TEMP2 CL_TEMP3 CL_TEMP4 CL_TEMP5 CL_TEMP7 16 8 56 39
 	*/
-endevent
-
-onevent EVENT_ENTERLEVEL
-	setvar PLAYER1_INGAME 1
-	
-	ifvarg MULTIMODE 1
-		setvar PLAYER2_INGAME 1	
-	ifvarg MULTIMODE 2
-		setvar PLAYER3_INGAME 1
-	ifvarg MULTIMODE 3
-		setvar PLAYER4_INGAME 1
-	ifvarg MULTIMODE 4
-		setvar PLAYER5_INGAME 1
-	ifvarg MULTIMODE 5
-		setvar PLAYER6_INGAME 1
-	ifvarg MULTIMODE 6
-		setvar PLAYER7_INGAME 1
-	ifvarg MULTIMODE 7
-		setvar PLAYER8_INGAME 1
 endevent
