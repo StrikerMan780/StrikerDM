@@ -1,5 +1,6 @@
 Striker - CON Coding, StrikerDM Maps, Map Fixes, Sounds.
 HMNuke93 - Improved Incinerator Sprites
+Tristan - Camo Pistol
 Minigunner - DNF-Style Devastator Sprites
 Perkristian - Some of the HD Sounds
 Hendricks266 - CON Coding Help / Answering many EDuke32-related questions.
