@@ -1,0 +1,195 @@
+// XXX Pack
+tilefromtexture 577 { file "tiles/577.png" }
+tilefromtexture 603 { file "tiles/603.png" yoff -85 }
+tilefromtexture 766 { file "tiles/766.png" }
+tilefromtexture 4498 { file "tiles/4498.png" }
+tilefromtexture 4510 { file "tiles/4510.png" }
+tilefromtexture 4511 { file "tiles/4511.png" xoff 11 }
+tilefromtexture 4514 { file "tiles/4514.png" }
+tilefromtexture 4515 { file "tiles/4515.png" xoff 9 }
+tilefromtexture 4864 { file "tiles/4864.png" }
+tilefromtexture 4865 { file "tiles/4865.png" }
+tilefromtexture 4866 { file "tiles/4866.png" }
+tilefromtexture 4867 { file "tiles/4867.png" }
+tilefromtexture 4868 { file "tiles/4868.png" xoff 1 }
+tilefromtexture 4869 { file "tiles/4869.png" xoff -13 }
+tilefromtexture 4870 { file "tiles/4870.png" xoff -1 }
+tilefromtexture 4874 { file "tiles/4874.png" }
+tilefromtexture 4875 { file "tiles/4875.png" xoff 5 }
+tilefromtexture 4876 { file "tiles/4876.png" xoff 4 }
+tilefromtexture 4955 { file "tiles/4955.png" }
+
+// New XXX
+tilefromtexture 3699 { file "tiles/3699.png" }
+tilefromtexture 3700 { file "tiles/3700.png" }
+tilefromtexture 4959 { file "tiles/4959.png" }
+tilefromtexture 4960 { file "tiles/4960.png" }
+tilefromtexture 4961 { file "tiles/4961.png" }
+tilefromtexture 4962 { file "tiles/4962.png" }
+tilefromtexture 4963 { file "tiles/4963.png" }
+tilefromtexture 4964 { file "tiles/4964.png" }
+tilefromtexture 4965 { file "tiles/4965.png" }
+texture 3699 { pal 0 { file "tiles/3699.png" } }
+texture 4959 { pal 0 { file "highres/xxx/4959_geecku.jpg" } }
+texture 4960 { pal 0 { file "highres/xxx/4960_sharonm.png" } }
+texture 4961 { pal 0 { file "highres/xxx/4961_strikerxhelen.png" } }
+texture 4962 { pal 0 { file "highres/xxx/4962_striker.png" } }
+texture 4963 { pal 0 { file "highres/xxx/4963_sharonm2.jpg" } }
+texture 4964 { pal 0 { file "highres/xxx/4964_mikhaila.jpg" } }
+texture 4965 { pal 0 { file "highres/xxx/4965_champagne.jpg" } }
+
+// XXX Animations
+animtilerange 6000 6028 3 ANIM_FORWARD
+tilefromtexture 6000 { file "tiles/6000.png" texture }
+tilefromtexture 6001 { file "tiles/6001.png" texture }
+tilefromtexture 6002 { file "tiles/6002.png" texture }
+tilefromtexture 6003 { file "tiles/6003.png" texture }
+tilefromtexture 6004 { file "tiles/6004.png" texture }
+tilefromtexture 6005 { file "tiles/6005.png" texture }
+tilefromtexture 6006 { file "tiles/6006.png" texture }
+tilefromtexture 6007 { file "tiles/6007.png" texture }
+tilefromtexture 6008 { file "tiles/6008.png" texture }
+tilefromtexture 6009 { file "tiles/6009.png" texture }
+tilefromtexture 6010 { file "tiles/6010.png" texture }
+tilefromtexture 6011 { file "tiles/6011.png" texture }
+tilefromtexture 6012 { file "tiles/6012.png" texture }
+tilefromtexture 6013 { file "tiles/6013.png" texture }
+tilefromtexture 6014 { file "tiles/6014.png" texture }
+tilefromtexture 6015 { file "tiles/6015.png" texture }
+tilefromtexture 6016 { file "tiles/6016.png" texture }
+tilefromtexture 6017 { file "tiles/6017.png" texture }
+tilefromtexture 6018 { file "tiles/6018.png" texture }
+tilefromtexture 6019 { file "tiles/6019.png" texture }
+tilefromtexture 6020 { file "tiles/6020.png" texture }
+tilefromtexture 6021 { file "tiles/6021.png" texture }
+tilefromtexture 6022 { file "tiles/6022.png" texture }
+tilefromtexture 6023 { file "tiles/6023.png" texture }
+tilefromtexture 6024 { file "tiles/6024.png" texture }
+tilefromtexture 6025 { file "tiles/6025.png" texture }
+tilefromtexture 6026 { file "tiles/6026.png" texture }
+tilefromtexture 6027 { file "tiles/6027.png" texture }
+tilefromtexture 6028 { file "tiles/6028.png" texture }
+
+animtilerange 6029 6036 3 ANIM_FORWARD
+tilefromtexture 6029 { file "tiles/6029.png" texture }
+tilefromtexture 6030 { file "tiles/6030.png" texture }
+tilefromtexture 6031 { file "tiles/6031.png" texture }
+tilefromtexture 6032 { file "tiles/6032.png" texture }
+tilefromtexture 6033 { file "tiles/6033.png" texture }
+tilefromtexture 6034 { file "tiles/6034.png" texture }
+tilefromtexture 6035 { file "tiles/6035.png" texture }
+tilefromtexture 6036 { file "tiles/6036.png" texture }
+
+animtilerange 6037 6050 4 ANIM_FORWARD
+tilefromtexture 6037 { file "tiles/6037.png" texture }
+tilefromtexture 6038 { file "tiles/6038.png" texture }
+tilefromtexture 6039 { file "tiles/6039.png" texture }
+tilefromtexture 6040 { file "tiles/6040.png" texture }
+tilefromtexture 6041 { file "tiles/6041.png" texture }
+tilefromtexture 6042 { file "tiles/6042.png" texture }
+tilefromtexture 6043 { file "tiles/6043.png" texture }
+tilefromtexture 6044 { file "tiles/6044.png" texture }
+tilefromtexture 6045 { file "tiles/6045.png" texture }
+tilefromtexture 6046 { file "tiles/6046.png" texture }
+tilefromtexture 6047 { file "tiles/6047.png" texture }
+tilefromtexture 6048 { file "tiles/6048.png" texture }
+tilefromtexture 6049 { file "tiles/6049.png" texture }
+tilefromtexture 6050 { file "tiles/6050.png" texture }
+
+animtilerange 6051 6060 4 ANIM_FORWARD
+tilefromtexture 6051 { file "tiles/6051.png" }
+tilefromtexture 6052 { file "tiles/6052.png" }
+tilefromtexture 6053 { file "tiles/6053.png" }
+tilefromtexture 6054 { file "tiles/6054.png" }
+tilefromtexture 6055 { file "tiles/6055.png" }
+tilefromtexture 6056 { file "tiles/6056.png" }
+tilefromtexture 6057 { file "tiles/6057.png" }
+tilefromtexture 6058 { file "tiles/6058.png" }
+tilefromtexture 6059 { file "tiles/6059.png" }
+tilefromtexture 6060 { file "tiles/6060.png" }
+texture 6051 { pal 0 { file "highres/animations/6051.png" } nocompress nodownsize }
+texture 6052 { pal 0 { file "highres/animations/6052.png" } nocompress nodownsize }
+texture 6053 { pal 0 { file "highres/animations/6053.png" } nocompress nodownsize }
+texture 6054 { pal 0 { file "highres/animations/6054.png" } nocompress nodownsize }
+texture 6055 { pal 0 { file "highres/animations/6055.png" } nocompress nodownsize }
+texture 6056 { pal 0 { file "highres/animations/6056.png" } nocompress nodownsize }
+texture 6057 { pal 0 { file "highres/animations/6057.png" } nocompress nodownsize }
+texture 6058 { pal 0 { file "highres/animations/6058.png" } nocompress nodownsize }
+texture 6059 { pal 0 { file "highres/animations/6059.png" } nocompress nodownsize }
+texture 6060 { pal 0 { file "highres/animations/6060.png" } nocompress nodownsize }
+
+animtilerange 6061 6097 3 ANIM_FORWARD
+tilefromtexture 6061 { file "tiles/6061.png" }
+tilefromtexture 6062 { file "tiles/6062.png" }
+tilefromtexture 6063 { file "tiles/6063.png" }
+tilefromtexture 6064 { file "tiles/6064.png" }
+tilefromtexture 6065 { file "tiles/6065.png" }
+tilefromtexture 6066 { file "tiles/6066.png" }
+tilefromtexture 6067 { file "tiles/6067.png" }
+tilefromtexture 6068 { file "tiles/6068.png" }
+tilefromtexture 6069 { file "tiles/6069.png" }
+tilefromtexture 6070 { file "tiles/6070.png" }
+tilefromtexture 6071 { file "tiles/6071.png" }
+tilefromtexture 6072 { file "tiles/6072.png" }
+tilefromtexture 6073 { file "tiles/6073.png" }
+tilefromtexture 6074 { file "tiles/6074.png" }
+tilefromtexture 6075 { file "tiles/6075.png" }
+tilefromtexture 6076 { file "tiles/6076.png" }
+tilefromtexture 6077 { file "tiles/6077.png" }
+tilefromtexture 6078 { file "tiles/6078.png" }
+tilefromtexture 6079 { file "tiles/6079.png" }
+tilefromtexture 6080 { file "tiles/6080.png" }
+tilefromtexture 6081 { file "tiles/6081.png" }
+tilefromtexture 6082 { file "tiles/6082.png" }
+tilefromtexture 6083 { file "tiles/6083.png" }
+tilefromtexture 6084 { file "tiles/6084.png" }
+tilefromtexture 6085 { file "tiles/6085.png" }
+tilefromtexture 6086 { file "tiles/6086.png" }
+tilefromtexture 6087 { file "tiles/6087.png" }
+tilefromtexture 6088 { file "tiles/6088.png" }
+tilefromtexture 6089 { file "tiles/6089.png" }
+tilefromtexture 6090 { file "tiles/6090.png" }
+tilefromtexture 6091 { file "tiles/6091.png" }
+tilefromtexture 6092 { file "tiles/6092.png" }
+tilefromtexture 6093 { file "tiles/6093.png" }
+tilefromtexture 6094 { file "tiles/6094.png" }
+tilefromtexture 6095 { file "tiles/6095.png" }
+tilefromtexture 6096 { file "tiles/6096.png" }
+tilefromtexture 6097 { file "tiles/6097.png" }
+texture 6061 { pal 0 { file "highres/animations/6061.png" } nocompress nodownsize }
+texture 6062 { pal 0 { file "highres/animations/6062.png" } nocompress nodownsize }
+texture 6063 { pal 0 { file "highres/animations/6063.png" } nocompress nodownsize }
+texture 6064 { pal 0 { file "highres/animations/6064.png" } nocompress nodownsize }
+texture 6065 { pal 0 { file "highres/animations/6065.png" } nocompress nodownsize }
+texture 6066 { pal 0 { file "highres/animations/6066.png" } nocompress nodownsize }
+texture 6067 { pal 0 { file "highres/animations/6067.png" } nocompress nodownsize }
+texture 6068 { pal 0 { file "highres/animations/6068.png" } nocompress nodownsize }
+texture 6069 { pal 0 { file "highres/animations/6069.png" } nocompress nodownsize }
+texture 6070 { pal 0 { file "highres/animations/6070.png" } nocompress nodownsize }
+texture 6071 { pal 0 { file "highres/animations/6071.png" } nocompress nodownsize }
+texture 6072 { pal 0 { file "highres/animations/6072.png" } nocompress nodownsize }
+texture 6073 { pal 0 { file "highres/animations/6073.png" } nocompress nodownsize }
+texture 6074 { pal 0 { file "highres/animations/6074.png" } nocompress nodownsize }
+texture 6075 { pal 0 { file "highres/animations/6075.png" } nocompress nodownsize }
+texture 6076 { pal 0 { file "highres/animations/6076.png" } nocompress nodownsize }
+texture 6077 { pal 0 { file "highres/animations/6077.png" } nocompress nodownsize }
+texture 6078 { pal 0 { file "highres/animations/6078.png" } nocompress nodownsize }
+texture 6079 { pal 0 { file "highres/animations/6079.png" } nocompress nodownsize }
+texture 6080 { pal 0 { file "highres/animations/6080.png" } nocompress nodownsize }
+texture 6081 { pal 0 { file "highres/animations/6081.png" } nocompress nodownsize }
+texture 6082 { pal 0 { file "highres/animations/6082.png" } nocompress nodownsize }
+texture 6083 { pal 0 { file "highres/animations/6083.png" } nocompress nodownsize }
+texture 6084 { pal 0 { file "highres/animations/6084.png" } nocompress nodownsize }
+texture 6085 { pal 0 { file "highres/animations/6085.png" } nocompress nodownsize }
+texture 6086 { pal 0 { file "highres/animations/6086.png" } nocompress nodownsize }
+texture 6087 { pal 0 { file "highres/animations/6087.png" } nocompress nodownsize }
+texture 6088 { pal 0 { file "highres/animations/6088.png" } nocompress nodownsize }
+texture 6089 { pal 0 { file "highres/animations/6089.png" } nocompress nodownsize }
+texture 6090 { pal 0 { file "highres/animations/6090.png" } nocompress nodownsize }
+texture 6091 { pal 0 { file "highres/animations/6091.png" } nocompress nodownsize }
+texture 6092 { pal 0 { file "highres/animations/6092.png" } nocompress nodownsize }
+texture 6093 { pal 0 { file "highres/animations/6093.png" } nocompress nodownsize }
+texture 6094 { pal 0 { file "highres/animations/6094.png" } nocompress nodownsize }
+texture 6095 { pal 0 { file "highres/animations/6095.png" } nocompress nodownsize }
+texture 6096 { pal 0 { file "highres/animations/6096.png" } nocompress nodownsize }
+texture 6097 { pal 0 { file "highres/animations/6097.png" } nocompress nodownsize }
