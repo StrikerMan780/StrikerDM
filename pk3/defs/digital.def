@@ -1,0 +1,12 @@
+// Digital (2472-2481)
+texture 2472 { pal 0 { file "highres/fonts/digital/2472.png" } pal 24 { file "highres/fonts/digital/pal24/2472.png" } }
+texture 2473 { pal 0 { file "highres/fonts/digital/2473.png" } pal 24 { file "highres/fonts/digital/pal24/2473.png" } }
+texture 2474 { pal 0 { file "highres/fonts/digital/2474.png" } pal 24 { file "highres/fonts/digital/pal24/2474.png" } }
+texture 2475 { pal 0 { file "highres/fonts/digital/2475.png" } pal 24 { file "highres/fonts/digital/pal24/2475.png" } }
+texture 2476 { pal 0 { file "highres/fonts/digital/2476.png" } pal 24 { file "highres/fonts/digital/pal24/2476.png" } }
+texture 2477 { pal 0 { file "highres/fonts/digital/2477.png" } pal 24 { file "highres/fonts/digital/pal24/2477.png" } }
+texture 2478 { pal 0 { file "highres/fonts/digital/2478.png" } pal 24 { file "highres/fonts/digital/pal24/2478.png" } }
+texture 2479 { pal 0 { file "highres/fonts/digital/2479.png" } pal 24 { file "highres/fonts/digital/pal24/2479.png" } }
+
+texture 2480 { pal 0 { file "highres/fonts/digital/2480.png" } pal 24 { file "highres/fonts/digital/pal24/2480.png" } }
+texture 2481 { pal 0 { file "highres/fonts/digital/2481.png" } pal 24 { file "highres/fonts/digital/pal24/2481.png" } }

@@ -2,6 +2,9 @@
 tilefromtexture 577 { file "tiles/577.png" }
 tilefromtexture 603 { file "tiles/603.png" yoff -85 }
 tilefromtexture 766 { file "tiles/766.png" }
+tilefromtexture	1321 { file "tiles/1321.png" }
+tilefromtexture	1322 { file "tiles/1322.png" }
+tilefromtexture	1339 { file "tiles/1339.png" }
 tilefromtexture 4498 { file "tiles/4498.png" }
 tilefromtexture 4510 { file "tiles/4510.png" }
 tilefromtexture 4511 { file "tiles/4511.png" xoff 11 }
@@ -29,6 +32,7 @@ tilefromtexture 4962 { file "tiles/4962.png" }
 tilefromtexture 4963 { file "tiles/4963.png" }
 tilefromtexture 4964 { file "tiles/4964.png" }
 tilefromtexture 4965 { file "tiles/4965.png" }
+tilefromtexture 4966 { file "tiles/4966.png" }
 texture 3699 { pal 0 { file "tiles/3699.png" } }
 texture 4959 { pal 0 { file "highres/xxx/4959_geecku.jpg" } }
 texture 4960 { pal 0 { file "highres/xxx/4960_sharonm.png" } }
@@ -37,6 +41,7 @@ texture 4962 { pal 0 { file "highres/xxx/4962_striker.png" } }
 texture 4963 { pal 0 { file "highres/xxx/4963_sharonm2.jpg" } }
 texture 4964 { pal 0 { file "highres/xxx/4964_mikhaila.jpg" } }
 texture 4965 { pal 0 { file "highres/xxx/4965_champagne.jpg" } }
+texture 4966 { pal 0 { file "highres/xxx/4966_mikhaila2.png" } }
 
 // XXX Animations
 animtilerange 6000 6028 3 ANIM_FORWARD

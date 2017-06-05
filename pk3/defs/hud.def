@@ -1,0 +1,15 @@
+texture 0020 { pal 0 { file "highres/hud/hud_select.png" } }
+texture 0030 { pal 0 { file "highres/hud/health_frame.png" } }
+texture 0031 { pal 0 { file "highres/hud/ammo_frame.png" } }
+texture 0033 { pal 0 { file "highres/hud/inv_frame.png" } }
+texture 2460 { pal 0 { file "highres/hud/firstaid_icon.png" } }
+texture 2461 { pal 0 { file "highres/hud/nightvision_icon.png" } }
+texture 2463 { pal 0 { file "highres/hud/boots_icon.png" } }
+texture 2467 { pal 0 { file "highres/hud/jetpack_icon.png" } }
+texture 2468 { pal 0 { file "highres/hud/airtank_icon.png" } }
+texture 2469 { pal 0 { file "highres/hud/steroids_icon.png" } }
+texture 2470 { pal 0 { file "highres/hud/holoduke_icon.png" } }
+
+// tilefromtexture 2462 { file "tiles/2462.png" } // Save for later.
+// texture 2462 { pal 0 { file "highres/hud/statusbar_widescreen.png" } }
+texture 2462 { pal 0 { file "highres/hud/statusbar.png" } }

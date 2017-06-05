@@ -1,0 +1,41 @@
+// Grey Font (2966-3009)
+texture 2966 { pal 0 { file "highres/fonts/greyfont/2966.png" } }
+texture 2967 { pal 0 { file "highres/fonts/greyfont/2967.png" } }
+texture 2968 { pal 0 { file "highres/fonts/greyfont/2968.png" } }
+texture 2969 { pal 0 { file "highres/fonts/greyfont/2969.png" } }
+
+texture 2970 { pal 0 { file "highres/fonts/greyfont/2970.png" } }
+texture 2971 { pal 0 { file "highres/fonts/greyfont/2971.png" } }
+texture 2972 { pal 0 { file "highres/fonts/greyfont/2972.png" } }
+texture 2973 { pal 0 { file "highres/fonts/greyfont/2973.png" } }
+texture 2974 { pal 0 { file "highres/fonts/greyfont/2974.png" } }
+texture 2975 { pal 0 { file "highres/fonts/greyfont/2975.png" } }
+texture 2976 { pal 0 { file "highres/fonts/greyfont/2976.png" } }
+texture 2977 { pal 0 { file "highres/fonts/greyfont/2977.png" } }
+texture 2978 { pal 0 { file "highres/fonts/greyfont/2978.png" } }
+texture 2979 { pal 0 { file "highres/fonts/greyfont/2979.png" } }
+
+texture 2980 { pal 0 { file "highres/fonts/greyfont/2980.png" } }
+texture 2981 { pal 0 { file "highres/fonts/greyfont/2981.png" } }
+texture 2982 { pal 0 { file "highres/fonts/greyfont/2982.png" } }
+texture 2983 { pal 0 { file "highres/fonts/greyfont/2983.png" } }
+texture 2984 { pal 0 { file "highres/fonts/greyfont/2984.png" } }
+texture 2985 { pal 0 { file "highres/fonts/greyfont/2985.png" } }
+texture 2986 { pal 0 { file "highres/fonts/greyfont/2986.png" } }
+texture 2987 { pal 0 { file "highres/fonts/greyfont/2987.png" } }
+texture 2988 { pal 0 { file "highres/fonts/greyfont/2988.png" } }
+texture 2989 { pal 0 { file "highres/fonts/greyfont/2989.png" } }
+
+texture 2990 { pal 0 { file "highres/fonts/greyfont/2990.png" } }
+texture 2991 { pal 0 { file "highres/fonts/greyfont/2991.png" } }
+texture 2992 { pal 0 { file "highres/fonts/greyfont/2992.png" } }
+texture 2993 { pal 0 { file "highres/fonts/greyfont/2993.png" } }
+texture 2994 { pal 0 { file "highres/fonts/greyfont/2994.png" } }
+texture 2995 { pal 0 { file "highres/fonts/greyfont/2995.png" } }
+texture 2996 { pal 0 { file "highres/fonts/greyfont/2996.png" } }
+texture 2997 { pal 0 { file "highres/fonts/greyfont/2997.png" } }
+texture 2998 { pal 0 { file "highres/fonts/greyfont/2998.png" } }
+texture 2999 { pal 0 { file "highres/fonts/greyfont/2999.png" } }
+
+texture 3000 { pal 0 { file "highres/fonts/greyfont/3000.png" } }
+texture 3001 { pal 0 { file "highres/fonts/greyfont/3001.png" } }
