@@ -7,3 +7,8 @@ useractor notenemy PIRATE1A PIRATEGALSTRENGTH
 state tipme
 state femcode 
 enda
+
+useractor notenemy PIRATE3A PIRATEGALSTRENGTH
+state tipme
+state femcode 
+enda

@@ -371,7 +371,7 @@ defineskillname 3 DAMN I'M GOOD
 // Level file names cannot excede 128 characters.
 // Level par cannot excede 5 characters (min:sec)
 // Level titles cannot excede 32 characters.
-/*
+
 definelevelname 0 0 E1L1.map 01:45 00:53 HOLLYWOOD HOLOCAUST
 definelevelname 0 1 E1L2.map 05:10 03:21 RED LIGHT DISTRICT
 definelevelname 0 2 E1L3.map 05:35 03:41 DEATH ROW
@@ -445,7 +445,7 @@ music 3 inhiding.mid FATCMDR.mid NAMES.MID subway.mid invader.mid gotham.mid
 
 music 4 missimp.mid prepd.mid bakedgds.mid cf.mid lemchill.mid
        pob.mid warehaus.mid layers.mid floghorn.mid depart.mid restrict.mid
-*/
+
 
 /*
 --------------------------------------------------------------------------------

@@ -66,9 +66,10 @@ gamevar HAS_PLASMARIFLE 0 1
 gamevar USING_PLASMARIFLE 0 1
 gamevar RIPPER_AMMO 0 1
 gamevar PLASMARIFLE_AMMO 0 1
-gamevar PLAYER_TEMP 0 1
 gamevar AMMO_TEMP1 0 2
 gamevar AMMO_TEMP2 0 2
+
+gamevar JUMPPAD_HIT 0 1
 
 define KILL_NONE 0
 define KILL_SHRINKER 1

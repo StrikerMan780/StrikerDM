@@ -246,6 +246,7 @@ state setripper
 	setvar WEAPON3_SPAWNTIME 1
 	setvar WEAPON3_FIRESOUND CHAINGUN_FIRE
 	setvar WEAPON3_INITIALSOUND 0
+	setvar WEAPON3_SHOTSPERBURST 0
 	setvar USING_PLASMARIFLE 0
 ends
 
@@ -259,6 +260,7 @@ state setplasmarifle
 	setvar WEAPON3_SPAWNTIME 0
 	setvar WEAPON3_FIRESOUND PLASMARIFLE_FIRE
 	setvar WEAPON3_INITIALSOUND PLASMARIFLE_CHARGE
+	setvar WEAPON3_SHOTSPERBURST 4
 	setvar USING_PLASMARIFLE 1
 ends
 
@@ -314,8 +316,8 @@ state player_tossweapon
 		case PISTOL_WEAPON: spawn FIRSTGUNSPRITE break
 		case SHOTGUN_WEAPON: spawn SHOTGUNSPRITE break
 		case CHAINGUN_WEAPON:
-			getplayervar[THISACTOR].USING_PLASMARIFLE PLAYER_TEMP
-			ifvare PLAYER_TEMP 1
+			getplayervar[THISACTOR].USING_PLASMARIFLE TEMP
+			ifvare TEMP 1
 				spawn PLASMASPRITE
 			else
 				spawn CHAINGUNSPRITE
@@ -326,8 +328,8 @@ state player_tossweapon
 		case DEVISTATOR_WEAPON: spawn DEVISTATORSPRITE break
 		case TRIPBOMB_WEAPON: spawn TRIPBOMBSPRITE break
 		case FREEZE_WEAPON:
-			getplayervar[THISACTOR].USING_FLAMETHROWER PLAYER_TEMP
-			ifvare PLAYER_TEMP 1
+			getplayervar[THISACTOR].USING_FLAMETHROWER TEMP
+			ifvare TEMP 1
 				spawn FLAMETHROWERSPRITE
 			else
 				spawn FREEZESPRITE
@@ -394,5 +396,20 @@ state coloredprop_break
 		}
 		
 		killit
+	}
+ends
+
+state jumppadcode // This state goes in the APLAYER actor.
+	ifvare JUMPPAD_HIT 1
+	{
+		setplayer[THISACTOR].falling_counter 0 // No falling damage on jump pads.
+		ifp ponground
+		{
+			setvar JUMPPAD_HIT 0 // No longer launched by jump pad when player hits the ground
+		}
+		ifp pjetpack
+		{
+			setvar JUMPPAD_HIT 0 // If they use the jetpack, prevent them from cheating the jump pads to stop fall damage.
+		}
 	}
 ends

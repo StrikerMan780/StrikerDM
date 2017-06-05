@@ -1,0 +1,6 @@
+// This CON is for a future weapon. It's not ready.
+//defineprojectile 2088 PROJ_TNUM 256
+//defineprojectile 2088 PROJ_TRAIL SMALLSMOKE
+//defineprojectile 2088 PROJ_TXREPEAT 8
+//defineprojectile 2088 PROJ_TYREPEAT 8
+//defineprojectile 2088 PROJ_OFFSET 32768

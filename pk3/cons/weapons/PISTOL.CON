@@ -1,3 +1,9 @@
+defineprojectile NEWPISTOLSHOT PROJ_WORKSLIKE 1
+defineprojectile NEWPISTOLSHOT PROJ_XREPEAT 3
+defineprojectile NEWPISTOLSHOT PROJ_YREPEAT 3
+defineprojectile NEWPISTOLSHOT PROJ_EXTRA PISTOL_WEAPON_STRENGTH
+gamevar WEAPON1_SHOOTS NEWPISTOLSHOT 1
+
 state draw_pistol // PISTOL_WEAPON:
     // hud_temp4 = FIREDELAY
     // hud_temp3 = RELOAD

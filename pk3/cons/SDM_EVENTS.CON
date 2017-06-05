@@ -151,6 +151,22 @@ onevent EVENT_EGS
 		subvarvar TEMP TEMP2
 		setactor[THISACTOR].zvel TEMP
 	}
+	else ifactor PLASMABALL
+	{
+		// Calculate horizontal spread
+		getactor[THISACTOR].ang TEMP
+		addvar TEMP 16
+		randvar TEMP2 32
+		subvarvar TEMP TEMP2
+		setactor[THISACTOR].ang TEMP
+		
+		// Calculate vertical spread
+		getactor[THISACTOR].zvel TEMP
+		addvar TEMP 256
+		randvar TEMP2 512
+		subvarvar TEMP TEMP2
+		setactor[THISACTOR].zvel TEMP
+	}
 	else ifactor DEVASTATORMISSILE
 	{
 		// Calculate horizontal spread
@@ -316,6 +332,33 @@ onevent EVENT_SPAWN
 		break
 	}
 	
+	// Mark certain tiles for Adult Mode
+	getactor[THISACTOR].picnum TEMP
+	switch TEMP
+		case EXOTICA:
+		case STRIPPERFLASH:
+		case HOOKERFLASH:
+		case FLESHLIGHT:
+		case DILDO:
+		case PIRATE1A:
+		case PIRATE3A:
+		case GEECKU:
+		case SHARONM:
+		case STRIKERXHELEN:
+		case STRIKER:
+		case SHARONM2:
+		case MIKHAILA:
+		case CHAMPAGNE:
+		case MIKHAILA2:
+		case DAWNSEXANIM:
+		case SALLYMASTURBATE:
+		case PUSSYGRIND:
+		case HENTAIANIM:
+			setactor[THISACTOR].mdflags 16
+			setvar ISADULT 1
+			break
+	endswitch
+	
 	// Memorize attributes for respawning
 	getactor[THISACTOR].picnum PICNUM_MEMORY
 	getactor[THISACTOR].hitag HITAG_MEMORY
@@ -331,30 +374,6 @@ onevent EVENT_SPAWN
 	getactor[THISACTOR].y SPAWN_ORIGY
 	getactor[THISACTOR].z SPAWN_ORIGZ
 	getactor[THISACTOR].ang SPAWN_ORIGANG
-	
-	// Mark certain tiles for Adult Mode
-	getactor[THISACTOR].picnum TEMP
-	switch TEMP
-		case EXOTICA:
-		case STRIPPERFLASH:
-		case FLESHLIGHT:
-		case DILDO:
-		case PIRATE1A:
-		case GEECKU:
-		case SHARONM:
-		case STRIKERXHELEN:
-		case STRIKER:
-		case SHARONM2:
-		case MIKHAILA:
-		case CHAMPAGNE:
-		case DAWNSEXANIM:
-		case SALLYMASTURBATE:
-		case PUSSYGRIND:
-		case HENTAIANIM:
-			setactor[THISACTOR].mdflags 16
-			setvar ISADULT 1
-			break
-	endswitch
 	
 	ifvare COOP GM_ROIDMATCH // Roidmatch
 	{
@@ -519,6 +538,33 @@ onevent EVENT_GETLOADTILE
 	ifvare COOP GM_ROIDMATCH
 	{
 		setvar RETURN ROIDLOAD
+	}
+endevent
+
+onevent EVENT_GETSHOTRANGE
+	getuserdef[].playerai TEMP
+	ifvare TEMP 1
+	{
+		getactor[THISACTOR].yvel TEMP
+		ifvarg TEMP 0
+		{
+			break
+		}
+	}
+	
+	getplayer[THISACTOR].curr_weapon TEMP
+	ifvare TEMP PISTOL_WEAPON
+	{
+		ifrnd 72
+		{
+			setvar ANGRANGE 2
+			setvar ZRANGE 2
+		}
+		else
+		{
+			setvar ANGRANGE 16
+			setvar ZRANGE 128
+		}
 	}
 endevent
 

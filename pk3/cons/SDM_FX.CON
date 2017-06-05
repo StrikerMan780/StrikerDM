@@ -49,6 +49,49 @@ actor GIBBLOOD 0 GIBBLOODFRAMES
   ifactioncount 4 killit
 enda
 
+actor JUMPPAD 0
+	// Change this to quick access variables when it comes time.
+	getplayer[THISACTOR].cursectnum TEMP
+	getactor[THISACTOR].sectnum TEMP2
+	ifvarvare TEMP TEMP2 // Check if sector matches
+	{
+		ifp ponground
+		{
+			getplayervar[THISACTOR].JUMPPAD_HIT TEMP // Did they already hit the jump pad?
+			ifvarn TEMP 1 // If not, let's do this.
+			{
+				sound JUMPPADSOUND
+				setplayer[THISACTOR].on_ground 0 // No longer on the ground.
+				
+				getplayer[THISACTOR].posz TEMP // Kick them off the ground a little, to stop them from being "magnetized" to the ground.
+				subvar TEMP 16384
+				setplayer[THISACTOR].posz TEMP
+				
+				getactor[THISACTOR].hitag TEMP
+				ifvare TEMP 0
+				{
+					setvar TEMP2 -4096 // If not hitag is set, -4096 is the default velocity.
+				}
+				else ifvarg TEMP 0
+				{
+					setvar TEMP2 0
+					subvarvar TEMP2 TEMP
+				}
+				
+				setplayer[THISACTOR].poszv TEMP2 // Launch
+				
+				setplayervar[THISACTOR].JUMPPAD_HIT 1 // They're in the air.
+			}
+		}
+	}
+	
+	ifaction 0
+	{
+		cstat 32768
+		action ANULLACTION
+	}
+enda
+
 define SCRAP_WORKSLIKE 4226
 defineprojectile COLORSCRAP1 PROJ_WORKSLIKE SCRAP_WORKSLIKE
 defineprojectile COLORSCRAP1 PROJ_XREPEAT 32
