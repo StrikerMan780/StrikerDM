@@ -46,3 +46,5 @@ Network Trash Folder
 Temporary Items
 .apdisk
 builds
+/mapster32/*.cache
+/mapster32/mapster32.log

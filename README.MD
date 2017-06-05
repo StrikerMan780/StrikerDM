@@ -1,18 +1,20 @@
 StrikerDM is a mod for EDuke32-OldMP that adds a bunch of new features to the Dukematching experience.
 
-* New HD Weapon Sounds.
-* New Weapons: The Flamethrower, and Plasma Rifle.
-* New Items: Health & Armor bonuses
-* New Game Modes: RoidMatch, and DukeMatch with weapons stay
-* New Maps from Striker
-* Fixed up maps from Duke Tournament (See below)
-* Fixed up maps from Duke XTreme
+* New HD weapon sounds.
+* New weapons: the flamethrower, and plasma rifle.
+* New items: health & armor bonuses,
+* New game modes: RoidMatch, and DukeMatch with weapons stay.
+* New maps from Striker.
+* New maps from the Duke community.
+* Fixed up maps from Duke Tournament (See below).
+* Fixed up maps from Duke XTreme.
 
 * Respawning props and explosives in DukeMatch.
-* Duke Talk from Duke Nukem Forever and DN: World Tour.
-* Duke Talk works online, emanating from whichever player is speaking.
-* Duke Talk for Freezethrower and Shrinker kills.
-* 
+* Duke talk from Duke Nukem Forever and DN: World Tour.
+* Duke talk works online, emanating from whichever player is speaking.
+* Duke talk for freezethrower and shrinker kills.
+* Shootable tripmines.
+* Jump Pads
 
 Map changes:
 - Duke Tournament:
