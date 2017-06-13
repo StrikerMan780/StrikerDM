@@ -48,3 +48,7 @@ Temporary Items
 builds
 /mapster32/*.cache
 /mapster32/mapster32.log
+stuff
+/mapster32/textures
+/mapster32/autosave.map
+/mapster32/backup.map

@@ -1,0 +1,117 @@
+/*
+    To begin, type in the console:
+
+    include dump_used_assets
+    enableevent all
+
+    Open your map.
+    In 2D mode, press CTRL+V to search for the tiles and sounds used in the current map.
+    You can set the gamevar "verbose" to 1 if you want verbose .csv formatted information that would normally clog up the output.
+    Tip: With pk_quickmapcycling enabled, Ctrl-(LShift-)X loads the next (previous) map in a directory.
+
+    The results from every map will be accumulated into master lists.
+    When you have searched for tiles in all desired maps, press CTRL+D to print the finished lists.
+
+    The results will be printed in mapster32.log.
+*/
+
+include names.h
+
+gamearray usedTiles MAXTILES
+gamearray usedSounds MAXSOUNDS
+
+definequote 0
+definequote 1 %ld
+
+
+definequote 11 sprite,%ld,
+definequote 12 floor,%ld,
+definequote 13 ceiling,%ld,
+definequote 14 wall,%ld,
+definequote 15 overwall,%ld,
+
+definequote 21 MUSICANDSFX triggered,%ld,
+definequote 22 MUSICANDSFX ambient,%ld,
+definequote 23 sector one-time,%ld,
+definequote 24 MIKE,%ld,
+definequote 25 switch,%ld,
+definequote 26 MIRROR,%ld,
+definequote 27 sector 65534,%ld,
+definequote 28 doortile,%ld,
+
+definequote 101 Searching for tiles used in current map...
+definequote 102 Tile search finished.
+definequote 103 Dumping tiles, cumulatively...
+definequote 104 Tile dump finished.
+definequote 105 Searching for sounds used in current map...
+definequote 106 Sound search finished.
+definequote 107 Dumping sounds, cumulatively...
+definequote 108 Sound dump finished.
+definequote 109 Search finished.
+definequote 110 Dump finished.
+
+gamevar variable 0 0
+
+gamevar verbose 0 0
+
+gamevar index 0 0
+
+gamevar flag 0 0
+gamevar input 0 0
+
+
+defstate tile_search
+    quote 101
+
+    for variable allsprites
+    {
+        set index .picnum
+        ifge index 0 ifle index MAXTILES set usedTiles[index] 1
+        ife verbose 1
+        {
+            qsprintf 0 11 .picnum
+            quote 0
+        }
+    }
+    for variable allsectors
+    {
+        set index sector[variable].floorpicnum
+        ifge index 0 ifle index MAXTILES set usedTiles[index] 2
+        set index sector[variable].ceilingpicnum
+        ifge index 0 ifle index MAXTILES set usedTiles[index] 3
+        ife verbose 1
+        {
+            qsprintf 0 12 sector[variable].floorpicnum
+            quote 0
+            qsprintf 0 13 sector[variable].ceilingpicnum
+            quote 0
+        }
+    }
+    for variable allwalls
+    {
+        set index wall[variable].picnum
+        ifge index 0 ifle index MAXTILES set usedTiles[index] 4
+        set index wall[variable].overpicnum
+        ifge index 0 ifle index MAXTILES set usedTiles[index] 5
+        ife verbose 1
+        {
+            qsprintf 0 14 wall[variable].picnum
+            quote 0
+            qsprintf 0 15 wall[variable].overpicnum
+            quote 0
+        }
+    }
+
+    quote 102
+ends
+
+onevent EVENT_KEYS2D
+    ifeitherctrl
+    {
+        ifhitkey KEY_V // find
+        {
+            state tile_search
+            quote 109
+        }
+    }
+endevent
