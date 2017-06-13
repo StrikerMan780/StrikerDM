@@ -9,6 +9,18 @@ define NAMEBAR 2459
 
 define ROIDLOAD 3282
 
+define RAILGUNSPRITE 18
+define RAILGUNAMMO 43
+define RAILGUN1 2513
+define RAILGUN2 2514
+define RAILGUN3 2515
+define RAILGUN4 2516
+define RAILGUN5 2517
+define RAILGUN6 2518
+define RAILGUN7 2519
+define RAILGUNSHOT 2520
+define RAILGUNTRAIL 5850
+
 define PLASMASPRITE 19
 define PLASMAAMMO 34
 define PLASMAAMMO_ICON 35
@@ -139,4 +151,16 @@ define WORKSTATION 527
 define DOOMDOOR 528
 define PDDOOR1 529
 define PDDOOR2 530
-define JUMPPADSOUND 531
+define GEDOOR1O 531
+define GEDOOR1C 532
+define GEDOOR2 533
+define BEACHAMB 534
+define DISCOAMB 535
+define ARCADEAMB 536
+define HQMAPFINISH 537
+// Community sound submissions should continue from the index above this line
+
+define JUMPPADSOUND 600
+define RAILGUN_FIRE1 601
+define RAILGUN_FIRE2 602
+define RAILGUN_FIRE3 603

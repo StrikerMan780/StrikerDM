@@ -5,13 +5,19 @@ include cons/USER.CON
 include cons/SDM_VARS.CON
 include cons/SDM_DEFS.CON
 include cons/SDM_USER.CON
+
+include cons/weapons/WEAPON_VARS.CON
+include cons/weapons/WEAPON_STATES.CON
+
 include cons/SDM_STATES.CON
 include cons/SDM_EVENTS.CON
 
 include cons/SDM_GAME.CON
 
+include cons/weapons/WEAPON_LIST.CON
+include cons/weapons/WEAPON_EVENTS.CON
+
 include cons/SDM_PROPS.CON
 include cons/SDM_BABES.CON
 include cons/SDM_ITEMS.CON
 include cons/SDM_FX.CON
-include cons/WEAPONS.CON

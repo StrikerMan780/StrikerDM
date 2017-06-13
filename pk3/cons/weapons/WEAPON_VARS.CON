@@ -1,0 +1,80 @@
+// Note: This file has been directly converted from the EDuke32
+// C source code to CON code, without any fixes or improvements.
+// Further changes to player.c may or may not be reflected here.
+
+/*
+gamevar currentweapon 0 0 //  (system) (pointer)
+gamevar gs 0 0 //  (system) (pointer)
+gamevar looking_arc 0 0 //  (system) (pointer)
+gamevar gun_pos 0 0 //  (system) (pointer)
+gamevar weapon_xoffset 0 0 //  (system) (pointer)
+gamevar weaponcount 0 0 //  (system) (pointer)
+gamevar looking_angSR1 0 0 //  (system) (pointer)
+
+gamevar xdim 0 0 //  (system) (pointer) (read only)
+gamevar ydim 0 0 //  (system) (pointer) (read only)
+gamevar windowx1 0 0 //  (system) (pointer) (read only)
+gamevar windowx2 0 0 //  (system) (pointer) (read only)
+gamevar windowy1 0 0 //  (system) (pointer) (read only)
+gamevar windowy2 0 0 //  (system) (pointer) (read only)
+*/
+
+gamevar OLDMP_TEMP 0 1
+
+gamevar hud_tilenum 0 1
+gamevar hud_x 0 1
+gamevar hud_y 0 1
+gamevar hud_scale 65536 1
+gamevar hud_angle 0 1
+gamevar hud_shade 0 1
+gamevar hud_pal 0 1
+gamevar hud_orientation 0 1
+
+gamevar hud_fistsign 0 1
+gamevar hud_totaltime 0 1
+
+gamevar hud_shadef 0 1
+gamevar hud_shadef_crystal 0 1
+gamevar hud_palf 0 1
+
+// It is unfortunate that we need so many temporary gamevars.
+gamevar hud_temp 0 1
+gamevar hud_temp2 0 1
+gamevar hud_temp3 0 1
+gamevar hud_temp4 0 1
+
+/*
+// The following temporary gamevars are named differently because they are used
+// in G_Draw[...] which would overwrite their values if used elsewhere.
+*/
+gamevar hud_G_Draw_temp 0 1
+gamevar hud_G_Draw_temp2 0 1
+
+gamevar weapon_pos 0 1
+gamevar weaponscale 0 1
+gamevar playerid 0 1
+
+// ******************
+// Custom Weapon Vars
+// ******************
+gamevar HAS_FREEZETHROWER 0 1
+gamevar HAS_FLAMETHROWER 0 1
+
+gamevar HAS_RIPPER 0 1
+gamevar HAS_PLASMARIFLE 0 1
+
+gamevar HAS_RPG 0 1
+gamevar HAS_RAILGUN 0 1
+
+gamevar USING_FLAMETHROWER 0 1
+gamevar USING_PLASMARIFLE 0 1
+gamevar USING_RAILGUN 0 1
+
+gamevar FREEZETHROWER_AMMO 0 1
+gamevar FLAMETHROWER_AMMO 0 1
+
+gamevar RIPPER_AMMO 0 1
+gamevar PLASMARIFLE_AMMO 0 1
+
+gamevar RPG_AMMO 0 1
+gamevar RAILGUN_AMMO 0 1

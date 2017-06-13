@@ -33,3 +33,89 @@ state draw_rpg // RPG_WEAPON:
     
     state G_DrawWeaponTile
 ends
+
+actor RPGSPRITE
+    fall
+	state despawn_item_from_can
+    ifmove RESPAWN_ACTOR_FLAG
+	{
+        state respawnit
+	}
+    else ifp pshrunk
+	{
+	}
+    else ifp palive ifpdistl RETRIEVEDISTANCE ifcount 6 ifcanseetarget
+    {
+        ifgotweaponce 0
+            break
+		
+		getplayervar[THISACTOR].RPG_AMMO AMMO_TEMP1
+		getplayervar[THISACTOR].HAS_RPG AMMO_TEMP2
+		ifvarl AMMO_TEMP1 MAXRPGAMMO // Ammo under max?
+		{
+			addvarvar AMMO_TEMP1 RPGAMMOBOX
+			ifvarg AMMO_TEMP1 MAXRPGAMMO // If over, cap it.
+			{
+				setvar AMMO_TEMP1 MAXRPGAMMO
+			}
+			
+			setplayervar[THISACTOR].RPG_AMMO AMMO_TEMP1
+		}
+		else
+		{
+			ifvare AMMO_TEMP2 1 // Has weapon?
+			{
+				break // Has weapon, and full ammo. Stop here.
+			}
+		}
+		
+		setplayervar[THISACTOR].HAS_RPG 1 // Give it
+		
+        quote 56
+        ifspawnedby RPGSPRITE
+		{
+            state getweaponcode
+			addweapon RPG_WEAPON 0
+		}
+        else
+		{
+            state quikweaponget_custom
+			addweapon RPG_WEAPON 0
+			killit
+		}
+    }
+enda
+
+actor RPGAMMO
+	fall
+	state despawn_item_from_can
+    ifmove RESPAWN_ACTOR_FLAG
+	{
+        state respawnit
+    }
+    else ifp pshrunk
+	{
+    }
+    else ifp palive ifcount 6 ifpdistl RETRIEVEDISTANCE ifcanseetarget 
+    {
+		getplayervar[THISACTOR].RPG_AMMO AMMO_TEMP1
+		ifvarl AMMO_TEMP1 MAXRPGAMMO
+		{
+			addvarvar AMMO_TEMP1 RPGAMMOBOX
+			ifvarg AMMO_TEMP1 MAXRPGAMMO
+			{
+				setvar AMMO_TEMP1 MAXRPGAMMO
+			}
+			
+			setplayervar[THISACTOR].RPG_AMMO AMMO_TEMP1
+			
+			quote 64
+			ifspawnedby RPGAMMO {
+				state getcode
+			}
+			else {
+				state quikget
+			}
+		}
+    }
+enda

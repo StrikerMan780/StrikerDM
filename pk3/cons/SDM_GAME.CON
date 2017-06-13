@@ -1881,28 +1881,6 @@ actor FREEZEAMMO
     }
 enda
 
-actor SHOTGUNAMMO
-  fall
-  state despawn_item_from_can
-  ifmove RESPAWN_ACTOR_FLAG
-    state respawnit
-  else
-    ifp pshrunk nullop
-    else
-      ifp palive
-        ifcount 6
-          ifpdistl RETRIEVEDISTANCE
-            ifcanseetarget
-      {
-        addammo SHOTGUN_WEAPON SHOTGUNAMMOAMOUNT
-        quote 69
-        ifspawnedby SHOTGUNAMMO
-          state getcode
-        else
-          state quikget
-      }
-enda
-
 actor AMMOLOTS
   fall
   state despawn_item_from_can
@@ -1969,40 +1947,6 @@ actor GROWAMMO
       }
 enda
 
-actor BATTERYAMMO
-	fall
-	state despawn_item_from_can
-    ifmove RESPAWN_ACTOR_FLAG
-	{
-        state respawnit
-    }
-    else ifp pshrunk
-	{
-    }
-    else ifp palive ifcount 6 ifpdistl RETRIEVEDISTANCE ifcanseetarget 
-    {
-		getplayervar[THISACTOR].RIPPER_AMMO AMMO_TEMP1
-		ifvarl AMMO_TEMP1 MAXCHAINGUNAMMO
-		{
-			addvarvar AMMO_TEMP1 CHAINGUNAMMOAMOUNT
-			ifvarg AMMO_TEMP1 MAXCHAINGUNAMMO
-			{
-				setvar AMMO_TEMP1 MAXCHAINGUNAMMO
-			}
-			
-			setplayervar[THISACTOR].RIPPER_AMMO AMMO_TEMP1
-			
-			quote 63
-			ifspawnedby BATTERYAMMO {
-				state getcode
-			}
-			else {
-				state quikget
-			}
-		}
-    }
-enda
-
 actor DEVISTATORAMMO
   fall
   state despawn_item_from_can
@@ -2019,27 +1963,6 @@ actor DEVISTATORAMMO
         addammo DEVISTATOR_WEAPON DEVISTATORAMMOAMOUNT
         quote 14
         ifspawnedby DEVISTATORAMMO
-          state getcode
-        else
-          state quikget
-      }
-enda
-
-actor RPGAMMO
-  fall
-  state despawn_item_from_can
-  ifmove RESPAWN_ACTOR_FLAG
-    state respawnit
-  else
-    ifp pshrunk nullop
-    else ifp palive
-      ifpdistl RETRIEVEDISTANCE
-        ifcount 6
-          ifcanseetarget
-      {
-        addammo RPG_WEAPON RPGAMMOBOX
-        quote 64
-        ifspawnedby RPGAMMO
           state getcode
         else
           state quikget
@@ -2071,73 +1994,6 @@ actor HBOMBAMMO
           state quikweaponget
       }
 enda
-
-actor RPGSPRITE
-  fall
-  state despawn_item_from_can
-  ifmove RESPAWN_ACTOR_FLAG
-    state respawnit
-  else
-    ifp pshrunk nullop
-    else
-      ifp palive
-        ifpdistl RETRIEVEDISTANCE
-          ifcount 6
-            ifcanseetarget
-      {
-        ifgotweaponce 0
-          break
-
-        addweapon RPG_WEAPON RPGAMMOBOX
-        quote 56
-        ifspawnedby RPGSPRITE
-          state getweaponcode
-        else
-          state quikweaponget
-      }
-enda
-
-actor SHOTGUNSPRITE
-  fall
-  state despawn_item_from_can
-  ifmove RESPAWN_ACTOR_FLAG
-    state respawnit
-  else
-    ifp pshrunk nullop
-    else
-      ifp palive
-        ifpdistl RETRIEVEDISTANCE
-          ifcount 6
-            ifcanseetarget
-      {
-        ifspawnedby PIGCOP
-        {
-          addweapon SHOTGUN_WEAPON 0
-          ifrnd 64
-            addammo SHOTGUN_WEAPON 4
-          else ifrnd 64
-            addammo SHOTGUN_WEAPON 3
-          else ifrnd 64
-            addammo SHOTGUN_WEAPON 2
-          else
-            addammo SHOTGUN_WEAPON 1
-        }
-        else
-        {
-          ifgotweaponce 0
-            break
-          addweapon SHOTGUN_WEAPON SHOTGUNAMMOAMOUNT
-          quote 57
-        }
-
-        ifspawnedby SHOTGUNSPRITE
-          state getweaponcode
-        else
-          state quikweaponget
-      }
-enda
-
-
 
 actor SIXPAK
   fall
@@ -2283,60 +2139,6 @@ actor TRIPBOMBSPRITE
           state quikweaponget
       }
 enda
-
-actor CHAINGUNSPRITE
-    fall
-	state despawn_item_from_can
-    ifmove RESPAWN_ACTOR_FLAG
-	{
-        state respawnit
-	}
-    else ifp pshrunk
-	{
-	}
-    else ifp palive ifpdistl RETRIEVEDISTANCE ifcount 6 ifcanseetarget
-    {
-        ifgotweaponce 0
-            break
-		
-		getplayervar[THISACTOR].RIPPER_AMMO AMMO_TEMP1
-		getplayervar[THISACTOR].HAS_RIPPER AMMO_TEMP2
-		ifvarl AMMO_TEMP1 MAXCHAINGUNAMMO // Ammo under max?
-		{
-			addvarvar AMMO_TEMP1 CHAINGUNAMMOAMOUNT
-			ifvarg AMMO_TEMP1 MAXCHAINGUNAMMO // If over, cap it.
-			{
-				setvar AMMO_TEMP1 MAXCHAINGUNAMMO
-			}
-			
-			setplayervar[THISACTOR].RIPPER_AMMO AMMO_TEMP1
-		}
-		else
-		{
-			ifvare AMMO_TEMP2 1 // Has freezethrower?
-			{
-				break // Has weapon, and full ammo. Stop here.
-			}
-		}
-		
-		setplayervar[THISACTOR].HAS_RIPPER 1 // Give it
-		
-        quote 54
-        ifspawnedby CHAINGUNSPRITE
-		{
-            state getweaponcode
-			addweapon CHAINGUN_WEAPON 0
-		}
-        else
-		{
-            state quikweaponget_custom
-			addweapon CHAINGUN_WEAPON 0
-			killit
-		}
-    }
-enda
-
-
 
 actor SHRINKERSPRITE
   fall
@@ -3228,6 +3030,20 @@ actor SHOTSPARK1 PISTOL_WEAPON_STRENGTH WEAP2FRAMES
         ifonwater
           spawn WATERSPLASH2
   }
+  
+	ifcount 1 { }
+	else ifcount 0
+	{
+		getactor[THISACTOR].yvel TEMP
+		ifvare TEMP RAILGUNSHOT
+		{
+			getactor[THISACTOR].htg_t 8 TEMP
+			ifvarn TEMP -1
+			{
+				setactor[TEMP].htpicnum RAILGUNSHOT
+			}
+		}
+	}
 enda
 
 state standard_pjibs
@@ -3705,6 +3521,7 @@ state jumppadcode
 		{
 			sound TOASTY
 		}
+		break
 	}
 
     ifwasweapon RPG
@@ -3732,6 +3549,13 @@ state jumppadcode
 	{
 		palfrom 32 8 8 48
 			break
+	}
+	ifwasweapon RAILGUNSHOT
+	{
+      ifrnd 32
+        spawn BLOOD
+      palfrom 48 52
+      break
 	}
     ifwasweapon FIREEXT
     {

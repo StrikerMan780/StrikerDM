@@ -9,10 +9,14 @@ define FLAMETHROWER_WEAPON_STRENGTH 20
 
 define MAXPLASMARIFLEAMMO 25
 define PLASMARIFLEAMMOAMOUNT 5
-define PLASMARIFLE_WEAPON_STRENGTH 20
+define PLASMARIFLE_WEAPON_STRENGTH 18
 
 define DEVASTATOR_WEAPON_STRENGTH 35
 define DEVASTATORBLASTRADIUS 890
+
+define MAXRAILGUNAMMO 20
+define RAILGUNAMMOAMOUNT 4
+define RAILGUN_WEAPON_STRENGTH 80
 
 definequote 125		HEALTH VIAL: +2
 definequote 126		AMMO FOR FLAMETHROWER
@@ -20,6 +24,8 @@ definequote 127		FLAMETHROWER!
 definequote 128		ARMOR HELMET: +2
 definequote 129		PLASMA RIFLE!
 definequote 130		AMMO FOR PLASMA RIFLE
+definequote 131		RAILGUN!
+definequote 132		AMMO FOR RAILGUN
 definequote 500		PLACEHOLDER QUOTE
 
 define GM_DUKEMATCH 0
@@ -54,7 +60,7 @@ definelevelname 5 4 wgdm5.map 66:60 66:60 WGDM5
 definelevelname 5 5 wgdm6.map 66:60 66:60 WGDM6
 definelevelname 5 6 wgdm7.map 66:60 66:60 WGDM7
 definelevelname 5 7 wgdm8v4.map 66:60 66:60 WGDM8
-music 6 alienz.mid music/kickbuta.mid snake1.mid whomp2.mid 
+music 6 alienz.mid music/kickbuta.mid snake1.mid music/whomp2.mid 
         lemchill.mid watrwld1.mid warehaus.mid inhiding.mid
 	   
 definevolumename 6 Duke Tournament
@@ -98,16 +104,26 @@ definelevelname 8 7 LUDOGAME2-SDM.MAP 66:60 66:60 Ludo Game 2: Noldor Ranzou
 definelevelname 8 8 NRVHOUSE-SDM.MAP 66:60 66:60 NRVHouse: Multiple Authors
 definelevelname 8 9 UMBRTKA-SDM.MAP 66:60 66:60 Umbrtka: Noldor Ranzou
 definelevelname 8 10 PD-AREA52-SDM.MAP 66:60 66:60 PD Area 52: Noldor Ranzou
-definelevelname 8 11 USERMAP-SDM.MAP 66:60 66:60 Usermap: Fernando Marquez
-definelevelname 8 12 VSPACEPORT-SDM.MAP 66:60 66:60 Varuna Spaceport: Noldor Ranzou
-definelevelname 8 13 LIGHTSOUT-SDM.MAP 66:60 66:60 Lights Out!: Noldor Ranzou
-definelevelname 8 14 GHOSTHOUSE-SDM.MAP 66:60 66:60 Ghost House: Multiple Authors
-definelevelname 8 15 LICEO-SDM.MAP 66:60 66:60 Liceo: Noldor Ranzou
-definelevelname 8 16 LOOPYSHELTER-SDM.MAP 66:60 66:60 Loopy Shelter: Multiple Authors
-music 9 music/VIRULENT.OGG music/DOKTOR.OGG music/EGWAA.OGG music/MULTPLAY.OGG 
-        music/ZEPPELIN.OGG music/INTERSTL.OGG music/MIAMIDIS.OGG music/COCONUT.OGG
-	    music/UNKNOWNC.OGG music/EATDUST.OGG music/DARKCMBT.OGG music/NIGHT.MID
-        music/SAWDUST.OGG music/PHASEDAY.OGG music/BLOOD.OGG music/BINFINIE.OGG music/DEFACTO.OGG
+definelevelname 8 11 PD-VILLA-SDM.MAP 66:60 66:60 PD Villa: Vandclash
+definelevelname 8 12 PD-FELICITY-SDM.MAP 66:60 66:60 PD Felicity: Vandclash
+definelevelname 8 13 USERMAP-SDM.MAP 66:60 66:60 Usermap: Fernando Marquez
+definelevelname 8 14 VSPACEPORT-SDM.MAP 66:60 66:60 Varuna Spaceport: Noldor Ranzou
+definelevelname 8 15 LIGHTSOUT-SDM.MAP 66:60 66:60 Lights Out!: Noldor Ranzou
+definelevelname 8 16 GHOSTHOUSE-SDM.MAP 66:60 66:60 Ghost House: Multiple Authors
+definelevelname 8 17 LICEO-SDM.MAP 66:60 66:60 Liceo: Noldor Ranzou
+definelevelname 8 18 LOOPYSHELTER-SDM.MAP 66:60 66:60 Loopy Shelter: Multiple Authors
+definelevelname 8 19 RIKTI-SDM.MAP 66:60 66:60 Rikti: Vandclash
+definelevelname 8 20 MALUK-SDM.MAP 66:60 66:60 Maluk: Vandclash
+definelevelname 8 21 GELATOBEACH-SDM.MAP 66:60 66:60 Gelato Beach: Vandclash
+definelevelname 8 22 DESTILLATEUR-DM-SDM.MAP 66:60 66:60 Destillateur: Vandclash
+definelevelname 8 23 V-METRO-SDM.MAP 66:60 66:60 V-Metro: Vandclash
+definelevelname 8 24 RIPTIDE-STRONGHOLD-SDM.MAP 66:60 66:60 Riptide Stronghold: Vandclash
+definelevelname 8 25 NRV-LIVINGRAT-SDM.MAP 66:60 66:60 Living Rat: Vandclash
+definelevelname 8 26 GRANJANUKEM-SDM.MAP 66:60 66:60 Granja Nukem: Vandclash
+music 9 music/VIRULENT.OGG music/DOKTOR.OGG music/EGWAA.OGG music/MULTPLAY.OGG music/ZEPPELIN.OGG music/INTERSTL.OGG
+        music/MIAMIDIS.OGG music/COCONUT.OGG music/UNKNOWNC.OGG music/EATDUST.OGG music/DARKCMBT.OGG music/VILLA.OGG
+	    music/FACILITY.OGG music/NIGHT.MID music/SAWDUST.OGG music/PHASEDAY.OGG music/BLOOD.OGG music/BINFINIE.OGG
+        music/DEFACTO.OGG music/ATTKSHIP.OGG WAREHAUS.MID music/GELATO.OGG music/BLIZZARD.OGG music/MLTPLAY2.OGG music/AZTEC.OGG music/SHDSIREN.OGG music/TRASHCAN.OGG
 	   
 // Sounds
 definesound INTO_MENU sounds/menu/menu_enter.wav 0 0 0 0 0
@@ -122,6 +138,9 @@ definesound PLASMARIFLE_FIRE sounds/PLASFIRE.OGG 0 64 4 0 0
 definesound PLASMARIFLE_CHARGE sounds/PLASCHRG.OGG 0 0 4 0 0
 definesound PLASMARIFLE_HIT sounds/PLASHIT.WAV 0 64 4 0 8192
 definesound FREEZETHROWER_FIRE sounds/FREEZETH.WAV 0 64 4 0 0
+definesound RAILGUN_FIRE1 sounds/dsrgfir1.wav 0 0 4 0 0
+definesound RAILGUN_FIRE2 sounds/dsrgfir2.wav 0 0 4 0 0
+definesound RAILGUN_FIRE3 sounds/dsrgfir3.wav 0 0 4 0 0
 
 definesound CASING1 sounds/casings/dscasin1.ogg 0 0 0 0 8192
 definesound CASING2 sounds/casings/dscasin2.ogg 0 0 0 0 8192
@@ -130,8 +149,8 @@ definesound CASING4 sounds/casings/dscasin4.ogg 0 0 0 0 8192
 definesound CASING5 sounds/casings/dscasin5.ogg 0 0 0 0 8192
 definesound CASING6 sounds/casings/dscasin6.ogg 0 0 0 0 8192
 
-definesound CHANTING sounds/ambience/chanting.voc 0 0 0 3 0
-definesound DESERTWND sounds/ambience/desertwnd.voc 0 0 0 3 0
+definesound CHANTING sounds/ambience/chanting.ogg 0 0 0 3 0
+definesound DESERTWND sounds/ambience/desertwnd.ogg 0 0 0 3 0
 definesound TORCHMOVE sounds/ambience/torchmove.voc 0 0 0 0 8192
 definesound CIRCUSMUSIC sounds/ambience/circusmusic.voc 0 0 0 3 0
 definesound SHTRANGE sounds/ambience/shtrange.voc 0 0 0 3 0
@@ -146,6 +165,14 @@ definesound WORKSTATION sounds/ambience/workstation.voc 0 0 0 3 0
 definesound DOOMDOOR sounds/ambience/doomdoor.ogg 0 0 0 0 8192
 definesound PDDOOR1 sounds/ambience/pddoor1.voc 0 0 0 0 8192
 definesound PDDOOR2 sounds/ambience/pddoor2.voc 0 0 0 0 8192
+definesound GEDOOR1O sounds/ambience/gedoor1o.wav 0 0 0 0 8192
+definesound GEDOOR1C sounds/ambience/gedoor1c.wav 0 0 0 0 8192
+definesound GEDOOR2 sounds/ambience/gedoor2.wav 0 0 0 0 8192
+definesound BEACHAMB sounds/ambience/beachamb.ogg 0 0 0 3 0
+definesound DISCOAMB sounds/ambience/discoamb.ogg 0 0 0 3 0
+definesound ARCADEAMB sounds/ambience/arcadeamb.ogg 0 0 0 3 0
+definesound HQMAPFINISH sounds/ambience/hqmapfinish.ogg 0 0 0 3 0
+
 definesound JUMPPADSOUND sounds/ambience/jumppad.wav 0 0 0 0 0
 
 // Duke Talk

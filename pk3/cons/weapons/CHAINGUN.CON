@@ -161,3 +161,89 @@ state draw_chaingun // CHAINGUN_WEAPON:
             break
     endswitch
 ends
+
+actor CHAINGUNSPRITE
+    fall
+	state despawn_item_from_can
+    ifmove RESPAWN_ACTOR_FLAG
+	{
+        state respawnit
+	}
+    else ifp pshrunk
+	{
+	}
+    else ifp palive ifpdistl RETRIEVEDISTANCE ifcount 6 ifcanseetarget
+    {
+        ifgotweaponce 0
+            break
+		
+		getplayervar[THISACTOR].RIPPER_AMMO AMMO_TEMP1
+		getplayervar[THISACTOR].HAS_RIPPER AMMO_TEMP2
+		ifvarl AMMO_TEMP1 MAXCHAINGUNAMMO // Ammo under max?
+		{
+			addvarvar AMMO_TEMP1 CHAINGUNAMMOAMOUNT
+			ifvarg AMMO_TEMP1 MAXCHAINGUNAMMO // If over, cap it.
+			{
+				setvar AMMO_TEMP1 MAXCHAINGUNAMMO
+			}
+			
+			setplayervar[THISACTOR].RIPPER_AMMO AMMO_TEMP1
+		}
+		else
+		{
+			ifvare AMMO_TEMP2 1 // Has weapon?
+			{
+				break // Has weapon, and full ammo. Stop here.
+			}
+		}
+		
+		setplayervar[THISACTOR].HAS_RIPPER 1 // Give it
+		
+        quote 54
+        ifspawnedby CHAINGUNSPRITE
+		{
+            state getweaponcode
+			addweapon CHAINGUN_WEAPON 0
+		}
+        else
+		{
+            state quikweaponget_custom
+			addweapon CHAINGUN_WEAPON 0
+			killit
+		}
+    }
+enda
+
+actor BATTERYAMMO
+	fall
+	state despawn_item_from_can
+    ifmove RESPAWN_ACTOR_FLAG
+	{
+        state respawnit
+    }
+    else ifp pshrunk
+	{
+    }
+    else ifp palive ifcount 6 ifpdistl RETRIEVEDISTANCE ifcanseetarget 
+    {
+		getplayervar[THISACTOR].RIPPER_AMMO AMMO_TEMP1
+		ifvarl AMMO_TEMP1 MAXCHAINGUNAMMO
+		{
+			addvarvar AMMO_TEMP1 CHAINGUNAMMOAMOUNT
+			ifvarg AMMO_TEMP1 MAXCHAINGUNAMMO
+			{
+				setvar AMMO_TEMP1 MAXCHAINGUNAMMO
+			}
+			
+			setplayervar[THISACTOR].RIPPER_AMMO AMMO_TEMP1
+			
+			quote 63
+			ifspawnedby BATTERYAMMO {
+				state getcode
+			}
+			else {
+				state quikget
+			}
+		}
+    }
+enda

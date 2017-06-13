@@ -1,6 +1,160 @@
-// This CON is for a future weapon. It's not ready.
-//defineprojectile 2088 PROJ_TNUM 256
-//defineprojectile 2088 PROJ_TRAIL SMALLSMOKE
-//defineprojectile 2088 PROJ_TXREPEAT 8
-//defineprojectile 2088 PROJ_TYREPEAT 8
-//defineprojectile 2088 PROJ_OFFSET 32768
+defineprojectile RAILGUNSHOT PROJ_TNUM 256
+defineprojectile RAILGUNSHOT PROJ_TRAIL RAILGUNTRAIL
+defineprojectile RAILGUNSHOT PROJ_TXREPEAT 8
+defineprojectile RAILGUNSHOT PROJ_TYREPEAT 8
+defineprojectile RAILGUNSHOT PROJ_OFFSET 32768
+defineprojectile RAILGUNSHOT PROJ_EXTRA RAILGUN_WEAPON_STRENGTH
+defineprojectile RAILGUNSHOT PROJ_SPAWNS LDEXPLOSION
+defineprojectile RAILGUNSHOT PROJ_SXREPEAT 16
+defineprojectile RAILGUNSHOT PROJ_SYREPEAT 16
+defineprojectile RAILGUNSHOT PROJ_WORKSLIKE 32769
+//defineprojectile RAILGUNSHOT PROJ_CSTAT 128
+
+state draw_railgun // RAILGUN_WEAPON:
+    
+    setvarvar hud_x weapon_xoffset
+    setvarvar hud_y looking_arc
+    shiftvarl hud_y 1
+    subvarvar hud_y gun_pos
+    
+	ifvarg weaponcount 1
+	ifvarl weaponcount 18
+	{
+		setvarvar hud_temp weaponcount
+		shiftvarl hud_temp 7
+		addvar hud_temp 768
+		andvar hud_temp 2047
+		sin hud_temp hud_temp
+		shiftvarr hud_temp 11
+		
+		ifvarl weaponcount 10
+		{
+			mulvar hud_temp 2
+		}
+		
+		subvarvar hud_x hud_temp
+		subvarvar hud_y hud_temp
+	}
+	
+    addvar hud_x 240
+    addvar hud_y 225
+	
+	ifvarl weaponcount 1
+		setvar hud_tilenum RAILGUN1
+    else ifvarl weaponcount 2
+		setvar hud_tilenum RAILGUN2
+    else ifvarl weaponcount 3
+		setvar hud_tilenum RAILGUN3
+    else ifvarl weaponcount 4
+		setvar hud_tilenum RAILGUN4
+    else ifvarl weaponcount 5
+		setvar hud_tilenum RAILGUN5
+	else ifvarl weaponcount 6
+		setvar hud_tilenum RAILGUN6
+	else ifvarl weaponcount 7
+		setvar hud_tilenum RAILGUN7
+	else ifvarg weaponcount 7
+		setvar hud_tilenum RAILGUN1
+    
+    state G_DrawWeaponTile
+ends
+
+actor RAILGUNSPRITE
+    fall
+	state init_pickup
+	state despawn_item_from_can
+	sizeat 32 32
+    ifmove RESPAWN_ACTOR_FLAG
+	{
+        state respawnit
+	}
+    else ifp pshrunk
+	{
+	}
+    else ifp palive ifpdistl RETRIEVEDISTANCE ifcount 6 ifcanseetarget
+    {
+		getplayervar[THISACTOR].HAS_RAILGUN AMMO_TEMP2
+		ifspawnedby RAILGUNSPRITE
+		{
+			ifmultiplayer
+			ifvarn COOP GM_DUKEMATCH
+			ifvarn COOP GM_DUKEMATCH_NOSPAWN
+			ifvarn COOP GM_TEAMDUKEMATCH
+			ifvarn COOP GM_TEAMDUKEMATCH_NOSPAWN
+			ifvare AMMO_TEMP2 1
+			{
+				break
+			}
+		}
+		
+		getplayervar[THISACTOR].RAILGUN_AMMO AMMO_TEMP1
+		ifvarl AMMO_TEMP1 MAXRAILGUNAMMO // Ammo under max?
+		{
+			addvarvar AMMO_TEMP1 RAILGUNAMMOAMOUNT
+			ifvarg AMMO_TEMP1 MAXRAILGUNAMMO // If over, cap it.
+			{
+				setvar AMMO_TEMP1 MAXRAILGUNAMMO
+			}
+			
+			setplayervar[THISACTOR].RAILGUN_AMMO AMMO_TEMP1
+		}
+		else
+		{
+			ifvare AMMO_TEMP2 1 // Has weapon?
+			{
+				break // Has weapon, and full ammo. Stop here.
+			}
+		}
+		
+		setplayervar[THISACTOR].HAS_RAILGUN 1 // Give it
+		
+        quote 131
+        ifspawnedby RAILGUNSPRITE
+		{
+            state getweaponcode
+			addweapon RPG_WEAPON 0
+		}
+        else
+		{
+            state quikweaponget_custom
+			addweapon RPG_WEAPON 0
+			killit
+		}
+    }
+enda
+
+actor RAILGUNAMMO
+    fall
+	state init_pickup
+	state despawn_item_from_can
+	sizeat 16 16
+    ifmove RESPAWN_ACTOR_FLAG
+	{
+        state respawnit
+    }
+    else ifp pshrunk
+	{
+    }
+    else ifp palive ifcount 6 ifpdistl RETRIEVEDISTANCE ifcanseetarget 
+    {
+		getplayervar[THISACTOR].RAILGUN_AMMO AMMO_TEMP1
+		ifvarl AMMO_TEMP1 MAXRAILGUNAMMO
+		{
+			addvarvar AMMO_TEMP1 RAILGUNAMMOAMOUNT
+			ifvarg AMMO_TEMP1 MAXRAILGUNAMMO
+			{
+				setvar AMMO_TEMP1 MAXRAILGUNAMMO
+			}
+			
+			setplayervar[THISACTOR].RAILGUN_AMMO AMMO_TEMP1
+			
+			quote 132
+			ifspawnedby RAILGUNAMMO {
+				state getcode
+			}
+			else {
+				state quikget
+			}
+		}
+    }
+enda

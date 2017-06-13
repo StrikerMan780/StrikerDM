@@ -229,6 +229,41 @@ onevent EVENT_EGS
 			setprojectile[DEVASTATORMISSILE].velmult 2
 		}
 	}
+	
+	getactor[THISACTOR].picnum TEMP
+	switch TEMP
+		case JIBS1:
+		case JIBS2:
+		case JIBS3:
+		case JIBS4:
+		case JIBS5:
+		case JIBS6:
+		case HEADJIB1:
+        case LEGJIB1:
+        case ARMJIB1:
+        case LIZMANHEAD1:
+        case LIZMANARM1:
+        case LIZMANLEG1:
+        case DUKELEG:
+        case DUKEGUN:
+        case DUKETORSO:
+		case BLOODSPLAT1:
+		case BLOODSPLAT2:
+		case BLOODSPLAT3:
+		case BLOODSPLAT4:
+		case BLOODPOOL:
+		case FOOTPRINTS:
+		case FOOTPRINTS2:
+		case FOOTPRINTS3:
+		case FOOTPRINTS4:
+		case PAPER:
+		case MONEY:
+		case MAIL:
+		case PUKE:
+			setactor[THISACTOR].mdflags 16
+			setvar ISADULT ADULT_UNHIDE
+			break
+	endswitch
 endevent
 
 onevent EVENT_GAME
@@ -332,16 +367,22 @@ onevent EVENT_SPAWN
 		break
 	}
 	
+	ifactor WATERDRIP // Fix a common mistake with WATERDRIPs
+	{
+		getactor[THISACTOR].cstat TEMP
+		ifvarand TEMP 1
+		{
+			subvar TEMP 1
+			setactor[THISACTOR].cstat TEMP
+		}
+		break
+	}
+	
 	// Mark certain tiles for Adult Mode
 	getactor[THISACTOR].picnum TEMP
 	switch TEMP
-		case EXOTICA:
-		case STRIPPERFLASH:
-		case HOOKERFLASH:
 		case FLESHLIGHT:
 		case DILDO:
-		case PIRATE1A:
-		case PIRATE3A:
 		case GEECKU:
 		case SHARONM:
 		case STRIKERXHELEN:
@@ -355,7 +396,44 @@ onevent EVENT_SPAWN
 		case PUSSYGRIND:
 		case HENTAIANIM:
 			setactor[THISACTOR].mdflags 16
-			setvar ISADULT 1
+			setvar ISADULT ADULT_HIDE
+			break
+	endswitch
+	switch TEMP
+		case XXXSTACY:
+		case FEMPIC1:
+		case FEMPIC2:
+		case FEMPIC4:
+		case FEM9:
+			setactor[THISACTOR].mdflags 16
+			setvar ISADULT ADULT_UNHIDE
+		break
+	endswitch
+	switch TEMP
+		case EXOTICA:
+		case FEMPIC5:
+		case FEMPIC6:
+		case FEMPIC7:
+		case FEMMAG1:
+		case FEMMAG2:
+		case STRIPPERFLASH:
+		case HOOKERFLASH:
+		case FEM1:
+		case FEM3:
+		case FEM4:
+		case FEM5:
+		case FEM6:
+		case FEM7:
+		case FEM10:
+		case PIRATE1A:
+		case PIRATE3A:
+		case TOUGHGAL:
+		case WOMAN:
+		case 1330:
+		case 4498:
+		case 4865:
+			setactor[THISACTOR].mdflags 16
+			setvar ISADULT ADULT_SWAP
 			break
 	endswitch
 	
@@ -409,12 +487,56 @@ onevent EVENT_SPAWN
 endevent
 
 onevent EVENT_ANIMATESPRITES
-	ifvare ISADULT 1
+	ifvarg ISADULT 0
 	{
 		getuserdef[].lockout TEMP
 		ifvare TEMP 1
 		{
-			settspr[THISACTOR].tsprxrepeat 0
+			ifvare ISADULT ADULT_HIDE
+			{
+				settspr[THISACTOR].tsprxrepeat 0
+			}
+			else
+			{
+				getactor[THISACTOR].xrepeat TEMP
+				settspr[THISACTOR].tsprxrepeat TEMP
+				
+				getactor[THISACTOR].yrepeat TEMP
+				settspr[THISACTOR].tspryrepeat TEMP
+				
+				ifvare ISADULT ADULT_SWAP
+				{
+					gettspr[THISACTOR].tsprpicnum TEMP
+					switch TEMP
+						case EXOTICA: settspr[THISACTOR].tsprpicnum 5950 break
+						case FEMPIC5: settspr[THISACTOR].tsprpicnum 5951 break
+						case FEMPIC6: settspr[THISACTOR].tsprpicnum 5952 break
+						case FEMPIC7: settspr[THISACTOR].tsprpicnum 5953 break
+						case FEMMAG1: settspr[THISACTOR].tsprpicnum 5954 break
+						case PIRATE1A: settspr[THISACTOR].tsprpicnum 5955 break
+						case PIRATE3A: settspr[THISACTOR].tsprpicnum 5957 break
+						case FEM10: settspr[THISACTOR].tsprpicnum 5959 break
+						case 4865: settspr[THISACTOR].tsprpicnum 5960 break
+						case 4866: settspr[THISACTOR].tsprpicnum 5961 break
+						case 4867: settspr[THISACTOR].tsprpicnum 5962 break
+						case 4868: settspr[THISACTOR].tsprpicnum 5963 break
+						case 4869: settspr[THISACTOR].tsprpicnum 5964 break
+						case 4870: settspr[THISACTOR].tsprpicnum 5965 break
+						case WOMAN: settspr[THISACTOR].tsprpicnum 5966 break
+						case FEMMAG2: settspr[THISACTOR].tsprpicnum 5969 break
+						case 4498: settspr[THISACTOR].tsprpicnum 5970 break
+						case FEM3: settspr[THISACTOR].tsprpicnum 5971 break
+						case HOOKERFLASH: settspr[THISACTOR].tsprpicnum 5971 break
+						case FEM5: settspr[THISACTOR].tsprpicnum 5973 break
+						case FEM4: settspr[THISACTOR].tsprpicnum 5974 break
+						case 1330: settspr[THISACTOR].tsprpicnum 5979 break
+						case FEM7: settspr[THISACTOR].tsprpicnum 5980 break
+						case 1332: settspr[THISACTOR].tsprpicnum 5984 break
+						case 1333: settspr[THISACTOR].tsprpicnum 5985 break
+						case FEM6: settspr[THISACTOR].tsprpicnum 5986 break
+					endswitch
+				}
+			}
 		}
 	}
 endevent
@@ -437,10 +559,16 @@ onevent EVENT_CHEATGETBOOT
 	setvar HAS_FLAMETHROWER 1
 	setvar FLAMETHROWER_AMMO MAXFREEZEAMMO
 	setvar FREEZETHROWER_AMMO MAXFLAMETHROWERAMMO
+	
 	setvar HAS_RIPPER 1
 	setvar HAS_PLASMARIFLE 1
 	setvar RIPPER_AMMO MAXCHAINGUNAMMO
 	setvar PLASMARIFLE_AMMO MAXPLASMARIFLEAMMO
+	
+	setvar HAS_RPG 1
+	setvar HAS_RAILGUN 1
+	setvar RPG_AMMO MAXRPGAMMO
+	setvar RAILGUN_AMMO MAXRAILGUNAMMO
 endevent
 
 onevent EVENT_RESETPLAYER
@@ -454,6 +582,11 @@ onevent EVENT_RESETPLAYER
 	setvar HAS_PLASMARIFLE 0
 	setvar RIPPER_AMMO 0
 	setvar PLASMARIFLE_AMMO 0
+	
+	setvar HAS_RPG 0
+	setvar HAS_RAILGUN 0
+	setvar RPG_AMMO 0
+	setvar RAILGUN_AMMO 0
 	state setripper
 endevent
 
@@ -538,33 +671,6 @@ onevent EVENT_GETLOADTILE
 	ifvare COOP GM_ROIDMATCH
 	{
 		setvar RETURN ROIDLOAD
-	}
-endevent
-
-onevent EVENT_GETSHOTRANGE
-	getuserdef[].playerai TEMP
-	ifvare TEMP 1
-	{
-		getactor[THISACTOR].yvel TEMP
-		ifvarg TEMP 0
-		{
-			break
-		}
-	}
-	
-	getplayer[THISACTOR].curr_weapon TEMP
-	ifvare TEMP PISTOL_WEAPON
-	{
-		ifrnd 72
-		{
-			setvar ANGRANGE 2
-			setvar ZRANGE 2
-		}
-		else
-		{
-			setvar ANGRANGE 16
-			setvar ZRANGE 128
-		}
 	}
 endevent
 

@@ -1,0 +1,430 @@
+onevent EVENT_WEAPKEY4
+	ifvare WEAPON CHAINGUN_WEAPON
+	{
+		state checkplasmarifle
+	}
+endevent
+
+onevent EVENT_WEAPKEY5
+	ifvare WEAPON RPG_WEAPON
+	{
+		state checkrailgun
+	}
+endevent
+
+onevent EVENT_WEAPKEY10
+	ifvare WEAPON FREEZE_WEAPON
+	{
+		state checkflamethrower
+	}
+endevent
+
+onevent EVENT_DOFIRE
+	ifvare WEAPON FREEZE_WEAPON
+	{
+		ifvare USING_FLAMETHROWER 1
+		{
+			ifinwater
+			{
+				setvar RETURN 1
+				break
+			}
+			
+			ifvarl FLAMETHROWER_AMMO 1
+			{
+				setvar RETURN 1
+				break
+			}
+			
+			getplayervar[THISACTOR].FLAMETHROWER_AMMO AMMO_TEMP1
+			subvar AMMO_TEMP1 1
+			
+			ifvarl AMMO_TEMP1 0
+			{
+				setvar AMMO_TEMP1 0
+			}
+			
+			setplayervar[THISACTOR].FLAMETHROWER_AMMO AMMO_TEMP1
+		}
+		else
+		{
+			ifvarl FREEZETHROWER_AMMO 1
+			{
+				setvar RETURN 1
+				break
+			}
+			
+			getplayervar[THISACTOR].FREEZETHROWER_AMMO AMMO_TEMP1
+			subvar AMMO_TEMP1 1
+			
+			ifvarl AMMO_TEMP1 0
+			{
+				setvar AMMO_TEMP1 0
+			}
+			
+			setplayervar[THISACTOR].FREEZETHROWER_AMMO AMMO_TEMP1
+		}
+	}
+	else ifvare WEAPON DEVISTATOR_WEAPON
+	{
+		getplayer[THISACTOR].hbomb_hold_delay TEMP
+		ifvare TEMP 1
+		{
+			sound DEVASTATOR_FIRERIGHT
+		}
+		else
+		{
+			sound DEVASTATOR_FIRELEFT
+		}
+	}
+	else ifvare WEAPON CHAINGUN_WEAPON
+	{
+		ifvare USING_PLASMARIFLE 1
+		{
+			ifvarl PLASMARIFLE_AMMO 1
+			{
+				setvar RETURN 1
+				break
+			}
+			
+			getplayervar[THISACTOR].PLASMARIFLE_AMMO AMMO_TEMP1
+			subvar AMMO_TEMP1 1
+			
+			ifvarl AMMO_TEMP1 0
+			{
+				setvar AMMO_TEMP1 0
+			}
+			
+			setplayervar[THISACTOR].PLASMARIFLE_AMMO AMMO_TEMP1
+		}
+		else
+		{
+			ifvarl RIPPER_AMMO 1
+			{
+				setvar RETURN 1
+				break
+			}
+			
+			getplayervar[THISACTOR].RIPPER_AMMO AMMO_TEMP1
+			subvar AMMO_TEMP1 1
+			
+			ifvarl AMMO_TEMP1 0
+			{
+				setvar AMMO_TEMP1 0
+			}
+			
+			setplayervar[THISACTOR].RIPPER_AMMO AMMO_TEMP1
+		}
+	}
+	else ifvare WEAPON RPG_WEAPON
+	{
+		ifvare USING_RAILGUN 1
+		{
+			ifvarl RAILGUN_AMMO 1
+			{
+				setvar RETURN 1
+				break
+			}
+			
+			randvar TEMP 2
+			switch TEMP
+				case 0: sound RAILGUN_FIRE1 break
+				case 1: sound RAILGUN_FIRE2 break
+				case 2: sound RAILGUN_FIRE3 break
+			endswitch
+			
+			getplayervar[THISACTOR].RAILGUN_AMMO AMMO_TEMP1
+			subvar AMMO_TEMP1 1
+			
+			ifvarl AMMO_TEMP1 0
+			{
+				setvar AMMO_TEMP1 0
+			}
+			
+			setplayervar[THISACTOR].RAILGUN_AMMO AMMO_TEMP1
+		}
+		else
+		{
+			ifvarl RPG_AMMO 1
+			{
+				setvar RETURN 1
+				break
+			}
+			
+			getplayervar[THISACTOR].RPG_AMMO AMMO_TEMP1
+			subvar AMMO_TEMP1 1
+			
+			ifvarl AMMO_TEMP1 0
+			{
+				setvar AMMO_TEMP1 0
+			}
+			
+			setplayervar[THISACTOR].RPG_AMMO AMMO_TEMP1
+		}
+	}
+endevent
+
+onevent EVENT_FIRE
+	ifvare WEAPON FREEZE_WEAPON
+	{
+		ifvare USING_FLAMETHROWER 1
+		{
+			ifinwater
+			{
+				setvar RETURN 1
+				break
+			}
+		}
+	}
+endevent
+
+onevent EVENT_GETSHOTRANGE
+	getuserdef[].playerai TEMP
+	ifvare TEMP 1
+	{
+		getactor[THISACTOR].yvel TEMP
+		ifvarg TEMP 0
+		{
+			setvar ANGRANGE 64
+			setvar ZRANGE 512
+			break
+		}
+	}
+	
+	getplayer[THISACTOR].curr_weapon TEMP
+	ifvare TEMP PISTOL_WEAPON
+	{
+		ifrnd 72
+		{
+			setvar ANGRANGE 2
+			setvar ZRANGE 2
+		}
+		else
+		{
+			setvar ANGRANGE 16
+			setvar ZRANGE 128
+		}
+	}
+	else ifvare TEMP RPG_WEAPON
+	{
+		ifvare USING_RAILGUN 1
+		{
+			setvar ANGRANGE 1
+			setvar ZRANGE 1
+		}
+	}
+endevent
+
+onevent EVENT_GETAUTOAIMANGLE
+	ifvare WEAPON RPG_WEAPON
+	{
+		ifvare USING_RAILGUN 1
+			setvar AUTOAIMANGLE 8
+	}
+endevent
+
+onevent EVENT_DISPLAYWEAPON // P_DisplayWeapon
+
+    setvar RETURN -1
+    
+    getplayer[THISACTOR].weapon_pos weapon_pos
+    getuserdef[THISACTOR].weaponscale weaponscale
+    getplayer[THISACTOR].i playerid
+
+    getuserdef[THISACTOR].drawweapon hud_temp
+    
+    ifvare hud_temp 2 // weapon icons
+    {
+        setvar hud_tilenum -1
+        
+        switch currentweapon
+            case PISTOL_WEAPON
+                setvar hud_tilenum FIRSTGUNSPRITE
+                break
+            case CHAINGUN_WEAPON
+				ifvare USING_PLASMARIFLE 1
+				{
+					setvar hud_tilenum PLASMASPRITE
+				}
+				else
+				{
+					setvar hud_tilenum CHAINGUNSPRITE
+				}
+                break
+            case RPG_WEAPON
+                ifvare USING_RAILGUN 1
+				{
+					setvar hud_tilenum RAILGUNSPRITE
+				}
+				else
+				{
+					setvar hud_tilenum RPGSPRITE
+				}
+                break
+            case FREEZE_WEAPON
+				ifvare USING_FLAMETHROWER 1
+				{
+					setvar hud_tilenum FLAMETHROWERSPRITE
+				}
+				else
+				{
+					setvar hud_tilenum FREEZESPRITE
+				}
+                break
+            case SHRINKER_WEAPON
+                setvar hud_tilenum SHRINKERSPRITE
+                break
+            case GROW_WEAPON
+                setvar hud_tilenum GROWSPRITEICON
+                break
+            case DEVISTATOR_WEAPON
+                setvar hud_tilenum DEVISTATORSPRITE
+                break
+            case TRIPBOMB_WEAPON
+                setvar hud_tilenum TRIPBOMBSPRITE
+                break
+            case HANDREMOTE_WEAPON
+            case HANDBOMB_WEAPON
+                setvar hud_tilenum HEAVYHBOMB
+                break
+            case SHOTGUN_WEAPON
+                setvar hud_tilenum SHOTGUNSPRITE
+                break
+            default
+                addlogvar currentweapon
+                break
+                /*
+            case KNEE_WEAPON
+                setvar hud_tilenum -1
+                break
+                */
+        endswitch
+        
+		ifvarn hud_tilenum -1
+        {
+            setvar hud_x 160
+            setvarvar hud_y weapon_pos
+            mulvarvar hud_y weapon_pos
+            addvar hud_y 180
+            setvar hud_scale 65536
+            getuserdef[THISACTOR].statusbarscale hud_temp2
+            mulvarvar hud_scale hud_temp2
+            divvar hud_scale 100
+            rotatesprite hud_x hud_y hud_scale 0 hud_tilenum 0 0 2 windowx1 windowy1 windowx2 windowy2
+        }
+    }
+    
+    ifvarn hud_temp 1 break // If we are not displaying the actual HUD weapons, stop processing.
+    
+    // these gamevars can get changed in the states up above, so reset them now.
+    setvar hud_scale 65536
+    setvar hud_orientation 0
+    setvar hud_angle 0
+    setvarvar hud_shade gs
+    
+    state draw_quick_kick
+        
+    // cleanup
+    setvar hud_orientation 0
+    setvar hud_angle 0
+    guniqhudid 0
+    
+    getactor[playerid].xrepeat hud_temp
+    ifvarl hud_temp 40
+        state draw_shrunk_fists
+    else
+    {
+        getactor[playerid].pal hud_pal
+        ifvarn hud_pal 1
+        {
+            getplayer[THISACTOR].cursectnum hud_temp2
+            ifvarg hud_temp2 -1
+                getsector[hud_temp2].floorpal hud_pal
+            else
+                setvar hud_pal 0
+        }
+        
+        switch currentweapon
+            case KNEE_WEAPON
+				setvarvar hud_totaltime WEAPON0_TOTALTIME
+				state draw_kick
+                break
+            case TRIPBOMB_WEAPON
+                setvarvar hud_totaltime WEAPON8_TOTALTIME
+                state draw_tripbomb
+                break
+            case RPG_WEAPON
+                setvarvar hud_totaltime WEAPON4_TOTALTIME
+				ifvare USING_RAILGUN 1
+				{
+					state draw_railgun
+				}
+				else
+				{
+					state draw_rpg
+				}
+                break
+            case SHOTGUN_WEAPON
+                setvarvar hud_totaltime WEAPON2_TOTALTIME
+                state draw_shotgun
+                break
+            case CHAINGUN_WEAPON
+                setvarvar hud_temp4 WEAPON3_FIREDELAY
+                setvarvar hud_totaltime WEAPON3_TOTALTIME
+				ifvare USING_PLASMARIFLE 1
+				{
+					state draw_plasmarifle
+				}
+				else
+				{
+					state draw_chaingun
+				}
+                break
+            case PISTOL_WEAPON
+                setvarvar hud_temp3 WEAPON1_RELOAD
+                setvarvar hud_temp4 WEAPON1_FIREDELAY
+                setvarvar hud_totaltime WEAPON1_TOTALTIME
+                state draw_pistol
+                break
+            case HANDBOMB_WEAPON
+                setvarvar hud_totaltime WEAPON5_TOTALTIME
+                state draw_pipebomb
+                break
+            case HANDREMOTE_WEAPON
+                setvarvar hud_totaltime WEAPON10_TOTALTIME
+                state draw_detonator
+                break
+            case DEVISTATOR_WEAPON
+                setvarvar hud_totaltime WEAPON7_TOTALTIME
+                state draw_devastator
+                break
+            case FREEZE_WEAPON
+				setvarvar hud_totaltime WEAPON9_TOTALTIME
+				ifvare USING_FLAMETHROWER 1
+				{
+					state draw_flamethrower
+				}
+				else
+				{
+					state draw_freezer
+				}
+                break
+            case GROW_WEAPON
+                setvarvar hud_totaltime WEAPON11_TOTALTIME
+                state draw_expander
+                break
+            case SHRINKER_WEAPON
+                setvarvar hud_totaltime WEAPON6_TOTALTIME
+                state draw_shrinker
+                break
+            default
+                addlogvar currentweapon
+                break
+        endswitch
+        
+        // cleanup
+        setvar hud_orientation 0
+        setvar hud_angle 0
+        guniqhudid 0
+    }
+endevent

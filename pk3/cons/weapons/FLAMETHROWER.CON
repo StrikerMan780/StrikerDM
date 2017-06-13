@@ -192,7 +192,7 @@ actor ONFIRE 1 ONFIRE_EFFECT
 		ifspawnedby FIREBALL
 		{
 			sizeat 40 40
-			iffloordistl 24
+			iffloordistl 32
 			{
 				ifrnd 128
 					espawn BURNING_ALT

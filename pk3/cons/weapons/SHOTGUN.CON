@@ -138,3 +138,65 @@ state draw_shotgun // SHOTGUN_WEAPON:
             break
     endswitch
 ends
+
+actor SHOTGUNSPRITE
+  fall
+  state despawn_item_from_can
+  ifmove RESPAWN_ACTOR_FLAG
+    state respawnit
+  else
+    ifp pshrunk nullop
+    else
+      ifp palive
+        ifpdistl RETRIEVEDISTANCE
+          ifcount 6
+            ifcanseetarget
+      {
+        ifspawnedby PIGCOP
+        {
+          addweapon SHOTGUN_WEAPON 0
+          ifrnd 64
+            addammo SHOTGUN_WEAPON 4
+          else ifrnd 64
+            addammo SHOTGUN_WEAPON 3
+          else ifrnd 64
+            addammo SHOTGUN_WEAPON 2
+          else
+            addammo SHOTGUN_WEAPON 1
+        }
+        else
+        {
+          ifgotweaponce 0
+            break
+          addweapon SHOTGUN_WEAPON SHOTGUNAMMOAMOUNT
+          quote 57
+        }
+
+        ifspawnedby SHOTGUNSPRITE
+          state getweaponcode
+        else
+          state quikweaponget
+      }
+enda
+
+actor SHOTGUNAMMO
+  fall
+  state despawn_item_from_can
+  ifmove RESPAWN_ACTOR_FLAG
+    state respawnit
+  else
+    ifp pshrunk nullop
+    else
+      ifp palive
+        ifcount 6
+          ifpdistl RETRIEVEDISTANCE
+            ifcanseetarget
+      {
+        addammo SHOTGUN_WEAPON SHOTGUNAMMOAMOUNT
+        quote 69
+        ifspawnedby SHOTGUNAMMO
+          state getcode
+        else
+          state quikget
+      }
+enda

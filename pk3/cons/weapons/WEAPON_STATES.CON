@@ -1,0 +1,407 @@
+// define ROTATESPRITE_MAX 2048
+
+// preliminary functions
+
+state G_DrawTile
+    getplayer[THISACTOR].cursectnum hud_G_Draw_temp2
+    ifvarg hud_G_Draw_temp2 -1
+        getsector[hud_G_Draw_temp2].floorpal hud_G_Draw_temp2
+    else
+        setvar hud_G_Draw_temp2 0
+
+    ifvarand hud_orientation 4
+        addvar hud_angle 1024
+        
+    ifvarand hud_orientation 2 nullop else
+        addvar hud_orientation 2
+                 
+    rotatesprite hud_x hud_y hud_scale hud_angle hud_tilenum hud_shade hud_G_Draw_temp2 hud_orientation windowx1 windowy1 windowx2 windowy2
+        
+    ifvarand hud_orientation 2 nullop else
+        subvar hud_orientation 2
+    
+    ifvarand hud_orientation 4
+        subvar hud_angle 1024
+ends
+
+state G_DrawTilePal
+    ifvarand hud_orientation 4
+        addvar hud_angle 1024
+        
+    ifvarand hud_orientation 2 nullop else
+        addvar hud_orientation 2
+
+    rotatesprite hud_x hud_y hud_scale hud_angle hud_tilenum hud_shade hud_pal hud_orientation windowx1 windowy1 windowx2 windowy2
+        
+    ifvarand hud_orientation 2 nullop else
+        subvar hud_orientation 2
+    
+    ifvarand hud_orientation 4
+        subvar hud_angle 1024
+ends
+
+state G_DrawTileScaled
+    setvar hud_G_Draw_temp 192 // xoff
+
+    switch currentweapon
+        case DEVISTATOR_WEAPON
+        case TRIPBOMB_WEAPON
+            setvar hud_G_Draw_temp 160
+            break
+        default
+            ifvarand hud_orientation 262144
+            {
+                setvar hud_G_Draw_temp 160
+                subvar hud_orientation 262144
+            }
+            break
+    endswitch
+
+    ifvarand hud_orientation 4
+        addvar hud_angle 1024
+        
+    /*
+    ifvarg rendermode 2
+        ifvarn usemodels 0
+            ifhasmodel hud_tilenum hud_pal
+            {
+                setvar hud_G_Draw_temp2 224
+                mulvarvar hud_G_Draw_temp2 weaponscale
+                divvar hud_G_Draw_temp2 100
+                
+                addvar hud_y 224
+                subvarvar hud_y hud_G_Draw_temp2
+            }
+    */
+    
+    mulvarvar hud_x weaponscale
+    divvar hud_x 100
+    setvarvar hud_G_Draw_temp2 hud_G_Draw_temp
+    mulvarvar hud_G_Draw_temp2 weaponscale
+    divvar hud_G_Draw_temp2 100
+    subvarvar hud_G_Draw_temp hud_G_Draw_temp2
+    addvarvar hud_x hud_G_Draw_temp
+    
+    mulvarvar hud_y weaponscale
+    divvar hud_y 100
+    setvar hud_G_Draw_temp 200
+    setvarvar hud_G_Draw_temp2 hud_G_Draw_temp
+    mulvarvar hud_G_Draw_temp2 weaponscale
+    divvar hud_G_Draw_temp2 100
+    subvarvar hud_G_Draw_temp hud_G_Draw_temp2
+    addvarvar hud_y hud_G_Draw_temp
+    
+    // setvar hud_scale 65536 // do this elsewhere; leave it open for modification
+    mulvarvar hud_scale weaponscale
+    divvar hud_scale 100
+    
+    ifvarand hud_orientation 2 nullop else
+        addvar hud_orientation 2
+    
+    rotatesprite hud_x hud_y hud_scale hud_angle hud_tilenum hud_shade hud_pal hud_orientation windowx1 windowy1 windowx2 windowy2
+        
+    ifvarand hud_orientation 2 nullop else
+        subvar hud_orientation 2
+    
+    ifvarand hud_orientation 4
+        subvar hud_angle 1024
+ends
+
+state G_DrawWeaponTile
+    // basic fading between player weapon shades
+    ifvarvarn hud_shade hud_shadef
+    {
+        setvar hud_G_Draw_temp 0
+        ifvare hud_pal 0 setvar hud_G_Draw_temp 1
+        ifvarvare hud_pal hud_palf setvar hud_G_Draw_temp 1
+        ifvare hud_G_Draw_temp 1
+        {
+            setvarvar hud_G_Draw_temp hud_shade
+            subvarvar hud_G_Draw_temp hud_shadef
+            setvarvar hud_G_Draw_temp2 hud_G_Draw_temp
+            shiftvarr hud_G_Draw_temp 2
+            addvarvar hud_shadef hud_G_Draw_temp
+            
+            ifvare hud_G_Draw_temp 0
+            {
+                shiftvarr hud_G_Draw_temp2 1
+                addvarvar hud_shadef hud_G_Draw_temp2
+                ifvare hud_G_Draw_temp2 0
+                    setvarvar hud_shadef hud_shade
+            }
+        }
+    }
+    else
+        setvarvar hud_shadef hud_shade
+        
+    setvarvar hud_palf hud_pal
+    setvarvar hud_shade hud_shadef
+    
+    state G_DrawTileScaled
+ends
+
+state G_DrawWeaponTile_crystal
+    // basic fading between player weapon shades
+    ifvarvarn hud_shade hud_shadef_crystal
+    {
+        setvarvar hud_G_Draw_temp hud_shade
+        subvarvar hud_G_Draw_temp hud_shadef_crystal
+        setvarvar hud_G_Draw_temp2 hud_G_Draw_temp
+        shiftvarr hud_G_Draw_temp 2
+        addvarvar hud_shadef_crystal hud_G_Draw_temp
+        
+        ifvare hud_G_Draw_temp 0
+        {
+            shiftvarr hud_G_Draw_temp2 1
+            addvarvar hud_shadef_crystal hud_G_Draw_temp2
+            ifvare hud_G_Draw_temp2 0
+                setvarvar hud_shadef_crystal hud_shade
+        }
+    }
+    else
+        setvarvar hud_shadef_crystal hud_shade
+        
+    setvarvar hud_shade hud_shadef_crystal
+    
+    state G_DrawTileScaled
+ends
+
+// helper states
+
+state reset_hud_weapon_x_coordinate
+    setvarvar hud_x weapon_xoffset
+    subvarvar hud_x looking_angSR1
+ends
+state reset_hud_weapon_y_coordinate
+    setvarvar hud_y looking_arc
+    subvarvar hud_y gun_pos
+ends
+state reset_hud_weapon_coordinates
+    state reset_hud_weapon_x_coordinate
+    state reset_hud_weapon_y_coordinate
+ends
+
+state determine_animation
+    getuserdef[THISACTOR].pause_on hud_temp
+    ifvarn hud_temp 0
+        setvar hud_temp 1
+	
+	getplayer[THISACTOR].gm OLDMP_TEMP
+    ifvarand OLDMP_TEMP 1 // MODE_MENU
+        orvar hud_temp 1
+
+    getactor[playerid].pal hud_G_Draw_temp
+    ifvare hud_G_Draw_temp 1
+        orvar hud_temp 1
+ends
+
+// Custom States
+
+state setflamethrower
+	setvar WEAPON9_SHOOTS FIREBALL
+	setvar WEAPON9_TOTALTIME 4
+	setvar WEAPON9_FIRESOUND 0
+	setvar WEAPON9_INITIALSOUND FLAMETHROWER_START
+	setvar USING_FLAMETHROWER 1
+	setplayer[THISACTOR].ammo_amount FREEZE_WEAPON FLAMETHROWER_AMMO
+ends
+
+state setfreezethrower
+	setvar WEAPON9_SHOOTS FREEZEBLAST
+	setvar WEAPON9_TOTALTIME 5
+	setvar WEAPON9_FIRESOUND FREEZETHROWER_FIRE
+	setvar WEAPON9_INITIALSOUND FREEZETHROWER_FIRE
+	setvar USING_FLAMETHROWER 0
+	setplayer[THISACTOR].ammo_amount FREEZE_WEAPON FREEZETHROWER_AMMO
+ends
+
+state setripper
+	setvar WEAPON3_FLAGS 73812
+	setvar WEAPON3_SHOOTS CHAINGUN
+	setvar WEAPON3_FIREDELAY 3
+	setvar WEAPON3_TOTALTIME 12
+	setvar WEAPON3_HOLDDELAY 3
+	setvar WEAPON3_SPAWN SHELL
+	setvar WEAPON3_SPAWNTIME 1
+	setvar WEAPON3_FIRESOUND CHAINGUN_FIRE
+	setvar WEAPON3_INITIALSOUND 0
+	setvar WEAPON3_SHOTSPERBURST 0
+	setvar USING_PLASMARIFLE 0
+	setplayer[THISACTOR].ammo_amount CHAINGUN_WEAPON RIPPER_AMMO
+ends
+
+state setplasmarifle
+	setvar WEAPON3_FLAGS 0
+	setvar WEAPON3_SHOOTS PLASMABALL
+	setvar WEAPON3_FIREDELAY 10
+	setvar WEAPON3_TOTALTIME 16
+	setvar WEAPON3_HOLDDELAY 0
+	setvar WEAPON3_SPAWN 0
+	setvar WEAPON3_SPAWNTIME 0
+	setvar WEAPON3_FIRESOUND PLASMARIFLE_FIRE
+	setvar WEAPON3_INITIALSOUND PLASMARIFLE_CHARGE
+	setvar WEAPON3_SHOTSPERBURST 4
+	setvar USING_PLASMARIFLE 1
+	setplayer[THISACTOR].ammo_amount CHAINGUN_WEAPON PLASMARIFLE_AMMO
+ends
+
+state setrpg
+	setvar WEAPON4_FLAGS 0
+	setvar WEAPON4_SHOOTS RPG
+	setvar WEAPON4_FIREDELAY 4
+	setvar WEAPON4_TOTALTIME 20
+	setvar WEAPON4_FIRESOUND 0
+	setvar WEAPON4_INITIALSOUND 0
+	setvar USING_RAILGUN 0
+	setplayer[THISACTOR].ammo_amount RPG_WEAPON RPG_AMMO
+ends
+
+state setrailgun
+	setvar WEAPON4_FLAGS 0
+	setvar WEAPON4_SHOOTS RAILGUNSHOT
+	setvar WEAPON4_FIREDELAY 2
+	setvar WEAPON4_TOTALTIME 25
+	setvar WEAPON4_FIRESOUND 0
+	setvar WEAPON4_INITIALSOUND 0
+	setvar USING_RAILGUN 1
+	setplayer[THISACTOR].ammo_amount RPG_WEAPON RAILGUN_AMMO
+ends
+
+state checkflamethrower
+	ifvare HAS_FLAMETHROWER 1
+	{
+		ifvare USING_FLAMETHROWER 0
+		{
+			state setflamethrower
+		}
+		else ifvare HAS_FREEZETHROWER 1
+		{
+			state setfreezethrower
+		}
+	}
+ends
+
+state checkplasmarifle
+	ifvare HAS_PLASMARIFLE 1
+	{
+		ifvare USING_PLASMARIFLE 0
+		{
+			state setplasmarifle
+		}
+		else ifvare HAS_RIPPER 1
+		{
+			state setripper
+		}
+	}
+ends
+
+state checkrailgun
+	ifvare HAS_RAILGUN 1
+	{
+		ifvare USING_RAILGUN 0
+		{
+			state setrailgun
+		}
+		else ifvare HAS_RPG 1
+		{
+			state setrpg
+		}
+	}
+ends
+
+state player_updateweapons
+	ifvare WEAPON FREEZE_WEAPON
+	{
+		ifvare USING_FLAMETHROWER 1
+		{
+			setplayer[THISACTOR].ammo_amount FREEZE_WEAPON FLAMETHROWER_AMMO
+		}
+		else
+		{
+			setplayer[THISACTOR].ammo_amount FREEZE_WEAPON FREEZETHROWER_AMMO
+			
+			ifvare HAS_FREEZETHROWER 0
+			ifvare HAS_FLAMETHROWER 1
+			{
+				state setflamethrower
+			}
+		}
+	}
+	else ifvare WEAPON CHAINGUN_WEAPON
+	{
+		ifvare USING_PLASMARIFLE 1
+		{
+			setplayer[THISACTOR].ammo_amount CHAINGUN_WEAPON PLASMARIFLE_AMMO
+		}
+		else
+		{
+			setplayer[THISACTOR].ammo_amount CHAINGUN_WEAPON RIPPER_AMMO
+			
+			ifvare HAS_RIPPER 0
+			ifvare HAS_PLASMARIFLE 1
+			{
+				state setplasmarifle
+			}
+		}
+	}
+	else ifvare WEAPON RPG_WEAPON
+	{
+		ifvare USING_RAILGUN 1
+		{
+			setplayer[THISACTOR].ammo_amount RPG_WEAPON RAILGUN_AMMO
+		}
+		else
+		{
+			setplayer[THISACTOR].ammo_amount RPG_WEAPON RPG_AMMO
+			
+			ifvare HAS_RPG 0
+			ifvare HAS_RAILGUN 1
+			{
+				state setrailgun
+			}
+		}
+	}
+	
+	ifvare COOP GM_ROIDMATCH
+	{
+		setplayer[THISACTOR].jetpack_amount 1600
+		setplayer[THISACTOR].steroids_amount 399
+		setplayer[THISACTOR].falling_counter 0
+		setplayer[THISACTOR].gotweapon DEVISTATOR_WEAPON 1
+		setplayer[THISACTOR].ammo_amount DEVISTATOR_WEAPON MAXDEVISTATORAMMO
+		setplayer[THISACTOR].curr_weapon DEVISTATOR_WEAPON
+	}
+ends
+
+state player_tossweapon
+	switch WEAPON
+		case PISTOL_WEAPON: spawn FIRSTGUNSPRITE break
+		case SHOTGUN_WEAPON: spawn SHOTGUNSPRITE break
+		case CHAINGUN_WEAPON:
+			getplayervar[THISACTOR].USING_PLASMARIFLE TEMP
+			ifvare TEMP 1
+				spawn PLASMASPRITE
+			else
+				spawn CHAINGUNSPRITE
+			break
+		case RPG_WEAPON: 
+			getplayervar[THISACTOR].USING_RAILGUN TEMP
+			ifvare TEMP 1
+				spawn RAILGUNSPRITE
+			else
+				spawn RPGSPRITE
+			break
+		case HANDBOMB_WEAPON: spawn HBOMBAMMO break
+		case SHRINKER_WEAPON: spawn SHRINKERSPRITE break
+		case DEVISTATOR_WEAPON: spawn DEVISTATORSPRITE break
+		case TRIPBOMB_WEAPON: spawn TRIPBOMBSPRITE break
+		case FREEZE_WEAPON:
+			getplayervar[THISACTOR].USING_FLAMETHROWER TEMP
+			ifvare TEMP 1
+				spawn FLAMETHROWERSPRITE
+			else
+				spawn FREEZESPRITE
+			break
+		case GROW_WEAPON: spawn GROWAMMO break
+	endswitch
+ends
