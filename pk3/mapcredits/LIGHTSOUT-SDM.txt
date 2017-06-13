@@ -1,0 +1,2 @@
+Map created by Noldor Ranzou. Automated lights on/off effect achieved with the help of Fernando Márquez.
+Adapted to StrikerDM mod in 2017 by Noldor Ranzou.

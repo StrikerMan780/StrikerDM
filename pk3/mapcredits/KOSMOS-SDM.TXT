@@ -1,0 +1,72 @@
+======================================================================
+THIS LEVEL IS NEITHER MADE BY OR SUPPORTED BY 3D REALMS.
+
+Title                 : DukeMatch Steam Community Build Proyect a.k.a. "Kosmos"
+Filename              : KOSMOS.MAP
+Authors               : 1) Fernando Márquez
+			2) Noldor Ranzou
+			3) Vandclash
+			4) Duke64
+E-mail                : 1) cristomarquez@udec.cl
+			2) dark_ranzou@hotmail.com
+			3) aleixter_755@hotmail.com
+Web Page              : 3) aleixter.deviantart.com
+
+Description           : DukeMatch Community Build Project map made by 4 bad ass mappers, set in a space station, with a wide bridge area to the right side of the spaceport, several computing units distributed around the place and a spaceship sitting just outside.
+
+Author Comments       : 1) Fernando Márquez:
+				This time, I began the proyect with the main central section (Alpha sector) where the two towers are located, connected with a bridge and a ladder for each tower. Then I designed two docking bays on each tower's side, although only one remained in the final release.
+				Unlike the first SteamCBP, which was set in earth, I wanted to bring the outer space theme to this proyect. Also, I took care in checking for anomalies and optimization in every Duke3D platform (e.g. DOS, Megaton, eDuke). And once again, sprite redimensioning and fullbright on items and weapons was overseen by me.
+
+			2) Noldor Ranzou: 
+				First, I built the Beta sector, which is a big room with two conveyor belts and a sprite-based bridge which connects Delta and Alpha sectors. Afterwards, I built the Gamma sector which is a lower room with several light archways and a security monitor at the of the sector.
+                                Then, I added the weapons and items around the whole map as well as some of the sector shadowing and general map details.
+                                Finally, I selected the music and chose the custom sound effects.
+
+			3) Vandclash:
+				I worked on the Delta sector. Here I retextured some walls, added the landing bay and also created the spaceship (it is based on a previous own design). Then, I built a computer room which is next to the Delta sector, which includes some vents and a blastable wall.
+                                Additionally, I applied extra shadowing and teleports which provides better connectivity to the map.
+
+			4) Duke64:
+				Well, Cristo came to me about another DM CBP and wanted to know if I was down to work with the team again. And of course I was, although I am very busy with my own work I wanted to contribute something to it. When I recieved the map I saw how very nicely built it was. All I had time to do is decorate/build one room in this gorgeous map. Nice job to everyone who contributed to this map - it was strongly built by these guys before it came to me.
+
+======================================================================
+
+* Play Information *
+
+Episode and Level #    : E1L1
+Single Player          : No
+DukeMatch 2-8 Player   : Yes
+Cooperative 2-8 Player : No
+Difficulty Settings    : Not implemented
+Plutonium Pak Required : Yes
+New Art                : No
+New Music              : Yes
+New Sound Effects      : Yes
+New .CON Files         : No
+Demos Replaced         : No
+
+=====================================================================
+
+* Construction *
+
+Base                   : New level from scratch
+Level Editor(s) Used   : Mapster32
+Art Editor(s) Used     : None
+Construction Time      : One month
+Known Bugs/Problems    : None
+
+=====================================================================
+
+*Important Information*
+
+Installation           : Subscribe to the map in the workshop.
+
+Important Notes        : You may not use this level as a base to build additional levels.
+                         
+                         The music used for the map is "Ronde Interstellaire" composed by Bernard Fevre.
+                         The sound effects are from "Star Wars: Dark Forces" created by LucasArts.
+
+======================================================================
+
+* Modified to work with StrikerDM multiplayer mod by Noldor Ranzou in 2017.

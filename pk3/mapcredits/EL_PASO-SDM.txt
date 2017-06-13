@@ -1,0 +1,84 @@
+============================================================================================================================================
+						THIS LEVEL IS NEITHER MADE BY OR SUPPORTED BY 3D REALMS.
+============================================================================================================================================
+
+Title                 : DUKE MATCH STEAM COMMUNITY BUILD PROJECT A.K.A. "EL PASO"
+
+Release date          : 18 SEPTEMBER 2014 (HBD NORVAK!)
+
+Filename              : EL_PASO.map
+
+Author                : In order of building:
+ 
+                        Mike Norvak
+			Duke64
+			Fernando Márquez 	 
+			Noldor Ranzou 
+			Vandclash
+
+E-mail                : cristomarquez@udec.cl, dark_ranzou@hotmail.com, mikenorvak@hotmail.com, aleixter_755@hotmail.com (Vandclash)
+
+Web Page              : www.youtube.com/mikenorvak, aleixter.deviantart.com (Vandclash)
+
+
+Description           : DM Community Build Project map made by 5 bad ass mappers, ambiented in a passing industrial district with a Gas station, 
+			magazine shop, demolition company, and some offices.
+
+
+Author Comments       : 
+
+			Fernando Márquez: 2-Story Office Building and Wrecked Third Office Floor - Map Performance Benchmarks, Sprite Resize and Bug Fixes, MS-DOS Optimization
+			What I did? I designed a 3DR-classic styled 2 story building, which I took inspiration from the "Pigsty" first secret room. Located next to the water sewer current, you can get to the third floor and blow it up to open new passages. It can provide quite a diversionin strategy and planification.
+			How was the mapping? It was quite a quick mapping session. After Ranzou suggested me to do the office theme, everything came to me quite rapidly. I just took a full hour to build the whole main structure, with an additional 30 minutes for the texturing and trimming work. I'm quite delighted and comfortable with the results.
+			
+			Duke64: Me and Norvak were interested and having talks in making a DM CBP. He then the next day sent me a layout that was bad ass. I added a small part with a demolition building, small indoor area, and a sign, I thought to add some color to the city using the blue pal mixed with blue textures. I think the map turned out good we made basic details look good, we were concentrating on not making fps lags for a quality dm. It's been a pleasure building with all of good mappers in this map.
+
+
+			Mike Norvak: I started the map by building the upper bridge, the sprite bridge and the waterway, as well as an empty layout consisting on 4 corners that every mapper needed to fill with a building. When everybody finished their parts, I gave wall and sector shading to whole map, added the two tunnels and surroundings, added some trimwork to the supermarket and fixed a few other things.
+		
+
+			Noldor Ranzou: I designed and constructed the gas station as well as the magazine store. I textured both according to the theme of the map. Afterwards, I placed a reasonable amount of weapons and items in relation to the number of players being aware of the balance among each of the player spawning points.
+			This is my first collaborative map with other Duke Nukem 3D map authors. Copec and Abu Gosch are references from Chile, my country.
+
+
+			Vandclash: I made the supermarket to add atmosphere to "El Paso" so it feel like a passing town. I also give the name to the map.
+                          
+======================================================================
+
+* Play Information *
+
+Single Player          : No
+DukeMatch 2-8 Player   : Yes
+Cooperative 2-8 Player : No
+Difficulty Settings    : Not implemented
+Atomic edition         : Yes
+EDuke32 Required       : No
+HRP    		       : Nop
+DukePlus  	       : Nop
+TROR		       : No
+New Art                : Nah
+New Music              : Yeah, "In Death It Ends - Deemed Virulent"
+New Sound Effects      : Nooooo
+New .CON Files         : Fuck!!!!! NOOOOOOOO!!!!
+
+=====================================================================
+
+* Construction *
+
+Base                   : Level from Scratch
+Level Editor(s) Used   : Mapster32
+Art Editor(s) Used     : Nop
+Construction Time      : Mhhh, the first iteration of the map is dated 06 July 2014, so 2 months more or less.
+Known Bugs/Problems    : No bugs were found (Duke64's room door killed me because he was hacking! But I fixed it :P)
+
+=====================================================================
+
+*Important Information*
+
+Installation           : Subscribe to the map in the workshop, d'uh you already did that!
+
+Important Notes        : Don't use this map as base of your own map, that means don't copy-paste anything!
+
+======================================================================
+
+* Modified to work with StrikerDM multiplayer mod by Noldor Ranzou in 2017.
