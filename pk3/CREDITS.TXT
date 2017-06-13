@@ -5,12 +5,18 @@ Minigunner - DNF-Style Devastator Sprites
 Perkristian - Some of the HD Sounds
 Hendricks266 - CON Coding Help / Answering many EDuke32-related questions.
 Trooper Dan - CON Coding Help
-James Stanfield & Radar1013 - Jetpack Tilt Code
+James Stanfield & Radar1013 - Jetpack Tilt Code (further enhanced by Striker)
+The Mechanic, w0rm - Dukenuds sprites
 William Gee - WGDM Maps
 Mikko Sandt, Dean Lillie, Chris Pufahl - Duke Tournament Maps
 Jon St. John - DNF/Manhattan/World Tour Duke Voices
 Gearbox - World Tour Textures
+Reaper Man, DotK3D, Striker - Voxels
+
+***************************************************
+For community map credits, see "mapcredits" folder.
+***************************************************
 
 Tools used:
 ------------
-Mapster32, SLADE, BAFed, WAD2MAP, Audacity, SynthFont, GIMP.
+Mapster32, SLADE, BAFed, Audacity, SynthFont, GIMP.
