@@ -1,10 +1,82 @@
+// Clean versions of tiles
+tilefromtexture 5950 { file "tiles/5950.png" } // 766
+tilefromtexture 5951 { file "tiles/5951.png" } // 963
+tilefromtexture 5952 { file "tiles/5952.png" } // 964
+tilefromtexture 5953 { file "tiles/5953.png" } // 965
+tilefromtexture 5954 { file "tiles/5954.png" } // 568
+tilefromtexture 5955 { file "tiles/5955.png" } // 4510
+tilefromtexture 5956 { file "tiles/5956.png" xoff 11 } // 4511
+tilefromtexture 5957 { file "tiles/5957.png" } // 4514
+tilefromtexture 5958 { file "tiles/5958.png" xoff 9 } // 4515
+tilefromtexture 5959 { file "tiles/5959.png" } // 4864
+tilefromtexture 5960 { file "tiles/5960.png" } // 4865
+
+tilefromtexture 5961 { file "tiles/5961.png" } // 4866
+tilefromtexture 5962 { file "tiles/5962.png" } // 4867
+tilefromtexture 5963 { file "tiles/5963.png" xoff 1 } // 4868
+tilefromtexture 5964 { file "tiles/5964.png" xoff -13 } // 4869
+tilefromtexture 5965 { file "tiles/5965.png" xoff -1 } // 4870
+
+tilefromtexture 5966 { file "tiles/5966.png" } // 4874
+tilefromtexture 5967 { file "tiles/5967.png" xoff 5 } // 4875
+tilefromtexture 5968 { file "tiles/5968.png" xoff 4 } // 4876
+
+tilefromtexture 5969 { file "tiles/5969.png" } // 577
+tilefromtexture 5970 { file "tiles/5970.png" } // 4498
+
+tilefromtexture 5971 { file "tiles/5971.png" } // 1321
+tilefromtexture 5972 { file "tiles/5972.png" } // 1322
+
+tilefromtexture 5973 { file "tiles/5973.png" yoff 1 } // 1323
+
+tilefromtexture	5974 { file "tiles/5974.png" } // 1325
+tilefromtexture	5975 { file "tiles/5975.png" xoff 6 } // 1326
+tilefromtexture	5976 { file "tiles/5976.png" xoff 5 } // 1327
+tilefromtexture	5977 { file "tiles/5977.png" xoff 10 } // 1328
+tilefromtexture	5978 { file "tiles/5978.png" xoff 1 } // 1329
+tilefromtexture	5979 { file "tiles/5979.png" xoff -3 } // 1330
+
+tilefromtexture 5980 { file "tiles/5980.png" } // 1395
+tilefromtexture 5981 { file "tiles/5981.png" } // 1396
+tilefromtexture 5982 { file "tiles/5982.png" } // 1397
+tilefromtexture 5983 { file "tiles/5983.png" xoff -1 } // 1398
+
+tilefromtexture	5984 { file "tiles/5984.png" xoff -1 } // 1332
+tilefromtexture	5985 { file "tiles/5985.png" } // 1333
+
+tilefromtexture 5986 { file "tiles/5986.png" yoff 30 } // 1334 
+
+animtilerange 5955 5956 7 ANIM_FORWARD
+animtilerange 5957 5958 7 ANIM_FORWARD
+animtilerange 5966 5968 6 ANIM_OSCILLATING
+animtilerange 5971 5972 7 ANIM_FORWARD
+animtilerange 5974 5979 4 ANIM_OSCILLATING
+animtilerange 5980 5983 3 ANIM_OSCILLATING
+
 // XXX Pack
 tilefromtexture 577 { file "tiles/577.png" }
 tilefromtexture 603 { file "tiles/603.png" yoff -85 }
 tilefromtexture 766 { file "tiles/766.png" }
+tilefromtexture 963 { file "tiles/963.png" }
+tilefromtexture 964 { file "tiles/964.png" }
+tilefromtexture 965 { file "tiles/965.png" }
 tilefromtexture	1321 { file "tiles/1321.png" }
 tilefromtexture	1322 { file "tiles/1322.png" }
+tilefromtexture	1323 { file "tiles/1323.png" xoff 9 yoff 1 }
+tilefromtexture	1325 { file "tiles/1325.png" }
+tilefromtexture	1326 { file "tiles/1326.png" xoff 6 }
+tilefromtexture	1327 { file "tiles/1327.png" xoff 5 }
+tilefromtexture	1328 { file "tiles/1328.png" xoff 10 }
+tilefromtexture	1329 { file "tiles/1329.png" xoff 1 }
+tilefromtexture	1330 { file "tiles/1330.png" xoff -3 }
+tilefromtexture	1332 { file "tiles/1332.png" xoff -1 }
+tilefromtexture	1333 { file "tiles/1333.png" }
+tilefromtexture	1334 { file "tiles/1334.png" yoff 30 }
 tilefromtexture	1339 { file "tiles/1339.png" }
+tilefromtexture	1395 { file "tiles/1395.png" }
+tilefromtexture	1396 { file "tiles/1396.png" }
+tilefromtexture	1397 { file "tiles/1397.png" }
+tilefromtexture	1398 { file "tiles/1398.png" xoff -1 }
 tilefromtexture 4498 { file "tiles/4498.png" }
 tilefromtexture 4510 { file "tiles/4510.png" }
 tilefromtexture 4511 { file "tiles/4511.png" xoff 11 }
