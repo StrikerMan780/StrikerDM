@@ -179,8 +179,7 @@ onevent EVENT_FIRE
 endevent
 
 onevent EVENT_GETSHOTRANGE
-	getuserdef[].playerai TEMP
-	ifvarn TEMP 0
+	ifvare numplayers 1
 	{
 		getactor[THISACTOR].yvel TEMP
 		ifvarn TEMP 0
@@ -216,8 +215,7 @@ onevent EVENT_GETSHOTRANGE
 endevent
 
 onevent EVENT_GETAUTOAIMANGLE
-	getuserdef[].playerai TEMP
-	ifvarn TEMP 0
+	ifvare numplayers 1
 	{
 		getactor[THISACTOR].yvel TEMP
 		ifvarn TEMP 0
@@ -230,7 +228,7 @@ onevent EVENT_GETAUTOAIMANGLE
 	ifvare WEAPON RPG_WEAPON
 	{
 		ifvare USING_RAILGUN 1
-			setvar AUTOAIMANGLE 16
+			setvar AUTOAIMANGLE 10
 	}
 endevent
 

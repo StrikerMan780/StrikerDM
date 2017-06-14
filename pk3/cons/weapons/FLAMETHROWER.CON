@@ -192,8 +192,8 @@ actor ONFIRE 1 ONFIRE_EFFECT
 		ifspawnedby FIREBALL
 		{
 			sizeat 40 40
-			iffloordistl 32
-			{
+			//iffloordistl 48
+			//{
 				ifrnd 128
 					espawn BURNING_ALT
 				else
@@ -201,7 +201,7 @@ actor ONFIRE 1 ONFIRE_EFFECT
 				getactor[THISACTOR].owner OWNER
 				setactor[RETURN].owner OWNER
 				setvar RETURN 0
-			}
+			//}
 		}
 		else
 		{
@@ -310,7 +310,7 @@ defineprojectile FIREBALL PROJ_TRAIL FIREBALLTRAIL
 defineprojectile FIREBALL PROJ_TXREPEAT 32
 defineprojectile FIREBALL PROJ_TYREPEAT 32
 defineprojectile FIREBALL PROJ_SOUND FLAMETHROWER_FIRE
-defineprojectile FIREBALL PROJ_HITRADIUS 768
+defineprojectile FIREBALL PROJ_HITRADIUS 512
 defineprojectile FIREBALL PROJ_CSTAT 10370
 defineprojectile FIREBALL PROJ_SHADE -127
 defineprojectile FIREBALL PROJ_EXTRA FLAMETHROWER_WEAPON_STRENGTH   
@@ -322,11 +322,11 @@ state burningstate_flamethrower
 	ifinwater
 		killit
 	
-	ifcount 128
+	ifcount 168
 	{
 		sizeto 8 8
 		sizeto 8 8
-		ifcount 192
+		ifcount 232
 			killit
 	}
 	else ifcount 1

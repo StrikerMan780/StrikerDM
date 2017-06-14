@@ -3042,6 +3042,10 @@ actor SHOTSPARK1 PISTOL_WEAPON_STRENGTH WEAP2FRAMES
 			{
 				setactor[TEMP].htpicnum RAILGUNSHOT
 			}
+			else
+			{
+				hitradius 384 1 1 1 1 // Fugly hack to be able to destroy cracks in walls.
+			}
 		}
 	}
 enda
