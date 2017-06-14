@@ -3030,7 +3030,7 @@ actor SHOTSPARK1 PISTOL_WEAPON_STRENGTH WEAP2FRAMES
         ifonwater
           spawn WATERSPLASH2
   }
-  
+
 	ifcount 1 { }
 	else ifcount 0
 	{

@@ -295,3 +295,36 @@ state jumppadcode // This state goes in the APLAYER actor.
 		}
 	}
 ends
+
+state strip_items
+	getactor[THISACTOR].picnum TEMP
+	switch TEMP
+		case FIRSTGUNSPRITE:
+		case SHOTGUNSPRITE:
+		case DEVISTATORSPRITE:
+		case CHAINGUNSPRITE:
+		case SHRINKERSPRITE:
+		case HBOMBAMMO:
+		case RPGSPRITE:
+		case TRIPBOMBSPRITE:
+		case FREEZESPRITE:
+		case PLASMASPRITE:
+		case FLAMETHROWERSPRITE:
+		case RAILGUNSPRITE:
+		case AMMO:
+		case AMMOLOTS:
+		case BATTERYAMMO:
+		case FREEZEAMMO:
+		case SHOTGUNAMMO:
+		case CRYSTALAMMO:
+		case GROWAMMO:
+		case RPGAMMO:
+		case DEVISTATORAMMO:
+		case PLASMAAMMO:
+		case RAILGUNAMMO:
+		case FLAMETHROWERAMMO:
+		case JETPACK:
+			killit
+			break
+		endswitch
+ends

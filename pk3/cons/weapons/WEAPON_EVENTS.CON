@@ -126,8 +126,8 @@ onevent EVENT_DOFIRE
 				break
 			}
 			
-			randvar TEMP 2
-			switch TEMP
+			randvar RANDOM_SOUND 2
+			switch RANDOM_SOUND
 				case 0: sound RAILGUN_FIRE1 break
 				case 1: sound RAILGUN_FIRE2 break
 				case 2: sound RAILGUN_FIRE3 break
@@ -180,10 +180,10 @@ endevent
 
 onevent EVENT_GETSHOTRANGE
 	getuserdef[].playerai TEMP
-	ifvare TEMP 1
+	ifvarn TEMP 0
 	{
 		getactor[THISACTOR].yvel TEMP
-		ifvarg TEMP 0
+		ifvarn TEMP 0
 		{
 			setvar ANGRANGE 64
 			setvar ZRANGE 512
@@ -216,14 +216,25 @@ onevent EVENT_GETSHOTRANGE
 endevent
 
 onevent EVENT_GETAUTOAIMANGLE
+	getuserdef[].playerai TEMP
+	ifvarn TEMP 0
+	{
+		getactor[THISACTOR].yvel TEMP
+		ifvarn TEMP 0
+		{
+			setvar AUTOAIMANGLE 0
+			break
+		}
+	}
+	
 	ifvare WEAPON RPG_WEAPON
 	{
 		ifvare USING_RAILGUN 1
-			setvar AUTOAIMANGLE 8
+			setvar AUTOAIMANGLE 16
 	}
 endevent
 
-onevent EVENT_DISPLAYWEAPON // P_DisplayWeapon
+onevent EVENT_DISPLAYWEAPON // P_DisplayWeapon !UNSYNCHRONIZED!
 
     setvar RETURN -1
     

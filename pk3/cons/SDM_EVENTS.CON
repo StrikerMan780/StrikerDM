@@ -453,44 +453,21 @@ onevent EVENT_SPAWN
 	getactor[THISACTOR].z SPAWN_ORIGZ
 	getactor[THISACTOR].ang SPAWN_ORIGANG
 	
-	ifvare COOP GM_ROIDMATCH // Roidmatch
-	{
-		getactor[THISACTOR].picnum TEMP
-		switch TEMP
-			case FIRSTGUNSPRITE:
-			case SHOTGUNSPRITE:
-			case DEVISTATORSPRITE:
-			case CHAINGUNSPRITE:
-			case SHRINKERSPRITE:
-			case HBOMBAMMO:
-			case RPGSPRITE:
-			case TRIPBOMBSPRITE:
-			case FREEZESPRITE:
-			case PLASMASPRITE:
-			case FLAMETHROWERSPRITE:
-			case AMMO:
-			case AMMOLOTS:
-			case BATTERYAMMO:
-			case FREEZEAMMO:
-			case SHOTGUNAMMO:
-			case CRYSTALAMMO:
-			case GROWAMMO:
-			case RPGAMMO:
-			case DEVISTATORAMMO:
-			case PLASMAAMMO:
-			case FLAMETHROWERAMMO:
-			case JETPACK:
-				killit
-				break
-		endswitch
-	}
+	switch COOP
+		case GM_ROIDMATCH:
+		case GM_INSTAGIB:
+			state strip_items
+			break
+		default:
+			break
+	endswitch
 endevent
 
-onevent EVENT_ANIMATESPRITES
+onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
 	ifvarg ISADULT 0
 	{
-		getuserdef[].lockout TEMP
-		ifvare TEMP 1
+		getuserdef[].lockout CL_TEMP1
+		ifvare CL_TEMP1 1
 		{
 			ifvare ISADULT ADULT_HIDE
 			{
@@ -498,16 +475,16 @@ onevent EVENT_ANIMATESPRITES
 			}
 			else
 			{
-				getactor[THISACTOR].xrepeat TEMP
-				settspr[THISACTOR].tsprxrepeat TEMP
+				getactor[THISACTOR].xrepeat CL_TEMP1
+				settspr[THISACTOR].tsprxrepeat CL_TEMP1
 				
-				getactor[THISACTOR].yrepeat TEMP
-				settspr[THISACTOR].tspryrepeat TEMP
+				getactor[THISACTOR].yrepeat CL_TEMP1
+				settspr[THISACTOR].tspryrepeat CL_TEMP1
 				
 				ifvare ISADULT ADULT_SWAP
 				{
-					gettspr[THISACTOR].tsprpicnum TEMP
-					switch TEMP
+					gettspr[THISACTOR].tsprpicnum CL_TEMP1
+					switch CL_TEMP1
 						case EXOTICA: settspr[THISACTOR].tsprpicnum 5950 break
 						case FEMPIC5: settspr[THISACTOR].tsprpicnum 5951 break
 						case FEMPIC6: settspr[THISACTOR].tsprpicnum 5952 break
@@ -582,12 +559,13 @@ onevent EVENT_RESETPLAYER
 	setvar HAS_PLASMARIFLE 0
 	setvar RIPPER_AMMO 0
 	setvar PLASMARIFLE_AMMO 0
-	
+	state setripper
+
 	setvar HAS_RPG 0
 	setvar HAS_RAILGUN 0
 	setvar RPG_AMMO 0
 	setvar RAILGUN_AMMO 0
-	state setripper
+	state setrpg
 endevent
 
 onevent EVENT_STRAFELEFT
@@ -667,14 +645,14 @@ onevent EVENT_TURNRIGHT
 	}
 endevent
 
-onevent EVENT_GETLOADTILE
+onevent EVENT_GETLOADTILE // !UNSYNCHRONIZED!
 	ifvare COOP GM_ROIDMATCH
 	{
 		setvar RETURN ROIDLOAD
 	}
 endevent
 
-onevent EVENT_DISPLAYREST
+onevent EVENT_DISPLAYREST // !UNSYNCHRONIZED!
 	ifvare WEAPON FREEZE_WEAPON
 	{
 		ifvare USING_FLAMETHROWER 1

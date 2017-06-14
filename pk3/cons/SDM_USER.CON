@@ -36,6 +36,7 @@ define GM_TEAMDUKEMATCH_NOSPAWN 4
 define GM_DUKEMATCH_WEAPONSTAY 5
 define GM_TEAMDUKEMATCH_WEAPONSTAY 6
 define GM_ROIDMATCH 7
+define GM_INSTAGIB 8
 definegametype GM_DUKEMATCH 19480 Dukematch
 definegametype GM_COOPERATIVE 46051 Cooperative
 definegametype GM_DUKEMATCH_NOSPAWN 16410 Dukematch (no spawn)
@@ -44,6 +45,7 @@ definegametype GM_TEAMDUKEMATCH_NOSPAWN 213018 Team Dukematch (no spawn)
 definegametype GM_DUKEMATCH_WEAPONSTAY 19482 Dukematch (Weapons Stay)
 definegametype GM_TEAMDUKEMATCH_WEAPONSTAY 216090 Team Dukematch (Weapons Stay)
 definegametype GM_ROIDMATCH 19480 Roidmatch
+definegametype GM_INSTAGIB 19480 Instagib
 
 definevolumename 4 STRIKERDM Series
 definelevelname 4 0 ktc.map 66:60 66:60 Killer Titty Club

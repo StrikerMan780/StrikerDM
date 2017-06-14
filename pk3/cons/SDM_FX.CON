@@ -30,7 +30,7 @@ actor RAILGUNTRAIL 1 RAILGUN_TRAIL_FRAMES
   else ifcount 0
   {
 	setactor[THISACTOR].shade -127
-	setactor[THISACTOR].xoffset -32
+	//setactor[THISACTOR].xoffset -32
 	cstat 130
   }
 enda

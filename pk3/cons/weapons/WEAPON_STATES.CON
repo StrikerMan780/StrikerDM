@@ -371,6 +371,18 @@ state player_updateweapons
 		setplayer[THISACTOR].ammo_amount DEVISTATOR_WEAPON MAXDEVISTATORAMMO
 		setplayer[THISACTOR].curr_weapon DEVISTATOR_WEAPON
 	}
+	else ifvare COOP GM_INSTAGIB
+	{
+		ifvare USING_RAILGUN 0
+		{
+			state setrailgun
+			setprojectile[RAILGUNSHOT].extra 400
+		}
+		
+		setplayer[THISACTOR].gotweapon RPG_WEAPON 1
+		setplayer[THISACTOR].curr_weapon RPG_WEAPON
+		setplayervar[THISACTOR].RAILGUN_AMMO MAXRAILGUNAMMO
+	}
 ends
 
 state player_tossweapon
