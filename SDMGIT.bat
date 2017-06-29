@@ -80,7 +80,7 @@ del .\builds\StrikerDM-DEV.pk3 /q
 
 cd pk3
 del *.tmp
-del *_crash.map
+del .\maps\*_crash.map
 7za a -y -tzip -mx=0 -mmt -xr!.GIT -xr!*.dbs -xr!*.tmp ..\builds\StrikerDM-DEV.pk3 .\
 
 pause
@@ -91,6 +91,8 @@ echo Compiling StrikerDM GIT Release Rev#: %REVISIONNUMBER% (Full Compression)..
 del .\builds\StrikerDM-r%REVISIONNUMBER%.pk3 /q
 
 cd pk3
+del *.tmp
+del .\maps\*_crash.map
 7za a -y -tzip -mx=9 -mmt -xr!.GIT -xr!*.dbs -xr!*.tmp ..\builds\StrikerDM-r%REVISIONNUMBER%.pk3 .\
 
 pause
@@ -102,7 +104,7 @@ del .\builds\StrikerDM.grp /q
 
 cd pk3
 del *.tmp
-del *_crash.map
+del .\maps\*_crash.map
 7za a -y -tzip -mx=9 -mmt -xr!.GIT -xr!*.dbs -xr!*.tmp ..\builds\StrikerDM.grp .\
 copy ..\builds\StrikerDM.grp "c:\Meltdown\Duke Nukem 3D\Mods"
 
