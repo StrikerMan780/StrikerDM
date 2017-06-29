@@ -1,0 +1,39 @@
+skybox {
+tile 89 pal 0
+back "skybox/la/la_fr.tga" nocompress
+right "skybox/la/la_rt.tga"  nocompress
+front "skybox/la/la_bk.tga" nocompress
+left "skybox/la/la_lf.tga" nocompress
+top "skybox/la/la_up.tga" nocompress
+down "skybox/la/la_dn.tga" nocompress
+}
+
+skybox {
+tile 94 pal 0
+back "skybox/clear/clearsky0_sides.png" nocompress
+right "skybox/clear/clearsky0_sides.png"  nocompress
+front "skybox/clear/clearsky0_sides.png" nocompress
+left "skybox/clear/clearsky0_sides.png" nocompress
+top "skybox/clear/clearsky0_top.png" nocompress
+down "skybox/clear/clearsky0_bottom.png" nocompress
+}
+
+skybox {
+tile 94 pal 1
+back "skybox/clear/clearsky1_sides.png" nocompress
+right "skybox/clear/clearsky1_sides.png"  nocompress
+front "skybox/clear/clearsky1_sides.png" nocompress
+left "skybox/clear/clearsky1_sides.png" nocompress
+top "skybox/clear/clearsky1_top.png" nocompress
+down "skybox/clear/clearsky0_bottom.png" nocompress
+}
+
+skybox {
+tile 94 pal 2
+back "skybox/clear/clearsky2_sides.png" nocompress
+right "skybox/clear/clearsky2_sides.png"  nocompress
+front "skybox/clear/clearsky2_sides.png" nocompress
+left "skybox/clear/clearsky2_sides.png" nocompress
+top "skybox/clear/clearsky2_top.png" nocompress
+down "skybox/clear/clearsky2_bottom.png" nocompress
+}

@@ -1,0 +1,55 @@
+// Ricky poster
+tilefromtexture 5050 { file "tiles/5050.png" }
+texture 5050 { pal 0 { file "highres/posters/5050_ricky.jpg" nodownsize } }
+
+// Spinball cart
+tilefromtexture 3693 { file "tiles/3693.png" }
+texture 3693 { pal 0 { file "tiles/3693.png" nocompress nodownsize } }
+
+// Roasting nuts
+animtilerange 5367 5369 5 ANIM_FORWARD
+tilefromtexture 5367 { file "tiles/5367.png" }
+tilefromtexture 5368 { file "tiles/5368.png" }
+tilefromtexture 5369 { file "tiles/5369.png" }
+
+tilefromtexture 4825 { file "tiles/4825.png" texture }
+tilefromtexture 4826 { file "tiles/4826.png" texture }
+tilefromtexture 4827 { file "tiles/4827.png" texture }
+tilefromtexture 4828 { file "tiles/4828.png" texture }
+tilefromtexture 4829 { file "tiles/4829.png" texture }
+tilefromtexture 4830 { file "tiles/4830.png" texture }
+tilefromtexture 4831 { file "tiles/4831.png" texture }
+tilefromtexture 4832 { file "tiles/4832.png" texture }
+tilefromtexture 4833 { file "tiles/4833.png" texture }
+tilefromtexture 4834 { file "tiles/4834.png" texture }
+tilefromtexture 4835 { file "tiles/4835.png" texture }
+tilefromtexture 4836 { file "tiles/4836.png" texture }
+tilefromtexture 4837 { file "tiles/4837.png" texture }
+tilefromtexture 4838 { file "tiles/4838.png" texture }
+tilefromtexture 4839 { file "tiles/4839.png" texture }
+tilefromtexture 4840 { file "tiles/4840.png" texture }
+tilefromtexture 4841 { file "tiles/4841.png" texture }
+tilefromtexture 4842 { file "tiles/4842.png" texture }
+tilefromtexture 4843 { file "tiles/4843.png" texture }
+tilefromtexture 4844 { file "tiles/4844.png" texture }
+tilefromtexture 4845 { file "tiles/4845.png" texture }
+tilefromtexture 4846 { file "tiles/4846.png" texture }
+tilefromtexture 4847 { file "tiles/4847.png" texture }
+tilefromtexture 4848 { file "tiles/4848.png" texture }
+tilefromtexture 4849 { file "tiles/4849.png" texture }
+tilefromtexture 4850 { file "tiles/4850.png" texture }
+tilefromtexture 4851 { file "tiles/4851.png" texture }
+tilefromtexture 4852 { file "tiles/4852.png" texture }
+tilefromtexture 4853 { file "tiles/4853.png" texture }
+tilefromtexture 4854 { file "tiles/4854.png" texture }
+tilefromtexture 4855 { file "tiles/4855.png" texture }
+tilefromtexture 4856 { file "tiles/4856.png" texture }
+
+// Zero Hour Babes
+tilefromtexture 4857 { file "tiles/4857.png" texture }
+tilefromtexture 4858 { file "tiles/4858.png" texture }
+tilefromtexture 4859 { file "tiles/4859.png" texture }
+tilefromtexture 4860 { file "tiles/4860.png" texture }
+tilefromtexture 4861 { file "tiles/4861.png" texture }
+tilefromtexture 4862 { file "tiles/4862.png" texture }
+tilefromtexture 4863 { file "tiles/4863.png" texture }

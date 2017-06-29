@@ -12,6 +12,8 @@ voxel "voxels/props/572_showerpart.kvx" { scale 1 tile 991 }
 
 voxel "voxels/props/0621_cameraA1.kvx" { scale 1 tile 621 tile 622 tile 623 tile 624 tile 625 }
 
+voxel "voxels/props/909_treetrunk.kvx" { scale 1 tile 909 }
+
 voxel "voxels/props/979_hanglight.kvx" { scale 1 tile 979 }
 
 voxel "voxels/props/1006_barstool.kvx" { scale 1 tile 1006 }
