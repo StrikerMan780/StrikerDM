@@ -116,8 +116,8 @@ state checkspeak
 			{
 				ifvare SPEAKTYPE KILL_FREEZER
 				{
-					randvar DUKELINE 4
-					switch DUKELINE
+					randvar RANDOM_SOUND 4
+					switch RANDOM_SOUND
 						case 0: sound FREEZE01 break
 						case 1: sound FREEZE02 break
 						case 2: sound FREEZE03 break
@@ -127,8 +127,8 @@ state checkspeak
 				}
 				else ifvare SPEAKTYPE KILL_SHRINKER
 				{
-					randvar DUKELINE 19
-					switch DUKELINE
+					randvar RANDOM_SOUND 19
+					switch RANDOM_SOUND
 						case 0: sound STOMP01 break
 						case 1: sound STOMP02 break
 						case 2: sound STOMP03 break
@@ -153,8 +153,8 @@ state checkspeak
 				}
 				else
 				{
-					randvar DUKELINE 16
-					switch DUKELINE
+					randvar RANDOM_SOUND 16
+					switch RANDOM_SOUND
 						case 0: sound JIBBED_ACTOR1 break
 						case 1: sound JIBBED_ACTOR2 break
 						case 2: sound JIBBED_ACTOR3 break
@@ -190,8 +190,8 @@ state make_attacker_speak
 ends
 
 state randgetweapsnds
-	randvar DUKELINE 4
-	switch DUKELINE
+	randvar RANDOM_SOUND 4
+	switch RANDOM_SOUND
 		case 0: globalsound DUKE_GETWEAPON1 break
 		case 1: globalsound DUKE_GETWEAPON2 break
 		case 2: globalsound DUKE_GETWEAPON3 break

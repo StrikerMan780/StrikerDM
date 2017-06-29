@@ -310,7 +310,8 @@ state checkrailgun
 ends
 
 state player_updateweapons
-	ifvare WEAPON FREEZE_WEAPON
+	getplayer[THISACTOR].curr_weapon TEMP
+	ifvare TEMP FREEZE_WEAPON
 	{
 		ifvare USING_FLAMETHROWER 1
 		{
@@ -327,7 +328,7 @@ state player_updateweapons
 			}
 		}
 	}
-	else ifvare WEAPON CHAINGUN_WEAPON
+	else ifvare TEMP CHAINGUN_WEAPON
 	{
 		ifvare USING_PLASMARIFLE 1
 		{
@@ -344,7 +345,7 @@ state player_updateweapons
 			}
 		}
 	}
-	else ifvare WEAPON RPG_WEAPON
+	else ifvare TEMP RPG_WEAPON
 	{
 		ifvare USING_RAILGUN 1
 		{

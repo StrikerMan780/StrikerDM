@@ -447,6 +447,10 @@ actor RUBBERCAN WEAK
 	{
 	  state rubbercan_break
 	}
+	else ifwasweapon RAILGUNSHOT
+	{
+	  state rubbercan_break
+	}
     else
 	{
       action RUBCANDENT

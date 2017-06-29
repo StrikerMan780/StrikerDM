@@ -454,7 +454,7 @@ ABOUT CHANGING SOUND FX
 The sound fx section follows this explanation.  
 
 1. The program expects to find any sound file that is in a
-   .VOC or .WAV file format.
+   .VOC or .wav file format.
 2. You can either change the VOC name listed below to match your new
    sound, or you can rename your file to match the name here.
 3. New sound files should be added to the game directory.  Though
@@ -676,7 +676,7 @@ definesound DUKE_KILLED3        sounds/duke/thsuk13a.ogg       0   0   255 4  0
 definesound DUKE_KILLED4        sounds/duke/pain/dscrem18.ogg       0   0   255 4   0
 definesound DUKE_KILLED5        sounds/duke/pisses01.ogg       0   0   255 4  0
 definesound DUKE_GRUNT          sounds/duke/exert.ogg          0   0   2   4   0
-definesound DUKE_DEAD           sounds/duke/pain/DMDEATH.OGG      -64  64   255 4  0
+definesound DUKE_DEAD           sounds/duke/pain/DMDEATH.ogg      -64  64   255 4  0
 definesound DUKE_HARTBEAT       sounds/hartbeat.ogg       0   0   0   0   0
 definesound DUKE_STEPONFECES    sounds/duke/happen01.ogg       0   0   0   4  0
 

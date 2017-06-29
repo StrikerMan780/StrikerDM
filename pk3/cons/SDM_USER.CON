@@ -74,7 +74,7 @@ definelevelname 6 4 maps/DTDM5.map 03:00 01:26 Hi-tech assault
 definelevelname 6 5 maps/DTDM6.map 02:30 01:04 Overlord's Port
 definelevelname 6 6 maps/DTDM7.map 04:45 02:15 Tournament Towers
 definelevelname 6 7 maps/LATISHA.map 11:30 04:59 Latisha canyon
-music 7 music/sirius.mid music/bruising.mid xheart.mid music/fla22k01.ogg 
+music 7 music/sirius.mid music/bruising.mid music/xheart.mid music/fla22k01.ogg 
         music/dukina.ogg pob.mid warehaus.mid layers.mid
 	   
 definevolumename 7 Duke XTreme DM
@@ -95,51 +95,68 @@ music 8 music/d_the_da.mid music/gaze.mid music/dirty.mid music/rocket.mid
         music/supfnord.mid gotham.mid music/d_e2m1.mid music/pj.mid
 	   
 definevolumename 8 Community Maps
-definelevelname 8 0 maps/EL_PASO-SDM.MAP 66:60 66:60 El Paso: Multiple Authors
-definelevelname 8 1 maps/CIRCENSE-SDM.MAP 66:60 66:60 Circense: Noldor Ranzou
-definelevelname 8 2 maps/QADIM-SDM.MAP 66:60 66:60 Qadim: Noldor Ranzou
-definelevelname 8 3 maps/TIMBERLAND-SDM.MAP 66:60 66:60 Timberland: Multiple Authors
-definelevelname 8 4 maps/ZEPPELIN2-SDM.MAP 66:60 66:60 Zeppelin 2: Multiple Authors
-definelevelname 8 5 maps/KOSMOS-SDM.MAP 66:60 66:60 Kosmos: Multiple Authors
-definelevelname 8 6 maps/CLUBMULENR-SDM.MAP 66:60 66:60 Club Mule NR: Noldor Ranzou
-definelevelname 8 7 maps/LUDOGAME2-SDM.MAP 66:60 66:60 Ludo Game 2: Noldor Ranzou
-definelevelname 8 8 maps/NRVHOUSE-SDM.MAP 66:60 66:60 NRVHouse: Multiple Authors
-definelevelname 8 9 maps/UMBRTKA-SDM.MAP 66:60 66:60 Umbrtka: Noldor Ranzou
-definelevelname 8 10 maps/PD-AREA52-SDM.MAP 66:60 66:60 PD Area 52: Noldor Ranzou
-definelevelname 8 11 maps/PD-VILLA-SDM.MAP 66:60 66:60 PD Villa: Vandclash
-definelevelname 8 12 maps/PD-FELICITY-SDM.MAP 66:60 66:60 PD Felicity: Vandclash
-definelevelname 8 13 maps/USERMAP-SDM.MAP 66:60 66:60 Usermap: Fernando Marquez
-definelevelname 8 14 maps/VSPACEPORT-SDM.MAP 66:60 66:60 Varuna Spaceport: Noldor Ranzou
-definelevelname 8 15 maps/LIGHTSOUT-SDM.MAP 66:60 66:60 Lights Out!: Noldor Ranzou
-definelevelname 8 16 maps/GHOSTHOUSE-SDM.MAP 66:60 66:60 Ghost House: Multiple Authors
-definelevelname 8 17 maps/LICEO-SDM.MAP 66:60 66:60 Liceo: Noldor Ranzou
-definelevelname 8 18 maps/LOOPYSHELTER-SDM.MAP 66:60 66:60 Loopy Shelter: Multiple Authors
-definelevelname 8 19 maps/RIKTI-SDM.MAP 66:60 66:60 Rikti: Vandclash
-definelevelname 8 20 maps/MALUK-SDM.MAP 66:60 66:60 Maluk: Vandclash
-definelevelname 8 21 maps/GELATOBEACH-SDM.MAP 66:60 66:60 Gelato Beach: Vandclash
-definelevelname 8 22 maps/DESTILLATEUR-DM-SDM.MAP 66:60 66:60 Destillateur: Vandclash
-definelevelname 8 23 maps/V-METRO-SDM.MAP 66:60 66:60 V-Metro: Vandclash
-definelevelname 8 24 maps/RIPTIDE-STRONGHOLD-SDM.MAP 66:60 66:60 Riptide Stronghold: Vandclash
-definelevelname 8 25 maps/NRV-LIVINGRAT-SDM.MAP 66:60 66:60 Living Rat: Vandclash
-definelevelname 8 26 maps/GRANJANUKEM-SDM.MAP 66:60 66:60 Granja Nukem: Vandclash
-music 9 music/VIRULENT.OGG music/DOKTOR.OGG music/EGWAA.OGG music/MULTPLAY.OGG music/ZEPPELIN.OGG music/INTERSTL.OGG
-        music/MIAMIDIS.OGG music/COCONUT.OGG music/UNKNOWNC.OGG music/EATDUST.OGG music/DARKCMBT.OGG music/VILLA.OGG
-	    music/FACILITY.OGG music/NIGHT.MID music/SAWDUST.OGG music/PHASEDAY.OGG music/BLOOD.OGG music/BINFINIE.OGG
-        music/DEFACTO.OGG music/ATTKSHIP.OGG WAREHAUS.MID music/GELATO.OGG music/BLIZZARD.OGG music/MLTPLAY2.OGG music/AZTEC.OGG music/SHDSIREN.OGG music/TRASHCAN.OGG
+definelevelname 8 0 maps/EL_PASO-SDM.map 66:60 66:60 El Paso: Multiple Authors
+definelevelname 8 1 maps/CIRCENSE-SDM.map 66:60 66:60 Circense: Noldor Ranzou
+definelevelname 8 2 maps/QADIM-SDM.map 66:60 66:60 Qadim: Noldor Ranzou
+definelevelname 8 3 maps/TIMBERLAND-SDM.map 66:60 66:60 Timberland: Multiple Authors
+definelevelname 8 4 maps/ZEPPELIN2-SDM.map 66:60 66:60 Zeppelin 2: Multiple Authors
+definelevelname 8 5 maps/KOSMOS-SDM.map 66:60 66:60 Kosmos: Multiple Authors
+definelevelname 8 6 maps/CLUBMULENR-SDM.map 66:60 66:60 Club Mule NR: Noldor Ranzou
+definelevelname 8 7 maps/LUDOGAME2-SDM.map 66:60 66:60 Ludo Game 2: Noldor Ranzou
+definelevelname 8 8 maps/NRVHOUSE-SDM.map 66:60 66:60 NRVHouse: Multiple Authors
+definelevelname 8 9 maps/UMBRTKA-SDM.map 66:60 66:60 Umbrtka: Noldor Ranzou
+definelevelname 8 10 maps/PD-AREA52-SDM.map 66:60 66:60 PD Area 52: Noldor Ranzou
+definelevelname 8 11 maps/PD-VILLA-SDM.map 66:60 66:60 PD Villa: Vandclash
+definelevelname 8 12 maps/PD-FELICITY-SDM.map 66:60 66:60 PD Felicity: Vandclash
+definelevelname 8 13 maps/USERMAP-SDM.map 66:60 66:60 Usermap: Fernando Marquez
+definelevelname 8 14 maps/VSPACEPORT-SDM.map 66:60 66:60 Varuna Spaceport: Noldor Ranzou
+definelevelname 8 15 maps/LIGHTSOUT-SDM.map 66:60 66:60 Lights Out!: Noldor Ranzou
+definelevelname 8 16 maps/GHOSTHOUSE-SDM.map 66:60 66:60 Ghost House: Multiple Authors
+definelevelname 8 17 maps/LICEO-SDM.map 66:60 66:60 Liceo: Noldor Ranzou
+definelevelname 8 18 maps/LOOPYSHELTER-SDM.map 66:60 66:60 Loopy Shelter: Multiple Authors
+definelevelname 8 19 maps/RIKTI-SDM.map 66:60 66:60 Rikti: Vandclash
+definelevelname 8 20 maps/MALUK-SDM.map 66:60 66:60 Maluk: Vandclash
+definelevelname 8 21 maps/GELATOBEACH-SDM.map 66:60 66:60 Gelato Beach: Vandclash
+definelevelname 8 22 maps/DESTILLATEUR-DM-SDM.map 66:60 66:60 Destillateur: Vandclash
+definelevelname 8 23 maps/V-METRO-SDM.map 66:60 66:60 V-Metro: Vandclash
+definelevelname 8 24 maps/RIPTIDE-STRONGHOLD-SDM.map 66:60 66:60 Riptide Stronghold: Vandclash
+definelevelname 8 25 maps/NRV-LIVINGRAT-SDM.map 66:60 66:60 Living Rat: Vandclash
+definelevelname 8 26 maps/GRANJANUKEM-SDM.map 66:60 66:60 Granja Nukem: Vandclash
+definelevelname 8 27 maps/TRIPBOMBERMAN.map 66:60 66:60 Tripbomberman: Noldor Ranzou
+definelevelname 8 28 maps/RETROLEDGES.map 66:60 66:60 Retro Ledges: Noldor Ranzou
+definelevelname 8 29 maps/LEGOLAND2-SDM.map 66:60 66:60 Lego Land 2: Noldor Ranzou
+definelevelname 8 30 maps/LUGUBRUM-SDM.map 66:60 66:60 Lugubrum: Noldor Ranzou
+definelevelname 8 31 maps/GALLERY-SDM.map 66:60 66:60 Clipart Gallery: F. Marquez
+definelevelname 8 32 maps/THERMAL-SDM.map 66:60 66:60 Thermal Waters: F. Marquez
+definelevelname 8 33 maps/MEGATON-SDM.map 66:60 66:60 Megaton Delirium: F. Marquez
+definelevelname 8 34 maps/BUJINKAN.map 66:60 66:60 Bujinkan Dojo: Noldor Ranzou
+definelevelname 8 35 maps/CALAMITY-SDM.map 66:60 66:60 Calamity: Noldor Ranzou
+definelevelname 8 36 maps/MANSION-SDM.map 66:60 66:60 Mansion: Multiple Authors
+definelevelname 8 37 maps/ALMACEN-SDM.map 66:60 66:60 Almacen: Mercano
+definelevelname 8 38 maps/BRIT11MAP1-SDM.map 66:60 66:60 Brit11 Map 01: Noldor Ranzou
+definelevelname 8 39 maps/UDM3MAP3-SDM.map 66:60 66:60 Udm3 Map 03: Noldor Ranzou
+definelevelname 8 40 maps/JEBIDMMAP7-SDM.map 66:60 66:60 Jebidm Map 07: Noldor Ranzou
+definelevelname 8 41 maps/TRAIN262-SDM.map 66:60 66:60 Train 262: Multiple Authors
+music 9 music/virulent.ogg music/doktor.ogg music/egwaa.ogg music/multplay.ogg music/zeppelin.ogg music/interstl.ogg
+        music/miamidis.ogg music/coconut.ogg music/unknownc.ogg music/eatdust.ogg music/darkcmbt.ogg music/villa.ogg
+	    music/facility.ogg music/night.mid music/sawdust.ogg music/phaseday.ogg music/blood.ogg music/binfinie.ogg
+        music/defacto.ogg music/attkship.ogg warehaus.mid music/gelato.ogg music/blizzard.ogg music/mltplay2.ogg music/aztec.ogg music/shdsiren.ogg music/trashcan.ogg
+        music/bomberman.ogg music/athletic.ogg music/d_stlks2.mid music/shial.ogg music/monster.mid music/hrpdream.mid music/mystery.mid music/ln2remix.ogg
+        music/pterodactyl.ogg music/haremscarem.ogg music/desertdrive.ogg music/d_runnin.mid music/d_countd.mid music/flaghate.mid music/train.ogg 
 	   
 // Sounds
 definesound INTO_MENU sounds/menu/menu_enter.wav 0 0 0 0 0
 
 definesound DSITEMUP sounds/items/dsitemup.wav 0 0 255 0 0
-definesound FLAMETHROWER_START sounds/FLAMESTR.OGG 0 0 255 0 0
-definesound FLAMETHROWER_FIRE sounds/FLAMETHR.OGG 0 0 255 0 0
-definesound TOASTY sounds/TOASTY.WAV 0 0 255 0 0
-definesound DEVASTATOR_FIRERIGHT sounds/DSDEVIRG.OGG 0 128 4 0 0
-definesound DEVASTATOR_FIRELEFT sounds/DSDEVILF.OGG 0 128 4 0 0
-definesound PLASMARIFLE_FIRE sounds/PLASFIRE.OGG 0 64 4 0 0
-definesound PLASMARIFLE_CHARGE sounds/PLASCHRG.OGG 0 0 4 0 0
-definesound PLASMARIFLE_HIT sounds/PLASHIT.WAV 0 64 4 0 8192
-definesound FREEZETHROWER_FIRE sounds/FREEZETH.WAV 0 64 4 0 0
+definesound FLAMETHROWER_START sounds/flamestr.ogg 0 0 255 0 0
+definesound FLAMETHROWER_FIRE sounds/flamethr.ogg 0 0 255 0 0
+definesound TOASTY sounds/toasty.wav 0 0 255 0 0
+definesound DEVASTATOR_FIRERIGHT sounds/dsdevirg.ogg 0 128 4 0 0
+definesound DEVASTATOR_FIRELEFT sounds/dsdevilf.ogg 0 128 4 0 0
+definesound PLASMARIFLE_FIRE sounds/plasfire.ogg 0 64 4 0 0
+definesound PLASMARIFLE_CHARGE sounds/plaschrg.ogg 0 0 4 0 0
+definesound PLASMARIFLE_HIT sounds/plashit.wav 0 64 4 0 8192
+definesound FREEZETHROWER_FIRE sounds/freezeth.wav 0 64 4 0 0
 definesound RAILGUN_FIRE1 sounds/dsrgfir1.wav 0 0 4 0 0
 definesound RAILGUN_FIRE2 sounds/dsrgfir2.wav 0 0 4 0 0
 definesound RAILGUN_FIRE3 sounds/dsrgfir3.wav 0 0 4 0 0
@@ -174,6 +191,15 @@ definesound BEACHAMB sounds/ambience/beachamb.ogg 0 0 0 3 0
 definesound DISCOAMB sounds/ambience/discoamb.ogg 0 0 0 3 0
 definesound ARCADEAMB sounds/ambience/arcadeamb.ogg 0 0 0 3 0
 definesound HQMAPFINISH sounds/ambience/hqmapfinish.ogg 0 0 0 3 0
+definesound SWDOOR01O sounds/ambience/swdoor01o.wav 0 0 0 0 8192
+definesound SWDOOR01C sounds/ambience/swdoor01c.wav 0 0 0 0 8192
+definesound SWDOOR02 sounds/ambience/swdoor02.wav 0 0 0 0 8192
+definesound SWENDLEV sounds/ambience/swendlev.wav 0 0 0 3 0
+definesound GONGHIT sounds/ambience/gonghit.wav 0 0 0 0 8192
+definesound BIRDS sounds/ambience/birds.wav 0 0 0 3 0
+definesound BATHTUBS sounds/ambience/bathtubs.wav 0 0 0 3 0
+definesound LASTNINJA sounds/ambience/lastninja.ogg 0 0 0 3 0
+definesound HOKUTO sounds/ambience/hokuto.ogg 0 0 0 3 0
 
 definesound JUMPPADSOUND sounds/ambience/jumppad.wav 0 0 0 0 0
 
@@ -199,8 +225,8 @@ definesound STOMP18 sounds/duke/stomp/DUKE_StompLine_18.ogg 0 0 255 0 0
 definesound STOMP19 sounds/duke/stomp/DUKE_StompLine_19.ogg 0 0 255 0 0
 definesound STOMP20 sounds/duke/stomp/DUKE_EatSize14_01.ogg 0 0 255 0 0
 
-definesound FREEZE01 sounds/duke/freeze/DSDNFR01.wav 0 0 255 0 0
-definesound FREEZE02 sounds/duke/freeze/DSDNFR02.wav 0 0 255 0 0
-definesound FREEZE03 sounds/duke/freeze/DSDNFR03.wav 0 0 255 0 0
+definesound FREEZE01 sounds/duke/freeze/dsdnfr01.wav 0 0 255 0 0
+definesound FREEZE02 sounds/duke/freeze/dsdnfr02.wav 0 0 255 0 0
+definesound FREEZE03 sounds/duke/freeze/dsdnfr03.wav 0 0 255 0 0
 definesound FREEZE04 sounds/duke/freeze/Duke_MP_Execute_02.ogg 0 0 255 0 0
 definesound FREEZE05 sounds/duke/freeze/Duke_MP_Execute_03.ogg 0 0 255 0 0

@@ -158,6 +158,15 @@ define BEACHAMB 534
 define DISCOAMB 535
 define ARCADEAMB 536
 define HQMAPFINISH 537
+define SWDOOR01O 538
+define SWDOOR01C 539
+define SWDOOR02 540
+define SWENDLEV 541
+define GONGHIT 542
+define BIRDS 543
+define BATHTUBS 544
+define LASTNINJA 545
+define HOKUTO 546
 // Community sound submissions should continue from the index above this line
 
 define JUMPPADSOUND 600

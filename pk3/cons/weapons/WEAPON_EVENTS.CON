@@ -225,7 +225,8 @@ onevent EVENT_GETAUTOAIMANGLE
 		}
 	}
 	
-	ifvare WEAPON RPG_WEAPON
+	getplayer[THISACTOR].curr_weapon TEMP
+	ifvare TEMP RPG_WEAPON
 	{
 		ifvare USING_RAILGUN 1
 			setvar AUTOAIMANGLE 10

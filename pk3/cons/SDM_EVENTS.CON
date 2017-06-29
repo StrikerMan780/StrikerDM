@@ -77,6 +77,7 @@ onevent EVENT_KILLIT
 		case CHAIR3:
 		case DURRPLANT:
 		case BONG:
+		case BONG2:
 		case DILDO:
 		case FLESHLIGHT:
 			state prepare_respawn_hardcoded
@@ -85,8 +86,8 @@ onevent EVENT_KILLIT
 	
 	ifactor SHELL
 	{
-		randvar DUKELINE 5
-		switch DUKELINE
+		randvar RANDOM_SOUND 5
+		switch RANDOM_SOUND
 			case 0: sound CASING1 break
 			case 1: sound CASING2 break
 			case 2: sound CASING3 break

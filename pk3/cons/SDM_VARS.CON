@@ -52,7 +52,6 @@ gamevar STATE_TEMP3 0 0
 gamevar STATE_RETURN 0 0
 */
 gamevar RANDOM_SOUND 0 0
-gamevar DUKELINE 0 0
 gamevar SPEAK 0 2
 gamevar SPEAKTYPE 0 2
 gamevar KILLTYPE 0 2
