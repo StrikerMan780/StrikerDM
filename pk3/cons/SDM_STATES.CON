@@ -153,7 +153,7 @@ state checkspeak
 				}
 				else
 				{
-					randvar RANDOM_SOUND 16
+					randvar RANDOM_SOUND 66
 					switch RANDOM_SOUND
 						case 0: sound JIBBED_ACTOR1 break
 						case 1: sound JIBBED_ACTOR2 break
@@ -172,6 +172,56 @@ state checkspeak
 						case 14: sound JIBBED_ACTOR15 break
 						case 15: sound SMACKED break
 						case 16: sound MDEVSPEECH break
+						case 17: sound NEWDUKEGIB01 break
+						case 18: sound NEWDUKEGIB02 break
+						case 19: sound NEWDUKEGIB03 break
+						case 20: sound NEWDUKEGIB04 break
+						case 21: sound NEWDUKEGIB05 break
+						case 22: sound NEWDUKEGIB06 break
+						case 23: sound NEWDUKEGIB07 break
+						case 24: sound NEWDUKEGIB08 break
+						case 25: sound NEWDUKEGIB09 break
+						case 26: sound NEWDUKEGIB10 break
+						case 27: sound NEWDUKEGIB11 break
+						case 28: sound NEWDUKEGIB12 break
+						case 29: sound NEWDUKEGIB13 break
+						case 30: sound NEWDUKEGIB14 break
+						case 31: sound NEWDUKEGIB15 break
+						case 32: sound NEWDUKEGIB16 break
+						case 33: sound NEWDUKEGIB17 break
+						case 34: sound NEWDUKEGIB18 break
+						case 35: sound NEWDUKEGIB19 break
+						case 36: sound NEWDUKEGIB20 break
+						case 37: sound NEWDUKEGIB21 break
+						case 38: sound NEWDUKEGIB22 break
+						case 39: sound NEWDUKEGIB23 break
+						case 40: sound NEWDUKEGIB24 break
+						case 41: sound NEWDUKEGIB25 break
+						case 42: sound NEWDUKEGIB26 break
+						case 43: sound NEWDUKEGIB27 break
+						case 44: sound NEWDUKEGIB28 break
+						case 45: sound NEWDUKEGIB29 break
+						case 46: sound NEWDUKEGIB30 break
+						case 47: sound NEWDUKEGIB31 break
+						case 48: sound NEWDUKEGIB32 break
+						case 49: sound NEWDUKEGIB33 break
+						case 50: sound NEWDUKEGIB34 break
+						case 51: sound NEWDUKEGIB35 break
+						case 52: sound NEWDUKEGIB36 break
+						case 53: sound NEWDUKEGIB37 break
+						case 54: sound NEWDUKEGIB38 break
+						case 55: sound NEWDUKEGIB39 break
+						case 56: sound NEWDUKEGIB40 break
+						case 57: sound NEWDUKEGIB41 break
+						case 58: sound NEWDUKEGIB42 break
+						case 59: sound NEWDUKEGIB43 break
+						case 60: sound NEWDUKEGIB44 break
+						case 61: sound NEWDUKEGIB45 break
+						case 62: sound NEWDUKEGIB46 break
+						case 63: sound NEWDUKEGIB47 break
+						case 64: sound NEWDUKEGIB48 break
+						case 65: sound NEWDUKEGIB49 break
+						case 66: sound NEWDUKEGIB50 break
 					endswitch
 				}
 			}
@@ -327,4 +377,14 @@ state strip_items
 			killit
 			break
 		endswitch
+ends
+
+state gibsound
+	randvar RANDOM_SOUND 3
+	switch RANDOM_SOUND
+		case 0: sound GIB_SPLAT1 break
+		case 1: sound GIB_SPLAT2 break
+		case 2: sound GIB_SPLAT3 break
+		case 3: sound GIB_SPLAT4 break
+	endswitch
 ends

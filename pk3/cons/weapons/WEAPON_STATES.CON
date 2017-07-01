@@ -362,6 +362,20 @@ state player_updateweapons
 			}
 		}
 	}
+	else ifvare TEMP SHOTGUN_WEAPON
+	{
+		ifvare weaponcount 17
+		{
+			randvar RANDOM_SOUND 3
+			switch RANDOM_SOUND
+				case 0: sound SHELL_EJECT1 break
+				case 1: sound SHELL_EJECT2 break
+				case 2: sound SHELL_EJECT3 break
+				case 3: sound SHELL_EJECT4 break
+			endswitch
+			break
+		}
+	}
 	
 	ifvare COOP GM_ROIDMATCH
 	{

@@ -97,6 +97,19 @@ onevent EVENT_KILLIT
 		endswitch
 		break
 	}
+	else ifactor SHOTGUNSHELL
+	{
+		randvar RANDOM_SOUND 5
+		switch RANDOM_SOUND
+			case 0: sound SHELL_BOUNCE1 break
+			case 1: sound SHELL_BOUNCE2 break
+			case 2: sound SHELL_BOUNCE3 break
+			case 3: sound SHELL_BOUNCE4 break
+			case 4: sound SHELL_BOUNCE5 break
+			case 5: sound SHELL_BOUNCE6 break
+		endswitch
+		break
+	}
 	
 	ifactor OOZFILTER
 	{
@@ -265,6 +278,24 @@ onevent EVENT_EGS
 			setvar ISADULT ADULT_UNHIDE
 			break
 	endswitch
+	switch TEMP
+		case JIBS1:
+		case JIBS2:
+		case JIBS3:
+		case JIBS4:
+		case JIBS5:
+		case HEADJIB1:
+        case LEGJIB1:
+        case ARMJIB1:
+        case LIZMANHEAD1:
+        case LIZMANARM1:
+        case LIZMANLEG1:
+        case DUKELEG:
+        case DUKEGUN:
+        case DUKETORSO:
+			setvarvar PICNUM_MEMORY TEMP
+			break
+	endswitch
 endevent
 
 onevent EVENT_GAME
@@ -287,12 +318,49 @@ onevent EVENT_GAME
 		case JIBS5:
 		case DUKETORSO:
 		case DUKELEG:
-			getactor[THISACTOR].pal TEMP
+			getactor[THISACTOR].pal TEMP2
 			espawn GIBBLOOD
-			setactor[RETURN].pal TEMP
+			setactor[RETURN].pal TEMP2
 			break
 	endswitch
+	
+	ifactor JIBS6
+	{
+		switch PICNUM_MEMORY
+			case JIBS1:
+			case JIBS2:
+			case JIBS3:
+			case JIBS4:
+			case JIBS5:
+			case HEADJIB1:
+			case LEGJIB1:
+			case ARMJIB1:
+			case LIZMANHEAD1:
+			case LIZMANARM1:
+			case LIZMANLEG1:
+			case DUKELEG:
+			case DUKEGUN:
+			case DUKETORSO:
+				state gibsound
+				
+				getactor[THISACTOR].pal TEMP2
+				ifvare PICNUM_MEMORY JIBS1 { espawn JIBS1_ONGROUND setactor[RETURN].pal TEMP2 }
+				else ifvare PICNUM_MEMORY JIBS2 { espawn JIBS2_ONGROUND setactor[RETURN].pal TEMP2 }
+				else ifvare PICNUM_MEMORY JIBS3 { espawn JIBS3_ONGROUND setactor[RETURN].pal TEMP2 }
+				else ifvare PICNUM_MEMORY JIBS4 { espawn JIBS4_ONGROUND setactor[RETURN].pal TEMP2 }
+				else ifvare PICNUM_MEMORY JIBS5 { espawn JIBS5_ONGROUND setactor[RETURN].pal TEMP2 }
+				else ifvare PICNUM_MEMORY DUKETORSO { espawn DUKETORSO_ONGROUND setactor[RETURN].pal TEMP2 }
+				else ifvare PICNUM_MEMORY DUKEGUN { espawn DUKEGUN_ONGROUND setactor[RETURN].pal TEMP2 }
+				else ifvare PICNUM_MEMORY DUKELEG { espawn DUKELEG_ONGROUND setactor[RETURN].pal TEMP2 }
+				
+				setvar PICNUM_MEMORY 0
+			break
+		endswitch
+	}
 endevent
+
+//onevent EVENT_PREGAME
+//endevent
 
 eventloadactor MASTERSWITCH
 	getactor[THISACTOR].hitag HITAG_MEMORY

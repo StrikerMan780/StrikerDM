@@ -107,6 +107,130 @@ actor JUMPPAD 0
 	}
 enda
 
+state onground_gib_code
+	fall
+	ifcount 316
+	{
+		killit
+	}
+	else ifcount 308
+	{
+		cstator 512
+	}
+	else ifcount 300
+	{
+		cstator 2
+	}
+	else ifcount 1 { }
+	else ifcount 0
+	{
+		sizeat 32 32
+		getactor[THISACTOR].pal TEMP3
+			
+		ifrnd 128 { eqspawn WALLBLOOD2 }
+		ifrnd 64 { eqspawn 1622 }
+		else { eqspawn WALLBLOOD5 }
+			
+		setactor[RETURN].pal TEMP3
+			
+		randvar TEMP3 2048
+		setactor[RETURN].ang TEMP3
+			
+		randvar TEMP3 16
+		addvar TEMP3 32
+		setactor[RETURN].xrepeat TEMP3
+		
+		randvar TEMP3 16
+		addvar TEMP3 32
+		setactor[RETURN].yrepeat TEMP3
+		
+		ifrnd 128 { setactor[RETURN].cstat 32 }
+		else { setactor[RETURN].cstat 36 }
+			
+		setvar RETURN 0
+	}
+ends
+
+actor DUKETORSO_ONGROUND
+{
+	ifspawnedby DUKETORSO_ONGROUND { }
+	else
+	{
+		state onground_gib_code
+	}
+}
+enda
+
+actor DUKEGUN_ONGROUND
+{
+	ifspawnedby DUKEGUN_ONGROUND { }
+	else
+	{
+		state onground_gib_code
+	}
+}
+enda
+
+actor DUKELEG_ONGROUND
+{
+	ifspawnedby DUKELEG_ONGROUND { }
+	else
+	{
+		state onground_gib_code
+	}
+}
+enda
+
+actor JIBS1_ONGROUND
+{
+	ifspawnedby JIBS1_ONGROUND { }
+	else
+	{
+		state onground_gib_code
+	}
+}
+enda
+
+actor JIBS2_ONGROUND
+{
+	ifspawnedby JIBS2_ONGROUND { }
+	else
+	{
+		state onground_gib_code
+	}
+}
+enda
+
+actor JIBS3_ONGROUND
+{
+	ifspawnedby JIBS3_ONGROUND { }
+	else
+	{
+		state onground_gib_code
+	}
+}
+enda
+
+actor JIBS4_ONGROUND
+{
+	ifspawnedby JIBS4_ONGROUND { }
+	else
+	{
+		state onground_gib_code
+	}
+}
+enda
+
+actor JIBS5_ONGROUND
+{
+	ifspawnedby JIBS5_ONGROUND { }
+	else
+	{
+		state onground_gib_code
+	}
+}
+enda
+
 define SCRAP_WORKSLIKE 4226
 defineprojectile COLORSCRAP1 PROJ_WORKSLIKE SCRAP_WORKSLIKE
 defineprojectile COLORSCRAP1 PROJ_XREPEAT 32

@@ -1,6 +1,11 @@
 // Jump Pad
 tilefromtexture 14 { file "tiles/14.png" texture }
 
+// Gibs
+tilefromtexture 1519 { file "tiles/1519.png" }
+tilefromtexture 1544 { file "tiles/1544.png" }
+tilefromtexture 1545 { file "tiles/1545.png" }
+
 // Colored scrap
 tilefromtexture 3725 { file "tiles/3725.png" }
 tilefromtexture 3726 { file "tiles/3726.png" }
