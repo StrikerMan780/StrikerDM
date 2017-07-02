@@ -364,7 +364,8 @@ state player_updateweapons
 	}
 	else ifvare TEMP SHOTGUN_WEAPON
 	{
-		ifvare weaponcount 17
+		getplayer[THISACTOR].kickback_pic TEMP2
+		ifvare TEMP2 17
 		{
 			randvar RANDOM_SOUND 3
 			switch RANDOM_SOUND

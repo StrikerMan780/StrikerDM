@@ -18,7 +18,14 @@ tilefromtexture 3856 { file "tiles/3856.png" texture }
 tilefromtexture 3857 { file "tiles/3857.png" texture }
 tilefromtexture 3858 { file "tiles/3858.png" texture }
 tilefromtexture 3859 { file "tiles/3859.png" texture }
-tilefromtexture 3860 { file "tiles/3860.png" texture }
+
+tilefromtexture 3860 { file "tiles/3860.png" }
+texture 3860	{
+					pal 0 { file "tiles/3860.png" nocompress nodownsize }
+					pal 11 { file "tiles/3860_pal11.png" nocompress nodownsize }
+					pal 21 { file "tiles/3860_pal21.png" nocompress nodownsize }
+				}
+
 tilefromtexture 3861 { file "tiles/3861.png" texture }
 tilefromtexture 3862 { file "tiles/3862.png" texture }
 tilefromtexture 3863 { file "tiles/3863.png" texture }
@@ -200,7 +207,14 @@ texture 3991	{
 				}
 
 tilefromtexture 3992 { file "tiles/3992.png" texture }
-tilefromtexture 3993 { file "tiles/3993.png" texture }
+
+tilefromtexture 3993 { file "tiles/3993.png" }
+texture 3993	{
+					pal 0 { file "tiles/3993.png" nocompress nodownsize }
+					pal 14 { file "tiles/3993_pal14.png" nocompress nodownsize }
+					pal 21 { file "tiles/3993_pal21.png" nocompress nodownsize }
+				}
+				
 tilefromtexture 3994 { file "tiles/3994.png" texture }
 tilefromtexture 3995 { file "tiles/3995.png" texture }
 tilefromtexture 3996 { file "tiles/3996.png" texture }
