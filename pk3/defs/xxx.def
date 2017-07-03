@@ -105,6 +105,7 @@ tilefromtexture 4963 { file "tiles/4963.png" }
 tilefromtexture 4964 { file "tiles/4964.png" }
 tilefromtexture 4965 { file "tiles/4965.png" }
 tilefromtexture 4966 { file "tiles/4966.png" }
+tilefromtexture 4967 { file "tiles/4967.png" }
 texture 4959 { pal 0 { file "highres/xxx/4959_geecku.jpg" } }
 texture 4960 { pal 0 { file "highres/xxx/4960_sharonm.png" } }
 texture 4961 { pal 0 { file "highres/xxx/4961_strikerxhelen.png" } }
@@ -113,6 +114,7 @@ texture 4963 { pal 0 { file "highres/xxx/4963_sharonm2.jpg" } }
 texture 4964 { pal 0 { file "highres/xxx/4964_mikhaila.jpg" } }
 texture 4965 { pal 0 { file "highres/xxx/4965_champagne.jpg" } }
 texture 4966 { pal 0 { file "highres/xxx/4966_mikhaila2.png" } }
+texture 4967 { pal 0 { file "highres/xxx/4967_geecku2.png" } }
 
 // XXX Animations
 animtilerange 6000 6028 3 ANIM_FORWARD

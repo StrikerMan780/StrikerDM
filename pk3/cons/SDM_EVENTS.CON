@@ -453,6 +453,7 @@ onevent EVENT_SPAWN
 		case FLESHLIGHT:
 		case DILDO:
 		case GEECKU:
+		case GEECKU2:
 		case SHARONM:
 		case STRIKERXHELEN:
 		case STRIKER:
