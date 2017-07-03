@@ -26,7 +26,12 @@ texture 3860	{
 					pal 21 { file "tiles/3860_pal21.png" nocompress nodownsize }
 				}
 
-tilefromtexture 3861 { file "tiles/3861.png" texture }
+tilefromtexture 3861 { file "tiles/3861.png" }
+texture 3861	{
+					pal 0 { file "tiles/3861.png" nocompress nodownsize }
+					pal 24 { file "tiles/3861_pal24.png" nocompress nodownsize }
+				}
+				
 tilefromtexture 3862 { file "tiles/3862.png" texture }
 tilefromtexture 3863 { file "tiles/3863.png" texture }
 tilefromtexture 3864 { file "tiles/3864.png" texture }
