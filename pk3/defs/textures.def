@@ -1,6 +1,8 @@
 // Ricky poster
 tilefromtexture 5050 { file "tiles/5050.png" }
 texture 5050 { pal 0 { file "highres/posters/5050_ricky.jpg" nodownsize } }
+tilefromtexture 5051 { file "tiles/5051.png" }
+texture 5051 { pal 0 { file "highres/posters/5051_doom.png" } }
 
 // Spinball cart
 tilefromtexture 3693 { file "tiles/3693.png" }
