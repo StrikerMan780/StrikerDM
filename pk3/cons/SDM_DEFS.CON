@@ -1,5 +1,7 @@
 define JUMPPAD 14
 
+define VENT_NOBREAK 339
+
 define GIBBLOOD 1621
 define LDEXPLOSION 2080
 
@@ -177,6 +179,12 @@ define BIRDS 543
 define BATHTUBS 544
 define LASTNINJA 545
 define HOKUTO 546
+define COLDWIND 547
+define CREAKYOPEN 548
+define CREAKYCLOSE 549
+define ELECTROSHOCK 550
+define ERASERHEAD 551
+define OLDCLOCK 552
 // Community sound submissions should continue from the index above this line
 
 define JUMPPADSOUND 600
@@ -248,3 +256,4 @@ define NEWDUKEGIB47 747
 define NEWDUKEGIB48 748
 define NEWDUKEGIB49 749
 define NEWDUKEGIB50 750
+define NEWDUKEGIB51 751

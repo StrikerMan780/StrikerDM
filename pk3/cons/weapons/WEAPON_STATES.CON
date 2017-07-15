@@ -316,6 +316,14 @@ state player_updateweapons
 		ifvare USING_FLAMETHROWER 1
 		{
 			setplayer[THISACTOR].ammo_amount FREEZE_WEAPON FLAMETHROWER_AMMO
+			
+			// Flamethrower empty ammo check
+			ifvare HAS_FREEZETHROWER 1
+			ifvare FLAMETHROWER_AMMO 0
+			ifvarg FREEZETHROWER_AMMO 0
+			{
+				state setfreezethrower
+			}
 		}
 		else
 		{
@@ -326,6 +334,14 @@ state player_updateweapons
 			{
 				state setflamethrower
 			}
+			
+			// Freezethrower empty ammo check
+			ifvare HAS_FLAMETHROWER 1
+			ifvare FREEZETHROWER_AMMO 0
+			ifvarg FLAMETHROWER_AMMO 0
+			{
+				state setflamethrower
+			}
 		}
 	}
 	else ifvare TEMP CHAINGUN_WEAPON
@@ -333,6 +349,14 @@ state player_updateweapons
 		ifvare USING_PLASMARIFLE 1
 		{
 			setplayer[THISACTOR].ammo_amount CHAINGUN_WEAPON PLASMARIFLE_AMMO
+			
+			// Plasma rifle empty ammo check
+			ifvare HAS_RIPPER 1
+			ifvare PLASMARIFLE_AMMO 0
+			ifvarg RIPPER_AMMO 0
+			{
+				state setripper
+			}
 		}
 		else
 		{
@@ -343,6 +367,14 @@ state player_updateweapons
 			{
 				state setplasmarifle
 			}
+			
+			// Ripper empty ammo check
+			ifvare HAS_PLASMARIFLE 1
+			ifvare RIPPER_AMMO 0
+			ifvarg PLASMARIFLE_AMMO 0
+			{
+				state setplasmarifle
+			}
 		}
 	}
 	else ifvare TEMP RPG_WEAPON
@@ -350,6 +382,14 @@ state player_updateweapons
 		ifvare USING_RAILGUN 1
 		{
 			setplayer[THISACTOR].ammo_amount RPG_WEAPON RAILGUN_AMMO
+			
+			// Railgun empty ammo check
+			ifvare HAS_RPG 1
+			ifvare RAILGUN_AMMO 0
+			ifvarg RPG_AMMO 0
+			{
+				state setrpg
+			}
 		}
 		else
 		{
@@ -357,6 +397,14 @@ state player_updateweapons
 			
 			ifvare HAS_RPG 0
 			ifvare HAS_RAILGUN 1
+			{
+				state setrailgun
+			}
+			
+			// RPG empty ammo check
+			ifvare HAS_RAILGUN 1
+			ifvare RPG_AMMO 0
+			ifvarg RAILGUN_AMMO 0
 			{
 				state setrailgun
 			}
@@ -402,7 +450,8 @@ state player_updateweapons
 ends
 
 state player_tossweapon
-	switch WEAPON
+	getplayer[THISACTOR].curr_weapon TEMP
+	switch TEMP
 		case PISTOL_WEAPON: spawn FIRSTGUNSPRITE break
 		case SHOTGUN_WEAPON: spawn SHOTGUNSPRITE break
 		case CHAINGUN_WEAPON:
@@ -430,6 +479,6 @@ state player_tossweapon
 			else
 				spawn FREEZESPRITE
 			break
-		case GROW_WEAPON: spawn GROWAMMO break
+		case GROW_WEAPON: spawn GROWSPRITEICON break
 	endswitch
 ends

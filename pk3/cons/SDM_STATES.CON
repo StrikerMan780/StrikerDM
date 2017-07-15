@@ -153,7 +153,7 @@ state checkspeak
 				}
 				else
 				{
-					randvar RANDOM_SOUND 66
+					randvar RANDOM_SOUND 67
 					switch RANDOM_SOUND
 						case 0: sound JIBBED_ACTOR1 break
 						case 1: sound JIBBED_ACTOR2 break
@@ -222,6 +222,7 @@ state checkspeak
 						case 64: sound NEWDUKEGIB48 break
 						case 65: sound NEWDUKEGIB49 break
 						case 66: sound NEWDUKEGIB50 break
+						case 67: sound NEWDUKEGIB51 break
 					endswitch
 				}
 			}

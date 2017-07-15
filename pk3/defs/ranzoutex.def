@@ -22,6 +22,7 @@ tilefromtexture 3859 { file "tiles/3859.png" texture }
 tilefromtexture 3860 { file "tiles/3860.png" }
 texture 3860	{
 					pal 0 { file "tiles/3860.png" nocompress nodownsize }
+					pal 10 { file "tiles/3860_pal10.png" nocompress nodownsize }
 					pal 11 { file "tiles/3860_pal11.png" nocompress nodownsize }
 					pal 21 { file "tiles/3860_pal21.png" nocompress nodownsize }
 				}
@@ -148,6 +149,51 @@ tilefromtexture 4004 { file "tiles/4004.png" texture }
 tilefromtexture 4005 { file "tiles/4005.png" texture }
 tilefromtexture 4006 { file "tiles/4006.png" texture }
 tilefromtexture 4007 { file "tiles/4007.png" texture }
+tilefromtexture 4008 { file "tiles/4008.png" }
+tilefromtexture 4009 { file "tiles/4009.png" texture }
+tilefromtexture 4010 { file "tiles/4010.png" }
+tilefromtexture 4011 { file "tiles/4011.png" }
+tilefromtexture 4012 { file "tiles/4012.png" }
+tilefromtexture 4013 { file "tiles/4013.png" }
+tilefromtexture 4017 { file "tiles/4017.png" }
+tilefromtexture 4018 { file "tiles/4018.png" }
+tilefromtexture 4019 { file "tiles/4019.png" }
+tilefromtexture 4020 { file "tiles/4020.png" }
+tilefromtexture 4021 { file "tiles/4021.png" }
+tilefromtexture 4022 { file "tiles/4022.png" }
+tilefromtexture 4023 { file "tiles/4023.png" }
+tilefromtexture 4024 { file "tiles/4024.png" texture }
+tilefromtexture 4026 { file "tiles/4026.png" }
+tilefromtexture 4027 { file "tiles/4027.png" }
+tilefromtexture 4028 { file "tiles/4028.png" }
+tilefromtexture 4030 { file "tiles/4030.png" }
+tilefromtexture 4031 { file "tiles/4031.png" texture }
+tilefromtexture 4032 { file "tiles/4032.png" texture }
+tilefromtexture 4033 { file "tiles/4033.png" texture }
+tilefromtexture 4034 { file "tiles/4034.png" texture }
+tilefromtexture 4035 { file "tiles/4035.png" texture }
+tilefromtexture 4036 { file "tiles/4036.png" }
+tilefromtexture 4037 { file "tiles/4037.png" }
+tilefromtexture 4038 { file "tiles/4038.png" }
+tilefromtexture 4039 { file "tiles/4039.png" }
+tilefromtexture 4042 { file "tiles/4042.png" }
+tilefromtexture 4044 { file "tiles/4044.png" }
+tilefromtexture 4045 { file "tiles/4045.png" }
+tilefromtexture 4046 { file "tiles/4046.png" }
+tilefromtexture 4047 { file "tiles/4047.png" }
+tilefromtexture 4048 { file "tiles/4048.png" }
+tilefromtexture 4049 { file "tiles/4049.png" }
+tilefromtexture 4051 { file "tiles/4051.png" texture }
+tilefromtexture 4052 { file "tiles/4052.png" texture }
+tilefromtexture 4053 { file "tiles/4053.png" texture }
+tilefromtexture 4054 { file "tiles/4054.png" texture }
+tilefromtexture 4055 { file "tiles/4055.png" texture }
+tilefromtexture 4059 { file "tiles/4059.png" texture }
+tilefromtexture 4060 { file "tiles/4060.png" texture }
+tilefromtexture 4061 { file "tiles/4061.png" texture }
+tilefromtexture 4062 { file "tiles/4062.png" texture }
+tilefromtexture 4063 { file "tiles/4063.png" texture }
+tilefromtexture 4064 { file "tiles/4064.png" texture }
 
 // Sprites (Static)
 
@@ -225,8 +271,22 @@ tilefromtexture 3995 { file "tiles/3995.png" texture }
 tilefromtexture 3996 { file "tiles/3996.png" texture }
 tilefromtexture 3997 { file "tiles/3997.png" texture }
 tilefromtexture 3998 { file "tiles/3998.png" texture }
+tilefromtexture 4014 { file "tiles/4014.png" }
+tilefromtexture 4015 { file "tiles/4015.png" }
+tilefromtexture 4016 { file "tiles/4016.png" }
+tilefromtexture 4025 { file "tiles/4025.png" texture }
+tilefromtexture 4029 { file "tiles/4029.png" }
+tilefromtexture 4036 { file "tiles/4036.png" texture }
+tilefromtexture 4040 { file "tiles/4040.png" }
+tilefromtexture 4041 { file "tiles/4041.png" }
+tilefromtexture 4050 { file "tiles/4050.png" }
+tilefromtexture 4043 { file "tiles/4043.png" }
+tilefromtexture 4056 { file "tiles/4056.png" texture }
+tilefromtexture 4057 { file "tiles/4057.png" texture }
+tilefromtexture 4058 { file "tiles/4058.png" texture }
 
 // Sprites (Animation)
 
 animtilerange 3930 3932 4 ANIM_FORWARD
 animtilerange 3933 3936 4 ANIM_FORWARD
+animtilerange 4032 4035 3 ANIM_FORWARD

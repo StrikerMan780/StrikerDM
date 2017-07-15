@@ -431,7 +431,7 @@ definelevelname 3 10 E4L11.map 04:20 02:10 AREA 51
 // or the music might not sound as good!
 
 // Music for title and end
-music 0 GRABBAG.MID BRIEFING.MID
+music 0 music/grabbag.mid BRIEFING.MID
 
 // Music for the individual levels
 music 1 stalker.mid dethtoll.mid streets.mid watrwld1.mid snake1.mid

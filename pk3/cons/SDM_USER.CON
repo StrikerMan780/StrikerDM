@@ -137,12 +137,28 @@ definelevelname 8 38 maps/BRIT11MAP1-SDM.map 66:60 66:60 Brit11 Map 01: Noldor R
 definelevelname 8 39 maps/UDM3MAP3-SDM.map 66:60 66:60 Udm3 Map 03: Noldor Ranzou
 definelevelname 8 40 maps/JEBIDMMAP7-SDM.map 66:60 66:60 Jebidm Map 07: Noldor Ranzou
 definelevelname 8 41 maps/TRAIN262-SDM.map 66:60 66:60 Train 262: Multiple Authors
+definelevelname 8 42 maps/NEONMAZE2-SDM.map 66:60 66:60 Neon Maze 2: Multiple Authors
+definelevelname 8 43 maps/BNAE02-SDM.map 66:60 66:60 Artificial Cave: Roi de Janeiro
+definelevelname 8 44 maps/AWALKB-SDM.map 66:60 66:60 Aerowalk: Kneiiden
+definelevelname 8 45 maps/DAODEATH-SDM.map 66:60 66:60 Arena of Death: Kneiiden
+definelevelname 8 46 maps/DUKEHOFP-SDM.map 66:60 66:60 House of Pain: Kneiiden
+definelevelname 8 47 maps/DUKEQDM2-SDM.map 66:60 66:60 Claustrophobopolis: Kneiiden
+definelevelname 8 48 maps/FEUER&EIS.map 66:60 66:60 Feuer und Eis: Noldor Ranzou
+definelevelname 8 49 maps/HELVETE.map 66:60 66:60 Helvete Asylum: Noldor Ranzou
+definelevelname 8 50 maps/DUKEPARK-SDM.map 66:60 66:60 Duke Park: MarioJCH
+definelevelname 8 51 maps/THREEWAY-SDM.map 66:60 66:60 Threeway: MarioJCH
+definelevelname 8 52 maps/Z_SKPARK2-SDM.map 66:60 66:60 Z Skatepark 2: Multiple Authors
+definelevelname 8 53 maps/WWEDUKEMANIA-SDM.map 66:60 66:60 WWE Dukemania: Multiple Authors
+definelevelname 8 54 maps/BLOCKFORTS-SDM.map 66:60 66:60 Block Forts: Multiple Authors
+
 music 9 music/virulent.ogg music/doktor.ogg music/egwaa.ogg music/multplay.ogg music/zeppelin.ogg music/interstl.ogg
         music/miamidis.ogg music/coconut.ogg music/unknownc.ogg music/eatdust.ogg music/darkcmbt.ogg music/villa.ogg
 	    music/facility.ogg music/night.mid music/sawdust.ogg music/phaseday.ogg music/blood.ogg music/binfinie.ogg
         music/defacto.ogg music/attkship.ogg warehaus.mid music/gelato.ogg music/blizzard.ogg music/mltplay2.ogg music/aztec.ogg music/shdsiren.ogg music/trashcan.ogg
         music/bomberman.ogg music/athletic.ogg music/d_stlks2.mid music/shial.ogg music/monster.mid music/hrpdream.mid music/mystery.mid music/ln2remix.ogg
         music/pterodactyl.ogg music/haremscarem.ogg music/desertdrive.ogg music/d_runnin.mid music/d_countd.mid music/flaghate.mid music/train.ogg 
+        music/jaguar.ogg music/piriton.ogg music/aenima.mid music/skinmask.mid music/brainscan.mid music/ealord.mid music/mus_e2m3.mid music/slavestate.ogg  
+        music/dnfost1.ogg music/dnfost2.ogg music/quickordead.mid music/wwe.ogg music/choco64.ogg
 	   
 // Sounds
 definesound INTO_MENU sounds/menu/menu_enter.wav 0 0 0 0 0
@@ -217,6 +233,12 @@ definesound BIRDS sounds/ambience/birds.wav 0 0 0 3 0
 definesound BATHTUBS sounds/ambience/bathtubs.wav 0 0 0 3 0
 definesound LASTNINJA sounds/ambience/lastninja.ogg 0 0 0 3 0
 definesound HOKUTO sounds/ambience/hokuto.ogg 0 0 0 3 0
+definesound COLDWIND sounds/ambience/coldwind.ogg 0 0 0 3 0
+definesound CREAKYOPEN sounds/ambience/creakyopen.wav 0 0 0 0 8192
+definesound CREAKYCLOSE sounds/ambience/creakyclose.wav 0 0 0 0 8192
+definesound ELECTROSHOCK sounds/ambience/electroshock.ogg 0 0 0 3 0
+definesound ERASERHEAD sounds/ambience/eraserhead.ogg 0 0 0 3 0
+definesound OLDCLOCK sounds/ambience/oldclock.ogg 0 0 0 3 0
 
 definesound JUMPPADSOUND sounds/ambience/jumppad.wav 0 0 0 0 0
 
@@ -298,3 +320,4 @@ definesound NEWDUKEGIB47 sounds/duke/gib/Duke_MP_KillLine_71.ogg 0 0 255 0 0
 definesound NEWDUKEGIB48 sounds/duke/gib/Duke_MP_KillLine_73.ogg 0 0 255 0 0
 definesound NEWDUKEGIB49 sounds/duke/gib/Duke_MP_KillLine_74.ogg 0 0 255 0 0
 definesound NEWDUKEGIB50 sounds/duke/gib/DUKE_RestINPieces_01.ogg 0 0 255 0 0
+definesound NEWDUKEGIB51 sounds/duke/gib/faggot.ogg 0 0 255 0 0

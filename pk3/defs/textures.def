@@ -1,3 +1,6 @@
+// Indestructable vent
+tilefromtexture 339 { file "tiles/339.png" }
+
 // Ricky poster
 tilefromtexture 5050 { file "tiles/5050.png" }
 texture 5050 { pal 0 { file "highres/posters/5050_ricky.jpg" nodownsize } }

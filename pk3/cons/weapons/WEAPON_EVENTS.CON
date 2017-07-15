@@ -179,12 +179,12 @@ onevent EVENT_FIRE
 endevent
 
 onevent EVENT_GETSHOTRANGE
-	ifvare numplayers 1
+	ifvare numplayers 1 // HACK: Make Dukebot accuracy suck cock to make them more fair with their aimbot-level aim.
 	{
 		getactor[THISACTOR].yvel TEMP
 		ifvarn TEMP 0
 		{
-			setvar ANGRANGE 64
+			setvar ANGRANGE 72
 			setvar ZRANGE 512
 			break
 		}
@@ -229,7 +229,16 @@ onevent EVENT_GETAUTOAIMANGLE
 	ifvare TEMP RPG_WEAPON
 	{
 		ifvare USING_RAILGUN 1
-			setvar AUTOAIMANGLE 10
+		{
+			ifvare COOP GM_INSTAGIB
+			{
+				setvar AUTOAIMANGLE 0
+			}
+			else
+			{
+				setvar AUTOAIMANGLE 16
+			}
+		}
 	}
 endevent
 
