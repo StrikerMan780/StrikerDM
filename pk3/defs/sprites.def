@@ -1,6 +1,15 @@
 // Jump Pad
 tilefromtexture 14 { file "tiles/14.png" texture }
 
+// Shrinker/Expander
+tilefromtexture 25 { file "tiles/25.png" }
+tilefromtexture 32 { file "tiles/32.png" }
+
+animtilerange 5006 5008 2 ANIM_FORWARD
+tilefromtexture 5006 { file "tiles/5006.png" xoffset -64 texture }
+tilefromtexture 5007 { file "tiles/5007.png" xoffset -64 texture }
+tilefromtexture 5008 { file "tiles/5008.png" xoffset -64 texture }
+
 // Gibs
 tilefromtexture 1519 { file "tiles/1519.png" }
 tilefromtexture 1544 { file "tiles/1544.png" }

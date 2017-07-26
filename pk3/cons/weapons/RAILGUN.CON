@@ -62,7 +62,6 @@ actor RAILGUNSPRITE
     fall
 	state init_pickup
 	state despawn_item_from_can
-	sizeat 32 32
     ifmove RESPAWN_ACTOR_FLAG
 	{
         state respawnit
@@ -126,7 +125,6 @@ actor RAILGUNAMMO
     fall
 	state init_pickup
 	state despawn_item_from_can
-	sizeat 16 16
     ifmove RESPAWN_ACTOR_FLAG
 	{
         state respawnit

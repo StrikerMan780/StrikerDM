@@ -70,16 +70,31 @@ state init_pickup
 		getactor[THISACTOR].htowner TEMP
 		ifvarvarn THISACTOR TEMP
 		{
-			ifvare SPAWNED 0
-			{
-				getactor[THISACTOR].z SPAWN_ORIGZ
-				subvar SPAWN_ORIGZ 8192
+			getactor[THISACTOR].z SPAWN_ORIGZ
+			subvar SPAWN_ORIGZ 8192
 			
-				setactor[THISACTOR].z SPAWN_ORIGZ
-				setactor[THISACTOR].zvel -1024
-				setvar SPAWNED 1
-			}
+			setactor[THISACTOR].z SPAWN_ORIGZ
+			setactor[THISACTOR].zvel -1024
 		}
+		
+		getactor[THISACTOR].picnum TEMP
+		switch TEMP
+			case PLASMASPRITE:
+			case RAILGUNSPRITE:
+			case FLAMETHROWERSPRITE:
+			case GROWSPRITEICON:
+			case FLAMETHROWERAMMO:
+			case PLASMAAMMO:
+				sizeat 32 32
+				break
+			case RAILGUNAMMO:
+				sizeat 16 16
+				break
+			case HEALTHBONER:
+			case ARMORBONER:
+				sizeat 32 28
+				break
+		endswitch
 	}
 ends
 

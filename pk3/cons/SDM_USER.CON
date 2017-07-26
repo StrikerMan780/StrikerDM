@@ -49,7 +49,7 @@ definegametype GM_INSTAGIB 19480 Instagib
 
 definevolumename 4 STRIKERDM Series
 definelevelname 4 0 maps/ktc.map 66:60 66:60 Killer Titty Club
-definelevelname 4 1 maps/space.map 66:60 66:60 Space Station Alpha (WIP)
+definelevelname 4 1 maps/space.map 66:60 66:60 Space Station Alpha
 definelevelname 4 2 maps/rocks.map 66:60 66:60 On The Rocks (WIP)
 music 5 music/fuckhead.ogg music/darkmatt.mid music/dynami.ogg
 
@@ -90,9 +90,13 @@ definelevelname 7 8 maps/DX-MOHAVE.map 11:30 04:59 Mohave
 definelevelname 7 9 maps/DX-OLDHOUSE.map 11:30 04:59 Old House
 definelevelname 7 10 maps/DX-ONHIGH.map 11:30 04:59 On High
 definelevelname 7 11 maps/DX-REDORBIT.map 11:30 04:59 Red Orbit
+definelevelname 7 12 maps/DX-YDTC.map 11:30 04:59 Young Duke Training Center
+definelevelname 7 13 maps/DX-RIMSHOTS.map 11:30 04:59 Rimshots
+definelevelname 7 14 maps/DX-TESERACT.map 11:30 04:59 Teseract
 music 8 music/d_the_da.mid music/gaze.mid music/dirty.mid music/rocket.mid 
         music/sebek.ogg music/kisgirla.mid music/d_stalks.mid music/mglodoom.mid
-        music/supfnord.mid gotham.mid music/d_e2m1.mid music/pj.mid
+        music/supfnord.mid gotham.mid music/d_e2m1.mid music/pj.mid music/ymca.mid
+        music/pumpup.mid music/outpost.ogg
 	   
 definevolumename 8 Community Maps
 definelevelname 8 0 maps/EL_PASO-SDM.map 66:60 66:60 El Paso: Multiple Authors
@@ -239,6 +243,7 @@ definesound CREAKYCLOSE sounds/ambience/creakyclose.wav 0 0 0 0 8192
 definesound ELECTROSHOCK sounds/ambience/electroshock.ogg 0 0 0 3 0
 definesound ERASERHEAD sounds/ambience/eraserhead.ogg 0 0 0 3 0
 definesound OLDCLOCK sounds/ambience/oldclock.ogg 0 0 0 3 0
+definesound SPACEODDITY sounds/ambience/spaceoddity.ogg 0 0 0 3 0
 
 definesound JUMPPADSOUND sounds/ambience/jumppad.wav 0 0 0 0 0
 

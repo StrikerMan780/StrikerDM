@@ -271,3 +271,20 @@ texture 6094 { pal 0 { file "highres/animations/6094.png" nocompress nodownsize 
 texture 6095 { pal 0 { file "highres/animations/6095.png" nocompress nodownsize } }
 texture 6096 { pal 0 { file "highres/animations/6096.png" nocompress nodownsize } }
 texture 6097 { pal 0 { file "highres/animations/6097.png" nocompress nodownsize } }
+
+animtilerange 6098 6112 2 ANIM_FORWARD
+tilefromtexture 6098 { file "tiles/6098.png" texture }
+tilefromtexture 6099 { file "tiles/6099.png" texture }
+tilefromtexture 6100 { file "tiles/6100.png" texture }
+tilefromtexture 6101 { file "tiles/6101.png" texture }
+tilefromtexture 6102 { file "tiles/6102.png" texture }
+tilefromtexture 6103 { file "tiles/6103.png" texture }
+tilefromtexture 6104 { file "tiles/6104.png" texture }
+tilefromtexture 6105 { file "tiles/6105.png" texture }
+tilefromtexture 6106 { file "tiles/6106.png" texture }
+tilefromtexture 6107 { file "tiles/6107.png" texture }
+tilefromtexture 6108 { file "tiles/6108.png" texture }
+tilefromtexture 6109 { file "tiles/6109.png" texture }
+tilefromtexture 6110 { file "tiles/6110.png" texture }
+tilefromtexture 6111 { file "tiles/6111.png" texture }
+tilefromtexture 6112 { file "tiles/6112.png" texture }

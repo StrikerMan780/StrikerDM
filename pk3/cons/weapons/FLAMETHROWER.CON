@@ -72,7 +72,6 @@ actor FLAMETHROWERSPRITE
     fall
 	state init_pickup
 	state despawn_item_from_can
-	sizeat 32 32
     ifmove RESPAWN_ACTOR_FLAG
 	{
         state respawnit
@@ -136,7 +135,6 @@ actor FLAMETHROWERAMMO
     fall
 	state init_pickup
 	state despawn_item_from_can
-	sizeat 32 32
     ifmove RESPAWN_ACTOR_FLAG
 	{
         state respawnit
@@ -310,7 +308,7 @@ defineprojectile FIREBALL PROJ_TRAIL FIREBALLTRAIL
 defineprojectile FIREBALL PROJ_TXREPEAT 32
 defineprojectile FIREBALL PROJ_TYREPEAT 32
 defineprojectile FIREBALL PROJ_SOUND FLAMETHROWER_FIRE
-defineprojectile FIREBALL PROJ_HITRADIUS 512
+defineprojectile FIREBALL PROJ_HITRADIUS 0
 defineprojectile FIREBALL PROJ_CSTAT 10370
 defineprojectile FIREBALL PROJ_SHADE -127
 defineprojectile FIREBALL PROJ_EXTRA FLAMETHROWER_WEAPON_STRENGTH   

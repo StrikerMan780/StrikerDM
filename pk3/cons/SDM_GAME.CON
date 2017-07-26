@@ -2170,6 +2170,7 @@ enda
 
 actor GROWSPRITEICON // Functioning Expander Pickup
   fall
+  state init_pickup
   state despawn_item_from_can
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
@@ -2183,8 +2184,9 @@ actor GROWSPRITEICON // Functioning Expander Pickup
       {
         ifgotweaponce 0
           break
-        addweapon SHRINKER_WEAPON 0
-		addammo GROW_WEAPON GROWCRYSTALAMMOAMOUNT
+		// This weird little setup is to allow autoswitch to go straight to the expander.
+		setplayer[THISACTOR].gotweapon SHRINKER_WEAPON 1
+		addweapon GROW_WEAPON GROWCRYSTALAMMOAMOUNT
         quote 60
         ifspawnedby GROWSPRITEICON
           state getweaponcode

@@ -12,6 +12,7 @@ Mikko Sandt, Dean Lillie, Chris Pufahl - Duke Tournament Maps
 Jon St. John - DNF/Manhattan/World Tour Duke Voices
 Gearbox - World Tour Textures
 Reaper Man, DotK3D, Striker - Voxels
+JimmyGnosis - Improved shrinker/expander pickups
 
 ***************************************************
 For community map credits, see "mapcredits" folder.

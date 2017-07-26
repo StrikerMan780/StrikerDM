@@ -18,7 +18,6 @@ gamevar NORESPAWN 0 2
 gamevar CURSPRITE 0 2
 gamevar LASTSPRITE 0 2
 gamevar OWNER -1 2
-gamevar SPAWNED 0 2
 gamevar FROMCAN 0 2
 gamevar LASTHITBY 0 2
 gamevar ANGLE 0 2

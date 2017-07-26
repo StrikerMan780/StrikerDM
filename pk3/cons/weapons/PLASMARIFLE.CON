@@ -44,7 +44,6 @@ actor PLASMASPRITE
     fall
 	state init_pickup
 	state despawn_item_from_can
-	sizeat 32 32
     ifmove RESPAWN_ACTOR_FLAG
 	{
         state respawnit
@@ -108,7 +107,6 @@ actor PLASMAAMMO
     fall
 	state init_pickup
 	state despawn_item_from_can
-	sizeat 32 32
     ifmove RESPAWN_ACTOR_FLAG
 	{
         state respawnit

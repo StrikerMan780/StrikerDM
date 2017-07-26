@@ -57,3 +57,5 @@ stuff
 /mapster32/eduke32-oldmp_binds.cfg
 /mapster32/eduke32-oldmp.cfg
 /mapster32/eduke32-oldmp.log
+/mapster32/eduke32.cfg
+/mapster32/*.log
