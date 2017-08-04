@@ -1,39 +1,269 @@
 skybox {
-tile 89 pal 0
-back "skybox/la/la_fr.tga" nocompress
-right "skybox/la/la_rt.tga"  nocompress
-front "skybox/la/la_bk.tga" nocompress
-left "skybox/la/la_lf.tga" nocompress
-top "skybox/la/la_up.tga" nocompress
-down "skybox/la/la_dn.tga" nocompress
+   tile 78 pal 0
+   top   "skybox/0078_top.png" nocompress nodownsize
+   down  "skybox/0078_bottom.png" nocompress nodownsize
+   front "skybox/0078_north.png" nocompress nodownsize
+   right "skybox/0078_north.png" nocompress nodownsize
+   back  "skybox/0078_north.png" nocompress nodownsize
+   left  "skybox/0078_north.png" nocompress nodownsize
 }
 
 skybox {
-tile 94 pal 0
-back "skybox/clear/clearsky0_sides.png" nocompress
-right "skybox/clear/clearsky0_sides.png"  nocompress
-front "skybox/clear/clearsky0_sides.png" nocompress
-left "skybox/clear/clearsky0_sides.png" nocompress
-top "skybox/clear/clearsky0_top.png" nocompress
-down "skybox/clear/clearsky0_bottom.png" nocompress
+   tile 79 pal 0
+   top   "skybox/0079_top.png" nocompress nodownsize
+   down  "skybox/0079_bottom.png" nocompress nodownsize
+   front "skybox/0079_north.png" nocompress nodownsize
+   right "skybox/0079_north.png" nocompress nodownsize 
+   back  "skybox/0079_north.png" nocompress nodownsize
+   left  "skybox/0079_north.png" nocompress nodownsize 
 }
 
 skybox {
-tile 94 pal 1
-back "skybox/clear/clearsky1_sides.png" nocompress
-right "skybox/clear/clearsky1_sides.png"  nocompress
-front "skybox/clear/clearsky1_sides.png" nocompress
-left "skybox/clear/clearsky1_sides.png" nocompress
-top "skybox/clear/clearsky1_top.png" nocompress
-down "skybox/clear/clearsky0_bottom.png" nocompress
+   tile 80 pal 0
+   top   "skybox/0080_top.png" nocompress nodownsize
+   down  "skybox/0080_bottom.png" nocompress nodownsize
+   front "skybox/0080_north.png" nocompress nodownsize
+   right "skybox/0080_east.png" nocompress nodownsize 
+   back  "skybox/0080_south.png" nocompress nodownsize
+   left  "skybox/0080_west.png" nocompress nodownsize 
 }
 
 skybox {
-tile 94 pal 2
-back "skybox/clear/clearsky2_sides.png" nocompress
-right "skybox/clear/clearsky2_sides.png"  nocompress
-front "skybox/clear/clearsky2_sides.png" nocompress
-left "skybox/clear/clearsky2_sides.png" nocompress
-top "skybox/clear/clearsky2_top.png" nocompress
-down "skybox/clear/clearsky2_bottom.png" nocompress
+   tile 84 pal 0
+   top   "skybox/0084_top.png" nocompress nodownsize
+   down  "skybox/0084_bottom.png" nocompress nodownsize
+   front "skybox/0084_north.png" nocompress nodownsize
+   right "skybox/0084_east.png" nocompress nodownsize 
+   back  "skybox/0084_south.png" nocompress nodownsize
+   left  "skybox/0084_west.png" nocompress nodownsize 
+}
+
+skybox {
+   tile 89 pal 0
+   top   "skybox/0089_top.png" nocompress nodownsize
+   down  "skybox/0089_bottom.png" nocompress nodownsize
+   front "skybox/0089_north.png" nocompress nodownsize
+   right "skybox/0089_east.png" nocompress nodownsize 
+   back  "skybox/0089_south.png" nocompress nodownsize
+   left  "skybox/0089_east.png" nocompress nodownsize 
+}
+
+skybox {
+   tile 94 pal 0
+   top   "skybox/0094_top.png" nocompress nodownsize
+   down  "skybox/0094_bottom.png" nocompress nodownsize
+   front "skybox/0094_north.png" nocompress nodownsize
+   right "skybox/0094_north.png" nocompress nodownsize 
+   back  "skybox/0094_north.png" nocompress nodownsize
+   left  "skybox/0094_north.png" nocompress nodownsize 
+}
+
+skybox {
+   tile 94 pal 1
+   top   "skybox/0094_1_top.png" nocompress nodownsize
+   down  "skybox/0094_bottom.png" nocompress nodownsize
+   front "skybox/0094_1_north.png" nocompress nodownsize
+   right "skybox/0094_1_north.png" nocompress nodownsize 
+   back  "skybox/0094_1_north.png" nocompress nodownsize
+   left  "skybox/0094_1_north.png" nocompress nodownsize 
+}
+
+skybox {
+   tile 95 pal 0
+   top   "skybox/0095_top.png" nocompress nodownsize
+   down  "skybox/0095_top.png" nocompress nodownsize
+   front "skybox/0095_north.png" nocompress nodownsize
+   right "skybox/0095_north.png" nocompress nodownsize 
+   back  "skybox/0095_north.png" nocompress nodownsize
+   left  "skybox/0095_north.png" nocompress nodownsize 
+}
+
+skybox {
+   tile 99 pal 0
+   top   "skybox/0099_top.png" nocompress nodownsize
+   down  "skybox/0099_bottom.png" nocompress nodownsize
+   front "skybox/0099_north.png" nocompress nodownsize
+   right "skybox/0099_north.png" nocompress nodownsize 
+   back  "skybox/0099_north.png" nocompress nodownsize
+   left  "skybox/0099_north.png" nocompress nodownsize 
+}
+
+skybox {
+   tile 1082 pal 0
+   top   "skybox/1082_top.png" nocompress nodownsize
+   down  "skybox/1082_bottom.png" nocompress nodownsize
+   front "skybox/1082_north.png" nocompress nodownsize
+   right "skybox/1082_north.png" nocompress nodownsize 
+   back  "skybox/1082_north.png" nocompress nodownsize
+   left  "skybox/1082_north.png" nocompress nodownsize 
+}
+
+skybox {
+   tile 1082 pal 2
+   top   "skybox/1082_top.png" nocompress nodownsize
+   down  "skybox/1082_bottom.png" nocompress nodownsize
+   front "skybox/1082_north.png" nocompress nodownsize
+   right "skybox/1082_north.png" nocompress nodownsize 
+   back  "skybox/1082_north.png" nocompress nodownsize
+   left  "skybox/1082_north.png" nocompress nodownsize 
+}
+
+skybox {
+   tile 1083 pal 0
+   top   "skybox/1083_top.png" nocompress nodownsize
+   down  "skybox/1083_bottom.png" nocompress nodownsize
+   front "skybox/1083_north.png" nocompress nodownsize
+   right "skybox/1083_north.png" nocompress nodownsize 
+   back  "skybox/1083_north.png" nocompress nodownsize
+   left  "skybox/1083_north.png" nocompress nodownsize 
+}
+
+skybox {
+   tile 1083 pal 2
+   top   "skybox/1083_top.png" nocompress nodownsize
+   down  "skybox/1083_bottom.png" nocompress nodownsize
+   front "skybox/1083_north.png" nocompress nodownsize
+   right "skybox/1083_north.png" nocompress nodownsize 
+   back  "skybox/1083_north.png" nocompress nodownsize
+   left  "skybox/1083_north.png" nocompress nodownsize 
+}
+
+skybox {
+   tile 1083 pal 24
+   top   "skybox/1083_24_top.png" nocompress nodownsize
+   down  "skybox/1083_24_bottom.png" nocompress nodownsize
+   front "skybox/1083_24_north.png" nocompress nodownsize
+   right "skybox/1083_24_north.png" nocompress nodownsize 
+   back  "skybox/1083_24_north.png" nocompress nodownsize
+   left  "skybox/1083_24_north.png" nocompress nodownsize 
+}
+
+skybox {
+   tile 1084 pal 0
+   top   "skybox/1084_top.png" nocompress nodownsize
+   down  "skybox/1084_bottom.png" nocompress nodownsize
+   front "skybox/1084_north.png" nocompress nodownsize
+   right "skybox/1084_north.png" nocompress nodownsize 
+   back  "skybox/1084_north.png" nocompress nodownsize
+   left  "skybox/1084_north.png" nocompress nodownsize 
+}
+
+skybox {
+   tile 1084 pal 2
+   top   "skybox/1084_top.png" nocompress nodownsize
+   down  "skybox/1084_bottom.png" nocompress nodownsize
+   front "skybox/1084_north.png" nocompress nodownsize
+   right "skybox/1084_north.png" nocompress nodownsize 
+   back  "skybox/1084_north.png" nocompress nodownsize
+   left  "skybox/1084_north.png" nocompress nodownsize 
+}
+
+skybox {
+   tile 1084 pal 24
+   top   "skybox/1084_24_top.png" nocompress nodownsize
+   down  "skybox/1084_24_bottom.png" nocompress nodownsize
+   front "skybox/1084_24_north.png" nocompress nodownsize
+   right "skybox/1084_24_north.png" nocompress nodownsize 
+   back  "skybox/1084_24_north.png" nocompress nodownsize
+   left  "skybox/1084_24_north.png" nocompress nodownsize 
+}
+
+skybox {
+   tile 1085 pal 0
+   top   "skybox/1085_top.png" nocompress nodownsize
+   down  "skybox/1085_bottom.png" nocompress nodownsize
+   front "skybox/1085_north.png" nocompress nodownsize
+   right "skybox/1085_north.png" nocompress nodownsize 
+   back  "skybox/1085_north.png" nocompress nodownsize
+   left  "skybox/1085_north.png" nocompress nodownsize 
+}
+
+skybox {
+   tile 1085 pal 2
+   top   "skybox/1085_top.png" nocompress nodownsize
+   down  "skybox/1085_bottom.png" nocompress nodownsize
+   front "skybox/1085_north.png" nocompress nodownsize
+   right "skybox/1085_north.png" nocompress nodownsize 
+   back  "skybox/1085_north.png" nocompress nodownsize
+   left  "skybox/1085_north.png" nocompress nodownsize 
+}
+
+skybox {
+   tile 1085 pal 24
+   top   "skybox/1085_24_top.png" nocompress nodownsize
+   down  "skybox/1085_24_bottom.png" nocompress nodownsize
+   front "skybox/1085_24_north.png" nocompress nodownsize
+   right "skybox/1085_24_north.png" nocompress nodownsize 
+   back  "skybox/1085_24_north.png" nocompress nodownsize
+   left  "skybox/1085_24_north.png" nocompress nodownsize 
+}
+
+skybox {
+   tile 1086 pal 0
+   top   "skybox/1086_top.png" nocompress nodownsize
+   down  "skybox/1086_bottom.png" nocompress nodownsize
+   front "skybox/1086_north.png" nocompress nodownsize
+   right "skybox/1086_north.png" nocompress nodownsize 
+   back  "skybox/1086_north.png" nocompress nodownsize
+   left  "skybox/1086_north.png" nocompress nodownsize 
+}
+
+skybox {
+   tile 1086 pal 2
+   top   "skybox/1086_top.png" nocompress nodownsize
+   down  "skybox/1086_bottom.png" nocompress nodownsize
+   front "skybox/1086_north.png" nocompress nodownsize
+   right "skybox/1086_north.png" nocompress nodownsize 
+   back  "skybox/1086_north.png" nocompress nodownsize
+   left  "skybox/1086_north.png" nocompress nodownsize 
+}
+
+skybox {
+   tile 1086 pal 24
+   top   "skybox/1086_24_top.png" nocompress nodownsize
+   down  "skybox/1086_24_bottom.png" nocompress nodownsize
+   front "skybox/1086_24_north.png" nocompress nodownsize
+   right "skybox/1086_24_north.png" nocompress nodownsize 
+   back  "skybox/1086_24_north.png" nocompress nodownsize
+   left  "skybox/1086_24_north.png" nocompress nodownsize 
+}
+
+skybox {
+   tile 1087 pal 0
+   top   "skybox/1087_top.png" nocompress nodownsize
+   down  "skybox/1087_bottom.png" nocompress nodownsize
+   front "skybox/1087_north.png" nocompress nodownsize
+   right "skybox/1087_north.png" nocompress nodownsize 
+   back  "skybox/1087_north.png" nocompress nodownsize
+   left  "skybox/1087_north.png" nocompress nodownsize 
+}
+
+skybox {
+   tile 1087 pal 2
+   top   "skybox/1087_top.png" nocompress nodownsize
+   down  "skybox/1087_bottom.png" nocompress nodownsize
+   front "skybox/1087_north.png" nocompress nodownsize
+   right "skybox/1087_north.png" nocompress nodownsize 
+   back  "skybox/1087_north.png" nocompress nodownsize
+   left  "skybox/1087_north.png" nocompress nodownsize 
+}
+
+skybox {
+   tile 3750 pal 0
+   top   "skybox/3750_top.png" nocompress nodownsize
+   down  "skybox/0094_bottom.png" nocompress nodownsize
+   front "skybox/3750_north.png" nocompress nodownsize
+   right "skybox/3750_north.png" nocompress nodownsize 
+   back  "skybox/3750_north.png" nocompress nodownsize
+   left  "skybox/3750_north.png" nocompress nodownsize 
+}
+
+skybox {
+   tile 3750 pal 2
+   top   "skybox/3750_top.png" nocompress nodownsize
+   down  "skybox/0094_bottom.png" nocompress nodownsize
+   front "skybox/3750_north.png" nocompress nodownsize
+   right "skybox/3750_north.png" nocompress nodownsize 
+   back  "skybox/3750_north.png" nocompress nodownsize
+   left  "skybox/3750_north.png" nocompress nodownsize 
 }

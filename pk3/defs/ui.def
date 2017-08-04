@@ -15,14 +15,16 @@ texture 2470 { pal 0 { file "highres/hud/holoduke_icon.png" } }
 tilefromtexture 2459 { file "tiles/2459.png" }
 
 // Status Bar
-//tilefromtexture 2462 { file "tiles/2462.png" } // Save for later when widescreen HUDs are possible.
-//texture 2462 { pal 0 { file "highres/hud/statusbar_widescreen.png" } }
-texture 2462 { pal 0 { file "highres/hud/statusbar.png" } }
+tilefromtexture 2462 { file "tiles/2462.png" } // Save for later when widescreen HUDs are possible.
+texture 2462 { pal 0 { file "highres/hud/statusbar_widescreen.png" } }
 
 // Menu Logo
 tilefromtexture 2503 { file "tiles/2503.png" xoffset 8 yoffset -8 }
 texture 2503 { pal 0 { file "highres/menu/2503_MenuLogo.png" nocompress nodownsize } }
 texture 2499 { pal 0 { file "highres/menu/2499_Duke3D.png" nocompress nodownsize } }
+
+// Crosshair
+texture 2523 { pal 0 { file "highres/hud/crosshair1.png" } }
 
 // Menu Cursor
 tilefromtexture 2813 { file "tiles/2813.png" }

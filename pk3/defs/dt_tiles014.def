@@ -103,3 +103,4 @@ tilefromtexture 3695 { file "tiles/3695.png" }
 tilefromtexture 3696 { file "tiles/3696.png" }
 tilefromtexture 3697 { file "tiles/3697.png" }
 tilefromtexture 3698 { file "tiles/3698.png" }
+tilefromtexture 3750 { file "tiles/3750.png" }
