@@ -13,7 +13,7 @@ Jon St. John - DNF/Manhattan/World Tour Duke Voices
 Gearbox - World Tour Textures
 Reaper Man, DotK3D, Striker - Voxels
 JimmyGnosis - Improved shrinker/expander pickups
-Fox - 3D Skyboxes
+Fox - 3D Skyboxes, improved flamethrower ammo pickups.
 
 ***************************************************
 For community map credits, see "mapcredits" folder.
