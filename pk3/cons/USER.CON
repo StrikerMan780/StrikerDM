@@ -66,7 +66,7 @@ define MAXGROWAMMO              50
 define MAXDEVISTATORAMMO       100 // [SM] Even number
 define MAXFREEZEAMMO            99
 define MAXTRIPBOMBAMMO          10
-define TRIPBOMBLASERMODE        1     // 0 = always visable
+define TRIPBOMBLASERMODE        0     // 0 = always visable
                                       // 1 = transluscense
                                       // 2 = invisible w/o IR goggles
                                       // 3 = totally invisable

@@ -1,12 +1,11 @@
 state draw_flamethrower // FLAMETHROWER_WEAPON:
     state reset_hud_weapon_coordinates
     
-    setvar hud_tilenum FLAMETHROWER
-    
     setvar hud_temp3 0
 	
     ifvarg weaponcount 0
     {	
+		setvar hud_tilenum FLAMETHROWER
         addvar hud_totaltime 1
         ifvarvarl weaponcount hud_totaltime
         {
@@ -56,11 +55,23 @@ state draw_flamethrower // FLAMETHROWER_WEAPON:
     }
     ifvare hud_temp3 0
     {
-        guniqhudid currentweapon
-        
-        addvar hud_x 210
-        
+		addvar hud_x 210
         addvar hud_y 261
+		
+		ifinwater
+		{
+		}
+		else
+		{
+			setvar hud_tilenum 5174
+		
+			subvar hud_shadef 32
+			state G_DrawWeaponTile
+			addvar hud_shadef 32
+		}
+		
+		setvar hud_tilenum FLAMETHROWER
+        guniqhudid currentweapon
         
         state G_DrawWeaponTile
         
@@ -85,10 +96,7 @@ actor FLAMETHROWERSPRITE
 		ifspawnedby FLAMETHROWERSPRITE
 		{
 			ifmultiplayer
-			ifvarn COOP GM_DUKEMATCH
-			ifvarn COOP GM_DUKEMATCH_NOSPAWN
-			ifvarn COOP GM_TEAMDUKEMATCH
-			ifvarn COOP GM_TEAMDUKEMATCH_NOSPAWN
+			ifvarand gametype_flags 2
 			ifvare AMMO_TEMP2 1
 			{
 				break
@@ -157,7 +165,7 @@ actor FLAMETHROWERAMMO
 			
 			quote 126
 			ifspawnedby FLAMETHROWERAMMO {
-				state getcode
+				state getcode_custom
 			}
 			else {
 				state quikget

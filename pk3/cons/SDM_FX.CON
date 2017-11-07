@@ -96,6 +96,15 @@ actor JUMPPAD 0
 				setplayer[THISACTOR].poszv TEMP2 // Launch
 				
 				setplayervar[THISACTOR].JUMPPAD_HIT 1 // They're in the air.
+				
+				// Set X/Y Velocities
+				getactor[THISACTOR].xvel TEMP2
+				mulvar TEMP2 1024
+				setplayervar[THISACTOR].JUMPPAD_XVEL TEMP2
+				
+				getactor[THISACTOR].yvel TEMP2
+				mulvar TEMP2 1024
+				setplayervar[THISACTOR].JUMPPAD_YVEL TEMP2
 			}
 		}
 	}

@@ -1,137 +1,137 @@
 tilefromtexture 2929 { file "highres/fonts/redfont13/2929_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2929 { pal 0 { file "highres/fonts/redfont13/2929.png" } }
+texture 2929 { pal 0 { file "highres/fonts/redfont13/2929.png" forcefilter } }
 
 tilefromtexture 2930 { file "highres/fonts/redfont13/2930_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2930 { pal 0 { file "highres/fonts/redfont13/2930.png" } }
+texture 2930 { pal 0 { file "highres/fonts/redfont13/2930.png" forcefilter } }
 
 tilefromtexture 2931 { file "highres/fonts/redfont13/2931_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2931 { pal 0 { file "highres/fonts/redfont13/2931.png" } }
+texture 2931 { pal 0 { file "highres/fonts/redfont13/2931.png" forcefilter } }
 
 tilefromtexture 2932 { file "highres/fonts/redfont13/2932_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2932 { pal 0 { file "highres/fonts/redfont13/2932.png" } }
+texture 2932 { pal 0 { file "highres/fonts/redfont13/2932.png" forcefilter } }
 
 tilefromtexture 2933 { file "highres/fonts/redfont13/2933_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2933 { pal 0 { file "highres/fonts/redfont13/2933.png" } }
+texture 2933 { pal 0 { file "highres/fonts/redfont13/2933.png" forcefilter } }
 
 tilefromtexture 2934 { file "highres/fonts/redfont13/2934_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2934 { pal 0 { file "highres/fonts/redfont13/2934.png" } }
+texture 2934 { pal 0 { file "highres/fonts/redfont13/2934.png" forcefilter } }
 
 tilefromtexture 2935 { file "highres/fonts/redfont13/2935_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2935 { pal 0 { file "highres/fonts/redfont13/2935.png" } }
+texture 2935 { pal 0 { file "highres/fonts/redfont13/2935.png" forcefilter } }
 
 tilefromtexture 2936 { file "highres/fonts/redfont13/2936_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2936 { pal 0 { file "highres/fonts/redfont13/2936.png" } }
+texture 2936 { pal 0 { file "highres/fonts/redfont13/2936.png" forcefilter } }
 
 tilefromtexture 2937 { file "highres/fonts/redfont13/2937_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2937 { pal 0 { file "highres/fonts/redfont13/2937.png" } }
+texture 2937 { pal 0 { file "highres/fonts/redfont13/2937.png" forcefilter } }
 
 tilefromtexture 2938 { file "highres/fonts/redfont13/2938_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2938 { pal 0 { file "highres/fonts/redfont13/2938.png" } }
+texture 2938 { pal 0 { file "highres/fonts/redfont13/2938.png" forcefilter } }
 
 tilefromtexture 2939 { file "highres/fonts/redfont13/2939_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2939 { pal 0 { file "highres/fonts/redfont13/2939.png" } }
+texture 2939 { pal 0 { file "highres/fonts/redfont13/2939.png" forcefilter } }
 
 tilefromtexture 2940 { file "highres/fonts/redfont13/2940_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2940 { pal 0 { file "highres/fonts/redfont13/2940.png" } }
+texture 2940 { pal 0 { file "highres/fonts/redfont13/2940.png" forcefilter } }
 
 tilefromtexture 2941 { file "highres/fonts/redfont13/2941_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2941 { pal 0 { file "highres/fonts/redfont13/2941.png" } }
+texture 2941 { pal 0 { file "highres/fonts/redfont13/2941.png" forcefilter } }
 
 tilefromtexture 2942 { file "highres/fonts/redfont13/2942_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2942 { pal 0 { file "highres/fonts/redfont13/2942.png" } }
+texture 2942 { pal 0 { file "highres/fonts/redfont13/2942.png" forcefilter } }
 
 tilefromtexture 2943 { file "highres/fonts/redfont13/2943_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2943 { pal 0 { file "highres/fonts/redfont13/2943.png" } }
+texture 2943 { pal 0 { file "highres/fonts/redfont13/2943.png" forcefilter } }
 
 tilefromtexture 2944 { file "highres/fonts/redfont13/2944_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2944 { pal 0 { file "highres/fonts/redfont13/2944.png" } }
+texture 2944 { pal 0 { file "highres/fonts/redfont13/2944.png" forcefilter } }
 
 tilefromtexture 2945 { file "highres/fonts/redfont13/2945_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2945 { pal 0 { file "highres/fonts/redfont13/2945.png" } }
+texture 2945 { pal 0 { file "highres/fonts/redfont13/2945.png" forcefilter } }
 
 tilefromtexture 2946 { file "highres/fonts/redfont13/2946_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2946 { pal 0 { file "highres/fonts/redfont13/2946.png" } }
+texture 2946 { pal 0 { file "highres/fonts/redfont13/2946.png" forcefilter } }
 
 tilefromtexture 2947 { file "highres/fonts/redfont13/2947_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2947 { pal 0 { file "highres/fonts/redfont13/2947.png" } }
+texture 2947 { pal 0 { file "highres/fonts/redfont13/2947.png" forcefilter } }
 
 tilefromtexture 2948 { file "highres/fonts/redfont13/2948_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2948 { pal 0 { file "highres/fonts/redfont13/2948.png" } }
+texture 2948 { pal 0 { file "highres/fonts/redfont13/2948.png" forcefilter } }
 
 tilefromtexture 2949 { file "highres/fonts/redfont13/2949_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2949 { pal 0 { file "highres/fonts/redfont13/2949.png" } }
+texture 2949 { pal 0 { file "highres/fonts/redfont13/2949.png" forcefilter } }
 
 tilefromtexture 2950 { file "highres/fonts/redfont13/2950_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2950 { pal 0 { file "highres/fonts/redfont13/2950.png" } }
+texture 2950 { pal 0 { file "highres/fonts/redfont13/2950.png" forcefilter } }
 
 tilefromtexture 2951 { file "highres/fonts/redfont13/2951_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2951 { pal 0 { file "highres/fonts/redfont13/2951.png" } }
+texture 2951 { pal 0 { file "highres/fonts/redfont13/2951.png" forcefilter } }
 
 tilefromtexture 2952 { file "highres/fonts/redfont13/2952_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2952 { pal 0 { file "highres/fonts/redfont13/2952.png" } }
+texture 2952 { pal 0 { file "highres/fonts/redfont13/2952.png" forcefilter } }
 
 tilefromtexture 2953 { file "highres/fonts/redfont13/2953_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2953 { pal 0 { file "highres/fonts/redfont13/2953.png" } }
+texture 2953 { pal 0 { file "highres/fonts/redfont13/2953.png" forcefilter } }
 
 tilefromtexture 2954 { file "highres/fonts/redfont13/2954_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2954 { pal 0 { file "highres/fonts/redfont13/2954.png" } }
+texture 2954 { pal 0 { file "highres/fonts/redfont13/2954.png" forcefilter } }
 
 tilefromtexture 2955 { file "highres/fonts/redfont13/2955_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2955 { pal 0 { file "highres/fonts/redfont13/2955.png" } }
+texture 2955 { pal 0 { file "highres/fonts/redfont13/2955.png" forcefilter } }
 
 tilefromtexture 2956 { file "highres/fonts/redfont13/2956_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2956 { pal 0 { file "highres/fonts/redfont13/2956.png" } }
+texture 2956 { pal 0 { file "highres/fonts/redfont13/2956.png" forcefilter } }
 
 tilefromtexture 2957 { file "highres/fonts/redfont13/2957_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2957 { pal 0 { file "highres/fonts/redfont13/2957.png" } }
+texture 2957 { pal 0 { file "highres/fonts/redfont13/2957.png" forcefilter } }
 
 tilefromtexture 2958 { file "highres/fonts/redfont13/2958_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2958 { pal 0 { file "highres/fonts/redfont13/2958.png" } }
+texture 2958 { pal 0 { file "highres/fonts/redfont13/2958.png" forcefilter } }
 
 tilefromtexture 2959 { file "highres/fonts/redfont13/2959_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2959 { pal 0 { file "highres/fonts/redfont13/2959.png" } }
+texture 2959 { pal 0 { file "highres/fonts/redfont13/2959.png" forcefilter } }
 
 tilefromtexture 2960 { file "highres/fonts/redfont13/2960_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2960 { pal 0 { file "highres/fonts/redfont13/2960.png" } }
+texture 2960 { pal 0 { file "highres/fonts/redfont13/2960.png" forcefilter } }
 
 tilefromtexture 2961 { file "highres/fonts/redfont13/2961_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2961 { pal 0 { file "highres/fonts/redfont13/2961.png" } }
+texture 2961 { pal 0 { file "highres/fonts/redfont13/2961.png" forcefilter } }
 
 tilefromtexture 2962 { file "highres/fonts/redfont13/2962_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2962 { pal 0 { file "highres/fonts/redfont13/2962.png" } }
+texture 2962 { pal 0 { file "highres/fonts/redfont13/2962.png" forcefilter } }
 
 tilefromtexture 2963 { file "highres/fonts/redfont13/2963_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2963 { pal 0 { file "highres/fonts/redfont13/2963.png" } }
+texture 2963 { pal 0 { file "highres/fonts/redfont13/2963.png" forcefilter } }
 
 tilefromtexture 2964 { file "highres/fonts/redfont13/2964_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2964 { pal 0 { file "highres/fonts/redfont13/2964.png" } }
+texture 2964 { pal 0 { file "highres/fonts/redfont13/2964.png" forcefilter } }
 
 tilefromtexture 2965 { file "highres/fonts/redfont13/2965_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 2965 { pal 0 { file "highres/fonts/redfont13/2965.png" } }
+texture 2965 { pal 0 { file "highres/fonts/redfont13/2965.png" forcefilter } }
 
 tilefromtexture 3002 { file "highres/fonts/redfont13/3002_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 3002 { pal 0 { file "highres/fonts/redfont13/3002.png" } }
+texture 3002 { pal 0 { file "highres/fonts/redfont13/3002.png" forcefilter } }
 
 tilefromtexture 3003 { file "highres/fonts/redfont13/3003_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 3003 { pal 0 { file "highres/fonts/redfont13/3003.png" } }
+texture 3003 { pal 0 { file "highres/fonts/redfont13/3003.png" forcefilter } }
 
 tilefromtexture 3004 { file "highres/fonts/redfont13/3004_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 3004 { pal 0 { file "highres/fonts/redfont13/3004.png" } }
+texture 3004 { pal 0 { file "highres/fonts/redfont13/3004.png" forcefilter } }
 
 tilefromtexture 3005 { file "highres/fonts/redfont13/3005_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 3005 { pal 0 { file "highres/fonts/redfont13/3005.png" } }
+texture 3005 { pal 0 { file "highres/fonts/redfont13/3005.png" forcefilter } }
 
 tilefromtexture 3006 { file "highres/fonts/redfont13/3006_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 3006 { pal 0 { file "highres/fonts/redfont13/3006.png" } }
+texture 3006 { pal 0 { file "highres/fonts/redfont13/3006.png" forcefilter } }
 
 tilefromtexture 3007 { file "highres/fonts/redfont13/3007_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 3007 { pal 0 { file "highres/fonts/redfont13/3007.png" } }
+texture 3007 { pal 0 { file "highres/fonts/redfont13/3007.png" forcefilter } }
 
 tilefromtexture 3008 { file "highres/fonts/redfont13/3008_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 3008 { pal 0 { file "highres/fonts/redfont13/3008.png" } }
+texture 3008 { pal 0 { file "highres/fonts/redfont13/3008.png" forcefilter } }
 
 tilefromtexture 3009 { file "highres/fonts/redfont13/3009_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 3009 { pal 0 { file "highres/fonts/redfont13/3009.png" } }
+texture 3009 { pal 0 { file "highres/fonts/redfont13/3009.png" forcefilter } }
 
 tilefromtexture 3022 { file "highres/fonts/redfont13/3022_8b.png" alphacut "254" xoff "0" yoff "0" }
-texture 3022 { pal 0 { file "highres/fonts/redfont13/3022.png" } }
+texture 3022 { pal 0 { file "highres/fonts/redfont13/3022.png" forcefilter } }

@@ -77,3 +77,69 @@ tilefromtexture 4860 { file "tiles/4860.png" texture }
 tilefromtexture 4861 { file "tiles/4861.png" texture }
 tilefromtexture 4862 { file "tiles/4862.png" texture }
 tilefromtexture 4863 { file "tiles/4863.png" texture }
+
+// Zero Hour Tech
+animtilerange 3775 3784 3 ANIM_FORWARD
+tilefromtexture 3775 { file "tiles/3775.png" texture }
+tilefromtexture 3776 { file "tiles/3776.png" texture }
+tilefromtexture 3777 { file "tiles/3777.png" texture }
+tilefromtexture 3778 { file "tiles/3778.png" texture }
+tilefromtexture 3779 { file "tiles/3779.png" texture }
+tilefromtexture 3780 { file "tiles/3780.png" texture }
+tilefromtexture 3781 { file "tiles/3781.png" texture }
+tilefromtexture 3782 { file "tiles/3782.png" texture }
+tilefromtexture 3783 { file "tiles/3783.png" texture }
+tilefromtexture 3784 { file "tiles/3784.png" texture }
+
+tilefromtexture 3785 { file "tiles/3785.png" texture }
+tilefromtexture 3786 { file "tiles/3786.png" texture }
+tilefromtexture 3787 { file "tiles/3787.png" texture }
+tilefromtexture 3788 { file "tiles/3788.png" texture }
+tilefromtexture 3789 { file "tiles/3789.png" texture }
+tilefromtexture 3790 { file "tiles/3790.png" texture }
+tilefromtexture 3791 { file "tiles/3791.png" texture }
+tilefromtexture 3792 { file "tiles/3792.png" texture }
+tilefromtexture 3793 { file "tiles/3793.png" texture }
+tilefromtexture 3794 { file "tiles/3794.png" texture }
+tilefromtexture 3795 { file "tiles/3795.png" texture }
+tilefromtexture 3796 { file "tiles/3796.png" texture }
+tilefromtexture 3797 { file "tiles/3797.png" texture }
+tilefromtexture 3798 { file "tiles/3798.png" texture }
+tilefromtexture 3799 { file "tiles/3799.png" texture }
+tilefromtexture 3800 { file "tiles/3800.png" texture }
+tilefromtexture 3801 { file "tiles/3801.png" texture }
+
+animtilerange 3802 3816 3 ANIM_FORWARD
+tilefromtexture 3802 { file "tiles/3802.png" texture }
+tilefromtexture 3803 { file "tiles/3803.png" texture }
+tilefromtexture 3804 { file "tiles/3804.png" texture }
+tilefromtexture 3805 { file "tiles/3805.png" texture }
+tilefromtexture 3806 { file "tiles/3806.png" texture }
+tilefromtexture 3807 { file "tiles/3807.png" texture }
+tilefromtexture 3808 { file "tiles/3808.png" texture }
+tilefromtexture 3809 { file "tiles/3809.png" texture }
+tilefromtexture 3810 { file "tiles/3810.png" texture }
+tilefromtexture 3811 { file "tiles/3811.png" texture }
+tilefromtexture 3812 { file "tiles/3812.png" texture }
+tilefromtexture 3813 { file "tiles/3813.png" texture }
+tilefromtexture 3814 { file "tiles/3814.png" texture }
+tilefromtexture 3815 { file "tiles/3815.png" texture }
+tilefromtexture 3816 { file "tiles/3816.png" texture }
+
+animtilerange 3817 3832 3 ANIM_FORWARD
+tilefromtexture 3817 { file "tiles/3817.png" texture }
+tilefromtexture 3818 { file "tiles/3818.png" texture }
+tilefromtexture 3819 { file "tiles/3819.png" texture }
+tilefromtexture 3820 { file "tiles/3820.png" texture }
+tilefromtexture 3821 { file "tiles/3821.png" texture }
+tilefromtexture 3822 { file "tiles/3822.png" texture }
+tilefromtexture 3823 { file "tiles/3823.png" texture }
+tilefromtexture 3824 { file "tiles/3824.png" texture }
+tilefromtexture 3825 { file "tiles/3825.png" texture }
+tilefromtexture 3826 { file "tiles/3826.png" texture }
+tilefromtexture 3827 { file "tiles/3827.png" texture }
+tilefromtexture 3828 { file "tiles/3828.png" texture }
+tilefromtexture 3829 { file "tiles/3829.png" texture }
+tilefromtexture 3830 { file "tiles/3830.png" texture }
+tilefromtexture 3831 { file "tiles/3831.png" texture }
+tilefromtexture 3832 { file "tiles/3832.png" texture }

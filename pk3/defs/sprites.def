@@ -6,14 +6,20 @@ tilefromtexture 25 { file "tiles/25.png" }
 tilefromtexture 32 { file "tiles/32.png" }
 
 animtilerange 5006 5008 2 ANIM_FORWARD
-tilefromtexture 5006 { file "tiles/5006.png" xoffset -64 texture }
-tilefromtexture 5007 { file "tiles/5007.png" xoffset -64 texture }
-tilefromtexture 5008 { file "tiles/5008.png" xoffset -64 texture }
+tilefromtexture 5006 { file "tiles/5006.png" xoffset -64 }
+tilefromtexture 5007 { file "tiles/5007.png" xoffset -64 }
+tilefromtexture 5008 { file "tiles/5008.png" xoffset -64 }
+texture 5006 { pal 0 { file "tiles/5006.png" nocompress nodownsize forcefilter } }
+texture 5007 { pal 0 { file "tiles/5007.png" nocompress nodownsize forcefilter } }
+texture 5008 { pal 0 { file "tiles/5008.png" nocompress nodownsize forcefilter } }
 
 // Gibs
 tilefromtexture 1519 { file "tiles/1519.png" }
 tilefromtexture 1544 { file "tiles/1544.png" }
 tilefromtexture 1545 { file "tiles/1545.png" }
+
+// Interpolated Shotgun
+tilefromtexture 2620 { file "tiles/2620.png" }
 
 // Colored scrap
 tilefromtexture 3725 { file "tiles/3725.png" }
@@ -129,6 +135,13 @@ tilefromtexture 5139 { file "tiles/5139.png" xoff -7 yoff 18 }
 tilefromtexture 5140 { file "tiles/5140.png" xoff 29 yoff 27 }
 tilefromtexture 5141 { file "tiles/5141.png" xoff 29 yoff 27 }
 tilefromtexture 5142 { file "tiles/5142.png" xoff 29 yoff 27 }
+
+animtilerange 5174 5178 4 ANIM_FORWARD
+tilefromtexture 5174 { file "tiles/5174.png" xoff 60 yoff 39 }
+tilefromtexture 5175 { file "tiles/5175.png" xoff 60 yoff 39 }
+tilefromtexture 5176 { file "tiles/5176.png" xoff 60 yoff 39 }
+tilefromtexture 5177 { file "tiles/5177.png" xoff 60 yoff 39 }
+tilefromtexture 5178 { file "tiles/5178.png" xoff 60 yoff 39 }
 
 // Smoke
 tilefromtexture 5143 { file "tiles/5143.png" }

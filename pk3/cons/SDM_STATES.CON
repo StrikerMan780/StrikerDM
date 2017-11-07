@@ -271,6 +271,19 @@ state quikweaponget_custom
   palfrom 32 0 32
 ends
 
+state getcode_custom
+  globalsound DUKE_GET
+  palfrom 16 0 32
+  ifvare RESPAWN_ITEMS 1
+  {
+    move RESPAWN_ACTOR_FLAG
+    spawn RESPAWNMARKERRED
+    cstat 32768
+  }
+  else
+    killit
+ends
+
 state update_lasthitby
 	getactor[THISACTOR].htextra TEMP
 	ifvarg TEMP 0 // if the actor is set to take some damage from a weapon...
@@ -351,13 +364,34 @@ state jumppadcode // This state goes in the APLAYER actor.
 	ifvare JUMPPAD_HIT 1
 	{
 		setplayer[THISACTOR].falling_counter 0 // No falling damage on jump pads.
+		
+		ifvarn JUMPPAD_XVEL 0
+		{
+			setplayer[THISACTOR].posxv JUMPPAD_XVEL
+		}
+		
+		ifvarn JUMPPAD_YVEL 0
+		{
+			setplayer[THISACTOR].posyv JUMPPAD_YVEL
+		}
+		
 		ifp ponground
 		{
 			setvar JUMPPAD_HIT 0 // No longer launched by jump pad when player hits the ground
+			setvar JUMPPAD_XVEL 0
+			setvar JUMPPAD_YVEL 0
 		}
-		ifp pjetpack
+		else ifp pjetpack
 		{
 			setvar JUMPPAD_HIT 0 // If they use the jetpack, prevent them from cheating the jump pads to stop fall damage.
+			setvar JUMPPAD_XVEL 0
+			setvar JUMPPAD_YVEL 0
+		}
+		else ifinwater
+		{
+			setvar JUMPPAD_HIT 0 // Cancel out if landed in water.
+			setvar JUMPPAD_XVEL 0
+			setvar JUMPPAD_YVEL 0
 		}
 	}
 ends

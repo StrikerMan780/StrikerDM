@@ -51,7 +51,7 @@ definevolumename 4 STRIKERDM Series
 definelevelname 4 0 maps/ktc.map 66:60 66:60 Killer Titty Club
 definelevelname 4 1 maps/space.map 66:60 66:60 Space Station Alpha
 definelevelname 4 2 maps/rocks.map 66:60 66:60 On The Rocks (WIP)
-music 5 music/fuckhead.ogg music/darkmatt.mid music/dynami.ogg
+music 5 music/sexwithex.mid music/darkmatt.mid music/ffunk.ogg
 
 definevolumename 5 WGDM Series
 definelevelname 5 0 maps/wgdm1.map 66:60 66:60 WGDM1 (6P)
@@ -92,7 +92,7 @@ definelevelname 7 10 maps/DX-ONHIGH.map 11:30 04:59 On High
 definelevelname 7 11 maps/DX-REDORBIT.map 11:30 04:59 Red Orbit
 definelevelname 7 12 maps/DX-YDTC.map 11:30 04:59 Young Duke Training Center
 definelevelname 7 13 maps/DX-RIMSHOTS.map 11:30 04:59 Rimshots
-definelevelname 7 14 maps/DX-TESERACT.map 11:30 04:59 Teseract
+definelevelname 7 14 maps/DX-TESERACT.map 11:30 04:59 Tesseract Redux
 music 8 music/d_the_da.mid music/gaze.mid music/dirty.mid music/rocket.mid 
         music/sebek.ogg music/kisgirla.mid music/d_stalks.mid music/mglodoom.mid
         music/supfnord.mid gotham.mid music/d_e2m1.mid music/pj.mid music/ymca.mid

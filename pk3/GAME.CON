@@ -1,5 +1,7 @@
 // StrikerDM CON Files
 action ANULLACTION 0
+move RESPAWN_ACTOR_FLAG
+
 include DEFS.CON
 include cons/USER.CON
 include cons/SDM_VARS.CON

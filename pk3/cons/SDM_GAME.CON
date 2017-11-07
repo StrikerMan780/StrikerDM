@@ -402,7 +402,6 @@ state rats
     spawn RAT
 ends
 
-move RESPAWN_ACTOR_FLAG
 move MOUSEVELS 32
 
 action RUBCANDENT 1 1 1 1 1
@@ -1567,13 +1566,15 @@ state getweaponcode
   state randgetweapsnds
 
   palfrom 32 0 32
+  
   ifactor HBOMBAMMO
 	nullop
   else ifactor TRIPBOMBSPRITE
     nullop
   else ifgotweaponce 1
     break
-  ifrespawn
+	
+  ifvare RESPAWN_ITEMS 1
   {
     move RESPAWN_ACTOR_FLAG
     spawn RESPAWNMARKERRED
@@ -1593,11 +1594,14 @@ state getweaponcode
 		spawn RESPAWNMARKERRED
 		cstat 32768
 	}
+	else
+	{
+		killit
+	}
   }
   else
     killit
 ends
-
 
 state respawnit
   ifcount RESPAWNITEMTIME
@@ -2182,16 +2186,30 @@ actor GROWSPRITEICON // Functioning Expander Pickup
           ifcount 6
             ifcanseetarget
       {
-        ifgotweaponce 0
-          break
+        ifspawnedby GROWSPRITEICON
+		{
+			getplayer[THISACTOR].gotweapon GROW_WEAPON TEMP
+			ifmultiplayer
+			ifvarand gametype_flags 2
+			ifvare TEMP 1
+			{
+				break
+			}
+		}
+
 		// This weird little setup is to allow autoswitch to go straight to the expander.
-		setplayer[THISACTOR].gotweapon SHRINKER_WEAPON 1
 		addweapon GROW_WEAPON GROWCRYSTALAMMOAMOUNT
+		setplayer[THISACTOR].gotweapon SHRINKER_WEAPON 1
         quote 60
         ifspawnedby GROWSPRITEICON
+		{
           state getweaponcode
+		}
         else
-          state quikweaponget
+		{
+          state quikweaponget_custom
+		  killit
+		}
       }
 enda
 

@@ -57,10 +57,7 @@ actor PLASMASPRITE
 		ifspawnedby PLASMASPRITE
 		{
 			ifmultiplayer
-			ifvarn COOP GM_DUKEMATCH
-			ifvarn COOP GM_DUKEMATCH_NOSPAWN
-			ifvarn COOP GM_TEAMDUKEMATCH
-			ifvarn COOP GM_TEAMDUKEMATCH_NOSPAWN
+			ifvarand gametype_flags 2
 			ifvare AMMO_TEMP2 1
 			{
 				break
@@ -129,7 +126,7 @@ actor PLASMAAMMO
 			
 			quote 130
 			ifspawnedby PLASMAAMMO {
-				state getcode
+				state getcode_custom
 			}
 			else {
 				state quikget

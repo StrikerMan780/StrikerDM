@@ -3,7 +3,7 @@ gamevar ITEM_TEMP1 0 2
 state getcode_doomitem
   globalsound DSITEMUP
   palfrom 16 32 32 8
-  ifrespawn
+  ifvare RESPAWN_ITEMS 1
   {
     move RESPAWN_ACTOR_FLAG
     spawn RESPAWNMARKERRED

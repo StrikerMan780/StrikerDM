@@ -1,1522 +1,1522 @@
 texture 3010 { 
-   pal 0 { file "highres/fonts/smallfont/3010.png" }
-   pal 1 { file "highres/fonts/smallfont/pal1/3010.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3010.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3010.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3010.png" } 
+   pal 0 { file "highres/fonts/smallfont/3010.png" forcefilter }
+   pal 1 { file "highres/fonts/smallfont/pal1/3010.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3010.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3010.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3010.png" forcefilter } 
 }
 texture 3011 { 
-   pal 0 { file "highres/fonts/smallfont/3011.png" } 
-   pal 1 { file "highres/fonts/smallfont/pal1/3011.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3011.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3011.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3011.png" } 
+   pal 0 { file "highres/fonts/smallfont/3011.png" forcefilter } 
+   pal 1 { file "highres/fonts/smallfont/pal1/3011.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3011.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3011.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3011.png" forcefilter } 
 }
 texture 3012 { 
-   pal 0 { file "highres/fonts/smallfont/3012.png" } 
-   pal 1 { file "highres/fonts/smallfont/pal1/3012.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3012.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3012.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3012.png" } 
+   pal 0 { file "highres/fonts/smallfont/3012.png" forcefilter } 
+   pal 1 { file "highres/fonts/smallfont/pal1/3012.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3012.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3012.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3012.png" forcefilter } 
 }
 texture 3013 { 
-   pal 0 { file "highres/fonts/smallfont/3013.png" } 
-   pal 1 { file "highres/fonts/smallfont/pal1/3013.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3013.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3013.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3013.png" } 
+   pal 0 { file "highres/fonts/smallfont/3013.png" forcefilter } 
+   pal 1 { file "highres/fonts/smallfont/pal1/3013.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3013.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3013.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3013.png" forcefilter } 
 }
 texture 3014 { 
-   pal 0 { file "highres/fonts/smallfont/3014.png" } 
-   pal 1 { file "highres/fonts/smallfont/pal1/3014.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3014.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3014.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3014.png" } 
+   pal 0 { file "highres/fonts/smallfont/3014.png" forcefilter } 
+   pal 1 { file "highres/fonts/smallfont/pal1/3014.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3014.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3014.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3014.png" forcefilter } 
 }
 texture 3015 { 
-   pal 0 { file "highres/fonts/smallfont/3015.png" } 
-   pal 1 { file "highres/fonts/smallfont/pal1/3015.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3015.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3015.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3015.png" } 
+   pal 0 { file "highres/fonts/smallfont/3015.png" forcefilter } 
+   pal 1 { file "highres/fonts/smallfont/pal1/3015.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3015.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3015.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3015.png" forcefilter } 
 }
 texture 3016 { 
-   pal 0 { file "highres/fonts/smallfont/3016.png" } 
-   pal 1 { file "highres/fonts/smallfont/pal1/3016.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3016.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3016.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3016.png" } 
+   pal 0 { file "highres/fonts/smallfont/3016.png" forcefilter } 
+   pal 1 { file "highres/fonts/smallfont/pal1/3016.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3016.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3016.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3016.png" forcefilter } 
 }
 texture 3017 { 
-   pal 0 { file "highres/fonts/smallfont/3017.png" } 
-   pal 1 { file "highres/fonts/smallfont/pal1/3017.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3017.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3017.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3017.png" } 
+   pal 0 { file "highres/fonts/smallfont/3017.png" forcefilter } 
+   pal 1 { file "highres/fonts/smallfont/pal1/3017.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3017.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3017.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3017.png" forcefilter } 
 }
 texture 3018 { 
-   pal 0 { file "highres/fonts/smallfont/3018.png" } 
-   pal 1 { file "highres/fonts/smallfont/pal1/3018.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3018.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3018.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3018.png" } 
+   pal 0 { file "highres/fonts/smallfont/3018.png" forcefilter } 
+   pal 1 { file "highres/fonts/smallfont/pal1/3018.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3018.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3018.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3018.png" forcefilter } 
 }
 texture 3019 { 
-   pal 0 { file "highres/fonts/smallfont/3019.png" } 
-   pal 1 { file "highres/fonts/smallfont/pal1/3019.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3019.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3019.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3019.png" } 
+   pal 0 { file "highres/fonts/smallfont/3019.png" forcefilter } 
+   pal 1 { file "highres/fonts/smallfont/pal1/3019.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3019.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3019.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3019.png" forcefilter } 
 }
 
 texture 3020 { 
-   pal 0 { file "highres/fonts/smallfont/3020.png" } 
-   pal 1 { file "highres/fonts/smallfont/pal1/3020.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3020.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3020.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3020.png" } 
+   pal 0 { file "highres/fonts/smallfont/3020.png" forcefilter } 
+   pal 1 { file "highres/fonts/smallfont/pal1/3020.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3020.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3020.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3020.png" forcefilter } 
 }
 texture 3021 { 
-   pal 0 { file "highres/fonts/smallfont/3021.png" } 
-   pal 1 { file "highres/fonts/smallfont/pal1/3021.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3021.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3021.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3021.png" } 
+   pal 0 { file "highres/fonts/smallfont/3021.png" forcefilter } 
+   pal 1 { file "highres/fonts/smallfont/pal1/3021.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3021.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3021.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3021.png" forcefilter } 
 }
 
 // Small Font continued (3010-3135/3162-3165)
 texture 3072 {
-   pal 0 { file "highres/fonts/smallfont/3072.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3072.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3072.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3072.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3072.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3072.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3072.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3072.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3072.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3072.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3072.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3072.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3072.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3072.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3072.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3072.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3072.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3072.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3072.png" }
+   pal 0 { file "highres/fonts/smallfont/3072.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3072.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3072.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3072.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3072.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3072.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3072.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3072.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3072.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3072.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3072.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3072.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3072.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3072.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3072.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3072.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3072.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3072.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3072.png" forcefilter }
 }
 texture 3073 {
-   pal 0 { file "highres/fonts/smallfont/3073.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3073.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3073.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3073.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3073.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3073.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3073.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3073.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3073.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3073.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3073.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3073.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3073.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3073.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3073.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3073.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3073.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3073.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3073.png" }
+   pal 0 { file "highres/fonts/smallfont/3073.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3073.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3073.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3073.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3073.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3073.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3073.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3073.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3073.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3073.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3073.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3073.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3073.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3073.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3073.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3073.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3073.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3073.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3073.png" forcefilter }
 }
 texture 3074 {
-   pal 0 { file "highres/fonts/smallfont/3074.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3074.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3074.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3074.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3074.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3074.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3074.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3074.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3074.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3074.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3074.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3074.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3074.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3074.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3074.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3074.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3074.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3074.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3074.png" }
+   pal 0 { file "highres/fonts/smallfont/3074.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3074.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3074.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3074.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3074.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3074.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3074.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3074.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3074.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3074.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3074.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3074.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3074.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3074.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3074.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3074.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3074.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3074.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3074.png" forcefilter }
 }
 texture 3075 {
-   pal 0 { file "highres/fonts/smallfont/3075.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3075.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3075.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3075.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3075.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3075.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3075.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3075.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3075.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3075.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3075.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3075.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3075.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3075.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3075.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3075.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3075.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3075.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3075.png" }
+   pal 0 { file "highres/fonts/smallfont/3075.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3075.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3075.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3075.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3075.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3075.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3075.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3075.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3075.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3075.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3075.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3075.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3075.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3075.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3075.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3075.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3075.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3075.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3075.png" forcefilter }
 }
 texture 3076 {
-   pal 0 { file "highres/fonts/smallfont/3076.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3076.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3076.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3076.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3076.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3076.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3076.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3076.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3076.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3076.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3076.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3076.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3076.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3076.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3076.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3076.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3076.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3076.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3076.png" }
+   pal 0 { file "highres/fonts/smallfont/3076.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3076.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3076.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3076.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3076.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3076.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3076.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3076.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3076.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3076.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3076.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3076.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3076.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3076.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3076.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3076.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3076.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3076.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3076.png" forcefilter }
 }
 texture 3077 {
-   pal 0 { file "highres/fonts/smallfont/3077.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3077.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3077.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3077.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3077.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3077.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3077.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3077.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3077.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3077.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3077.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3077.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3077.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3077.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3077.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3077.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3077.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3077.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3077.png" }
+   pal 0 { file "highres/fonts/smallfont/3077.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3077.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3077.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3077.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3077.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3077.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3077.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3077.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3077.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3077.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3077.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3077.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3077.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3077.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3077.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3077.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3077.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3077.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3077.png" forcefilter }
 }
 texture 3078 {
-   pal 0 { file "highres/fonts/smallfont/3078.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3078.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3078.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3078.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3078.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3078.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3078.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3078.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3078.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3078.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3078.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3078.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3078.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3078.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3078.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3078.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3078.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3078.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3078.png" }
+   pal 0 { file "highres/fonts/smallfont/3078.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3078.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3078.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3078.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3078.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3078.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3078.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3078.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3078.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3078.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3078.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3078.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3078.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3078.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3078.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3078.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3078.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3078.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3078.png" forcefilter }
 }
 texture 3079 {
-   pal 0 { file "highres/fonts/smallfont/3079.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3079.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3079.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3079.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3079.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3079.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3079.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3079.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3079.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3079.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3079.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3079.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3079.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3079.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3079.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3079.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3079.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3079.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3079.png" }
+   pal 0 { file "highres/fonts/smallfont/3079.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3079.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3079.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3079.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3079.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3079.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3079.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3079.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3079.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3079.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3079.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3079.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3079.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3079.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3079.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3079.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3079.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3079.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3079.png" forcefilter }
 }
 
 texture 3080 {
-   pal 0 { file "highres/fonts/smallfont/3080.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3080.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3080.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3080.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3080.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3080.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3080.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3080.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3080.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3080.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3080.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3080.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3080.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3080.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3080.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3080.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3080.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3080.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3080.png" }
+   pal 0 { file "highres/fonts/smallfont/3080.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3080.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3080.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3080.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3080.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3080.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3080.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3080.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3080.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3080.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3080.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3080.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3080.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3080.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3080.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3080.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3080.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3080.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3080.png" forcefilter }
 }
 texture 3081 {
-   pal 0 { file "highres/fonts/smallfont/3081.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3081.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3081.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3081.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3081.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3081.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3081.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3081.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3081.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3081.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3081.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3081.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3081.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3081.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3081.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3081.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3081.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3081.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3081.png" }
+   pal 0 { file "highres/fonts/smallfont/3081.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3081.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3081.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3081.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3081.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3081.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3081.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3081.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3081.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3081.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3081.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3081.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3081.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3081.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3081.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3081.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3081.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3081.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3081.png" forcefilter }
 }
 texture 3082 {
-   pal 0 { file "highres/fonts/smallfont/3082.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3082.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3082.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3082.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3082.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3082.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3082.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3082.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3082.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3082.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3082.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3082.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3082.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3082.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3082.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3082.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3082.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3082.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3082.png" }
+   pal 0 { file "highres/fonts/smallfont/3082.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3082.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3082.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3082.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3082.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3082.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3082.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3082.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3082.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3082.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3082.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3082.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3082.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3082.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3082.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3082.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3082.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3082.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3082.png" forcefilter }
 }
 texture 3083 {
-   pal 0 { file "highres/fonts/smallfont/3083.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3083.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3083.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3083.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3083.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3083.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3083.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3083.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3083.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3083.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3083.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3083.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3083.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3083.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3083.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3083.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3083.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3083.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3083.png" }
+   pal 0 { file "highres/fonts/smallfont/3083.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3083.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3083.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3083.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3083.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3083.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3083.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3083.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3083.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3083.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3083.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3083.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3083.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3083.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3083.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3083.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3083.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3083.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3083.png" forcefilter }
 }
 texture 3084 {
-   pal 0 { file "highres/fonts/smallfont/3084.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3084.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3084.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3084.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3084.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3084.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3084.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3084.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3084.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3084.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3084.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3084.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3084.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3084.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3084.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3084.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3084.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3084.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3084.png" }
+   pal 0 { file "highres/fonts/smallfont/3084.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3084.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3084.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3084.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3084.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3084.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3084.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3084.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3084.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3084.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3084.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3084.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3084.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3084.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3084.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3084.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3084.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3084.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3084.png" forcefilter }
 }
 texture 3085 {
-   pal 0 { file "highres/fonts/smallfont/3085.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3085.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3085.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3085.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3085.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3085.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3085.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3085.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3085.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3085.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3085.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3085.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3085.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3085.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3085.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3085.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3085.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3085.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3085.png" }
+   pal 0 { file "highres/fonts/smallfont/3085.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3085.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3085.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3085.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3085.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3085.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3085.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3085.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3085.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3085.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3085.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3085.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3085.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3085.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3085.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3085.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3085.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3085.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3085.png" forcefilter }
 }
 texture 3086 {
-   pal 0 { file "highres/fonts/smallfont/3086.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3086.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3086.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3086.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3086.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3086.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3086.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3086.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3086.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3086.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3086.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3086.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3086.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3086.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3086.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3086.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3086.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3086.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3086.png" }
+   pal 0 { file "highres/fonts/smallfont/3086.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3086.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3086.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3086.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3086.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3086.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3086.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3086.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3086.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3086.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3086.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3086.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3086.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3086.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3086.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3086.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3086.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3086.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3086.png" forcefilter }
 }
 texture 3087 {
-   pal 0 { file "highres/fonts/smallfont/3087.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3087.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3087.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3087.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3087.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3087.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3087.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3087.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3087.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3087.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3087.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3087.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3087.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3087.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3087.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3087.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3087.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3087.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3087.png" }
+   pal 0 { file "highres/fonts/smallfont/3087.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3087.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3087.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3087.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3087.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3087.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3087.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3087.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3087.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3087.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3087.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3087.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3087.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3087.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3087.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3087.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3087.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3087.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3087.png" forcefilter }
 }
 texture 3088 {
-   pal 0 { file "highres/fonts/smallfont/3088.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3088.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3088.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3088.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3088.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3088.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3088.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3088.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3088.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3088.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3088.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3088.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3088.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3088.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3088.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3088.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3088.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3088.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3088.png" }
+   pal 0 { file "highres/fonts/smallfont/3088.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3088.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3088.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3088.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3088.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3088.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3088.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3088.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3088.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3088.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3088.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3088.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3088.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3088.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3088.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3088.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3088.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3088.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3088.png" forcefilter }
 }
 texture 3089 {
-   pal 0 { file "highres/fonts/smallfont/3089.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3089.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3089.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3089.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3089.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3089.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3089.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3089.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3089.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3089.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3089.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3089.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3089.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3089.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3089.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3089.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3089.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3089.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3089.png" }
+   pal 0 { file "highres/fonts/smallfont/3089.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3089.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3089.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3089.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3089.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3089.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3089.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3089.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3089.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3089.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3089.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3089.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3089.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3089.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3089.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3089.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3089.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3089.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3089.png" forcefilter }
 }
 
 texture 3090 {
-   pal 0 { file "highres/fonts/smallfont/3090.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3090.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3090.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3090.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3090.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3090.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3090.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3090.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3090.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3090.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3090.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3090.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3090.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3090.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3090.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3090.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3090.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3090.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3090.png" }
+   pal 0 { file "highres/fonts/smallfont/3090.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3090.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3090.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3090.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3090.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3090.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3090.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3090.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3090.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3090.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3090.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3090.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3090.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3090.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3090.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3090.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3090.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3090.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3090.png" forcefilter }
 }
 texture 3091 {
-   pal 0 { file "highres/fonts/smallfont/3091.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3091.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3091.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3091.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3091.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3091.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3091.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3091.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3091.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3091.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3091.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3091.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3091.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3091.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3091.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3091.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3091.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3091.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3091.png" }
+   pal 0 { file "highres/fonts/smallfont/3091.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3091.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3091.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3091.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3091.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3091.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3091.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3091.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3091.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3091.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3091.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3091.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3091.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3091.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3091.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3091.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3091.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3091.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3091.png" forcefilter }
 }
 texture 3092 {
-   pal 0 { file "highres/fonts/smallfont/3092.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3092.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3092.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3092.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3092.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3092.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3092.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3092.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3092.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3092.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3092.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3092.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3092.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3092.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3092.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3092.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3092.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3092.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3092.png" }
+   pal 0 { file "highres/fonts/smallfont/3092.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3092.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3092.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3092.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3092.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3092.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3092.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3092.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3092.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3092.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3092.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3092.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3092.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3092.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3092.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3092.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3092.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3092.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3092.png" forcefilter }
 }
 texture 3093 {
-   pal 0 { file "highres/fonts/smallfont/3093.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3093.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3093.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3093.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3093.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3093.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3093.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3093.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3093.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3093.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3093.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3093.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3093.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3093.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3093.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3093.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3093.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3093.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3093.png" }
+   pal 0 { file "highres/fonts/smallfont/3093.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3093.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3093.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3093.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3093.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3093.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3093.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3093.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3093.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3093.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3093.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3093.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3093.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3093.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3093.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3093.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3093.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3093.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3093.png" forcefilter }
 }
 texture 3094 {
-   pal 0 { file "highres/fonts/smallfont/3094.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3094.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3094.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3094.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3094.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3094.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3094.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3094.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3094.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3094.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3094.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3094.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3094.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3094.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3094.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3094.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3094.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3094.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3094.png" }
+   pal 0 { file "highres/fonts/smallfont/3094.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3094.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3094.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3094.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3094.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3094.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3094.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3094.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3094.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3094.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3094.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3094.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3094.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3094.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3094.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3094.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3094.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3094.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3094.png" forcefilter }
 }
 texture 3095 {
-   pal 0 { file "highres/fonts/smallfont/3095.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3095.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3095.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3095.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3095.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3095.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3095.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3095.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3095.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3095.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3095.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3095.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3095.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3095.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3095.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3095.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3095.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3095.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3095.png" }
+   pal 0 { file "highres/fonts/smallfont/3095.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3095.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3095.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3095.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3095.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3095.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3095.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3095.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3095.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3095.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3095.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3095.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3095.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3095.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3095.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3095.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3095.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3095.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3095.png" forcefilter }
 }
 texture 3096 {
-   pal 0 { file "highres/fonts/smallfont/3096.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3096.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3096.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3096.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3096.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3096.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3096.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3096.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3096.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3096.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3096.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3096.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3096.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3096.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3096.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3096.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3096.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3096.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3096.png" }
+   pal 0 { file "highres/fonts/smallfont/3096.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3096.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3096.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3096.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3096.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3096.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3096.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3096.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3096.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3096.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3096.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3096.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3096.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3096.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3096.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3096.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3096.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3096.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3096.png" forcefilter }
 }
 texture 3097 {
-   pal 0 { file "highres/fonts/smallfont/3097.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3097.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3097.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3097.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3097.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3097.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3097.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3097.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3097.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3097.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3097.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3097.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3097.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3097.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3097.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3097.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3097.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3097.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3097.png" }
+   pal 0 { file "highres/fonts/smallfont/3097.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3097.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3097.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3097.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3097.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3097.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3097.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3097.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3097.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3097.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3097.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3097.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3097.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3097.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3097.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3097.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3097.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3097.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3097.png" forcefilter }
 }
 texture 3098 {
-   pal 0 { file "highres/fonts/smallfont/3098.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3098.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3098.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3098.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3098.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3098.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3098.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3098.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3098.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3098.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3098.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3098.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3098.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3098.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3098.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3098.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3098.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3098.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3098.png" }
+   pal 0 { file "highres/fonts/smallfont/3098.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3098.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3098.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3098.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3098.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3098.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3098.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3098.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3098.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3098.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3098.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3098.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3098.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3098.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3098.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3098.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3098.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3098.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3098.png" forcefilter }
 }
 texture 3099 {
-   pal 0 { file "highres/fonts/smallfont/3099.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3099.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3099.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3099.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3099.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3099.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3099.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3099.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3099.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3099.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3099.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3099.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3099.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3099.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3099.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3099.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3099.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3099.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3099.png" }
+   pal 0 { file "highres/fonts/smallfont/3099.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3099.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3099.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3099.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3099.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3099.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3099.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3099.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3099.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3099.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3099.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3099.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3099.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3099.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3099.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3099.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3099.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3099.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3099.png" forcefilter }
 }
 
 texture 3100 {
-   pal 0 { file "highres/fonts/smallfont/3100.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3100.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3100.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3100.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3100.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3100.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3100.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3100.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3100.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3100.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3100.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3100.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3100.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3100.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3100.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3100.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3100.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3100.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3100.png" }
+   pal 0 { file "highres/fonts/smallfont/3100.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3100.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3100.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3100.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3100.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3100.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3100.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3100.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3100.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3100.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3100.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3100.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3100.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3100.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3100.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3100.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3100.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3100.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3100.png" forcefilter }
 }
 texture 3101 {
-   pal 0 { file "highres/fonts/smallfont/3101.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3101.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3101.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3101.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3101.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3101.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3101.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3101.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3101.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3101.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3101.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3101.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3101.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3101.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3101.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3101.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3101.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3101.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3101.png" }
+   pal 0 { file "highres/fonts/smallfont/3101.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3101.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3101.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3101.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3101.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3101.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3101.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3101.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3101.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3101.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3101.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3101.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3101.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3101.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3101.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3101.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3101.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3101.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3101.png" forcefilter }
 }
 texture 3102 {
-   pal 0 { file "highres/fonts/smallfont/3102.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3102.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3102.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3102.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3102.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3102.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3102.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3102.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3102.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3102.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3102.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3102.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3102.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3102.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3102.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3102.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3102.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3102.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3102.png" }
+   pal 0 { file "highres/fonts/smallfont/3102.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3102.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3102.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3102.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3102.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3102.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3102.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3102.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3102.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3102.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3102.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3102.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3102.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3102.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3102.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3102.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3102.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3102.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3102.png" forcefilter }
 }
 texture 3103 {
-   pal 0 { file "highres/fonts/smallfont/3103.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3103.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3103.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3103.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3103.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3103.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3103.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3103.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3103.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3103.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3103.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3103.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3103.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3103.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3103.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3103.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3103.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3103.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3103.png" }
+   pal 0 { file "highres/fonts/smallfont/3103.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3103.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3103.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3103.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3103.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3103.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3103.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3103.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3103.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3103.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3103.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3103.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3103.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3103.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3103.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3103.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3103.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3103.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3103.png" forcefilter }
 }
 texture 3104 {
-   pal 0 { file "highres/fonts/smallfont/3104.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3104.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3104.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3104.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3104.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3104.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3104.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3104.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3104.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3104.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3104.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3104.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3104.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3104.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3104.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3104.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3104.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3104.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3104.png" }
+   pal 0 { file "highres/fonts/smallfont/3104.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3104.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3104.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3104.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3104.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3104.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3104.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3104.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3104.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3104.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3104.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3104.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3104.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3104.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3104.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3104.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3104.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3104.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3104.png" forcefilter }
 }
 texture 3105 {
-   pal 0 { file "highres/fonts/smallfont/3105.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3105.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3105.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3105.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3105.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3105.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3105.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3105.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3105.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3105.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3105.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3105.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3105.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3105.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3105.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3105.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3105.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3105.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3105.png" }
+   pal 0 { file "highres/fonts/smallfont/3105.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3105.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3105.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3105.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3105.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3105.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3105.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3105.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3105.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3105.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3105.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3105.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3105.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3105.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3105.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3105.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3105.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3105.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3105.png" forcefilter }
 }
 texture 3106 {
-   pal 0 { file "highres/fonts/smallfont/3106.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3106.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3106.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3106.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3106.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3106.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3106.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3106.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3106.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3106.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3106.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3106.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3106.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3106.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3106.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3106.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3106.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3106.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3106.png" }
+   pal 0 { file "highres/fonts/smallfont/3106.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3106.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3106.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3106.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3106.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3106.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3106.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3106.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3106.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3106.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3106.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3106.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3106.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3106.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3106.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3106.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3106.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3106.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3106.png" forcefilter }
 }
 texture 3107 {
-   pal 0 { file "highres/fonts/smallfont/3107.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3107.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3107.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3107.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3107.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3107.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3107.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3107.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3107.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3107.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3107.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3107.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3107.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3107.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3107.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3107.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3107.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3107.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3107.png" }
+   pal 0 { file "highres/fonts/smallfont/3107.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3107.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3107.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3107.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3107.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3107.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3107.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3107.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3107.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3107.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3107.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3107.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3107.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3107.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3107.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3107.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3107.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3107.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3107.png" forcefilter }
 }
 texture 3108 {
-   pal 0 { file "highres/fonts/smallfont/3108.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3108.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3108.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3108.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3108.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3108.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3108.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3108.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3108.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3108.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3108.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3108.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3108.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3108.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3108.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3108.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3108.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3108.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3108.png" }
+   pal 0 { file "highres/fonts/smallfont/3108.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3108.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3108.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3108.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3108.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3108.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3108.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3108.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3108.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3108.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3108.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3108.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3108.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3108.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3108.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3108.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3108.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3108.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3108.png" forcefilter }
 }
 texture 3109 {
-   pal 0 { file "highres/fonts/smallfont/3109.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3109.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3109.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3109.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3109.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3109.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3109.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3109.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3109.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3109.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3109.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3109.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3109.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3109.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3109.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3109.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3109.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3109.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3109.png" }
+   pal 0 { file "highres/fonts/smallfont/3109.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3109.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3109.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3109.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3109.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3109.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3109.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3109.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3109.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3109.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3109.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3109.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3109.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3109.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3109.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3109.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3109.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3109.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3109.png" forcefilter }
 }
 
 texture 3110 {
-   pal 0 { file "highres/fonts/smallfont/3110.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3110.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3110.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3110.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3110.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3110.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3110.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3110.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3110.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3110.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3110.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3110.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3110.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3110.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3110.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3110.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3110.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3110.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3110.png" }
+   pal 0 { file "highres/fonts/smallfont/3110.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3110.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3110.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3110.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3110.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3110.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3110.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3110.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3110.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3110.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3110.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3110.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3110.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3110.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3110.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3110.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3110.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3110.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3110.png" forcefilter }
 }
 texture 3111 {
-   pal 0 { file "highres/fonts/smallfont/3111.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3111.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3111.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3111.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3111.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3111.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3111.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3111.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3111.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3111.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3111.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3111.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3111.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3111.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3111.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3111.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3111.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3111.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3111.png" }
+   pal 0 { file "highres/fonts/smallfont/3111.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3111.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3111.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3111.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3111.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3111.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3111.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3111.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3111.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3111.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3111.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3111.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3111.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3111.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3111.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3111.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3111.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3111.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3111.png" forcefilter }
 }
 texture 3112 {
-   pal 0 { file "highres/fonts/smallfont/3112.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3112.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3112.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3112.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3112.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3112.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3112.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3112.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3112.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3112.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3112.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3112.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3112.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3112.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3112.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3112.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3112.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3112.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3112.png" }
+   pal 0 { file "highres/fonts/smallfont/3112.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3112.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3112.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3112.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3112.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3112.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3112.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3112.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3112.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3112.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3112.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3112.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3112.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3112.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3112.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3112.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3112.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3112.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3112.png" forcefilter }
 }
 texture 3113 {
-   pal 0 { file "highres/fonts/smallfont/3113.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3113.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3113.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3113.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3113.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3113.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3113.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3113.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3113.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3113.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3113.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3113.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3113.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3113.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3113.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3113.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3113.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3113.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3113.png" }
+   pal 0 { file "highres/fonts/smallfont/3113.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3113.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3113.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3113.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3113.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3113.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3113.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3113.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3113.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3113.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3113.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3113.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3113.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3113.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3113.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3113.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3113.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3113.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3113.png" forcefilter }
 }
 texture 3114 {
-   pal 0 { file "highres/fonts/smallfont/3114.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3114.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3114.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3114.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3114.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3114.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3114.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3114.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3114.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3114.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3114.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3114.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3114.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3114.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3114.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3114.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3114.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3114.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3114.png" }
+   pal 0 { file "highres/fonts/smallfont/3114.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3114.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3114.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3114.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3114.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3114.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3114.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3114.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3114.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3114.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3114.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3114.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3114.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3114.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3114.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3114.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3114.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3114.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3114.png" forcefilter }
 }
 texture 3115 {
-   pal 0 { file "highres/fonts/smallfont/3115.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3115.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3115.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3115.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3115.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3115.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3115.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3115.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3115.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3115.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3115.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3115.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3115.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3115.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3115.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3115.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3115.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3115.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3115.png" }
+   pal 0 { file "highres/fonts/smallfont/3115.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3115.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3115.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3115.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3115.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3115.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3115.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3115.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3115.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3115.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3115.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3115.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3115.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3115.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3115.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3115.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3115.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3115.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3115.png" forcefilter }
 }
 texture 3116 {
-   pal 0 { file "highres/fonts/smallfont/3116.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3116.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3116.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3116.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3116.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3116.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3116.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3116.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3116.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3116.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3116.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3116.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3116.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3116.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3116.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3116.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3116.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3116.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3116.png" }
+   pal 0 { file "highres/fonts/smallfont/3116.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3116.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3116.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3116.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3116.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3116.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3116.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3116.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3116.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3116.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3116.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3116.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3116.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3116.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3116.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3116.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3116.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3116.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3116.png" forcefilter }
 }
 texture 3117 {
-   pal 0 { file "highres/fonts/smallfont/3117.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3117.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3117.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3117.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3117.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3117.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3117.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3117.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3117.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3117.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3117.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3117.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3117.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3117.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3117.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3117.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3117.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3117.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3117.png" }
+   pal 0 { file "highres/fonts/smallfont/3117.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3117.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3117.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3117.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3117.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3117.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3117.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3117.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3117.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3117.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3117.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3117.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3117.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3117.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3117.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3117.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3117.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3117.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3117.png" forcefilter }
 }
 texture 3118 {
-   pal 0 { file "highres/fonts/smallfont/3118.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3118.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3118.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3118.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3118.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3118.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3118.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3118.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3118.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3118.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3118.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3118.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3118.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3118.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3118.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3118.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3118.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3118.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3118.png" }
+   pal 0 { file "highres/fonts/smallfont/3118.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3118.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3118.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3118.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3118.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3118.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3118.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3118.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3118.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3118.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3118.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3118.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3118.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3118.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3118.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3118.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3118.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3118.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3118.png" forcefilter }
 }
 texture 3119 {
-   pal 0 { file "highres/fonts/smallfont/3119.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3119.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3119.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3119.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3119.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3119.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3119.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3119.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3119.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3119.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3119.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3119.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3119.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3119.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3119.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3119.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3119.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3119.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3119.png" }
+   pal 0 { file "highres/fonts/smallfont/3119.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3119.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3119.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3119.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3119.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3119.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3119.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3119.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3119.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3119.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3119.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3119.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3119.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3119.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3119.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3119.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3119.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3119.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3119.png" forcefilter }
 }
 
 texture 3120 {
-   pal 0 { file "highres/fonts/smallfont/3120.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3120.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3120.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3120.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3120.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3120.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3120.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3120.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3120.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3120.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3120.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3120.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3120.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3120.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3120.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3120.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3120.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3120.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3120.png" }
+   pal 0 { file "highres/fonts/smallfont/3120.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3120.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3120.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3120.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3120.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3120.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3120.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3120.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3120.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3120.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3120.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3120.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3120.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3120.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3120.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3120.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3120.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3120.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3120.png" forcefilter }
 }
 texture 3121 {
-   pal 0 { file "highres/fonts/smallfont/3121.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3121.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3121.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3121.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3121.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3121.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3121.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3121.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3121.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3121.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3121.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3121.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3121.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3121.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3121.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3121.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3121.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3121.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3121.png" }
+   pal 0 { file "highres/fonts/smallfont/3121.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3121.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3121.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3121.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3121.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3121.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3121.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3121.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3121.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3121.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3121.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3121.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3121.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3121.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3121.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3121.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3121.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3121.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3121.png" forcefilter }
 }
 texture 3122 {
-   pal 0 { file "highres/fonts/smallfont/3122.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3122.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3122.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3122.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3122.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3122.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3122.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3122.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3122.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3122.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3122.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3122.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3122.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3122.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3122.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3122.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3122.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3122.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3122.png" }
+   pal 0 { file "highres/fonts/smallfont/3122.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3122.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3122.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3122.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3122.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3122.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3122.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3122.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3122.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3122.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3122.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3122.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3122.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3122.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3122.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3122.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3122.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3122.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3122.png" forcefilter }
 }
 texture 3123 {
-   pal 0 { file "highres/fonts/smallfont/3123.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3123.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3123.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3123.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3123.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3123.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3123.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3123.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3123.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3123.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3123.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3123.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3123.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3123.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3123.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3123.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3123.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3123.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3123.png" }
+   pal 0 { file "highres/fonts/smallfont/3123.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3123.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3123.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3123.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3123.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3123.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3123.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3123.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3123.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3123.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3123.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3123.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3123.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3123.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3123.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3123.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3123.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3123.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3123.png" forcefilter }
 }
 texture 3124 {
-   pal 0 { file "highres/fonts/smallfont/3124.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3124.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3124.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3124.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3124.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3124.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3124.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3124.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3124.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3124.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3124.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3124.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3124.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3124.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3124.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3124.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3124.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3124.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3124.png" }
+   pal 0 { file "highres/fonts/smallfont/3124.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3124.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3124.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3124.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3124.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3124.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3124.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3124.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3124.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3124.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3124.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3124.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3124.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3124.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3124.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3124.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3124.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3124.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3124.png" forcefilter }
 }
 texture 3125 {
-   pal 0 { file "highres/fonts/smallfont/3125.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3125.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3125.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3125.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3125.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3125.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3125.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3125.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3125.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3125.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3125.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3125.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3125.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3125.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3125.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3125.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3125.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3125.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3125.png" }
+   pal 0 { file "highres/fonts/smallfont/3125.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3125.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3125.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3125.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3125.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3125.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3125.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3125.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3125.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3125.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3125.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3125.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3125.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3125.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3125.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3125.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3125.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3125.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3125.png" forcefilter }
 }
 texture 3126 {
-   pal 0 { file "highres/fonts/smallfont/3126.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3126.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3126.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3126.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3126.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3126.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3126.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3126.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3126.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3126.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3126.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3126.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3126.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3126.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3126.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3126.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3126.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3126.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3126.png" }
+   pal 0 { file "highres/fonts/smallfont/3126.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3126.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3126.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3126.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3126.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3126.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3126.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3126.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3126.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3126.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3126.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3126.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3126.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3126.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3126.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3126.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3126.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3126.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3126.png" forcefilter }
 }
 texture 3127 {
-   pal 0 { file "highres/fonts/smallfont/3127.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3127.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3127.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3127.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3127.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3127.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3127.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3127.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3127.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3127.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3127.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3127.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3127.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3127.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3127.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3127.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3127.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3127.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3127.png" }
+   pal 0 { file "highres/fonts/smallfont/3127.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3127.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3127.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3127.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3127.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3127.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3127.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3127.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3127.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3127.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3127.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3127.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3127.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3127.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3127.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3127.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3127.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3127.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3127.png" forcefilter }
 }
 texture 3128 {
-   pal 0 { file "highres/fonts/smallfont/3128.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3128.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3128.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3128.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3128.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3128.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3128.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3128.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3128.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3128.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3128.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3128.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3128.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3128.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3128.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3128.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3128.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3128.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3128.png" }
+   pal 0 { file "highres/fonts/smallfont/3128.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3128.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3128.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3128.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3128.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3128.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3128.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3128.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3128.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3128.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3128.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3128.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3128.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3128.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3128.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3128.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3128.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3128.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3128.png" forcefilter }
 }
 texture 3129 {
-   pal 0 { file "highres/fonts/smallfont/3129.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3129.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3129.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3129.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3129.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3129.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3129.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3129.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3129.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3129.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3129.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3129.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3129.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3129.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3129.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3129.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3129.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3129.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3129.png" }
+   pal 0 { file "highres/fonts/smallfont/3129.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3129.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3129.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3129.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3129.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3129.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3129.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3129.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3129.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3129.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3129.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3129.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3129.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3129.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3129.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3129.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3129.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3129.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3129.png" forcefilter }
 }
 
 texture 3130 {
-   pal 0 { file "highres/fonts/smallfont/3130.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3130.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3130.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3130.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3130.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3130.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3130.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3130.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3130.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3130.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3130.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3130.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3130.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3130.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3130.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3130.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3130.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3130.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3130.png" }
+   pal 0 { file "highres/fonts/smallfont/3130.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3130.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3130.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3130.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3130.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3130.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3130.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3130.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3130.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3130.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3130.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3130.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3130.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3130.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3130.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3130.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3130.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3130.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3130.png" forcefilter }
 }
 texture 3131 {
-   pal 0 { file "highres/fonts/smallfont/3131.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3131.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3131.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3131.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3131.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3131.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3131.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3131.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3131.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3131.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3131.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3131.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3131.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3131.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3131.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3131.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3131.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3131.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3131.png" }
+   pal 0 { file "highres/fonts/smallfont/3131.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3131.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3131.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3131.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3131.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3131.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3131.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3131.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3131.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3131.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3131.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3131.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3131.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3131.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3131.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3131.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3131.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3131.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3131.png" forcefilter }
 }
 texture 3132 {
-   pal 0 { file "highres/fonts/smallfont/3132.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3132.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3132.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3132.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3132.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3132.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3132.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3132.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3132.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3132.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3132.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3132.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3132.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3132.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3132.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3132.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3132.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3132.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3132.png" }
+   pal 0 { file "highres/fonts/smallfont/3132.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3132.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3132.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3132.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3132.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3132.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3132.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3132.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3132.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3132.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3132.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3132.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3132.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3132.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3132.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3132.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3132.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3132.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3132.png" forcefilter }
 }
 texture 3133 {
-   pal 0 { file "highres/fonts/smallfont/3133.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3133.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3133.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3133.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3133.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3133.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3133.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3133.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3133.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3133.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3133.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3133.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3133.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3133.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3133.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3133.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3133.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3133.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3133.png" }
+   pal 0 { file "highres/fonts/smallfont/3133.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3133.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3133.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3133.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3133.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3133.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3133.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3133.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3133.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3133.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3133.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3133.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3133.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3133.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3133.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3133.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3133.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3133.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3133.png" forcefilter }
 }
 texture 3134 {
-   pal 0 { file "highres/fonts/smallfont/3134.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3134.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3134.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3134.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3134.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3134.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3134.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3134.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3134.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3134.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3134.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3134.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3134.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3134.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3134.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3134.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3134.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3134.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3134.png" }
+   pal 0 { file "highres/fonts/smallfont/3134.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3134.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3134.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3134.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3134.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3134.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3134.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3134.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3134.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3134.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3134.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3134.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3134.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3134.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3134.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3134.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3134.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3134.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3134.png" forcefilter }
 }
 texture 3135 {
-   pal 0 { file "highres/fonts/smallfont/3135.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3135.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3135.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3135.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3135.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3135.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3135.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3135.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3135.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3135.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3135.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3135.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3135.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3135.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3135.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3135.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3135.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3135.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3135.png" }
+   pal 0 { file "highres/fonts/smallfont/3135.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3135.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3135.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3135.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3135.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3135.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3135.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3135.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3135.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3135.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3135.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3135.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3135.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3135.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3135.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3135.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3135.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3135.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3135.png" forcefilter }
 }
 
 texture 3162 {
-   pal 0 { file "highres/fonts/smallfont/3162.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3162.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3162.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3162.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3162.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3162.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3162.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3162.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3162.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3162.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3162.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3162.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3162.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3162.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3162.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3162.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3162.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3162.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3162.png" }
+   pal 0 { file "highres/fonts/smallfont/3162.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3162.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3162.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3162.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3162.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3162.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3162.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3162.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3162.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3162.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3162.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3162.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3162.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3162.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3162.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3162.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3162.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3162.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3162.png" forcefilter }
 }
 texture 3163 {
-   pal 0 { file "highres/fonts/smallfont/3163.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3163.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3163.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3163.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3163.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3163.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3163.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3163.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3163.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3163.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3163.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3163.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3163.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3163.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3163.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3163.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3163.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3163.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3163.png" }
+   pal 0 { file "highres/fonts/smallfont/3163.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3163.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3163.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3163.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3163.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3163.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3163.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3163.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3163.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3163.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3163.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3163.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3163.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3163.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3163.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3163.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3163.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3163.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3163.png" forcefilter }
 }
 texture 3164 {
-   pal 0 { file "highres/fonts/smallfont/3164.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3164.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3164.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3164.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3164.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3164.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3164.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3164.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3164.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3164.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3164.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3164.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3164.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3164.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3164.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3164.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3164.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3164.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3164.png" }
+   pal 0 { file "highres/fonts/smallfont/3164.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3164.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3164.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3164.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3164.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3164.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3164.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3164.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3164.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3164.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3164.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3164.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3164.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3164.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3164.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3164.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3164.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3164.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3164.png" forcefilter }
 }
 texture 3165 {
-   pal 0 { file "highres/fonts/smallfont/3165.png" }
-   pal 2 { file "highres/fonts/smallfont/pal2/3165.png" }
-   pal 6 { file "highres/fonts/smallfont/pal6/3165.png" }
-   pal 7 { file "highres/fonts/smallfont/pal7/3165.png" }
-   pal 8 { file "highres/fonts/smallfont/pal8/3165.png" }
-   pal 10 { file "highres/fonts/smallfont/pal10/3165.png" }
-   pal 11 { file "highres/fonts/smallfont/pal11/3165.png" }
-   pal 12 { file "highres/fonts/smallfont/pal12/3165.png" }
-   pal 13 { file "highres/fonts/smallfont/pal13/3165.png" }
-   pal 14 { file "highres/fonts/smallfont/pal14/3165.png" }
-   pal 15 { file "highres/fonts/smallfont/pal15/3165.png" }
-   pal 16 { file "highres/fonts/smallfont/pal16/3165.png" }
-   pal 17 { file "highres/fonts/smallfont/pal11/3165.png" }
-   pal 18 { file "highres/fonts/smallfont/pal12/3165.png" }
-   pal 19 { file "highres/fonts/smallfont/pal12/3165.png" }
-   pal 20 { file "highres/fonts/smallfont/pal12/3165.png" }
-   pal 21 { file "highres/fonts/smallfont/pal21/3165.png" }
-   pal 22 { file "highres/fonts/smallfont/pal11/3165.png" }
-   pal 23 { file "highres/fonts/smallfont/pal23/3165.png" }
+   pal 0 { file "highres/fonts/smallfont/3165.png" forcefilter }
+   pal 2 { file "highres/fonts/smallfont/pal2/3165.png" forcefilter }
+   pal 6 { file "highres/fonts/smallfont/pal6/3165.png" forcefilter }
+   pal 7 { file "highres/fonts/smallfont/pal7/3165.png" forcefilter }
+   pal 8 { file "highres/fonts/smallfont/pal8/3165.png" forcefilter }
+   pal 10 { file "highres/fonts/smallfont/pal10/3165.png" forcefilter }
+   pal 11 { file "highres/fonts/smallfont/pal11/3165.png" forcefilter }
+   pal 12 { file "highres/fonts/smallfont/pal12/3165.png" forcefilter }
+   pal 13 { file "highres/fonts/smallfont/pal13/3165.png" forcefilter }
+   pal 14 { file "highres/fonts/smallfont/pal14/3165.png" forcefilter }
+   pal 15 { file "highres/fonts/smallfont/pal15/3165.png" forcefilter }
+   pal 16 { file "highres/fonts/smallfont/pal16/3165.png" forcefilter }
+   pal 17 { file "highres/fonts/smallfont/pal11/3165.png" forcefilter }
+   pal 18 { file "highres/fonts/smallfont/pal12/3165.png" forcefilter }
+   pal 19 { file "highres/fonts/smallfont/pal12/3165.png" forcefilter }
+   pal 20 { file "highres/fonts/smallfont/pal12/3165.png" forcefilter }
+   pal 21 { file "highres/fonts/smallfont/pal21/3165.png" forcefilter }
+   pal 22 { file "highres/fonts/smallfont/pal11/3165.png" forcefilter }
+   pal 23 { file "highres/fonts/smallfont/pal23/3165.png" forcefilter }
 }

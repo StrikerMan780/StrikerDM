@@ -90,8 +90,6 @@ state draw_shotgun // SHOTGUN_WEAPON:
         case 14
         case 15
         case 28
-        case 29
-        case 30
             guniqhudid currentweapon
             
             addvar hud_x 198 // 32 + 166
@@ -104,12 +102,36 @@ state draw_shotgun // SHOTGUN_WEAPON:
             
             guniqhudid 0
             break
-        case 16
-        case 17
+		case 29
+		case 30
+			guniqhudid currentweapon
+            
+            addvar hud_x 170
+            addvar hud_y 200
+            
+            setvar hud_tilenum SHOTGUN
+            addvar hud_tilenum 3
+            
+            state G_DrawWeaponTile
+            
+            guniqhudid 0
+			break
         case 18
         case 19
-        case 24
+		case 24
         case 25
+			guniqhudid currentweapon
+            
+            addvar hud_x 234 // 64 + 170
+            addvar hud_y 196
+            
+            setvar hud_tilenum SHOTGUN
+            addvar hud_tilenum 7
+            
+            state G_DrawWeaponTile
+			break
+        case 16
+        case 17
         case 26
         case 27
             guniqhudid currentweapon
