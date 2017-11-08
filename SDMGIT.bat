@@ -22,7 +22,9 @@ cls
 echo ---------------------------
 echo Retrieving GIT Commit Count
 echo ---------------------------
-for /f "delims=" %%i in ('git rev-list HEAD --count') do set REVISIONNUMBER=%%i
+for /f "delims=" %%i in ('git rev-list HEAD --count') do ( 
+	set REVISIONNUMBER=%%i
+)
 
 :MENU
 cd /d %~dp0
