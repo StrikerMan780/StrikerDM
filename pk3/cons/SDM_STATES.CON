@@ -396,6 +396,34 @@ state jumppadcode // This state goes in the APLAYER actor.
 	}
 ends
 
+state handle_instakill
+	ifp palive
+	{
+		getsector[THISACTOR].lotag TEMP
+		ifvare TEMP 256
+		{
+			// TEMP = X
+			// TEMP2 = Y
+			// TEMP3 = Sector Number
+			getactor[THISACTOR].x TEMP
+			getactor[THISACTOR].y TEMP2
+			updatesector TEMP TEMP2 TEMP3
+			
+			// Set TEMP to florz
+			getflorzofslope TEMP3 TEMP TEMP2 TEMP
+			subvar TEMP 10240 // Subtract player height
+			
+			getplayer[THISACTOR].posz TEMP2
+			
+			ifvarvarg TEMP2 TEMP // Touching floor?
+			{
+				setactor[THISACTOR].htextra 1000
+				setactor[THISACTOR].htpicnum RADIUSEXPLOSION
+			}
+		}
+	}
+ends
+
 state strip_items
 	getactor[THISACTOR].picnum TEMP
 	switch TEMP
