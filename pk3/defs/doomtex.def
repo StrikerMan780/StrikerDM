@@ -13,5 +13,20 @@ tilefromtexture 3601 { file "tiles/3601.png" texture } // W17_1
 tilefromtexture 3602 { file "tiles/3602.png" texture } // W28_5
 tilefromtexture 3603 { file "tiles/3603.png" texture } // W28_6
 
+tilefromtexture 3550 { file "tiles/3550.png" texture } // SKY1
+tilefromtexture 3551 { file "tiles/3551.png" texture } // BROWNGRN
+tilefromtexture 3552 { file "tiles/3552.png" texture } // BROWN96
+tilefromtexture 3553 { file "tiles/3553.png" texture } // BRONZE2
+tilefromtexture 3554 { file "tiles/3554.png" texture } // FLAT1_1
+tilefromtexture 3555 { file "tiles/3555.png" texture } // RROCK12
+tilefromtexture 3556 { file "tiles/3556.png" texture } // RROCK15
+tilefromtexture 3557 { file "tiles/3557.png" texture } // FLOOR7_1
+tilefromtexture 3558 { file "tiles/3558.png" texture } // CEIL5_2
+tilefromtexture 3559 { file "tiles/3559.png" texture } // GRASS1
+tilefromtexture 3560 { file "tiles/3560.png" texture } // GRASS2
+tilefromtexture 3561 { file "tiles/3561.png" texture } // SKY2
+tilefromtexture 3562 { file "tiles/3562.png" texture } // FLAT1_2
+
+
 // Sprites
-tilefromtexture 3626 { file "tiles/3626.png" texture }
+tilefromtexture 3626 { file "tiles/3626.png" texture } // Dead Marine

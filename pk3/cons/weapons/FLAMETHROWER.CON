@@ -92,31 +92,31 @@ actor FLAMETHROWERSPRITE
 	}
     else ifp palive ifpdistl RETRIEVEDISTANCE ifcount 6 ifcanseetarget
     {
-        getplayervar[THISACTOR].HAS_FLAMETHROWER AMMO_TEMP2
+        getplayervar[THISACTOR].HAS_FLAMETHROWER TEMP2
 		ifspawnedby FLAMETHROWERSPRITE
 		{
 			ifmultiplayer
 			ifvarand gametype_flags 2
-			ifvare AMMO_TEMP2 1
+			ifvare TEMP2 1
 			{
 				break
 			}
 		}
 		
-		getplayervar[THISACTOR].FLAMETHROWER_AMMO AMMO_TEMP1
-		ifvarl AMMO_TEMP1 MAXFLAMETHROWERAMMO // Ammo under max?
+		getplayervar[THISACTOR].FLAMETHROWER_AMMO TEMP
+		ifvarl TEMP MAXFLAMETHROWERAMMO // Ammo under max?
 		{
-			addvarvar AMMO_TEMP1 FLAMETHROWERAMMOAMOUNT
-			ifvarg AMMO_TEMP1 MAXFLAMETHROWERAMMO // If over, cap it.
+			addvarvar TEMP FLAMETHROWERAMMOAMOUNT
+			ifvarg TEMP MAXFLAMETHROWERAMMO // If over, cap it.
 			{
-				setvar AMMO_TEMP1 MAXFLAMETHROWERAMMO
+				setvar TEMP MAXFLAMETHROWERAMMO
 			}
 			
-			setplayervar[THISACTOR].FLAMETHROWER_AMMO AMMO_TEMP1
+			setplayervar[THISACTOR].FLAMETHROWER_AMMO TEMP
 		}
 		else
 		{
-			ifvare AMMO_TEMP2 1 // Has flamethrower?
+			ifvare TEMP2 1 // Has flamethrower?
 			{
 				break // Has weapon, and full ammo. Stop here.
 			}
@@ -152,16 +152,16 @@ actor FLAMETHROWERAMMO
     }
     else ifp palive ifcount 6 ifpdistl RETRIEVEDISTANCE ifcanseetarget 
     {
-		getplayervar[THISACTOR].FLAMETHROWER_AMMO AMMO_TEMP1
-		ifvarl AMMO_TEMP1 MAXFLAMETHROWERAMMO
+		getplayervar[THISACTOR].FLAMETHROWER_AMMO TEMP
+		ifvarl TEMP MAXFLAMETHROWERAMMO
 		{
-			addvarvar AMMO_TEMP1 FLAMETHROWERAMMOAMOUNT
-			ifvarg AMMO_TEMP1 MAXFLAMETHROWERAMMO
+			addvarvar TEMP FLAMETHROWERAMMOAMOUNT
+			ifvarg TEMP MAXFLAMETHROWERAMMO
 			{
-				setvar AMMO_TEMP1 MAXFLAMETHROWERAMMO
+				setvar TEMP MAXFLAMETHROWERAMMO
 			}
 			
-			setplayervar[THISACTOR].FLAMETHROWER_AMMO AMMO_TEMP1
+			setplayervar[THISACTOR].FLAMETHROWER_AMMO TEMP
 			
 			quote 126
 			ifspawnedby FLAMETHROWERAMMO {

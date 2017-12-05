@@ -53,31 +53,31 @@ actor PLASMASPRITE
 	}
     else ifp palive ifpdistl RETRIEVEDISTANCE ifcount 6 ifcanseetarget
     {
-		getplayervar[THISACTOR].HAS_PLASMARIFLE AMMO_TEMP2
+		getplayervar[THISACTOR].HAS_PLASMARIFLE TEMP2
 		ifspawnedby PLASMASPRITE
 		{
 			ifmultiplayer
 			ifvarand gametype_flags 2
-			ifvare AMMO_TEMP2 1
+			ifvare TEMP2 1
 			{
 				break
 			}
 		}
 		
-		getplayervar[THISACTOR].PLASMARIFLE_AMMO AMMO_TEMP1
-		ifvarl AMMO_TEMP1 MAXPLASMARIFLEAMMO // Ammo under max?
+		getplayervar[THISACTOR].PLASMARIFLE_AMMO TEMP
+		ifvarl TEMP MAXPLASMARIFLEAMMO // Ammo under max?
 		{
-			addvarvar AMMO_TEMP1 PLASMARIFLEAMMOAMOUNT
-			ifvarg AMMO_TEMP1 MAXPLASMARIFLEAMMO // If over, cap it.
+			addvarvar TEMP PLASMARIFLEAMMOAMOUNT
+			ifvarg TEMP MAXPLASMARIFLEAMMO // If over, cap it.
 			{
-				setvar AMMO_TEMP1 MAXPLASMARIFLEAMMO
+				setvar TEMP MAXPLASMARIFLEAMMO
 			}
 			
-			setplayervar[THISACTOR].PLASMARIFLE_AMMO AMMO_TEMP1
+			setplayervar[THISACTOR].PLASMARIFLE_AMMO TEMP
 		}
 		else
 		{
-			ifvare AMMO_TEMP2 1 // Has plasma rifle?
+			ifvare TEMP2 1 // Has plasma rifle?
 			{
 				break // Has weapon, and full ammo. Stop here.
 			}
@@ -113,16 +113,16 @@ actor PLASMAAMMO
     }
     else ifp palive ifcount 6 ifpdistl RETRIEVEDISTANCE ifcanseetarget 
     {
-		getplayervar[THISACTOR].PLASMARIFLE_AMMO AMMO_TEMP1
-		ifvarl AMMO_TEMP1 MAXPLASMARIFLEAMMO
+		getplayervar[THISACTOR].PLASMARIFLE_AMMO TEMP
+		ifvarl TEMP MAXPLASMARIFLEAMMO
 		{
-			addvarvar AMMO_TEMP1 PLASMARIFLEAMMOAMOUNT
-			ifvarg AMMO_TEMP1 MAXPLASMARIFLEAMMO
+			addvarvar TEMP PLASMARIFLEAMMOAMOUNT
+			ifvarg TEMP MAXPLASMARIFLEAMMO
 			{
-				setvar AMMO_TEMP1 MAXPLASMARIFLEAMMO
+				setvar TEMP MAXPLASMARIFLEAMMO
 			}
 			
-			setplayervar[THISACTOR].PLASMARIFLE_AMMO AMMO_TEMP1
+			setplayervar[THISACTOR].PLASMARIFLE_AMMO TEMP
 			
 			quote 130
 			ifspawnedby PLASMAAMMO {

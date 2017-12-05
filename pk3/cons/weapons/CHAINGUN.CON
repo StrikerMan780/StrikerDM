@@ -177,21 +177,21 @@ actor CHAINGUNSPRITE
         ifgotweaponce 0
             break
 		
-		getplayervar[THISACTOR].RIPPER_AMMO AMMO_TEMP1
-		getplayervar[THISACTOR].HAS_RIPPER AMMO_TEMP2
-		ifvarl AMMO_TEMP1 MAXCHAINGUNAMMO // Ammo under max?
+		getplayervar[THISACTOR].RIPPER_AMMO TEMP
+		getplayervar[THISACTOR].HAS_RIPPER TEMP2
+		ifvarl TEMP MAXCHAINGUNAMMO // Ammo under max?
 		{
-			addvarvar AMMO_TEMP1 CHAINGUNAMMOAMOUNT
-			ifvarg AMMO_TEMP1 MAXCHAINGUNAMMO // If over, cap it.
+			addvarvar TEMP CHAINGUNAMMOAMOUNT
+			ifvarg TEMP MAXCHAINGUNAMMO // If over, cap it.
 			{
-				setvar AMMO_TEMP1 MAXCHAINGUNAMMO
+				setvar TEMP MAXCHAINGUNAMMO
 			}
 			
-			setplayervar[THISACTOR].RIPPER_AMMO AMMO_TEMP1
+			setplayervar[THISACTOR].RIPPER_AMMO TEMP
 		}
 		else
 		{
-			ifvare AMMO_TEMP2 1 // Has weapon?
+			ifvare TEMP2 1 // Has weapon?
 			{
 				break // Has weapon, and full ammo. Stop here.
 			}
@@ -226,16 +226,16 @@ actor BATTERYAMMO
     }
     else ifp palive ifcount 6 ifpdistl RETRIEVEDISTANCE ifcanseetarget 
     {
-		getplayervar[THISACTOR].RIPPER_AMMO AMMO_TEMP1
-		ifvarl AMMO_TEMP1 MAXCHAINGUNAMMO
+		getplayervar[THISACTOR].RIPPER_AMMO TEMP
+		ifvarl TEMP MAXCHAINGUNAMMO
 		{
-			addvarvar AMMO_TEMP1 CHAINGUNAMMOAMOUNT
-			ifvarg AMMO_TEMP1 MAXCHAINGUNAMMO
+			addvarvar TEMP CHAINGUNAMMOAMOUNT
+			ifvarg TEMP MAXCHAINGUNAMMO
 			{
-				setvar AMMO_TEMP1 MAXCHAINGUNAMMO
+				setvar TEMP MAXCHAINGUNAMMO
 			}
 			
-			setplayervar[THISACTOR].RIPPER_AMMO AMMO_TEMP1
+			setplayervar[THISACTOR].RIPPER_AMMO TEMP
 			
 			quote 63
 			ifspawnedby BATTERYAMMO {

@@ -82,6 +82,7 @@ state init_pickup
 			case PLASMASPRITE:
 			case RAILGUNSPRITE:
 			case FLAMETHROWERSPRITE:
+			case SSGSPRITE:
 			case GROWSPRITEICON:
 			case FLAMETHROWERAMMO:
 			case PLASMAAMMO:

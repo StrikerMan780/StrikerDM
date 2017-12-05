@@ -1,4 +1,6 @@
 define JUMPPAD 14
+define TIMEDPLATFORM 15
+define PLATFORMSOUND 16
 
 define VENT_NOBREAK 339
 
@@ -42,6 +44,23 @@ define PLASMARIFLE2 2600
 define PLASMARIFLE3 2601
 define PLASMARIFLE4 2602
 define PLASMARIFLE5 2603
+
+define SSGSPRITE 65
+define SSG 5930
+define SSG_FIRE1 5931
+define SSG_FIRE2 5932
+define SSG_FIRE3 5933
+define SSG_RELOAD1 5934
+define SSG_RELOAD2 5935
+define SSG_RELOAD3 5936
+define SSG_RELOAD4 5937
+define SSG_RELOAD5 5938
+define SSG_RELOAD6 5939
+define SSG_RELOAD7 5940
+define SSG_HAND1 5941
+define SSG_HAND2 5942
+define SSG_HAND3 5943
+define SSG_HAND4 5944
 
 define COLORSCRAP1 3725
 define COLORSCRAP2 3726
@@ -97,10 +116,6 @@ define BONG2 5737
 define RESPAWNHANDLER 9999
 
 // Doom stuff
-define DOOM_BIGBRIK2 3587
-define DOOM_SILVER2 3589
-define DOOM_BIGDOOR2 3590
-define DOOM_MIDBARS1 3594
 define DOOM_DEADMARINE 3626
 
 // Sounds
@@ -188,6 +203,12 @@ define ERASERHEAD 551
 define OLDCLOCK 552
 // Community sound submissions should continue from the index above this line
 
+define SSG_FIRE 593
+define SSG_OPEN 594
+define SSG_LOAD 595
+define SSG_CLOSE 596
+define DOOMPLAT_START 597
+define DOOMPLAT_STOP 598
 define SPACEODDITY 599
 define JUMPPADSOUND 600
 define RAILGUN_FIRE1 601

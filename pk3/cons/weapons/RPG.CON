@@ -19,7 +19,11 @@ state draw_rpg // RPG_WEAPON:
     
     addvar hud_y 176
     
-    ifvarg weaponcount 0
+    setvar hud_tilenum RPGGUN
+    
+    state G_DrawWeaponTile
+	
+	    ifvarg weaponcount 0
         ifvarl weaponcount 8
         {
             setvarvar hud_tilenum weaponcount
@@ -28,10 +32,6 @@ state draw_rpg // RPG_WEAPON:
             
             state G_DrawWeaponTile
         }
-    
-    setvar hud_tilenum RPGGUN
-    
-    state G_DrawWeaponTile
 ends
 
 actor RPGSPRITE
@@ -49,21 +49,21 @@ actor RPGSPRITE
         ifgotweaponce 0
             break
 		
-		getplayervar[THISACTOR].RPG_AMMO AMMO_TEMP1
-		getplayervar[THISACTOR].HAS_RPG AMMO_TEMP2
-		ifvarl AMMO_TEMP1 MAXRPGAMMO // Ammo under max?
+		getplayervar[THISACTOR].RPG_AMMO TEMP
+		getplayervar[THISACTOR].HAS_RPG TEMP2
+		ifvarl TEMP MAXRPGAMMO // Ammo under max?
 		{
-			addvarvar AMMO_TEMP1 RPGAMMOBOX
-			ifvarg AMMO_TEMP1 MAXRPGAMMO // If over, cap it.
+			addvarvar TEMP RPGAMMOBOX
+			ifvarg TEMP MAXRPGAMMO // If over, cap it.
 			{
-				setvar AMMO_TEMP1 MAXRPGAMMO
+				setvar TEMP MAXRPGAMMO
 			}
 			
-			setplayervar[THISACTOR].RPG_AMMO AMMO_TEMP1
+			setplayervar[THISACTOR].RPG_AMMO TEMP
 		}
 		else
 		{
-			ifvare AMMO_TEMP2 1 // Has weapon?
+			ifvare TEMP2 1 // Has weapon?
 			{
 				break // Has weapon, and full ammo. Stop here.
 			}
@@ -98,16 +98,16 @@ actor RPGAMMO
     }
     else ifp palive ifcount 6 ifpdistl RETRIEVEDISTANCE ifcanseetarget 
     {
-		getplayervar[THISACTOR].RPG_AMMO AMMO_TEMP1
-		ifvarl AMMO_TEMP1 MAXRPGAMMO
+		getplayervar[THISACTOR].RPG_AMMO TEMP
+		ifvarl TEMP MAXRPGAMMO
 		{
-			addvarvar AMMO_TEMP1 RPGAMMOBOX
-			ifvarg AMMO_TEMP1 MAXRPGAMMO
+			addvarvar TEMP RPGAMMOBOX
+			ifvarg TEMP MAXRPGAMMO
 			{
-				setvar AMMO_TEMP1 MAXRPGAMMO
+				setvar TEMP MAXRPGAMMO
 			}
 			
-			setplayervar[THISACTOR].RPG_AMMO AMMO_TEMP1
+			setplayervar[THISACTOR].RPG_AMMO TEMP
 			
 			quote 64
 			ifspawnedby RPGAMMO {

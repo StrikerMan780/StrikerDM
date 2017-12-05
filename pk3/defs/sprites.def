@@ -1,6 +1,12 @@
 // Jump Pad
 tilefromtexture 14 { file "tiles/14.png" texture }
 
+// Timed Platform
+tilefromtexture 15 { file "tiles/15.png" texture }
+
+// Platform Sound
+tilefromtexture 16 { file "tiles/16.png" texture }
+
 // Shrinker/Expander
 tilefromtexture 25 { file "tiles/25.png" }
 tilefromtexture 32 { file "tiles/32.png" }
@@ -19,6 +25,8 @@ tilefromtexture 1544 { file "tiles/1544.png" }
 tilefromtexture 1545 { file "tiles/1545.png" }
 
 // Interpolated Shotgun
+tilefromtexture 2614 { file "tiles/2614.png" xoff -27 yoff -5 }
+tilefromtexture 2615 { file "tiles/2615.png" xoff -21 yoff 25 }
 tilefromtexture 2620 { file "tiles/2620.png" }
 
 // Colored scrap
@@ -71,6 +79,14 @@ tilefromtexture 2525 { file "tiles/2525.png" xoffset -7 yoffset 8 texture }
 tilefromtexture 2526 { file "tiles/2526.png" xoffset -16 yoffset 4 texture }
 tilefromtexture 2528 { file "tiles/2528.png" xoffset -28 yoffset 2 texture }
 tilefromtexture 2529 { file "tiles/2529.png" xoffset -70 yoffset 8 texture }
+
+/* // Duke64 Pistol for later.
+tilefromtexture 2524 { file "tiles/2524_dn64.png" xoff -32 yoff 10 }
+tilefromtexture 2525 { file "tiles/2525_dn64.png" xoff -24 yoff 17 }
+tilefromtexture 2526 { file "tiles/2526_dn64.png" xoff -29 yoff 12 }
+tilefromtexture 2528 { file "tiles/2528_dn64.png" xoff -48 yoff 4 }
+tilefromtexture 2529 { file "tiles/2529_dn64.png" xoff -76 yoff 2 }
+*/
 
 tilefromtexture 2544 { file "tiles/2544.png" xoffset -115 yoffset -67 }
 tilefromtexture 2548 { file "tiles/2548.png" xoff -68 yoff 15 }
@@ -265,3 +281,21 @@ tilefromtexture 5926 { file "tiles/5926.png" }
 tilefromtexture 5927 { file "tiles/5927.png" }
 tilefromtexture 5928 { file "tiles/5928.png" }
 tilefromtexture 5929 { file "tiles/5929.png" }
+
+// Double Barrel Shotgun
+tilefromtexture 65 { file "tiles/65.png" }
+tilefromtexture 5930 { file "tiles/5930.png" }
+tilefromtexture 5931 { file "tiles/5931.png" xoff 2 yoff 7 }
+tilefromtexture 5932 { file "tiles/5932.png" xoff 5 yoff 10 }
+tilefromtexture 5933 { file "tiles/5933.png" xoff 5 yoff 11 }
+tilefromtexture 5934 { file "tiles/5934.png" xoff -6 yoff 21 }
+tilefromtexture 5935 { file "tiles/5935.png" xoff 0 yoff -14 }
+tilefromtexture 5936 { file "tiles/5936.png" xoff 2 yoff -16 }
+tilefromtexture 5937 { file "tiles/5937.png" xoff -1 yoff -21 }
+tilefromtexture 5938 { file "tiles/5938.png" xoff -5 yoff -21 }
+tilefromtexture 5939 { file "tiles/5939.png" xoff -5 yoff -21 }
+tilefromtexture 5940 { file "tiles/5940.png" xoff 0 yoff -14 }
+tilefromtexture 5941 { file "tiles/5941.png" }
+tilefromtexture 5942 { file "tiles/5942.png" xoff 8 yoff -30 }
+tilefromtexture 5943 { file "tiles/5943.png" xoff 23 yoff -24 }
+tilefromtexture 5944 { file "tiles/5944.png" }

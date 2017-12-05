@@ -116,6 +116,102 @@ actor JUMPPAD 0
 	}
 enda
 
+action TRIGGERED 0
+action WAITING 0
+action RETURNING 0
+actor TIMEDPLATFORM 0
+{
+	ifaction ANULLACTION
+	{
+		headspritestat CURSPRITE 10
+		setvarvar LASTSPRITE CURSPRITE
+		whilevarn CURSPRITE -1
+		{
+			getactor[CURSPRITE].sectnum TEMP
+			ifvarvare SECTNUM_MEMORY TEMP // Check if sector matches
+			{
+				setvar EXTRA_MEMORY 0
+				setsector[LOTAG_MEMORY].floorzvel SPAWN_ORIGY
+				setsector[LOTAG_MEMORY].floorzgoal SPAWN_ORIGX
+				action TRIGGERED
+			}
+			
+			nextspritestat CURSPRITE LASTSPRITE
+			setvarvar LASTSPRITE CURSPRITE
+		}
+	}
+	
+	ifaction TRIGGERED
+	{
+		getsector[LOTAG_MEMORY].floorzgoal TEMP
+		ifvare TEMP -1
+		{
+			action WAITING
+		}
+	}
+	
+	ifaction WAITING
+	{
+		addvar EXTRA_MEMORY 1
+		ifvarvare EXTRA_MEMORY HITAG_MEMORY
+		{
+			setsector[LOTAG_MEMORY].floorzvel SPAWN_ORIGY
+			setsector[LOTAG_MEMORY].floorzgoal SPAWN_ORIGZ
+			setvar EXTRA_MEMORY 0
+			action RETURNING
+		}
+	}
+	
+	ifaction RETURNING
+	{
+		getsector[LOTAG_MEMORY].floorzgoal TEMP
+		ifvare TEMP -1
+		{
+			action ANULLACTION
+		}
+	}
+	
+	ifaction 0
+	{
+		cstat 32768
+		getsector[LOTAG_MEMORY].floorz SPAWN_ORIGZ
+		getactor[THISACTOR].yvel SPAWN_ORIGY
+		getactor[THISACTOR].zvel SPAWN_ORIGX
+		action ANULLACTION
+	}
+}
+enda
+
+actor PLATFORMSOUND 0
+{
+	ifaction ANULLACTION
+	{
+		getsector[THISACTOR].floorzgoal TEMP
+		ifvarn TEMP -1
+		{
+			soundvar LOTAG_MEMORY
+			action TRIGGERED
+		}
+	}
+	
+	ifaction TRIGGERED
+	{
+		getsector[THISACTOR].floorzgoal TEMP
+		ifvare TEMP -1
+		{
+			soundvar HITAG_MEMORY
+			action ANULLACTION
+		}
+	}
+	
+	ifaction 0
+	{
+		cstat 32768
+		action ANULLACTION
+	}
+}
+enda
+
 state onground_gib_code
 	fall
 	ifcount 316

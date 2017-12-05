@@ -1867,16 +1867,16 @@ actor FREEZEAMMO
     }
     else ifp palive ifcount 6 ifpdistl RETRIEVEDISTANCE ifcanseetarget 
     {
-		getplayervar[THISACTOR].FREEZETHROWER_AMMO AMMO_TEMP1
-		ifvarl AMMO_TEMP1 MAXFREEZEAMMO
+		getplayervar[THISACTOR].FREEZETHROWER_AMMO TEMP
+		ifvarl TEMP MAXFREEZEAMMO
 		{
-			addvarvar AMMO_TEMP1 FREEZEAMMOAMOUNT
-			ifvarg AMMO_TEMP1 MAXFREEZEAMMO
+			addvarvar TEMP FREEZEAMMOAMOUNT
+			ifvarg TEMP MAXFREEZEAMMO
 			{
-				setvar AMMO_TEMP1 MAXFREEZEAMMO
+				setvar TEMP MAXFREEZEAMMO
 			}
 			
-			setplayervar[THISACTOR].FREEZETHROWER_AMMO AMMO_TEMP1
+			setplayervar[THISACTOR].FREEZETHROWER_AMMO TEMP
 			
 			quote 66
 			ifspawnedby FREEZEAMMO {
@@ -2228,21 +2228,21 @@ actor FREEZESPRITE
         ifgotweaponce 0
             break
 		
-		getplayervar[THISACTOR].FREEZETHROWER_AMMO AMMO_TEMP1
-		getplayervar[THISACTOR].HAS_FREEZETHROWER AMMO_TEMP2
-		ifvarl AMMO_TEMP1 MAXFREEZEAMMO // Ammo under max?
+		getplayervar[THISACTOR].FREEZETHROWER_AMMO TEMP
+		getplayervar[THISACTOR].HAS_FREEZETHROWER TEMP2
+		ifvarl TEMP MAXFREEZEAMMO // Ammo under max?
 		{
-			addvarvar AMMO_TEMP1 FREEZEAMMOAMOUNT
-			ifvarg AMMO_TEMP1 MAXFREEZEAMMO // If over, cap it.
+			addvarvar TEMP FREEZEAMMOAMOUNT
+			ifvarg TEMP MAXFREEZEAMMO // If over, cap it.
 			{
-				setvar AMMO_TEMP1 MAXFREEZEAMMO
+				setvar TEMP MAXFREEZEAMMO
 			}
 			
-			setplayervar[THISACTOR].FREEZETHROWER_AMMO AMMO_TEMP1
+			setplayervar[THISACTOR].FREEZETHROWER_AMMO TEMP
 		}
 		else
 		{
-			ifvare AMMO_TEMP2 1 // Has freezethrower?
+			ifvare TEMP2 1 // Has freezethrower?
 			{
 				break // Has weapon, and full ammo. Stop here.
 			}

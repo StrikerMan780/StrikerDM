@@ -2,6 +2,7 @@ gamevar SPAWN_ORIGX 0 2
 gamevar SPAWN_ORIGY 0 2
 gamevar SPAWN_ORIGZ 0 2
 gamevar SPAWN_ORIGANG 0 2
+gamevar SECTNUM_MEMORY 0 2
 gamevar HITAG_MEMORY 0 2
 gamevar LOTAG_MEMORY 0 2
 gamevar EXTRA_MEMORY 0 2
@@ -54,9 +55,6 @@ gamevar RANDOM_SOUND 0 0
 gamevar SPEAK 0 2
 gamevar SPEAKTYPE 0 2
 gamevar KILLTYPE 0 2
-
-gamevar AMMO_TEMP1 0 2
-gamevar AMMO_TEMP2 0 2
 
 gamevar JUMPPAD_HIT 0 1
 gamevar JUMPPAD_XVEL 0 1

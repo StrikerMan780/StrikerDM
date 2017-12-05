@@ -366,16 +366,6 @@ endevent
 //onevent EVENT_PREGAME
 //endevent
 
-eventloadactor MASTERSWITCH
-	getactor[THISACTOR].hitag HITAG_MEMORY
-	getactor[THISACTOR].lotag LOTAG_MEMORY
-enda
-
-eventloadactor SECTOREFFECTOR
-	getactor[THISACTOR].hitag HITAG_MEMORY
-	getactor[THISACTOR].lotag LOTAG_MEMORY
-enda
-
 state set_norespawn
 		ifactor SECTOREFFECTOR
 		{
@@ -424,6 +414,19 @@ state search_for_explosive
 		}
 ends
 
+onevent EVENT_LOADACTOR
+	getactor[THISACTOR].hitag HITAG_MEMORY
+	getactor[THISACTOR].lotag LOTAG_MEMORY
+	
+	getactor[THISACTOR].picnum TEMP
+	switch TEMP
+	case TIMEDPLATFORM:
+	case PLATFORMSOUND:
+		setactor[THISACTOR].lotag 0
+		break
+	endswitch
+endevent
+
 onevent EVENT_SPAWN
 	ifactor MASTERSWITCH
 	{
@@ -450,6 +453,20 @@ onevent EVENT_SPAWN
 		}
 		break
 	}
+	
+	getactor[THISACTOR].picnum PICNUM_MEMORY
+	getactor[THISACTOR].xrepeat XREPEAT_MEMORY
+	getactor[THISACTOR].yrepeat YREPEAT_MEMORY
+	getactor[THISACTOR].clipdist CLIPDIST_MEMORY
+	getactor[THISACTOR].extra EXTRA_MEMORY
+	getactor[THISACTOR].cstat CSTAT_MEMORY
+	getactor[THISACTOR].pal PAL_MEMORY
+	getactor[THISACTOR].statnum STATNUM_MEMORY
+	getactor[THISACTOR].sectnum SECTNUM_MEMORY
+	getactor[THISACTOR].x SPAWN_ORIGX
+	getactor[THISACTOR].y SPAWN_ORIGY
+	getactor[THISACTOR].z SPAWN_ORIGZ
+	getactor[THISACTOR].ang SPAWN_ORIGANG
 	
 	// Mark certain tiles for Adult Mode
 	getactor[THISACTOR].picnum TEMP
@@ -509,22 +526,6 @@ onevent EVENT_SPAWN
 			setvar ISADULT ADULT_SWAP
 			break	
 	endswitch
-	
-	// Memorize attributes for respawning
-	getactor[THISACTOR].picnum PICNUM_MEMORY
-	getactor[THISACTOR].hitag HITAG_MEMORY
-	getactor[THISACTOR].lotag LOTAG_MEMORY
-	getactor[THISACTOR].xrepeat XREPEAT_MEMORY
-	getactor[THISACTOR].yrepeat YREPEAT_MEMORY
-	getactor[THISACTOR].clipdist CLIPDIST_MEMORY
-	getactor[THISACTOR].extra EXTRA_MEMORY
-	getactor[THISACTOR].cstat CSTAT_MEMORY
-	getactor[THISACTOR].pal PAL_MEMORY
-	getactor[THISACTOR].statnum STATNUM_MEMORY
-	getactor[THISACTOR].x SPAWN_ORIGX
-	getactor[THISACTOR].y SPAWN_ORIGY
-	getactor[THISACTOR].z SPAWN_ORIGZ
-	getactor[THISACTOR].ang SPAWN_ORIGANG
 	
 	switch COOP
 		case GM_ROIDMATCH:
@@ -624,6 +625,9 @@ onevent EVENT_CHEATGETBOOT
 	setvar HAS_RAILGUN 1
 	setvar RPG_AMMO MAXRPGAMMO
 	setvar RAILGUN_AMMO MAXRAILGUNAMMO
+	
+	setvar HAS_SHOTGUN 1
+	setvar HAS_SSG 1
 endevent
 
 onevent EVENT_RESETPLAYER
@@ -642,8 +646,12 @@ onevent EVENT_RESETPLAYER
 	setvar HAS_RPG 0
 	setvar HAS_RAILGUN 0
 	setvar RPG_AMMO 0
-	setvar RAILGUN_AMMO 0
+	setvar RAILGUN_AMMO 0	
 	state setrpg
+	
+	setvar HAS_SHOTGUN 0
+	setvar HAS_SSG 0
+	state setshotgun
 endevent
 
 onevent EVENT_STRAFELEFT

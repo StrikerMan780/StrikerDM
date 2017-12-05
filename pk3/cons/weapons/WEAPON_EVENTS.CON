@@ -1,3 +1,10 @@
+onevent EVENT_WEAPKEY3
+	ifvare WEAPON SHOTGUN_WEAPON
+	{
+		state checkssg
+	}
+endevent
+
 onevent EVENT_WEAPKEY4
 	ifvare WEAPON CHAINGUN_WEAPON
 	{
@@ -36,15 +43,15 @@ onevent EVENT_DOFIRE
 				break
 			}
 			
-			getplayervar[THISACTOR].FLAMETHROWER_AMMO AMMO_TEMP1
-			subvar AMMO_TEMP1 1
+			getplayervar[THISACTOR].FLAMETHROWER_AMMO TEMP
+			subvar TEMP 1
 			
-			ifvarl AMMO_TEMP1 0
+			ifvarl TEMP 0
 			{
-				setvar AMMO_TEMP1 0
+				setvar TEMP 0
 			}
 			
-			setplayervar[THISACTOR].FLAMETHROWER_AMMO AMMO_TEMP1
+			setplayervar[THISACTOR].FLAMETHROWER_AMMO TEMP
 		}
 		else
 		{
@@ -54,15 +61,15 @@ onevent EVENT_DOFIRE
 				break
 			}
 			
-			getplayervar[THISACTOR].FREEZETHROWER_AMMO AMMO_TEMP1
-			subvar AMMO_TEMP1 1
+			getplayervar[THISACTOR].FREEZETHROWER_AMMO TEMP
+			subvar TEMP 1
 			
-			ifvarl AMMO_TEMP1 0
+			ifvarl TEMP 0
 			{
-				setvar AMMO_TEMP1 0
+				setvar TEMP 0
 			}
 			
-			setplayervar[THISACTOR].FREEZETHROWER_AMMO AMMO_TEMP1
+			setplayervar[THISACTOR].FREEZETHROWER_AMMO TEMP
 		}
 	}
 	else ifvare WEAPON DEVISTATOR_WEAPON
@@ -87,15 +94,15 @@ onevent EVENT_DOFIRE
 				break
 			}
 			
-			getplayervar[THISACTOR].PLASMARIFLE_AMMO AMMO_TEMP1
-			subvar AMMO_TEMP1 1
+			getplayervar[THISACTOR].PLASMARIFLE_AMMO TEMP
+			subvar TEMP 1
 			
-			ifvarl AMMO_TEMP1 0
+			ifvarl TEMP 0
 			{
-				setvar AMMO_TEMP1 0
+				setvar TEMP 0
 			}
 			
-			setplayervar[THISACTOR].PLASMARIFLE_AMMO AMMO_TEMP1
+			setplayervar[THISACTOR].PLASMARIFLE_AMMO TEMP
 		}
 		else
 		{
@@ -105,15 +112,15 @@ onevent EVENT_DOFIRE
 				break
 			}
 			
-			getplayervar[THISACTOR].RIPPER_AMMO AMMO_TEMP1
-			subvar AMMO_TEMP1 1
+			getplayervar[THISACTOR].RIPPER_AMMO TEMP
+			subvar TEMP 1
 			
-			ifvarl AMMO_TEMP1 0
+			ifvarl TEMP 0
 			{
-				setvar AMMO_TEMP1 0
+				setvar TEMP 0
 			}
 			
-			setplayervar[THISACTOR].RIPPER_AMMO AMMO_TEMP1
+			setplayervar[THISACTOR].RIPPER_AMMO TEMP
 		}
 	}
 	else ifvare WEAPON RPG_WEAPON
@@ -133,15 +140,15 @@ onevent EVENT_DOFIRE
 				case 2: sound RAILGUN_FIRE3 break
 			endswitch
 			
-			getplayervar[THISACTOR].RAILGUN_AMMO AMMO_TEMP1
-			subvar AMMO_TEMP1 1
+			getplayervar[THISACTOR].RAILGUN_AMMO TEMP
+			subvar TEMP 1
 			
-			ifvarl AMMO_TEMP1 0
+			ifvarl TEMP 0
 			{
-				setvar AMMO_TEMP1 0
+				setvar TEMP 0
 			}
 			
-			setplayervar[THISACTOR].RAILGUN_AMMO AMMO_TEMP1
+			setplayervar[THISACTOR].RAILGUN_AMMO TEMP
 		}
 		else
 		{
@@ -151,15 +158,30 @@ onevent EVENT_DOFIRE
 				break
 			}
 			
-			getplayervar[THISACTOR].RPG_AMMO AMMO_TEMP1
-			subvar AMMO_TEMP1 1
+			getplayervar[THISACTOR].RPG_AMMO TEMP
+			subvar TEMP 1
 			
-			ifvarl AMMO_TEMP1 0
+			ifvarl TEMP 0
 			{
-				setvar AMMO_TEMP1 0
+				setvar TEMP 0
 			}
 			
-			setplayervar[THISACTOR].RPG_AMMO AMMO_TEMP1
+			setplayervar[THISACTOR].RPG_AMMO TEMP
+		}
+	}
+	else ifvare WEAPON SHOTGUN_WEAPON
+	{
+		ifvare USING_SSG 1
+		{
+			getplayer[THISACTOR].ammo_amount SHOTGUN_WEAPON TEMP
+			
+			subvar TEMP 1
+			ifvarl TEMP 0
+			{
+				setvar TEMP 0
+			}
+			
+			setplayer[THISACTOR].ammo_amount SHOTGUN_WEAPON TEMP
 		}
 	}
 endevent
@@ -184,7 +206,7 @@ onevent EVENT_GETSHOTRANGE
 		getactor[THISACTOR].yvel TEMP
 		ifvarn TEMP 0
 		{
-			setvar ANGRANGE 72
+			setvar ANGRANGE 64
 			setvar ZRANGE 512
 			break
 		}
@@ -210,6 +232,14 @@ onevent EVENT_GETSHOTRANGE
 		{
 			setvar ANGRANGE 1
 			setvar ZRANGE 1
+		}
+	}
+	else ifvare TEMP SHOTGUN_WEAPON
+	{
+		ifvare USING_SSG 1
+		{
+			setvar ANGRANGE 64
+			setvar ZRANGE 512
 		}
 	}
 endevent
@@ -385,7 +415,14 @@ onevent EVENT_DISPLAYWEAPON // P_DisplayWeapon !UNSYNCHRONIZED!
                 break
             case SHOTGUN_WEAPON
                 setvarvar hud_totaltime WEAPON2_TOTALTIME
-                state draw_shotgun
+				ifvare USING_SSG 1
+				{
+					state draw_ssg
+				}
+				else
+				{
+					state draw_shotgun
+				}
                 break
             case CHAINGUN_WEAPON
                 setvarvar hud_temp4 WEAPON3_FIREDELAY

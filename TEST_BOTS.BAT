@@ -19,9 +19,9 @@ IF ERRORLEVEL 4 SET NUMBOTS=5
 IF ERRORLEVEL 5 SET NUMBOTS=6
 IF ERRORLEVEL 6 SET NUMBOTS=7
 IF ERRORLEVEL 7 SET NUMBOTS=8
-start eduke32-oldmp -nosetup -tx -c1 -g %GRP_PATH%\StrikerDM-DEV.PK3 /q%NUMBOTS% /a
+start eduke32-oldmp -nosetup -tx -c1 -g %GRP_PATH%\StrikerDM-DEV.PK3 /q%NUMBOTS% /a -map maps/gwmap20.map
 exit
 
 :NOAI
-start eduke32-oldmp -nosetup -tx -c1 -g %GRP_PATH%\StrikerDM-DEV.PK3 /q8
+start eduke32-oldmp -nosetup -tx -c1 -g %GRP_PATH%\StrikerDM-DEV.PK3 /q8 -map maps/gwmap20.map
 exit

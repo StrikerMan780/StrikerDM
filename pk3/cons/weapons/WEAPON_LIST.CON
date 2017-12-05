@@ -13,3 +13,4 @@ include cons/weapons/freezethrower.con
 include cons/weapons/flamethrower.con
 include cons/weapons/plasmarifle.con
 include cons/weapons/railgun.con
+include cons/weapons/ssg.con
