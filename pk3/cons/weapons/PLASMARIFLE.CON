@@ -54,15 +54,8 @@ actor PLASMASPRITE
     else ifp palive ifpdistl RETRIEVEDISTANCE ifcount 6 ifcanseetarget
     {
 		getplayervar[THISACTOR].HAS_PLASMARIFLE TEMP2
-		ifspawnedby PLASMASPRITE
-		{
-			ifmultiplayer
-			ifvarand gametype_flags 2
-			ifvare TEMP2 1
-			{
-				break
-			}
-		}
+		ifvare TEMP2 1
+			state checkweaponstay
 		
 		getplayervar[THISACTOR].PLASMARIFLE_AMMO TEMP
 		ifvarl TEMP MAXPLASMARIFLEAMMO // Ammo under max?
@@ -84,18 +77,16 @@ actor PLASMASPRITE
 		}
 		
 		setplayervar[THISACTOR].HAS_PLASMARIFLE 1 // Give it
-		
+		setvar STATE_PARAM1 CHAINGUN_WEAPON
+		state addweapon_nobreak
         quote 129
         ifspawnedby PLASMASPRITE
 		{
             state getweaponcode
-			addweapon CHAINGUN_WEAPON 0
 		}
         else
 		{
             state quikweaponget_custom
-			addweapon CHAINGUN_WEAPON 0
-			killit
 		}
     }
 enda

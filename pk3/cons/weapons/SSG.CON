@@ -253,23 +253,13 @@ state draw_ssg // SHOTGUN_WEAPON:
 			state G_DrawWeaponTile
 			break
 		case 59:
-			addvar hud_x -2
-			addvar hud_y 2
-			state G_DrawWeaponTile
-			break
-		case 60:
 			addvar hud_x -3
 			addvar hud_y 3
 			state G_DrawWeaponTile
 			break
-		case 61:
+		case 60:
 			addvar hud_x -2
 			addvar hud_y 2
-			state G_DrawWeaponTile
-			break
-		case 62:
-			addvar hud_x -1
-			addvar hud_y 1
 			state G_DrawWeaponTile
 			break
 	endswitch
@@ -395,30 +385,34 @@ actor SSGSPRITE
 		ifcount 6
 		ifcanseetarget
 		{
-			ifvare HAS_SSG 0
+			getplayervar[THISACTOR].HAS_SSG TEMP2
+			ifvare TEMP2 1
+				state checkweaponstay
+				
+			getplayer[THISACTOR].ammo_amount SHOTGUN_WEAPON TEMP
+			ifvarl TEMP MAXSHOTGUNAMMO // Ammo under max?
 			{
-				setvar HAS_SSG 1
-				addweapon SHOTGUN_WEAPON 0
-				addammo SHOTGUN_WEAPON SHOTGUNAMMOAMOUNT
-				quote 133
+				setvar STATE_PARAM1 SHOTGUN_WEAPON
+				ifspawnedby PIGCOP { randvar STATE_PARAM2 4 }
+				else { setvar STATE_PARAM2 SHOTGUNAMMOAMOUNT }
+				state addammo_nobreak
 			}
-			else ifvare HAS_SSG 1
+			else
 			{
-				getplayer[THISACTOR].ammo_amount SHOTGUN_WEAPON TEMP
-				ifvarl TEMP MAXSHOTGUNAMMO 
+				ifvare TEMP2 1 // Has weapon?
 				{
-					addammo SHOTGUN_WEAPON SHOTGUNAMMOAMOUNT
-					quote 133
-				}
-				else
-				{
-					break
+					break // Has weapon, and full ammo. Stop here.
 				}
 			}
+			
+			setplayervar[THISACTOR].HAS_SSG 1
+			setvar STATE_PARAM1 SHOTGUN_WEAPON
+			state addweapon_nobreak
+			quote 133
 
 			ifspawnedby SSGSPRITE
-				state getcode_custom
+				state getweaponcode
 			else
-				state quikweaponget
-	}
+				state quikweaponget_custom
+		}
 enda

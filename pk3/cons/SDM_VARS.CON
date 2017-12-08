@@ -28,12 +28,6 @@ gamevar TEMP2 0 0
 gamevar TEMP3 0 0
 
 gamevar CL_TEMP1 0 0
-gamevar CL_TEMP2 0 0
-gamevar CL_TEMP3 0 0
-gamevar CL_TEMP4 0 0
-gamevar CL_TEMP5 0 0
-gamevar CL_TEMP6 0 0
-gamevar CL_TEMP7 0 0
 
 gamevar SCORE_COUNTER 0 0
 gamevar SCORE_PLAYERINDEX 0 0
@@ -44,13 +38,13 @@ gamevar SCORE_YOFFSET 0 0
 gamevar SCORE_FRAGS 0 0
 gamevar SCORE_SUICIDES 0 0
 
-/*
-gamevar STATE_INPUT 0 0
 gamevar STATE_TEMP1 0 0
 gamevar STATE_TEMP2 0 0
-gamevar STATE_TEMP3 0 0
-gamevar STATE_RETURN 0 0
-*/
+gamevar STATE_PARAM1 0 0
+gamevar STATE_PARAM2 0 0
+//gamevar STATE_PARAM3 0 0
+//gamevar STATE_RETURN 0 0
+
 gamevar RANDOM_SOUND 0 0
 gamevar SPEAK 0 2
 gamevar SPEAKTYPE 0 2

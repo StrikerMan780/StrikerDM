@@ -46,11 +46,11 @@ actor RPGSPRITE
 	}
     else ifp palive ifpdistl RETRIEVEDISTANCE ifcount 6 ifcanseetarget
     {
-        ifgotweaponce 0
-            break
+        getplayervar[THISACTOR].HAS_RPG TEMP2
+		ifvare TEMP2 1
+			state checkweaponstay
 		
 		getplayervar[THISACTOR].RPG_AMMO TEMP
-		getplayervar[THISACTOR].HAS_RPG TEMP2
 		ifvarl TEMP MAXRPGAMMO // Ammo under max?
 		{
 			addvarvar TEMP RPGAMMOBOX
@@ -70,18 +70,16 @@ actor RPGSPRITE
 		}
 		
 		setplayervar[THISACTOR].HAS_RPG 1 // Give it
-		
+		setvar STATE_PARAM1 RPG_WEAPON
+		state addweapon_nobreak
         quote 56
         ifspawnedby RPGSPRITE
 		{
             state getweaponcode
-			addweapon RPG_WEAPON 0
 		}
         else
 		{
             state quikweaponget_custom
-			addweapon RPG_WEAPON 0
-			killit
 		}
     }
 enda

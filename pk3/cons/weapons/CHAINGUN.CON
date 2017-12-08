@@ -174,11 +174,11 @@ actor CHAINGUNSPRITE
 	}
     else ifp palive ifpdistl RETRIEVEDISTANCE ifcount 6 ifcanseetarget
     {
-        ifgotweaponce 0
-            break
+		getplayervar[THISACTOR].HAS_RIPPER TEMP2
+        ifvare TEMP2 1
+			state checkweaponstay
 		
 		getplayervar[THISACTOR].RIPPER_AMMO TEMP
-		getplayervar[THISACTOR].HAS_RIPPER TEMP2
 		ifvarl TEMP MAXCHAINGUNAMMO // Ammo under max?
 		{
 			addvarvar TEMP CHAINGUNAMMOAMOUNT
@@ -198,18 +198,16 @@ actor CHAINGUNSPRITE
 		}
 		
 		setplayervar[THISACTOR].HAS_RIPPER 1 // Give it
-		
+		setvar STATE_PARAM1 CHAINGUN_WEAPON
+		state addweapon_nobreak
         quote 54
         ifspawnedby CHAINGUNSPRITE
 		{
             state getweaponcode
-			addweapon CHAINGUN_WEAPON 0
 		}
         else
 		{
             state quikweaponget_custom
-			addweapon CHAINGUN_WEAPON 0
-			killit
 		}
     }
 enda

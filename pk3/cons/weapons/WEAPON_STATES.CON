@@ -202,7 +202,7 @@ state setflamethrower
 	setvar WEAPON9_TOTALTIME 4
 	setvar WEAPON9_FIRESOUND 0
 	setvar WEAPON9_INITIALSOUND FLAMETHROWER_START
-	setvar USING_FLAMETHROWER 1
+	setplayervar[THISACTOR].USING_FLAMETHROWER 1
 	setplayer[THISACTOR].ammo_amount FREEZE_WEAPON FLAMETHROWER_AMMO
 ends
 
@@ -211,7 +211,7 @@ state setfreezethrower
 	setvar WEAPON9_TOTALTIME 5
 	setvar WEAPON9_FIRESOUND FREEZETHROWER_FIRE
 	setvar WEAPON9_INITIALSOUND FREEZETHROWER_FIRE
-	setvar USING_FLAMETHROWER 0
+	setplayervar[THISACTOR].USING_FLAMETHROWER 0
 	setplayer[THISACTOR].ammo_amount FREEZE_WEAPON FREEZETHROWER_AMMO
 ends
 
@@ -226,7 +226,7 @@ state setripper
 	setvar WEAPON3_FIRESOUND CHAINGUN_FIRE
 	setvar WEAPON3_INITIALSOUND 0
 	setvar WEAPON3_SHOTSPERBURST 0
-	setvar USING_PLASMARIFLE 0
+	setplayervar[THISACTOR].USING_PLASMARIFLE 0
 	setplayer[THISACTOR].ammo_amount CHAINGUN_WEAPON RIPPER_AMMO
 ends
 
@@ -241,7 +241,7 @@ state setplasmarifle
 	setvar WEAPON3_FIRESOUND PLASMARIFLE_FIRE
 	setvar WEAPON3_INITIALSOUND PLASMARIFLE_CHARGE
 	setvar WEAPON3_SHOTSPERBURST 4
-	setvar USING_PLASMARIFLE 1
+	setplayervar[THISACTOR].USING_PLASMARIFLE 1
 	setplayer[THISACTOR].ammo_amount CHAINGUN_WEAPON PLASMARIFLE_AMMO
 ends
 
@@ -252,7 +252,7 @@ state setrpg
 	setvar WEAPON4_TOTALTIME 20
 	setvar WEAPON4_FIRESOUND 0
 	setvar WEAPON4_INITIALSOUND 0
-	setvar USING_RAILGUN 0
+	setplayervar[THISACTOR].USING_RAILGUN 0
 	setplayer[THISACTOR].ammo_amount RPG_WEAPON RPG_AMMO
 ends
 
@@ -263,7 +263,7 @@ state setrailgun
 	setvar WEAPON4_TOTALTIME 25
 	setvar WEAPON4_FIRESOUND 0
 	setvar WEAPON4_INITIALSOUND 0
-	setvar USING_RAILGUN 1
+	setplayervar[THISACTOR].USING_RAILGUN 1
 	setplayer[THISACTOR].ammo_amount RPG_WEAPON RAILGUN_AMMO
 ends
 
@@ -277,12 +277,12 @@ state setshotgun
 	setvar WEAPON2_SOUND2SOUND SHOTGUN_COCK
 	setvar WEAPON2_SOUND2TIME 15
 	setvar WEAPON2_SELECTSOUND SHOTGUN_COCK
-	setvar USING_SSG 0
+	setplayervar[THISACTOR].USING_SSG 0
 ends
 
 state setssg
 	setvar WEAPON2_FLAGS 1024
-	setvar WEAPON2_TOTALTIME 62
+	setvar WEAPON2_TOTALTIME 60
 	setvar WEAPON2_SPAWNTIME 0
 	setvar WEAPON2_SPAWN 0
 	setvar WEAPON2_SHOTSPERBURST 14
@@ -290,10 +290,17 @@ state setssg
 	setvar WEAPON2_SOUND2SOUND 0
 	setvar WEAPON2_SOUND2TIME 0
 	setvar WEAPON2_SELECTSOUND SSG_CLOSE
-	setvar USING_SSG 1
+	setplayervar[THISACTOR].USING_SSG 1
 ends
 
 state checkflamethrower
+	ifvarn WEAPON FREEZE_WEAPON
+		break
+		
+	getplayer[THISACTOR].kickback_pic TEMP
+	ifvarn TEMP 0
+		break
+		
 	ifvare HAS_FLAMETHROWER 1
 	{
 		ifvare USING_FLAMETHROWER 0
@@ -304,10 +311,20 @@ state checkflamethrower
 		{
 			state setfreezethrower
 		}
+		
+		setplayer[THISACTOR].weapon_pos -9
+		soundvar WEAPON9_SELECTSOUND
 	}
 ends
 
 state checkplasmarifle
+	ifvarn WEAPON CHAINGUN_WEAPON
+		break
+		
+	getplayer[THISACTOR].kickback_pic TEMP
+	ifvarn TEMP 0
+		break
+		
 	ifvare HAS_PLASMARIFLE 1
 	{
 		ifvare USING_PLASMARIFLE 0
@@ -318,10 +335,20 @@ state checkplasmarifle
 		{
 			state setripper
 		}
+		
+		setplayer[THISACTOR].weapon_pos -9
+		soundvar WEAPON3_SELECTSOUND
 	}
 ends
 
 state checkrailgun
+	ifvarn WEAPON RPG_WEAPON
+		break
+		
+	getplayer[THISACTOR].kickback_pic TEMP
+	ifvarn TEMP 0
+		break
+		
 	ifvare HAS_RAILGUN 1
 	{
 		ifvare USING_RAILGUN 0
@@ -332,10 +359,20 @@ state checkrailgun
 		{
 			state setrpg
 		}
+		
+		setplayer[THISACTOR].weapon_pos -9
+		soundvar WEAPON4_SELECTSOUND
 	}
 ends
 
 state checkssg
+	ifvarn WEAPON SHOTGUN_WEAPON
+		break
+		
+	getplayer[THISACTOR].kickback_pic TEMP
+	ifvarn TEMP 0
+		break
+		
 	ifvare HAS_SSG 1
 	{
 		ifvare USING_SSG 0
@@ -346,6 +383,9 @@ state checkssg
 		{
 			state setshotgun
 		}
+		
+		setplayer[THISACTOR].weapon_pos -9
+		soundvar WEAPON2_SELECTSOUND
 	}
 ends
 
@@ -362,6 +402,7 @@ state player_updateweapons
 			ifvare FLAMETHROWER_AMMO 0
 			ifvarg FREEZETHROWER_AMMO 0
 			{
+				setplayer[THISACTOR].weapon_pos -9
 				state setfreezethrower
 			}
 		}
@@ -380,6 +421,7 @@ state player_updateweapons
 			ifvare FREEZETHROWER_AMMO 0
 			ifvarg FLAMETHROWER_AMMO 0
 			{
+				setplayer[THISACTOR].weapon_pos -9
 				state setflamethrower
 			}
 		}
@@ -395,6 +437,7 @@ state player_updateweapons
 			ifvare PLASMARIFLE_AMMO 0
 			ifvarg RIPPER_AMMO 0
 			{
+				setplayer[THISACTOR].weapon_pos -9
 				state setripper
 			}
 		}
@@ -413,6 +456,7 @@ state player_updateweapons
 			ifvare RIPPER_AMMO 0
 			ifvarg PLASMARIFLE_AMMO 0
 			{
+				setplayer[THISACTOR].weapon_pos -9
 				state setplasmarifle
 			}
 		}
@@ -428,6 +472,7 @@ state player_updateweapons
 			ifvare RAILGUN_AMMO 0
 			ifvarg RPG_AMMO 0
 			{
+				setplayer[THISACTOR].weapon_pos -9
 				state setrpg
 			}
 		}
@@ -446,6 +491,7 @@ state player_updateweapons
 			ifvare RPG_AMMO 0
 			ifvarg RAILGUN_AMMO 0
 			{
+				setplayer[THISACTOR].weapon_pos -9
 				state setrailgun
 			}
 		}
@@ -473,6 +519,7 @@ state player_updateweapons
 			ifvare HAS_SHOTGUN 1
 			ifvarl TEMP3 2
 			{
+				setplayer[THISACTOR].weapon_pos -9
 				state setshotgun
 			}
 		}
@@ -560,4 +607,46 @@ state player_tossweapon
 			break
 		case GROW_WEAPON: spawn GROWSPRITEICON break
 	endswitch
+ends
+
+state checkweaponstay
+	getactor[THISACTOR].picnum STATE_TEMP1
+	getactor[THISACTOR].htpicnum STATE_TEMP2
+	ifvarvare STATE_TEMP1 STATE_TEMP2
+	ifmultiplayer
+	ifvarand gametype_flags 2
+	{
+		return
+	}
+ends
+
+state addweapon_nobreak
+	getplayer[THISACTOR].gotweapon STATE_PARAM1 STATE_TEMP1
+	ifvare STATE_TEMP1 1
+	{
+		break
+	}
+	
+	setplayer[THISACTOR].gotweapon STATE_PARAM1 1
+	getplayer[THISACTOR].weaponswitch STATE_TEMP2
+	ifvarand STATE_TEMP2 1
+	{
+		setplayer[THISACTOR].weapon_pos -9
+		setplayer[THISACTOR].curr_weapon STATE_PARAM1
+	}
+ends
+
+state addammo_nobreak
+	getplayer[THISACTOR].ammo_amount STATE_PARAM1 STATE_TEMP1
+	addvarvar STATE_TEMP1 STATE_PARAM2
+	
+	getplayer[THISACTOR].max_ammo_amount STATE_PARAM1 STATE_TEMP2
+	ifvarvarg STATE_TEMP1 STATE_TEMP2
+	{
+		setplayer[THISACTOR].ammo_amount STATE_PARAM1 STATE_TEMP2
+	}
+	else
+	{
+		setplayer[THISACTOR].ammo_amount STATE_PARAM1 STATE_TEMP1
+	}
 ends

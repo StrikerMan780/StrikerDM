@@ -1571,7 +1571,7 @@ state getweaponcode
 	nullop
   else ifactor TRIPBOMBSPRITE
     nullop
-  else ifgotweaponce 1
+  else ifgotweaponce 1 // If weapon stay is on, break.
     break
 	
   ifvare RESPAWN_ITEMS 1
@@ -2186,16 +2186,9 @@ actor GROWSPRITEICON // Functioning Expander Pickup
           ifcount 6
             ifcanseetarget
       {
-        ifspawnedby GROWSPRITEICON
-		{
-			getplayer[THISACTOR].gotweapon GROW_WEAPON TEMP
-			ifmultiplayer
-			ifvarand gametype_flags 2
-			ifvare TEMP 1
-			{
-				break
-			}
-		}
+		getplayer[THISACTOR].gotweapon GROW_WEAPON TEMP
+		ifvare TEMP 1
+			state checkweaponstay
 
 		// This weird little setup is to allow autoswitch to go straight to the expander.
 		addweapon GROW_WEAPON GROWCRYSTALAMMOAMOUNT
@@ -2208,61 +2201,8 @@ actor GROWSPRITEICON // Functioning Expander Pickup
         else
 		{
           state quikweaponget_custom
-		  killit
 		}
       }
-enda
-
-actor FREEZESPRITE
-    fall
-	state despawn_item_from_can
-    ifmove RESPAWN_ACTOR_FLAG
-	{
-        state respawnit
-	}
-    else ifp pshrunk
-	{
-	}
-    else ifp palive ifpdistl RETRIEVEDISTANCE ifcount 6 ifcanseetarget
-    {
-        ifgotweaponce 0
-            break
-		
-		getplayervar[THISACTOR].FREEZETHROWER_AMMO TEMP
-		getplayervar[THISACTOR].HAS_FREEZETHROWER TEMP2
-		ifvarl TEMP MAXFREEZEAMMO // Ammo under max?
-		{
-			addvarvar TEMP FREEZEAMMOAMOUNT
-			ifvarg TEMP MAXFREEZEAMMO // If over, cap it.
-			{
-				setvar TEMP MAXFREEZEAMMO
-			}
-			
-			setplayervar[THISACTOR].FREEZETHROWER_AMMO TEMP
-		}
-		else
-		{
-			ifvare TEMP2 1 // Has freezethrower?
-			{
-				break // Has weapon, and full ammo. Stop here.
-			}
-		}
-		
-		setplayervar[THISACTOR].HAS_FREEZETHROWER 1 // Give it
-		
-        quote 59
-        ifspawnedby FREEZESPRITE
-		{
-            state getweaponcode
-			addweapon FREEZE_WEAPON 0
-		}
-        else
-		{
-            state quikweaponget_custom
-			addweapon FREEZE_WEAPON 0
-			killit
-		}
-    }
 enda
 
 actor DEVISTATORSPRITE

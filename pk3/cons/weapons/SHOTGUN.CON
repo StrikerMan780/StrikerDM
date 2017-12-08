@@ -177,31 +177,36 @@ actor SHOTGUNSPRITE
           ifcount 6
             ifcanseetarget
       {
-		setvar HAS_SHOTGUN 1
-        ifspawnedby PIGCOP
-        {
-          addweapon SHOTGUN_WEAPON 0
-          ifrnd 64
-            addammo SHOTGUN_WEAPON 4
-          else ifrnd 64
-            addammo SHOTGUN_WEAPON 3
-          else ifrnd 64
-            addammo SHOTGUN_WEAPON 2
-          else
-            addammo SHOTGUN_WEAPON 1
-        }
-        else
-        {
-          ifgotweaponce 0
-            break
-          addweapon SHOTGUN_WEAPON SHOTGUNAMMOAMOUNT
-          quote 57
-        }
+		getplayervar[THISACTOR].HAS_SHOTGUN TEMP2
+		ifvare TEMP2 1
+			state checkweaponstay
+			
+		getplayer[THISACTOR].ammo_amount SHOTGUN_WEAPON TEMP
+			
+		ifvarl TEMP MAXSHOTGUNAMMO // Ammo under max?
+		{
+			setvar STATE_PARAM1 SHOTGUN_WEAPON
+			ifspawnedby PIGCOP { randvar STATE_PARAM2 4 }
+			else { setvar STATE_PARAM2 SHOTGUNAMMOAMOUNT }
+			state addammo_nobreak
+		}
+		else
+		{
+			ifvare TEMP2 1 // Has weapon?
+			{
+				break // Has weapon, and full ammo. Stop here.
+			}
+		}
+		
+		setplayervar[THISACTOR].HAS_SHOTGUN 1
+		setvar STATE_PARAM1 SHOTGUN_WEAPON
+		state addweapon_nobreak
+		quote 57
 
         ifspawnedby SHOTGUNSPRITE
           state getweaponcode
         else
-          state quikweaponget
+          state quikweaponget_custom
       }
 enda
 

@@ -93,15 +93,8 @@ actor FLAMETHROWERSPRITE
     else ifp palive ifpdistl RETRIEVEDISTANCE ifcount 6 ifcanseetarget
     {
         getplayervar[THISACTOR].HAS_FLAMETHROWER TEMP2
-		ifspawnedby FLAMETHROWERSPRITE
-		{
-			ifmultiplayer
-			ifvarand gametype_flags 2
-			ifvare TEMP2 1
-			{
-				break
-			}
-		}
+		ifvare TEMP2 1
+			state checkweaponstay
 		
 		getplayervar[THISACTOR].FLAMETHROWER_AMMO TEMP
 		ifvarl TEMP MAXFLAMETHROWERAMMO // Ammo under max?
@@ -123,18 +116,16 @@ actor FLAMETHROWERSPRITE
 		}
 		
 		setplayervar[THISACTOR].HAS_FLAMETHROWER 1 // Give it
-		
+		setvar STATE_PARAM1 FREEZE_WEAPON
+		state addweapon_nobreak
         quote 127
         ifspawnedby FLAMETHROWERSPRITE
 		{
             state getweaponcode
-			addweapon FREEZE_WEAPON 0
 		}
         else
 		{
             state quikweaponget_custom
-			addweapon FREEZE_WEAPON 0
-			killit
 		}
     }
 enda

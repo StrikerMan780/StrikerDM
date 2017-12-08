@@ -73,15 +73,8 @@ actor RAILGUNSPRITE
     else ifp palive ifpdistl RETRIEVEDISTANCE ifcount 6 ifcanseetarget
     {
 		getplayervar[THISACTOR].HAS_RAILGUN TEMP2
-		ifspawnedby RAILGUNSPRITE
-		{
-			ifmultiplayer
-			ifvarand gametype_flags 2
-			ifvare TEMP2 1
-			{
-				break
-			}
-		}
+		ifvare TEMP2 1
+			state checkweaponstay
 		
 		getplayervar[THISACTOR].RAILGUN_AMMO TEMP
 		ifvarl TEMP MAXRAILGUNAMMO // Ammo under max?
@@ -103,18 +96,16 @@ actor RAILGUNSPRITE
 		}
 		
 		setplayervar[THISACTOR].HAS_RAILGUN 1 // Give it
-		
+		setvar STATE_PARAM1 RPG_WEAPON
+		state addweapon_nobreak
         quote 131
         ifspawnedby RAILGUNSPRITE
 		{
             state getweaponcode
-			addweapon RPG_WEAPON 0
 		}
         else
 		{
             state quikweaponget_custom
-			addweapon RPG_WEAPON 0
-			killit
 		}
     }
 enda

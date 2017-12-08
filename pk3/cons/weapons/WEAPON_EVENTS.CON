@@ -1,33 +1,22 @@
 onevent EVENT_WEAPKEY3
-	ifvare WEAPON SHOTGUN_WEAPON
-	{
-		state checkssg
-	}
+	state checkssg
 endevent
 
 onevent EVENT_WEAPKEY4
-	ifvare WEAPON CHAINGUN_WEAPON
-	{
-		state checkplasmarifle
-	}
+	state checkplasmarifle
 endevent
 
 onevent EVENT_WEAPKEY5
-	ifvare WEAPON RPG_WEAPON
-	{
-		state checkrailgun
-	}
+	state checkrailgun
 endevent
 
 onevent EVENT_WEAPKEY10
-	ifvare WEAPON FREEZE_WEAPON
-	{
-		state checkflamethrower
-	}
+	state checkflamethrower
 endevent
 
 onevent EVENT_DOFIRE
-	ifvare WEAPON FREEZE_WEAPON
+	getplayer[THISACTOR].curr_weapon TEMP
+	ifvare TEMP FREEZE_WEAPON
 	{
 		ifvare USING_FLAMETHROWER 1
 		{
@@ -72,7 +61,7 @@ onevent EVENT_DOFIRE
 			setplayervar[THISACTOR].FREEZETHROWER_AMMO TEMP
 		}
 	}
-	else ifvare WEAPON DEVISTATOR_WEAPON
+	else ifvare TEMP DEVISTATOR_WEAPON
 	{
 		getplayer[THISACTOR].hbomb_hold_delay TEMP
 		ifvare TEMP 1
@@ -84,7 +73,7 @@ onevent EVENT_DOFIRE
 			sound DEVASTATOR_FIRELEFT
 		}
 	}
-	else ifvare WEAPON CHAINGUN_WEAPON
+	else ifvare TEMP CHAINGUN_WEAPON
 	{
 		ifvare USING_PLASMARIFLE 1
 		{
@@ -123,7 +112,7 @@ onevent EVENT_DOFIRE
 			setplayervar[THISACTOR].RIPPER_AMMO TEMP
 		}
 	}
-	else ifvare WEAPON RPG_WEAPON
+	else ifvare TEMP RPG_WEAPON
 	{
 		ifvare USING_RAILGUN 1
 		{
@@ -169,25 +158,27 @@ onevent EVENT_DOFIRE
 			setplayervar[THISACTOR].RPG_AMMO TEMP
 		}
 	}
-	else ifvare WEAPON SHOTGUN_WEAPON
+	else ifvare TEMP SHOTGUN_WEAPON
 	{
-		ifvare USING_SSG 1
+		getplayervar[THISACTOR].USING_SSG TEMP
+		ifvare TEMP 1
 		{
-			getplayer[THISACTOR].ammo_amount SHOTGUN_WEAPON TEMP
-			
-			subvar TEMP 1
-			ifvarl TEMP 0
+			getplayer[THISACTOR].ammo_amount SHOTGUN_WEAPON TEMP2
+			ifvarl TEMP2 2
 			{
-				setvar TEMP 0
+				setvar RETURN 1
+				break
 			}
 			
-			setplayer[THISACTOR].ammo_amount SHOTGUN_WEAPON TEMP
+			subvar TEMP2 1
+			setplayer[THISACTOR].ammo_amount SHOTGUN_WEAPON TEMP2
 		}
 	}
 endevent
 
 onevent EVENT_FIRE
-	ifvare WEAPON FREEZE_WEAPON
+	getplayer[THISACTOR].curr_weapon TEMP
+	ifvare TEMP FREEZE_WEAPON
 	{
 		ifvare USING_FLAMETHROWER 1
 		{
@@ -228,7 +219,8 @@ onevent EVENT_GETSHOTRANGE
 	}
 	else ifvare TEMP RPG_WEAPON
 	{
-		ifvare USING_RAILGUN 1
+		getplayervar[THISACTOR].USING_RAILGUN TEMP
+		ifvare TEMP 1
 		{
 			setvar ANGRANGE 1
 			setvar ZRANGE 1
@@ -236,7 +228,8 @@ onevent EVENT_GETSHOTRANGE
 	}
 	else ifvare TEMP SHOTGUN_WEAPON
 	{
-		ifvare USING_SSG 1
+		getplayervar[THISACTOR].USING_SSG TEMP
+		ifvare TEMP 1
 		{
 			setvar ANGRANGE 64
 			setvar ZRANGE 512

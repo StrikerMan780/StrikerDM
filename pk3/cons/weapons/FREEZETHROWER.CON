@@ -66,3 +66,53 @@ state draw_freezer // FREEZE_WEAPON:
         guniqhudid 0
     }
 ends
+
+actor FREEZESPRITE
+    fall
+	state despawn_item_from_can
+    ifmove RESPAWN_ACTOR_FLAG
+	{
+        state respawnit
+	}
+    else ifp pshrunk
+	{
+	}
+    else ifp palive ifpdistl RETRIEVEDISTANCE ifcount 6 ifcanseetarget
+    {
+        getplayervar[THISACTOR].HAS_FREEZETHROWER TEMP2
+		ifvare TEMP2 1
+			state checkweaponstay
+		
+		getplayervar[THISACTOR].FREEZETHROWER_AMMO TEMP
+		ifvarl TEMP MAXFREEZEAMMO // Ammo under max?
+		{
+			addvarvar TEMP FREEZEAMMOAMOUNT
+			ifvarg TEMP MAXFREEZEAMMO // If over, cap it.
+			{
+				setvar TEMP MAXFREEZEAMMO
+			}
+			
+			setplayervar[THISACTOR].FREEZETHROWER_AMMO TEMP
+		}
+		else
+		{
+			ifvare TEMP2 1 // Has freezethrower?
+			{
+				break // Has weapon, and full ammo. Stop here.
+			}
+		}
+		
+		setplayervar[THISACTOR].HAS_FREEZETHROWER 1 // Give it
+		setvar STATE_PARAM1 FREEZE_WEAPON
+		state addweapon_nobreak
+        quote 59
+        ifspawnedby FREEZESPRITE
+		{
+            state getweaponcode
+		}
+        else
+		{
+            state quikweaponget_custom
+		}
+    }
+enda

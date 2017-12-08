@@ -744,18 +744,20 @@ onevent EVENT_DISPLAYREST // !UNSYNCHRONIZED!
 	//qsprintf 500 500 gametype_flags
 	//minitext 48 48 500 -127 1
 	
-	ifvare WEAPON FREEZE_WEAPON
+	// Change orientation to 536 later.
+	getplayer[THISACTOR].curr_weapon CL_TEMP1
+	ifvare CL_TEMP1 FREEZE_WEAPON
 	{
 		ifvare USING_FLAMETHROWER 1
 		{
-			rotatesprite 254 180 32768 0 FLAMETHROWERAMMO_ICON -127 0 536 windowx1 windowy1 windowx2 windowy2
+			rotatesprite 254 180 32768 0 FLAMETHROWERAMMO_ICON -127 0 24 windowx1 windowy1 windowx2 windowy2
 		}
 	}
-	else ifvare WEAPON CHAINGUN_WEAPON
+	else ifvare CL_TEMP1 CHAINGUN_WEAPON
 	{
 		ifvare USING_PLASMARIFLE 1
 		{
-			rotatesprite 254 180 32768 0 PLASMAAMMO_ICON -127 0 536 windowx1 windowy1 windowx2 windowy2
+			rotatesprite 254 180 32768 0 PLASMAAMMO_ICON -127 0 24 windowx1 windowy1 windowx2 windowy2
 		}
 	}
 	
@@ -798,17 +800,4 @@ onevent EVENT_DISPLAYREST // !UNSYNCHRONIZED!
 			addvar SCORE_PLAYERINDEX 1
 		}
 	}
-	
-	/*
-	// Test code for EDuke32_Multiplayer
-	getplayer[THISACTOR].posx CL_TEMP1
-	getplayer[THISACTOR].posy CL_TEMP2
-	getplayer[THISACTOR].posz CL_TEMP3
-	getplayer[THISACTOR].ang CL_TEMP4
-	getplayer[THISACTOR].horiz CL_TEMP5
-	getplayer[THISACTOR].horizoff CL_TEMP6
-	addvarvar CL_TEMP5 CL_TEMP6
-	updatesectorz CL_TEMP1 CL_TEMP2 CL_TEMP3 CL_TEMP7
-	showviewunbiased CL_TEMP1 CL_TEMP2 CL_TEMP3 CL_TEMP4 CL_TEMP5 CL_TEMP7 16 8 56 39
-	*/
 endevent

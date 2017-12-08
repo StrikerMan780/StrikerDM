@@ -270,6 +270,7 @@ ends
 state quikweaponget_custom
   state randgetweapsnds
   palfrom 32 0 32
+  killit
 ends
 
 state getcode_custom
