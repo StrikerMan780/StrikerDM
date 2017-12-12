@@ -61,3 +61,4 @@ stuff
 /mapster32/*.log
 /mapster32/eduke32.exe
 /mapster32/capt*.png
+/mapster32/settings.cfg
