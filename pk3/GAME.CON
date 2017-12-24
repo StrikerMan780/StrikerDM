@@ -2,6 +2,7 @@
 action ANULLACTION 0
 move RESPAWN_ACTOR_FLAG
 
+include VERSION.CON
 include DEFS.CON
 include cons/USER.CON
 include cons/SDM_VARS.CON

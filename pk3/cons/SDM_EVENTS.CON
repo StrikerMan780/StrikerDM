@@ -801,3 +801,7 @@ onevent EVENT_DISPLAYREST // !UNSYNCHRONIZED!
 		}
 	}
 endevent
+
+onevent EVENT_DISPLAYMENUREST // Version display. !UNSYNCHRONIZED!
+	screentext 3072 316 180 65536 0 0 499 -127 6 536 0 3 5 1 1 8193 0 0 xdim ydim 
+endevent

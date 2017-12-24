@@ -81,6 +81,7 @@ del .\builds\StrikerDM-DEV.pk3 /q
 cd pk3
 del *.tmp
 del .\maps\*_crash.map
+echo definequote 499 StrikerDM Development Build > VERSION.CON
 7za a -y -tzip -mx=0 -mmt -xr!.GIT -xr!*.dbs -xr!*.tmp ..\builds\StrikerDM-DEV.pk3 .\
 
 pause
@@ -93,6 +94,7 @@ del .\builds\StrikerDM-r%REVISIONNUMBER%.pk3 /q
 cd pk3
 del *.tmp
 del .\maps\*_crash.map
+echo definequote 499 StrikerDM r%REVISIONNUMBER% > VERSION.CON
 7za a -y -tzip -mx=9 -mmt -xr!.GIT -xr!*.dbs -xr!*.tmp ..\builds\StrikerDM-r%REVISIONNUMBER%.pk3 .\
 
 pause
