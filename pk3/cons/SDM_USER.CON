@@ -53,8 +53,8 @@ definelevelname 4 0 maps/ktc.map 66:60 66:60 Killer Titty Club
 definelevelname 4 1 maps/space.map 66:60 66:60 Space Station Alpha
 definelevelname 4 2 maps/rocks.map 66:60 66:60 On The Rocks (WIP)
 definelevelname 4 3 maps/gwmap20.map 66:60 66:60 GreenWar MAP20
-definelevelname 4 4 maps/surreal.map 66:60 66:60 Aesthetic Duel (WIP)
-music 5 music/sexwithex.mid music/darkmatt.mid music/ffunk.ogg music/d_messag.mid
+definelevelname 4 4 maps/vapor.map 66:60 66:60 Aesthetic Duel (WIP)
+music 5 music/sexwithex.mid music/darkmatt.mid music/ffunk.ogg music/d_messag.mid music/passport.mid
 
 definevolumename 5 WGDM Series
 definelevelname 5 0 maps/wgdm1.map 66:60 66:60 WGDM1 (6P)
@@ -165,7 +165,7 @@ music 9 music/virulent.ogg music/doktor.ogg music/egwaa.ogg music/multplay.ogg m
         music/bomberman.ogg music/athletic.ogg music/d_stlks2.mid music/shial.ogg music/monster.mid music/hrpdream.mid music/mystery.mid music/ln2remix.ogg
         music/pterodactyl.ogg music/haremscarem.ogg music/desertdrive.ogg music/brit11m1.mid music/d_countd.mid music/flaghate.mid music/train.ogg 
         music/jaguar.ogg music/piriton.ogg music/aenima.mid music/skinmask.mid music/brainscan.mid music/ealord.mid music/mus_e2m3.mid music/slavestate.ogg  
-        music/dnfost1.ogg music/dnfost2.ogg music/quickordead.mid music/wwe.ogg music/choco64.ogg
+        music/dnfost1.ogg music/dnfost2.ogg music/quickordead.mid music/wwesmack.mid music/choco64.ogg
 	   
 // Sounds
 definesound INTO_MENU sounds/menu/menu_enter.wav 0 0 0 0 0

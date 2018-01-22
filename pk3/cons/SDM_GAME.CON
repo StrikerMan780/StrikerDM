@@ -1122,7 +1122,11 @@ action TOILETWATERFRAMES 0 4 1 1 1
 actor TOILETWATER 0 TOILETWATERFRAMES
   ifpdistl 8192
   {
-    soundonce WATER_GURGLE
+	ifvare HITAG_MEMORY 0
+	{
+		soundonce WATER_GURGLE
+	}
+	
     ifspawnedby TOILET
       sizeto 34 34
     else

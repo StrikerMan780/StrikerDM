@@ -766,7 +766,7 @@ definesound BORNTOBEWILDSND     2bwild.voc         0   0 254   2   0
 definesound KTIT                sounds/duke/ktitx.ogg         0   0 254   2   0
 definesound LADY_SCREAM         sounds/FSCRM10.ogg     -256   0 254   8   0
 definesound MONITOR_ACTIVE      monitor.voc        0   0   0   0   0
-definesound WATER_GURGLE        h2ogrgl2.voc       0   0   1   2   9000
+definesound WATER_GURGLE        sounds/h2ogrgl2.wav       0   0   1   2   9000
 definesound EXITMENUSOUND       item15.voc         0   0   0   0   0
 definesound RATTY               sounds/mice3.ogg          0   0   0   0   0
 definesound INTO_MENU           bulithit.voc    1024 1024  0   0   0
@@ -782,7 +782,7 @@ definesound GENERIC_AMBIENCE6      roam22.voc      0   0   0   2   0
 definesound SECRETLEVELSND         secret.voc      0   0   255 0   0
 definesound GENERIC_AMBIENCE8      amb81b.voc      0   0   0   2   0
 definesound GENERIC_AMBIENCE9      roam98b.voc     0   0   0   2   0
-definesound GENERIC_AMBIENCE10     h2orush2.voc    0   0   0   3   0
+definesound GENERIC_AMBIENCE10     sounds/h2orush2.wav    0   0   0   3   0
 definesound GENERIC_AMBIENCE11     sounds/projrun.ogg     0   0   0   3   0
 definesound GENERIC_AMBIENCE12     drip3.voc       0   0   0   0   0
 definesound GENERIC_AMBIENCE13     sounds/duke/pay02.ogg       0   0   255 4  0

@@ -762,7 +762,9 @@ onevent EVENT_DISPLAYREST // !UNSYNCHRONIZED!
 	}
 	
 	// SO MANY FUCKING TEMP VARS
+	getuserdef[].screen_size CL_TEMP1
 	ifmultiplayer
+	ifvarg CL_TEMP1 0
 	ifvarn COOP GM_COOPERATIVE
 	{
 		setvar SCORE_COUNTER 0
