@@ -16,6 +16,7 @@ include defs/skyboxes.def
 include defs/doomtex.def
 include defs/ranzoutex.def
 include defs/dt_tiles014.def
+include defs/vaporwave.def
 include defs/wt_tiles021.def
 include defs/wt_tiles022.def
 include defs/xxx.def

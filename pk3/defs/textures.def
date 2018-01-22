@@ -7,28 +7,30 @@ texture 3693 { pal 0 { file "tiles/3693.png" nocompress nodownsize } }
 
 // Posters
 tilefromtexture 5050 { file "tiles/5050.png" }
-texture 5050 { pal 0 { file "highres/posters/5050_ricky.jpg" nodownsize } }
 tilefromtexture 5051 { file "tiles/5051.png" }
-texture 5051 { pal 0 { file "highres/posters/5051_doom.png" } }
 tilefromtexture 5052 { file "tiles/5052.png" }
-texture 5052 { pal 0 { file "highres/posters/5052_wolfvsdoom.jpg" } }
 tilefromtexture 5053 { file "tiles/5053.png" }
-texture 5053 { pal 0 { file "highres/posters/5053_doomtroid.jpg" } }
 tilefromtexture 5054 { file "tiles/5054.png" texture }
 tilefromtexture 5055 { file "tiles/5055.png" }
-texture 5055 { pal 0 { file "highres/posters/5055_berk.jpg" } }
 tilefromtexture 5056 { file "tiles/5056.png" texture }
 tilefromtexture 5057 { file "tiles/5057.png" texture }
 tilefromtexture 5058 { file "tiles/5058.png" }
-texture 5058 { pal 0 { file "highres/posters/5058_youwin.jpg" } }
 tilefromtexture 5059 { file "tiles/5059.png" }
-texture 5059 { pal 0 { file "highres/posters/5059_moonbase.jpg" } }
 tilefromtexture 5060 { file "tiles/5060.png" }
-texture 5060 { pal 0 { file "highres/posters/5060_startrek.png" } }
 tilefromtexture 5061 { file "tiles/5061.png" }
-texture 5061 { pal 0 { file "highres/posters/5061_startrek2.png" } }
 tilefromtexture 5062 { file "tiles/5062.png" }
+tilefromtexture 5063 { file "tiles/5063.png" }
+texture 5050 { pal 0 { file "highres/posters/5050_ricky.jpg" nodownsize } }
+texture 5051 { pal 0 { file "highres/posters/5051_doom.png" } }
+texture 5052 { pal 0 { file "highres/posters/5052_wolfvsdoom.jpg" } }
+texture 5053 { pal 0 { file "highres/posters/5053_doomtroid.jpg" } }
+texture 5055 { pal 0 { file "highres/posters/5055_berk.jpg" } }
+texture 5058 { pal 0 { file "highres/posters/5058_youwin.jpg" } }
+texture 5059 { pal 0 { file "highres/posters/5059_moonbase.jpg" } }
+texture 5060 { pal 0 { file "highres/posters/5060_startrek.png" } }
+texture 5061 { pal 0 { file "highres/posters/5061_startrek2.png" } }
 texture 5062 { pal 0 { file "highres/posters/5062_lustinspace.png" } }
+texture 5063 { pal 0 { file "highres/posters/5063_consumeex.png" } }
 
 // Roasting nuts
 animtilerange 5367 5369 5 ANIM_FORWARD
