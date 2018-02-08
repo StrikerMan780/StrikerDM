@@ -5,7 +5,18 @@ tilefromtexture 339 { file "tiles/339.png" }
 tilefromtexture 3693 { file "tiles/3693.png" }
 texture 3693 { pal 0 { file "tiles/3693.png" nocompress nodownsize } }
 
+// Duke Burger signage
+tilefromtexture 5045 { file "tiles/5045.png" }
+tilefromtexture 5046 { file "tiles/5046.png" }
+tilefromtexture 5047 { file "tiles/5047.png" }
+tilefromtexture 5048 { file "tiles/5048.png" }
+texture 5045 { pal 0 { file "highres/dukeburger/5045_menu1.png" nodownsize } }
+texture 5046 { pal 0 { file "highres/dukeburger/5046_menu2.png" nodownsize } }
+texture 5047 { pal 0 { file "highres/dukeburger/5047_menu3.png" nodownsize } }
+texture 5048 { pal 0 { file "highres/dukeburger/5048_menu4.png" nodownsize } }
+
 // Posters
+tilefromtexture 5049 { file "tiles/5049.png" texture }
 tilefromtexture 5050 { file "tiles/5050.png" }
 tilefromtexture 5051 { file "tiles/5051.png" }
 tilefromtexture 5052 { file "tiles/5052.png" }
