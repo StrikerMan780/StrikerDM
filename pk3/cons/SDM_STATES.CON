@@ -286,15 +286,6 @@ state getcode_custom
     killit
 ends
 
-state update_lasthitby
-	getactor[THISACTOR].htextra TEMP
-	ifvarg TEMP 0 // if the actor is set to take some damage from a weapon...
-	{
-		getactor[THISACTOR].htowner TEMP
-		setvarvar LASTHITBY TEMP
-	}
-ends
-
 state get_squisher
 	findotherplayer TEMP
 	getplayer[RETURN].i TEMP2

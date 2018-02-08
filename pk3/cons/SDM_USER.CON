@@ -157,6 +157,8 @@ definelevelname 8 51 maps/THREEWAY-SDM.map 66:60 66:60 Threeway: MarioJCH
 definelevelname 8 52 maps/Z_SKPARK2-SDM.map 66:60 66:60 Z Skatepark 2: Multiple Authors
 definelevelname 8 53 maps/WWEDUKEMANIA-SDM.map 66:60 66:60 WWE Dukemania: Multiple Authors
 definelevelname 8 54 maps/BLOCKFORTS-SDM.map 66:60 66:60 Block Forts: Multiple Authors
+definelevelname 8 55 maps/BABELINFLAMES.map 66:60 66:60 Babel In Flames: MarioJCh
+definelevelname 8 56 maps/UNIMART-SDM.map 66:60 66:60 Unimart: Vandclash
 
 music 9 music/virulent.ogg music/doktor.ogg music/egwaa.ogg music/multplay.ogg music/zeppelin.ogg music/interstl.ogg
         music/miamidis.ogg music/coconut.ogg music/unknownc.ogg music/eatdust.ogg music/darkcmbt.ogg music/villa.ogg
@@ -165,7 +167,7 @@ music 9 music/virulent.ogg music/doktor.ogg music/egwaa.ogg music/multplay.ogg m
         music/bomberman.ogg music/athletic.ogg music/d_stlks2.mid music/shial.ogg music/monster.mid music/hrpdream.mid music/mystery.mid music/ln2remix.ogg
         music/pterodactyl.ogg music/haremscarem.ogg music/desertdrive.ogg music/brit11m1.mid music/d_countd.mid music/flaghate.mid music/train.ogg 
         music/jaguar.ogg music/piriton.ogg music/aenima.mid music/skinmask.mid music/brainscan.mid music/ealord.mid music/mus_e2m3.mid music/slavestate.ogg  
-        music/dnfost1.ogg music/dnfost2.ogg music/quickordead.mid music/wwesmack.mid music/choco64.ogg
+        music/dnfost1.ogg music/dnfost2.ogg music/quickordead.mid music/wwesmack.mid music/choco64.ogg music/darkmatt.mid music/quikmart.mid
 	   
 // Sounds
 definesound INTO_MENU sounds/menu/menu_enter.wav 0 0 0 0 0

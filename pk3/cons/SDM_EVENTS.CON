@@ -363,8 +363,30 @@ onevent EVENT_GAME
 	}
 endevent
 
-//onevent EVENT_PREGAME
-//endevent
+state update_lasthitby
+	ifactor APLAYER
+	{
+		getactor[THISACTOR].htowner TEMP
+		
+		ifvarg TEMP -1
+		ifvarvarn TEMP THISACTOR
+		{
+			setvarvar LASTHITBY TEMP
+			redefinequote 500 Lasthitby: %d
+			qsprintf 500 500 LASTHITBY
+			userquote 500
+		}
+	}
+	else
+	{
+		break
+	}
+	
+ends
+
+onevent EVENT_PREGAME
+	state update_lasthitby
+endevent
 
 state set_norespawn
 		ifactor SECTOREFFECTOR
