@@ -19,6 +19,8 @@ texture 5048 { pal 0 { file "highres/dukeburger/5048_menu4.png" nodownsize } }
 tilefromtexture 5042 { file "tiles/5042.png" texture }
 
 // Posters
+tilefromtexture 5037 { file "tiles/5037.png" }
+tilefromtexture 5038 { file "tiles/5038.png" }
 tilefromtexture 5039 { file "tiles/5039.png" }
 tilefromtexture 5040 { file "tiles/5040.png" texture }
 tilefromtexture 5041 { file "tiles/5041.png" }
@@ -39,6 +41,8 @@ tilefromtexture 5060 { file "tiles/5060.png" }
 tilefromtexture 5061 { file "tiles/5061.png" }
 tilefromtexture 5062 { file "tiles/5062.png" }
 tilefromtexture 5063 { file "tiles/5063.png" }
+texture 5037 { pal 0 { file "highres/posters/5037_lahey.png" } }
+texture 5038 { pal 0 { file "highres/posters/5038_shitwolf.jpg" } }
 texture 5039 { pal 0 { file "highres/posters/5039_sticksthegribble.png" } }
 texture 5041 { pal 0 { file "highres/posters/5041_zelda.png" } }
 texture 5043 { pal 0 { file "highres/posters/5043_bandposter.png" } }
