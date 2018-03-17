@@ -7,6 +7,9 @@ tilefromtexture 15 { file "tiles/15.png" texture }
 // Platform Sound
 tilefromtexture 16 { file "tiles/16.png" texture }
 
+// No pistol tag
+tilefromtexture 17 { file "tiles/17.png" }
+
 // Shrinker/Expander
 tilefromtexture 25 { file "tiles/25.png" }
 tilefromtexture 32 { file "tiles/32.png" }
@@ -28,6 +31,9 @@ tilefromtexture 1545 { file "tiles/1545.png" }
 tilefromtexture 2614 { file "tiles/2614.png" xoff -27 yoff -5 }
 tilefromtexture 2615 { file "tiles/2615.png" xoff -21 yoff 25 }
 tilefromtexture 2620 { file "tiles/2620.png" }
+
+// Lo Wang statue
+tilefromtexture 3678 { file "tiles/3678.png" texture }
 
 // Colored scrap
 tilefromtexture 3725 { file "tiles/3725.png" }

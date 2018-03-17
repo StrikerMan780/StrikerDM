@@ -277,3 +277,13 @@ skybox {
    back  "skybox/3561_south.png" nocompress nodownsize
    left  "skybox/3561_west.png" nocompress nodownsize
 }
+
+skybox {
+   tile 3911 pal 0
+   top   "skybox/3911_top.png" nocompress nodownsize
+   down  "skybox/3911_bottom.png" nocompress nodownsize
+   front "skybox/3911_front.png" nocompress nodownsize
+   right "skybox/3911_right.png" nocompress nodownsize
+   back  "skybox/3911_back.png" nocompress nodownsize
+   left  "skybox/3911_left.png" nocompress nodownsize
+}

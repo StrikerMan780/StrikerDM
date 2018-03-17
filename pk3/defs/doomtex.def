@@ -30,3 +30,4 @@ tilefromtexture 3562 { file "tiles/3562.png" texture } // FLAT1_2
 
 // Sprites
 tilefromtexture 3626 { file "tiles/3626.png" texture } // Dead Marine
+tilefromtexture 3630 { file "tiles/3630.png" texture } // Marine in pain

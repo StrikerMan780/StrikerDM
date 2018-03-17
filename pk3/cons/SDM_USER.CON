@@ -48,15 +48,14 @@ definegametype GM_TEAMDUKEMATCH_WEAPONSTAY 216090 Team Dukematch (Weapons Stay)
 definegametype GM_ROIDMATCH 19480 Roidmatch
 definegametype GM_INSTAGIB 19480 Instagib
 
-definevolumename 4 STRIKERDM Series
+definevolumename 4 Striker's Maps
 definelevelname 4 0 maps/ktc.map 66:60 66:60 Killer Titty Club
-definelevelname 4 1 maps/space.map 66:60 66:60 Space Station Alpha
-definelevelname 4 2 maps/rocks.map 66:60 66:60 On The Rocks (WIP)
-definelevelname 4 3 maps/gwmap20.map 66:60 66:60 GreenWar MAP20
-definelevelname 4 4 maps/vapor.map 66:60 66:60 Aesthetic Duel (WIP)
-music 5 music/sexwithex.mid music/darkmatt.mid music/ffunk.ogg music/d_messag.mid music/passport.mid
+definelevelname 4 1 maps/space.map 66:60 66:60 Space Station Alpha (WIP)
+definelevelname 4 2 maps/vapor.map 66:60 66:60 Aesthetic Duel (WIP)
+definelevelname 4 3 maps/rocks.map 66:60 66:60 Feature Test Map
+music 5 music/sexwithex.mid music/darkmatt.mid music/passport.mid music/ffunk.ogg
 
-definevolumename 5 WGDM Series
+definevolumename 5 William Gee's DM Maps
 definelevelname 5 0 maps/wgdm1.map 66:60 66:60 WGDM1 (6P)
 definelevelname 5 1 maps/wgdm2.map 66:60 66:60 WGDM2
 definelevelname 5 2 maps/wgdm3.map 66:60 66:60 WGDM3
@@ -66,7 +65,7 @@ definelevelname 5 5 maps/wgdm6.map 66:60 66:60 WGDM6
 definelevelname 5 6 maps/wgdm7.map 66:60 66:60 WGDM7
 definelevelname 5 7 maps/wgdm8v4.map 66:60 66:60 WGDM8
 music 6 alienz.mid music/kickbuta.mid snake1.mid music/whomp2.mid 
-        lemchill.mid watrwld1.mid warehaus.mid inhiding.mid
+        lemchill.mid watrwld1.mid music/dreamer.mid inhiding.mid
 	   
 definevolumename 6 Duke Tournament
 definelevelname 6 0 maps/DTDM1.map 02:30 01:19 Yards
@@ -100,240 +99,78 @@ music 8 music/d_the_da.mid music/gaze.mid music/dirty.mid music/rocket.mid
         music/sebek.ogg music/kisgirla.mid music/d_stalks.mid music/mglodoom.mid
         music/supfnord.mid gotham.mid music/d_e2m1.mid music/pj.mid music/ymca.mid
         music/pumpup.mid music/outpost.ogg
+		
+definevolumename 8 Doom Conversions
+definelevelname 8 0 maps/gwmap20.map 66:60 66:60 GreenWar MAP20
+definelevelname 8 1 maps/BRIT11MAP1-SDM.map 66:60 66:60 BRIT11 MAP01 (Duke Style)
+definelevelname 8 2 maps/UDM3MAP3-SDM.map 66:60 66:60 UDM3 MAP03 (Duke Style)
+definelevelname 8 3 maps/JEBIDMMAP7-SDM.map 66:60 66:60 JEBIDM MAP07 (Duke Style)
+music 9 music/d_messag.mid music/brit11m1.mid music/d_countd.mid music/flaghate.mid
 	   
-definevolumename 8 Community Maps
-definelevelname 8 0 maps/EL_PASO-SDM.map 66:60 66:60 El Paso: Multiple Authors
-definelevelname 8 1 maps/CIRCENSE-SDM.map 66:60 66:60 Circense: Noldor Ranzou
-definelevelname 8 2 maps/QADIM-SDM.map 66:60 66:60 Qadim: Noldor Ranzou
-definelevelname 8 3 maps/TIMBERLAND-SDM.map 66:60 66:60 Timberland: Multiple Authors
-definelevelname 8 4 maps/ZEPPELIN2-SDM.map 66:60 66:60 Zeppelin 2: Multiple Authors
-definelevelname 8 5 maps/KOSMOS-SDM.map 66:60 66:60 Kosmos: Multiple Authors
-definelevelname 8 6 maps/CLUBMULENR-SDM.map 66:60 66:60 Club Mule NR: Noldor Ranzou
-definelevelname 8 7 maps/LUDOGAME2-SDM.map 66:60 66:60 Ludo Game 2: Noldor Ranzou
-definelevelname 8 8 maps/NRVHOUSE-SDM.map 66:60 66:60 NRVHouse: Multiple Authors
-definelevelname 8 9 maps/UMBRTKA-SDM.map 66:60 66:60 Umbrtka: Noldor Ranzou
-definelevelname 8 10 maps/PD-AREA52-SDM.map 66:60 66:60 PD Area 52: Noldor Ranzou
-definelevelname 8 11 maps/PD-VILLA-SDM.map 66:60 66:60 PD Villa: Vandclash
-definelevelname 8 12 maps/PD-FELICITY-SDM.map 66:60 66:60 PD Felicity: Vandclash
-definelevelname 8 13 maps/USERMAP-SDM.map 66:60 66:60 Usermap: Fernando Marquez
-definelevelname 8 14 maps/VSPACEPORT-SDM.map 66:60 66:60 Varuna Spaceport: Noldor Ranzou
-definelevelname 8 15 maps/LIGHTSOUT-SDM.map 66:60 66:60 Lights Out!: Noldor Ranzou
-definelevelname 8 16 maps/GHOSTHOUSE-SDM.map 66:60 66:60 Ghost House: Multiple Authors
-definelevelname 8 17 maps/LICEO-SDM.map 66:60 66:60 Liceo: Noldor Ranzou
-definelevelname 8 18 maps/LOOPYSHELTER-SDM.map 66:60 66:60 Loopy Shelter: Multiple Authors
-definelevelname 8 19 maps/RIKTI-SDM.map 66:60 66:60 Rikti: Vandclash
-definelevelname 8 20 maps/MALUK-SDM.map 66:60 66:60 Maluk: Vandclash
-definelevelname 8 21 maps/GELATOBEACH-SDM.map 66:60 66:60 Gelato Beach: Vandclash
-definelevelname 8 22 maps/DESTILLATEUR-DM-SDM.map 66:60 66:60 Destillateur: Vandclash
-definelevelname 8 23 maps/V-METRO-SDM.map 66:60 66:60 V-Metro: Vandclash
-definelevelname 8 24 maps/RIPTIDE-STRONGHOLD-SDM.map 66:60 66:60 Riptide Stronghold: Vandclash
-definelevelname 8 25 maps/NRV-LIVINGRAT-SDM.map 66:60 66:60 Living Rat: Vandclash
-definelevelname 8 26 maps/GRANJANUKEM-SDM.map 66:60 66:60 Granja Nukem: Vandclash
-definelevelname 8 27 maps/TRIPBOMBERMAN.map 66:60 66:60 Tripbomberman: Noldor Ranzou
-definelevelname 8 28 maps/RETROLEDGES.map 66:60 66:60 Retro Ledges: Noldor Ranzou
-definelevelname 8 29 maps/LEGOLAND2-SDM.map 66:60 66:60 Lego Land 2: Noldor Ranzou
-definelevelname 8 30 maps/LUGUBRUM-SDM.map 66:60 66:60 Lugubrum: Noldor Ranzou
-definelevelname 8 31 maps/GALLERY-SDM.map 66:60 66:60 Clipart Gallery: F. Marquez
-definelevelname 8 32 maps/THERMAL-SDM.map 66:60 66:60 Thermal Waters: F. Marquez
-definelevelname 8 33 maps/MEGATON-SDM.map 66:60 66:60 Megaton Delirium: F. Marquez
-definelevelname 8 34 maps/BUJINKAN.map 66:60 66:60 Bujinkan Dojo: Noldor Ranzou
-definelevelname 8 35 maps/CALAMITY-SDM.map 66:60 66:60 Calamity: Noldor Ranzou
-definelevelname 8 36 maps/MANSION-SDM.map 66:60 66:60 Mansion: Multiple Authors
-definelevelname 8 37 maps/ALMACEN-SDM.map 66:60 66:60 Almacen: Mercano
-definelevelname 8 38 maps/BRIT11MAP1-SDM.map 66:60 66:60 Brit11 Map 01: Noldor Ranzou
-definelevelname 8 39 maps/UDM3MAP3-SDM.map 66:60 66:60 Udm3 Map 03: Noldor Ranzou
-definelevelname 8 40 maps/JEBIDMMAP7-SDM.map 66:60 66:60 Jebidm Map 07: Noldor Ranzou
-definelevelname 8 41 maps/TRAIN262-SDM.map 66:60 66:60 Train 262: Multiple Authors
-definelevelname 8 42 maps/NEONMAZE2-SDM.map 66:60 66:60 Neon Maze 2: Multiple Authors
-definelevelname 8 43 maps/BNAE02-SDM.map 66:60 66:60 Artificial Cave: Roi de Janeiro
-definelevelname 8 44 maps/AWALKB-SDM.map 66:60 66:60 Aerowalk: Kneiiden
-definelevelname 8 45 maps/DAODEATH-SDM.map 66:60 66:60 Arena of Death: Kneiiden
-definelevelname 8 46 maps/DUKEHOFP-SDM.map 66:60 66:60 House of Pain: Kneiiden
-definelevelname 8 47 maps/DUKEQDM2-SDM.map 66:60 66:60 Claustrophobopolis: Kneiiden
-definelevelname 8 48 maps/FEUER&EIS.map 66:60 66:60 Feuer und Eis: Noldor Ranzou
-definelevelname 8 49 maps/HELVETE.map 66:60 66:60 Helvete Asylum: Noldor Ranzou
-definelevelname 8 50 maps/DUKEPARK-SDM.map 66:60 66:60 Duke Park: MarioJCH
-definelevelname 8 51 maps/THREEWAY-SDM.map 66:60 66:60 Threeway: MarioJCH
-definelevelname 8 52 maps/Z_SKPARK2-SDM.map 66:60 66:60 Z Skatepark 2: Multiple Authors
-definelevelname 8 53 maps/WWEDUKEMANIA-SDM.map 66:60 66:60 WWE Dukemania: Multiple Authors
-definelevelname 8 54 maps/BLOCKFORTS-SDM.map 66:60 66:60 Block Forts: Multiple Authors
-definelevelname 8 55 maps/BABELINFLAMES.map 66:60 66:60 Babel In Flames: MarioJCh
-definelevelname 8 56 maps/UNIMART-SDM.map 66:60 66:60 Unimart: Vandclash
+definevolumename 9 Community Maps
+definelevelname 9 0 maps/EL_PASO-SDM.map 66:60 66:60 El Paso: Multiple Authors
+definelevelname 9 1 maps/CIRCENSE-SDM.map 66:60 66:60 Circense: Noldor Ranzou
+definelevelname 9 2 maps/QADIM-SDM.map 66:60 66:60 Qadim: Noldor Ranzou
+definelevelname 9 3 maps/TIMBERLAND-SDM.map 66:60 66:60 Timberland: Multiple Authors
+definelevelname 9 4 maps/ZEPPELIN2-SDM.map 66:60 66:60 Zeppelin 2: Multiple Authors
+definelevelname 9 5 maps/KOSMOS-SDM.map 66:60 66:60 Kosmos: Multiple Authors
+definelevelname 9 6 maps/CLUBMULENR-SDM.map 66:60 66:60 Club Mule NR: Noldor Ranzou
+definelevelname 9 7 maps/LUDOGAME2-SDM.map 66:60 66:60 Ludo Game 2: Noldor Ranzou
+definelevelname 9 8 maps/NRVHOUSE-SDM.map 66:60 66:60 NRVHouse: Multiple Authors
+definelevelname 9 9 maps/UMBRTKA-SDM.map 66:60 66:60 Umbrtka: Noldor Ranzou
+definelevelname 9 10 maps/PD-AREA52-SDM.map 66:60 66:60 PD Area 52: Noldor Ranzou
+definelevelname 9 11 maps/PD-VILLA-SDM.map 66:60 66:60 PD Villa: Vandclash
+definelevelname 9 12 maps/PD-FELICITY-SDM.map 66:60 66:60 PD Felicity: Vandclash
+definelevelname 9 13 maps/USERMAP-SDM.map 66:60 66:60 Usermap: Fernando Marquez
+definelevelname 9 14 maps/VSPACEPORT-SDM.map 66:60 66:60 Varuna Spaceport: Noldor Ranzou
+definelevelname 9 15 maps/LIGHTSOUT-SDM.map 66:60 66:60 Lights Out!: Noldor Ranzou
+definelevelname 9 16 maps/GHOSTHOUSE-SDM.map 66:60 66:60 Ghost House: Multiple Authors
+definelevelname 9 17 maps/LICEO-SDM.map 66:60 66:60 Liceo: Noldor Ranzou
+definelevelname 9 18 maps/LOOPYSHELTER-SDM.map 66:60 66:60 Loopy Shelter: Multiple Authors
+definelevelname 9 19 maps/RIKTI-SDM.map 66:60 66:60 Rikti: Vandclash
+definelevelname 9 20 maps/MALUK-SDM.map 66:60 66:60 Maluk: Vandclash
+definelevelname 9 21 maps/GELATOBEACH-SDM.map 66:60 66:60 Gelato Beach: Vandclash
+definelevelname 9 22 maps/DESTILLATEUR-DM-SDM.map 66:60 66:60 Destillateur: Vandclash
+definelevelname 9 23 maps/V-METRO-SDM.map 66:60 66:60 V-Metro: Vandclash
+definelevelname 9 24 maps/RIPTIDE-STRONGHOLD-SDM.map 66:60 66:60 Riptide Stronghold: Vandclash
+definelevelname 9 25 maps/NRV-LIVINGRAT-SDM.map 66:60 66:60 Living Rat: Vandclash
+definelevelname 9 26 maps/GRANJANUKEM-SDM.map 66:60 66:60 Granja Nukem: Vandclash
+definelevelname 9 27 maps/TRIPBOMBERMAN.map 66:60 66:60 Tripbomberman: Noldor Ranzou
+definelevelname 9 28 maps/RETROLEDGES.map 66:60 66:60 Retro Ledges: Noldor Ranzou
+definelevelname 9 29 maps/LEGOLAND2-SDM.map 66:60 66:60 Lego Land 2: Noldor Ranzou
+definelevelname 9 30 maps/LUGUBRUM-SDM.map 66:60 66:60 Lugubrum: Noldor Ranzou
+definelevelname 9 31 maps/GALLERY-SDM.map 66:60 66:60 Clipart Gallery: F. Marquez
+definelevelname 9 32 maps/THERMAL-SDM.map 66:60 66:60 Thermal Waters: F. Marquez
+definelevelname 9 33 maps/MEGATON-SDM.map 66:60 66:60 Megaton Delirium: F. Marquez
+definelevelname 9 34 maps/BUJINKAN.map 66:60 66:60 Bujinkan Dojo: Noldor Ranzou
+definelevelname 9 35 maps/CALAMITY-SDM.map 66:60 66:60 Calamity: Noldor Ranzou
+definelevelname 9 36 maps/MANSION-SDM.map 66:60 66:60 Mansion: Multiple Authors
+definelevelname 9 37 maps/ALMACEN-SDM.map 66:60 66:60 Almacen: Mercano
+definelevelname 9 38 maps/TRAIN262-SDM.map 66:60 66:60 Train 262: Multiple Authors
+definelevelname 9 39 maps/NEONMAZE2-SDM.map 66:60 66:60 Neon Maze 2: Multiple Authors
+definelevelname 9 40 maps/BNAE02-SDM.map 66:60 66:60 Artificial Cave: Roi de Janeiro
+definelevelname 9 41 maps/AWALKB-SDM.map 66:60 66:60 Aerowalk: Kneiiden
+definelevelname 9 42 maps/DAODEATH-SDM.map 66:60 66:60 Arena of Death: Kneiiden
+definelevelname 9 43 maps/DUKEHOFP-SDM.map 66:60 66:60 House of Pain: Kneiiden
+definelevelname 9 44 maps/DUKEQDM2-SDM.map 66:60 66:60 Claustrophobopolis: Kneiiden
+definelevelname 9 45 maps/FEUER&EIS.map 66:60 66:60 Feuer und Eis: Noldor Ranzou
+definelevelname 9 46 maps/HELVETE.map 66:60 66:60 Helvete Asylum: Noldor Ranzou
+definelevelname 9 47 maps/DUKEPARK-SDM.map 66:60 66:60 Duke Park: MarioJCH
+definelevelname 9 48 maps/THREEWAY-SDM.map 66:60 66:60 Threeway: MarioJCH
+definelevelname 9 49 maps/Z_SKPARK2-SDM.map 66:60 66:60 Z Skatepark 2: Multiple Authors
+definelevelname 9 50 maps/WWEDUKEMANIA-SDM.map 66:60 66:60 WWE Dukemania: Multiple Authors
+definelevelname 9 51 maps/BLOCKFORTS-SDM.map 66:60 66:60 Block Forts: Multiple Authors
+definelevelname 9 52 maps/BABELINFLAMES.map 66:60 66:60 Babel In Flames: MarioJCh
+definelevelname 9 53 maps/UNIMART-SDM.map 66:60 66:60 Unimart: Vandclash
+definelevelname 9 54 maps/DUKEDEL8-SDM.map 66:60 66:60 Duke Del 8: Multiple Authors
+definelevelname 9 55 maps/LAGUNADM.map 66:60 66:60 Laguna DM: Vandclash
+definelevelname 9 56 maps/C66V2-SDM.map 66:60 66:60 C66V2: Noldor Ranzou
 
-music 9 music/virulent.ogg music/doktor.ogg music/egwaa.ogg music/multplay.ogg music/zeppelin.ogg music/interstl.ogg
-        music/miamidis.ogg music/coconut.ogg music/unknownc.ogg music/eatdust.ogg music/darkcmbt.ogg music/villa.ogg
-	    music/facility.ogg music/night.mid music/sawdust.ogg music/phaseday.ogg music/blood.ogg music/binfinie.ogg
-        music/defacto.ogg music/attkship.ogg warehaus.mid music/gelato.ogg music/blizzard.ogg music/mltplay2.ogg music/aztec.ogg music/shdsiren.ogg music/trashcan.ogg
-        music/bomberman.ogg music/athletic.ogg music/d_stlks2.mid music/shial.ogg music/monster.mid music/hrpdream.mid music/mystery.mid music/ln2remix.ogg
-        music/pterodactyl.ogg music/haremscarem.ogg music/desertdrive.ogg music/brit11m1.mid music/d_countd.mid music/flaghate.mid music/train.ogg 
-        music/jaguar.ogg music/piriton.ogg music/aenima.mid music/skinmask.mid music/brainscan.mid music/ealord.mid music/mus_e2m3.mid music/slavestate.ogg  
-        music/dnfost1.ogg music/dnfost2.ogg music/quickordead.mid music/wwesmack.mid music/choco64.ogg music/darkmatt.mid music/quikmart.mid
-	   
-// Sounds
-definesound INTO_MENU sounds/menu/menu_enter.wav 0 0 0 0 0
-
-definesound DSITEMUP sounds/items/dsitemup.wav 0 0 255 0 0
-definesound FLAMETHROWER_START sounds/flamestr.ogg 0 0 255 0 0
-definesound FLAMETHROWER_FIRE sounds/flamethr.ogg 0 0 255 0 0
-definesound TOASTY sounds/toasty.wav 0 0 255 0 0
-definesound DEVASTATOR_FIRERIGHT sounds/dsdevirg.ogg 0 128 4 0 0
-definesound DEVASTATOR_FIRELEFT sounds/dsdevilf.ogg 0 128 4 0 0
-definesound PLASMARIFLE_FIRE sounds/plasfire.ogg 0 64 4 0 0
-definesound PLASMARIFLE_CHARGE sounds/plaschrg.ogg 0 0 4 0 0
-definesound PLASMARIFLE_HIT sounds/plashit.wav 0 64 4 0 8192
-definesound FREEZETHROWER_FIRE sounds/freezeth.wav 0 64 4 0 0
-definesound RAILGUN_FIRE1 sounds/dsrgfir1.wav 0 0 4 0 0
-definesound RAILGUN_FIRE2 sounds/dsrgfir2.wav 0 0 4 0 0
-definesound RAILGUN_FIRE3 sounds/dsrgfir3.wav 0 0 4 0 0
-definesound SSG_FIRE sounds/dsdshtgn.wav -16 64 4 0 0
-definesound SSG_OPEN sounds/dsdbopn.wav -16 16 4 0 0
-definesound SSG_LOAD sounds/dsdbload.wav -16 16 4 0 0
-definesound SSG_CLOSE sounds/dsdbcls.wav -16 16 4 0 0
-
-definesound CASING1 sounds/casings/dscasin1.ogg 0 0 0 0 8192
-definesound CASING2 sounds/casings/dscasin2.ogg 0 0 0 0 8192
-definesound CASING3 sounds/casings/dscasin3.ogg 0 0 0 0 8192
-definesound CASING4 sounds/casings/dscasin4.ogg 0 0 0 0 8192
-definesound CASING5 sounds/casings/dscasin5.ogg 0 0 0 0 8192
-definesound CASING6 sounds/casings/dscasin6.ogg 0 0 0 0 8192
-
-definesound SHELL_BOUNCE1 sounds/casings/shellbounce1.ogg 0 0 0 0 8192
-definesound SHELL_BOUNCE2 sounds/casings/shellbounce2.ogg 0 0 0 0 8192
-definesound SHELL_BOUNCE3 sounds/casings/shellbounce3.ogg 0 0 0 0 8192
-definesound SHELL_BOUNCE4 sounds/casings/shellbounce4.ogg 0 0 0 0 8192
-definesound SHELL_BOUNCE5 sounds/casings/shellbounce5.ogg 0 0 0 0 8192
-definesound SHELL_BOUNCE6 sounds/casings/shellbounce6.ogg 0 0 0 0 8192
-
-definesound SHELL_EJECT1 sounds/casings/shelleject1.ogg 0 0 0 0 8192
-definesound SHELL_EJECT2 sounds/casings/shelleject2.ogg 0 0 0 0 8192
-definesound SHELL_EJECT3 sounds/casings/shelleject3.ogg 0 0 0 0 8192
-definesound SHELL_EJECT4 sounds/casings/shelleject4.ogg 0 0 0 0 8192
-
-definesound GIB_SPLAT1 sounds/gore/dsflesh1.ogg -32 64 0 0 9000
-definesound GIB_SPLAT2 sounds/gore/dsflesh2.ogg -32 64 0 0 9000
-definesound GIB_SPLAT3 sounds/gore/dsflesh3.ogg -32 64 0 0 9000
-definesound GIB_SPLAT4 sounds/gore/dsflesh4.ogg -32 64 0 0 9000
-
-definesound CHANTING sounds/ambience/chanting.ogg 0 0 0 3 0
-definesound DESERTWND sounds/ambience/desertwnd.ogg 0 0 0 3 0
-definesound TORCHMOVE sounds/ambience/torchmove.voc 0 0 0 0 8192
-definesound CIRCUSMUSIC sounds/ambience/circusmusic.voc 0 0 0 3 0
-definesound SHTRANGE sounds/ambience/shtrange.voc 0 0 0 3 0
-definesound CRICKETS sounds/ambience/crickets.voc 0 0 0 3 0
-definesound DFELEV01 sounds/ambience/dfelev01.voc 0 0 0 0 8192
-definesound DFELEV02 sounds/ambience/dfelev02.voc 0 0 0 0 8192
-definesound ELECSWITCH sounds/ambience/elecswitch.voc 0 0 0 0 8192
-definesound MACHINERY sounds/ambience/machinery.voc 0 0 0 3 0
-definesound SPENGINE sounds/ambience/spengine.voc 0 0 0 3 0
-definesound SYNTHETIC sounds/ambience/synthetic.voc 0 0 0 3 0
-definesound WORKSTATION sounds/ambience/workstation.voc 0 0 0 3 0
-definesound DOOMDOOR sounds/ambience/doomdoor.ogg 0 0 0 0 8192
-definesound PDDOOR1 sounds/ambience/pddoor1.voc 0 0 0 0 8192
-definesound PDDOOR2 sounds/ambience/pddoor2.voc 0 0 0 0 8192
-definesound GEDOOR1O sounds/ambience/gedoor1o.wav 0 0 0 0 8192
-definesound GEDOOR1C sounds/ambience/gedoor1c.wav 0 0 0 0 8192
-definesound GEDOOR2 sounds/ambience/gedoor2.wav 0 0 0 0 8192
-definesound BEACHAMB sounds/ambience/beachamb.ogg 0 0 0 3 0
-definesound DISCOAMB sounds/ambience/discoamb.ogg 0 0 0 3 0
-definesound ARCADEAMB sounds/ambience/arcadeamb.ogg 0 0 0 3 0
-definesound HQMAPFINISH sounds/ambience/hqmapfinish.ogg 0 0 0 3 0
-definesound SWDOOR01O sounds/ambience/swdoor01o.wav 0 0 0 0 8192
-definesound SWDOOR01C sounds/ambience/swdoor01c.wav 0 0 0 0 8192
-definesound SWDOOR02 sounds/ambience/swdoor02.wav 0 0 0 0 8192
-definesound SWENDLEV sounds/ambience/swendlev.wav 0 0 0 3 0
-definesound GONGHIT sounds/ambience/gonghit.wav 0 0 0 0 8192
-definesound BIRDS sounds/ambience/birds.wav 0 0 0 3 0
-definesound BATHTUBS sounds/ambience/bathtubs.wav 0 0 0 3 0
-definesound LASTNINJA sounds/ambience/lastninja.ogg 0 0 0 3 0
-definesound HOKUTO sounds/ambience/hokuto.ogg 0 0 0 3 0
-definesound COLDWIND sounds/ambience/coldwind.ogg 0 0 0 3 0
-definesound CREAKYOPEN sounds/ambience/creakyopen.wav 0 0 0 0 8192
-definesound CREAKYCLOSE sounds/ambience/creakyclose.wav 0 0 0 0 8192
-definesound ELECTROSHOCK sounds/ambience/electroshock.ogg 0 0 0 3 0
-definesound ERASERHEAD sounds/ambience/eraserhead.ogg 0 0 0 3 0
-definesound OLDCLOCK sounds/ambience/oldclock.ogg 0 0 0 3 0
-definesound DOOMPLAT_START sounds/ambience/dspstart.wav 0 0 0 0 0
-definesound DOOMPLAT_STOP sounds/ambience/dspstop.wav 0 0 0 0 0
-definesound SPACEODDITY sounds/ambience/spaceoddity.ogg 0 0 0 3 0
-
-definesound JUMPPADSOUND sounds/ambience/jumppad.wav 0 0 0 0 0
-
-// Duke Talk
-definesound STOMP01 sounds/duke/stomp/DUKE_StompLine_01.ogg 0 0 255 0 0
-definesound STOMP02 sounds/duke/stomp/DUKE_StompLine_02.ogg 0 0 255 0 0
-definesound STOMP03 sounds/duke/stomp/DUKE_StompLine_03.ogg 0 0 255 0 0
-definesound STOMP04 sounds/duke/stomp/DUKE_StompLine_04.ogg 0 0 255 0 0
-definesound STOMP05 sounds/duke/stomp/DUKE_StompLine_05.ogg 0 0 255 0 0
-definesound STOMP06 sounds/duke/stomp/DUKE_StompLine_06.ogg 0 0 255 0 0
-definesound STOMP07 sounds/duke/stomp/DUKE_StompLine_07.ogg 0 0 255 0 0
-definesound STOMP08 sounds/duke/stomp/DUKE_StompLine_08.ogg 0 0 255 0 0
-definesound STOMP09 sounds/duke/stomp/DUKE_StompLine_09.ogg 0 0 255 0 0
-definesound STOMP10 sounds/duke/stomp/DUKE_StompLine_10.ogg 0 0 255 0 0
-definesound STOMP11 sounds/duke/stomp/DUKE_StompLine_11.ogg 0 0 255 0 0
-definesound STOMP12 sounds/duke/stomp/DUKE_StompLine_12.ogg 0 0 255 0 0
-definesound STOMP13 sounds/duke/stomp/DUKE_StompLine_13.ogg 0 0 255 0 0
-definesound STOMP14 sounds/duke/stomp/DUKE_StompLine_14.ogg 0 0 255 0 0
-definesound STOMP15 sounds/duke/stomp/DUKE_StompLine_15.ogg 0 0 255 0 0
-definesound STOMP16 sounds/duke/stomp/DUKE_StompLine_16.ogg 0 0 255 0 0
-definesound STOMP17 sounds/duke/stomp/DUKE_StompLine_17.ogg 0 0 255 0 0
-definesound STOMP18 sounds/duke/stomp/DUKE_StompLine_18.ogg 0 0 255 0 0
-definesound STOMP19 sounds/duke/stomp/DUKE_StompLine_19.ogg 0 0 255 0 0
-definesound STOMP20 sounds/duke/stomp/DUKE_EatSize14_01.ogg 0 0 255 0 0
-
-definesound FREEZE01 sounds/duke/freeze/dsdnfr01.wav 0 0 255 0 0
-definesound FREEZE02 sounds/duke/freeze/dsdnfr02.wav 0 0 255 0 0
-definesound FREEZE03 sounds/duke/freeze/dsdnfr03.wav 0 0 255 0 0
-definesound FREEZE04 sounds/duke/freeze/Duke_MP_Execute_02.ogg 0 0 255 0 0
-definesound FREEZE05 sounds/duke/freeze/Duke_MP_Execute_03.ogg 0 0 255 0 0
-
-definesound NEWDUKEGIB01 sounds/duke/gib/DUKE_GotKill_03.ogg 0 0 255 0 0
-definesound NEWDUKEGIB02 sounds/duke/gib/DUKE_GotKill_04.ogg 0 0 255 0 0
-definesound NEWDUKEGIB03 sounds/duke/gib/DUKE_GotKill_07.ogg 0 0 255 0 0
-definesound NEWDUKEGIB04 sounds/duke/gib/DUKE_GotKill_08.ogg 0 0 255 0 0
-definesound NEWDUKEGIB05 sounds/duke/gib/DUKE_GotKill_11.ogg 0 0 255 0 0
-definesound NEWDUKEGIB06 sounds/duke/gib/DUKE_GotKill_12.ogg 0 0 255 0 0
-definesound NEWDUKEGIB07 sounds/duke/gib/DUKE_GotKill_13.ogg 0 0 255 0 0
-definesound NEWDUKEGIB08 sounds/duke/gib/DUKE_GotKill_15.ogg 0 0 255 0 0
-definesound NEWDUKEGIB09 sounds/duke/gib/DUKE_GotKill_17.ogg 0 0 255 0 0
-definesound NEWDUKEGIB10 sounds/duke/gib/DUKE_GotKill_19.ogg 0 0 255 0 0
-definesound NEWDUKEGIB11 sounds/duke/gib/DUKE_GotKill_21.ogg 0 0 255 0 0
-definesound NEWDUKEGIB12 sounds/duke/gib/DUKE_GotMessKill_02.ogg 0 0 255 0 0
-definesound NEWDUKEGIB13 sounds/duke/gib/DUKE_GotMessKill_05.ogg 0 0 255 0 0
-definesound NEWDUKEGIB14 sounds/duke/gib/DUKE_GotMessKill_06.ogg 0 0 255 0 0
-definesound NEWDUKEGIB15 sounds/duke/gib/DUKE_GotMessKill_07.ogg 0 0 255 0 0
-definesound NEWDUKEGIB16 sounds/duke/gib/DUKE_GotMessKill_08.ogg 0 0 255 0 0
-definesound NEWDUKEGIB17 sounds/duke/gib/DUKE_GotMessKill_09.ogg 0 0 255 0 0
-definesound NEWDUKEGIB18 sounds/duke/gib/Duke_MP_GibComment_01.ogg 0 0 255 0 0
-definesound NEWDUKEGIB19 sounds/duke/gib/Duke_MP_GibComment_03.ogg 0 0 255 0 0
-definesound NEWDUKEGIB20 sounds/duke/gib/Duke_MP_GibComment_04.ogg 0 0 255 0 0
-definesound NEWDUKEGIB21 sounds/duke/gib/Duke_MP_GibComment_05.ogg 0 0 255 0 0
-definesound NEWDUKEGIB22 sounds/duke/gib/Duke_MP_GibComment_06.ogg 0 0 255 0 0
-definesound NEWDUKEGIB23 sounds/duke/gib/Duke_MP_GibComment_07.ogg 0 0 255 0 0
-definesound NEWDUKEGIB24 sounds/duke/gib/Duke_MP_GibComment_08.ogg 0 0 255 0 0
-definesound NEWDUKEGIB25 sounds/duke/gib/Duke_MP_GibComment_09.ogg 0 0 255 0 0
-definesound NEWDUKEGIB26 sounds/duke/gib/Duke_MP_GibComment_10.ogg 0 0 255 0 0
-definesound NEWDUKEGIB27 sounds/duke/gib/Duke_MP_GibComment_11.ogg 0 0 255 0 0
-definesound NEWDUKEGIB28 sounds/duke/gib/Duke_MP_KillLine_03.ogg 0 0 255 0 0
-definesound NEWDUKEGIB29 sounds/duke/gib/Duke_MP_KillLine_05.ogg 0 0 255 0 0
-definesound NEWDUKEGIB30 sounds/duke/gib/Duke_MP_KillLine_06.ogg 0 0 255 0 0
-definesound NEWDUKEGIB31 sounds/duke/gib/Duke_MP_KillLine_09.ogg 0 0 255 0 0
-definesound NEWDUKEGIB32 sounds/duke/gib/Duke_MP_KillLine_19.ogg 0 0 255 0 0
-definesound NEWDUKEGIB33 sounds/duke/gib/Duke_MP_KillLine_21.ogg 0 0 255 0 0
-definesound NEWDUKEGIB34 sounds/duke/gib/Duke_MP_KillLine_26.ogg 0 0 255 0 0
-definesound NEWDUKEGIB35 sounds/duke/gib/Duke_MP_KillLine_27.ogg 0 0 255 0 0
-definesound NEWDUKEGIB36 sounds/duke/gib/Duke_MP_KillLine_28.ogg 0 0 255 0 0
-definesound NEWDUKEGIB37 sounds/duke/gib/Duke_MP_KillLine_30.ogg 0 0 255 0 0
-definesound NEWDUKEGIB38 sounds/duke/gib/Duke_MP_KillLine_36.ogg 0 0 255 0 0
-definesound NEWDUKEGIB39 sounds/duke/gib/Duke_MP_KillLine_37.ogg 0 0 255 0 0
-definesound NEWDUKEGIB40 sounds/duke/gib/Duke_MP_KillLine_38.ogg 0 0 255 0 0
-definesound NEWDUKEGIB41 sounds/duke/gib/Duke_MP_KillLine_40.ogg 0 0 255 0 0
-definesound NEWDUKEGIB42 sounds/duke/gib/Duke_MP_KillLine_45.ogg 0 0 255 0 0
-definesound NEWDUKEGIB43 sounds/duke/gib/Duke_MP_KillLine_47.ogg 0 0 255 0 0
-definesound NEWDUKEGIB44 sounds/duke/gib/Duke_MP_KillLine_49.ogg 0 0 255 0 0
-definesound NEWDUKEGIB45 sounds/duke/gib/Duke_MP_KillLine_51.ogg 0 0 255 0 0
-definesound NEWDUKEGIB46 sounds/duke/gib/Duke_MP_KillLine_52.ogg 0 0 255 0 0
-definesound NEWDUKEGIB47 sounds/duke/gib/Duke_MP_KillLine_71.ogg 0 0 255 0 0
-definesound NEWDUKEGIB48 sounds/duke/gib/Duke_MP_KillLine_73.ogg 0 0 255 0 0
-definesound NEWDUKEGIB49 sounds/duke/gib/Duke_MP_KillLine_74.ogg 0 0 255 0 0
-definesound NEWDUKEGIB50 sounds/duke/gib/DUKE_RestINPieces_01.ogg 0 0 255 0 0
-definesound NEWDUKEGIB51 sounds/duke/gib/faggot.ogg 0 0 255 0 0
+music 10 music/virulent.ogg music/doktor.ogg music/egwaa.ogg music/multplay.ogg music/zeppelin.ogg music/interstl.ogg
+         music/miamidis.ogg music/coconut.ogg music/unknownc.ogg music/eatdust.ogg music/darkcmbt.ogg music/villa.ogg
+	     music/facility.ogg music/night.mid music/sawdust.ogg music/phaseday.ogg music/blood.ogg music/binfinie.ogg
+         music/defacto.ogg music/attkship.ogg warehaus.mid music/gelato.ogg music/blizzard.ogg music/mltplay2.ogg music/aztec.ogg music/shdsiren.ogg music/trashcan.ogg
+         music/bomberman.ogg music/athletic.ogg music/d_stlks2.mid music/shial.ogg music/monster.mid music/hrpdream.mid music/mystery.mid music/ln2remix.ogg
+         music/pterodactyl.ogg music/haremscarem.ogg music/desertdrive.ogg music/train.ogg music/jaguar.ogg music/piriton.ogg music/aenima.mid music/skinmask.mid
+         music/brainscan.mid music/ealord.mid music/mus_e2m3.mid music/slavestate.ogg music/dnfost1.ogg music/dnfost2.ogg music/quickordead.mid music/wwesmack.mid 
+         music/choco64.ogg music/darkmatt.mid music/quikmart.mid music/elephant.mid music/diredocks.mid music/2980_1.mid

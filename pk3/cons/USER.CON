@@ -682,7 +682,7 @@ definesound DUKE_STEPONFECES    sounds/duke/happen01.ogg       0   0   0   4  0
 
 // Duke Movement Sounds                                                                 
 definesound DUKE_ONWATER        sounds/wetfeet.ogg        0   0    4   0   0
-definesound DUKE_LAND           land02.voc         0   0    2   0   0
+definesound DUKE_LAND           sounds/land02.wav         0   0    2   0   0
 definesound DUKE_LAND_HURT      sounds/duke/pain/pain39.ogg         0   0    255 4   0
 definesound DUKE_WALKINDUCTS    ductwlk.voc      -64   128  2   0   0
 definesound DUKE_LOOKINTOMIRROR   sounds/duke/lookin01.ogg     0   0    255 4   0

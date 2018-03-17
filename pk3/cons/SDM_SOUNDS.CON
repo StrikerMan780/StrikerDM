@@ -1,0 +1,347 @@
+define DSITEMUP 398
+define STOMP01 399
+define STOMP02 400
+define STOMP03 401
+define STOMP04 402
+define STOMP05 403
+define STOMP06 404
+define STOMP07 405
+define STOMP08 406
+define STOMP09 407
+define STOMP10 408
+define STOMP11 409
+define STOMP12 410
+define STOMP13 411
+define STOMP14 412
+define STOMP15 413
+define STOMP16 414
+define STOMP17 415
+define STOMP18 416
+define STOMP19 417
+define STOMP20 418
+
+define FREEZE01 419
+define FREEZE02 420
+define FREEZE03 421
+define FREEZE04 422
+define FREEZE05 423
+
+define FLAMETHROWER_START 500
+define FLAMETHROWER_FIRE 501
+define TOASTY 502
+define DEVASTATOR_FIRERIGHT 503
+define DEVASTATOR_FIRELEFT 504
+define PLASMARIFLE_FIRE 505
+define PLASMARIFLE_CHARGE 506
+define PLASMARIFLE_HIT 507
+define FREEZETHROWER_FIRE 508
+define CASING1 509
+define CASING2 510
+define CASING3 511
+define CASING4 512
+define CASING5 513
+define CASING6 514
+
+define CHANTING 515
+define DESERTWND 516
+define TORCHMOVE 517
+define CIRCUSMUSIC 518
+define SHTRANGE 519
+define CRICKETS 520
+define DFELEV01 521
+define DFELEV02 522
+define ELECSWITCH 523
+define MACHINERY 524
+define SPENGINE 525
+define SYNTHETIC 526
+define WORKSTATION 527
+define DOOMDOOR 528
+define PDDOOR1 529
+define PDDOOR2 530
+define GEDOOR1O 531
+define GEDOOR1C 532
+define GEDOOR2 533
+define BEACHAMB 534
+define DISCOAMB 535
+define ARCADEAMB 536
+define HQMAPFINISH 537
+define SWDOOR01O 538
+define SWDOOR01C 539
+define SWDOOR02 540
+define SWENDLEV 541
+define GONGHIT 542
+define BIRDS 543
+define BATHTUBS 544
+define LASTNINJA 545
+define HOKUTO 546
+define COLDWIND 547
+define CREAKYOPEN 548
+define CREAKYCLOSE 549
+define ELECTROSHOCK 550
+define ERASERHEAD 551
+define OLDCLOCK 552
+// Community sound submissions should continue from the index above this line
+
+define FAUCET_RUN 590
+define FAUCET_ON 591
+define FAUCET_OFF 592
+define SSG_FIRE 593
+define SSG_OPEN 594
+define SSG_LOAD 595
+define SSG_CLOSE 596
+define DOOMPLAT_START 597
+define DOOMPLAT_STOP 598
+define SPACEODDITY 599
+define JUMPPADSOUND 600
+define RAILGUN_FIRE1 601
+define RAILGUN_FIRE2 602
+define RAILGUN_FIRE3 603
+define SHELL_EJECT1 604
+define SHELL_EJECT2 605
+define SHELL_EJECT3 606
+define SHELL_EJECT4 607
+define SHELL_BOUNCE1 608
+define SHELL_BOUNCE2 609
+define SHELL_BOUNCE3 610
+define SHELL_BOUNCE4 611
+define SHELL_BOUNCE5 612
+define SHELL_BOUNCE6 613
+define GIB_SPLAT1 614
+define GIB_SPLAT2 615
+define GIB_SPLAT3 616
+define GIB_SPLAT4 617
+
+define DUKE_ROIDS01 681
+define DUKE_ROIDS02 682
+define DUKE_ROIDS03 683
+define DUKE_ROIDS04 684
+
+define NEWDUKEGIB01 701
+define NEWDUKEGIB02 702
+define NEWDUKEGIB03 703
+define NEWDUKEGIB04 704
+define NEWDUKEGIB05 705
+define NEWDUKEGIB06 706
+define NEWDUKEGIB07 707
+define NEWDUKEGIB08 708
+define NEWDUKEGIB09 709
+define NEWDUKEGIB10 710
+define NEWDUKEGIB11 711
+define NEWDUKEGIB12 712
+define NEWDUKEGIB13 713
+define NEWDUKEGIB14 714
+define NEWDUKEGIB15 715
+define NEWDUKEGIB16 716
+define NEWDUKEGIB17 717
+define NEWDUKEGIB18 718
+define NEWDUKEGIB19 719
+define NEWDUKEGIB20 720
+define NEWDUKEGIB21 721
+define NEWDUKEGIB22 722
+define NEWDUKEGIB23 723
+define NEWDUKEGIB24 724
+define NEWDUKEGIB25 725
+define NEWDUKEGIB26 726
+define NEWDUKEGIB27 727
+define NEWDUKEGIB28 728
+define NEWDUKEGIB29 729
+define NEWDUKEGIB30 730
+define NEWDUKEGIB31 731
+define NEWDUKEGIB32 732
+define NEWDUKEGIB33 733
+define NEWDUKEGIB34 734
+define NEWDUKEGIB35 735
+define NEWDUKEGIB36 736
+define NEWDUKEGIB37 737
+define NEWDUKEGIB38 738
+define NEWDUKEGIB39 739
+define NEWDUKEGIB40 740
+define NEWDUKEGIB41 741
+define NEWDUKEGIB42 742
+define NEWDUKEGIB43 743
+define NEWDUKEGIB44 744
+define NEWDUKEGIB45 745
+define NEWDUKEGIB46 746
+define NEWDUKEGIB47 747
+define NEWDUKEGIB48 748
+define NEWDUKEGIB49 749
+define NEWDUKEGIB50 750
+define NEWDUKEGIB51 751
+
+// Sounds
+definesound INTO_MENU sounds/menu/menu_enter.wav 0 0 0 0 0
+
+definesound DSITEMUP sounds/items/dsitemup.wav 0 0 255 0 0
+definesound FLAMETHROWER_START sounds/flamestr.ogg 0 0 255 0 0
+definesound FLAMETHROWER_FIRE sounds/flamethr.ogg 0 0 255 0 0
+definesound TOASTY sounds/toasty.wav 0 0 255 0 0
+definesound DEVASTATOR_FIRERIGHT sounds/dsdevirg.ogg 0 128 4 0 0
+definesound DEVASTATOR_FIRELEFT sounds/dsdevilf.ogg 0 128 4 0 0
+definesound PLASMARIFLE_FIRE sounds/plasfire.ogg 0 64 4 0 0
+definesound PLASMARIFLE_CHARGE sounds/plaschrg.ogg 0 0 4 0 0
+definesound PLASMARIFLE_HIT sounds/plashit.wav 0 64 4 0 8192
+definesound FREEZETHROWER_FIRE sounds/freezeth.wav 0 64 4 0 0
+definesound RAILGUN_FIRE1 sounds/dsrgfir1.wav 0 0 4 0 0
+definesound RAILGUN_FIRE2 sounds/dsrgfir2.wav 0 0 4 0 0
+definesound RAILGUN_FIRE3 sounds/dsrgfir3.wav 0 0 4 0 0
+definesound SSG_FIRE sounds/dsdshtgn.wav -16 64 4 0 0
+definesound SSG_OPEN sounds/dsdbopn.wav -16 16 4 0 0
+definesound SSG_LOAD sounds/dsdbload.wav -16 16 4 0 0
+definesound SSG_CLOSE sounds/dsdbcls.wav -16 16 4 0 0
+
+definesound CASING1 sounds/casings/dscasin1.ogg 0 0 0 0 8192
+definesound CASING2 sounds/casings/dscasin2.ogg 0 0 0 0 8192
+definesound CASING3 sounds/casings/dscasin3.ogg 0 0 0 0 8192
+definesound CASING4 sounds/casings/dscasin4.ogg 0 0 0 0 8192
+definesound CASING5 sounds/casings/dscasin5.ogg 0 0 0 0 8192
+definesound CASING6 sounds/casings/dscasin6.ogg 0 0 0 0 8192
+
+definesound SHELL_BOUNCE1 sounds/casings/shellbounce1.ogg 0 0 0 0 8192
+definesound SHELL_BOUNCE2 sounds/casings/shellbounce2.ogg 0 0 0 0 8192
+definesound SHELL_BOUNCE3 sounds/casings/shellbounce3.ogg 0 0 0 0 8192
+definesound SHELL_BOUNCE4 sounds/casings/shellbounce4.ogg 0 0 0 0 8192
+definesound SHELL_BOUNCE5 sounds/casings/shellbounce5.ogg 0 0 0 0 8192
+definesound SHELL_BOUNCE6 sounds/casings/shellbounce6.ogg 0 0 0 0 8192
+
+definesound SHELL_EJECT1 sounds/casings/shelleject1.ogg 0 0 0 0 8192
+definesound SHELL_EJECT2 sounds/casings/shelleject2.ogg 0 0 0 0 8192
+definesound SHELL_EJECT3 sounds/casings/shelleject3.ogg 0 0 0 0 8192
+definesound SHELL_EJECT4 sounds/casings/shelleject4.ogg 0 0 0 0 8192
+
+definesound GIB_SPLAT1 sounds/gore/dsflesh1.ogg -32 64 0 0 9000
+definesound GIB_SPLAT2 sounds/gore/dsflesh2.ogg -32 64 0 0 9000
+definesound GIB_SPLAT3 sounds/gore/dsflesh3.ogg -32 64 0 0 9000
+definesound GIB_SPLAT4 sounds/gore/dsflesh4.ogg -32 64 0 0 9000
+
+definesound CHANTING sounds/ambience/chanting.ogg 0 0 0 3 0
+definesound DESERTWND sounds/ambience/desertwnd.ogg 0 0 0 3 0
+definesound TORCHMOVE sounds/ambience/torchmove.voc 0 0 0 0 8192
+definesound CIRCUSMUSIC sounds/ambience/circusmusic.voc 0 0 0 3 0
+definesound SHTRANGE sounds/ambience/shtrange.voc 0 0 0 3 0
+definesound CRICKETS sounds/ambience/crickets.voc 0 0 0 3 0
+definesound DFELEV01 sounds/ambience/dfelev01.voc 0 0 0 0 8192
+definesound DFELEV02 sounds/ambience/dfelev02.voc 0 0 0 0 8192
+definesound ELECSWITCH sounds/ambience/elecswitch.voc 0 0 0 0 8192
+definesound MACHINERY sounds/ambience/machinery.voc 0 0 0 3 0
+definesound SPENGINE sounds/ambience/spengine.voc 0 0 0 3 0
+definesound SYNTHETIC sounds/ambience/synthetic.voc 0 0 0 3 0
+definesound WORKSTATION sounds/ambience/workstation.voc 0 0 0 3 0
+definesound DOOMDOOR sounds/ambience/doomdoor.ogg 0 0 0 0 8192
+definesound PDDOOR1 sounds/ambience/pddoor1.voc 0 0 0 0 8192
+definesound PDDOOR2 sounds/ambience/pddoor2.voc 0 0 0 0 8192
+definesound GEDOOR1O sounds/ambience/gedoor1o.wav 0 0 0 0 8192
+definesound GEDOOR1C sounds/ambience/gedoor1c.wav 0 0 0 0 8192
+definesound GEDOOR2 sounds/ambience/gedoor2.wav 0 0 0 0 8192
+definesound BEACHAMB sounds/ambience/beachamb.ogg 0 0 0 3 0
+definesound DISCOAMB sounds/ambience/discoamb.ogg 0 0 0 3 0
+definesound ARCADEAMB sounds/ambience/arcadeamb.ogg 0 0 0 3 0
+definesound HQMAPFINISH sounds/ambience/hqmapfinish.ogg 0 0 0 3 0
+definesound SWDOOR01O sounds/ambience/swdoor01o.wav 0 0 0 0 8192
+definesound SWDOOR01C sounds/ambience/swdoor01c.wav 0 0 0 0 8192
+definesound SWDOOR02 sounds/ambience/swdoor02.wav 0 0 0 0 8192
+definesound SWENDLEV sounds/ambience/swendlev.wav 0 0 0 3 0
+definesound GONGHIT sounds/ambience/gonghit.wav 0 0 0 0 8192
+definesound BIRDS sounds/ambience/birds.wav 0 0 0 3 0
+definesound BATHTUBS sounds/ambience/bathtubs.wav 0 0 0 3 0
+definesound LASTNINJA sounds/ambience/lastninja.ogg 0 0 0 3 0
+definesound HOKUTO sounds/ambience/hokuto.ogg 0 0 0 3 0
+definesound COLDWIND sounds/ambience/coldwind.ogg 0 0 0 3 0
+definesound CREAKYOPEN sounds/ambience/creakyopen.wav 0 0 0 0 8192
+definesound CREAKYCLOSE sounds/ambience/creakyclose.wav 0 0 0 0 8192
+definesound ELECTROSHOCK sounds/ambience/electroshock.ogg 0 0 0 3 0
+definesound ERASERHEAD sounds/ambience/eraserhead.ogg 0 0 0 3 0
+definesound OLDCLOCK sounds/ambience/oldclock.ogg 0 0 0 3 0
+definesound DOOMPLAT_START sounds/ambience/dspstart.wav 0 0 0 0 0
+definesound DOOMPLAT_STOP sounds/ambience/dspstop.wav 0 0 0 0 0
+definesound SPACEODDITY sounds/ambience/spaceoddity.ogg 0 0 0 3 0
+
+definesound JUMPPADSOUND sounds/ambience/jumppad.wav 0 0 0 0 0
+
+definesound FAUCET_RUN sounds/ambience/faucetrun.wav 0 0 0 2 12240
+definesound FAUCET_ON sounds/ambience/fauceton.wav 0 0 0 0 0
+definesound FAUCET_OFF sounds/ambience/faucetoff.wav 0 0 0 0 0
+
+// Duke Talk
+definesound STOMP01 sounds/duke/stomp/DUKE_StompLine_01.ogg 0 0 255 0 0
+definesound STOMP02 sounds/duke/stomp/DUKE_StompLine_02.ogg 0 0 255 0 0
+definesound STOMP03 sounds/duke/stomp/DUKE_StompLine_03.ogg 0 0 255 0 0
+definesound STOMP04 sounds/duke/stomp/DUKE_StompLine_04.ogg 0 0 255 0 0
+definesound STOMP05 sounds/duke/stomp/DUKE_StompLine_05.ogg 0 0 255 0 0
+definesound STOMP06 sounds/duke/stomp/DUKE_StompLine_06.ogg 0 0 255 0 0
+definesound STOMP07 sounds/duke/stomp/DUKE_StompLine_07.ogg 0 0 255 0 0
+definesound STOMP08 sounds/duke/stomp/DUKE_StompLine_08.ogg 0 0 255 0 0
+definesound STOMP09 sounds/duke/stomp/DUKE_StompLine_09.ogg 0 0 255 0 0
+definesound STOMP10 sounds/duke/stomp/DUKE_StompLine_10.ogg 0 0 255 0 0
+definesound STOMP11 sounds/duke/stomp/DUKE_StompLine_11.ogg 0 0 255 0 0
+definesound STOMP12 sounds/duke/stomp/DUKE_StompLine_12.ogg 0 0 255 0 0
+definesound STOMP13 sounds/duke/stomp/DUKE_StompLine_13.ogg 0 0 255 0 0
+definesound STOMP14 sounds/duke/stomp/DUKE_StompLine_14.ogg 0 0 255 0 0
+definesound STOMP15 sounds/duke/stomp/DUKE_StompLine_15.ogg 0 0 255 0 0
+definesound STOMP16 sounds/duke/stomp/DUKE_StompLine_16.ogg 0 0 255 0 0
+definesound STOMP17 sounds/duke/stomp/DUKE_StompLine_17.ogg 0 0 255 0 0
+definesound STOMP18 sounds/duke/stomp/DUKE_StompLine_18.ogg 0 0 255 0 0
+definesound STOMP19 sounds/duke/stomp/DUKE_StompLine_19.ogg 0 0 255 0 0
+definesound STOMP20 sounds/duke/stomp/DUKE_EatSize14_01.ogg 0 0 255 0 0
+
+definesound FREEZE01 sounds/duke/freeze/dsdnfr01.wav 0 0 255 0 0
+definesound FREEZE02 sounds/duke/freeze/dsdnfr02.wav 0 0 255 0 0
+definesound FREEZE03 sounds/duke/freeze/dsdnfr03.wav 0 0 255 0 0
+definesound FREEZE04 sounds/duke/freeze/Duke_MP_Execute_02.ogg 0 0 255 0 0
+definesound FREEZE05 sounds/duke/freeze/Duke_MP_Execute_03.ogg 0 0 255 0 0
+
+definesound DUKE_ROIDS01 sounds/duke/roids/DUKE_UseRoids_01.ogg 0 0 255 0 0
+definesound DUKE_ROIDS02 sounds/duke/roids/DUKE_UseRoids_02.ogg 0 0 255 0 0
+definesound DUKE_ROIDS03 sounds/duke/roids/DUKE_UseRoids_03.ogg 0 0 255 0 0
+definesound DUKE_ROIDS04 sounds/duke/roids/DUKE_UseRoids_04.ogg 0 0 255 0 0
+
+definesound NEWDUKEGIB01 sounds/duke/gib/DUKE_GotKill_03.ogg 0 0 255 0 0
+definesound NEWDUKEGIB02 sounds/duke/gib/DUKE_GotKill_04.ogg 0 0 255 0 0
+definesound NEWDUKEGIB03 sounds/duke/gib/DUKE_GotKill_07.ogg 0 0 255 0 0
+definesound NEWDUKEGIB04 sounds/duke/gib/DUKE_GotKill_08.ogg 0 0 255 0 0
+definesound NEWDUKEGIB05 sounds/duke/gib/DUKE_GotKill_11.ogg 0 0 255 0 0
+definesound NEWDUKEGIB06 sounds/duke/gib/DUKE_GotKill_12.ogg 0 0 255 0 0
+definesound NEWDUKEGIB07 sounds/duke/gib/DUKE_GotKill_13.ogg 0 0 255 0 0
+definesound NEWDUKEGIB08 sounds/duke/gib/DUKE_GotKill_15.ogg 0 0 255 0 0
+definesound NEWDUKEGIB09 sounds/duke/gib/DUKE_GotKill_17.ogg 0 0 255 0 0
+definesound NEWDUKEGIB10 sounds/duke/gib/DUKE_GotKill_19.ogg 0 0 255 0 0
+definesound NEWDUKEGIB11 sounds/duke/gib/DUKE_GotKill_21.ogg 0 0 255 0 0
+definesound NEWDUKEGIB12 sounds/duke/gib/DUKE_GotMessKill_02.ogg 0 0 255 0 0
+definesound NEWDUKEGIB13 sounds/duke/gib/DUKE_GotMessKill_05.ogg 0 0 255 0 0
+definesound NEWDUKEGIB14 sounds/duke/gib/DUKE_GotMessKill_06.ogg 0 0 255 0 0
+definesound NEWDUKEGIB15 sounds/duke/gib/DUKE_GotMessKill_07.ogg 0 0 255 0 0
+definesound NEWDUKEGIB16 sounds/duke/gib/DUKE_GotMessKill_08.ogg 0 0 255 0 0
+definesound NEWDUKEGIB17 sounds/duke/gib/DUKE_GotMessKill_09.ogg 0 0 255 0 0
+definesound NEWDUKEGIB18 sounds/duke/gib/Duke_MP_GibComment_01.ogg 0 0 255 0 0
+definesound NEWDUKEGIB19 sounds/duke/gib/Duke_MP_GibComment_03.ogg 0 0 255 0 0
+definesound NEWDUKEGIB20 sounds/duke/gib/Duke_MP_GibComment_04.ogg 0 0 255 0 0
+definesound NEWDUKEGIB21 sounds/duke/gib/Duke_MP_GibComment_05.ogg 0 0 255 0 0
+definesound NEWDUKEGIB22 sounds/duke/gib/Duke_MP_GibComment_06.ogg 0 0 255 0 0
+definesound NEWDUKEGIB23 sounds/duke/gib/Duke_MP_GibComment_07.ogg 0 0 255 0 0
+definesound NEWDUKEGIB24 sounds/duke/gib/Duke_MP_GibComment_08.ogg 0 0 255 0 0
+definesound NEWDUKEGIB25 sounds/duke/gib/Duke_MP_GibComment_09.ogg 0 0 255 0 0
+definesound NEWDUKEGIB26 sounds/duke/gib/Duke_MP_GibComment_10.ogg 0 0 255 0 0
+definesound NEWDUKEGIB27 sounds/duke/gib/Duke_MP_GibComment_11.ogg 0 0 255 0 0
+definesound NEWDUKEGIB28 sounds/duke/gib/Duke_MP_KillLine_03.ogg 0 0 255 0 0
+definesound NEWDUKEGIB29 sounds/duke/gib/Duke_MP_KillLine_05.ogg 0 0 255 0 0
+definesound NEWDUKEGIB30 sounds/duke/gib/Duke_MP_KillLine_06.ogg 0 0 255 0 0
+definesound NEWDUKEGIB31 sounds/duke/gib/Duke_MP_KillLine_09.ogg 0 0 255 0 0
+definesound NEWDUKEGIB32 sounds/duke/gib/Duke_MP_KillLine_19.ogg 0 0 255 0 0
+definesound NEWDUKEGIB33 sounds/duke/gib/Duke_MP_KillLine_21.ogg 0 0 255 0 0
+definesound NEWDUKEGIB34 sounds/duke/gib/Duke_MP_KillLine_26.ogg 0 0 255 0 0
+definesound NEWDUKEGIB35 sounds/duke/gib/Duke_MP_KillLine_27.ogg 0 0 255 0 0
+definesound NEWDUKEGIB36 sounds/duke/gib/Duke_MP_KillLine_28.ogg 0 0 255 0 0
+definesound NEWDUKEGIB37 sounds/duke/gib/Duke_MP_KillLine_30.ogg 0 0 255 0 0
+definesound NEWDUKEGIB38 sounds/duke/gib/Duke_MP_KillLine_36.ogg 0 0 255 0 0
+definesound NEWDUKEGIB39 sounds/duke/gib/Duke_MP_KillLine_37.ogg 0 0 255 0 0
+definesound NEWDUKEGIB40 sounds/duke/gib/Duke_MP_KillLine_38.ogg 0 0 255 0 0
+definesound NEWDUKEGIB41 sounds/duke/gib/Duke_MP_KillLine_40.ogg 0 0 255 0 0
+definesound NEWDUKEGIB42 sounds/duke/gib/Duke_MP_KillLine_45.ogg 0 0 255 0 0
+definesound NEWDUKEGIB43 sounds/duke/gib/Duke_MP_KillLine_47.ogg 0 0 255 0 0
+definesound NEWDUKEGIB44 sounds/duke/gib/Duke_MP_KillLine_49.ogg 0 0 255 0 0
+definesound NEWDUKEGIB45 sounds/duke/gib/Duke_MP_KillLine_51.ogg 0 0 255 0 0
+definesound NEWDUKEGIB46 sounds/duke/gib/Duke_MP_KillLine_52.ogg 0 0 255 0 0
+definesound NEWDUKEGIB47 sounds/duke/gib/Duke_MP_KillLine_71.ogg 0 0 255 0 0
+definesound NEWDUKEGIB48 sounds/duke/gib/Duke_MP_KillLine_73.ogg 0 0 255 0 0
+definesound NEWDUKEGIB49 sounds/duke/gib/Duke_MP_KillLine_74.ogg 0 0 255 0 0
+definesound NEWDUKEGIB50 sounds/duke/gib/DUKE_RestINPieces_01.ogg 0 0 255 0 0
+definesound NEWDUKEGIB51 sounds/duke/gib/faggot.ogg 0 0 255 0 0

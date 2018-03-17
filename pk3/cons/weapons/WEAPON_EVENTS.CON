@@ -231,7 +231,7 @@ onevent EVENT_GETSHOTRANGE
 		getplayervar[THISACTOR].USING_SSG TEMP
 		ifvare TEMP 1
 		{
-			setvar ANGRANGE 48
+			setvar ANGRANGE 56
 			setvar ZRANGE 384
 		}
 	}

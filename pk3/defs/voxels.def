@@ -1,7 +1,7 @@
 // Props
 voxel "voxels/props/0547_faucet.kvx" { scale 1 tile 574 }
 voxel "voxels/props/0670_faucet2.kvx" { scale 1 tile 670 }
-voxel "voxels/props/0670_faucet2.kvx" { scale 1 tile 671 }
+voxel "voxels/props/0671_faucet2.kvx" { scale 1 tile 671 }
 
 voxel "voxels/props/0595_grate1.kvx" { scale 1 tile 595 }
 voxel "voxels/props/0596_bgrate2.kvx" { scale 1 tile 596 }

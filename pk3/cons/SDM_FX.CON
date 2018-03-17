@@ -2,69 +2,76 @@ spritenoshade LDEXPLOSION
 action LAMEDUKE_EXPLOSION_FRAMES 0 10 1 1 2
 action LAMEDUKE_EXPLOSION_FRAMES_SLOW 0 10 1 1 4
 actor LDEXPLOSION 1 LAMEDUKE_EXPLOSION_FRAMES
-  ifactioncount 10
-    killit
+{
+	ifactioncount 10
+		killit
 	
-  ifcount 1
-	nullop
-  else ifcount 0
-  {
-	setactor[THISACTOR].shade -127
-	cstat 128
-	ifspawnedby PLASMABALL
+	ifcount 1
+		nullop
+	else ifcount 0
 	{
-		spritepal 1
-		cstator 2
+		setactor[THISACTOR].shade -127
+		cstat 128
+		ifspawnedby PLASMABALL
+		{
+			spritepal 1
+			cstator 2
+		}
 	}
-  }
+}
 enda
 
 spritenoshade RAILGUNTRAIL
 action RAILGUN_TRAIL_FRAMES 0 16 5 1 2
 actor RAILGUNTRAIL 1 RAILGUN_TRAIL_FRAMES
-  ifactioncount 16
-    killit
+{
+	ifactioncount 16
+		killit
 	
-  ifcount 1
-	nullop
-  else ifcount 0
-  {
-	setactor[THISACTOR].shade -127
-	//setactor[THISACTOR].xoffset -32
-	cstat 130
-  }
+	ifcount 1
+		nullop
+	else ifcount 0
+	{
+		setactor[THISACTOR].shade -127
+		//setactor[THISACTOR].xoffset -32
+		cstat 130
+	}
+}
 enda
 
 action GIBBLOODFRAMES -1 4 1 1 15
 actor GIBBLOOD 0 GIBBLOODFRAMES	
-  ifcount 1
-  {
-  }
-  else
-  {
-	cstator 128
-	cstator 2
-	
-	ifrnd 128
-		sizeat 32 32
-	else ifrnd 128
-		sizeat 24 24
-	
-	ifrnd 128
+{
+	ifcount 1
 	{
-		cstator 4
 	}
-	ifrnd 128
+	else
 	{
-		cstator 8
+		cstator 128
+		cstator 2
+	
+		ifrnd 128
+			sizeat 32 32
+		else ifrnd 128
+			sizeat 24 24
+	
+		ifrnd 128
+		{
+			cstator 4
+		}
+		ifrnd 128
+		{
+			cstator 8
+		}
 	}
-  }
   
-  sizeto 72 72 sizeto 72 72 sizeto 72 72
-  ifactioncount 4 killit
+	sizeto 72 72 sizeto 72 72 sizeto 72 72
+	ifactioncount 4 killit
+}
 enda
 
 actor JUMPPAD 0
+{
 	// Change this to quick access variables when it comes time.
 	getplayer[THISACTOR].cursectnum TEMP
 	getactor[THISACTOR].sectnum TEMP2
@@ -114,6 +121,52 @@ actor JUMPPAD 0
 		cstat 32768
 		action ANULLACTION
 	}
+}
+enda
+
+action FAUCET_ANIM 0 2 1 1 2
+actor FAUCET 0 ANULLACTION
+	ifhitspace
+	ifcount 30
+	ifpdistl RETRIEVEDISTANCE
+	ifcansee
+	ifp pfacing
+	{
+		resetcount
+		resetactioncount
+		sound FAUCET_ON
+		sound FAUCET_RUN
+		action FAUCET_ANIM
+		cactor FAUCET_RUNNING 
+	}
+enda
+
+actor FAUCET_RUNNING 0 FAUCET_ANIM
+	ifactioncount 60
+	{
+		sound FAUCET_RUN
+		resetactioncount
+	}
+	
+	ifhitspace
+	ifcount 30
+	ifpdistl RETRIEVEDISTANCE
+	ifcansee
+	ifp pfacing
+	{
+		resetcount
+		resetactioncount
+		sound FAUCET_OFF
+		stopsound FAUCET_RUN
+		action ANULLACTION
+		cactor FAUCET 
+	}
+enda
+
+actor FAUCET_RUNNING2
+	sound FAUCET_RUN
+	action FAUCET_ANIM
+	cactor FAUCET_RUNNING
 enda
 
 action TRIGGERED 0
@@ -123,7 +176,7 @@ actor TIMEDPLATFORM 0
 {
 	ifaction ANULLACTION
 	{
-		headspritestat CURSPRITE 10
+		headspritestat CURSPRITE 10 // STAT_PLAYER
 		setvarvar LASTSPRITE CURSPRITE
 		whilevarn CURSPRITE -1
 		{
@@ -210,6 +263,14 @@ actor PLATFORMSOUND 0
 		action ANULLACTION
 	}
 }
+enda
+
+eventloadactor NOPISTOL
+	setvar NO_PISTOL_START 1
+enda
+
+actor NOPISTOL
+	killit
 enda
 
 state onground_gib_code

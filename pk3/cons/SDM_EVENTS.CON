@@ -363,31 +363,6 @@ onevent EVENT_GAME
 	}
 endevent
 
-state update_lasthitby
-	ifactor APLAYER
-	{
-		getactor[THISACTOR].htowner TEMP
-		
-		ifvarg TEMP -1
-		ifvarvarn TEMP THISACTOR
-		{
-			setvarvar LASTHITBY TEMP
-			redefinequote 500 Lasthitby: %d
-			qsprintf 500 500 LASTHITBY
-			userquote 500
-		}
-	}
-	else
-	{
-		break
-	}
-	
-ends
-
-onevent EVENT_PREGAME
-	state update_lasthitby
-endevent
-
 state set_norespawn
 		ifactor SECTOREFFECTOR
 		{
@@ -619,19 +594,6 @@ onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
 	}
 endevent
 
-/* // Re-enable this when EDuke32 gets better multiplayer
-onevent EVENT_ACTIVATECHEAT
-	ifvare RETURN 1
-	ifvare RETURN 21
-	{
-		setvar HAS_FREEZETHROWER 1
-		setvar HAS_FLAMETHROWER 1
-		setvar FLAMETHROWER_AMMO MAXFREEZEAMMO
-		setvar FREEZETHROWER_AMMO MAXFLAMETHROWERAMMO
-	}
-endevent
-*/
-
 onevent EVENT_CHEATGETBOOT
 	setvar HAS_FREEZETHROWER 1
 	setvar HAS_FLAMETHROWER 1
@@ -674,6 +636,11 @@ onevent EVENT_RESETPLAYER
 	setvar HAS_SHOTGUN 0
 	setvar HAS_SSG 0
 	state setshotgun
+	
+	ifvare NO_PISTOL_START 1
+	{
+		setplayer[THISACTOR].gotweapon PISTOL_WEAPON 0
+	}
 endevent
 
 onevent EVENT_STRAFELEFT
@@ -757,6 +724,14 @@ onevent EVENT_GETLOADTILE // !UNSYNCHRONIZED!
 	ifvare COOP GM_ROIDMATCH
 	{
 		setvar RETURN ROIDLOAD
+	}
+endevent
+
+onevent EVENT_USESTEROIDS
+	getplayer[THISACTOR].steroids_amount TEMP
+	ifvare TEMP 400
+	{
+		state roids_voices
 	}
 endevent
 

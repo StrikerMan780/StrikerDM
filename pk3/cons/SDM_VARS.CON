@@ -1,3 +1,31 @@
+// Global Vars
+gamevar TEMP 0 0
+gamevar TEMP2 0 0
+gamevar TEMP3 0 0
+
+gamevar CL_TEMP1 0 0
+
+gamevar SCORE_COUNTER 0 0
+gamevar SCORE_PLAYERINDEX 0 0
+gamevar SCORE_PLAYERCONNECTED 0 0
+gamevar SCORE_PLAYERPAL 0 0
+gamevar SCORE_STATNUM 0 0
+gamevar SCORE_YOFFSET 0 0
+gamevar SCORE_FRAGS 0 0
+gamevar SCORE_SUICIDES 0 0
+
+gamevar STATE_TEMP1 0 0
+gamevar STATE_TEMP2 0 0
+gamevar STATE_PARAM1 0 0
+gamevar STATE_PARAM2 0 0
+//gamevar STATE_PARAM3 0 0
+//gamevar STATE_RETURN 0 0
+
+gamevar RANDOM_SOUND 0 0
+
+gamevar NO_PISTOL_START 0 0
+
+// Per-Actor Vars
 gamevar SPAWN_ORIGX 0 2
 gamevar SPAWN_ORIGY 0 2
 gamevar SPAWN_ORIGZ 0 2
@@ -23,37 +51,14 @@ gamevar FROMCAN 0 2
 gamevar LASTHITBY 0 2
 gamevar ANGLE 0 2
 
-gamevar TEMP 0 0
-gamevar TEMP2 0 0
-gamevar TEMP3 0 0
-
-gamevar CL_TEMP1 0 0
-
-gamevar SCORE_COUNTER 0 0
-gamevar SCORE_PLAYERINDEX 0 0
-gamevar SCORE_PLAYERCONNECTED 0 0
-gamevar SCORE_PLAYERPAL 0 0
-gamevar SCORE_STATNUM 0 0
-gamevar SCORE_YOFFSET 0 0
-gamevar SCORE_FRAGS 0 0
-gamevar SCORE_SUICIDES 0 0
-
-gamevar STATE_TEMP1 0 0
-gamevar STATE_TEMP2 0 0
-gamevar STATE_PARAM1 0 0
-gamevar STATE_PARAM2 0 0
-//gamevar STATE_PARAM3 0 0
-//gamevar STATE_RETURN 0 0
-
-gamevar RANDOM_SOUND 0 0
-gamevar SPEAK 0 2
-gamevar SPEAKTYPE 0 2
 gamevar KILLTYPE 0 2
 
+// Per-Player Vars
 gamevar JUMPPAD_HIT 0 1
 gamevar JUMPPAD_XVEL 0 1
 gamevar JUMPPAD_YVEL 0 1
 
+// Defines
 define KILL_NONE 0
 define KILL_SHRINKER 1
 define KILL_FREEZER 2

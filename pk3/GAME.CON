@@ -8,6 +8,7 @@ include cons/USER.CON
 include cons/SDM_VARS.CON
 include cons/SDM_DEFS.CON
 include cons/SDM_USER.CON
+include cons/SDM_SOUNDS.CON
 
 include cons/weapons/WEAPON_VARS.CON
 include cons/weapons/WEAPON_STATES.CON

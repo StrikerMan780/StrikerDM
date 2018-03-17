@@ -30,7 +30,6 @@ tilefromtexture 3625 { file "tiles/3625.png" yoffset 30 }
 tilefromtexture 3627 { file "tiles/3627.png" }
 tilefromtexture 3628 { file "tiles/3628.png" }
 tilefromtexture 3629 { file "tiles/3629.png" }
-tilefromtexture 3630 { file "tiles/3630.png" }
 tilefromtexture 3631 { file "tiles/3631.png" }
 tilefromtexture 3632 { file "tiles/3632.png" }
 tilefromtexture 3633 { file "tiles/3633.png" }
@@ -83,7 +82,6 @@ tilefromtexture 3674 { file "tiles/3674.png" }
 tilefromtexture 3675 { file "tiles/3675.png" }
 tilefromtexture 3676 { file "tiles/3676.png" }
 tilefromtexture 3677 { file "tiles/3677.png" }
-tilefromtexture 3678 { file "tiles/3678.png" }
 tilefromtexture 3679 { file "tiles/3679.png" }
 tilefromtexture 3680 { file "tiles/3680.png" }
 tilefromtexture 3681 { file "tiles/3681.png" }

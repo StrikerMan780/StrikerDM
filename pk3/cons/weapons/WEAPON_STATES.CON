@@ -620,6 +620,7 @@ state checkweaponstay
 	}
 ends
 
+// PARAM1 = Weapon
 state addweapon_nobreak
 	getplayer[THISACTOR].gotweapon STATE_PARAM1 STATE_TEMP1
 	ifvare STATE_TEMP1 1
@@ -636,6 +637,7 @@ state addweapon_nobreak
 	}
 ends
 
+// PARAM1 = Ammo type, PARAM2 = Ammo amount
 state addammo_nobreak
 	getplayer[THISACTOR].ammo_amount STATE_PARAM1 STATE_TEMP1
 	addvarvar STATE_TEMP1 STATE_PARAM2
