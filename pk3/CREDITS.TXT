@@ -1,23 +1,50 @@
-Striker - CON Coding, StrikerDM Maps, Map Fixes, Sounds.
-HMNuke93 - Improved Incinerator Sprites
+CON Coding
+----------
+Striker - All
+
+Sounds
+------
+Striker - Most Weapons, various foley.
+Digital Extremes - Railgun Sound (Lanka from Warframe)
+Perkristian - HD Versions of several Duke3D sounds. (From his pk_duke3d_sfx pack.)
+Jon St. John - DNF/Manhattan/World Tour Duke Voices
+
+Sprites
+-------
+JimmyGnosis - Improved shrinker/expander pickups
+Fox - Improved flamethrower ammo pickups
 Tristan - Camo Pistol
 Minigunner - DNF-Style Devastator Sprites, Interpolated shotgun pump frame.
-Perkristian - Some of the HD Sounds
+The Mechanic, w0rm - Dukenuds sprites
+HMNuke93 - Improved Incinerator Sprites
+ID Software - Doomguy sprites and health/armor bonus sprites.
+
+Voxels
+------
+Striker - Table Voxel
+Reaper Man
+DotK3D
+
+Textures
+--------
+3D Realms - Shadow Warrior Textures
+Nerve Software - World Tour Textures
+Fox - 3D Skyboxes
+"The Chayed - KIIRA" - Sunny day skybox
+
+Maps
+-----
+Striker - All maps in "Striker's Maps" episode, and "Tesseract Redux" map. Various map bugfixes.
+William Gee - All maps in "William Gee's DM Maps" episode
+Mikko Sandt, Dean Lillie, Chris Pufahl - Duke Tournament Maps
+*****************************************************************
+For more detailed community map credits, see "mapcredits" folder.
+*****************************************************************
+
+Special Thanks
+---------------
 Hendricks266 - CON Coding Help / Answering many EDuke32-related questions.
 Trooper Dan - CON Coding Help
-James Stanfield & Radar1013 - Jetpack Tilt Code (further enhanced by Striker)
-The Mechanic, w0rm - Dukenuds sprites
-William Gee - WGDM Maps
-Mikko Sandt, Dean Lillie, Chris Pufahl - Duke Tournament Maps
-Jon St. John - DNF/Manhattan/World Tour Duke Voices
-Gearbox - World Tour Textures
-Reaper Man, DotK3D, Striker - Voxels
-JimmyGnosis - Improved shrinker/expander pickups
-Fox - 3D Skyboxes, improved flamethrower ammo pickups.
-
-***************************************************
-For community map credits, see "mapcredits" folder.
-***************************************************
 
 Tools used:
 ------------
