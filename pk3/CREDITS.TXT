@@ -14,9 +14,10 @@ Sprites
 JimmyGnosis - Improved shrinker/expander pickups.
 Fox - Improved flamethrower ammo pickups.
 Tristan - Camo Pistol.
-Minigunner - DNF-Style Devastator sprites, interpolated shotgun pump frame.
+Minigunner - DNF-Style Devastator sprites, Railgun sprites, interpolated shotgun pump frame.
 The Mechanic, w0rm - Dukenuds sprites.
 HMNuke93 - Improved incinerator sprites.
+Brullov - Railgun sprites.
 ID Software - Doomguy sprites and health/armor bonus sprites.
 
 Voxels
@@ -46,7 +47,7 @@ Special Thanks
 ---------------
 Noldor Ranzou, Vandclash, MarioJCH, and  Marquez - Lots of multiplayer testing, map submissions, and lots of encouragement and support!
 Hendricks266 - Support, testing, CON coding help, and answering many EDuke32-related questions.
-[IFOC]75, Oasiz, likejagger5, Lagitoru, mxrtxn, Longplay09,  - Testing, and support!
+[IFOC]75, Oasiz, likejagger5, Lagitoru, mxrtxn, Longplay09, NY00123 - Testing, and support!
 ChrisR91, KunaiKitsune, ThatGreenhowGuy, ZedSlayer, Rozzle, Zenon - Testing, and years of being the best fucking friends I could ever have.
 Jon St. John - For the support on Facebook!
 Trooper Dan - CON coding help.
