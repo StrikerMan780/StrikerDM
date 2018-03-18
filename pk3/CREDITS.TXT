@@ -1,43 +1,43 @@
 CON Coding
 ----------
-Striker - All
+Striker - All.
 
 Sounds
 ------
 Striker - Most Weapons, various foley.
-Digital Extremes - Railgun Sound (Lanka from Warframe)
+Digital Extremes - Railgun sound (Lanka from Warframe)
 Perkristian - HD Versions of several Duke3D sounds. (From his pk_duke3d_sfx pack.)
-Jon St. John - DNF/Manhattan/World Tour Duke Voices
+Jon St. John - DNF/Manhattan/World Tour Duke voices.
 
 Sprites
 -------
-JimmyGnosis - Improved shrinker/expander pickups
-Fox - Improved flamethrower ammo pickups
-Tristan - Camo Pistol
-Minigunner - DNF-Style Devastator Sprites, Interpolated shotgun pump frame.
-The Mechanic, w0rm - Dukenuds sprites
-HMNuke93 - Improved Incinerator Sprites
+JimmyGnosis - Improved shrinker/expander pickups.
+Fox - Improved flamethrower ammo pickups.
+Tristan - Camo Pistol.
+Minigunner - DNF-Style Devastator sprites, interpolated shotgun pump frame.
+The Mechanic, w0rm - Dukenuds sprites.
+HMNuke93 - Improved incinerator sprites.
 ID Software - Doomguy sprites and health/armor bonus sprites.
 
 Voxels
 ------
-Striker - Table Voxel
-Reaper Man
-DotK3D
+Striker - Table voxel.
+Reaper Man - Voxel pack.
+DotK3D - Voxel pack.
 
 Textures
 --------
-3D Realms - Shadow Warrior Textures
-Nerve Software - World Tour Textures
-Fox - 3D Skyboxes
-"The Chayed - KIIRA" - Sunny day skybox
+3D Realms - Shadow Warrior Textures.
+Nerve Software - World Tour Textures.
+Fox - 3D Skyboxes.
+"The Chayed - KIIRA" - Sunny day skybox.
 
 Maps
 -----
 Striker - All maps in "Striker's Maps" episode, and "Tesseract Redux" map. Various map bugfixes.
-William Gee - All maps in "William Gee's DM Maps" episode
-Mikko Sandt, Dean Lillie, Chris Pufahl - Duke Tournament Maps
-Noldor Ranzou, Vandclash, Kneiiden, MarioJCH, Duke64, Fernando Marquez - Community Maps
+William Gee - All maps in "William Gee's DM Maps" episode.
+Mikko Sandt, Dean Lillie, Chris Pufahl - Duke Tournament Maps.
+Noldor Ranzou, Vandclash, Kneiiden, MarioJCH, Duke64, Fernando Marquez - Community Maps.
 *****************************************************************
 For more detailed community map credits, see "mapcredits" folder.
 *****************************************************************
@@ -45,11 +45,11 @@ For more detailed community map credits, see "mapcredits" folder.
 Special Thanks
 ---------------
 Noldor Ranzou, Vandclash, MarioJCH, and  Marquez - Lots of multiplayer testing, map submissions, and lots of encouragement and support!
-Hendricks266 - Support, Testing, CON Coding Help, and Answering many EDuke32-related questions.
+Hendricks266 - Support, testing, CON coding help, and answering many EDuke32-related questions.
 [IFOC]75, Oasiz, likejagger5, Lagitoru, mxrtxn, Longplay09,  - Testing, and support!
 ChrisR91, KunaiKitsune, ThatGreenhowGuy, ZedSlayer, Rozzle, Zenon - Testing, and years of being the best fucking friends I could ever have.
-Trooper Dan - CON Coding Help
+Trooper Dan - CON coding help.
 
 Tools used:
 ------------
-Mapster32, SLADE, BAFed, Audacity, SynthFont, GIMP.
+Mapster32, SLADE, BAFed, Audacity, SynthFont, GIMP, SLAB6, MagicaVoxel, VoxelShop.
