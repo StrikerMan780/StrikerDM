@@ -48,6 +48,7 @@ Noldor Ranzou, Vandclash, MarioJCH, and  Marquez - Lots of multiplayer testing, 
 Hendricks266 - Support, testing, CON coding help, and answering many EDuke32-related questions.
 [IFOC]75, Oasiz, likejagger5, Lagitoru, mxrtxn, Longplay09,  - Testing, and support!
 ChrisR91, KunaiKitsune, ThatGreenhowGuy, ZedSlayer, Rozzle, Zenon - Testing, and years of being the best fucking friends I could ever have.
+Jon St. John - For the support on Facebook!
 Trooper Dan - CON coding help.
 
 Tools used:
