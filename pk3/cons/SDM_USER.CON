@@ -165,6 +165,7 @@ definelevelname 9 53 maps/UNIMART-SDM.map 66:60 66:60 Unimart: Vandclash
 definelevelname 9 54 maps/DUKEDEL8-SDM.map 66:60 66:60 Duke Del 8: Multiple Authors
 definelevelname 9 55 maps/LAGUNADM.map 66:60 66:60 Laguna DM: Vandclash
 definelevelname 9 56 maps/C66V2-SDM.map 66:60 66:60 C66V2: Noldor Ranzou
+definelevelname 9 57 maps/TENEMENTS.map 66:60 66:60 Tenements: Multiple Authors
 
 music 10 music/virulent.ogg music/doktor.ogg music/egwaa.ogg music/multplay.ogg music/zeppelin.ogg music/interstl.ogg
          music/miamidis.ogg music/coconut.ogg music/unknownc.ogg music/eatdust.ogg music/darkcmbt.ogg music/villa.ogg
@@ -173,4 +174,4 @@ music 10 music/virulent.ogg music/doktor.ogg music/egwaa.ogg music/multplay.ogg 
          music/bomberman.ogg music/athletic.ogg music/d_stlks2.mid music/shial.ogg music/monster.mid music/hrpdream.mid music/mystery.mid music/ln2remix.ogg
          music/pterodactyl.ogg music/haremscarem.ogg music/desertdrive.ogg music/train.ogg music/jaguar.ogg music/piriton.ogg music/aenima.mid music/skinmask.mid
          music/brainscan.mid music/ealord.mid music/mus_e2m3.mid music/slavestate.ogg music/dnfost1.ogg music/dnfost2.ogg music/quickordead.mid music/wwesmack.mid 
-         music/choco64.ogg music/darkmatt.mid music/quikmart.mid music/elephant.mid music/diredocks.mid music/2980_1.mid
+         music/choco64.ogg music/darkmatt.mid music/quikmart.mid music/elephant.mid music/diredocks.mid music/2980_1.mid music/seeyou.mid
