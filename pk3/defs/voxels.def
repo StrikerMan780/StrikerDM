@@ -29,6 +29,16 @@ voxel "voxels/props/1067_clockbreak.kvx" { scale 1 tile 1067 }
 
 voxel "voxels/props/1069_plug.kvx" { scale 1 tile 1069 }
 
+voxel "voxels/props/4540_burger1.kvx" { scale 1 tile 4540 }
+voxel "voxels/props/4541_burger2.kvx" { scale 1 tile 4541 }
+voxel "voxels/props/4542_bigmac.kvx" { scale 1 tile 4542 }
+
+voxel "voxels/props/4546_fries1.kvx" { scale 1 tile 4546 }
+voxel "voxels/props/4547_fries2.kvx" { scale 1 tile 4547 }
+
+voxel "voxels/props/4548_drink.kvx" { scale 1 tile 4548 }
+voxel "voxels/props/4569_jollymeal.kvx" { scale 1 tile 4569 }
+
 // Switches
 voxel "voxels/switches/0130_accessswitch_red.kvx" { scale 1 tile 130 }
 voxel "voxels/switches/0131_accessswitch_green.kvx" { scale 1 tile 131 }
