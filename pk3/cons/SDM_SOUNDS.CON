@@ -80,6 +80,11 @@ define CREAKYCLOSE 549
 define ELECTROSHOCK 550
 define ERASERHEAD 551
 define OLDCLOCK 552
+define HERETICDOOR 553
+define HERETICDOORCLOSE 554
+define HEXENHEAVYDOOR 555
+define HEXENELEVATOR 556
+define HEXENELEVATORSTOP 557
 // Community sound submissions should continue from the index above this line
 
 define FAUCET_RUN 590
@@ -251,6 +256,11 @@ definesound CREAKYCLOSE sounds/ambience/creakyclose.wav 0 0 0 0 8192
 definesound ELECTROSHOCK sounds/ambience/electroshock.ogg 0 0 0 3 0
 definesound ERASERHEAD sounds/ambience/eraserhead.ogg 0 0 0 3 0
 definesound OLDCLOCK sounds/ambience/oldclock.ogg 0 0 0 3 0
+definesound HERETICDOOR sounds/ambience/hereticdoor.wav 0 0 0 0 8192
+definesound HERETICDOORCLOSE sounds/ambience/hereticdoorclose.wav 0 0 0 0 8192
+definesound HEXENHEAVYDOOR sounds/ambience/hexenheavydoor.wav 0 0 0 0 8192
+definesound HEXENELEVATOR sounds/ambience/hexenelevator.wav 0 0 0 0 8192
+definesound HEXENELEVATORSTOP sounds/ambience/hexenelevatorstop.wav 0 0 0 0 8192
 definesound DOOMPLAT_START sounds/ambience/dspstart.wav 0 0 0 0 0
 definesound DOOMPLAT_STOP sounds/ambience/dspstop.wav 0 0 0 0 0
 definesound SPACEODDITY sounds/ambience/spaceoddity.ogg 0 0 0 3 0

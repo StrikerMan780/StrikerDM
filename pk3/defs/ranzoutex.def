@@ -194,6 +194,35 @@ tilefromtexture 4061 { file "tiles/4061.png" texture }
 tilefromtexture 4062 { file "tiles/4062.png" texture }
 tilefromtexture 4063 { file "tiles/4063.png" texture }
 tilefromtexture 4064 { file "tiles/4064.png" texture }
+tilefromtexture 4065 { file "tiles/4065.png" texture }
+tilefromtexture 4066 { file "tiles/4066.png" texture }
+tilefromtexture 4067 { file "tiles/4067.png" texture }
+tilefromtexture 4068 { file "tiles/4068.png" texture }
+tilefromtexture 4069 { file "tiles/4069.png" texture }
+tilefromtexture 4070 { file "tiles/4070.png" texture }
+tilefromtexture 4071 { file "tiles/4071.png" texture }
+tilefromtexture 4072 { file "tiles/4072.png" texture }
+tilefromtexture 4073 { file "tiles/4073.png" texture }
+tilefromtexture 4074 { file "tiles/4074.png" texture }
+tilefromtexture 4075 { file "tiles/4075.png" texture }
+tilefromtexture 4076 { file "tiles/4076.png" texture }
+tilefromtexture 4077 { file "tiles/4077.png" texture }
+tilefromtexture 4078 { file "tiles/4078.png" texture }
+tilefromtexture 4079 { file "tiles/4079.png" texture }
+tilefromtexture 4080 { file "tiles/4080.png" texture }
+tilefromtexture 4081 { file "tiles/4081.png" texture }
+tilefromtexture 4082 { file "tiles/4082.png" texture }
+tilefromtexture 4083 { file "tiles/4083.png" texture }
+tilefromtexture 4084 { file "tiles/4084.png" texture }
+tilefromtexture 4085 { file "tiles/4085.png" texture }
+tilefromtexture 4086 { file "tiles/4086.png" texture }
+tilefromtexture 4087 { file "tiles/4087.png" texture }
+tilefromtexture 4088 { file "tiles/4088.png" texture }
+tilefromtexture 4089 { file "tiles/4089.png" texture }
+tilefromtexture 4090 { file "tiles/4090.png" texture }
+tilefromtexture 4091 { file "tiles/4091.png" texture }
+tilefromtexture 4092 { file "tiles/4092.png" texture }
+
 
 // Sprites (Static)
 
@@ -284,6 +313,7 @@ tilefromtexture 4043 { file "tiles/4043.png" }
 tilefromtexture 4056 { file "tiles/4056.png" texture }
 tilefromtexture 4057 { file "tiles/4057.png" texture }
 tilefromtexture 4058 { file "tiles/4058.png" texture }
+tilefromtexture 4093 { file "tiles/4093.png" texture }
 
 // Sprites (Animation)
 
