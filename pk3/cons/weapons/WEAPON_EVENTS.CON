@@ -32,15 +32,11 @@ onevent EVENT_DOFIRE
 				break
 			}
 			
-			getplayervar[THISACTOR].FLAMETHROWER_AMMO TEMP
-			subvar TEMP 1
-			
-			ifvarl TEMP 0
+			subvar FLAMETHROWER_AMMO 1
+			ifvarl FLAMETHROWER_AMMO 0
 			{
-				setvar TEMP 0
+				setvar FLAMETHROWER_AMMO 0
 			}
-			
-			setplayervar[THISACTOR].FLAMETHROWER_AMMO TEMP
 		}
 		else
 		{
@@ -50,15 +46,11 @@ onevent EVENT_DOFIRE
 				break
 			}
 			
-			getplayervar[THISACTOR].FREEZETHROWER_AMMO TEMP
-			subvar TEMP 1
-			
-			ifvarl TEMP 0
+			subvar FREEZETHROWER_AMMO 1
+			ifvarl FREEZETHROWER_AMMO 0
 			{
-				setvar TEMP 0
+				setvar FREEZETHROWER_AMMO 0
 			}
-			
-			setplayervar[THISACTOR].FREEZETHROWER_AMMO TEMP
 		}
 	}
 	else ifvare TEMP DEVISTATOR_WEAPON
@@ -83,15 +75,11 @@ onevent EVENT_DOFIRE
 				break
 			}
 			
-			getplayervar[THISACTOR].PLASMARIFLE_AMMO TEMP
-			subvar TEMP 1
-			
-			ifvarl TEMP 0
+			subvar PLASMARIFLE_AMMO 1
+			ifvarl PLASMARIFLE_AMMO 0
 			{
-				setvar TEMP 0
+				setvar PLASMARIFLE_AMMO 0
 			}
-			
-			setplayervar[THISACTOR].PLASMARIFLE_AMMO TEMP
 		}
 		else
 		{
@@ -101,15 +89,11 @@ onevent EVENT_DOFIRE
 				break
 			}
 			
-			getplayervar[THISACTOR].RIPPER_AMMO TEMP
-			subvar TEMP 1
-			
-			ifvarl TEMP 0
+			subvar RIPPER_AMMO 1
+			ifvarl RIPPER_AMMO 0
 			{
-				setvar TEMP 0
+				setvar RIPPER_AMMO 0
 			}
-			
-			setplayervar[THISACTOR].RIPPER_AMMO TEMP
 		}
 	}
 	else ifvare TEMP RPG_WEAPON
@@ -129,15 +113,11 @@ onevent EVENT_DOFIRE
 				case 2: sound RAILGUN_FIRE3 break
 			endswitch
 			
-			getplayervar[THISACTOR].RAILGUN_AMMO TEMP
-			subvar TEMP 1
-			
-			ifvarl TEMP 0
+			subvar RAILGUN_AMMO 1
+			ifvarl RAILGUN_AMMO 0
 			{
-				setvar TEMP 0
+				setvar RAILGUN_AMMO 0
 			}
-			
-			setplayervar[THISACTOR].RAILGUN_AMMO TEMP
 		}
 		else
 		{
@@ -147,15 +127,11 @@ onevent EVENT_DOFIRE
 				break
 			}
 			
-			getplayervar[THISACTOR].RPG_AMMO TEMP
-			subvar TEMP 1
-			
-			ifvarl TEMP 0
+			subvar RPG_AMMO 1
+			ifvarl RPG_AMMO 0
 			{
-				setvar TEMP 0
+				setvar RPG_AMMO 0
 			}
-			
-			setplayervar[THISACTOR].RPG_AMMO TEMP
 		}
 	}
 	else ifvare TEMP SHOTGUN_WEAPON
@@ -183,6 +159,19 @@ onevent EVENT_FIRE
 		ifvare USING_FLAMETHROWER 1
 		{
 			ifinwater
+			{
+				setvar RETURN 1
+				break
+			}
+		}
+	}
+	else ifvare TEMP SHOTGUN_WEAPON
+	{
+		getplayervar[THISACTOR].USING_SSG TEMP
+		ifvare TEMP 1
+		{
+			getplayer[THISACTOR].ammo_amount SHOTGUN_WEAPON TEMP2
+			ifvarl TEMP2 2
 			{
 				setvar RETURN 1
 				break

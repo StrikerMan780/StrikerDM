@@ -240,7 +240,7 @@ state setplasmarifle
 	setvar WEAPON3_SPAWNTIME 0
 	setvar WEAPON3_FIRESOUND PLASMARIFLE_FIRE
 	setvar WEAPON3_INITIALSOUND PLASMARIFLE_CHARGE
-	setvar WEAPON3_SHOTSPERBURST 4
+	setvar WEAPON3_SHOTSPERBURST 1
 	setplayervar[THISACTOR].USING_PLASMARIFLE 1
 	setplayer[THISACTOR].ammo_amount CHAINGUN_WEAPON PLASMARIFLE_AMMO
 ends
@@ -390,6 +390,8 @@ state checkssg
 ends
 
 state player_updateweapons
+ifp palive
+{
 	getplayer[THISACTOR].curr_weapon TEMP
 	ifvare TEMP FREEZE_WEAPON
 	{
@@ -567,6 +569,7 @@ state player_updateweapons
 		setplayer[THISACTOR].curr_weapon RPG_WEAPON
 		setplayervar[THISACTOR].RAILGUN_AMMO MAXRAILGUNAMMO
 	}
+}
 ends
 
 state player_tossweapon

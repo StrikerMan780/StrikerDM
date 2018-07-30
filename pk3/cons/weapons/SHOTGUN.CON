@@ -10,6 +10,12 @@ state draw_shotgun // SHOTGUN_WEAPON:
             
             addvar hud_x 146
             addvar hud_y 202
+			
+			ifvare weaponcount 2
+			{
+				addvar hud_x 4
+				addvar hud_y 4
+			}
             
             setvar hud_tilenum SHOTGUN 
             
@@ -23,8 +29,7 @@ state draw_shotgun // SHOTGUN_WEAPON:
             
             setvar hud_shade -128
             
-            setvar hud_tilenum SHOTGUN
-            addvar hud_tilenum 1
+            setvar hud_tilenum SHOTGUN_FLASH1
             
             state G_DrawWeaponTile
                              
@@ -45,28 +50,43 @@ state draw_shotgun // SHOTGUN_WEAPON:
             
             guniqhudid 0
             break
-        case 3
+		case 3
         case 4
         case 5
         case 9
         case 10
         case 11
         case 12
-			ifvarg weaponcount 1
+			ifvarg weaponcount 3
                 ifvarl weaponcount 5
                 {
                     addvar hud_y 40
                     addvar hud_x 20
 				}
+				else ifvare weaponcount 3
+				{
+					addvar hud_y 20
+					addvar hud_x 10
+				}
 				
             guniqhudid currentweapon
             
             addvar hud_x 158
-            
             addvar hud_y 220
             
             setvar hud_tilenum SHOTGUN
             addvar hud_tilenum 3
+			
+			ifvare weaponcount 11
+			{
+				addvar hud_x 4
+				subvar hud_y 8
+			}
+			ifvare weaponcount 12
+			{
+				addvar hud_x 8
+				subvar hud_y 16
+			}
             
             state G_DrawWeaponTile
             
@@ -81,8 +101,7 @@ state draw_shotgun // SHOTGUN_WEAPON:
 
                     setvar hud_shade -128
                     
-                    setvar hud_tilenum SHOTGUN
-					addvar hud_tilenum 2
+                    setvar hud_tilenum SHOTGUN_FLASH2
                     
                     state G_DrawWeaponTile
 					

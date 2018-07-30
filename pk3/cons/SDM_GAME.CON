@@ -3547,6 +3547,11 @@ state handle_instakill
 		palfrom 32 8 8 48
 			break
 	}
+	ifwasweapon PLASMABALL2
+	{
+		palfrom 32 8 8 48
+			break
+	}
 	ifwasweapon RAILGUNSHOT
 	{
       ifrnd 32

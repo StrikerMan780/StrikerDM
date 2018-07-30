@@ -17,6 +17,11 @@ actor LDEXPLOSION 1 LAMEDUKE_EXPLOSION_FRAMES
 			spritepal 1
 			cstator 2
 		}
+		else ifspawnedby PLASMABALL2
+		{
+			spritepal 1
+			cstator 2
+		}
 	}
 }
 enda

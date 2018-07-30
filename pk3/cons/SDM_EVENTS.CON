@@ -165,22 +165,6 @@ onevent EVENT_EGS
 		subvarvar TEMP TEMP2
 		setactor[THISACTOR].zvel TEMP
 	}
-	else ifactor PLASMABALL
-	{
-		// Calculate horizontal spread
-		getactor[THISACTOR].ang TEMP
-		addvar TEMP 16
-		randvar TEMP2 32
-		subvarvar TEMP TEMP2
-		setactor[THISACTOR].ang TEMP
-		
-		// Calculate vertical spread
-		getactor[THISACTOR].zvel TEMP
-		addvar TEMP 256
-		randvar TEMP2 512
-		subvarvar TEMP TEMP2
-		setactor[THISACTOR].zvel TEMP
-	}
 	else ifactor DEVASTATORMISSILE
 	{
 		// Calculate horizontal spread
@@ -310,6 +294,76 @@ onevent EVENT_GAME
 		{
 			cstator 256
 			setactor[THISACTOR].htflags 136
+		}
+	}
+	
+	ifactor PLASMABALL
+	{
+		addvar EXTRA_MEMORY 1
+		ifvarg EXTRA_MEMORY 4
+		{
+			getactor[THISACTOR].x SPAWN_ORIGX
+			getactor[THISACTOR].y SPAWN_ORIGY
+			getactor[THISACTOR].z SPAWN_ORIGZ
+			getactor[THISACTOR].ang SPAWN_ORIGANG
+			getactor[THISACTOR].zvel SPAWN_ORIGZVEL
+			getactor[THISACTOR].owner OWNER
+			
+			eshoot PLASMABALL2
+			getactor[THISACTOR].ang TEMP
+			addvar TEMP 16
+			setactor[RETURN].ang TEMP
+			setactor[RETURN].x SPAWN_ORIGX
+			setactor[RETURN].y SPAWN_ORIGY
+			setactor[RETURN].z SPAWN_ORIGZ
+			setactor[RETURN].zvel SPAWN_ORIGZVEL
+			setactor[RETURN].owner OWNER
+			setvar RETURN 0
+			
+			eshoot PLASMABALL2
+			getactor[THISACTOR].ang TEMP
+			subvar TEMP 16
+			setactor[RETURN].ang TEMP
+			setactor[RETURN].x SPAWN_ORIGX
+			setactor[RETURN].y SPAWN_ORIGY
+			setactor[RETURN].z SPAWN_ORIGZ
+			setactor[RETURN].zvel SPAWN_ORIGZVEL
+			setactor[RETURN].owner OWNER
+			setvar RETURN 0
+			
+			eshoot PLASMABALL2
+			getactor[THISACTOR].zvel TEMP
+			addvar TEMP 512
+			setactor[RETURN].zvel TEMP
+			setactor[RETURN].x SPAWN_ORIGX
+			setactor[RETURN].y SPAWN_ORIGY
+			setactor[RETURN].z SPAWN_ORIGZ
+			setactor[RETURN].ang SPAWN_ORIGANG
+			setactor[RETURN].owner OWNER
+			setvar RETURN 0
+			
+			eshoot PLASMABALL2
+			getactor[THISACTOR].zvel TEMP
+			subvar TEMP 512
+			setactor[RETURN].zvel TEMP
+			setactor[RETURN].x SPAWN_ORIGX
+			setactor[RETURN].y SPAWN_ORIGY
+			setactor[RETURN].z SPAWN_ORIGZ
+			setactor[RETURN].ang SPAWN_ORIGANG
+			setactor[RETURN].owner OWNER
+			setvar RETURN 0
+			
+			eshoot PLASMABALL2
+			setactor[RETURN].x SPAWN_ORIGX
+			setactor[RETURN].y SPAWN_ORIGY
+			setactor[RETURN].z SPAWN_ORIGZ
+			setactor[RETURN].ang SPAWN_ORIGANG
+			setactor[RETURN].zvel SPAWN_ORIGZVEL
+			setactor[RETURN].owner OWNER
+			setvar RETURN 0
+			
+			
+			killit
 		}
 	}
 	

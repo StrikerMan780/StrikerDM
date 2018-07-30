@@ -30,6 +30,7 @@ gamevar SPAWN_ORIGX 0 2
 gamevar SPAWN_ORIGY 0 2
 gamevar SPAWN_ORIGZ 0 2
 gamevar SPAWN_ORIGANG 0 2
+gamevar SPAWN_ORIGZVEL 0 2
 gamevar SECTNUM_MEMORY 0 2
 gamevar HITAG_MEMORY 0 2
 gamevar LOTAG_MEMORY 0 2

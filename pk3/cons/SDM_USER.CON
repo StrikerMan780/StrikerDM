@@ -9,7 +9,8 @@ define FLAMETHROWER_WEAPON_STRENGTH 20
 
 define MAXPLASMARIFLEAMMO 25
 define PLASMARIFLEAMMOAMOUNT 5
-define PLASMARIFLE_WEAPON_STRENGTH 18
+define PLASMARIFLE_WEAPON_STRENGTH 75
+define PLASMARIFLE_WEAPON_SECONDARY_STRENGTH 14
 
 define DEVASTATOR_WEAPON_STRENGTH 35
 define DEVASTATORBLASTRADIUS 890
@@ -105,9 +106,10 @@ definelevelname 8 0 maps/gwmap20.map 66:60 66:60 GreenWar MAP20
 definelevelname 8 1 maps/BRIT11MAP1-SDM.map 66:60 66:60 BRIT11 MAP01 (Duke Style)
 definelevelname 8 2 maps/UDM3MAP3-SDM.map 66:60 66:60 UDM3 MAP03 (Duke Style)
 definelevelname 8 3 maps/JEBIDMMAP7-SDM.map 66:60 66:60 JEBIDM MAP07 (Duke Style)
-music 9 music/d_messag.mid music/brit11m1.mid music/d_countd.mid music/flaghate.mid
+definelevelname 8 4 maps/VEXZDM4-SDM.map 66:60 66:60 VEXZDM MAP04 (Duke Style)
+music 9 music/d_messag.mid music/brit11m1.mid music/d_countd.mid music/flaghate.mid music/vexzdm4.mid
 	   
-definevolumename 9 Community Maps
+definevolumename 9 Community Maps 1
 definelevelname 9 0 maps/EL_PASO-SDM.map 66:60 66:60 El Paso: Multiple Authors
 definelevelname 9 1 maps/CIRCENSE-SDM.map 66:60 66:60 Circense: Noldor Ranzou
 definelevelname 9 2 maps/QADIM-SDM.map 66:60 66:60 Qadim: Noldor Ranzou
@@ -169,6 +171,9 @@ definelevelname 9 57 maps/TENEMENTS.map 66:60 66:60 Tenements: Multiple Authors
 definelevelname 9 58 maps/QARIPORT.map 66:60 66:60 Qari Port: Vandclash
 definelevelname 9 59 maps/ABSTRUSE.map 66:60 66:60 Abstruse: Multiple Authors
 definelevelname 9 60 maps/OSTFESTUNG.map 66:60 66:60 Ost Festung: Noldor Ranzou
+definelevelname 9 61 maps/WAHNSINN-SDM.map 66:60 66:60 Wahnsinn: Noldor Ranzou
+definelevelname 9 62 maps/ROLANDTOWN-SDM.map 66:60 66:60 Roland Town: Noldor Ranzou
+definelevelname 9 63 maps/COLOSSEUM-SDM.map 66:60 66:60 Colosseum: Educator
 
 music 10 music/virulent.ogg music/doktor.ogg music/egwaa.ogg music/multplay.ogg music/zeppelin.ogg music/interstl.ogg
          music/miamidis.ogg music/coconut.ogg music/unknownc.ogg music/eatdust.ogg music/darkcmbt.ogg music/villa.ogg
@@ -178,4 +183,22 @@ music 10 music/virulent.ogg music/doktor.ogg music/egwaa.ogg music/multplay.ogg 
          music/pterodactyl.ogg music/haremscarem.ogg music/desertdrive.ogg music/train.ogg music/jaguar.ogg music/piriton.ogg music/aenima.mid music/skinmask.mid
          music/brainscan.mid music/ealord.mid music/mus_e2m3.mid music/slavestate.ogg music/dnfost1.ogg music/dnfost2.ogg music/quickordead.mid music/wwesmack.mid 
          music/choco64.ogg music/darkmatt.mid music/quikmart.mid music/elephant.mid music/diredocks.mid music/2980_1.mid music/seeyou.mid music/poland.mid music/frame.mid
-         music/company.mid
+         music/company.mid music/sputnik.mid music/mother.mid music/italy.mid
+		 
+definevolumename 10 Community Maps 2
+definelevelname 10 0 maps/WANGNUKEM-SDM.map 66:60 66:60 Wang Nukem: Duke64Nukem
+definelevelname 10 1 maps/TUROKDM-SDM.map 66:60 66:60 Turok DM: Duke64Nukem
+definelevelname 10 2 maps/TUROK2DM-SDM.map 66:60 66:60 Turok 2 DM: Duke64Nukem
+definelevelname 10 3 maps/MEANSTREETS-SDM.map 66:60 66:60 Mean Streets: Duke64Nukem
+definelevelname 10 4 maps/GHOSTTOWN-SDM.map 66:60 66:60 Ghost Town: Duke64Nukem
+definelevelname 10 5 maps/64CASTLEDUKENSTEIN-SDM.map 66:60 66:60 Castle Dukenstein: Duke64Nukem
+definelevelname 10 6 maps/64NOCTISLABYRINTHUS-SDM.map 66:60 66:60 Noctis Labyrinthus: Duke64Nukem
+definelevelname 10 7 maps/DN64PIRACY-SDM.map 66:60 66:60 Piracy: Duke64Nukem
+definelevelname 10 8 maps/DN64SHAFT-SDM.map 66:60 66:60 Shaft: Duke64Nukem
+definelevelname 10 9 maps/DN64STADIUM-SDM.map 66:60 66:60 Stadium 64: Duke64Nukem
+definelevelname 10 10 maps/BASTIONV2.map 66:60 66:60 Bastion V2: Multiple Authors
+definelevelname 10 11 maps/PIRATESV2.map 66:60 66:60 Pirates V2: Multiple Authors
+
+music 11 music/seppuku.ogg music/ancient.ogg music/fortress.ogg music/zerostreets.ogg music/zerotown.ogg
+         music/eerie.ogg music/saturntoll.ogg music/echohare.ogg music/apes.mid music/mental.ogg music/breed.mid
+         music/portroyal.mid
