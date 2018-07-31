@@ -311,7 +311,7 @@ onevent EVENT_GAME
 			
 			eshoot PLASMABALL2
 			getactor[THISACTOR].ang TEMP
-			addvar TEMP 16
+			addvar TEMP PLASMARIFLE_X_SPREAD
 			setactor[RETURN].ang TEMP
 			setactor[RETURN].x SPAWN_ORIGX
 			setactor[RETURN].y SPAWN_ORIGY
@@ -322,7 +322,7 @@ onevent EVENT_GAME
 			
 			eshoot PLASMABALL2
 			getactor[THISACTOR].ang TEMP
-			subvar TEMP 16
+			subvar TEMP PLASMARIFLE_X_SPREAD
 			setactor[RETURN].ang TEMP
 			setactor[RETURN].x SPAWN_ORIGX
 			setactor[RETURN].y SPAWN_ORIGY
@@ -333,7 +333,7 @@ onevent EVENT_GAME
 			
 			eshoot PLASMABALL2
 			getactor[THISACTOR].zvel TEMP
-			addvar TEMP 512
+			addvar TEMP PLASMARIFLE_Y_SPREAD
 			setactor[RETURN].zvel TEMP
 			setactor[RETURN].x SPAWN_ORIGX
 			setactor[RETURN].y SPAWN_ORIGY
@@ -344,7 +344,7 @@ onevent EVENT_GAME
 			
 			eshoot PLASMABALL2
 			getactor[THISACTOR].zvel TEMP
-			subvar TEMP 512
+			subvar TEMP PLASMARIFLE_Y_SPREAD
 			setactor[RETURN].zvel TEMP
 			setactor[RETURN].x SPAWN_ORIGX
 			setactor[RETURN].y SPAWN_ORIGY
