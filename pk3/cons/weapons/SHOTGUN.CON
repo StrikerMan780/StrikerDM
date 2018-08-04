@@ -128,8 +128,8 @@ state draw_shotgun // SHOTGUN_WEAPON:
 		case 30
 			guniqhudid currentweapon
             
-            addvar hud_x 170
-            addvar hud_y 200
+            addvar hud_x 166
+            addvar hud_y 208
             
             setvar hud_tilenum SHOTGUN
             addvar hud_tilenum 3
