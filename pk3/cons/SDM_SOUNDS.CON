@@ -87,6 +87,8 @@ define HEXENELEVATOR 556
 define HEXENELEVATORSTOP 557
 // Community sound submissions should continue from the index above this line
 
+define ENTER_RIFT 588
+define EXIT_RIFT 589
 define FAUCET_RUN 590
 define FAUCET_ON 591
 define FAUCET_OFF 592
@@ -266,6 +268,9 @@ definesound DOOMPLAT_STOP sounds/ambience/dspstop.wav 0 0 0 0 0
 definesound SPACEODDITY sounds/ambience/spaceoddity.ogg 0 0 0 3 0
 
 definesound JUMPPADSOUND sounds/ambience/jumppad.wav 0 0 0 0 0
+
+definesound ENTER_RIFT sounds/ambience/enter_rift.wav 0 0 0 0 0
+definesound EXIT_RIFT sounds/ambience/exit_rift.wav 0 0 0 0 0
 
 definesound FAUCET_RUN sounds/ambience/faucetrun.wav 0 0 0 2 12240
 definesound FAUCET_ON sounds/ambience/fauceton.wav 0 0 0 0 0

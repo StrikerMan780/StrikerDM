@@ -424,6 +424,51 @@ state handle_instakill
 	}
 ends
 
+state handle_rift
+	ifp palive
+	{
+		getsector[THISACTOR].ceilingpicnum TEMP
+		ifvare TEMP 3817
+		{
+			ifvare IN_RIFT 0
+			{
+				sound ENTER_RIFT
+				palfrom 56 0 16 64
+				setvar IN_RIFT 1
+			}
+			else
+			{
+				getplayer[THISACTOR].pals_time TEMP
+				ifvarl TEMP 24
+				{
+					palfrom 24 0 16 64
+				}
+				
+				getplayer[THISACTOR].poszv TEMP
+				ifvarg TEMP 512
+				{
+					setplayer[THISACTOR].poszv 512
+				}
+				
+				getplayer[THISACTOR].jumping_counter TEMP
+				ifvare TEMP 1261 
+				{
+					setplayer[THISACTOR].jumping_counter 1082
+				}
+			}
+		}
+		else
+		{
+			ifvare IN_RIFT 1
+			{
+				sound EXIT_RIFT
+				palfrom 48 0 16 64
+				setvar IN_RIFT 0
+			}
+		}
+	}
+ends
+
 state strip_items
 	getactor[THISACTOR].picnum TEMP
 	switch TEMP

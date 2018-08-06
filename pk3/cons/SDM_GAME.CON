@@ -3157,6 +3157,7 @@ state update_lasthitby // [SM] For Duke one-liners and such.
 state player_updateweapons
 state jumppadcode
 state handle_instakill
+state handle_rift
   ifaction 0
     action PSTAND
 

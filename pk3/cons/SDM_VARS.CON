@@ -58,6 +58,7 @@ gamevar KILLTYPE 0 2
 gamevar JUMPPAD_HIT 0 1
 gamevar JUMPPAD_XVEL 0 1
 gamevar JUMPPAD_YVEL 0 1
+gamevar IN_RIFT 0 1
 
 // Defines
 define KILL_NONE 0
