@@ -1,22 +1,26 @@
 @echo off
+setlocal
+setlocal EnableDelayedExpansion
+
 SET PATH=%PATH%;%~dp0\Tools
+set GIT=None
 set WorkingCopyPath=%~dp0
 set REVISIONNUMBER=Unknown
 
-for %%k in (HKCU HKLM) do (
-    for %%w in (\ \Wow6432Node\) do (
-        for /f "skip=2 delims=: tokens=1*" %%a in ('reg query "%%k\SOFTWARE%%wMicrosoft\Windows\CurrentVersion\Uninstall\Git_is1" /v InstallLocation 2^> nul') do (
-            for /f "tokens=3" %%z in ("%%a") do (
-                set "GIT=%%z:%%b"
-                echo Found Git at %GIT%.
-				set "PATH=%GIT%bin;%PATH%"
-            )
-        )
-    )
+for /f "tokens=1-2*" %%A in ('reg query HKEY_LOCAL_MACHINE\Software\GitForWindows /v InstallPath ^| find "REG_SZ"') do (
+	set GIT=%%C
+	set "PATH=!GIT!\bin;%PATH%"
+)
+
+if exist "!GIT!\bin\git.exe" (
+	echo Found Git at !GIT!
+	goto GITFOUND
+) else (
+	echo GIT NOT FOUND^^!
+	goto MENU
 )
 
 :GITFOUND
-cls
 echo ---------------------------
 echo Retrieving GIT Commit Count
 echo ---------------------------
@@ -82,7 +86,7 @@ cd pk3
 del *.tmp
 del .\maps\*_crash.map
 echo definequote 499 StrikerDM Development Build > VERSION.CON
-7za a -y -tzip -mx=0 -mmt -xr!.GIT -xr!*.dbs -xr!*.tmp ..\builds\StrikerDM-DEV.pk3 .\
+7za a -y -tzip -mx=0 -mmt -xr^^!.GIT -xr^^!*.dbs -xr^^!*.tmp ..\builds\StrikerDM-DEV.pk3 .\
 
 pause
 goto MENU
@@ -95,7 +99,7 @@ cd pk3
 del *.tmp
 del .\maps\*_crash.map
 echo definequote 499 StrikerDM r%REVISIONNUMBER% > VERSION.CON
-7za a -y -tzip -mx=9 -mmt -xr!.GIT -xr!*.dbs -xr!*.tmp ..\builds\StrikerDM-r%REVISIONNUMBER%.pk3 .\
+7za a -y -tzip -mx=9 -mmt -xr^^!.GIT -xr^^!*.dbs -xr^^!*.tmp ..\builds\StrikerDM-r%REVISIONNUMBER%.pk3 .\
 
 pause
 goto MENU
@@ -107,7 +111,7 @@ del .\builds\StrikerDM.grp /q
 cd pk3
 del *.tmp
 del .\maps\*_crash.map
-7za a -y -tzip -mx=9 -mmt -xr!.GIT -xr!*.dbs -xr!*.tmp ..\builds\StrikerDM.grp .\
+7za a -y -tzip -mx=9 -mmt -xr!.GIT -xr^^!*.dbs -xr^^!*.tmp ..\builds\StrikerDM.grp .\
 copy ..\builds\StrikerDM.grp "c:\Meltdown\Duke Nukem 3D\Mods"
 
 pause
@@ -117,7 +121,7 @@ goto MENU
 cls
 echo.
 chgcolor 0a
-echo Thanks for trying my batch script! - Jordon Moss (aka. Striker The Hedgefox)
+echo Thanks for trying my batch script^^! - Jordon Moss (aka. Striker The Hedgefox)
 chgcolor 0b
 echo Found any bugs? E-Mail me at mossj32@gmail.com
 echo or post @ http://shadowmavericks.com/forums/
