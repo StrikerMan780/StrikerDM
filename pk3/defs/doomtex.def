@@ -13,6 +13,39 @@ tilefromtexture 3601 { file "tiles/3601.png" texture } // W17_1
 tilefromtexture 3602 { file "tiles/3602.png" texture } // W28_5
 tilefromtexture 3603 { file "tiles/3603.png" texture } // W28_6
 
+tilefromtexture 3517 { file "tiles/3517.png" texture } // MIDSPACE
+tilefromtexture 3518 { file "tiles/3518.png" texture } // EXITDOOR
+tilefromtexture 3519 { file "tiles/3519.png" texture } // TEKWALL4
+tilefromtexture 3520 { file "tiles/3520.png" texture } // GATE1
+tilefromtexture 3521 { file "tiles/3521.png" texture } // GATE2
+tilefromtexture 3522 { file "tiles/3522.png" texture } // GATE3
+tilefromtexture 3523 { file "tiles/3523.png" texture } // GATE4
+tilefromtexture 3524 { file "tiles/3524.png" texture } // SLIME14
+tilefromtexture 3525 { file "tiles/3525.png" texture } // FLAT14
+tilefromtexture 3526 { file "tiles/3526.png" texture } // FLAT23
+tilefromtexture 3527 { file "tiles/3527.png" texture } // FLOOR4_8
+tilefromtexture 3528 { file "tiles/3528.png" texture } // TLITE6_5
+tilefromtexture 3529 { file "tiles/3529.png" texture } // CEIL3_2
+tilefromtexture 3530 { file "tiles/3530.png" texture } // CEIL1_2
+tilefromtexture 3531 { file "tiles/3531.png" texture } // CEIL3_4
+tilefromtexture 3532 { file "tiles/3532.png" texture } // CEIL4_2
+tilefromtexture 3533 { file "tiles/3533.png" texture } // CEIL3_3
+tilefromtexture 3534 { file "tiles/3534.png" texture } // CEIL5_1
+tilefromtexture 3535 { file "tiles/3535.png" texture } // FLOOR0_3
+tilefromtexture 3536 { file "tiles/3536.png" texture } // FLOOR0_1
+tilefromtexture 3537 { file "tiles/3537.png" texture } // FLOOR0_2
+tilefromtexture 3538 { file "tiles/3538.png" texture } // GRAY5
+tilefromtexture 3539 { file "tiles/3539.png" texture } // FLAT19
+tilefromtexture 3540 { file "tiles/3540.png" texture } // STEP6
+tilefromtexture 3541 { file "tiles/3541.png" texture } // STEP5
+tilefromtexture 3542 { file "tiles/3542.png" texture } // STEP2
+tilefromtexture 3543 { file "tiles/3543.png" texture } // SUPPORT3
+tilefromtexture 3544 { file "tiles/3544.png" texture } // DOORTRAK
+tilefromtexture 3545 { file "tiles/3545.png" texture } // PIPE4
+tilefromtexture 3546 { file "tiles/3546.png" texture } // METAL
+tilefromtexture 3547 { file "tiles/3547.png" texture } // SUPPORT2
+tilefromtexture 3548 { file "tiles/3548.png" texture } // BROWN1
+tilefromtexture 3549 { file "tiles/3549.png" texture } // STARTAN3
 tilefromtexture 3550 { file "tiles/3550.png" texture } // SKY1
 tilefromtexture 3551 { file "tiles/3551.png" texture } // BROWNGRN
 tilefromtexture 3552 { file "tiles/3552.png" texture } // BROWN96
@@ -29,5 +62,17 @@ tilefromtexture 3562 { file "tiles/3562.png" texture } // FLAT1_2
 
 
 // Sprites
+tilefromtexture 3300 { file "tiles/3300.png" texture } // Tall Lamp
+tilefromtexture 3301 { file "tiles/3301.png" texture }
+tilefromtexture 3302 { file "tiles/3302.png" texture }
+tilefromtexture 3303 { file "tiles/3303.png" texture }
+animtilerange 3300 3303 4 ANIM_FORWARD
+
+tilefromtexture 3304 { file "tiles/3304.png" texture } // Short Lamp
+tilefromtexture 3305 { file "tiles/3305.png" texture }
+tilefromtexture 3306 { file "tiles/3306.png" texture }
+tilefromtexture 3307 { file "tiles/3307.png" texture }
+animtilerange 3304 3307 4 ANIM_FORWARD
+
 tilefromtexture 3626 { file "tiles/3626.png" texture } // Dead Marine
 tilefromtexture 3630 { file "tiles/3630.png" texture } // Marine in pain

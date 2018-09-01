@@ -10,6 +10,9 @@ tilefromtexture 16 { file "tiles/16.png" texture }
 // No pistol tag
 tilefromtexture 17 { file "tiles/17.png" }
 
+// Custom Touchplate
+tilefromtexture 75 { file "tiles/75.png" texture }
+
 // Shrinker/Expander
 tilefromtexture 25 { file "tiles/25.png" }
 tilefromtexture 32 { file "tiles/32.png" }
@@ -198,6 +201,10 @@ tilefromtexture 5166 { file "tiles/5166.png" }
 
 // Burnt corpse
 tilefromtexture 5173 { file "tiles/5173.png" }
+
+// Snow
+tilefromtexture 5848 { file "tiles/5848.png" texture }
+tilefromtexture 5849 { file "tiles/5849.png" texture }
 
 // Railgun Trail
 tilefromtexture 5850 { file "tiles/5850.png" }

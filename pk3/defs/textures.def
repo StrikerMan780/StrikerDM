@@ -172,3 +172,7 @@ tilefromtexture 3829 { file "tiles/3829.png" texture }
 tilefromtexture 3830 { file "tiles/3830.png" texture }
 tilefromtexture 3831 { file "tiles/3831.png" texture }
 tilefromtexture 3832 { file "tiles/3832.png" texture }
+
+tilefromtexture 3839 { file "tiles/3839.png" texture }
+
+tilefromtexture 5847 { file "tiles/5847.png" texture }
