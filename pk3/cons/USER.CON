@@ -747,7 +747,7 @@ definesound SEWER_AMBIENCE      drip3.voc          0   0   0   0   0
 definesound WIND_AMBIENCE       wind54.voc         0   0   0   2   0
 definesound WIND_REPEAT         wind54.voc         0   0   0   2   0
 
-definesound SOMETHING_DRIPPING  drip3.voc       0   0   0   0    9000
+definesound SOMETHING_DRIPPING  sounds/drip1.wav       -32   32   0   0    9000
 definesound STEAM_HISSING       steamhis.voc       0   0   0   0 10240
 definesound BAR_MUSIC           barmusic.voc       0   0 254   2   0
 definesound STORE_MUSIC         muzak028.voc       0   0 254   0 6144

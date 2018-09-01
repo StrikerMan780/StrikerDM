@@ -174,34 +174,98 @@ actor FAUCET_RUNNING2
 	cactor FAUCET_RUNNING
 enda
 
+state trigger_actors
+	headspritestat CURSPRITE 1 // STAT_ACTOR
+	setvarvar LASTSPRITE CURSPRITE
+	whilevarn CURSPRITE -1
+	{
+		getactorvar[CURSPRITE].LOTAG_MEMORY TEMP
+		ifvarvare LOTAG_MEMORY TEMP // Check if lotag matches
+		{
+			setactorvar[CURSPRITE].ACTIVATING 1
+		}
+				
+		nextspritestat CURSPRITE LASTSPRITE
+		setvarvar LASTSPRITE CURSPRITE
+	}
+ends
+
+actor CUSTOMACTIVATOR
+	ifspawnedby RESPAWN
+	{
+		getactor[THISACTOR].htowner OWNER
+		getactor[OWNER].lotag LOTAG_MEMORY
+			
+		/*
+		redefinequote 400 CUSTOMACTIVATOR OWNER: %d | LOTAG: %d
+		qsprintf 400 400 OWNER LOTAG_MEMORY
+		userquote 400
+		*/
+			
+		state trigger_actors
+			
+		espawn RESPAWN
+		setactor[RETURN].lotag LOTAG_MEMORY
+		setactor[RETURN].hitag 9998
+		setvar RETURN 0
+		
+		killit
+	}
+	else
+	{
+		killit
+	}
+enda
+
+actor CUSTOMTOUCHPLATE
+	ifaction 0
+	{
+		cstat 32768
+		action ANULLACTION
+	}
+	
+	headspritestat CURSPRITE 10 // STAT_PLAYER
+	setvarvar LASTSPRITE CURSPRITE
+	whilevarn CURSPRITE -1
+	{
+		getactor[CURSPRITE].sectnum TEMP
+		ifvarvare SECTNUM_MEMORY TEMP // Check if sector matches
+		{
+			state trigger_actors
+			break
+		}
+				
+		nextspritestat CURSPRITE LASTSPRITE
+		setvarvar LASTSPRITE CURSPRITE
+	}
+enda
+
+// XREPEAT_MEMORY = Internal Timer
+// HITAG = Switch Channel
+// LOTAG = Sector for Platform
+// SPAWN_ORIGZ = Original Z Position
+// XVEL/SPAWN_ORIGX = Time To Pause
+// YVEL/SPAWN_ORIGY = Destination Z Position
+// ZVEL/SPAWN_ORIGZVEL = Z Velocity
 action TRIGGERED 0
 action WAITING 0
 action RETURNING 0
-actor TIMEDPLATFORM 0
+actor TIMEDPLATFORM
 {
 	ifaction ANULLACTION
 	{
-		headspritestat CURSPRITE 10 // STAT_PLAYER
-		setvarvar LASTSPRITE CURSPRITE
-		whilevarn CURSPRITE -1
+		ifvare ACTIVATING 1
 		{
-			getactor[CURSPRITE].sectnum TEMP
-			ifvarvare SECTNUM_MEMORY TEMP // Check if sector matches
-			{
-				setvar EXTRA_MEMORY 0
-				setsector[LOTAG_MEMORY].floorzvel SPAWN_ORIGY
-				setsector[LOTAG_MEMORY].floorzgoal SPAWN_ORIGX
-				action TRIGGERED
-			}
-			
-			nextspritestat CURSPRITE LASTSPRITE
-			setvarvar LASTSPRITE CURSPRITE
+			setvar XREPEAT_MEMORY 0
+			setsector[THISACTOR].floorzvel SPAWN_ORIGZVEL
+			setsector[THISACTOR].floorzgoal SPAWN_ORIGY
+			action TRIGGERED
 		}
 	}
 	
 	ifaction TRIGGERED
 	{
-		getsector[LOTAG_MEMORY].floorzgoal TEMP
+		getsector[THISACTOR].floorzgoal TEMP
 		ifvare TEMP -1
 		{
 			action WAITING
@@ -210,21 +274,22 @@ actor TIMEDPLATFORM 0
 	
 	ifaction WAITING
 	{
-		addvar EXTRA_MEMORY 1
-		ifvarvare EXTRA_MEMORY HITAG_MEMORY
+		addvar XREPEAT_MEMORY 1
+		ifvarvare XREPEAT_MEMORY SPAWN_ORIGX
 		{
-			setsector[LOTAG_MEMORY].floorzvel SPAWN_ORIGY
-			setsector[LOTAG_MEMORY].floorzgoal SPAWN_ORIGZ
-			setvar EXTRA_MEMORY 0
+			setsector[THISACTOR].floorzvel SPAWN_ORIGZVEL
+			setsector[THISACTOR].floorzgoal SPAWN_ORIGZ
+			setvar XREPEAT_MEMORY 0
 			action RETURNING
 		}
 	}
 	
 	ifaction RETURNING
 	{
-		getsector[LOTAG_MEMORY].floorzgoal TEMP
+		getsector[THISACTOR].floorzgoal TEMP
 		ifvare TEMP -1
 		{
+			setvar ACTIVATING 0
 			action ANULLACTION
 		}
 	}
@@ -232,22 +297,23 @@ actor TIMEDPLATFORM 0
 	ifaction 0
 	{
 		cstat 32768
-		getsector[LOTAG_MEMORY].floorz SPAWN_ORIGZ
+		getsector[THISACTOR].floorz SPAWN_ORIGZ
+		getactor[THISACTOR].xvel SPAWN_ORIGX
 		getactor[THISACTOR].yvel SPAWN_ORIGY
-		getactor[THISACTOR].zvel SPAWN_ORIGX
+		getactor[THISACTOR].zvel SPAWN_ORIGZVEL
 		action ANULLACTION
 	}
 }
 enda
 
-actor PLATFORMSOUND 0
-{
+state platform_sound
 	ifaction ANULLACTION
 	{
 		getsector[THISACTOR].floorzgoal TEMP
 		ifvarn TEMP -1
 		{
 			soundvar LOTAG_MEMORY
+			stopsoundvar HITAG_MEMORY
 			action TRIGGERED
 		}
 	}
@@ -258,24 +324,168 @@ actor PLATFORMSOUND 0
 		ifvare TEMP -1
 		{
 			soundvar HITAG_MEMORY
+			stopsoundvar LOTAG_MEMORY
 			action ANULLACTION
 		}
 	}
+ends
+
+state door_sound
+	ifaction ANULLACTION
+	{
+		getsector[THISACTOR].ceilingzgoal TEMP
+		ifvarn TEMP -1
+		{
+			getsector[THISACTOR].ceilingz TEMP2
+			getsector[THISACTOR].floorz TEMP3		
+			ifvarvare TEMP2 TEMP3 // Open
+			{
+				soundvar LOTAG_MEMORY
+				stopsoundvar HITAG_MEMORY
+			}
+			else // Close
+			{
+				soundvar HITAG_MEMORY
+				stopsoundvar LOTAG_MEMORY
+			}
+			
+			action TRIGGERED
+		}
+	}
+	
+	ifaction TRIGGERED
+	{
+		getsector[THISACTOR].ceilingzgoal TEMP
+		ifvare TEMP -1
+		{
+			action ANULLACTION
+		}
+	}
+ends
+
+// SECTNUM_MEMORY = Sector Lotag
+actor CONTEXTSOUND 0
+{
+	switch SECTNUM_MEMORY
+		case 20:
+			state door_sound
+			break
+		default:
+			state platform_sound
+			break
+	endswitch
 	
 	ifaction 0
 	{
 		cstat 32768
 		action ANULLACTION
+		getsector[THISACTOR].lotag SECTNUM_MEMORY
 	}
 }
 enda
 
-eventloadactor NOPISTOL
-	setvar NO_PISTOL_START 1
+actor STARTWEAPONCHANGER
+	setvarvar START_WEAPON LOTAG_MEMORY
+	killit
 enda
 
-actor NOPISTOL
-	killit
+// SFLAG_NOEVENTCODE + SFLAG_NOCLIP + SFLAG_SMOOTHMOVE + SFLAG_NOTELEPORT
+spriteflags SNOWFLAKE 26752
+actor SNOWFLAKE
+	ifaction 0
+	{
+		getactor[THISACTOR].sectnum TEMP
+		ifvare TEMP -1
+		{
+			killit
+		}
+		
+		cstat 130
+		sizeat 6 6
+		action ANULLACTION
+	}
+	
+	fall
+	
+	getactor[THISACTOR].zvel TEMP
+	ifvarg TEMP 164
+	{
+		setactor[THISACTOR].zvel 164
+	}
+	
+	// s->xvel = (krand()&7)+(sintable[T1&2047]>>9);
+	randvar TEMP 7
+	getactor[THISACTOR].htg_t 0 TEMP2
+	sin TEMP3 TEMP2
+	shiftvarr TEMP3 9
+	addvarvar TEMP TEMP3
+	setvarvar SPAWN_ORIGX TEMP
+	
+	
+	randvar TEMP 7
+	setvarvar TEMP2 EXTRA_MEMORY
+	sin TEMP3 TEMP2
+	shiftvarr TEMP3 9
+	addvarvar TEMP TEMP3
+	setvarvar SPAWN_ORIGY TEMP
+	
+	movesprite THISACTOR SPAWN_ORIGX SPAWN_ORIGY 0 0 CLIPDIST_MEMORY
+	
+	// T1 += (krand()&63);
+	randvar TEMP 63
+	getactor[THISACTOR].htg_t 0 TEMP2
+	addvarvar TEMP2 TEMP
+	setactor[THISACTOR].htg_t 0 TEMP2
+	
+	// EXTRA_MEMORY += (krand()&63);
+	randvar TEMP 63
+	addvarvar EXTRA_MEMORY TEMP
+	
+	iffloordistl 4
+		killit
+enda
+
+state spawn_snow
+	getactor[THISACTOR].x SPAWN_ORIGX
+	randvar TEMP 20480
+	subvar TEMP 10240
+	addvarvar SPAWN_ORIGX TEMP
+	
+	getactor[THISACTOR].y SPAWN_ORIGY
+	randvar TEMP 20480
+	subvar TEMP 10240
+	addvarvar SPAWN_ORIGY TEMP
+	
+	updatesector SPAWN_ORIGX SPAWN_ORIGY SECTNUM_MEMORY
+	
+	ifvarn SECTNUM_MEMORY -1
+	{
+		getsector[SECTNUM_MEMORY].ceilingstat TEMP
+		ifvarand TEMP 1
+		{
+			espawn SNOWFLAKE
+			changespritesect RETURN SECTNUM_MEMORY
+			
+			setactor[RETURN].x SPAWN_ORIGX
+			setactor[RETURN].y SPAWN_ORIGY
+			
+			getsector[SECTNUM_MEMORY].ceilingz TEMP2
+			setactor[RETURN].z TEMP2
+			
+			setvar RETURN 0
+		}
+	}
+ends
+
+actor SNOWFLAKESPAWNER
+	ifaction 0
+	{
+		cstat 32768
+		action ANULLACTION
+	}
+	
+	state spawn_snow
+	state spawn_snow
 enda
 
 state onground_gib_code
@@ -303,10 +513,10 @@ state onground_gib_code
 		else { eqspawn WALLBLOOD5 }
 			
 		setactor[RETURN].pal TEMP3
-			
+		
 		randvar TEMP3 2048
 		setactor[RETURN].ang TEMP3
-			
+		
 		randvar TEMP3 16
 		addvar TEMP3 32
 		setactor[RETURN].xrepeat TEMP3

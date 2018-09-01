@@ -3,3 +3,6 @@ useractor notenemy BONG2 WEAK state breakobject enda
 useractor notenemy DURRPLANT WEAK state breakobject enda
 useractor notenemy DILDO WEAK state coloredprop_break enda
 useractor notenemy FLESHLIGHT WEAK state coloredprop_break enda
+
+spritenoshade DOOM_TALLLAMP
+spritenoshade DOOM_SHORTLAMP

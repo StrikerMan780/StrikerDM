@@ -22,8 +22,10 @@ gamevar STATE_PARAM2 0 0
 //gamevar STATE_RETURN 0 0
 
 gamevar RANDOM_SOUND 0 0
+gamevar START_WEAPON -1 0
 
-gamevar NO_PISTOL_START 0 0
+gamevar CURSPRITE 0 0
+gamevar LASTSPRITE 0 0
 
 // Per-Actor Vars
 gamevar SPAWN_ORIGX 0 2
@@ -45,12 +47,10 @@ gamevar PAL_MEMORY 0 2
 
 gamevar ISADULT 0 2
 gamevar NORESPAWN 0 2
-gamevar CURSPRITE 0 2
-gamevar LASTSPRITE 0 2
 gamevar OWNER -1 2
 gamevar FROMCAN 0 2
 gamevar LASTHITBY 0 2
-gamevar ANGLE 0 2
+gamevar ACTIVATING 0 2
 
 gamevar KILLTYPE 0 2
 

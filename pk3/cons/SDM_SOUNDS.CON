@@ -87,6 +87,10 @@ define HEXENELEVATOR 556
 define HEXENELEVATORSTOP 557
 // Community sound submissions should continue from the index above this line
 
+define DOOMDOOR_CLOSE 584
+define NEW_DRIP1 585
+define NEW_DRIP2 586
+define NEW_DRIP3 587
 define ENTER_RIFT 588
 define EXIT_RIFT 589
 define FAUCET_RUN 590
@@ -122,6 +126,14 @@ define DUKE_ROIDS01 681
 define DUKE_ROIDS02 682
 define DUKE_ROIDS03 683
 define DUKE_ROIDS04 684
+
+define DUKE_GETWEAPON5 688
+define DUKE_GETWEAPON7 689
+define DUKE_GETWEAPON8 690
+define DUKE_GETWEAPON9 691
+define DUKE_GETWEAPON10 692
+define DUKE_GETWEAPON11 693
+define DUKE_GETWEAPON12 694
 
 define NEWDUKEGIB01 701
 define NEWDUKEGIB02 702
@@ -233,7 +245,8 @@ definesound MACHINERY sounds/ambience/machinery.voc 0 0 0 3 0
 definesound SPENGINE sounds/ambience/spengine.voc 0 0 0 3 0
 definesound SYNTHETIC sounds/ambience/synthetic.voc 0 0 0 3 0
 definesound WORKSTATION sounds/ambience/workstation.voc 0 0 0 3 0
-definesound DOOMDOOR sounds/ambience/doomdoor.ogg 0 0 0 0 8192
+definesound DOOMDOOR sounds/ambience/dsdoropn.wav 0 0 0 0 8192
+definesound DOOMDOOR_CLOSE sounds/ambience/dsdorcls.wav 0 0 0 0 8192
 definesound PDDOOR1 sounds/ambience/pddoor1.voc 0 0 0 0 8192
 definesound PDDOOR2 sounds/ambience/pddoor2.voc 0 0 0 0 8192
 definesound GEDOOR1O sounds/ambience/gedoor1o.wav 0 0 0 0 8192
@@ -276,6 +289,10 @@ definesound FAUCET_RUN sounds/ambience/faucetrun.wav 0 0 0 2 12240
 definesound FAUCET_ON sounds/ambience/fauceton.wav 0 0 0 0 0
 definesound FAUCET_OFF sounds/ambience/faucetoff.wav 0 0 0 0 0
 
+definesound NEW_DRIP1 sounds/drip1.wav -32 32 0 0 9000
+definesound NEW_DRIP2 sounds/drip2.wav -32 32 0 0 9000
+definesound NEW_DRIP3 sounds/drip3.wav -32 32 0 0 9000
+
 // Duke Talk
 definesound STOMP01 sounds/duke/stomp/DUKE_StompLine_01.ogg 0 0 255 0 0
 definesound STOMP02 sounds/duke/stomp/DUKE_StompLine_02.ogg 0 0 255 0 0
@@ -308,6 +325,14 @@ definesound DUKE_ROIDS01 sounds/duke/roids/DUKE_UseRoids_01.ogg 0 0 255 0 0
 definesound DUKE_ROIDS02 sounds/duke/roids/DUKE_UseRoids_02.ogg 0 0 255 0 0
 definesound DUKE_ROIDS03 sounds/duke/roids/DUKE_UseRoids_03.ogg 0 0 255 0 0
 definesound DUKE_ROIDS04 sounds/duke/roids/DUKE_UseRoids_04.ogg 0 0 255 0 0
+
+definesound DUKE_GETWEAPON5 sounds/duke/weaponpickup/DUKE_WeaponPickup_01.ogg 0 0 255 4 0
+definesound DUKE_GETWEAPON7 sounds/duke/weaponpickup/DUKE_WeaponPickup_02.ogg 0 0 255 4 0
+definesound DUKE_GETWEAPON8 sounds/duke/weaponpickup/DUKE_WeaponPickup_03.ogg 0 0 255 4 0
+definesound DUKE_GETWEAPON9 sounds/duke/weaponpickup/DUKE_WeaponPickup_04.ogg 0 0 255 4 0
+definesound DUKE_GETWEAPON10 sounds/duke/weaponpickup/DUKE_WeaponPickup_05.ogg 0 0 255 4 0
+definesound DUKE_GETWEAPON11 sounds/duke/weaponpickup/DUKE_WeaponPickup_06.ogg 0 0 255 4 0
+definesound DUKE_GETWEAPON12 sounds/duke/weaponpickup/DUKE_WeaponPickup_07.ogg 0 0 255 4 0
 
 definesound NEWDUKEGIB01 sounds/duke/gib/DUKE_GotKill_03.ogg 0 0 255 0 0
 definesound NEWDUKEGIB02 sounds/duke/gib/DUKE_GotKill_04.ogg 0 0 255 0 0

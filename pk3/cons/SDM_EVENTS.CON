@@ -183,11 +183,10 @@ onevent EVENT_EGS
 		
 		// Get angle and barrel
 		getplayer[THISACTOR].hbomb_hold_delay TEMP3
-		getplayer[THISACTOR].ang ANGLE
+		getplayer[THISACTOR].ang SPAWN_ORIGANG
 		
 		// Calculate X position
-		setvarvar TEMP ANGLE
-		andvar TEMP 2047
+		setvarvar TEMP SPAWN_ORIGANG
 		sin TEMP2 TEMP
 		divvar TEMP2 512
 		
@@ -204,9 +203,8 @@ onevent EVENT_EGS
 		setactor[THISACTOR].x TEMP
 		
 		// Calculate Y position
-		setvarvar TEMP ANGLE
+		setvarvar TEMP SPAWN_ORIGANG
 		addvar TEMP 1536
-		andvar TEMP 2047
 		sin TEMP2 TEMP
 		divvar TEMP2 512
 		
@@ -472,10 +470,19 @@ onevent EVENT_LOADACTOR
 	getactor[THISACTOR].picnum TEMP
 	switch TEMP
 	case TIMEDPLATFORM:
-	case PLATFORMSOUND:
+	case CONTEXTSOUND:
+	case CUSTOMTOUCHPLATE:
+		setactor[THISACTOR].lotag 0
+		break
+	case STARTWEAPONCHANGER:
+		setvarvar START_WEAPON LOTAG_MEMORY
 		setactor[THISACTOR].lotag 0
 		break
 	endswitch
+endevent
+
+onevent EVENT_ENTERLEVEL
+	setvar START_WEAPON -1
 endevent
 
 onevent EVENT_SPAWN
@@ -691,9 +698,40 @@ onevent EVENT_RESETPLAYER
 	setvar HAS_SSG 0
 	state setshotgun
 	
-	ifvare NO_PISTOL_START 1
+	ifvarg START_WEAPON -1
 	{
 		setplayer[THISACTOR].gotweapon PISTOL_WEAPON 0
+		
+		ifvarl START_WEAPON SSG_WEAPON
+		{
+			setplayer[THISACTOR].gotweapon START_WEAPON 1
+			
+			getplayer[THISACTOR].max_ammo_amount START_WEAPON TEMP
+			divvar TEMP 2
+			setplayer[THISACTOR].ammo_amount START_WEAPON TEMP
+			
+			ifvare START_WEAPON SHOTGUN_WEAPON
+			{
+				setvar HAS_SHOTGUN 1
+			}
+			else ifvare START_WEAPON RPG_WEAPON
+			{
+				setvar HAS_RPG 1
+				setvarvar RPG_AMMO TEMP
+			}
+			else ifvare START_WEAPON CHAINGUN_WEAPON
+			{
+				setvar HAS_RIPPER 1
+				setvarvar RIPPER_AMMO TEMP
+			}
+			else ifvare START_WEAPON FREEZE_WEAPON
+			{
+				setvar HAS_FREEZETHROWER 1
+				setvarvar FREEZETHROWER_AMMO TEMP
+			}
+		
+			setplayer[THISACTOR].curr_weapon START_WEAPON
+		}
 	}
 endevent
 
@@ -858,3 +896,17 @@ endevent
 onevent EVENT_DISPLAYMENUREST // Version display. !UNSYNCHRONIZED!
 	screentext 3072 316 180 65536 0 0 499 -127 6 536 0 3 5 1 1 8193 0 0 xdim ydim 
 endevent
+
+/*
+onevent EVENT_SOUND
+	ifvare RETURN SOMETHING_DRIPPING
+	{
+		randvar RANDOM_SOUND 2
+		switch RANDOM_SOUND
+			case 0: setvar RETURN NEW_DRIP1 break
+			case 1: setvar RETURN NEW_DRIP2 break
+			case 2: setvar RETURN NEW_DRIP3 break
+		endswitch
+	}
+endevent
+*/

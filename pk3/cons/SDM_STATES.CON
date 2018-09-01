@@ -255,13 +255,20 @@ state make_attacker_speak
 ends
 
 state randgetweapsnds
-	randvar RANDOM_SOUND 4
+	randvar RANDOM_SOUND 11
 	switch RANDOM_SOUND
 		case 0: globalsound DUKE_GETWEAPON1 break
 		case 1: globalsound DUKE_GETWEAPON2 break
 		case 2: globalsound DUKE_GETWEAPON3 break
 		case 3: globalsound DUKE_GETWEAPON4 break
-		case 4: globalsound DUKE_GETWEAPON6 break
+		case 4: globalsound DUKE_GETWEAPON5 break
+		case 5: globalsound DUKE_GETWEAPON6 break
+		case 6: globalsound DUKE_GETWEAPON7 break
+		case 7: globalsound DUKE_GETWEAPON8 break
+		case 8: globalsound DUKE_GETWEAPON9 break
+		case 9: globalsound DUKE_GETWEAPON10 break
+		case 10: globalsound DUKE_GETWEAPON11 break
+		case 11: globalsound DUKE_GETWEAPON12 break
 	endswitch
 ends
 

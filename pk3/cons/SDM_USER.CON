@@ -7,10 +7,10 @@ define MAXFLAMETHROWERAMMO 99
 define FLAMETHROWERAMMOAMOUNT 25
 define FLAMETHROWER_WEAPON_STRENGTH 20
 
-define MAXPLASMARIFLEAMMO 25
-define PLASMARIFLEAMMOAMOUNT 5
+define MAXPLASMARIFLEAMMO 42
+define PLASMARIFLEAMMOAMOUNT 6
 define PLASMARIFLE_WEAPON_STRENGTH 75
-define PLASMARIFLE_WEAPON_SECONDARY_STRENGTH 12
+define PLASMARIFLE_WEAPON_SECONDARY_STRENGTH 14
 define PLASMARIFLE_X_SPREAD 24
 define PLASMARIFLE_Y_SPREAD 768
 
@@ -53,10 +53,12 @@ definegametype GM_INSTAGIB 19480 Instagib
 
 definevolumename 4 Striker's Maps
 definelevelname 4 0 maps/ktc.map 66:60 66:60 Killer Titty Club
-definelevelname 4 1 maps/space.map 66:60 66:60 Space Station Alpha (WIP)
+definelevelname 4 1 maps/space.map 66:60 66:60 Space Station Alpha
 definelevelname 4 2 maps/vapor.map 66:60 66:60 Aesthetic Duel (WIP)
-definelevelname 4 3 maps/rocks.map 66:60 66:60 Feature Test Map
-music 5 music/sexwithex.mid music/darkmatt.mid music/passport.mid music/ffunk.ogg
+definelevelname 4 3 maps/afucktemple.map 66:60 66:60 Ancient Fuck Temple
+definelevelname 4 4 maps/stayfrosty.map 66:60 66:60 Stay Frosty
+definelevelname 4 5 maps/rocks.map 66:60 66:60 Feature Test Map
+music 5 music/sexwithex.mid music/darkmatt.mid music/passport.mid music/sdungeon.ogg music/sturr31.ogg music/ffunk.ogg
 
 definevolumename 5 William Gee's DM Maps
 definelevelname 5 0 maps/wgdm1.map 66:60 66:60 WGDM1 (6P)
@@ -109,7 +111,9 @@ definelevelname 8 1 maps/BRIT11MAP1-SDM.map 66:60 66:60 BRIT11 MAP01 (Duke Style
 definelevelname 8 2 maps/UDM3MAP3-SDM.map 66:60 66:60 UDM3 MAP03 (Duke Style)
 definelevelname 8 3 maps/JEBIDMMAP7-SDM.map 66:60 66:60 JEBIDM MAP07 (Duke Style)
 definelevelname 8 4 maps/VEXZDM4-SDM.map 66:60 66:60 VEXZDM MAP04 (Duke Style)
+definelevelname 8 5 maps/DWANGO5M1-SDM.map 66:60 66:60 DWANGO5 MAP01 (Duke Style)
 music 9 music/d_messag.mid music/brit11m1.mid music/d_countd.mid music/flaghate.mid music/vexzdm4.mid
+        music/dwango5.mid
 	   
 definevolumename 9 Community Maps 1
 definelevelname 9 0 maps/EL_PASO-SDM.map 66:60 66:60 El Paso: Multiple Authors
@@ -200,7 +204,10 @@ definelevelname 10 8 maps/DN64SHAFT-SDM.map 66:60 66:60 Shaft: Duke64Nukem
 definelevelname 10 9 maps/DN64STADIUM-SDM.map 66:60 66:60 Stadium 64: Duke64Nukem
 definelevelname 10 10 maps/BASTIONV2.map 66:60 66:60 Bastion V2: Multiple Authors
 definelevelname 10 11 maps/PIRATESV2.map 66:60 66:60 Pirates V2: Multiple Authors
+definelevelname 10 12 maps/TORMENTO-SDM.map 66:60 66:60 Tormento: Mercano
+definelevelname 10 13 maps/ANILLO-SDM.map 66:60 66:60 Anillo: Luis Donaire Martinez
+definelevelname 10 14 maps/SWIMMING200-SDM.map 66:60 66:60 Swimming 200: Multiple Authors
 
 music 11 music/seppuku.ogg music/ancient.ogg music/fortress.ogg music/zerostreets.ogg music/zerotown.ogg
          music/eerie.ogg music/saturntoll.ogg music/echohare.ogg music/apes.mid music/mental.ogg music/breed.mid
-         music/portroyal.mid
+         music/portroyal.mid music/mercenary.mid music/oneinch.mid music/fatcity.mid
