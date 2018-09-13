@@ -33,7 +33,10 @@ tilefromtexture 1545 { file "tiles/1545.png" }
 // Interpolated Shotgun
 tilefromtexture 2614 { file "tiles/2614.png" xoff -27 yoff -5 }
 tilefromtexture 2615 { file "tiles/2615.png" xoff -21 yoff 25 }
+tilefromtexture 2619 { file "tiles/2619.png" }
 tilefromtexture 2620 { file "tiles/2620.png" }
+tilefromtexture 2621 { file "tiles/2621.png" }
+tilefromtexture 2622 { file "tiles/2622.png" }
 
 // Lo Wang statue
 tilefromtexture 3678 { file "tiles/3678.png" texture }
@@ -83,11 +86,12 @@ tilefromtexture 2511 { file "tiles/2511.png" }
 tilefromtexture 2325 { file "tiles/2325.png" xoffset 24 }
 tilefromtexture 2326 { file "tiles/2326.png" xoffset 16 }
 
-tilefromtexture 2524 { file "tiles/2524.png" xoffset -12 yoffset -2 texture }
-tilefromtexture 2525 { file "tiles/2525.png" xoffset -7 yoffset 8 texture }
-tilefromtexture 2526 { file "tiles/2526.png" xoffset -16 yoffset 4 texture }
-tilefromtexture 2528 { file "tiles/2528.png" xoffset -28 yoffset 2 texture }
-tilefromtexture 2529 { file "tiles/2529.png" xoffset -70 yoffset 8 texture }
+tilefromtexture 2524 { file "tiles/2524.png" xoffset -14 yoffset 3 }
+tilefromtexture 2525 { file "tiles/2525.png" xoffset -7 yoffset 13 }
+tilefromtexture 2526 { file "tiles/2526.png" xoffset -16 yoffset 12 }
+tilefromtexture 2528 { file "tiles/2528.png" xoffset -38 yoffset -6 }
+tilefromtexture 2529 { file "tiles/2529.png" xoffset -74 yoffset 5 }
+tilefromtexture 2532 { file "tiles/2532.png" xoffset -16 yoffset -30 }
 
 /* // Duke64 Pistol for later.
 tilefromtexture 2524 { file "tiles/2524_dn64.png" xoff -32 yoff 10 }
@@ -144,6 +148,8 @@ tilefromtexture 2086 { file "tiles/2086.png" }
 tilefromtexture 2087 { file "tiles/2087.png" }
 tilefromtexture 2088 { file "tiles/2088.png" }
 tilefromtexture 2089 { file "tiles/2089.png" }
+
+tilefromtexture 5131 { file "tiles/5131.png" }
 
 // Flamethrower pickup
 tilefromtexture 5134 { file "tiles/5134.png" xoff 3 yoff -5 }

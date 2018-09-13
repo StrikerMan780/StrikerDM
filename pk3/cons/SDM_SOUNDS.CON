@@ -1,33 +1,88 @@
-define DSITEMUP 398
-define STOMP01 399
-define STOMP02 400
-define STOMP03 401
-define STOMP04 402
-define STOMP05 403
-define STOMP06 404
-define STOMP07 405
-define STOMP08 406
-define STOMP09 407
-define STOMP10 408
-define STOMP11 409
-define STOMP12 410
-define STOMP13 411
-define STOMP14 412
-define STOMP15 413
-define STOMP16 414
-define STOMP17 415
-define STOMP18 416
-define STOMP19 417
-define STOMP20 418
+define FLAMETHROWER_START 398
+define FLAMETHROWER_FIRE 399
+// 400
 
-define FREEZE01 419
-define FREEZE02 420
-define FREEZE03 421
-define FREEZE04 422
-define FREEZE05 423
+// World Tour Reserved
+define E5L7_DUKE_QUIT_YOU             401
+define E5L4_DUKE_WHY_SERIOUS          402
+define E5L1_DUKE_CREAMANDSUGAR        403
+define E5L1_DUKE_CURIOUSER            404
+define E5L1_DUKE_DEJAVU               405
+define E5L1_DUKE_GETTINGOLD           406 
+define E5L1_DUKE_GOODCOFFEE           407
+define E5L1_DUKE_NOTPOSSIBLE          408
+define E5L2_DUKE_BEHERE               409
+define E5L2_DUKE_MEATCANDY            410
+define E5L2_DUKE_SISKOVA              411
+define E5L2_DUKE_USSR                 412
+define E5L4_DUKE_CRYINGMUMMY          413
+define E5L4_DUKE_CRYSTALSKULL         414
+define E5L4_DUKE_FIFTHELEMENT         415
+define E5L4_DUKE_HASSANCHOP           416
+define E5L4_DUKE_HELLOMUMMY           417
+define E5L5_DUKE_FROMAGE              418
+define E5L5_DUKE_ICU                  419
+define E5L5_DUKE_SOUFFLE              420
+define E5L6_DUKE_ALCATRAZ             421
+define E5L6_DUKE_ILLEGALALIENS        422
+define E5L7_DUKE_DREAMS               423
+define E5L7_DUKE_FLAMINGALIENBITCH    424
+define E5L7_DUKE_ROSEBUD              425
+define E5L8_DUKE_ETERNITY             426
+define MQ_DUKE_BIGBANG                427
+define MQ_DUKE_COBRA                  428
+define MQ_DUKE_GRANTORINO             429
+define MQ_DUKE_JOSEYWALES             430
+define MQ_DUKE_LITTLECHINA            431
+define MQ_DUKE_ONDEADLYGROUND         432
+define MQ_DUKE_PREDATOR               433
+define MQ_DUKE_RAMBO                  434
+define MQ_DUKE_REDHEAT                435
+define MQ_DUKE_RIDDICK                436
+define MQ_DUKE_THEGOODTHEBAD          437
+define MQ_DUKE_TOMBSTONE              438
+define MQ_DUKE_TRUEGRIT               439
+define MQ_DUKE_WALKINGDEAD            440
+define MQ_DUKE_YOUNGGUNS              441
+define CHESHIREALIEN_01               442
+define CHESHIREALIEN_02               443
+define CHESHIREALIEN_03               444
+define CHESHIREALIEN_04               445
+define FLAMETHROWER_ENEMY             446
+// End world tour reserved
 
-define FLAMETHROWER_START 500
-define FLAMETHROWER_FIRE 501
+define DSTELEPT 449
+define DSITEMUP 450
+define STOMP01 451
+define STOMP02 452
+define STOMP03 453
+define STOMP04 454
+define STOMP05 455
+define STOMP06 456
+define STOMP07 457
+define STOMP08 458
+define STOMP09 459
+define STOMP10 460
+define STOMP11 461
+define STOMP12 462
+define STOMP13 463
+define STOMP14 464
+define STOMP15 465
+define STOMP16 466
+define STOMP17 467
+define STOMP18 468
+define STOMP19 469
+define STOMP20 470
+
+define FREEZE01 471
+define FREEZE02 472
+define FREEZE03 473
+define FREEZE04 474
+define FREEZE05 475
+
+define MENU_CONFIRM 499
+define MENU_MOVE 500
+define MENU_BACK 501
 define TOASTY 502
 define DEVASTATOR_FIRERIGHT 503
 define DEVASTATOR_FIRELEFT 504
@@ -188,8 +243,11 @@ define NEWDUKEGIB50 750
 define NEWDUKEGIB51 751
 
 // Sounds
-definesound INTO_MENU sounds/menu/menu_enter.wav 0 0 0 0 0
+definesound MENU_CONFIRM sounds/menu/menu_confirm.wav 0 0 0 0 0
+definesound MENU_MOVE sounds/menu/menu_move.wav 0 0 0 0 0
+definesound MENU_BACK sounds/menu/menu_back.wav 0 0 0 0 0
 
+definesound DSTELEPT sounds/ambience/dstelept.wav 0 0 255 0 0
 definesound DSITEMUP sounds/items/dsitemup.wav 0 0 255 0 0
 definesound FLAMETHROWER_START sounds/flamestr.ogg 0 0 255 0 0
 definesound FLAMETHROWER_FIRE sounds/flamethr.ogg 0 0 255 0 0

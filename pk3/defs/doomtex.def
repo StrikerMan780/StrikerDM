@@ -62,6 +62,17 @@ tilefromtexture 3562 { file "tiles/3562.png" texture } // FLAT1_2
 
 
 // Sprites
+tilefromtexture 3465 { file "tiles/3465.png" texture } // Teleport Fog
+tilefromtexture 3466 { file "tiles/3466.png" texture }
+tilefromtexture 3467 { file "tiles/3467.png" texture }
+tilefromtexture 3468 { file "tiles/3468.png" texture }
+tilefromtexture 3469 { file "tiles/3469.png" texture }
+tilefromtexture 3470 { file "tiles/3470.png" texture }
+tilefromtexture 3471 { file "tiles/3471.png" texture }
+tilefromtexture 3472 { file "tiles/3472.png" texture }
+tilefromtexture 3473 { file "tiles/3473.png" texture }
+tilefromtexture 3474 { file "tiles/3474.png" texture }
+
 tilefromtexture 3300 { file "tiles/3300.png" texture } // Tall Lamp
 tilefromtexture 3301 { file "tiles/3301.png" texture }
 tilefromtexture 3302 { file "tiles/3302.png" texture }

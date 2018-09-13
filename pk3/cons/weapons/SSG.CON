@@ -19,15 +19,15 @@ state draw_ssg // SHOTGUN_WEAPON:
 			break
 		case 2:
 			setvar hud_tilenum SSG_FIRE2
-			addvar hud_x 10
-			addvar hud_y 18
+			addvar hud_x 16
+			addvar hud_y 24
 			setvar hud_shade -128
 			state G_DrawWeaponTile
 			break
 		case 3:
 			setvar hud_tilenum SSG_FIRE3
-			addvar hud_x 16
-			addvar hud_y 24
+			addvar hud_x 28
+			addvar hud_y 40
 			setvar hud_shade -128
 			state G_DrawWeaponTile
 			setvarvar hud_shade gs

@@ -148,7 +148,15 @@ state draw_shotgun // SHOTGUN_WEAPON:
             addvar hud_y 196
             
             setvar hud_tilenum SHOTGUN
-            addvar hud_tilenum 7
+			
+			ifvarl weaponcount 24 // With shell
+			{
+				addvar hud_tilenum 8
+			}
+			else
+			{
+				addvar hud_tilenum 7
+			}
             
             state G_DrawWeaponTile
 			break
@@ -176,11 +184,63 @@ state draw_shotgun // SHOTGUN_WEAPON:
             addvar hud_y 196
             
             setvar hud_tilenum SHOTGUN
-            addvar hud_tilenum 6
+			
+			ifvarl weaponcount 22 // With shell
+			{
+				addvar hud_tilenum 9
+			}
+            else
+			{
+				addvar hud_tilenum 6
+			}
             
             state G_DrawWeaponTile
             break
     endswitch
+	
+	ifvare weaponcount 21
+	{
+		setvar hud_timer 0
+	}
+	
+	ifvarg weaponcount 21
+	ifvarl weaponcount 24
+	{
+		getuserdef[].pause_on hud_temp
+		ifvare hud_temp 0
+		ifvarg clockdiff 0
+		{
+			addvarvar hud_timer clockdiff
+		}
+		
+		ifvarl hud_timer 9
+		{
+			//redefinequote 400 hud_timer: %d
+			//qsprintf 400 400 hud_timer
+			//userquote 400
+			
+			state reset_hud_weapon_coordinates
+			guniqhudid currentweapon
+			setvar hud_tilenum 2535
+			setvar hud_x 267
+			setvar hud_y 188
+			setvar hud_angle 2048
+			
+			setvar hud_temp2 16
+			mulvarvar hud_temp2 hud_timer
+			subvarvar hud_x hud_temp2
+			
+			setvar hud_temp2 1
+			mulvarvar hud_temp2 hud_timer
+			subvarvar hud_y hud_temp2
+			
+			setvar hud_temp2 128
+			mulvarvar hud_temp2 hud_timer
+			subvarvar hud_angle hud_temp2
+			
+			state G_DrawWeaponTile
+		}
+	}
 ends
 
 actor SHOTGUNSPRITE

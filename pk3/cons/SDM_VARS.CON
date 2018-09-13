@@ -1,4 +1,7 @@
 // Global Vars
+gamevar clockcheck 0 0
+gamevar clockdiff 0 0
+
 gamevar TEMP 0 0
 gamevar TEMP2 0 0
 gamevar TEMP3 0 0
@@ -59,6 +62,12 @@ gamevar JUMPPAD_HIT 0 1
 gamevar JUMPPAD_XVEL 0 1
 gamevar JUMPPAD_YVEL 0 1
 gamevar IN_RIFT 0 1
+
+// Prediction Vars
+gamevar PREDICT_JUMPPAD_HIT 0 0
+gamevar PREDICT_JUMPPAD_XVEL 0 0
+gamevar PREDICT_JUMPPAD_YVEL 0 0
+gamevar PREDICT_IN_RIFT 0 0
 
 // Defines
 define KILL_NONE 0

@@ -833,6 +833,17 @@ onevent EVENT_DISPLAYREST // !UNSYNCHRONIZED!
 	//qsprintf 500 500 gametype_flags
 	//minitext 48 48 500 -127 1
 	
+	ifvarvarn clockcheck totalclock
+	{
+		setvarvar clockdiff totalclock
+		subvarvar clockdiff clockcheck
+		setvarvar clockcheck totalclock
+	}
+	else
+	{
+		setvar clockdiff 0
+	}
+	
 	// Change orientation to 536 later.
 	getplayer[THISACTOR].curr_weapon CL_TEMP1
 	ifvare CL_TEMP1 FREEZE_WEAPON
@@ -897,16 +908,146 @@ onevent EVENT_DISPLAYMENUREST // Version display. !UNSYNCHRONIZED!
 	screentext 3072 316 180 65536 0 0 499 -127 6 536 0 3 5 1 1 8193 0 0 xdim ydim 
 endevent
 
-/*
 onevent EVENT_SOUND
+	ifvare RETURN KICK_HIT
+	{
+		getplayer[THISACTOR].gm CL_TEMP1
+		ifvarand CL_TEMP1 1
+		{
+			setvar RETURN MENU_MOVE
+		}
+	}
+	else ifvare RETURN PISTOL_BODYHIT
+	{
+		getplayer[THISACTOR].gm CL_TEMP1
+		ifvarand CL_TEMP1 1
+		{
+			setvar RETURN MENU_CONFIRM
+		}
+	}
+	else ifvare RETURN EXITMENUSOUND
+	{
+		getplayer[THISACTOR].gm CL_TEMP1
+		ifvarand CL_TEMP1 1
+		{
+			setvar RETURN MENU_BACK
+		}
+	}
+	else ifvare RETURN TELEPORTER
+	{
+		getsector[THISACTOR].floorpicnum CL_TEMP1
+		switch CL_TEMP1
+		{
+			case 3520:
+			case 3521:
+			case 3522:
+			case 3523:
+				setvar RETURN -1
+				break
+		}
+		endswitch
+	}
+	
 	ifvare RETURN SOMETHING_DRIPPING
 	{
-		randvar RANDOM_SOUND 2
-		switch RANDOM_SOUND
+		displayrandvar CL_TEMP1 2
+		switch CL_TEMP1
 			case 0: setvar RETURN NEW_DRIP1 break
 			case 1: setvar RETURN NEW_DRIP2 break
 			case 2: setvar RETURN NEW_DRIP3 break
 		endswitch
 	}
 endevent
-*/
+
+// Prediction code
+onevent EVENT_FAKEDOMOVETHINGS
+	state handle_rift_prediction
+	
+	ifvare PREDICT_JUMPPAD_HIT 1
+	{
+		ifvarn PREDICT_JUMPPAD_XVEL 0
+		{
+			setvarvar myxvel PREDICT_JUMPPAD_XVEL
+		}
+		
+		ifvarn PREDICT_JUMPPAD_YVEL 0
+		{
+			setvarvar myyvel PREDICT_JUMPPAD_YVEL
+		}
+		
+		ifp pdead
+		{
+			setvar PREDICT_JUMPPAD_HIT 0 // No longer launched by jump pad when player gets killed
+			setvar PREDICT_JUMPPAD_XVEL 0
+			setvar PREDICT_JUMPPAD_YVEL 0
+		}
+		else ifvarg myonground 0
+		{
+			setvar PREDICT_JUMPPAD_HIT 0 // No longer launched by jump pad when player hits the ground
+			setvar PREDICT_JUMPPAD_XVEL 0
+			setvar PREDICT_JUMPPAD_YVEL 0
+		}
+		else ifp pjetpack
+		{
+			setvar PREDICT_JUMPPAD_HIT 0 // If they use the jetpack, prevent them from cheating the jump pads to stop fall damage.
+			setvar PREDICT_JUMPPAD_XVEL 0
+			setvar PREDICT_JUMPPAD_YVEL 0
+		}
+		else ifinwater
+		{
+			setvar PREDICT_JUMPPAD_HIT 0 // Cancel out if landed in water.
+			setvar PREDICT_JUMPPAD_XVEL 0
+			setvar PREDICT_JUMPPAD_YVEL 0
+		}
+	}
+	else
+	{
+		headspritesect CURSPRITE mycursectnum
+		setvarvar LASTSPRITE CURSPRITE
+		whilevarn CURSPRITE -1
+		{
+			getactor[CURSPRITE].picnum TEMP
+			ifvare TEMP JUMPPAD
+			{
+				ifvare myonground 1
+				{
+					ifvarn PREDICT_JUMPPAD_HIT 1 // If not, let's do this.
+					{
+						setvar myonground 0 // No longer on the ground.
+						
+						subvar myz 16384 // Kick them off the ground a little, to stop them from being "magnetized" to the ground.
+						
+						getactor[CURSPRITE].hitag TEMP
+						ifvare TEMP 0
+						{
+							setvar TEMP2 -4096 // If not hitag is set, -4096 is the default velocity.
+						}
+						else ifvarg TEMP 0
+						{
+							setvar TEMP2 0
+							subvarvar TEMP2 TEMP
+						}
+						
+						setvarvar myzvel TEMP2 // Launch
+						
+						setvar PREDICT_JUMPPAD_HIT 1 // They're in the air.
+						
+						// Set X/Y Velocities
+						getactor[CURSPRITE].xvel TEMP2
+						mulvar TEMP2 1024
+						setvarvar PREDICT_JUMPPAD_XVEL TEMP2
+						
+						getactor[CURSPRITE].yvel TEMP2
+						mulvar TEMP2 1024
+						setvarvar PREDICT_JUMPPAD_YVEL TEMP2
+					}
+				}
+				
+				setvar CURSPRITE -1
+			}
+					
+			nextspritesect CURSPRITE LASTSPRITE
+			setvarvar LASTSPRITE CURSPRITE
+		}
+	}
+endevent

@@ -389,6 +389,35 @@ actor STARTWEAPONCHANGER
 	killit
 enda
 
+action TELEFOG1 0 2 1 1 12
+action TELEFOG2 0 10 1 1 12
+spritenoshade DOOM_TELEFOG
+actor DOOM_TELEFOG
+{
+	ifaction TELEFOG1
+	{
+		ifactioncount 2
+		action TELEFOG2
+	}
+	else ifaction TELEFOG2
+	{
+		ifactioncount 10
+		{
+			killit
+		}
+	}
+	
+	ifaction 0
+	{
+		setactor[THISACTOR].shade -127
+		cstat 128
+		sizeat 56 48
+		sound DSTELEPT
+		action TELEFOG1
+	}
+}
+enda
+
 // SFLAG_NOEVENTCODE + SFLAG_NOCLIP + SFLAG_SMOOTHMOVE + SFLAG_NOTELEPORT
 spriteflags SNOWFLAKE 26752
 actor SNOWFLAKE
@@ -610,6 +639,10 @@ actor JIBS5_ONGROUND
 		state onground_gib_code
 	}
 }
+enda
+
+actor RANDYSSHITTYCOMMENTARY 0
+	killit
 enda
 
 define SCRAP_WORKSLIKE 4226

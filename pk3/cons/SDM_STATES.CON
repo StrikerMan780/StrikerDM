@@ -382,7 +382,13 @@ state jumppadcode // This state goes in the APLAYER actor.
 			setplayer[THISACTOR].posyv JUMPPAD_YVEL
 		}
 		
-		ifp ponground
+		ifp pdead
+		{
+			setvar JUMPPAD_HIT 0 // No longer launched by jump pad when player gets killed
+			setvar JUMPPAD_XVEL 0
+			setvar JUMPPAD_YVEL 0
+		}
+		else ifp ponground
 		{
 			setvar JUMPPAD_HIT 0 // No longer launched by jump pad when player hits the ground
 			setvar JUMPPAD_XVEL 0
@@ -434,6 +440,11 @@ ends
 state handle_rift
 	ifp palive
 	{
+		ifinwater
+		{
+			break
+		}
+		
 		getsector[THISACTOR].ceilingpicnum TEMP
 		ifvare TEMP 3817
 		{
@@ -471,6 +482,44 @@ state handle_rift
 				sound EXIT_RIFT
 				palfrom 48 0 16 64
 				setvar IN_RIFT 0
+			}
+		}
+	}
+ends
+
+state handle_rift_prediction
+	ifp palive
+	{
+		ifinwater
+		{
+			break
+		}
+		
+		getsector[mycursectnum].ceilingpicnum TEMP
+		ifvare TEMP 3817
+		{
+			ifvare PREDICT_IN_RIFT 0
+			{
+				setvar PREDICT_IN_RIFT 1
+			}
+			else
+			{
+				ifvarg myzvel 512
+				{
+					setvar myzvel 512
+				}
+				
+				ifvare myjumpingcounter 1261 
+				{
+					setvar myjumpingcounter 1082
+				}
+			}
+		}
+		else
+		{
+			ifvare PREDICT_IN_RIFT 1
+			{
+				setvar PREDICT_IN_RIFT 0
 			}
 		}
 	}

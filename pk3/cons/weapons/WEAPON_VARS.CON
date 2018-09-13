@@ -42,6 +42,7 @@ gamevar hud_temp 0 1
 gamevar hud_temp2 0 1
 gamevar hud_temp3 0 1
 gamevar hud_temp4 0 1
+gamevar hud_timer 0 1
 
 /*
 // The following temporary gamevars are named differently because they are used

@@ -6,3 +6,23 @@ useractor notenemy FLESHLIGHT WEAK state coloredprop_break enda
 
 spritenoshade DOOM_TALLLAMP
 spritenoshade DOOM_SHORTLAMP
+
+actor DOOM_TALLLAMP
+{
+	ifaction 0
+	{
+		setactor[THISACTOR].shade -127
+		action ANULLACTION
+	}
+}
+enda
+
+actor DOOM_SHORTLAMP
+{
+	ifaction 0
+	{
+		setactor[THISACTOR].shade -127
+		action ANULLACTION
+	}
+}
+enda
