@@ -15,10 +15,13 @@ JimmyGnosis - Improved shrinker/expander pickups.
 Fox - Improved flamethrower ammo pickups.
 Tristan - Camo Pistol.
 Minigunner - DNF-Style Devastator sprites, Railgun sprites, interpolated shotgun pump frame.
+Angelloproduct - Perspective-corrected pistol, Half-open ejection port with shell for interpolated shotgun frame.
 The Mechanic, w0rm - Dukenuds sprites.
 HMNuke93 - Improved incinerator sprites.
 Brullov - Railgun sprites.
+JoeyTD (aka. BeardedDoomGuy) - Extended reload hand sprite
 ID Software - Doomguy sprites and health/armor bonus sprites.
+Striker - The various custom effector sprites, the fully-open ejection port with shell for shotgun pump, menu sprites.
 
 Voxels
 ------
