@@ -207,7 +207,9 @@ definelevelname 10 11 maps/PIRATESV2.map 66:60 66:60 Pirates V2: Multiple Author
 definelevelname 10 12 maps/TORMENTO-SDM.map 66:60 66:60 Tormento: Mercano
 definelevelname 10 13 maps/ANILLO-SDM.map 66:60 66:60 Anillo: Luis Donaire Martinez
 definelevelname 10 14 maps/SWIMMING200-SDM.map 66:60 66:60 Swimming 200: Multiple Authors
+definelevelname 10 15 maps/RETROBOTTLES.map 66:60 66:60 Retro Bottles: Multiple Authors
+definelevelname 10 16 maps/ICEWAR-SDM.map 66:60 66:60 Ice War: Multiple Authors
 
 music 11 music/seppuku.ogg music/ancient.ogg music/fortress.ogg music/zerostreets.ogg music/zerotown.ogg
          music/eerie.ogg music/saturntoll.ogg music/echohare.ogg music/apes.mid music/mental.ogg music/breed.mid
-         music/portroyal.mid music/mercenary.mid music/oneinch.mid music/fatcity.mid
+         music/portroyal.mid music/mercenary.mid music/oneinch.mid music/fatcity.mid music/smwwd2.mid music/antarctica.mid
