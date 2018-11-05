@@ -15,7 +15,7 @@ JimmyGnosis - Improved shrinker/expander pickups.
 Fox - Improved flamethrower ammo pickups.
 Tristan - Camo Pistol.
 Minigunner - DNF-Style Devastator sprites, Railgun sprites, interpolated shotgun pump frame.
-Angelloproduct - Perspective-corrected pistol, Half-open ejection port with shell for interpolated shotgun frame.
+Angelloproduct - Perspective-corrected pistol, half-open ejection port with shell for interpolated shotgun frame, Ripper casings.
 The Mechanic, w0rm - Dukenuds sprites.
 HMNuke93 - Improved incinerator sprites.
 Brullov - Railgun sprites.
@@ -28,6 +28,7 @@ Voxels
 Striker - Table voxel.
 Reaper Man - Voxel pack.
 DotK3D - Voxel pack.
+Shodanbot - Sliding switch voxel.
 
 Textures
 --------
