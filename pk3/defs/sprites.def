@@ -13,6 +13,9 @@ tilefromtexture 17 { file "tiles/17.png" }
 // Custom Touchplate
 tilefromtexture 75 { file "tiles/75.png" texture }
 
+// Moon gravity
+tilefromtexture 76 { file "tiles/76.png" texture }
+
 // Shrinker/Expander
 tilefromtexture 25 { file "tiles/25.png" }
 tilefromtexture 32 { file "tiles/32.png" }
@@ -29,6 +32,13 @@ texture 5008 { pal 0 { file "tiles/5008.png" nocompress nodownsize forcefilter }
 tilefromtexture 1519 { file "tiles/1519.png" }
 tilefromtexture 1544 { file "tiles/1544.png" }
 tilefromtexture 1545 { file "tiles/1545.png" }
+
+// Explosion Shockwave
+tilefromtexture 1888 { file "tiles/1888.png" }
+
+// Ripper Casing
+tilefromtexture 2587 { file "tiles/2587.png" }
+tilefromtexture 2588 { file "tiles/2588.png" }
 
 // Interpolated Shotgun
 tilefromtexture 2614 { file "tiles/2614.png" xoff -27 yoff -5 }
@@ -174,6 +184,7 @@ tilefromtexture 5176 { file "tiles/5176.png" xoff 60 yoff 39 }
 tilefromtexture 5177 { file "tiles/5177.png" xoff 60 yoff 39 }
 tilefromtexture 5178 { file "tiles/5178.png" xoff 60 yoff 39 }
 
+
 // Smoke
 tilefromtexture 5143 { file "tiles/5143.png" }
 tilefromtexture 5144 { file "tiles/5144.png" }
@@ -207,6 +218,49 @@ tilefromtexture 5166 { file "tiles/5166.png" }
 
 // Burnt corpse
 tilefromtexture 5173 { file "tiles/5173.png" }
+
+// Whispy Smoke
+tilefromtexture 5268 { file "tiles/5268.png" }
+tilefromtexture 5269 { file "tiles/5269.png" }
+tilefromtexture 5270 { file "tiles/5270.png" }
+tilefromtexture 5271 { file "tiles/5271.png" }
+tilefromtexture 5272 { file "tiles/5272.png" }
+tilefromtexture 5273 { file "tiles/5273.png" }
+tilefromtexture 5274 { file "tiles/5274.png" }
+tilefromtexture 5275 { file "tiles/5275.png" }
+tilefromtexture 5276 { file "tiles/5276.png" }
+tilefromtexture 5277 { file "tiles/5277.png" }
+
+// On-ground flamethrower fire
+tilefromtexture 5591 { file "tiles/5591.png" xoff -1 yoff 24 }
+tilefromtexture 5592 { file "tiles/5592.png" xoff -1 yoff 27 }
+tilefromtexture 5593 { file "tiles/5593.png" xoff -1 yoff 28 }
+tilefromtexture 5594 { file "tiles/5594.png" xoff -1 yoff 29 }
+tilefromtexture 5595 { file "tiles/5595.png" xoff -1 yoff 30 }
+tilefromtexture 5596 { file "tiles/5596.png" xoff -1 yoff 31 }
+tilefromtexture 5597 { file "tiles/5597.png" xoff -1 yoff 33 }
+tilefromtexture 5598 { file "tiles/5598.png" xoff -1 yoff 35 }
+tilefromtexture 5599 { file "tiles/5599.png" xoff -1 yoff 36 }
+tilefromtexture 5600 { file "tiles/5600.png" xoff -1 yoff 38 }
+tilefromtexture 5601 { file "tiles/5601.png" xoff -1 yoff 39 }
+tilefromtexture 5602 { file "tiles/5602.png" xoff -1 yoff 31 }
+tilefromtexture 5603 { file "tiles/5603.png" xoff -1 yoff 33 }
+tilefromtexture 5604 { file "tiles/5604.png" xoff -1 yoff 26 }
+
+tilefromtexture 5605 { file "tiles/5605.png" xoff 1 yoff 33 }
+tilefromtexture 5606 { file "tiles/5606.png" xoff 1 yoff 35 }
+tilefromtexture 5607 { file "tiles/5607.png" xoff 1 yoff 35 }
+tilefromtexture 5608 { file "tiles/5608.png" xoff -2 yoff 31 }
+tilefromtexture 5609 { file "tiles/5609.png" xoff -1 yoff 35 }
+tilefromtexture 5610 { file "tiles/5610.png" xoff 0 yoff 38 }
+tilefromtexture 5611 { file "tiles/5611.png" xoff -1 yoff 33 }
+tilefromtexture 5612 { file "tiles/5612.png" xoff -1 yoff 34 }
+tilefromtexture 5613 { file "tiles/5613.png" xoff 0 yoff 35 }
+tilefromtexture 5614 { file "tiles/5614.png" xoff -1 yoff 37 }
+tilefromtexture 5615 { file "tiles/5615.png" xoff -1 yoff 37 }
+tilefromtexture 5616 { file "tiles/5616.png" xoff -1 yoff 39 }
+tilefromtexture 5617 { file "tiles/5617.png" xoff 0 yoff 39 }
+tilefromtexture 5618 { file "tiles/5618.png" xoff 0 yoff 40 }
 
 // Snow
 tilefromtexture 5848 { file "tiles/5848.png" texture }

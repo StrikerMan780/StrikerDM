@@ -12,93 +12,6 @@ actor SATELLITE TOUGH
   //  ifcount 120 move SHUTTLEVELS getv geth randomangle
 enda
 
-state jib_sounds
-  ifrnd SWEARFREQUENCY
-  {
-    ifrnd 128
-    {
-      ifrnd 128
-      {
-        ifrnd 128
-        {
-          ifrnd 128
-          {
-            ifrnd 128
-              globalsound JIBBED_ACTOR12
-            else
-              globalsound JIBBED_ACTOR1
-          }
-          else
-          {
-            ifrnd 128
-              globalsound JIBBED_ACTOR9
-            else
-              globalsound JIBBED_ACTOR14
-          }
-        }
-        else
-        {
-          ifrnd 128
-            globalsound SMACKED
-          else
-            globalsound JIBBED_ACTOR2
-        }
-      }
-      else
-      {
-        ifrnd 128
-          globalsound MDEVSPEECH
-        else
-          globalsound JIBBED_ACTOR5
-      }
-    }
-    else
-    {
-      ifrnd 128
-      {
-        ifrnd 128
-        {
-          ifrnd 128
-            globalsound JIBBED_ACTOR11
-          else
-            globalsound JIBBED_ACTOR13
-        }
-        else
-        {
-          ifrnd 128
-            globalsound JIBBED_ACTOR3
-          else
-            globalsound JIBBED_ACTOR8
-        }
-      }
-      else
-      {
-        ifrnd 128
-        {
-          ifrnd 128
-            globalsound JIBBED_ACTOR6
-          else
-            globalsound JIBBED_ACTOR4
-        }
-        else
-        {
-          ifrnd 128
-          {
-            ifrnd 128
-              globalsound JIBBED_ACTOR10
-            else
-              globalsound JIBBED_ACTOR15
-
-          }
-          else
-            globalsound JIBBED_ACTOR7
-        }
-      }
-    }
-  }
-ends
-
-
 state standard_jibs
   guts JIBS2 1
   guts JIBS3 2
@@ -1403,6 +1316,19 @@ action EXPLOSION_FRAMES 0 20 1 1  4
 actor EXPLOSION2 1 EXPLOSION_FRAMES
   ifactioncount 20
     killit
+	
+	ifcount 1 { }
+	else ifcount 0
+	{
+		ifspawnedby RPG
+		{
+			spawn SHOCKWAVE
+		}
+		else ifspawnedby HEAVYHBOMB
+		{
+			spawn SHOCKWAVE
+		}
+	}
 enda
 
 actor EXPLOSION2BOT 1 EXPLOSION_FRAMES
@@ -3067,7 +2993,7 @@ state standard_pjibs
   guts DUKELEG 2
   guts DUKEGUN 1
   ifrnd 16 money 1
-  state make_attacker_speak
+  state jib_sounds
 ends
 
 move DUKENOTMOVING
@@ -3125,8 +3051,10 @@ action PCRAWLING  86   3   5   1   20
 action PAKICKING  40   2   5   1   25
 action PFLINTCHING  106  1   1   1   10
 action PTHROWNBACK  106  5   1   1   18
+action PBURNT  106  5   1   1   18
 action PFROZEN     20  1   5
 action PLYINGDEAD   113  1   1
+action PLYINGDEAD_BURNT   113  1   1
 
 action PSWIMMINGGO   375   1   5   1   10
 action PSWIMMING   375   4   5   1   13
@@ -3167,10 +3095,11 @@ ends
 move PGROWINGPOP        // Used only as a variable
 
 actor APLAYER MAXPLAYERHEALTH PSTAND 0 0
-state update_lasthitby // [SM] For Duke one-liners and such.
+//state update_lasthitby // [SM] For Duke one-liners and such.
 state player_updateweapons
+state handle_recoil
 state jumppadcode
-state handle_instakill
+state handle_sectortypes
 state handle_rift
   ifaction 0
     action PSTAND
@@ -3192,7 +3121,7 @@ state handle_rift
 		
 		resetcount
 		setvar KILLTYPE KILL_FREEZER
-		state make_attacker_speak
+		state jib_sounds
 		
         lotsofglass 60
         ifrnd 84
@@ -3278,6 +3207,8 @@ state handle_rift
           state player_tossweapon
 
           hitradius 2048 60 70 80 90
+		  spawn EXPLOSION2
+		  sound PIPEBOMB_EXPLODE
         }
         else
           sizeto MAXXSTRETCH MAXYSTRETCH
@@ -3329,6 +3260,43 @@ state handle_rift
       }
       break
     }
+	else ifaction PLYINGDEAD_BURNT
+    {
+		setactor[THISACTOR].pal 4
+		ifactioncount 3
+			move PSTOPED
+		quote 13
+	  
+		ifvare FORCE_RESPAWN 1
+			state reset_player
+			
+		ifrnd 6
+		{
+			espawn WHISPYSMOKE
+			getactor[THISACTOR].x TEMP
+			randvar TEMP2 128
+			subvar TEMP2 64
+			addvarvar TEMP TEMP2
+			setactor[RETURN].x TEMP
+			
+			getactor[THISACTOR].y TEMP
+			randvar TEMP2 128
+			subvar TEMP2 64
+			addvarvar TEMP TEMP2
+			setactor[RETURN].y TEMP
+			setvar RETURN 0
+		}
+		
+		ifhitspace
+		{
+			action PSTAND
+			espawn DUKELYINGDEAD
+			setactor[RETURN].pal 4
+			setvar RETURN 0
+			resetplayer
+		}
+		break
+    }
 
     ifaction PTHROWNBACK
     {
@@ -3342,6 +3310,40 @@ state handle_rift
           move 0
       break
     }
+	
+	ifaction PBURNT
+	{
+		setactor[THISACTOR].pal 4
+		
+		espawn WHISPYSMOKE
+		getactor[THISACTOR].x TEMP
+		randvar TEMP2 128
+		subvar TEMP2 64
+		addvarvar TEMP TEMP2
+		setactor[RETURN].x TEMP
+			
+		getactor[THISACTOR].y TEMP
+		randvar TEMP2 128
+		subvar TEMP2 64
+		addvarvar TEMP TEMP2
+		setactor[RETURN].y TEMP
+		
+		getactor[THISACTOR].z TEMP
+		randvar TEMP2 8192
+		subvarvar TEMP TEMP2
+		setactor[RETURN].z TEMP
+		setvar RETURN 0
+		
+		ifactioncount 5
+		{
+			spawn WHISPYSMOKE
+			action PLYINGDEAD_BURNT
+		}
+		else
+        ifactioncount 1
+			move 0
+		break
+	}
 
     ifaction PEXPLODEAD
     {
@@ -3531,9 +3533,20 @@ state handle_rift
 	{
 		ifdead
 		{
-			sound TOASTY
+			setvar KILLTYPE KILL_FLAME
+			ifrnd 32
+			{
+				sound TOASTY
+				break
+			}
+			else
+			{
+				action PBURNT
+				sound DUKE_KILLED4
+				state jib_sounds
+				break
+			}
 		}
-		break
 	}
 
     ifwasweapon RPG

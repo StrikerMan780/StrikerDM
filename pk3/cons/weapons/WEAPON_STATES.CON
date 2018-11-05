@@ -389,6 +389,37 @@ state checkssg
 	}
 ends
 
+state handle_recoil
+	ifvarg RECOIL_AMOUNT 0
+	ifvarg RECOIL_TIME 0
+	{
+		ifvare RECOIL_COUNTER 0
+		{
+			getplayer[THISACTOR].horiz TEMP3
+			addvarvar TEMP3 RECOIL_AMOUNT
+			setplayer[THISACTOR].horiz TEMP3
+		}
+		else ifvarg RECOIL_COUNTER 0
+		{
+			getplayer[THISACTOR].horiz TEMP3
+			setvarvar TEMP2 RECOIL_AMOUNT
+			divvarvar TEMP2 RECOIL_TIME
+			subvarvar TEMP3 TEMP2
+			setplayer[THISACTOR].horiz TEMP3
+		}
+		
+		ifvarvare RECOIL_COUNTER RECOIL_TIME
+		{
+			setvar RECOIL_COUNTER 0
+			setvar RECOIL_TIME 0
+			setvar RECOIL_AMOUNT 0
+			break
+		}
+		
+		addvar RECOIL_COUNTER 1
+	}
+ends
+
 state player_updateweapons
 ifp palive
 {

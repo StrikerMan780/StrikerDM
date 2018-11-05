@@ -26,6 +26,39 @@ actor LDEXPLOSION 1 LAMEDUKE_EXPLOSION_FRAMES
 }
 enda
 
+spritenoshade SHOCKWAVE
+action SHOCKWAVE_ANIM 0 1 1 1 4
+actor SHOCKWAVE 0
+{
+	ifaction 0
+	{
+		cstat 10272
+		sizeat 1 1
+		setactor[THISACTOR].shade -127
+		action SHOCKWAVE_ANIM
+	}
+	
+	getactor[THISACTOR].xrepeat TEMP
+	addvar TEMP 32
+	setactor[THISACTOR].xrepeat TEMP
+	setactor[THISACTOR].yrepeat TEMP
+	
+	
+	ifvarg TEMP 255
+	{
+		killit
+	}
+	else ifvarg TEMP 192
+	{
+		cstator 512
+	}
+	else ifvarg TEMP 128
+	{
+		cstator 2
+	}
+}
+enda
+
 spritenoshade RAILGUNTRAIL
 action RAILGUN_TRAIL_FRAMES 0 16 5 1 2
 actor RAILGUNTRAIL 1 RAILGUN_TRAIL_FRAMES
@@ -193,12 +226,12 @@ ends
 actor CUSTOMACTIVATOR
 	ifspawnedby RESPAWN
 	{
-		getactor[THISACTOR].htowner OWNER
-		getactor[OWNER].lotag LOTAG_MEMORY
+		getactor[THISACTOR].htowner TEMP
+		getactor[TEMP].lotag LOTAG_MEMORY
 			
 		/*
 		redefinequote 400 CUSTOMACTIVATOR OWNER: %d | LOTAG: %d
-		qsprintf 400 400 OWNER LOTAG_MEMORY
+		qsprintf 400 400 TEMP LOTAG_MEMORY
 		userquote 400
 		*/
 			
@@ -386,6 +419,12 @@ enda
 
 actor STARTWEAPONCHANGER
 	setvarvar START_WEAPON LOTAG_MEMORY
+	killit
+enda
+
+actor MOONGRAVITY
+	getactor[THISACTOR].sectnum TEMP
+	setarray SECTOR_TYPES[TEMP] 1
 	killit
 enda
 

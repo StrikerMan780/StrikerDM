@@ -5,7 +5,7 @@ define RESPAWNPROPTIME 768
 
 define MAXFLAMETHROWERAMMO 99
 define FLAMETHROWERAMMOAMOUNT 25
-define FLAMETHROWER_WEAPON_STRENGTH 20
+define FLAMETHROWER_WEAPON_STRENGTH 10
 
 define MAXPLASMARIFLEAMMO 42
 define PLASMARIFLEAMMOAMOUNT 6
@@ -30,6 +30,7 @@ definequote 130		AMMO FOR PLASMA RIFLE
 definequote 131		RAILGUN!
 definequote 132		AMMO FOR RAILGUN
 definequote 133		SUPER SHOTGUN!
+definequote 134		YOU'RE BURNING, FIND WATER!
 definequote 500		PLACEHOLDER QUOTE
 
 define GM_DUKEMATCH 0
@@ -53,7 +54,7 @@ definegametype GM_INSTAGIB 19480 Instagib
 
 definevolumename 4 Striker's Maps
 definelevelname 4 0 maps/ktc.map 66:60 66:60 Killer Titty Club
-definelevelname 4 1 maps/space.map 66:60 66:60 Space Station Alpha
+definelevelname 4 1 maps/space.map 66:60 66:60 Moonbase Alpha
 definelevelname 4 2 maps/vapor.map 66:60 66:60 Aesthetic Duel (WIP)
 definelevelname 4 3 maps/afucktemple.map 66:60 66:60 Ancient Fuck Temple
 definelevelname 4 4 maps/stayfrosty.map 66:60 66:60 Stay Frosty
@@ -112,8 +113,9 @@ definelevelname 8 2 maps/UDM3MAP3-SDM.map 66:60 66:60 UDM3 MAP03 (Duke Style)
 definelevelname 8 3 maps/JEBIDMMAP7-SDM.map 66:60 66:60 JEBIDM MAP07 (Duke Style)
 definelevelname 8 4 maps/VEXZDM4-SDM.map 66:60 66:60 VEXZDM MAP04 (Duke Style)
 definelevelname 8 5 maps/DWANGO5M1-SDM.map 66:60 66:60 DWANGO5 MAP01 (Duke Style)
+definelevelname 8 6 maps/UDM3MAP4-SDM.map 66:60 66:60 UDM3 MAP04 (Duke Style)
 music 9 music/d_messag.mid music/brit11m1.mid music/d_countd.mid music/flaghate.mid music/vexzdm4.mid
-        music/dwango5.mid
+        music/dwango5.mid music/gerudo.mid
 	   
 definevolumename 9 Community Maps 1
 definelevelname 9 0 maps/EL_PASO-SDM.map 66:60 66:60 El Paso: Multiple Authors
@@ -182,13 +184,13 @@ definelevelname 9 62 maps/ROLANDTOWN-SDM.map 66:60 66:60 Roland Town: Noldor Ran
 definelevelname 9 63 maps/COLOSSEUM-SDM.map 66:60 66:60 Colosseum: Educator
 
 music 10 music/virulent.ogg music/doktor.ogg music/egwaa.ogg music/multplay.ogg music/zeppelin.ogg music/interstl.ogg
-         music/miamidis.ogg music/coconut.ogg music/unknownc.ogg music/eatdust.ogg music/darkcmbt.ogg music/villa.ogg
+         music/miamidis.ogg music/coconut.ogg music/unknownc.ogg music/eatdust.ogg music/darkcmbt.it music/villa.ogg
          music/facility.ogg music/night.mid music/sawdust.ogg music/phaseday.ogg music/blood.ogg music/binfinie.ogg
-         music/defacto.ogg music/attkship.ogg warehaus.mid music/gelato.ogg music/blizzard.ogg music/mltplay2.ogg music/aztec.ogg music/shdsiren.ogg music/trashcan.ogg
+         music/defacto.ogg music/attkship.ogg warehaus.mid music/gelato.ogg music/blizzard.ogg music/mltplay2.ogg music/aztec.it music/shdsiren.ogg music/trashcan.ogg
          music/bomberman.ogg music/athletic.ogg music/d_stlks2.mid music/shial.ogg music/monster.mid music/hrpdream.mid music/mystery.mid music/ln2remix.ogg
          music/pterodactyl.ogg music/haremscarem.ogg music/desertdrive.ogg music/train.ogg music/jaguar.ogg music/piriton.ogg music/aenima.mid music/skinmask.mid
-         music/brainscan.mid music/ealord.mid music/mus_e2m3.mid music/slavestate.ogg music/dnfost1.ogg music/dnfost2.ogg music/quickordead.mid music/wwesmack.mid 
-         music/choco64.ogg music/darkmatt.mid music/quikmart.mid music/elephant.mid music/diredocks.mid music/2980_1.mid music/seeyou.mid music/poland.mid music/frame.mid
+         music/brainscan.mid music/ealord.mid music/mus_e2m3.mid music/slavestate.mid music/dnfost1.ogg music/dnfost2.ogg music/quickordead.mid music/wwesmack.mid 
+         music/choco64.ogg music/darkmatt.mid music/quikmart.mid music/elephant.ogg music/diredocks.mid music/2980_1.mid music/seeyou.mid music/poland.mid music/frame.mid
          music/company.mid music/sputnik.mid music/mother.mid music/italy.mid
 		 
 definevolumename 10 Community Maps 2
@@ -209,7 +211,17 @@ definelevelname 10 13 maps/ANILLO-SDM.map 66:60 66:60 Anillo: Luis Donaire Marti
 definelevelname 10 14 maps/SWIMMING200-SDM.map 66:60 66:60 Swimming 200: Multiple Authors
 definelevelname 10 15 maps/RETROBOTTLES.map 66:60 66:60 Retro Bottles: Multiple Authors
 definelevelname 10 16 maps/ICEWAR-SDM.map 66:60 66:60 Ice War: Multiple Authors
+definelevelname 10 17 maps/FRAGCHAMBER-SDM.map 66:60 66:60 Frag Chamber: Multiple Authors
+definelevelname 10 18 maps/RICOCHET-SDM.map 66:60 66:60 Ricochet: Multiple Authors
+definelevelname 10 19 maps/YARLING.map 66:60 66:60 Yarling Joint: Multiple Authors
+definelevelname 10 20 maps/GTS2-SDM.map 66:60 66:60 GTS-2: Multiple Authors
+definelevelname 10 21 maps/IODRPG13-SDM.map 66:60 66:60 Iodrpg13: Multiple Authors
+definelevelname 10 22 maps/RUBIK-SDM.map 66:60 66:60 Rubik: Multiple Authors
+definelevelname 10 23 maps/2FREEZE-SDM.map 66:60 66:60 2Freeze: Multiple Authors
+definelevelname 10 24 maps/XZONE10-SDM.map 66:60 66:60 Xzone10: Multiple Authors
 
 music 11 music/seppuku.ogg music/ancient.ogg music/fortress.ogg music/zerostreets.ogg music/zerotown.ogg
          music/eerie.ogg music/saturntoll.ogg music/echohare.ogg music/apes.mid music/mental.ogg music/breed.mid
          music/portroyal.mid music/mercenary.mid music/oneinch.mid music/fatcity.mid music/smwwd2.mid music/antarctica.mid
+         music/depression.mid music/vitevoom.mid music/munsters.mid music/bodies.mid music/deathcrush.mid music/pow.mid
+         music/nostalgy.mid music/shattered.mid

@@ -128,7 +128,7 @@ state roids_voices
 	endswitch
 ends
 
-state make_attacker_speak
+state jib_sounds
 	getactor[LASTHITBY].picnum TEMP
 	getactor[LASTHITBY].extra TEMP2
 	ifvare TEMP APLAYER
@@ -139,13 +139,26 @@ state make_attacker_speak
 		{
 			ifvare KILLTYPE KILL_FREEZER
 			{
-				randvar RANDOM_SOUND 4
+				randvar RANDOM_SOUND 6
 				switch RANDOM_SOUND
 					case 0: actorsound LASTHITBY FREEZE01 break
 					case 1: actorsound LASTHITBY FREEZE02 break
 					case 2: actorsound LASTHITBY FREEZE03 break
 					case 3: actorsound LASTHITBY FREEZE04 break
 					case 4: actorsound LASTHITBY FREEZE05 break
+					case 5: actorsound LASTHITBY FREEZE06 break
+					case 6: actorsound LASTHITBY FREEZE07 break
+				endswitch
+			}
+			else ifvare KILLTYPE KILL_FLAME
+			{
+				randvar RANDOM_SOUND 4
+				switch RANDOM_SOUND
+					case 0: actorsound LASTHITBY DUKE_FLAME01 break
+					case 1: actorsound LASTHITBY DUKE_FLAME02 break
+					case 2: actorsound LASTHITBY DUKE_FLAME03 break
+					case 3: actorsound LASTHITBY DUKE_FLAME04 break
+					case 4: actorsound LASTHITBY DUKE_FLAME05 break
 				endswitch
 			}
 			else ifvare KILLTYPE KILL_SHRINKER
@@ -409,9 +422,42 @@ state jumppadcode // This state goes in the APLAYER actor.
 	}
 ends
 
-state handle_instakill
+state handle_lowgravity
+	getplayer[THISACTOR].poszv TEMP
+	ifvarg TEMP 512
+	{
+		setplayer[THISACTOR].poszv 512
+	}
+	
+	getplayer[THISACTOR].jumping_counter TEMP
+	ifvare TEMP 1261 
+	{
+		setplayer[THISACTOR].jumping_counter 902
+	}
+ends
+
+state handle_lowgravity_prediction
+	ifvarg myzvel 512
+	{
+		setvar myzvel 512
+	}
+	
+	ifvare myjumpingcounter 1261 
+	{
+		setvar myjumpingcounter 902
+	}
+ends
+
+state handle_sectortypes
 	ifp palive
 	{
+		getactor[THISACTOR].sectnum TEMP
+		switch SECTOR_TYPES[TEMP]
+			case 1:
+				state handle_lowgravity
+				break
+		endswitch
+		
 		getsector[THISACTOR].lotag TEMP
 		ifvare TEMP 256
 		{
@@ -424,9 +470,9 @@ state handle_instakill
 			
 			// Set TEMP to florz
 			getflorzofslope TEMP3 TEMP TEMP2 TEMP
-			subvar TEMP 10240 // Subtract player height
+			subvar TEMP 512 // Subtract height
 			
-			getplayer[THISACTOR].posz TEMP2
+			getactor[THISACTOR].z TEMP2
 			
 			ifvarvarg TEMP2 TEMP // Touching floor?
 			{
@@ -435,6 +481,14 @@ state handle_instakill
 			}
 		}
 	}
+ends
+
+state handle_sectortypes_prediction
+	switch SECTOR_TYPES[mycursectnum]
+		case 1:
+			state handle_lowgravity_prediction
+			break
+	endswitch
 ends
 
 state handle_rift
@@ -462,17 +516,7 @@ state handle_rift
 					palfrom 24 0 16 64
 				}
 				
-				getplayer[THISACTOR].poszv TEMP
-				ifvarg TEMP 512
-				{
-					setplayer[THISACTOR].poszv 512
-				}
-				
-				getplayer[THISACTOR].jumping_counter TEMP
-				ifvare TEMP 1261 
-				{
-					setplayer[THISACTOR].jumping_counter 1082
-				}
+				state handle_lowgravity
 			}
 		}
 		else
@@ -504,15 +548,7 @@ state handle_rift_prediction
 			}
 			else
 			{
-				ifvarg myzvel 512
-				{
-					setvar myzvel 512
-				}
-				
-				ifvare myjumpingcounter 1261 
-				{
-					setvar myjumpingcounter 1082
-				}
+				state handle_lowgravity_prediction
 			}
 		}
 		else

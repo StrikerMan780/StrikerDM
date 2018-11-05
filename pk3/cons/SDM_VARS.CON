@@ -6,6 +6,13 @@ gamevar TEMP 0 0
 gamevar TEMP2 0 0
 gamevar TEMP3 0 0
 
+gamevar RANDOM_SOUND 0 0
+gamevar START_WEAPON -1 0
+
+gamevar CURSPRITE 0 0
+gamevar LASTSPRITE 0 0
+
+// Clientside Global
 gamevar CL_TEMP1 0 0
 
 gamevar SCORE_COUNTER 0 0
@@ -17,18 +24,13 @@ gamevar SCORE_YOFFSET 0 0
 gamevar SCORE_FRAGS 0 0
 gamevar SCORE_SUICIDES 0 0
 
+// State parameters
 gamevar STATE_TEMP1 0 0
 gamevar STATE_TEMP2 0 0
 gamevar STATE_PARAM1 0 0
 gamevar STATE_PARAM2 0 0
 //gamevar STATE_PARAM3 0 0
 //gamevar STATE_RETURN 0 0
-
-gamevar RANDOM_SOUND 0 0
-gamevar START_WEAPON -1 0
-
-gamevar CURSPRITE 0 0
-gamevar LASTSPRITE 0 0
 
 // Per-Actor Vars
 gamevar SPAWN_ORIGX 0 2
@@ -50,12 +52,15 @@ gamevar PAL_MEMORY 0 2
 
 gamevar ISADULT 0 2
 gamevar NORESPAWN 0 2
-gamevar OWNER -1 2
 gamevar FROMCAN 0 2
 gamevar LASTHITBY 0 2
 gamevar ACTIVATING 0 2
 
 gamevar KILLTYPE 0 2
+
+gamevar BURNING_TICS 0 2
+gamevar BURNING_INFLICTOR -1 2
+gamevar BURNING_OLDPAL -1 2
 
 // Per-Player Vars
 gamevar JUMPPAD_HIT 0 1
@@ -63,17 +68,26 @@ gamevar JUMPPAD_XVEL 0 1
 gamevar JUMPPAD_YVEL 0 1
 gamevar IN_RIFT 0 1
 
+gamevar RECOIL_AMOUNT 0 1
+gamevar RECOIL_TIME 0 1
+gamevar RECOIL_COUNTER 0 1
+
 // Prediction Vars
 gamevar PREDICT_JUMPPAD_HIT 0 0
 gamevar PREDICT_JUMPPAD_XVEL 0 0
 gamevar PREDICT_JUMPPAD_YVEL 0 0
 gamevar PREDICT_IN_RIFT 0 0
 
+// Arrays
+define MAXSECTORS 4096
+gamearray SECTOR_TYPES MAXSECTORS
+
 // Defines
 define KILL_NONE 0
 define KILL_SHRINKER 1
 define KILL_FREEZER 2
 define KILL_EXPANDER 3
+define KILL_FLAME 4
 
 define ADULT_HIDE 1
 define ADULT_UNHIDE 2

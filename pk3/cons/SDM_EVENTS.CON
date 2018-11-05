@@ -1,9 +1,85 @@
+damageeventtilerange 0 9999
+
+state check_for_crack
+	getactor[RETURN].picnum TEMP
+	switch TEMP
+		case CRACK1:
+		case CRACK2:
+		case CRACK3:
+		case CRACK4:
+			setvar RETURN -1
+			break
+	endswitch
+ends
+
+onevent EVENT_DAMAGESPRITE
+	ifactor FREEZEBLAST
+	{
+		getactorvar[RETURN].BURNING_TICS TEMP
+		ifvarg TEMP 0
+		{
+			setactor[THISACTOR].extra 1
+		}
+	}
+	else ifactor BURNING_ALT
+	{
+		state check_for_crack
+	}
+	else ifactor BURNING2_ALT
+	{
+		state check_for_crack
+	}
+endevent
+
+state set_on_fire
+	getactor[RETURN].extra TEMP
+	ifvarl TEMP 1 { break }
+	
+	getactorvar[RETURN].BURNING_TICS TEMP
+	ifvarl TEMP 117
+	{
+		getactor[RETURN].cstat TEMP
+		ifvarand TEMP 256
+		{
+			getactorvar[RETURN].BURNING_OLDPAL TEMP
+			ifvare TEMP -1
+			{
+				getactor[RETURN].pal TEMP2
+				setactorvar[RETURN].BURNING_OLDPAL TEMP2
+			}
+			
+			getactor[THISACTOR].owner TEMP
+			setactorvar[RETURN].BURNING_TICS 120
+			setactorvar[RETURN].BURNING_INFLICTOR TEMP
+		}
+	}
+ends
+
+onevent EVENT_POSTDAMAGESPRITE
+	getactor[THISACTOR].owner TEMP
+	setactorvar[RETURN].LASTHITBY TEMP
+	
+	ifactor FIREBALL
+	{
+		state set_on_fire
+	}
+	else ifactor BURNING_ALT
+	{
+		state set_on_fire
+	}
+	else ifactor BURNING2_ALT
+	{
+		state set_on_fire
+	}
+	
+endevent
+
 onevent EVENT_KILLIT
 	ifactor FIREBALL
 	{
 		espawn ONFIRE
-		getactor[THISACTOR].owner OWNER
-		setactor[RETURN].owner OWNER
+		getactor[THISACTOR].owner TEMP
+		setactor[RETURN].owner TEMP
 		setvar RETURN 0
 		break
 	}
@@ -284,7 +360,140 @@ onevent EVENT_EGS
 	endswitch
 endevent
 
+state reset_burn
+	stopsound FIRE_CRACKLE
+	
+	ifwasweapon FREEZEBLAST
+	{
+		getactor[THISACTOR].extra TEMP
+		ifvarg TEMP 0
+		{
+			setactor[THISACTOR].pal BURNING_OLDPAL
+		}
+	}
+	else
+	{
+		setactor[THISACTOR].pal BURNING_OLDPAL
+	}
+	
+	setvar BURNING_OLDPAL -1
+	setvar BURNING_TICS 0
+	setvar BURNING_INFLICTOR -1
+ends
+
 onevent EVENT_GAME
+	ifvarg BURNING_TICS 0
+	{
+		ifinwater { state reset_burn break }
+		ifinspace { state reset_burn break }
+		ifwasweapon FREEZEBLAST { state reset_burn break }
+		
+		findnearsprite3d TOILETWATER 800 TEMP
+		ifvarn TEMP -1
+		{
+			state reset_burn
+			break
+		}
+		
+		getactor[THISACTOR].extra TEMP
+		ifvarl TEMP 1
+		{
+			state reset_burn
+			break
+		}
+		
+		ifactor APLAYER
+		{
+			palfrom 16 64 8 0
+		}
+		
+		// Check if on water surface
+		getsector[THISACTOR].lotag TEMP
+		ifvare TEMP 1
+		{
+			// TEMP = X
+			// TEMP2 = Y
+			// TEMP3 = Sector Number
+			getactor[THISACTOR].x TEMP
+			getactor[THISACTOR].y TEMP2
+			updatesector TEMP TEMP2 TEMP3
+			
+			// Set TEMP to florz
+			getflorzofslope TEMP3 TEMP TEMP2 TEMP
+			subvar TEMP 512 // Subtract height
+			
+			getactor[THISACTOR].z TEMP2
+			
+			ifvarvarg TEMP2 TEMP // Touching floor?
+			{
+				state reset_burn
+				break
+			}
+		}
+		
+		// Burn sound every 30 tics
+		setvarvar TEMP BURNING_TICS
+		modvar TEMP 30
+		ifvare TEMP 0 { sound FIRE_CRACKLE }
+		
+		setvarvar TEMP BURNING_TICS
+		modvar TEMP 2
+		ifvare TEMP 0
+		{
+			// Fire Sprites
+			espawn ONFIRE
+			
+			getactor[THISACTOR].x TEMP
+			randvar TEMP2 256
+			subvar TEMP2 128
+			addvarvar TEMP TEMP2
+			setactor[RETURN].x TEMP
+			
+			getactor[THISACTOR].y TEMP
+			randvar TEMP2 256
+			subvar TEMP2 128
+			addvarvar TEMP TEMP2
+			setactor[RETURN].y TEMP
+			
+			// Note: Set this to use tilesizy*yrepeat later.
+			getactor[THISACTOR].z TEMP
+			randvar TEMP2 8192
+			subvarvar TEMP TEMP2
+			setactor[RETURN].z TEMP
+			
+			setvar RETURN 0
+		}
+		
+		setvarvar TEMP BURNING_TICS
+		modvar TEMP 4
+		ifvare TEMP 0
+		{
+			// Check if there's any incoming damage, and add if so, or set to 1 if not.
+			getactor[THISACTOR].htextra TEMP2
+			ifvarl TEMP2 0
+			{
+				setactor[THISACTOR].htextra 1 
+			}
+			else
+			{
+				addvar TEMP2 1
+				setactor[THISACTOR].htextra TEMP2
+			}
+			setactor[THISACTOR].htowner BURNING_INFLICTOR
+			setactor[THISACTOR].htpicnum FIREBALL
+		}
+		
+		setactor[THISACTOR].pal 2
+		
+		subvar BURNING_TICS 1
+		
+		ifvare BURNING_TICS 0
+		{
+			state reset_burn
+			break
+		}
+	}
+
 	ifactor TRIPBOMB
 	{
 		getactor[THISACTOR].cstat TEMP	
@@ -305,7 +514,7 @@ onevent EVENT_GAME
 			getactor[THISACTOR].z SPAWN_ORIGZ
 			getactor[THISACTOR].ang SPAWN_ORIGANG
 			getactor[THISACTOR].zvel SPAWN_ORIGZVEL
-			getactor[THISACTOR].owner OWNER
+			getactor[THISACTOR].owner TEMP2
 			
 			eshoot PLASMABALL2
 			getactor[THISACTOR].ang TEMP
@@ -315,7 +524,7 @@ onevent EVENT_GAME
 			setactor[RETURN].y SPAWN_ORIGY
 			setactor[RETURN].z SPAWN_ORIGZ
 			setactor[RETURN].zvel SPAWN_ORIGZVEL
-			setactor[RETURN].owner OWNER
+			setactor[RETURN].owner TEMP2
 			setvar RETURN 0
 			
 			eshoot PLASMABALL2
@@ -326,7 +535,7 @@ onevent EVENT_GAME
 			setactor[RETURN].y SPAWN_ORIGY
 			setactor[RETURN].z SPAWN_ORIGZ
 			setactor[RETURN].zvel SPAWN_ORIGZVEL
-			setactor[RETURN].owner OWNER
+			setactor[RETURN].owner TEMP2
 			setvar RETURN 0
 			
 			eshoot PLASMABALL2
@@ -337,7 +546,7 @@ onevent EVENT_GAME
 			setactor[RETURN].y SPAWN_ORIGY
 			setactor[RETURN].z SPAWN_ORIGZ
 			setactor[RETURN].ang SPAWN_ORIGANG
-			setactor[RETURN].owner OWNER
+			setactor[RETURN].owner TEMP2
 			setvar RETURN 0
 			
 			eshoot PLASMABALL2
@@ -348,7 +557,7 @@ onevent EVENT_GAME
 			setactor[RETURN].y SPAWN_ORIGY
 			setactor[RETURN].z SPAWN_ORIGZ
 			setactor[RETURN].ang SPAWN_ORIGANG
-			setactor[RETURN].owner OWNER
+			setactor[RETURN].owner TEMP2
 			setvar RETURN 0
 			
 			eshoot PLASMABALL2
@@ -357,7 +566,7 @@ onevent EVENT_GAME
 			setactor[RETURN].z SPAWN_ORIGZ
 			setactor[RETURN].ang SPAWN_ORIGANG
 			setactor[RETURN].zvel SPAWN_ORIGZVEL
-			setactor[RETURN].owner OWNER
+			setactor[RETURN].owner TEMP2
 			setvar RETURN 0
 			
 			
@@ -481,8 +690,15 @@ onevent EVENT_LOADACTOR
 	endswitch
 endevent
 
-onevent EVENT_ENTERLEVEL
+onevent EVENT_PRELEVEL
 	setvar START_WEAPON -1
+	
+	setvar TEMP 0
+	whilevarn TEMP MAXSECTORS
+	{
+		setarray SECTOR_TYPES[TEMP] 0
+		addvar TEMP 1
+	}
 endevent
 
 onevent EVENT_SPAWN
@@ -512,6 +728,19 @@ onevent EVENT_SPAWN
 		break
 	}
 	
+	ifactor SHELL
+	{
+		getactor[THISACTOR].owner TEMP
+		getactor[TEMP].yvel TEMP2
+		getplayer[TEMP2].curr_weapon TEMP3
+		ifvare TEMP3 CHAINGUN_WEAPON
+		{
+			setactor[THISACTOR].mdflags 16
+			setvar EXTRA_MEMORY 1
+		}
+		break
+	}
+	
 	getactor[THISACTOR].picnum PICNUM_MEMORY
 	getactor[THISACTOR].xrepeat XREPEAT_MEMORY
 	getactor[THISACTOR].yrepeat YREPEAT_MEMORY
@@ -526,9 +755,9 @@ onevent EVENT_SPAWN
 	getactor[THISACTOR].z SPAWN_ORIGZ
 	getactor[THISACTOR].ang SPAWN_ORIGANG
 	
-	// Mark certain tiles for Adult Mode
 	getactor[THISACTOR].picnum TEMP
 	switch TEMP
+		// Adult tiles (Hide if adult mode is off)
 		case FLESHLIGHT:
 		case DILDO:
 		case GEECKU:
@@ -548,7 +777,8 @@ onevent EVENT_SPAWN
 			setactor[THISACTOR].mdflags 16
 			setvar ISADULT ADULT_HIDE
 			break
-			
+		
+		// Unmarked as adult	
 		case XXXSTACY:
 		case FEMPIC1:
 		case FEMPIC2:
@@ -558,6 +788,7 @@ onevent EVENT_SPAWN
 			setvar ISADULT ADULT_UNHIDE
 			break
 		
+		// Adult tiles (Swap if adult mode is off)
 		case EXOTICA:
 		case FEMPIC5:
 		case FEMPIC6:
@@ -607,6 +838,7 @@ onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
 			}
 			else
 			{
+				// If ADULT_UNHIDE or ADULT_SWAP, copy x/yrepeat of actor.
 				getactor[THISACTOR].xrepeat CL_TEMP1
 				settspr[THISACTOR].tsprxrepeat CL_TEMP1
 				
@@ -652,6 +884,17 @@ onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
 	ifactor LASERLINE
 	{
 		settspr[THISACTOR].tsprpicnum 5006
+	}
+	else ifactor SHELL
+	{
+		ifvare EXTRA_MEMORY 1
+		{
+			gettspr[THISACTOR].tsprpicnum CL_TEMP1
+			switch CL_TEMP1
+				case 2533: settspr[THISACTOR].tsprpicnum RIPPERSHELL1 break
+				case 2534: settspr[THISACTOR].tsprpicnum RIPPERSHELL2 break
+			endswitch
+		}
 	}
 endevent
 
@@ -902,6 +1145,11 @@ onevent EVENT_DISPLAYREST // !UNSYNCHRONIZED!
 			addvar SCORE_PLAYERINDEX 1
 		}
 	}
+	
+	ifvarg BURNING_TICS 0
+	{
+		screentext 3072 160 150 65536 0 0 134 -127 2 16 0 3 5 1 1 8194 0 0 xdim ydim
+	}
 endevent
 
 onevent EVENT_DISPLAYMENUREST // Version display. !UNSYNCHRONIZED!
@@ -962,45 +1210,9 @@ endevent
 // Prediction code
 onevent EVENT_FAKEDOMOVETHINGS
 	state handle_rift_prediction
-	
-	ifvare PREDICT_JUMPPAD_HIT 1
-	{
-		ifvarn PREDICT_JUMPPAD_XVEL 0
-		{
-			setvarvar myxvel PREDICT_JUMPPAD_XVEL
-		}
-		
-		ifvarn PREDICT_JUMPPAD_YVEL 0
-		{
-			setvarvar myyvel PREDICT_JUMPPAD_YVEL
-		}
-		
-		ifp pdead
-		{
-			setvar PREDICT_JUMPPAD_HIT 0 // No longer launched by jump pad when player gets killed
-			setvar PREDICT_JUMPPAD_XVEL 0
-			setvar PREDICT_JUMPPAD_YVEL 0
-		}
-		else ifvarg myonground 0
-		{
-			setvar PREDICT_JUMPPAD_HIT 0 // No longer launched by jump pad when player hits the ground
-			setvar PREDICT_JUMPPAD_XVEL 0
-			setvar PREDICT_JUMPPAD_YVEL 0
-		}
-		else ifp pjetpack
-		{
-			setvar PREDICT_JUMPPAD_HIT 0 // If they use the jetpack, prevent them from cheating the jump pads to stop fall damage.
-			setvar PREDICT_JUMPPAD_XVEL 0
-			setvar PREDICT_JUMPPAD_YVEL 0
-		}
-		else ifinwater
-		{
-			setvar PREDICT_JUMPPAD_HIT 0 // Cancel out if landed in water.
-			setvar PREDICT_JUMPPAD_XVEL 0
-			setvar PREDICT_JUMPPAD_YVEL 0
-		}
-	}
-	else
+	state handle_sectortypes_prediction
+
+	ifvare PREDICT_JUMPPAD_HIT 0
 	{
 		headspritesect CURSPRITE mycursectnum
 		setvarvar LASTSPRITE CURSPRITE
@@ -1048,6 +1260,44 @@ onevent EVENT_FAKEDOMOVETHINGS
 					
 			nextspritesect CURSPRITE LASTSPRITE
 			setvarvar LASTSPRITE CURSPRITE
+		}
+	}
+	
+	ifvare PREDICT_JUMPPAD_HIT 1
+	{
+		ifvarn PREDICT_JUMPPAD_XVEL 0
+		{
+			setvarvar myxvel PREDICT_JUMPPAD_XVEL
+		}
+		
+		ifvarn PREDICT_JUMPPAD_YVEL 0
+		{
+			setvarvar myyvel PREDICT_JUMPPAD_YVEL
+		}
+		
+		ifp pdead
+		{
+			setvar PREDICT_JUMPPAD_HIT 0 // No longer launched by jump pad when player gets killed
+			setvar PREDICT_JUMPPAD_XVEL 0
+			setvar PREDICT_JUMPPAD_YVEL 0
+		}
+		else ifvarg myonground 0
+		{
+			setvar PREDICT_JUMPPAD_HIT 0 // No longer launched by jump pad when player hits the ground
+			setvar PREDICT_JUMPPAD_XVEL 0
+			setvar PREDICT_JUMPPAD_YVEL 0
+		}
+		else ifp pjetpack
+		{
+			setvar PREDICT_JUMPPAD_HIT 0 // If they use the jetpack, prevent them from cheating the jump pads to stop fall damage.
+			setvar PREDICT_JUMPPAD_XVEL 0
+			setvar PREDICT_JUMPPAD_YVEL 0
+		}
+		else ifinwater
+		{
+			setvar PREDICT_JUMPPAD_HIT 0 // Cancel out if landed in water.
+			setvar PREDICT_JUMPPAD_XVEL 0
+			setvar PREDICT_JUMPPAD_YVEL 0
 		}
 	}
 endevent

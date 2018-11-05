@@ -64,6 +64,9 @@ onevent EVENT_DOFIRE
 		{
 			sound DEVASTATOR_FIRELEFT
 		}
+		
+		setvar RECOIL_AMOUNT 2
+		setvar RECOIL_TIME 2
 	}
 	else ifvare TEMP CHAINGUN_WEAPON
 	{
@@ -80,6 +83,9 @@ onevent EVENT_DOFIRE
 			{
 				setvar PLASMARIFLE_AMMO 0
 			}
+			
+			setvar RECOIL_AMOUNT 8
+			setvar RECOIL_TIME 4
 		}
 		else
 		{
@@ -118,6 +124,9 @@ onevent EVENT_DOFIRE
 			{
 				setvar RAILGUN_AMMO 0
 			}
+			
+			setvar RECOIL_AMOUNT 4
+			setvar RECOIL_TIME 2
 		}
 		else
 		{
@@ -132,6 +141,9 @@ onevent EVENT_DOFIRE
 			{
 				setvar RPG_AMMO 0
 			}
+			
+			setvar RECOIL_AMOUNT 10
+			setvar RECOIL_TIME 10
 		}
 	}
 	else ifvare TEMP SHOTGUN_WEAPON
@@ -148,6 +160,14 @@ onevent EVENT_DOFIRE
 			
 			subvar TEMP2 1
 			setplayer[THISACTOR].ammo_amount SHOTGUN_WEAPON TEMP2
+			
+			setvar RECOIL_AMOUNT 8
+			setvar RECOIL_TIME 2
+		}
+		else
+		{
+			setvar RECOIL_AMOUNT 4
+			setvar RECOIL_TIME 2
 		}
 	}
 endevent

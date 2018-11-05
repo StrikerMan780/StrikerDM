@@ -195,8 +195,8 @@ actor ONFIRE 1 ONFIRE_EFFECT
 					espawn BURNING_ALT
 				else
 					espawn BURNING2_ALT
-				getactor[THISACTOR].owner OWNER
-				setactor[RETURN].owner OWNER
+				getactor[THISACTOR].owner TEMP
+				setactor[RETURN].owner TEMP
 				setvar RETURN 0
 			//}
 		}
@@ -240,48 +240,44 @@ action WHISPYSMOKEFRAMES 0 10 1 1 8
 actor WHISPYSMOKE 0 WHISPYSMOKEFRAMES
 	ifcount 2 {
 	}
-    else ifcount 1 {
+    else ifcount 1
+	{
         cstator 2
-        ifrnd 30 {
+		ifrnd 128
+		{
+			cstator 4
+		}
+		
+        ifrnd 30
+		{
             sizeat 20 10 
         }
-        else ifrnd 30 {
+        else ifrnd 30
+		{
             sizeat 30 20 
         }
+		else ifrnd 30
+		{
+            sizeat 35 25 
+        }
+		else
+		{
+			sizeat 25 16
+		}
     }
-    ifactioncount 10 {
+    ifactioncount 10
+	{
         killit
 	}
 enda
 
 spritenoshade FIREBALLTRAIL
 action FIREBALL_TRAIL  0   3   1   1   2
-actor FIREBALLTRAIL 0 FIREBALL_TRAIL
+actor FIREBALLTRAIL 0
 {
-
-	ifactioncount 6
+	ifaction 0
 	{
-		killit
-	}
-	else ifactioncount 5
-	{
-		sizeat 8 8
-	}
-	else ifactioncount 4
-	{
-		sizeat 12 12
-	}
-	else ifactioncount 3
-	{
-		sizeat 16 16
-	}
-	else ifactioncount 2
-	{
-		sizeat 24 24
-	}
-	else
-	{
-		ifpdistl 256
+		ifpdistl 512
 			killit
 			
 		cstator 130
@@ -292,48 +288,53 @@ actor FIREBALLTRAIL 0 FIREBALL_TRAIL
 		{
 			spawn WATERBUBBLE
 		}
+		
+		action FIREBALL_TRAIL
+	}
+	else
+	{
+		sizeto 0 0
+		sizeto 0 0
+		sizeto 0 0
+		sizeto 0 0
 	}
 } 
 enda
 
 spritenoshade FLAMETHROWERFLAME
 defineprojectile FIREBALL PROJ_WORKSLIKE 36866
-defineprojectile FIREBALL PROJ_XREPEAT 32
-defineprojectile FIREBALL PROJ_YREPEAT 32
+defineprojectile FIREBALL PROJ_XREPEAT 24
+defineprojectile FIREBALL PROJ_YREPEAT 24
 defineprojectile FIREBALL PROJ_VEL 644
 defineprojectile FIREBALL PROJ_DROP -96
 //defineprojectile FIREBALL PROJ_SPAWNS ONFIRE
 defineprojectile FIREBALL PROJ_TRAIL FIREBALLTRAIL
-defineprojectile FIREBALL PROJ_TXREPEAT 32
-defineprojectile FIREBALL PROJ_TYREPEAT 32
+defineprojectile FIREBALL PROJ_TXREPEAT 24
+defineprojectile FIREBALL PROJ_TYREPEAT 24
 defineprojectile FIREBALL PROJ_SOUND FLAMETHROWER_FIRE
 defineprojectile FIREBALL PROJ_HITRADIUS 0
 defineprojectile FIREBALL PROJ_CSTAT 10370
 defineprojectile FIREBALL PROJ_SHADE -127
 defineprojectile FIREBALL PROJ_EXTRA FLAMETHROWER_WEAPON_STRENGTH   
 
-action BURNING_FLAME2 -2 12 1 1 2
+action BURNING_FLAME2 0 14 1 1 2
 state burningstate_flamethrower
 	fall
 	
 	ifinwater
 		killit
 	
-	ifcount 168
+	ifcount 128
 	{
 		sizeto 8 8
 		sizeto 8 8
-		ifcount 232
+		ifcount 192
 			killit
 	}
 	else ifcount 1
 	{
 		sizeto 52 52
-	
-		ifrnd 96
-		{
-			hitradius 1024 1 2 3 4
-		}
+		hitradius 800 0 0 0 0
 	}
 	else
 	{
