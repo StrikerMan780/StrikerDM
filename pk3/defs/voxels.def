@@ -53,6 +53,9 @@ voxel "voxels/switches/0135_green_lightswitch.kvx" { scale 1 tile 135 }
 voxel "voxels/switches/0136_red_spacedoorswitch.kvx" { scale 1 tile 136 }
 voxel "voxels/switches/0137_green_spacedoorswitch.kvx" { scale 1 tile 137 }
 
+voxel "voxels/switches/0138_red_slideswitch.kvx" { scale 1 tile 138 }
+voxel "voxels/switches/0139_green_slideswitch.kvx" { scale 1 tile 139 }
+
 voxel "voxels/switches/0146_multiswitch1.kvx" { scale 1 tile 146 }
 voxel "voxels/switches/0147_multiswitch2.kvx" { scale 1 tile 147 }
 voxel "voxels/switches/0148_multiswitch3.kvx" { scale 1 tile 148 }
