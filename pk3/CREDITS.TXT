@@ -11,7 +11,7 @@ Jon St. John - DNF/Manhattan/World Tour Duke voices.
 
 Sprites
 -------
-JimmyGnosis - Improved shrinker/expander pickups.
+JimmyGnosis - Improved shrinker/expander pickups, empty babe pod/pole/pad/vines sprites.
 Fox - Improved flamethrower ammo pickups.
 Tristan - Camo Pistol.
 Minigunner - DNF-Style Devastator sprites, Railgun sprites, interpolated shotgun pump frame.
