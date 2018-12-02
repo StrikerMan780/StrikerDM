@@ -25,3 +25,4 @@ include cons/SDM_PROPS.CON
 include cons/SDM_BABES.CON
 include cons/SDM_ITEMS.CON
 include cons/SDM_FX.CON
+include cons/SDM_ENEMIES.CON

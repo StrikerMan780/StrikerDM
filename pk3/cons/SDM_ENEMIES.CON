@@ -1,0 +1,919 @@
+spritenoshade FLAMETHROWERFLAME
+defineprojectile FLAMETHROWERFLAME PROJ_WORKSLIKE 49218
+defineprojectile FLAMETHROWERFLAME PROJ_SPAWNS EXPLOSION2
+defineprojectile FLAMETHROWERFLAME PROJ_EXTRA ENEMY_FLAME_STRENGTH
+defineprojectile FLAMETHROWERFLAME PROJ_XREPEAT 16
+defineprojectile FLAMETHROWERFLAME PROJ_YREPEAT 16
+defineprojectile FLAMETHROWERFLAME PROJ_PAL 0
+defineprojectile FLAMETHROWERFLAME PROJ_SOUND FLAMETHROWER_FIRE
+defineprojectile FLAMETHROWERFLAME PROJ_ISOUND -1
+defineprojectile FLAMETHROWERFLAME PROJ_VEL 644
+defineprojectile FLAMETHROWERFLAME PROJ_RANGE 15
+defineprojectile FLAMETHROWERFLAME PROJ_CSTAT 130
+defineprojectile FLAMETHROWERFLAME PROJ_HITRADIUS 0
+
+// -----------------------------------------------------------------------------
+// ACTIONS
+// -----------------------------------------------------------------------------
+action AFFDYING    50  1  1  1   50
+action AFFBOSSSPAWN  0  1  5  1  1
+
+
+// -----------------------------------------------------------------------------
+// ACTIONS
+// -----------------------------------------------------------------------------
+move FFJETPACKHOVERVELS 64 -48
+
+// -----------------------------------------------------------------------------
+// AIS
+// -----------------------------------------------------------------------------
+ai AIFFSHRUNK  ATROOPJETPACK TROOPJETPACKVELS seekplayer
+ai AIFFHOVER ATROOPJETPACK FFJETPACKHOVERVELS seekplayer
+ai AIFFSHOOTFIREBALL ATROOPJETPACK FFJETPACKHOVERVELS  faceplayer
+ai AIFFSHOOTFIREBALLGROUND   ATROOPSHOOT   TROOPSTOPPED  faceplayer
+
+// -----------------------------------------------------------------------------
+// STATES
+// -----------------------------------------------------------------------------
+state drop_flamethrowerammo
+  ifrnd SPAWNAMMOODDS
+    spawn FLAMETHROWERAMMO
+ends
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+state randomdroporfly
+    // debug 500
+    ifcount 50
+	{
+        iffloordistl 48
+		{
+            ifrnd 128
+			{
+				ifai AIFFSHRUNK
+				{
+					spawn FIREFLYGROWEFFECT
+				}
+				
+				resetcount
+                ai AITROOPSEEKENEMY
+            }
+			else ifrnd 64
+			{
+				ifai AIFFSHRUNK
+				{
+					spawn FIREFLYGROWEFFECT
+				}
+				
+				resetcount
+				ai AIFFHOVER
+			}
+            else {
+				resetcount
+                ai AIFFSHRUNK
+            }
+        }
+		else ifpdistg 32768
+		{
+			ifrnd 32
+			{
+				ifai AIFFSHRUNK
+				{
+					spawn FIREFLYGROWEFFECT
+				}
+				
+				resetcount
+                ai AITROOPSEEKENEMY
+			}
+		}
+    }
+ends
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+state fflyingstate
+    // debug 400
+    ifpdistl 3072
+    {
+		ifcount 64
+		{
+			ifai AIFFSHRUNK
+			{
+				spawn FIREFLYGROWEFFECT
+			}
+			
+			resetcount
+			sizeto FF_SIZEX FF_SIZEY
+			ai AITROOPSEEKENEMY
+			break
+		}
+    }
+	
+	ifai AIFFSHRUNK
+	{
+		getactor[THISACTOR].htg_t 0 TEMP
+		modvar TEMP 30
+		ifvare TEMP 0
+		{
+			spawn FIREFLYFLYINGEFFECT
+		}
+	}
+	
+    ifcount 120
+	{
+		ifrnd 51
+		{
+			ifai AIFFSHRUNK
+			{
+				spawn FIREFLYGROWEFFECT
+			}
+				
+			ai AITROOPSEEKENEMY
+		}
+		else
+		{
+			ifai AIFFSHRUNK
+			{
+				spawn FIREFLYGROWEFFECT
+			}
+				
+			ai AIFFSHOOTFIREBALL
+		}
+	}
+	else ifcount 30
+	{
+		ifai AIFFHOVER
+		{
+			resetcount
+			ai AIFFSHOOTFIREBALL
+		}
+	}
+
+    state randomdroporfly
+ends
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+state ffshrunkstate
+    // debug 300
+    ifcount 32 {
+    }
+    else ifcount 2 {
+        sizeto FF_SHRUNKSIZEX FF_SHRUNKSIZEY
+        spawn FRAMEEFFECT1
+    }
+	else {
+		spawn FIREFLYSHRINKEFFECT
+	}
+
+    state fflyingstate
+ends
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+state ffshootstate
+    // debug 200
+	ifcount 2
+	{
+		ifcanshoottarget
+		{
+			ifpdistl 6144
+			{
+				shoot FLAMETHROWERFLAME
+				sound FLAMETHROWER_FIRE
+				ifactioncount 10
+				{
+					resetactioncount
+					//sound FLAMETHROWER_END
+					ifrnd 128 {
+						resetcount
+						ai AIFFSHRUNK
+					}
+					else {
+						ai AITROOPFLEEING
+					}
+				}
+				else ifactioncount 1 { }
+				else ifactioncount 0
+				{
+					soundonce FLAMETHROWER_START
+				}
+			}
+			else
+			{
+				ai AITROOPSEEKPLAYER
+			}
+		}
+		else
+		{
+			ai AITROOPSEEKPLAYER
+		}
+	}
+ends
+
+state ffshootfireballstate_ground
+	ifcount 2
+	{
+		ifcanshoottarget
+		{
+			ifactioncount 2
+			{
+				ifp pducking
+				{
+					ifrnd 32
+					{
+						resetcount
+						ai AITROOPDUCKING
+						break
+					}
+				}
+				
+				eshoot FIREBALL
+				getplayer[THISACTOR].i TEMP
+				ldist TEMP2 THISACTOR TEMP
+				divvar TEMP2 7
+				
+				getactor[RETURN].zvel TEMP3
+				subvarvar TEMP3 TEMP2
+				setactor[RETURN].zvel TEMP3 
+				setvar RETURN 0
+				
+				sound FLAMETHROWER_START
+				resetactioncount
+					
+				ifcount 48
+				{
+					ifpdistg 8192
+						ai AITROOPSEEKPLAYER
+					else
+					{
+						ifpdistg 7168
+							ai AITROOPFLEEING
+						else
+							ai AITROOPFLEEINGBACK
+					}
+				}
+			}
+		}
+		else
+		{
+			ai AITROOPSEEKPLAYER
+		}
+	}
+ends
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+state ffshootfireballstate
+    // debug 700
+    sizeto FF_SIZEX FF_SIZEY
+    ifpdistl 3072
+    {
+        ai AITROOPSEEKENEMY
+    }
+    else
+	{
+        ifcount 25
+		{
+			ifcanseetarget
+			{
+				sound FLAMETHROWER_START 
+				
+				eshoot FIREBALL
+				getplayer[THISACTOR].i TEMP
+				ldist TEMP2 THISACTOR TEMP
+				divvar TEMP2 8
+						
+				getactor[RETURN].zvel TEMP3
+				subvarvar TEMP3 TEMP2
+				setactor[RETURN].zvel TEMP3 
+				setvar RETURN 0
+						
+				resetcount
+				ifrnd 32
+				{
+					resetcount
+					ai AIFFSHRUNK
+				}
+				else ifrnd 32
+				{
+					iffloordistl 48
+					{
+						resetcount
+						ai AITROOPSEEKENEMY
+					}
+					else
+					{
+						resetcount
+						ai AIFFHOVER
+					}
+				}
+			}
+			else
+			{
+				resetcount
+				ifrnd 150
+				{
+					ai AIFFHOVER
+				}
+				else
+				{
+					ai AITROOPSEEKENEMY
+				}
+			}
+        }    
+    }
+ends
+
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+state ffseekstate
+    ifcount 99 {
+        ifpdistg 6144 {
+			resetcount
+            ai AIFFSHRUNK
+        }
+    }
+  state troopgunnashoot
+  ifinwater
+  {
+	resetcount
+    ai AIFFSHRUNK
+    break
+  }
+  ifcansee
+  {
+    ifp phigher
+    {
+      ifceilingdistl 128 { }
+      else
+        ifactornotstayput
+		{
+			ifcount 32
+			{
+				ifrnd 64
+				{
+					resetcount
+					ai AIFFSHRUNK
+				}
+			}
+		}
+      break
+    }
+    else
+      ifrnd 2
+    {
+      ifspritepal 21
+        ifpdistg 1596
+      {
+        ai AITROOPHIDE
+        break
+      }
+      ifbulletnear
+      {
+        ai AITROOPDODGE
+        break
+      }
+    }
+  }
+  ifnotmoving
+  {
+    ifrnd 32
+      operate
+    else
+      ifcount 32
+        ifp palive
+          ifcansee
+            ifcanshoottarget
+			{
+				resetcount
+				ai AITROOPSHOOTING
+			}
+  }
+  else
+  {
+	ifrnd 8
+	ifcount 32
+	ifp palive
+	ifcansee
+	ifcanshoottarget
+	ifpdistg 6144
+	{
+		resetcount
+		ai AIFFSHOOTFIREBALLGROUND
+	}
+  }
+  
+  ifrnd 1
+  {
+    ifrnd 128
+      soundonce PRED_ROAM
+    else
+      soundonce PRED_ROAM2
+  }
+ends
+
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+state ffexplode
+	cstat 0
+	spawn EXPLOSION2
+	sound RPG_EXPLODE
+	hitradius 2048 60 70 80 90
+	strength 0
+	move TROOPSTOPPED
+	action ATROOPDEAD
+	state standard_jibs
+	state random_wall_jibs
+	killit
+ends
+
+state ffdying
+    // debug 600
+	
+	ifcount 2 { }
+	else ifcount 1
+	{
+		spritepal 2
+		soundonce FIRE_CRACKLE
+	}
+	
+	state spawn_random_fire
+	
+	ifrnd 64 {
+		state rf    
+	}
+	iffloordistl 32
+    {
+        ifcount 40
+        {
+			stopsound FIRE_CRACKLE
+            state ffexplode
+        }
+        break
+    }
+    else
+    {
+        move 0
+        action AFFDYING
+    }
+ends
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+state checkfireflyhit
+    ifaction ATROOPSUFFERING
+    {
+        stopsound LIZARD_BEG
+        sound PRED_DYING
+        cstat 0
+        strength 0
+        action ATROOPSUFFERDEAD
+        break
+    }
+    ifdead
+    {
+        ifwasweapon FREEZEBLAST
+        {
+            sound SOMETHINGFROZE
+            spritepal 1
+            move 0
+            action ATROOPFROZEN
+            strength 0
+            break
+        }
+
+        state drop_flamethrowerammo
+        state random_wall_jibs
+
+        ifwasweapon GROWSPARK
+        {
+            cstat 0
+            sound ACTOR_GROWING
+            ai AITROOPGROW
+            break
+        }
+
+        addkills 1
+
+        ifwasweapon RPG
+        {
+            sound SQUISHED
+            // state troop_body_jibs
+            state standard_jibs
+            killit
+        }
+        else ifwasweapon RADIUSEXPLOSION
+        {
+            sound SQUISHED
+            // state troop_body_jibs
+            state standard_jibs
+            killit
+        }
+		else ifwasweapon RAILGUNSHOT
+		{
+			state ffexplode
+		}
+        else
+        {
+			ifai AIFFSHRUNK
+			{
+				spawn FIREFLYGROWEFFECT
+			}
+			
+            sound PRED_DYING
+            resetcount	
+			ai AILIZDYING
+			
+			ifrnd 32
+			iffloordistl 32
+			{
+				sound LIZARD_BEG
+				spawn BLOODPOOL
+				strength 0
+				move 0
+				action ATROOPSUFFERING
+				break
+			}
+			
+			ifwasweapon FIREBALL
+			{
+				action AFFDYING
+			}
+			else
+			{
+				ifrnd 80
+				{
+					action AFFDYING
+				}
+				else
+				{
+					action ATROOPDYING
+				}
+			}
+			
+            break
+        }
+    }
+    else
+    {
+		ifwasweapon FLAMETHROWERFLAME {
+			break
+		}
+		else {
+			state random_wall_jibs
+			sound PRED_PAIN
+		}
+
+        ifwasweapon SHRINKSPARK
+        {
+			sound ACTOR_SHRINKING
+			resetcount
+			ai AIFFSHRUNK
+        }
+        else ifwasweapon GROWSPARK
+        {
+            sound EXPANDERHIT
+			ifai AIFFSHRUNK
+			{
+				spawn FIREFLYGROWEFFECT
+				resetcount
+				ifrnd 196
+				{
+					ai AIFFHOVER
+				}
+				else
+				{
+					ai AIFFSHOOTFIREBALL
+				}
+			}
+        }
+        else iffloordistl 32
+        {
+            ifrnd 96
+            {
+                action ATROOPFLINTCH
+            }
+        }
+		else
+		{
+			ifrnd 32
+			{
+				ifai AIFFSHRUNK
+				{
+					spawn FIREFLYGROWEFFECT
+					resetcount
+					
+					ifrnd 128
+						ai AIFFSHOOTFIREBALL
+					else
+						ai AIFFHOVER
+				}
+			}
+		}
+    }
+ends
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+state fireflycode
+    fall
+    ifinwater
+    {
+        ifrnd 1
+        {
+            spawn WATERBUBBLE
+        }
+    }
+    ifaction ATROOPSTAND
+    {
+        ifrnd 51
+		{
+            // 20% chance of attacking
+            resetcount
+            ai AITROOPSHOOTING
+        }
+        else
+		{
+            // 80% chance of shrinking and flying
+			resetcount
+            ai AIFFSHRUNK
+        }
+    }
+    else ifaction AFFBOSSSPAWN
+    {
+		resetcount
+        ai AIFFSHRUNK
+    }
+    else ifaction ATROOPFROZEN
+    {
+        ifcount THAWTIME
+        {
+            ai AITROOPSEEKENEMY
+            getlastpal
+        }
+        else ifcount FROZENDRIPTIME
+        {
+            ifactioncount 26
+            {
+                spawn WATERDRIP
+                resetactioncount
+            }
+        }
+        ifhitweapon
+        {
+            ifwasweapon FREEZEBLAST
+            {
+                strength 0
+                break
+            }
+            addkills 1
+
+            ifrnd 84
+            spawn BLOODPOOL
+            lotsofglass 30
+            sound GLASS_BREAKING
+            killit
+        }
+        ifp pfacing {
+            ifpdistl FROZENQUICKKICKDIST {
+                pkick
+            }
+        }
+        break
+    }
+    else ifaction ATROOPPLAYDEAD
+    {
+        ifhitweapon
+        {
+            ifwasweapon RADIUSEXPLOSION
+            {
+                sound SQUISHED
+                // state troop_body_jibs
+                state standard_jibs
+                killit
+            }
+            break
+        }
+        else
+        {
+            state checksquished
+        }
+        ifcount PLAYDEADTIME
+        {
+            addkills -1
+            soundonce PRED_ROAM
+            cstat 257
+            strength 1
+			resetcount
+            ai AITROOPSHOOTING
+        }
+        else ifp pfacing {
+            resetcount
+        }
+
+        break
+    }
+    else ifaction ATROOPDEAD
+    {
+        strength 0
+        ifrespawn
+        ifcount RESPAWNACTORTIME
+        {
+            spawn TRANSPORTERSTAR
+            cstat 257
+            strength FF_STRENGTH
+            ai AITROOPSEEKENEMY
+        }
+        ifhitweapon
+        {
+            ifwasweapon RADIUSEXPLOSION
+            {
+                sound SQUISHED
+                // state troop_body_jibs
+                state standard_jibs
+                killit
+            }
+            break
+        }
+        else
+            state checksquished
+
+        break
+    }
+    else ifaction ATROOPSUFFERDEAD
+    {
+        ifactioncount 2
+        {
+            ifrnd 64
+            {
+                resetcount
+                action ATROOPPLAYDEAD
+            }
+            else
+            {
+                soundonce PRED_DYING
+                action ATROOPDEAD
+            }
+        }
+    }
+    else ifaction AFFDYING
+    {
+		sizeto FF_SIZEX FF_SIZEY
+        state ffdying
+        break
+    }
+	else ifaction ATROOPDYING
+    {
+		sizeto FF_SIZEX FF_SIZEY
+        state troopdying
+        break
+    }
+    else ifaction ATROOPSUFFERING
+    {
+		sizeto FF_SIZEX FF_SIZEY
+        state troopsufferingstate
+        ifhitweapon {
+            state checkfireflyhit
+        }
+        break
+    }
+    else ifaction ATROOPFLINTCH
+    {
+        ifactioncount 2
+        ai AITROOPSEEKENEMY
+    }
+    else
+    {
+        ifai AITROOPSEEKPLAYER {
+            // debug 1
+			sizeto FF_SIZEX FF_SIZEY
+            state ffseekstate
+        }
+        else ifai AITROOPSEEKENEMY {
+            // debug 2
+            sizeto FF_SIZEX FF_SIZEY // always try and embiggen the fireflytrooper if he's in a smaller state
+            state ffseekstate
+        }
+        else ifai AITROOPSHOOTING {
+            // debug 3
+            sizeto FF_SIZEX FF_SIZEY
+            state ffshootstate
+        }
+		else ifai AIFFSHOOTFIREBALLGROUND {
+            // debug 3
+            sizeto FF_SIZEX FF_SIZEY
+            state ffshootfireballstate_ground
+        }
+        else ifai AITROOPFLEEING {
+            // debug 4
+            state troopfleestate
+        }
+        else ifai AITROOPFLEEINGBACK {
+            // debug 5
+            state troopfleestate
+        }
+        else ifai AIFFSHRUNK {
+            // debug 6
+            state ffshrunkstate
+        }
+        else ifai AIFFHOVER {
+            // debug 7
+			sizeto FF_SIZEX FF_SIZEY
+            state fflyingstate
+        }
+        else ifai AITROOPGROW {
+            // debug 8
+            state genericgrowcode
+        }
+        else ifai AITROOPDUCKING {
+            // debug 9
+            sizeto FF_SIZEX FF_SIZEY
+            state troopduckstate
+        }
+        else ifai AIFFSHOOTFIREBALL {
+            // debug 10
+            state ffshootfireballstate
+        }
+        else ifai AITROOPHIDE
+        {
+            // debug 11
+            sizeto FF_SIZEX FF_SIZEY
+            state troophidestate
+            break
+        }
+    }
+
+    ifhitweapon {
+        state checkfireflyhit
+    }
+    else {
+        state checksquished
+    }
+ends
+
+action SHRINK_FRAMES 0 7 1 1 4
+actor FIREFLYSHRINKEFFECT 0 SHRINK_FRAMES
+	ifactioncount 7 {
+		killit
+	}
+	
+	ifcount 1 { }
+	else ifcount 0
+	{
+		sizeat 32 32
+		cstator 18432 
+	}
+enda
+
+action GROW_FRAMES 0 7 1 -1 4
+actor FIREFLYGROWEFFECT 0 GROW_FRAMES
+	ifactioncount 7 {
+		killit
+	}
+	
+	else ifcount 1 { }
+	ifcount 0
+	{
+		sizeat 32 32
+		cstator 18432 
+	}
+enda
+
+action FLYING_FRAMES 0 7 1 1 4
+actor FIREFLYFLYINGEFFECT 0 FLYING_FRAMES
+	ifactioncount 7 {
+		killit
+	}
+	
+	ifcount 1 {	}
+	else ifcount 0
+	{
+		sizeat 32 32
+		cstator 18432 
+	}
+enda
+
+spriteflags FIREFLY 79700003
+actor FIREFLY FF_STRENGTH 0
+    ifaction 0
+	{
+	    spritepal 12
+		cstat 257
+		changespritestat THISACTOR 2
+		sound PRED_RECOG
+        ifspawnedby BOSS5
+		{
+			sizeat FF_SIZEX FF_SIZEY
+            action AFFBOSSSPAWN
+        }
+        else
+		{
+            action ATROOPSTAND
+        }
+		spawn FIREFLYFLYINGEFFECT
+    }
+    state fireflycode
+enda
