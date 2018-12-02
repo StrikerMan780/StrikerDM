@@ -282,7 +282,7 @@ ends
 
 state setssg
 	setvar WEAPON2_FLAGS 1024
-	setvar WEAPON2_TOTALTIME 60
+	setvar WEAPON2_TOTALTIME 56
 	setvar WEAPON2_SPAWNTIME 0
 	setvar WEAPON2_SPAWN 0
 	setvar WEAPON2_SHOTSPERBURST 14
@@ -538,11 +538,11 @@ ifp palive
 			{
 				sound SSG_OPEN
 			}
-			else ifvare TEMP2 39
+			else ifvare TEMP2 36
 			{
 				sound SSG_LOAD
 			}
-			else ifvare TEMP2 52
+			else ifvare TEMP2 47
 			{
 				sound SSG_CLOSE
 			}
