@@ -1,4 +1,5 @@
 set GRP_PATH=%~dp0Builds
+set MAP=maps/longestduke.map
 C:
 cd "C:\Meltdown\Duke Nukem 3D\EDuke32"
 @echo off
@@ -19,9 +20,9 @@ IF ERRORLEVEL 4 SET NUMBOTS=5
 IF ERRORLEVEL 5 SET NUMBOTS=6
 IF ERRORLEVEL 6 SET NUMBOTS=7
 IF ERRORLEVEL 7 SET NUMBOTS=8
-start eduke32-oldmp -nosetup -tx -c1 -m -g %GRP_PATH%\StrikerDM-DEV.PK3 /q%NUMBOTS% /a -map maps/gwmap20.map
+start eduke32-oldmp -nosetup -tx -c1 -m -g %GRP_PATH%\StrikerDM-DEV.PK3 /q%NUMBOTS% /a -map %MAP%
 exit
 
 :NOAI
-start eduke32-oldmp -nosetup -tx -c1 -m -g %GRP_PATH%\StrikerDM-DEV.PK3 /q8 -map maps/gwmap20.map
+start eduke32-oldmp -nosetup -tx -c1 -m -g %GRP_PATH%\StrikerDM-DEV.PK3 /q8 -map %MAP%
 exit

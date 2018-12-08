@@ -106,13 +106,14 @@ goto MENU
 
 :GITCOREFULL_GRP
 echo Compiling StrikerDM GIT Release Rev#: %REVISIONNUMBER% (Full Compression) (GRP)...
-del .\builds\StrikerDM.grp /q
+del .\builds\StrikerDM-r%REVISIONNUMBER%.grp /q
 
 cd pk3
 del *.tmp
 del .\maps\*_crash.map
-7za a -y -tzip -mx=9 -mmt -xr!.GIT -xr^^!*.dbs -xr^^!*.tmp ..\builds\StrikerDM.grp .\
-copy ..\builds\StrikerDM.grp "c:\Meltdown\Duke Nukem 3D\Mods"
+echo definequote 499 StrikerDM r%REVISIONNUMBER% > VERSION.CON
+7za a -y -tzip -mx=9 -mmt -xr!.GIT -xr^^!*.dbs -xr^^!*.tmp ..\builds\StrikerDM-r%REVISIONNUMBER%.grp .\
+copy ..\builds\StrikerDM-r%REVISIONNUMBER%.grp "c:\Meltdown\Duke Nukem 3D\Mods"
 
 pause
 goto MENU

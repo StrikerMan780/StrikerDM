@@ -130,8 +130,9 @@ definelevelname 8 3 maps/JEBIDMMAP7-SDM.map 66:60 66:60 JEBIDM MAP07 (Duke Style
 definelevelname 8 4 maps/VEXZDM4-SDM.map 66:60 66:60 VEXZDM MAP04 (Duke Style)
 definelevelname 8 5 maps/DWANGO5M1-SDM.map 66:60 66:60 DWANGO5 MAP01 (Duke Style)
 definelevelname 8 6 maps/UDM3MAP4-SDM.map 66:60 66:60 UDM3 MAP04 (Duke Style)
+definelevelname 8 7 maps/SSL2-SDM.map 66:60 66:60 SSL2 MAP01
 music 9 music/d_messag.mid music/brit11m1.mid music/d_countd.mid music/flaghate.mid music/vexzdm4.mid
-        music/dwango5.mid music/gerudo.mid
+        music/dwango5.mid music/gerudo.mid music/ssl2.mid
 	   
 definevolumename 9 Community Maps 1
 definelevelname 9 0 maps/EL_PASO-SDM.map 66:60 66:60 El Paso: Multiple Authors
