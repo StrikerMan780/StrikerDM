@@ -145,6 +145,7 @@ define HEXENELEVATORSTOP 557
 define MARTINCITO 558
 // Community sound submissions should continue from the index above this line
 
+define ALL_BABES_SAVED 583
 define DOOMDOOR_CLOSE 584
 define NEW_DRIP1 585
 define NEW_DRIP2 586
@@ -192,6 +193,9 @@ define DUKE_GETWEAPON9 691
 define DUKE_GETWEAPON10 692
 define DUKE_GETWEAPON11 693
 define DUKE_GETWEAPON12 694
+define DUKE_GETWEAPON13 695
+define DUKE_GETWEAPON14 696
+define DUKE_GETWEAPON15 697
 
 define NEWDUKEGIB01 701
 define NEWDUKEGIB02 702
@@ -250,6 +254,58 @@ define DUKE_FLAME02 801
 define DUKE_FLAME03 802
 define DUKE_FLAME04 803
 define DUKE_FLAME05 804
+
+define FEM10_SAVED 820
+define BABE_SAVED01 821
+define BABE_SAVED02 822
+
+// World Tour
+definesound E5L7_DUKE_QUIT_YOU    sounds/duke/worldtour/VO_E5L7_Duke_QuitYou.ogg         0   0   255   4   0
+definesound E5L4_DUKE_WHY_SERIOUS sounds/duke/worldtour/VO_E5L4_Duke_SeriousSam.ogg      0   0   255   4   0
+definesound E5L1_DUKE_CREAMANDSUGAR sounds/duke/worldtour/VO_E5L1_Duke_CreamAndSugar.ogg 0   0   255   4   0
+definesound E5L1_DUKE_CURIOUSER   sounds/duke/worldtour/VO_E5L1_Duke_Curiouser.ogg       0   0   255   4   0
+definesound E5L1_DUKE_DEJAVU      sounds/duke/worldtour/VO_E5L1_Duke_DejaVu.ogg          0   0   255   4   0
+definesound E5L1_DUKE_GETTINGOLD  sounds/duke/worldtour/VO_E5L1_Duke_GettingOld.ogg      0   0   255   4   0
+definesound E5L1_DUKE_GOODCOFFEE  sounds/duke/worldtour/VO_E5L1_Duke_GoodCoffee.ogg      0   0   255   4   0
+definesound E5L1_DUKE_NOTPOSSIBLE sounds/duke/worldtour/VO_E5L1_Duke_NotPossible.ogg     0   0   255   4   0
+definesound E5L2_DUKE_BEHERE      sounds/duke/worldtour/VO_E5L2_Duke_BeHere.ogg          0   0   255   4   0
+definesound E5L2_DUKE_MEATCANDY   sounds/duke/worldtour/VO_E5L2_Duke_MeatCandy.ogg       0   0   255   4   0
+definesound E5L2_DUKE_SISKOVA     sounds/duke/worldtour/VO_E5L2_Duke_Siskova.ogg         0   0   255   4   0
+definesound E5L2_DUKE_USSR        sounds/duke/worldtour/VO_E5L2_Duke_USSR.ogg            0   0   255   4   0
+definesound E5L4_DUKE_CRYINGMUMMY sounds/duke/worldtour/VO_E5L4_Duke_CryingMummy.ogg     0   0   255   4   0
+definesound E5L4_DUKE_CRYSTALSKULL sounds/duke/worldtour/VO_E5L4_Duke_CrystalSkull.ogg   0   0   255   4   0
+definesound E5L4_DUKE_FIFTHELEMENT sounds/duke/worldtour/VO_E5L4_Duke_FifthElement.ogg   0   0   255   4   0
+definesound E5L4_DUKE_HASSANCHOP  sounds/duke/worldtour/VO_E5L4_Duke_HassanChop.ogg      0   0   255   4   0
+definesound E5L4_DUKE_HELLOMUMMY  sounds/duke/worldtour/VO_E5L4_Duke_HelloMummy.ogg      0   0   255   4   0
+definesound E5L5_DUKE_FROMAGE     sounds/duke/worldtour/VO_E5L5_Duke_Fromage.ogg         0   0   255   4   0
+definesound E5L5_DUKE_ICU         sounds/duke/worldtour/VO_E5L5_Duke_ICU.ogg             0   0   255   4   0
+definesound E5L5_DUKE_SOUFFLE     sounds/duke/worldtour/VO_E5L5_Duke_Souffle.ogg         0   0   255   4   0
+definesound E5L6_DUKE_ALCATRAZ    sounds/duke/worldtour/VO_E5L6_Duke_Alcatraz.ogg        0   0   255   4   0
+definesound E5L6_DUKE_ILLEGALALIENS sounds/duke/worldtour/VO_E5L6_Duke_IllegalAliens.ogg 0   0   255   4   0
+definesound E5L7_DUKE_DREAMS      sounds/duke/worldtour/VO_E5L7_Duke_Dreams.ogg          0   0   255   4   0
+definesound E5L7_DUKE_FLAMINGALIENBITCH sounds/duke/worldtour/VO_E5L7_Duke_FlamingAlienBitch.ogg 0   0   255   4   0
+definesound E5L7_DUKE_ROSEBUD     sounds/duke/worldtour/VO_E5L7_Duke_Rosebud.ogg         0   0   255   4   0
+definesound E5L8_DUKE_ETERNITY    sounds/duke/worldtour/VO_E5L8_Duke_Eternity.ogg        0   0   255   4   0
+//definesound MQ_DUKE_BIGBANG       sounds/duke/worldtour/VO_MQ_Duke_BigBang.ogg           0   0   255   4   0
+definesound MQ_DUKE_COBRA         sounds/duke/worldtour/VO_MQ_Duke_Cobra.ogg             0   0   255   4   0
+definesound MQ_DUKE_GRANTORINO    sounds/duke/worldtour/VO_MQ_Duke_GranTorino.ogg        0   0   255   4   0
+definesound MQ_DUKE_JOSEYWALES    sounds/duke/worldtour/VO_MQ_Duke_JoseyWales.ogg        0   0   255   4   0
+definesound MQ_DUKE_LITTLECHINA   sounds/duke/worldtour/VO_MQ_Duke_LittleChina.ogg       0   0   255   4   0
+definesound MQ_DUKE_ONDEADLYGROUND sounds/duke/worldtour/VO_MQ_Duke_OnDeadlyGround.ogg   0   0   255   4   0
+definesound MQ_DUKE_PREDATOR      sounds/duke/worldtour/VO_MQ_Duke_Predator.ogg          0   0   255   4   0
+definesound MQ_DUKE_RAMBO         sounds/duke/worldtour/VO_MQ_Duke_Rambo.ogg             0   0   255   4   0
+definesound MQ_DUKE_REDHEAT       sounds/duke/worldtour/VO_MQ_Duke_RedHeat.ogg           0   0   255   4   0
+definesound MQ_DUKE_RIDDICK       sounds/duke/worldtour/VO_MQ_Duke_Riddick.ogg           0   0   255   4   0
+definesound MQ_DUKE_THEGOODTHEBAD sounds/duke/worldtour/VO_MQ_Duke_TheGoodTheBad.ogg     0   0   255   4   0
+definesound MQ_DUKE_TOMBSTONE     sounds/duke/worldtour/VO_MQ_Duke_Tombstone.ogg         0   0   255   4   0
+definesound MQ_DUKE_TRUEGRIT      sounds/duke/worldtour/VO_MQ_Duke_TrueGrit.ogg          0   0   255   4   0
+//definesound MQ_DUKE_WALKINGDEAD   sounds/duke/worldtour/VO_MQ_Duke_WalkingDead.ogg       0   0   255   4   0
+definesound MQ_DUKE_YOUNGGUNS     sounds/duke/worldtour/VO_MQ_Duke_YoungGuns.ogg         0   0   255   4   0
+definesound CHESHIREALIEN_01      sounds/ambience/Pagoda_CheshireAlien_01.ogg      -128   128   3   0   0
+definesound CHESHIREALIEN_02      sounds/ambience/Pagoda_CheshireAlien_02.ogg      -128   128   3   0   0
+definesound CHESHIREALIEN_03      sounds/ambience/Pagoda_CheshireAlien_03.ogg      -128   128   3   0   0
+definesound CHESHIREALIEN_04      sounds/ambience/Pagoda_CheshireAlien_04.ogg      -128   128   3   0   0
+// End World Tour
 
 // Sounds
 definesound MENU_CONFIRM sounds/menu/menu_confirm.wav 0 0 0 0 0
@@ -348,6 +404,11 @@ definesound DOOMPLAT_START sounds/ambience/dspstart.wav 0 0 0 0 0
 definesound DOOMPLAT_STOP sounds/ambience/dspstop.wav 0 0 0 0 0
 definesound SPACEODDITY sounds/ambience/spaceoddity.ogg 0 0 0 3 0
 
+definesound FEM10_SAVED sounds/babes/fem10save01.wav 0 0 0 0 0
+definesound BABE_SAVED01 sounds/babes/gfemsave01.wav 0 0 0 0 0
+definesound BABE_SAVED02 sounds/babes/gfemsave02.wav 0 0 0 0 0
+definesound ALL_BABES_SAVED sounds/babes/allsaved.ogg 0 0 0 0 0
+
 definesound JUMPPADSOUND sounds/ambience/jumppad.wav 0 0 0 0 0
 
 definesound ENTER_RIFT sounds/ambience/enter_rift.wav 0 0 0 0 0
@@ -403,6 +464,9 @@ definesound DUKE_GETWEAPON9 sounds/duke/weaponpickup/DUKE_WeaponPickup_04.ogg 0 
 definesound DUKE_GETWEAPON10 sounds/duke/weaponpickup/DUKE_WeaponPickup_05.ogg 0 0 255 4 0
 definesound DUKE_GETWEAPON11 sounds/duke/weaponpickup/DUKE_WeaponPickup_06.ogg 0 0 255 4 0
 definesound DUKE_GETWEAPON12 sounds/duke/weaponpickup/DUKE_WeaponPickup_07.ogg 0 0 255 4 0
+definesound DUKE_GETWEAPON13 sounds/duke/weaponpickup/DUKE_WeaponPickup_08.ogg 0 0 255 4 0
+definesound DUKE_GETWEAPON14 sounds/duke/weaponpickup/DUKE_WeaponPickup_09.wav 0 0 255 4 0
+definesound DUKE_GETWEAPON15 sounds/duke/weaponpickup/DUKE_WeaponPickup_10.wav 0 0 255 4 0
 
 definesound NEWDUKEGIB01 sounds/duke/gib/DUKE_GotKill_03.ogg 0 0 255 4 0
 definesound NEWDUKEGIB02 sounds/duke/gib/DUKE_GotKill_04.ogg 0 0 255 4 0
@@ -454,7 +518,7 @@ definesound NEWDUKEGIB47 sounds/duke/gib/Duke_MP_KillLine_71.ogg 0 0 255 4 0
 definesound NEWDUKEGIB48 sounds/duke/gib/Duke_MP_KillLine_73.ogg 0 0 255 4 0
 definesound NEWDUKEGIB49 sounds/duke/gib/Duke_MP_KillLine_74.ogg 0 0 255 4 0
 definesound NEWDUKEGIB50 sounds/duke/gib/DUKE_RestINPieces_01.ogg 0 0 255 4 0
-definesound NEWDUKEGIB51 sounds/duke/gib/faggot.ogg 0 0 255 4 0
+definesound NEWDUKEGIB51 sounds/duke/gib/Duke_UltraRareGib_01.ogg 0 0 255 4 0
 
 definesound DUKE_FLAME01 sounds/duke/flame/duke_flame01.wav 0 0 255 4 0
 definesound DUKE_FLAME02 sounds/duke/flame/duke_flame02.wav 0 0 255 4 0

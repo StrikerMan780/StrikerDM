@@ -1,18 +1,141 @@
 damageeventtilerange 0 9999
 
-state check_for_crack
+state set_on_fire
+	getactor[RETURN].extra TEMP
+	ifvarl TEMP 1 { break }
+	
+	// Team DM?
+	ifvarand gametype_flags 65536
+	{
+		ifvare FFIRE 0 // Friendly fire is off.
+		{
+			getactor[RETURN].picnum TEMP
+			getactor[THISACTOR].owner TEMP2
+			getactor[TEMP2].picnum TEMP3
+			
+			ifvare TEMP APLAYER // Are both attackers players?
+			ifvare TEMP3 APLAYER
+			{
+				ifvarvarn TEMP2 RETURN
+				{
+					getactor[RETURN].yvel TEMP
+					getplayer[TEMP].team TEMP	
+					
+					getactor[TEMP2].yvel TEMP2
+					getplayer[TEMP2].team TEMP2
+					
+					ifvarvare TEMP TEMP2 // Team matches?
+					{
+						break // Bail.
+					}
+				}
+			}
+		}
+	}
+	else ifvarand gametype_flags 4096 // All players friendly?
+	{
+		ifvare FFIRE 0 // Friendly fire is off.
+		{
+			getactor[RETURN].picnum TEMP
+			getactor[THISACTOR].owner TEMP2
+			getactor[TEMP2].picnum TEMP3
+			
+			ifvare TEMP APLAYER // Are both attackers players?
+			ifvare TEMP3 APLAYER
+			{
+				ifvarvarn TEMP2 RETURN
+				{
+					break // Bail.
+				}
+			}
+		}
+	}
+	
 	getactor[RETURN].picnum TEMP
-	switch TEMP
-		case CRACK1:
-		case CRACK2:
-		case CRACK3:
-		case CRACK4:
-			setvar RETURN -1
+	ifvarn TEMP APLAYER
+	{
+		ifvare TEMP BOSS5 // BOSS5 can't be set on fire.
+		{
 			break
-	endswitch
+		}
+		
+		// Check if owner picnum is the same as victim picnum. (So fireflies can't burn eachother)
+		getactor[RETURN].picnum TEMP
+		getactor[THISACTOR].owner TEMP2
+		getactor[TEMP2].picnum TEMP2
+		ifvarvare TEMP TEMP2
+		{
+			break
+		}
+	}
+	
+	getactorvar[RETURN].BURNING_TICS TEMP
+	ifvarl TEMP 117 // Burning for more than 4 tics, or not burning at all.
+	{
+		getactor[RETURN].cstat TEMP
+		ifvarand TEMP 256 // Can be shot?
+		{
+			getactorvar[RETURN].BURNING_OLDPAL TEMP
+			ifvare TEMP -1 // Palette not memorized yet?
+			{
+				getactor[RETURN].pal TEMP // Get current palette
+				setactorvar[RETURN].BURNING_OLDPAL TEMP // Store it for later restoration
+			}
+			
+			getactor[THISACTOR].owner TEMP // Get owner of projectile
+			setactorvar[RETURN].BURNING_TICS 120 // Start burning for 120 tics
+			setactorvar[RETURN].BURNING_INFLICTOR TEMP // Store owner in victim's data
+			setactor[RETURN].htpicnum FIREBALL
+			
+			getactor[RETURN].htextra TEMP
+			ifvare TEMP -1 { setactor[RETURN].htextra 0 }
+			
+			getactor[RETURN].picnum TEMP
+			switch TEMP
+				case TREE1:
+				case TREE2:
+				case TIRE:
+				case CONE:
+				case BOX:
+					getactor[RETURN].htg_t 0 TEMP
+					ifvare TEMP 0 // Trigger hardcoded burn/shrink code
+					{
+						getactor[RETURN].cstat TEMP
+						ifvarand TEMP 1 { subvar TEMP 1 }
+						ifvarand TEMP 256 { subvar TEMP 256 }
+						setactor[RETURN].cstat TEMP
+						setactor[RETURN].htg_t 0 1
+					}
+					break
+			endswitch
+		}
+	}
 ends
 
 onevent EVENT_DAMAGESPRITE
+	getactor[THISACTOR].owner TEMP
+	setactorvar[RETURN].LASTHITBY TEMP
+	
+	ifvarvare TEMP RETURN // If owner is the same as victim
+	{
+		getactor[RETURN].picnum TEMP // Make bosses unable to hurt themselves
+		ifvare TEMP BOSS2
+		{
+			setvar RETURN -1
+			break
+		}
+		else ifvare TEMP BOSS3
+		{
+			setvar RETURN -1
+			break
+		}
+		else ifvare TEMP BOSS5
+		{
+			setvar RETURN -1
+			break
+		}
+	}
+	
 	ifactor FREEZEBLAST
 	{
 		getactorvar[RETURN].BURNING_TICS TEMP
@@ -20,58 +143,45 @@ onevent EVENT_DAMAGESPRITE
 		{
 			setactor[THISACTOR].extra 1
 		}
+		break
+	}
+	else ifactor FIREBALL
+	{
+		state set_on_fire
+	}
+	else ifactor FLAMETHROWERFLAME
+	{
+		state set_on_fire
 	}
 	else ifactor BURNING_ALT
 	{
-		state check_for_crack
+		state set_on_fire	
+		setvar RETURN -1 // Do not do the usual radius damage processing
+		break
 	}
 	else ifactor BURNING2_ALT
 	{
-		state check_for_crack
+		state set_on_fire
+		setvar RETURN -1 // Do not do the usual radius damage processing
+		break
 	}
 endevent
 
-state set_on_fire
-	getactor[RETURN].extra TEMP
-	ifvarl TEMP 1 { break }
-	
-	getactorvar[RETURN].BURNING_TICS TEMP
-	ifvarl TEMP 117
+onevent EVENT_POSTDAMAGESPRITE
+	getactor[RETURN].picnum TEMP
+	ifvarn TEMP APLAYER
 	{
-		getactor[RETURN].cstat TEMP
-		ifvarand TEMP 256
+		ifactor SHOTSPARK1
 		{
-			getactorvar[RETURN].BURNING_OLDPAL TEMP
-			ifvare TEMP -1
+			getactor[THISACTOR].yvel TEMP
+			ifvare TEMP RAILGUNSHOT
 			{
-				getactor[RETURN].pal TEMP2
-				setactorvar[RETURN].BURNING_OLDPAL TEMP2
+				getactor[RETURN].htextra TEMP
+				addvar TEMP RAILGUN_WEAPON_STRENGTH
+				setactor[RETURN].htextra TEMP
 			}
-			
-			getactor[THISACTOR].owner TEMP
-			setactorvar[RETURN].BURNING_TICS 120
-			setactorvar[RETURN].BURNING_INFLICTOR TEMP
 		}
 	}
-ends
-
-onevent EVENT_POSTDAMAGESPRITE
-	getactor[THISACTOR].owner TEMP
-	setactorvar[RETURN].LASTHITBY TEMP
-	
-	ifactor FIREBALL
-	{
-		state set_on_fire
-	}
-	else ifactor BURNING_ALT
-	{
-		state set_on_fire
-	}
-	else ifactor BURNING2_ALT
-	{
-		state set_on_fire
-	}
-	
 endevent
 
 onevent EVENT_KILLIT
@@ -156,6 +266,8 @@ onevent EVENT_KILLIT
 		case BONG2:
 		case DILDO:
 		case FLESHLIGHT:
+		case VIBRATOR:
+		case BD_SOFIA:
 			state prepare_respawn_hardcoded
 			break
 	endswitch
@@ -223,124 +335,228 @@ onevent EVENT_KILLIT
 	
 endevent
 
+state boss_projectile_offset
+	getactor[THISACTOR].ang SPAWN_ORIGANG
+			
+	// Calculate X position
+	setvarvar TEMP SPAWN_ORIGANG
+	sin TEMP2 TEMP
+	divvar TEMP2 512
+			
+	// Set X position
+	getactor[THISACTOR].x TEMP
+	subvarvar TEMP TEMP2
+	setactor[THISACTOR].x TEMP
+			
+	// Calculate Y position
+	setvarvar TEMP SPAWN_ORIGANG
+	addvar TEMP 1536
+	sin TEMP2 TEMP
+	
+	getactor[THISACTOR].owner TEMP3
+	getactor[TEMP3].pal TEMP3
+	ifvare TEMP3 0
+	{
+		divvar TEMP2 128
+	}
+	else
+	{
+		divvar TEMP2 256
+	}
+			
+	// Set Y position
+	getactor[THISACTOR].y TEMP
+	subvarvar TEMP TEMP2
+	setactor[THISACTOR].y TEMP
+			
+	getactor[THISACTOR].z TEMP
+	ifvare TEMP3 0
+	{
+		addvar TEMP 7200
+	}
+	else
+	{
+		addvar TEMP 3600
+	}
+	setactor[THISACTOR].z TEMP
+ends
+
+state devastator_boss_spread
+	getactor[THISACTOR].ang TEMP
+	addvar TEMP 96
+	randvar TEMP2 192
+	subvarvar TEMP TEMP2
+	setactor[THISACTOR].ang TEMP
+	
+	getactor[THISACTOR].zvel TEMP
+	addvar TEMP 512
+	randvar TEMP2 1024
+	subvarvar TEMP TEMP2
+	setactor[THISACTOR].zvel TEMP
+ends
+
 onevent EVENT_EGS
 	// TODO: Change this to quick-access vars once EDuke32 gets better MP.
 	ifactor FIREBALL
 	{
 		// Calculate horizontal spread
 		getactor[THISACTOR].ang TEMP
-		addvar TEMP 8
-		randvar TEMP2 16
+		ifspawnedby BOSS5
+		{
+			addvar TEMP 128
+			randvar TEMP2 256
+		}
+		else
+		{
+			addvar TEMP 8
+			randvar TEMP2 16
+		}
 		subvarvar TEMP TEMP2
 		setactor[THISACTOR].ang TEMP
 		
 		// Calculate vertical spread
 		getactor[THISACTOR].zvel TEMP
-		addvar TEMP 128
-		randvar TEMP2 256
+		ifspawnedby BOSS5
+		{
+			addvar TEMP 1024
+			randvar TEMP2 2048
+		}
+		else
+		{
+			addvar TEMP 128
+			randvar TEMP2 256
+		}
 		subvarvar TEMP TEMP2
 		setactor[THISACTOR].zvel TEMP
+		
+		ifspawnedby BOSS5
+		{
+			state boss_projectile_offset
+		}
+		
+		break
 	}
-	else ifactor DEVASTATORMISSILE
+	
+	ifactor FLAMETHROWERFLAME
 	{
 		// Calculate horizontal spread
 		getactor[THISACTOR].ang TEMP
-		addvar TEMP 16
-		randvar TEMP2 32
+		ifspawnedby BOSS5
+		{
+			addvar TEMP 128
+			randvar TEMP2 256
+		}
+		else
+		{
+			addvar TEMP 32
+			randvar TEMP2 64
+		}
 		subvarvar TEMP TEMP2
 		setactor[THISACTOR].ang TEMP
 		
 		// Calculate vertical spread
 		getactor[THISACTOR].zvel TEMP
-		addvar TEMP 256
-		randvar TEMP2 512
+		ifspawnedby BOSS5
+		{
+			addvar TEMP 1024
+			randvar TEMP2 2048
+		}
+		else
+		{
+			addvar TEMP 512
+			randvar TEMP2 1024
+		}
 		subvarvar TEMP TEMP2
 		setactor[THISACTOR].zvel TEMP
-		
-		// Get angle and barrel
-		getplayer[THISACTOR].hbomb_hold_delay TEMP3
-		getplayer[THISACTOR].ang SPAWN_ORIGANG
-		
-		// Calculate X position
-		setvarvar TEMP SPAWN_ORIGANG
-		sin TEMP2 TEMP
-		divvar TEMP2 512
-		
-		// Set X position
-		getactor[THISACTOR].x TEMP
-		ifvare TEMP3 1 // Check barrel
+		break
+	}
+	
+	ifactor DEVASTATORMISSILE
+	{
+		ifspawnedby BOSS5
 		{
-			subvarvar TEMP TEMP2
+			state devastator_boss_spread
+		}
+		else ifspawnedby BOSS2
+		{
+			state devastator_boss_spread
 		}
 		else
 		{
-			addvarvar TEMP TEMP2
-		}
-		setactor[THISACTOR].x TEMP
-		
-		// Calculate Y position
-		setvarvar TEMP SPAWN_ORIGANG
-		addvar TEMP 1536
-		sin TEMP2 TEMP
-		divvar TEMP2 512
-		
-		// Set Y position
-		getactor[THISACTOR].y TEMP
-		ifvare TEMP3 1 // Check barrel
-		{
+			// Calculate horizontal spread
+			getactor[THISACTOR].ang TEMP
+			addvar TEMP 16
+			randvar TEMP2 32
 			subvarvar TEMP TEMP2
+			setactor[THISACTOR].ang TEMP
+			
+			// Calculate vertical spread
+			getactor[THISACTOR].zvel TEMP
+			addvar TEMP 256
+			randvar TEMP2 512
+			subvarvar TEMP TEMP2
+			setactor[THISACTOR].zvel TEMP
 		}
-		else
-		{
-			addvarvar TEMP TEMP2
-		}
-		setactor[THISACTOR].y TEMP
 		
-		ifvare COOP GM_ROIDMATCH
+		ifspawnedby APLAYER
 		{
-			setprojectile[DEVASTATORMISSILE].velmult 2
+			// Get angle and barrel
+			getplayer[THISACTOR].hbomb_hold_delay TEMP3
+			getplayer[THISACTOR].ang SPAWN_ORIGANG
+			
+			// Calculate X position
+			setvarvar TEMP SPAWN_ORIGANG
+			sin TEMP2 TEMP
+			divvar TEMP2 512
+			
+			// Set X position
+			getactor[THISACTOR].x TEMP
+			ifvare TEMP3 1 // Check barrel
+			{
+				subvarvar TEMP TEMP2
+			}
+			else
+			{
+				addvarvar TEMP TEMP2
+			}
+			setactor[THISACTOR].x TEMP
+			
+			// Calculate Y position
+			setvarvar TEMP SPAWN_ORIGANG
+			addvar TEMP 1536
+			sin TEMP2 TEMP
+			divvar TEMP2 512
+			
+			// Set Y position
+			getactor[THISACTOR].y TEMP
+			ifvare TEMP3 1 // Check barrel
+			{
+				subvarvar TEMP TEMP2
+			}
+			else
+			{
+				addvarvar TEMP TEMP2
+			}
+			setactor[THISACTOR].y TEMP
+			
+			ifvare COOP GM_ROIDMATCH
+			{
+				setprojectile[DEVASTATORMISSILE].velmult 2
+			}
 		}
+		else ifspawnedby BOSS5
+		{
+			state boss_projectile_offset
+		}
+		else ifspawnedby BOSS2
+		{
+			state boss_projectile_offset
+		}
+		break
 	}
 	
 	getactor[THISACTOR].picnum TEMP
-	switch TEMP
-		case JIBS1:
-		case JIBS2:
-		case JIBS3:
-		case JIBS4:
-		case JIBS5:
-		case JIBS6:
-		case HEADJIB1:
-        case LEGJIB1:
-        case ARMJIB1:
-        case LIZMANHEAD1:
-        case LIZMANARM1:
-        case LIZMANLEG1:
-        case DUKELEG:
-        case DUKEGUN:
-        case DUKETORSO:
-		case BLOODSPLAT1:
-		case BLOODSPLAT2:
-		case BLOODSPLAT3:
-		case BLOODSPLAT4:
-		case BLOODPOOL:
-		case FOOTPRINTS:
-		case FOOTPRINTS2:
-		case FOOTPRINTS3:
-		case FOOTPRINTS4:
-		case PAPER:
-		case MONEY:
-		case MAIL:
-		case PUKE:
-			setactor[THISACTOR].mdflags 16
-			setvar ISADULT ADULT_UNHIDE
-			break
-			
-		case LASERLINE:
-			setactor[THISACTOR].mdflags 16
-			break
-	endswitch
-	switch TEMP
+	switch TEMP	
 		case JIBS1:
 		case JIBS2:
 		case JIBS3:
@@ -356,6 +572,11 @@ onevent EVENT_EGS
         case DUKEGUN:
         case DUKETORSO:
 			setvarvar PICNUM_MEMORY TEMP
+			break
+			
+		case LASERLINE:
+		case TRIPBOMB:
+			setactor[THISACTOR].mdflags 16
 			break
 	endswitch
 endevent
@@ -376,12 +597,17 @@ state reset_burn
 		setactor[THISACTOR].pal BURNING_OLDPAL
 	}
 	
+	ifactor APLAYER
+	{
+		setvar STOP_BURNING 0
+	}
+	
 	setvar BURNING_OLDPAL -1
 	setvar BURNING_TICS 0
 	setvar BURNING_INFLICTOR -1
 ends
 
-onevent EVENT_GAME
+state burning_logic
 	ifvarg BURNING_TICS 0
 	{
 		ifinwater { state reset_burn break }
@@ -389,21 +615,14 @@ onevent EVENT_GAME
 		ifwasweapon FREEZEBLAST { state reset_burn break }
 		
 		findnearsprite3d TOILETWATER 800 TEMP
-		ifvarn TEMP -1
-		{
-			state reset_burn
-			break
-		}
+		ifvarn TEMP -1 { state reset_burn break }
 		
 		getactor[THISACTOR].extra TEMP
-		ifvarl TEMP 1
-		{
-			state reset_burn
-			break
-		}
+		ifvarl TEMP 1 { state reset_burn break }
 		
 		ifactor APLAYER
 		{
+			ifvare STOP_BURNING 1 { state reset_burn break }
 			palfrom 16 64 8 0
 		}
 		
@@ -431,54 +650,32 @@ onevent EVENT_GAME
 			}
 		}
 		
-		// Burn sound every 30 tics
-		setvarvar TEMP BURNING_TICS
-		modvar TEMP 30
-		ifvare TEMP 0 { sound FIRE_CRACKLE }
+		// Burn sound
+		soundonce FIRE_CRACKLE
 		
 		setvarvar TEMP BURNING_TICS
 		modvar TEMP 2
 		ifvare TEMP 0
 		{
-			// Fire Sprites
-			espawn ONFIRE
-			
-			getactor[THISACTOR].x TEMP
-			randvar TEMP2 256
-			subvar TEMP2 128
-			addvarvar TEMP TEMP2
-			setactor[RETURN].x TEMP
-			
-			getactor[THISACTOR].y TEMP
-			randvar TEMP2 256
-			subvar TEMP2 128
-			addvarvar TEMP TEMP2
-			setactor[RETURN].y TEMP
-			
-			// Note: Set this to use tilesizy*yrepeat later.
-			getactor[THISACTOR].z TEMP
-			randvar TEMP2 8192
-			subvarvar TEMP TEMP2
-			setactor[RETURN].z TEMP
-			
-			setvar RETURN 0
+			state spawn_random_fire
 		}
 		
+		// Damage every 4 tics
 		setvarvar TEMP BURNING_TICS
 		modvar TEMP 4
 		ifvare TEMP 0
 		{
-			// Check if there's any incoming damage, and add if so, or set to 1 if not.
 			getactor[THISACTOR].htextra TEMP2
-			ifvarl TEMP2 0
+			ifactor APLAYER // Half damage for player
 			{
-				setactor[THISACTOR].htextra 1 
+				addvar TEMP2 2
 			}
 			else
 			{
-				addvar TEMP2 1
-				setactor[THISACTOR].htextra TEMP2
+				addvar TEMP2 4
 			}
+			setactor[THISACTOR].htextra TEMP2
+			
 			setactor[THISACTOR].htowner BURNING_INFLICTOR
 			setactor[THISACTOR].htpicnum FIREBALL
 		}
@@ -493,6 +690,33 @@ onevent EVENT_GAME
 			break
 		}
 	}
+ends
+
+state boss_devastatormissile_resize
+	setactor[THISACTOR].xrepeat 16
+	setactor[THISACTOR].yrepeat 16
+	setthisprojectile[THISACTOR].txrepeat 16
+	setthisprojectile[THISACTOR].tyrepeat 16
+	setthisprojectile[THISACTOR].sxrepeat 16
+	setthisprojectile[THISACTOR].syrepeat 16
+ends
+
+onevent EVENT_GAME
+	state burning_logic
+	
+	ifactor DEVASTATORMISSILE
+	{
+		ifspawnedby BOSS5
+		{
+			state boss_devastatormissile_resize
+			break
+		}
+		else ifspawnedby BOSS2
+		{
+			state boss_devastatormissile_resize
+			break
+		}
+	}
 
 	ifactor TRIPBOMB
 	{
@@ -501,6 +725,7 @@ onevent EVENT_GAME
 		{
 			cstator 256
 			setactor[THISACTOR].htflags 136
+			break
 		}
 	}
 	
@@ -569,13 +794,20 @@ onevent EVENT_GAME
 			setactor[RETURN].owner TEMP2
 			setvar RETURN 0
 			
-			
 			killit
 		}
+		break
 	}
 	
 	getactor[THISACTOR].picnum TEMP	
 	switch TEMP
+		case RESPAWNMARKERRED:
+		case RESPAWNMARKERYELLOW:
+		case RESPAWNMARKERGREEN:
+			getactor[THISACTOR].owner TEMP
+			getactor[TEMP].z TEMP2
+			setactor[THISACTOR].z TEMP2
+			break
 		case JIBS1:
 		case JIBS2:
 		case JIBS3:
@@ -681,6 +913,8 @@ onevent EVENT_LOADACTOR
 	case TIMEDPLATFORM:
 	case CONTEXTSOUND:
 	case CUSTOMTOUCHPLATE:
+	case ZTELEPORTER:
+	case ZTDESTINATION:
 		setactor[THISACTOR].lotag 0
 		break
 	case STARTWEAPONCHANGER:
@@ -688,17 +922,6 @@ onevent EVENT_LOADACTOR
 		setactor[THISACTOR].lotag 0
 		break
 	endswitch
-endevent
-
-onevent EVENT_PRELEVEL
-	setvar START_WEAPON -1
-	
-	setvar TEMP 0
-	whilevarn TEMP MAXSECTORS
-	{
-		setarray SECTOR_TYPES[TEMP] 0
-		addvar TEMP 1
-	}
 endevent
 
 onevent EVENT_SPAWN
@@ -757,43 +980,22 @@ onevent EVENT_SPAWN
 	
 	getactor[THISACTOR].picnum TEMP
 	switch TEMP
-		// Adult tiles (Hide if adult mode is off)
+		// XXX tiles (Hide if XXX content is off)
 		case FLESHLIGHT:
-		case DILDO:
-		case GEECKU:
-		case GEECKU2:
-		case SHARONM:
-		case STRIKERXHELEN:
-		case STRIKER:
 		case SHARONM2:
-		case MIKHAILA:
-		case CHAMPAGNE:
-		case MIKHAILA2:
-		case DAWNSEXANIM:
-		case SALLYMASTURBATE:
-		case PUSSYGRIND:
-		case HENTAIANIM:
 		case LIRUANIM:
+		case VIBRATOR:
+		case BD_SOFIA:
+		case SHARONMANIM:
 			setactor[THISACTOR].mdflags 16
 			setvar ISADULT ADULT_HIDE
 			break
 		
-		// Unmarked as adult	
-		case XXXSTACY:
-		case FEMPIC1:
-		case FEMPIC2:
-		case FEMPIC4:
-		case FEM9:
-			setactor[THISACTOR].mdflags 16
-			setvar ISADULT ADULT_UNHIDE
-			break
-		
-		// Adult tiles (Swap if adult mode is off)
+		// XXX tiles (Have XXX version if XXX content is on, or clean version if off.)
 		case EXOTICA:
 		case FEMPIC5:
 		case FEMPIC6:
 		case FEMPIC7:
-		case FEMMAG1:
 		case FEMMAG2:
 		case STRIPPERFLASH:
 		case HOOKERFLASH:
@@ -807,13 +1009,100 @@ onevent EVENT_SPAWN
 		case PIRATE1A:
 		case PIRATE3A:
 		case TOUGHGAL:
+		case NAKED1:
 		case WOMAN:
 		case 1330:
 		case 4498:
 		case 4865:
+		case GEECKU:
+		case GEECKU2:
+		case MIKHAILA:
+		case MIKHAILA2:
+		case CHAMPAGNE:
+		case STRIKER:
+		case STRIKERXHELEN:
+		case HENTAIANIM:
+		case PUSSYGRIND:
+		case DAWNSEXANIM:
+		case SALLYMASTURBATE:
+		case SHARONM:
+		case DILDO:
 			setactor[THISACTOR].mdflags 16
 			setvar ISADULT ADULT_SWAP
-			break	
+			break
+			
+		// Misc Tiles
+		case TRIPBOMB:
+			setactor[THISACTOR].mdflags 16
+			break
+			
+		case FIREFLY:
+			cstator 257
+			ifspawnedby FIREFLY
+			{
+				changespritestat THISACTOR 2
+			}
+			break
+		case BOSS2:
+		case BOSS3:
+		case BOSS2STAYPUT:
+		case BOSS3STAYPUT:
+		case BOSS5:
+		case BOSS5STAYPUT:
+			cstator 257
+			changespritestat THISACTOR 2
+			ifspritepal 0
+			{
+				sizeat 80 80
+				setactor[THISACTOR].clipdist 164
+			}
+			else
+			{
+				sizeat 40 40
+				setactor[THISACTOR].clipdist 80
+			}
+			break
+	endswitch
+	
+	switch TEMP
+		case FEM1:
+		case FEM2:
+		case FEM3:
+		case FEM4:
+		case FEM5:
+		case FEM6:
+		case FEM7:
+		//case FEM8: // Dead, can't be saved.
+		case FEM9:
+		case FEM10:
+		case TOUGHGAL:
+		case NAKED1:
+		case PODFEM1:
+		case WOMAN:
+		case PIRATE1A:
+		case PIRATE3A:
+			ifactor NAKED1
+			{
+				ifinwater { } // Drowned, can't be saved.
+				else
+				{
+					addvar BABES_TOTAL 1
+				}
+			}
+			else ifactor WOMAN
+			{
+				getactor[THISACTOR].sectnum TEMP
+				ifvare TEMP 541 { } // Hack for E4L1
+				else
+				{
+					addvar BABES_TOTAL 1
+				}
+			}
+			else
+			{
+				addvar BABES_TOTAL 1
+			}
+			break
 	endswitch
 	
 	switch COOP
@@ -832,58 +1121,93 @@ onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
 		getuserdef[].lockout CL_TEMP1
 		ifvare CL_TEMP1 1
 		{
+			settspr[THISACTOR].tsprxrepeat 0
+			break
+		}
+		
+		ifvare CL_XXXCONTENT 1
+		{
+			ifvare ISADULT ADULT_SWAP
+			{
+				gettspr[THISACTOR].tsprpicnum CL_TEMP1
+				switch CL_TEMP1
+					// Clean tiles with XXX versions
+					case EXOTICA: settspr[THISACTOR].tsprpicnum 5950 break // 766
+					case FEMPIC5: settspr[THISACTOR].tsprpicnum 5951 break // 963
+					case FEMPIC6: settspr[THISACTOR].tsprpicnum 5952 break // 964
+					case FEMPIC7: settspr[THISACTOR].tsprpicnum 5953 break // 965
+					case PIRATE1A: settspr[THISACTOR].tsprpicnum 5955 break
+					case PIRATE3A: settspr[THISACTOR].tsprpicnum 5957 break
+					case FEM10: settspr[THISACTOR].tsprpicnum 5959 break
+					case 4865: settspr[THISACTOR].tsprpicnum 5960 break
+					case 4866: settspr[THISACTOR].tsprpicnum 5961 break
+					case 4867: settspr[THISACTOR].tsprpicnum 5962 break
+					case 4868: settspr[THISACTOR].tsprpicnum 5963 break
+					case 4869: settspr[THISACTOR].tsprpicnum 5964 break
+					case 4870: settspr[THISACTOR].tsprpicnum 5965 break
+					case WOMAN: settspr[THISACTOR].tsprpicnum 5966 break
+					case FEMMAG2: settspr[THISACTOR].tsprpicnum 5969 break // 577
+					case 4498: settspr[THISACTOR].tsprpicnum 5970 break
+					case FEM3: settspr[THISACTOR].tsprpicnum 5971 break
+					case HOOKERFLASH: settspr[THISACTOR].tsprpicnum 5973 break // 1339
+					case FEM5: settspr[THISACTOR].tsprpicnum 5974 break
+					case FEM4: settspr[THISACTOR].tsprpicnum 5975 break
+					case 1330: settspr[THISACTOR].tsprpicnum 5980 break
+					case FEM7: settspr[THISACTOR].tsprpicnum 5981 break
+					case 1332: settspr[THISACTOR].tsprpicnum 5985 break
+					case 1333: settspr[THISACTOR].tsprpicnum 5986 break
+					case FEM6: settspr[THISACTOR].tsprpicnum 5987 break
+					case NAKED1: settspr[THISACTOR].tsprpicnum 5988 break
+				endswitch
+			}
+		}
+		else
+		{
 			ifvare ISADULT ADULT_HIDE
 			{
 				settspr[THISACTOR].tsprxrepeat 0
+				break
 			}
-			else
+			
+			ifvare ISADULT ADULT_SWAP
 			{
-				// If ADULT_UNHIDE or ADULT_SWAP, copy x/yrepeat of actor.
-				getactor[THISACTOR].xrepeat CL_TEMP1
-				settspr[THISACTOR].tsprxrepeat CL_TEMP1
-				
-				getactor[THISACTOR].yrepeat CL_TEMP1
-				settspr[THISACTOR].tspryrepeat CL_TEMP1
-				
-				ifvare ISADULT ADULT_SWAP
-				{
-					gettspr[THISACTOR].tsprpicnum CL_TEMP1
-					switch CL_TEMP1
-						case EXOTICA: settspr[THISACTOR].tsprpicnum 5950 break
-						case FEMPIC5: settspr[THISACTOR].tsprpicnum 5951 break
-						case FEMPIC6: settspr[THISACTOR].tsprpicnum 5952 break
-						case FEMPIC7: settspr[THISACTOR].tsprpicnum 5953 break
-						case FEMMAG1: settspr[THISACTOR].tsprpicnum 5954 break
-						case PIRATE1A: settspr[THISACTOR].tsprpicnum 5955 break
-						case PIRATE3A: settspr[THISACTOR].tsprpicnum 5957 break
-						case FEM10: settspr[THISACTOR].tsprpicnum 5959 break
-						case 4865: settspr[THISACTOR].tsprpicnum 5960 break
-						case 4866: settspr[THISACTOR].tsprpicnum 5961 break
-						case 4867: settspr[THISACTOR].tsprpicnum 5962 break
-						case 4868: settspr[THISACTOR].tsprpicnum 5963 break
-						case 4869: settspr[THISACTOR].tsprpicnum 5964 break
-						case 4870: settspr[THISACTOR].tsprpicnum 5965 break
-						case WOMAN: settspr[THISACTOR].tsprpicnum 5966 break
-						case FEMMAG2: settspr[THISACTOR].tsprpicnum 5969 break
-						case 4498: settspr[THISACTOR].tsprpicnum 5970 break
-						case FEM3: settspr[THISACTOR].tsprpicnum 5971 break
-						case HOOKERFLASH: settspr[THISACTOR].tsprpicnum 5971 break
-						case FEM5: settspr[THISACTOR].tsprpicnum 5973 break
-						case FEM4: settspr[THISACTOR].tsprpicnum 5974 break
-						case 1330: settspr[THISACTOR].tsprpicnum 5979 break
-						case FEM7: settspr[THISACTOR].tsprpicnum 5980 break
-						case 1332: settspr[THISACTOR].tsprpicnum 5984 break
-						case 1333: settspr[THISACTOR].tsprpicnum 5985 break
-						case FEM6: settspr[THISACTOR].tsprpicnum 5986 break
-					endswitch
-				}
+				gettspr[THISACTOR].tsprpicnum CL_TEMP1
+				switch CL_TEMP1
+					// XXX tiles with clean versions
+					case DILDO: settspr[THISACTOR].tsprpicnum 3702 break
+					case SHARONM: settspr[THISACTOR].tsprpicnum 4980 break
+					case SALLYMASTURBATE: settspr[THISACTOR].tsprpicnum 4981 break
+					case DAWNSEXANIM: settspr[THISACTOR].tsprpicnum 4982 break
+					case HENTAIANIM: settspr[THISACTOR].tsprpicnum 4983 break
+					case STRIKERXHELEN: settspr[THISACTOR].tsprpicnum 4984 break
+					case STRIKER: settspr[THISACTOR].tsprpicnum 4985 break
+					case CHAMPAGNE: settspr[THISACTOR].tsprpicnum 4986 break
+					case MIKHAILA: settspr[THISACTOR].tsprpicnum 4987 break
+					case MIKHAILA2: settspr[THISACTOR].tsprpicnum 4988 break
+					case GEECKU2: settspr[THISACTOR].tsprpicnum 4989 break
+					case GEECKU: settspr[THISACTOR].tsprpicnum 4990 break
+					case PUSSYGRIND: settspr[THISACTOR].tsprpicnum 6155 break
+				endswitch
 			}
 		}
 	}
 	
 	ifactor LASERLINE
 	{
-		settspr[THISACTOR].tsprpicnum 5006
+		switch CL_LASERCOLOR
+			case 0: settspr[THISACTOR].tsprpicnum 5006 break
+			case 1: settspr[THISACTOR].tsprpicnum 5009 break
+			case 2: settspr[THISACTOR].tsprpicnum 5012 break
+			case 3: settspr[THISACTOR].tsprpicnum 5015 break
+		endswitch
+	}
+	else ifactor TRIPBOMB
+	{
+		switch CL_LASERCOLOR
+			case 1: settspr[THISACTOR].tsprpicnum 2592 break
+			case 2: settspr[THISACTOR].tsprpicnum 2593 break
+			case 3: settspr[THISACTOR].tsprpicnum 2594 break
+		endswitch
 	}
 	else ifactor SHELL
 	{
@@ -918,7 +1242,7 @@ onevent EVENT_CHEATGETBOOT
 	setvar HAS_SSG 1
 endevent
 
-onevent EVENT_RESETPLAYER
+state reset_weapons
 	setvar HAS_FREEZETHROWER 0
 	setvar HAS_FLAMETHROWER 0
 	setvar FLAMETHROWER_AMMO 0
@@ -974,6 +1298,63 @@ onevent EVENT_RESETPLAYER
 			}
 		
 			setplayer[THISACTOR].curr_weapon START_WEAPON
+		}
+	}
+ends
+
+onevent EVENT_RESETWEAPONS
+	state reset_weapons
+endevent
+
+onevent EVENT_RESETPLAYER
+	ifmultiplayer
+	{
+		ifvarand gametype_flags 32768 { }
+		else
+		{
+			state reset_weapons
+		}
+	}
+	else
+	{
+		getplayer[THISACTOR].gm TEMP
+		ifvarand TEMP 8 { } // EOL?
+		else
+		{
+			state reset_weapons
+		}
+	}
+endevent
+
+onevent EVENT_PRELEVEL
+	setvar START_WEAPON -1
+	setvar BABES_RESCUED 0
+	setvar BABES_TOTAL 0
+	setvar BABES_ALLSAVED 0
+	
+	setvar TEMP 0
+	whilevarn TEMP MAXSECTORS
+	{
+		setarray SECTOR_TYPES[TEMP] 0
+		setarray SECTOR_JUMPX[TEMP] 0
+		setarray SECTOR_JUMPY[TEMP] 0
+		setarray SECTOR_JUMPZ[TEMP] 0
+		addvar TEMP 1
+	}
+endevent
+
+onevent EVENT_USEMEDKIT
+	getplayer[THISACTOR].firstaid_amount TEMP
+	ifvarg TEMP 0
+	{
+		ifvarg BURNING_TICS 0
+		{
+			getactor[THISACTOR].extra TEMP
+			ifvarl TEMP 100
+			{
+				palfrom 48 0 0 48
+				state stop_player_burn
+			}
 		}
 	}
 endevent
@@ -1070,6 +1451,82 @@ onevent EVENT_USESTEROIDS
 	}
 endevent
 
+//definegamefuncname 13 Toggle_XXX_Content
+//definegamefuncname 14 Change_Tripmine_Color
+state client_keys
+	getinput[THISACTOR].bits CL_TEMP1
+	ifvarand CL_TEMP1 64
+	{
+		ifvarand CL_OLDKEYS 64 { }
+		else
+		{
+			ifvare CL_XXXCONTENT 0
+			{
+				redefinequote 500 ^12XXX Content: ^08ON
+				userquote 500
+				setvar CL_XXXCONTENT 1
+				savegamevar CL_XXXCONTENT
+			}
+			else
+			{
+				redefinequote 500 ^12XXX Content: ^02OFF
+				userquote 500
+				setvar CL_XXXCONTENT 0
+				savegamevar CL_XXXCONTENT
+			}
+		}
+	}
+	else ifvarand CL_TEMP1 128
+	{
+		ifvarand CL_OLDKEYS 128 { }
+		else
+		{
+			ifvare CL_LASERCOLOR 0
+			{
+				redefinequote 500 ^12Tripmine Laser Color: ^08Green
+				userquote 500
+				setvar CL_LASERCOLOR 1
+				savegamevar CL_LASERCOLOR
+			}
+			else ifvare CL_LASERCOLOR 1
+			{
+				redefinequote 500 ^12Tripmine Laser Color: ^01Blue
+				userquote 500
+				setvar CL_LASERCOLOR 2
+				savegamevar CL_LASERCOLOR
+			}
+			else ifvare CL_LASERCOLOR 2
+			{
+				redefinequote 500 ^12Tripmine Laser Color: ^07Yellow
+				userquote 500
+				setvar CL_LASERCOLOR 3
+				savegamevar CL_LASERCOLOR
+			}
+			else ifvare CL_LASERCOLOR 3
+			{
+				redefinequote 500 ^12Tripmine Laser Color: ^02Red
+				userquote 500
+				setvar CL_LASERCOLOR 0
+				savegamevar CL_LASERCOLOR
+			}
+		}
+	}
+	getinput[THISACTOR].bits CL_OLDKEYS
+ends
+
+state draw_babe_counter
+	getuserdef[].levelstats CL_TEMP1
+	ifvare CL_TEMP1 1
+	{
+		ifvarn BABES_TOTAL 0
+		{
+			redefinequote 500 ^12Babes Saved:^8 %d ^12/^8 %d
+			qsprintf 500 500 BABES_RESCUED BABES_TOTAL
+			screentext 3072 2 130 65536 0 0 500 -127 0 280 0 3 5 1 1 8196 0 0 xdim ydim
+		}
+	}
+ends
+
 onevent EVENT_DISPLAYREST // !UNSYNCHRONIZED!
 
 	//redefinequote 500 %d
@@ -1107,42 +1564,57 @@ onevent EVENT_DISPLAYREST // !UNSYNCHRONIZED!
 	// SO MANY FUCKING TEMP VARS
 	getuserdef[].screen_size CL_TEMP1
 	ifmultiplayer
-	ifvarg CL_TEMP1 0
-	ifvarn COOP GM_COOPERATIVE
 	{
-		setvar SCORE_COUNTER 0
-		setvar SCORE_PLAYERINDEX 0
-		setvar SCORE_YOFFSET 8
-		whilevarvarn SCORE_COUNTER MULTIMODE
+		ifvarg CL_TEMP1 0
 		{
-			getplayer[SCORE_PLAYERINDEX].connected SCORE_PLAYERCONNECTED
-			ifvare SCORE_PLAYERCONNECTED 1 // Is connected
+			ifvarn COOP GM_COOPERATIVE
 			{
-				// Print Background Bar
-				myos 267 SCORE_YOFFSET NAMEBAR -127 569
-				
-				// Get palette
-				getplayer[SCORE_PLAYERINDEX].palookup SCORE_PLAYERPAL
-				
-				// Get and print name
-				getpname 500 SCORE_PLAYERINDEX
-				screentext 3072 268 SCORE_YOFFSET 65536 0 0 500 -127 SCORE_PLAYERPAL 536 0 3 5 1 1 8192 0 0 xdim ydim 
-				
-				// Get and print frags
-				getplayer[SCORE_PLAYERINDEX].frag SCORE_FRAGS
-				getplayer[SCORE_PLAYERINDEX].fraggedself SCORE_SUICIDES
-				subvarvar SCORE_FRAGS SCORE_SUICIDES
-				redefinequote 500 %d
-				qsprintf 500 500 SCORE_FRAGS
-				screentext 3072 318 SCORE_YOFFSET 65536 0 0 500 -127 SCORE_PLAYERPAL 536 0 3 5 1 1 8193 0 0 xdim ydim 
-				
-				// Move y offset down
-				addvar SCORE_YOFFSET 6
-				addvar SCORE_COUNTER 1
+				setvar SCORE_COUNTER 0
+				setvar SCORE_PLAYERINDEX 0
+				setvar SCORE_YOFFSET 8
+				whilevarvarn SCORE_COUNTER MULTIMODE
+				{
+					getplayer[SCORE_PLAYERINDEX].connected SCORE_PLAYERCONNECTED
+					ifvare SCORE_PLAYERCONNECTED 1 // Is connected
+					{
+						// Print Background Bar
+						myos 267 SCORE_YOFFSET NAMEBAR -127 569
+						
+						// Get palette
+						getplayer[SCORE_PLAYERINDEX].palookup SCORE_PLAYERPAL
+						
+						// Get and print name
+						getpname 500 SCORE_PLAYERINDEX
+						screentext 3072 268 SCORE_YOFFSET 65536 0 0 500 -127 SCORE_PLAYERPAL 536 0 3 5 1 1 8192 0 0 xdim ydim 
+						
+						// Get and print frags
+						getplayer[SCORE_PLAYERINDEX].frag SCORE_FRAGS
+						getplayer[SCORE_PLAYERINDEX].fraggedself SCORE_SUICIDES
+						subvarvar SCORE_FRAGS SCORE_SUICIDES
+						redefinequote 500 %d
+						qsprintf 500 500 SCORE_FRAGS
+						screentext 3072 318 SCORE_YOFFSET 65536 0 0 500 -127 SCORE_PLAYERPAL 536 0 3 5 1 1 8193 0 0 xdim ydim 
+						
+						// Move y offset down
+						addvar SCORE_YOFFSET 6
+						addvar SCORE_COUNTER 1
+					}
+					
+					// Move on to the next player
+					addvar SCORE_PLAYERINDEX 1
+				}
 			}
-			
-			// Move on to the next player
-			addvar SCORE_PLAYERINDEX 1
+			else
+			{
+				state draw_babe_counter
+			}
+		}
+	}
+	else
+	{
+		ifvarg CL_TEMP1 0
+		{
+			state draw_babe_counter
 		}
 	}
 	
@@ -1150,36 +1622,82 @@ onevent EVENT_DISPLAYREST // !UNSYNCHRONIZED!
 	{
 		screentext 3072 160 150 65536 0 0 134 -127 2 16 0 3 5 1 1 8194 0 0 xdim ydim
 	}
+	
+	state client_keys
 endevent
 
 onevent EVENT_DISPLAYMENUREST // Version display. !UNSYNCHRONIZED!
 	screentext 3072 316 180 65536 0 0 499 -127 6 536 0 3 5 1 1 8193 0 0 xdim ydim 
+	
+	switch CL_LASERCOLOR
+		case 0:
+			redefinequote 500 ^12Tripmine Laser Color: ^02Red
+			break
+		case 1:
+			redefinequote 500 ^12Tripmine Laser Color: ^08Green
+			break
+		case 2:
+			redefinequote 500 ^12Tripmine Laser Color: ^01Blue
+			break
+		case 3:
+			redefinequote 500 ^12Tripmine Laser Color: ^07Yellow
+			break
+	endswitch
+	
+	screentext 3072 8 180 65536 0 0 500 -127 6 280 0 3 5 1 1 8192 0 0 xdim ydim
+	
+	ifvare CL_XXXCONTENT 1
+	{
+		redefinequote 500 ^12XXX Content: ^08ON
+	}
+	else
+	{
+		redefinequote 500 ^12XXX Content: ^02OFF
+	}
+	
+	screentext 3072 8 174 65536 0 0 500 -127 6 280 0 3 5 1 1 8192 0 0 xdim ydim
+endevent
+
+onevent EVENT_ENTERLEVEL
+	readgamevar CL_XXXCONTENT
+	readgamevar CL_LASERCOLOR
+endevent
+
+onevent EVENT_INIT
+	readgamevar CL_XXXCONTENT
+	readgamevar CL_LASERCOLOR
+endevent
+
+onevent EVENT_LOOKLEFT
+	setvar RETURN -1
+endevent
+
+onevent EVENT_LOOKRIGHT
+	setvar RETURN -1
 endevent
 
 onevent EVENT_SOUND
-	ifvare RETURN KICK_HIT
+	getplayer[THISACTOR].gm CL_TEMP1
+	ifvarand CL_TEMP1 1
 	{
-		getplayer[THISACTOR].gm CL_TEMP1
-		ifvarand CL_TEMP1 1
-		{
-			setvar RETURN MENU_MOVE
-		}
+		switch RETURN
+			case KICK_HIT:
+				setvar RETURN MENU_MOVE
+				break
+			case PISTOL_BODYHIT:
+				setvar RETURN MENU_CONFIRM
+				break
+			case EXITMENUSOUND:
+				setvar RETURN MENU_BACK
+				break
+		endswitch
 	}
-	else ifvare RETURN PISTOL_BODYHIT
+	
+	ifvare RETURN PISTOL_BODYHIT
 	{
-		getplayer[THISACTOR].gm CL_TEMP1
-		ifvarand CL_TEMP1 1
-		{
-			setvar RETURN MENU_CONFIRM
-		}
-	}
-	else ifvare RETURN EXITMENUSOUND
-	{
-		getplayer[THISACTOR].gm CL_TEMP1
-		ifvarand CL_TEMP1 1
-		{
-			setvar RETURN MENU_BACK
-		}
+		getactor[THISACTOR].htpicnum CL_TEMP1
+		ifvare CL_TEMP1 FLAMETHROWERFLAME
+			setvar RETURN -1
 	}
 	else ifvare RETURN TELEPORTER
 	{
@@ -1195,8 +1713,7 @@ onevent EVENT_SOUND
 		}
 		endswitch
 	}
-	
-	ifvare RETURN SOMETHING_DRIPPING
+	else ifvare RETURN SOMETHING_DRIPPING
 	{
 		displayrandvar CL_TEMP1 2
 		switch CL_TEMP1
@@ -1207,97 +1724,13 @@ onevent EVENT_SOUND
 	}
 endevent
 
+// Player Input
+//onevent EVENT_PROCESSINPUT
+//endevent
+
 // Prediction code
 onevent EVENT_FAKEDOMOVETHINGS
 	state handle_rift_prediction
 	state handle_sectortypes_prediction
-
-	ifvare PREDICT_JUMPPAD_HIT 0
-	{
-		headspritesect CURSPRITE mycursectnum
-		setvarvar LASTSPRITE CURSPRITE
-		whilevarn CURSPRITE -1
-		{
-			getactor[CURSPRITE].picnum TEMP
-			ifvare TEMP JUMPPAD
-			{
-				ifvare myonground 1
-				{
-					ifvarn PREDICT_JUMPPAD_HIT 1 // If not, let's do this.
-					{
-						setvar myonground 0 // No longer on the ground.
-						
-						subvar myz 16384 // Kick them off the ground a little, to stop them from being "magnetized" to the ground.
-						
-						getactor[CURSPRITE].hitag TEMP
-						ifvare TEMP 0
-						{
-							setvar TEMP2 -4096 // If not hitag is set, -4096 is the default velocity.
-						}
-						else ifvarg TEMP 0
-						{
-							setvar TEMP2 0
-							subvarvar TEMP2 TEMP
-						}
-						
-						setvarvar myzvel TEMP2 // Launch
-						
-						setvar PREDICT_JUMPPAD_HIT 1 // They're in the air.
-						
-						// Set X/Y Velocities
-						getactor[CURSPRITE].xvel TEMP2
-						mulvar TEMP2 1024
-						setvarvar PREDICT_JUMPPAD_XVEL TEMP2
-						
-						getactor[CURSPRITE].yvel TEMP2
-						mulvar TEMP2 1024
-						setvarvar PREDICT_JUMPPAD_YVEL TEMP2
-					}
-				}
-				
-				setvar CURSPRITE -1
-			}
-					
-			nextspritesect CURSPRITE LASTSPRITE
-			setvarvar LASTSPRITE CURSPRITE
-		}
-	}
-	
-	ifvare PREDICT_JUMPPAD_HIT 1
-	{
-		ifvarn PREDICT_JUMPPAD_XVEL 0
-		{
-			setvarvar myxvel PREDICT_JUMPPAD_XVEL
-		}
-		
-		ifvarn PREDICT_JUMPPAD_YVEL 0
-		{
-			setvarvar myyvel PREDICT_JUMPPAD_YVEL
-		}
-		
-		ifp pdead
-		{
-			setvar PREDICT_JUMPPAD_HIT 0 // No longer launched by jump pad when player gets killed
-			setvar PREDICT_JUMPPAD_XVEL 0
-			setvar PREDICT_JUMPPAD_YVEL 0
-		}
-		else ifvarg myonground 0
-		{
-			setvar PREDICT_JUMPPAD_HIT 0 // No longer launched by jump pad when player hits the ground
-			setvar PREDICT_JUMPPAD_XVEL 0
-			setvar PREDICT_JUMPPAD_YVEL 0
-		}
-		else ifp pjetpack
-		{
-			setvar PREDICT_JUMPPAD_HIT 0 // If they use the jetpack, prevent them from cheating the jump pads to stop fall damage.
-			setvar PREDICT_JUMPPAD_XVEL 0
-			setvar PREDICT_JUMPPAD_YVEL 0
-		}
-		else ifinwater
-		{
-			setvar PREDICT_JUMPPAD_HIT 0 // Cancel out if landed in water.
-			setvar PREDICT_JUMPPAD_XVEL 0
-			setvar PREDICT_JUMPPAD_YVEL 0
-		}
-	}
+	state handle_jumppad_movement_prediction
 endevent

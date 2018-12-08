@@ -1,0 +1,127 @@
+// Firefly Sprites
+tilefromtexture 5180 { file "tiles/5180.png" xoffset 1 }
+tilefromtexture 5181 { file "tiles/5181.png" xoffset -2 yoffset -3 }
+tilefromtexture 5182 { file "tiles/5182.png" yoffset -4 }
+tilefromtexture 5183 { file "tiles/5183.png" xoffset 2 yoffset -2 }
+tilefromtexture 5184 { file "tiles/5184.png" yoffset -2 }
+tilefromtexture 5185 { file "tiles/5185.png" xoffset 2 yoffset -1 }
+tilefromtexture 5186 { file "tiles/5186.png" xoffset 7 yoffset -2 }
+tilefromtexture 5187 { file "tiles/5187.png" yoffset -4 }
+tilefromtexture 5188 { file "tiles/5188.png" xoffset 3 yoffset -3 }
+tilefromtexture 5189 { file "tiles/5189.png" yoffset -2 }
+tilefromtexture 5190 { file "tiles/5190.png" xoffset -3 yoffset -3 }
+tilefromtexture 5191 { file "tiles/5191.png" xoffset 7 yoffset -2 }
+tilefromtexture 5192 { file "tiles/5192.png" xoffset 2 yoffset -4 }
+tilefromtexture 5193 { file "tiles/5193.png" xoffset -4 yoffset -4 }
+tilefromtexture 5194 { file "tiles/5194.png" xoffset 8 yoffset -3 }
+tilefromtexture 5195 { file "tiles/5195.png" xoffset -4 }
+tilefromtexture 5196 { file "tiles/5196.png" xoffset 5 yoffset -3 }
+tilefromtexture 5197 { file "tiles/5197.png" xoffset 8 yoffset -4 }
+tilefromtexture 5198 { file "tiles/5198.png" xoffset 3 yoffset -3 }
+tilefromtexture 5199 { file "tiles/5199.png" xoffset 2 }
+tilefromtexture 5200 { file "tiles/5200.png" xoffset -6 yoffset -3 }
+tilefromtexture 5201 { file "tiles/5201.png" xoffset 15 yoffset -3 }
+tilefromtexture 5202 { file "tiles/5202.png" xoffset 12 yoffset -3 }
+tilefromtexture 5203 { file "tiles/5203.png" xoffset 1 yoffset -4 }
+tilefromtexture 5204 { file "tiles/5204.png" xoffset 3 yoffset -3 }
+tilefromtexture 5205 { file "tiles/5205.png" }
+
+tilefromtexture 5215 { file "tiles/5215.png" xoffset -6 yoffset -3 }
+tilefromtexture 5216 { file "tiles/5216.png" xoffset 14 yoffset -3 }
+tilefromtexture 5217 { file "tiles/5217.png" xoffset 10 yoffset -4 }
+
+tilefromtexture 5220 { file "tiles/5220.png" xoffset -2 yoffset 2 }
+tilefromtexture 5221 { file "tiles/5221.png" xoffset 2 yoffset 2 }
+tilefromtexture 5222 { file "tiles/5222.png" xoffset 3 yoffset 2 }
+tilefromtexture 5223 { file "tiles/5223.png" xoffset -1 yoffset 2 }
+tilefromtexture 5224 { file "tiles/5224.png" xoffset 1 yoffset 3 }
+tilefromtexture 5225 { file "tiles/5225.png" yoffset 2 }
+tilefromtexture 5226 { file "tiles/5226.png" xoffset 2 yoffset 2 }
+tilefromtexture 5227 { file "tiles/5227.png" xoffset 3 yoffset 3 }
+
+tilefromtexture 5230 { file "tiles/5230.png" xoffset -2 yoffset -1 }
+tilefromtexture 5231 { file "tiles/5231.png" xoffset 5 }
+tilefromtexture 5232 { file "tiles/5232.png" xoffset 11 yoffset 0 }
+tilefromtexture 5233 { file "tiles/5233.png" xoffset 7 yoffset 0 }
+tilefromtexture 5234 { file "tiles/5234.png" xoffset 5 yoffset 0 }
+
+tilefromtexture 5238 { file "tiles/5238.png" yoffset 0 }
+tilefromtexture 5239 { file "tiles/5239.png" xoffset -1 yoffset 0 }
+tilefromtexture 5240 { file "tiles/5240.png" xoffset -1 yoffset 0 }
+tilefromtexture 5241 { file "tiles/5241.png" xoffset 0 yoffset -3 }
+tilefromtexture 5242 { file "tiles/5242.png" xoffset 0 yoffset 0 }
+
+tilefromtexture 5244 { file "tiles/5244.png" xoffset 1 yoffset 0 }
+tilefromtexture 5245 { file "tiles/5245.png" xoffset -4 yoffset 0 }
+tilefromtexture 5246 { file "tiles/5246.png" xoffset -5 yoffset -1 }
+tilefromtexture 5247 { file "tiles/5247.png" xoffset -4 yoffset -2 }
+tilefromtexture 5248 { file "tiles/5248.png" xoffset -3 yoffset -2 }
+tilefromtexture 5249 { file "tiles/5249.png" xoffset 1 yoffset 0 }
+tilefromtexture 5250 { file "tiles/5250.png" xoffset -4 yoffset 0 }
+tilefromtexture 5251 { file "tiles/5251.png" xoffset -3 yoffset -2 }
+
+tilefromtexture 5254 { file "tiles/5254.png" xoffset -4 yoffset -1 }
+tilefromtexture 5255 { file "tiles/5255.png" xoffset 2 yoffset -1 }
+// End Firefly Sprites
+
+// Firefly Shrink Star
+tilefromtexture 5296 { file "tiles/5296.png" }
+tilefromtexture 5297 { file "tiles/5297.png" }
+tilefromtexture 5298 { file "tiles/5298.png" }
+tilefromtexture 5299 { file "tiles/5299.png" }
+tilefromtexture 5300 { file "tiles/5300.png" }
+tilefromtexture 5301 { file "tiles/5301.png" }
+tilefromtexture 5302 { file "tiles/5302.png" }
+
+// Fire Cycloid
+tilefromtexture 5310 { file "tiles/5310.png" xoffset -2 yoffset -3 }
+tilefromtexture 5311 { file "tiles/5311.png" xoffset 6 yoffset -3 }
+tilefromtexture 5312 { file "tiles/5312.png" xoffset 6 yoffset -3 }
+tilefromtexture 5313 { file "tiles/5313.png" xoffset 16 yoffset -3 }
+tilefromtexture 5314 { file "tiles/5314.png" xoffset -11 yoffset -3 }
+tilefromtexture 5315 { file "tiles/5315.png" yoffset -3 }
+tilefromtexture 5316 { file "tiles/5316.png" xoffset 8 yoffset -3 }
+tilefromtexture 5317 { file "tiles/5317.png" xoffset 3 yoffset -3 }
+tilefromtexture 5318 { file "tiles/5318.png" yoffset -2 }
+tilefromtexture 5319 { file "tiles/5319.png" yoffset -3 }
+tilefromtexture 5320 { file "tiles/5320.png" xoffset -3 yoffset -5 }
+tilefromtexture 5321 { file "tiles/5321.png" xoffset 13 yoffset -2 }
+tilefromtexture 5322 { file "tiles/5322.png" xoffset 3 yoffset -3 }
+tilefromtexture 5323 { file "tiles/5323.png" yoffset -3 }
+tilefromtexture 5324 { file "tiles/5324.png" xoffset 8 yoffset -3 }
+tilefromtexture 5325 { file "tiles/5325.png" xoffset 4 yoffset -3 }
+tilefromtexture 5326 { file "tiles/5326.png" xoffset 20 yoffset -3 }
+tilefromtexture 5327 { file "tiles/5327.png" yoffset -3 }
+tilefromtexture 5328 { file "tiles/5328.png" xoffset 10 yoffset -3 }
+tilefromtexture 5329 { file "tiles/5329.png" yoffset -3 }
+tilefromtexture 5330 { file "tiles/5330.png" xoffset -4 yoffset -3 }
+tilefromtexture 5331 { file "tiles/5331.png" xoffset 21 yoffset -3 }
+tilefromtexture 5332 { file "tiles/5332.png" xoffset 16 yoffset -3 }
+tilefromtexture 5335 { file "tiles/5335.png" xoffset -8 yoffset -3 }
+tilefromtexture 5336 { file "tiles/5336.png" xoffset 18 yoffset -3 }
+tilefromtexture 5337 { file "tiles/5337.png" xoffset 16 yoffset -3 }
+tilefromtexture 5340 { file "tiles/5340.png" xoffset 5 yoffset -2 }
+tilefromtexture 5341 { file "tiles/5341.png" xoffset 17 yoffset -3 }
+tilefromtexture 5342 { file "tiles/5342.png" yoffset -3 }
+tilefromtexture 5345 { file "tiles/5345.png" yoffset -3 }
+tilefromtexture 5346 { file "tiles/5346.png" xoffset 32 yoffset -3 }
+tilefromtexture 5347 { file "tiles/5347.png" xoffset 21 yoffset -3 }
+tilefromtexture 5350 { file "tiles/5350.png" xoffset -6 yoffset -3 }
+tilefromtexture 5351 { file "tiles/5351.png" xoffset 2 yoffset -3 }
+tilefromtexture 5352 { file "tiles/5352.png" xoffset 13 yoffset -3 }
+tilefromtexture 5353 { file "tiles/5353.png" xoffset 13 yoffset -3 }
+tilefromtexture 5354 { file "tiles/5354.png" xoffset 11 yoffset -3 }
+tilefromtexture 5355 { file "tiles/5355.png" xoffset 12 yoffset -3 }
+tilefromtexture 5356 { file "tiles/5356.png" xoffset 12 yoffset -3 }
+tilefromtexture 5357 { file "tiles/5357.png" yoffset -3 }
+tilefromtexture 5358 { file "tiles/5358.png" }
+
+// Firefly Grow Effect
+tilefromtexture 5359 { file "tiles/5359.png" }
+tilefromtexture 5360 { file "tiles/5360.png" }
+tilefromtexture 5361 { file "tiles/5361.png" }
+tilefromtexture 5362 { file "tiles/5362.png" }
+tilefromtexture 5363 { file "tiles/5363.png" }
+tilefromtexture 5364 { file "tiles/5364.png" }
+tilefromtexture 5365 { file "tiles/5365.png" xoffset -3 yoffset 3 }
+tilefromtexture 5366 { file "tiles/5366.png" yoffset -2 }

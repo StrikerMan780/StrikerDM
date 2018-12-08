@@ -89,166 +89,6 @@ skybox {
 }
 
 skybox {
-   tile 1082 pal 0
-   top   "skybox/1082_top.png" nocompress nodownsize
-   down  "skybox/1082_bottom.png" nocompress nodownsize
-   front "skybox/1082_north.png" nocompress nodownsize
-   right "skybox/1082_north.png" nocompress nodownsize 
-   back  "skybox/1082_north.png" nocompress nodownsize
-   left  "skybox/1082_north.png" nocompress nodownsize 
-}
-
-skybox {
-   tile 1082 pal 2
-   top   "skybox/1082_top.png" nocompress nodownsize
-   down  "skybox/1082_bottom.png" nocompress nodownsize
-   front "skybox/1082_north.png" nocompress nodownsize
-   right "skybox/1082_north.png" nocompress nodownsize 
-   back  "skybox/1082_north.png" nocompress nodownsize
-   left  "skybox/1082_north.png" nocompress nodownsize 
-}
-
-skybox {
-   tile 1083 pal 0
-   top   "skybox/1083_top.png" nocompress nodownsize
-   down  "skybox/1083_bottom.png" nocompress nodownsize
-   front "skybox/1083_north.png" nocompress nodownsize
-   right "skybox/1083_north.png" nocompress nodownsize 
-   back  "skybox/1083_north.png" nocompress nodownsize
-   left  "skybox/1083_north.png" nocompress nodownsize 
-}
-
-skybox {
-   tile 1083 pal 2
-   top   "skybox/1083_top.png" nocompress nodownsize
-   down  "skybox/1083_bottom.png" nocompress nodownsize
-   front "skybox/1083_north.png" nocompress nodownsize
-   right "skybox/1083_north.png" nocompress nodownsize 
-   back  "skybox/1083_north.png" nocompress nodownsize
-   left  "skybox/1083_north.png" nocompress nodownsize 
-}
-
-skybox {
-   tile 1083 pal 24
-   top   "skybox/1083_24_top.png" nocompress nodownsize
-   down  "skybox/1083_24_bottom.png" nocompress nodownsize
-   front "skybox/1083_24_north.png" nocompress nodownsize
-   right "skybox/1083_24_north.png" nocompress nodownsize 
-   back  "skybox/1083_24_north.png" nocompress nodownsize
-   left  "skybox/1083_24_north.png" nocompress nodownsize 
-}
-
-skybox {
-   tile 1084 pal 0
-   top   "skybox/1084_top.png" nocompress nodownsize
-   down  "skybox/1084_bottom.png" nocompress nodownsize
-   front "skybox/1084_north.png" nocompress nodownsize
-   right "skybox/1084_north.png" nocompress nodownsize 
-   back  "skybox/1084_north.png" nocompress nodownsize
-   left  "skybox/1084_north.png" nocompress nodownsize 
-}
-
-skybox {
-   tile 1084 pal 2
-   top   "skybox/1084_top.png" nocompress nodownsize
-   down  "skybox/1084_bottom.png" nocompress nodownsize
-   front "skybox/1084_north.png" nocompress nodownsize
-   right "skybox/1084_north.png" nocompress nodownsize 
-   back  "skybox/1084_north.png" nocompress nodownsize
-   left  "skybox/1084_north.png" nocompress nodownsize 
-}
-
-skybox {
-   tile 1084 pal 24
-   top   "skybox/1084_24_top.png" nocompress nodownsize
-   down  "skybox/1084_24_bottom.png" nocompress nodownsize
-   front "skybox/1084_24_north.png" nocompress nodownsize
-   right "skybox/1084_24_north.png" nocompress nodownsize 
-   back  "skybox/1084_24_north.png" nocompress nodownsize
-   left  "skybox/1084_24_north.png" nocompress nodownsize 
-}
-
-skybox {
-   tile 1085 pal 0
-   top   "skybox/1085_top.png" nocompress nodownsize
-   down  "skybox/1085_bottom.png" nocompress nodownsize
-   front "skybox/1085_north.png" nocompress nodownsize
-   right "skybox/1085_north.png" nocompress nodownsize 
-   back  "skybox/1085_north.png" nocompress nodownsize
-   left  "skybox/1085_north.png" nocompress nodownsize 
-}
-
-skybox {
-   tile 1085 pal 2
-   top   "skybox/1085_top.png" nocompress nodownsize
-   down  "skybox/1085_bottom.png" nocompress nodownsize
-   front "skybox/1085_north.png" nocompress nodownsize
-   right "skybox/1085_north.png" nocompress nodownsize 
-   back  "skybox/1085_north.png" nocompress nodownsize
-   left  "skybox/1085_north.png" nocompress nodownsize 
-}
-
-skybox {
-   tile 1085 pal 24
-   top   "skybox/1085_24_top.png" nocompress nodownsize
-   down  "skybox/1085_24_bottom.png" nocompress nodownsize
-   front "skybox/1085_24_north.png" nocompress nodownsize
-   right "skybox/1085_24_north.png" nocompress nodownsize 
-   back  "skybox/1085_24_north.png" nocompress nodownsize
-   left  "skybox/1085_24_north.png" nocompress nodownsize 
-}
-
-skybox {
-   tile 1086 pal 0
-   top   "skybox/1086_top.png" nocompress nodownsize
-   down  "skybox/1086_bottom.png" nocompress nodownsize
-   front "skybox/1086_north.png" nocompress nodownsize
-   right "skybox/1086_north.png" nocompress nodownsize 
-   back  "skybox/1086_north.png" nocompress nodownsize
-   left  "skybox/1086_north.png" nocompress nodownsize 
-}
-
-skybox {
-   tile 1086 pal 2
-   top   "skybox/1086_top.png" nocompress nodownsize
-   down  "skybox/1086_bottom.png" nocompress nodownsize
-   front "skybox/1086_north.png" nocompress nodownsize
-   right "skybox/1086_north.png" nocompress nodownsize 
-   back  "skybox/1086_north.png" nocompress nodownsize
-   left  "skybox/1086_north.png" nocompress nodownsize 
-}
-
-skybox {
-   tile 1086 pal 24
-   top   "skybox/1086_24_top.png" nocompress nodownsize
-   down  "skybox/1086_24_bottom.png" nocompress nodownsize
-   front "skybox/1086_24_north.png" nocompress nodownsize
-   right "skybox/1086_24_north.png" nocompress nodownsize 
-   back  "skybox/1086_24_north.png" nocompress nodownsize
-   left  "skybox/1086_24_north.png" nocompress nodownsize 
-}
-
-skybox {
-   tile 1087 pal 0
-   top   "skybox/1087_top.png" nocompress nodownsize
-   down  "skybox/1087_bottom.png" nocompress nodownsize
-   front "skybox/1087_north.png" nocompress nodownsize
-   right "skybox/1087_north.png" nocompress nodownsize 
-   back  "skybox/1087_north.png" nocompress nodownsize
-   left  "skybox/1087_north.png" nocompress nodownsize 
-}
-
-skybox {
-   tile 1087 pal 2
-   top   "skybox/1087_top.png" nocompress nodownsize
-   down  "skybox/1087_bottom.png" nocompress nodownsize
-   front "skybox/1087_north.png" nocompress nodownsize
-   right "skybox/1087_north.png" nocompress nodownsize 
-   back  "skybox/1087_north.png" nocompress nodownsize
-   left  "skybox/1087_north.png" nocompress nodownsize 
-}
-
-skybox {
    tile 3750 pal 0
    top   "skybox/3750_top.png" nocompress nodownsize
    down  "skybox/0094_bottom.png" nocompress nodownsize
@@ -269,6 +109,16 @@ skybox {
 }
 
 skybox {
+   tile 3550 pal 0
+   top   "skybox/3550_topbottom.png" nocompress nodownsize
+   down  "skybox/3550_topbottom.png" nocompress nodownsize
+   front "skybox/3550_sides.png" nocompress nodownsize
+   right "skybox/3550_sides.png" nocompress nodownsize
+   back  "skybox/3550_sides.png" nocompress nodownsize
+   left  "skybox/3550_sides.png" nocompress nodownsize
+}
+
+skybox {
    tile 3561 pal 0
    top   "skybox/3561_top.png" nocompress nodownsize
    down  "skybox/3561_bottom.png" nocompress nodownsize
@@ -286,4 +136,95 @@ skybox {
    right "skybox/3911_right.png" nocompress nodownsize
    back  "skybox/3911_back.png" nocompress nodownsize
    left  "skybox/3911_left.png" nocompress nodownsize
+}
+
+// World Tour
+skybox {
+   tile 5284 pal 0
+   top   "skybox/0084_top.png" nocompress nodownsize
+   down  "skybox/0084_bottom.png" nocompress nodownsize
+   front "skybox/0084_north.png" nocompress nodownsize
+   right "skybox/0084_east.png" nocompress nodownsize 
+   back  "skybox/0084_south.png" nocompress nodownsize
+   left  "skybox/0084_west.png" nocompress nodownsize 
+}
+
+skybox {
+   tile 5412 pal 0
+   top   "skybox/wt/5412_top.png" nocompress nodownsize
+   down  "skybox/wt/5412_bottom.png" nocompress nodownsize
+   front "skybox/wt/5412_front.png" nocompress nodownsize
+   right "skybox/wt/5412_right.png" nocompress nodownsize
+   back  "skybox/wt/5412_back.png" nocompress nodownsize
+   left  "skybox/wt/5412_left.png" nocompress nodownsize
+}
+
+skybox {
+   tile 5420 pal 0
+   top   "skybox/wt/5420_top.png" nocompress nodownsize
+   down  "skybox/wt/5420_bottom.png" nocompress nodownsize
+   front "skybox/wt/5420_front.png" nocompress nodownsize
+   right "skybox/wt/5420_right.png" nocompress nodownsize
+   back  "skybox/wt/5420_back.png" nocompress nodownsize
+   left  "skybox/wt/5420_left.png" nocompress nodownsize
+}
+
+skybox {
+   tile 5450 pal 0
+   top   "skybox/wt/5450_top.png" nocompress nodownsize
+   down  "skybox/wt/5450_bottom.png" nocompress nodownsize
+   front "skybox/wt/5450_front.png" nocompress nodownsize
+   right "skybox/wt/5450_right.png" nocompress nodownsize
+   back  "skybox/wt/5450_back.png" nocompress nodownsize
+   left  "skybox/wt/5450_left.png" nocompress nodownsize
+}
+
+skybox {
+   tile 5540 pal 0
+   top   "skybox/wt/5540_top.png" nocompress nodownsize
+   down  "skybox/wt/5540_bottom.png" nocompress nodownsize
+   front "skybox/wt/5540_front.png" nocompress nodownsize
+   right "skybox/wt/5540_right.png" nocompress nodownsize
+   back  "skybox/wt/5540_back.png" nocompress nodownsize
+   left  "skybox/wt/5540_left.png" nocompress nodownsize
+}
+
+skybox {
+   tile 5548 pal 0
+   top   "skybox/wt/5548_top.png" nocompress nodownsize
+   down  "skybox/wt/5548_bottom.png" nocompress nodownsize
+   front "skybox/wt/5548_front.png" nocompress nodownsize
+   right "skybox/wt/5548_right.png" nocompress nodownsize
+   back  "skybox/wt/5548_back.png" nocompress nodownsize
+   left  "skybox/wt/5548_left.png" nocompress nodownsize
+}
+
+skybox {
+   tile 5556 pal 0
+   top   "skybox/wt/5556_top.png" nocompress nodownsize
+   down  "skybox/wt/5556_bottom.png" nocompress nodownsize
+   front "skybox/wt/5556_front.png" nocompress nodownsize
+   right "skybox/wt/5556_right.png" nocompress nodownsize
+   back  "skybox/wt/5556_back.png" nocompress nodownsize
+   left  "skybox/wt/5556_left.png" nocompress nodownsize
+}
+
+skybox {
+   tile 5720 pal 0
+   top   "skybox/wt/5720_top.png" nocompress nodownsize
+   down  "skybox/wt/5720_bottom.png" nocompress nodownsize
+   front "skybox/wt/5720_front.png" nocompress nodownsize
+   right "skybox/wt/5720_right.png" nocompress nodownsize
+   back  "skybox/wt/5720_back.png" nocompress nodownsize
+   left  "skybox/wt/5720_left.png" nocompress nodownsize
+}
+
+skybox {
+   tile 5814 pal 0
+   top   "skybox/wt/5814_top.png" nocompress nodownsize
+   down  "skybox/wt/5814_bottom.png" nocompress nodownsize
+   front "skybox/wt/5814_front.png" nocompress nodownsize
+   right "skybox/wt/5814_right.png" nocompress nodownsize
+   back  "skybox/wt/5814_back.png" nocompress nodownsize
+   left  "skybox/wt/5814_left.png" nocompress nodownsize
 }

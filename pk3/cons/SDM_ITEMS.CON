@@ -20,45 +20,49 @@ state quikget_doomitem
 ends
 
 useractor notenemy HEALTHBONER WEAK
-  fall
-  state init_pickup
-  state despawn_item_from_can
-  ifmove RESPAWN_ACTOR_FLAG
-    state respawnit
-  else
-    ifp pshrunk nullop
+	ifvare HITAG_MEMORY 0
+		fall
+		
+	state init_pickup
+	state despawn_item_from_can
+	ifmove RESPAWN_ACTOR_FLAG
+		state respawnit
+	else
+		ifp pshrunk nullop
     else
-      ifp palive
-        ifpdistl RETRIEVEDISTANCE
-          ifcount 6
-            ifphealthl 200
-              ifcanseetarget
-      {
+	ifp palive
+	ifpdistl RETRIEVEDISTANCE
+	ifcount 6
+	ifphealthl 200
+	ifcanseetarget
+	{
 		setplayer[THISACTOR].max_player_health 200
-        addphealth 2
+		addphealth 2
 		setplayer[THISACTOR].max_player_health MAXPLAYERHEALTH
-        quote 125
-        ifspawnedby HEALTHBONER
-          state getcode_doomitem
-        else
-          state quikget_doomitem
-      }
+		quote 125
+		ifspawnedby HEALTHBONER
+			state getcode_doomitem
+		else
+			state quikget_doomitem
+	}
 enda
 
 useractor notenemy ARMORBONER WEAK
-  fall
-  state init_pickup
-  state despawn_item_from_can
-  ifmove RESPAWN_ACTOR_FLAG
-    state respawnit
-  else
-    ifp pshrunk nullop
-    else
-      ifp palive
-        ifpdistl RETRIEVEDISTANCE
-          ifcount 6
-              ifcanseetarget
-      {
+	ifvare HITAG_MEMORY 0
+		fall
+		
+	state init_pickup
+	state despawn_item_from_can
+	ifmove RESPAWN_ACTOR_FLAG
+		state respawnit
+	else
+		ifp pshrunk nullop
+	else
+	ifp palive
+	ifpdistl RETRIEVEDISTANCE
+	ifcount 6
+	ifcanseetarget
+	{
 		getplayer[THISACTOR].shield_amount ITEM_TEMP1
 		ifvarl ITEM_TEMP1 200
 		{
@@ -73,9 +77,9 @@ useractor notenemy ARMORBONER WEAK
 			}
 			
 			ifspawnedby ARMORBONER
-			  state getcode_doomitem
+				state getcode_doomitem
 			else
-			  state quikget_doomitem
+				state quikget_doomitem
 		}
-      }
+	}
 enda

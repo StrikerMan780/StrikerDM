@@ -165,17 +165,6 @@ actor FLAMETHROWERAMMO
     }
 enda
 
-spritenoshade FLAMETHROWERFLAME
-action FLAMETHROWER_FLAME  0   10   1   1   2
-actor FLAMETHROWERFLAME FLAMETHROWER_WEAPON_STRENGTH FLAMETHROWER_FLAME
-    ifactioncount 10 {
-		killit
-    }
-    ifactioncount 0 {
-        cstator 130
-    }
-enda
-
 spritenoshade ONFIRE
 action ONFIRE_EFFECT    0    10    1    1    2
 actor ONFIRE 1 ONFIRE_EFFECT
@@ -301,8 +290,8 @@ actor FIREBALLTRAIL 0
 } 
 enda
 
-spritenoshade FLAMETHROWERFLAME
-defineprojectile FIREBALL PROJ_WORKSLIKE 36866
+spritenoshade FIREBALL
+defineprojectile FIREBALL PROJ_WORKSLIKE 32770
 defineprojectile FIREBALL PROJ_XREPEAT 24
 defineprojectile FIREBALL PROJ_YREPEAT 24
 defineprojectile FIREBALL PROJ_VEL 644

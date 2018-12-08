@@ -19,8 +19,12 @@ state draw_tripbomb // TRIPBOMB_WEAPON:
         addvar hud_x 142
         addvar hud_y 234
         
-        setvar hud_tilenum HANDHOLDINGLASER
-        addvar hud_tilenum 3
+		switch CL_LASERCOLOR
+			case 1: setvar hud_tilenum 2592 break
+			case 2: setvar hud_tilenum 2593 break
+			case 3: setvar hud_tilenum 2594 break
+			default: setvar hud_tilenum 2566 break
+		endswitch
         
         state G_DrawWeaponTile
         

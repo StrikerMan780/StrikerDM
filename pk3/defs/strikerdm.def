@@ -1,3 +1,5 @@
+cachesize 65536
+
 // Fonts
 include defs/redfont.def
 include defs/bluefont.def
@@ -17,6 +19,7 @@ include defs/doomtex.def
 include defs/communitytex.def
 include defs/dt_tiles014.def
 include defs/vaporwave.def
+include defs/wt_tiles020.def
 include defs/wt_tiles021.def
 include defs/wt_tiles022.def
 include defs/xxx.def

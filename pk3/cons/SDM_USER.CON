@@ -2,6 +2,7 @@ gamevar IMMORTAL_BABES 1 0
 gamevar FORCE_RESPAWN 0 0
 
 define RESPAWNPROPTIME 768
+define BABERESPAWNTIME 900
 
 define MAXFLAMETHROWERAMMO 99
 define FLAMETHROWERAMMOAMOUNT 25
@@ -21,6 +22,20 @@ define MAXRAILGUNAMMO 20
 define RAILGUNAMMOAMOUNT 4
 define RAILGUN_WEAPON_STRENGTH 80
 
+define ENEMY_FLAME_STRENGTH 1
+define FF_STRENGTH 50
+define FF_SIZEX 48
+define FF_SIZEY 40
+define FF_SHRUNKSIZEX 12
+define FF_SHRUNKSIZEY 10
+
+define BOSS5STRENGTH 6000
+
+define BOSS2PALSTRENGTH 1000
+define BOSS3PALSTRENGTH 1000
+define BOSS4PALSTRENGTH 1000
+define BOSS5PALSTRENGTH 1000
+
 definequote 125		HEALTH VIAL: +2
 definequote 126		AMMO FOR FLAMETHROWER
 definequote 127		FLAMETHROWER!
@@ -30,7 +45,7 @@ definequote 130		AMMO FOR PLASMA RIFLE
 definequote 131		RAILGUN!
 definequote 132		AMMO FOR RAILGUN
 definequote 133		SUPER SHOTGUN!
-definequote 134		YOU'RE BURNING, FIND WATER!
+definequote 134		YOU'RE BURNING, FIND WATER OR HEALTH!
 definequote 500		PLACEHOLDER QUOTE
 
 define GM_DUKEMATCH 0
@@ -58,8 +73,9 @@ definelevelname 4 1 maps/space.map 66:60 66:60 Moonbase Alpha
 definelevelname 4 2 maps/vapor.map 66:60 66:60 Aesthetic Duel (WIP)
 definelevelname 4 3 maps/afucktemple.map 66:60 66:60 Ancient Fuck Temple
 definelevelname 4 4 maps/stayfrosty.map 66:60 66:60 Stay Frosty
-definelevelname 4 5 maps/rocks.map 66:60 66:60 Feature Test Map
-music 5 music/sexwithex.mid music/darkmatt.mid music/passport.mid music/sdungeon.ogg music/sturr31.ogg music/ffunk.ogg
+definelevelname 4 5 maps/longestduke.map 66:60 66:60 The Longest Duke
+definelevelname 4 6 maps/rocks.map 66:60 66:60 Feature Test Map
+music 5 music/sexwithex.mid music/darkmatt.mid music/passport.mid music/sdungeon.ogg music/sturr31.ogg music/ybb.xm music/ffunk.ogg
 
 definevolumename 5 William Gee's DM Maps
 definelevelname 5 0 maps/wgdm1.map 66:60 66:60 WGDM1 (6P)
@@ -182,16 +198,16 @@ definelevelname 9 60 maps/OSTFESTUNG.map 66:60 66:60 Ost Festung: Noldor Ranzou
 definelevelname 9 61 maps/WAHNSINN-SDM.map 66:60 66:60 Wahnsinn: Noldor Ranzou
 definelevelname 9 62 maps/ROLANDTOWN-SDM.map 66:60 66:60 Roland Town: Noldor Ranzou
 definelevelname 9 63 maps/COLOSSEUM-SDM.map 66:60 66:60 Colosseum: Educator
-
+ 
 music 10 music/virulent.ogg music/doktor.ogg music/egwaa.ogg music/multplay.ogg music/zeppelin.ogg music/interstl.ogg
-         music/miamidis.ogg music/coconut.ogg music/unknownc.ogg music/eatdust.ogg music/darkcmbt.it music/villa.ogg
-         music/facility.ogg music/night.mid music/sawdust.ogg music/phaseday.ogg music/blood.ogg music/binfinie.ogg
-         music/defacto.ogg music/attkship.ogg warehaus.mid music/gelato.ogg music/blizzard.ogg music/mltplay2.ogg music/aztec.it music/shdsiren.ogg music/trashcan.ogg
+         music/miamidis.ogg music/coconut.ogg music/unknownc.ogg music/mech8.s3m music/darkcmbt.it music/villa.ogg
+         music/facility.ogg music/night.mid music/sawdust.ogg music/pyxels.mod music/blood.ogg music/binfinie.ogg
+         music/naffjungl4.mod music/attkship.ogg music/grating.mod music/gelato.ogg music/blizzard.ogg music/mltplay2.ogg music/aztec.it music/shdsiren.ogg music/farmercharm.mod
          music/bomberman.ogg music/athletic.ogg music/d_stlks2.mid music/shial.ogg music/monster.mid music/hrpdream.mid music/mystery.mid music/ln2remix.ogg
          music/pterodactyl.ogg music/haremscarem.ogg music/desertdrive.ogg music/train.ogg music/jaguar.ogg music/piriton.ogg music/aenima.mid music/skinmask.mid
          music/brainscan.mid music/ealord.mid music/mus_e2m3.mid music/slavestate.mid music/dnfost1.ogg music/dnfost2.ogg music/quickordead.mid music/wwesmack.mid 
          music/choco64.ogg music/darkmatt.mid music/quikmart.mid music/elephant.ogg music/diredocks.mid music/2980_1.mid music/seeyou.mid music/poland.mid music/frame.mid
-         music/company.mid music/sputnik.mid music/mother.mid music/italy.mid
+         music/company.mid music/chuckrock.mod music/mother.mid music/italy.mid
 		 
 definevolumename 10 Community Maps 2
 definelevelname 10 0 maps/WANGNUKEM-SDM.map 66:60 66:60 Wang Nukem: Duke64Nukem
@@ -219,9 +235,20 @@ definelevelname 10 21 maps/IODRPG13-SDM.map 66:60 66:60 Iodrpg13: Multiple Autho
 definelevelname 10 22 maps/RUBIK-SDM.map 66:60 66:60 Rubik: Multiple Authors
 definelevelname 10 23 maps/2FREEZE-SDM.map 66:60 66:60 2Freeze: Multiple Authors
 definelevelname 10 24 maps/XZONE10-SDM.map 66:60 66:60 Xzone10: Multiple Authors
+definelevelname 10 25 maps/CLIFFTOP-SDM.map 66:60 66:60 Clifftop: Drek
+definelevelname 10 26 maps/IRONWILL-SDM.map 66:60 66:60 Iron Will: Iggy
+definelevelname 10 27 maps/TWISTOF8-SDM.map 66:60 66:60 Twist of 8: Multiple Authors
+definelevelname 10 28 maps/TRIFORT-SDM.map 66:60 66:60 Trifort: Mr Sausage
+definelevelname 10 29 maps/BULLS-SDM.map 66:60 66:60 Bulls: Vedran Jelenic
+definelevelname 10 30 maps/FLZONE3-SDM.map 66:60 66:60 Flzone3: Multiple Authors
+definelevelname 10 31 maps/ARRAKIS-SDM.map 66:60 66:60 Arrakis: Multiple Authors
+definelevelname 10 32 maps/GRAVITY!-SDM.map 66:60 66:60 Gravity!: Multiple Authors
+definelevelname 10 33 maps/GANGSDM33-SDM.map 66:60 66:60 Gangs DM: Zillas
+definelevelname 10 34 maps/MONOCHROMIA.map 66:60 66:60 Monochromia: Noldor Ranzou
 
 music 11 music/seppuku.ogg music/ancient.ogg music/fortress.ogg music/zerostreets.ogg music/zerotown.ogg
          music/eerie.ogg music/saturntoll.ogg music/echohare.ogg music/apes.mid music/mental.ogg music/breed.mid
-         music/portroyal.mid music/mercenary.mid music/oneinch.mid music/fatcity.mid music/smwwd2.mid music/antarctica.mid
+         music/portroyal.mid music/mercenary.mid music/oneinch.mid music/fatcity.mid music/smwathletic.it music/antarctica.mid
          music/depression.mid music/vitevoom.mid music/munsters.mid music/bodies.mid music/deathcrush.mid music/pow.mid
-         music/nostalgy.mid music/shattered.mid
+         music/nostalgy.mid music/shattered.mid music/hymnof.xm music/an-turr.xm music/starg13.mod music/letni.s3m music/flanns.mod
+         music/ninjaphi.it music/lagoona.xm music/battleofsteel.xm music/d_l24d.it music/qube.mod

@@ -15,7 +15,7 @@ texture 2470 { pal 0 { file "highres/hud/holoduke_icon.png" forcefilter } }
 tilefromtexture 2459 { file "tiles/2459.png" }
 
 // Status Bar
-tilefromtexture 2462 { file "tiles/2462.png" } // Save for later when widescreen HUDs are possible.
+tilefromtexture 2462 { file "tiles/2462.png" }
 texture 2462 { pal 0 { file "highres/hud/statusbar_widescreen.png" forcefilter } }
 
 // Menu Logo
@@ -24,7 +24,8 @@ texture 2503 { pal 0 { file "highres/menu/2503_MenuLogo.png" nocompress nodownsi
 texture 2499 { pal 0 { file "highres/menu/2499_Duke3D.png" nocompress nodownsize forcefilter } }
 
 // Crosshair
-texture 2523 { pal 0 { file "highres/hud/crosshair1.png" forcefilter } }
+//texture 2523 { pal 0 { file "highres/hud/crosshair1.png" forcefilter } }
+texture 2523 { pal 0 { file "highres/hud/crosshair2.png" forcefilter } }
 
 // Menu Cursor
 tilefromtexture 2813 { file "tiles/2813.png" }

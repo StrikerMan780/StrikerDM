@@ -68,95 +68,95 @@ state draw_ssg // SHOTGUN_WEAPON:
 			state G_DrawWeaponTile
 			break
 		case 11:
-		case 12:
 			state G_DrawWeaponTile
 			break
-		case 13:
+		case 12:
 			addvar hud_x -1
 			addvar hud_y 1
 			state G_DrawWeaponTile
 			break
-		case 14:
+		case 13:
 			addvar hud_x -2
 			addvar hud_y 2
 			state G_DrawWeaponTile
 			break
-		case 15:
+		case 14:
 			addvar hud_x -3
 			addvar hud_y 3
 			state G_DrawWeaponTile
 			break
-		case 16:
+		case 15:
 			addvar hud_x -1
 			addvar hud_y 1
 			state G_DrawWeaponTile
 			break
-		case 17:
+		case 16:
 			setvar hud_tilenum SSG_RELOAD1
 			state G_DrawWeaponTile
 			break
-		case 18:
+		case 17:
 			setvar hud_tilenum SSG_RELOAD1
 			addvar hud_x 1
 			state G_DrawWeaponTile
 			break
-		case 19:
+		case 18:
 			setvar hud_tilenum SSG_RELOAD1
 			addvar hud_x 2
 			state G_DrawWeaponTile
 			break
-		case 20:
+		case 19:
 			setvar hud_tilenum SSG_RELOAD1
 			addvar hud_y 1
 			state G_DrawWeaponTile
 			break
-		case 21:
+		case 20:
 			setvar hud_tilenum SSG_RELOAD2
 			addvar hud_x -1
 			addvar hud_y 2
 			state G_DrawWeaponTile
 			break
-		case 22:
+		case 21:
 			setvar hud_tilenum SSG_RELOAD2
 			addvar hud_x -2
 			addvar hud_y 3
 			state G_DrawWeaponTile
 			break
-		case 23:
+		case 22:
 			setvar hud_tilenum SSG_RELOAD3
 			addvar hud_x -3
 			addvar hud_y 4
 			state G_DrawWeaponTile
 			break
-		case 24:
+		case 23:
 			setvar hud_tilenum SSG_RELOAD3
 			addvar hud_x -4
 			addvar hud_y 5
 			state G_DrawWeaponTile
 			break
-		case 25:
+		case 24:
 			setvar hud_tilenum SSG_RELOAD4
 			addvar hud_x -4
 			addvar hud_y 5
 			state G_DrawWeaponTile
 			break
-		case 26:
+		case 25:
 			setvar hud_tilenum SSG_RELOAD5
 			addvar hud_x -3
 			addvar hud_y 4
 			state G_DrawWeaponTile
 			break
-		case 27:
+		case 26:
 			setvar hud_tilenum SSG_RELOAD5
 			addvar hud_x -1
 			addvar hud_y 2
 			state G_DrawWeaponTile
 			break
-		case 28:
+		case 27:
 			setvar hud_tilenum SSG_RELOAD5
 			addvar hud_y 1
 			state G_DrawWeaponTile
 			break
+		case 28:
 		case 29:
 		case 30:
 		case 31:
@@ -164,96 +164,95 @@ state draw_ssg // SHOTGUN_WEAPON:
 		case 33:
 		case 34:
 		case 35:
-		case 36:
 			setvar hud_tilenum SSG_RELOAD5
 			state G_DrawWeaponTile
 			break
-		case 37:
+		case 36:
 			setvar hud_tilenum SSG_RELOAD6
 			addvar hud_x -2
 			addvar hud_y 2
 			state G_DrawWeaponTile
 			break
-		case 38:
+		case 37:
 			setvar hud_tilenum SSG_RELOAD6
 			addvar hud_x -4
 			addvar hud_y 4
 			state G_DrawWeaponTile
 			break
-		case 39:
+		case 38:
 			setvar hud_tilenum SSG_RELOAD6
 			addvar hud_x -3
 			addvar hud_y 3
+			state G_DrawWeaponTile
+			break
+		case 39:
+			setvar hud_tilenum SSG_RELOAD6
+			addvar hud_x -2
+			addvar hud_y 2
 			state G_DrawWeaponTile
 			break
 		case 40:
 			setvar hud_tilenum SSG_RELOAD6
-			addvar hud_x -2
-			addvar hud_y 2
-			state G_DrawWeaponTile
-			break
-		case 41:
-			setvar hud_tilenum SSG_RELOAD6
 			addvar hud_x -1
 			addvar hud_y 1
 			state G_DrawWeaponTile
 			break
+		case 41:
 		case 42:
 		case 43:
 		case 44:
-		case 45:
 			setvar hud_tilenum SSG_RELOAD6
+			state G_DrawWeaponTile
+			break
+		case 45:
+			setvar hud_tilenum SSG_RELOAD7
+			addvar hud_x -1
+			addvar hud_y 1
 			state G_DrawWeaponTile
 			break
 		case 46:
 			setvar hud_tilenum SSG_RELOAD7
-			addvar hud_x -1
-			addvar hud_y 1
 			state G_DrawWeaponTile
 			break
 		case 47:
-			setvar hud_tilenum SSG_RELOAD7
-			state G_DrawWeaponTile
-			break
-		case 48:
 			addvar hud_x -1
 			addvar hud_y 1
 			state G_DrawWeaponTile
 			break
+		case 48:
+			state G_DrawWeaponTile
+			break
 		case 49:
+			setvar hud_tilenum SSG_RELOAD1
 			state G_DrawWeaponTile
 			break
 		case 50:
 			setvar hud_tilenum SSG_RELOAD1
+			addvar hud_x 1
 			state G_DrawWeaponTile
 			break
 		case 51:
 			setvar hud_tilenum SSG_RELOAD1
-			addvar hud_x 1
+			addvar hud_x 2
 			state G_DrawWeaponTile
 			break
 		case 52:
 			setvar hud_tilenum SSG_RELOAD1
-			addvar hud_x 2
-			state G_DrawWeaponTile
-			break
-		case 53:
-			setvar hud_tilenum SSG_RELOAD1
 			addvar hud_y 1
 			state G_DrawWeaponTile
 			break
-		case 54:
+		case 53:
 			setvar hud_tilenum SSG_RELOAD1
 			addvar hud_x -2
 			addvar hud_y 2
 			state G_DrawWeaponTile
 			break
-		case 55:
+		case 54:
 			addvar hud_x -3
 			addvar hud_y 3
 			state G_DrawWeaponTile
 			break
-		case 56:
+		case 55:
 			addvar hud_x -2
 			addvar hud_y 2
 			state G_DrawWeaponTile
@@ -272,82 +271,82 @@ state draw_ssg // SHOTGUN_WEAPON:
 		setvar hud_tilenum SSG_HAND1
 		
 		switch weaponcount
-			case 30:
+			case 29:
 				state G_DrawWeaponTile
 				break
-			case 31:
+			case 30:
 				setvar hud_tilenum SSG_HAND2
 				addvar hud_x 40
 				addvar hud_y -32
 				state G_DrawWeaponTile
 				break
-			case 32:
+			case 31:
 				setvar hud_tilenum SSG_HAND2
 				addvar hud_x 80
 				addvar hud_y -40
 				state G_DrawWeaponTile
 				break
-			case 33:
+			case 32:
 				setvar hud_tilenum SSG_HAND2
 				addvar hud_x 100
 				addvar hud_y -44
 				state G_DrawWeaponTile
 				break
-			case 34:
+			case 33:
 				setvar hud_tilenum SSG_HAND2
 				addvar hud_x 120
 				addvar hud_y -48
 				state G_DrawWeaponTile
 				break
-			case 35:
+			case 34:
 				setvar hud_tilenum SSG_HAND2
 				addvar hud_x 140
 				addvar hud_y -50
 				state G_DrawWeaponTile
 				break
-			case 36:
+			case 35:
 				setvar hud_tilenum SSG_HAND2
+				addvar hud_x 160
+				addvar hud_y -51
+				state G_DrawWeaponTile
+				break
+			case 36:
+				setvar hud_tilenum SSG_HAND3
 				addvar hud_x 160
 				addvar hud_y -51
 				state G_DrawWeaponTile
 				break
 			case 37:
 				setvar hud_tilenum SSG_HAND3
-				addvar hud_x 160
-				addvar hud_y -51
-				state G_DrawWeaponTile
-				break
-			case 38:
-				setvar hud_tilenum SSG_HAND3
 				addvar hud_x 158
 				addvar hud_y -49
 				state G_DrawWeaponTile
 				break
-			case 39:
+			case 38:
 				setvar hud_tilenum SSG_HAND3
 				addvar hud_x 150
 				addvar hud_y -48
 				state G_DrawWeaponTile
 				break
-			case 40:
+			case 39:
 				setvar hud_tilenum SSG_HAND2
 				addvar hud_x 130
 				addvar hud_y -40
 				state G_DrawWeaponTile
 				break
-			case 41:
+			case 40:
 				setvar hud_tilenum SSG_HAND2
 				addvar hud_x 120
 				addvar hud_y -30
 				state G_DrawWeaponTile
 				break
-			case 42:
+			case 41:
 				setvar hud_tilenum SSG_HAND2
 				addvar hud_x 100
 				addvar hud_y -10
 				state G_DrawWeaponTile
 				break
-			case 43:
+			case 42:
 				addvar hud_x 80
 				addvar hud_y 0
 				state G_DrawWeaponTile

@@ -110,55 +110,21 @@ enda
 
 actor JUMPPAD 0
 {
-	// Change this to quick access variables when it comes time.
-	getplayer[THISACTOR].cursectnum TEMP
-	getactor[THISACTOR].sectnum TEMP2
-	ifvarvare TEMP TEMP2 // Check if sector matches
-	{
-		ifp ponground
-		{
-			getplayervar[THISACTOR].JUMPPAD_HIT TEMP // Did they already hit the jump pad?
-			ifvarn TEMP 1 // If not, let's do this.
-			{
-				sound JUMPPADSOUND
-				setplayer[THISACTOR].on_ground 0 // No longer on the ground.
-				
-				getplayer[THISACTOR].posz TEMP // Kick them off the ground a little, to stop them from being "magnetized" to the ground.
-				subvar TEMP 16384
-				setplayer[THISACTOR].posz TEMP
-				
-				getactor[THISACTOR].hitag TEMP
-				ifvare TEMP 0
-				{
-					setvar TEMP2 -4096 // If not hitag is set, -4096 is the default velocity.
-				}
-				else ifvarg TEMP 0
-				{
-					setvar TEMP2 0
-					subvarvar TEMP2 TEMP
-				}
-				
-				setplayer[THISACTOR].poszv TEMP2 // Launch
-				
-				setplayervar[THISACTOR].JUMPPAD_HIT 1 // They're in the air.
-				
-				// Set X/Y Velocities
-				getactor[THISACTOR].xvel TEMP2
-				mulvar TEMP2 1024
-				setplayervar[THISACTOR].JUMPPAD_XVEL TEMP2
-				
-				getactor[THISACTOR].yvel TEMP2
-				mulvar TEMP2 1024
-				setplayervar[THISACTOR].JUMPPAD_YVEL TEMP2
-			}
-		}
-	}
+	getactor[THISACTOR].sectnum TEMP
+	setvarvar TEMP2 SECTOR_TYPES[TEMP]
+	orvar TEMP2 SECTORTYPE_JUMPPAD
+	setarray SECTOR_TYPES[TEMP] TEMP2	
 	
-	ifaction 0
-	{
-		cstat 32768
-		action ANULLACTION
-	}
+	getactor[THISACTOR].xvel TEMP2
+	setarray SECTOR_JUMPX[TEMP] TEMP2
+	
+	getactor[THISACTOR].yvel TEMP2
+	setarray SECTOR_JUMPY[TEMP] TEMP2
+	
+	getactor[THISACTOR].hitag TEMP2
+	setarray SECTOR_JUMPZ[TEMP] TEMP2
+	
+	killit
 }
 enda
 
@@ -424,7 +390,17 @@ enda
 
 actor MOONGRAVITY
 	getactor[THISACTOR].sectnum TEMP
-	setarray SECTOR_TYPES[TEMP] 1
+	setvarvar TEMP2 SECTOR_TYPES[TEMP]
+	orvar TEMP2 SECTORTYPE_LOWGRAVITY
+	setarray SECTOR_TYPES[TEMP] TEMP2
+	killit
+enda
+
+actor SPACESECTOR
+	getactor[THISACTOR].sectnum TEMP
+	setvarvar TEMP2 SECTOR_TYPES[TEMP]
+	orvar TEMP2 SECTORTYPE_SPACE
+	setarray SECTOR_TYPES[TEMP] TEMP2
 	killit
 enda
 
@@ -554,6 +530,108 @@ actor SNOWFLAKESPAWNER
 	
 	state spawn_snow
 	state spawn_snow
+enda
+
+state zteleporter_moveactor
+	setvarvar TEMP CURSPRITE // Don't overwrite this until after teleporting!
+	
+	headspritestat CURSPRITE 1 // STAT_ACTOR
+	setvarvar LASTSPRITE CURSPRITE
+	whilevarn CURSPRITE -1
+	{
+		getactor[CURSPRITE].picnum TEMP2
+		ifvare TEMP2 ZTDESTINATION
+		{
+			getactorvar[CURSPRITE].HITAG_MEMORY TEMP2
+			ifvarvare HITAG_MEMORY TEMP2
+			{
+				getactor[CURSPRITE].x SPAWN_ORIGX
+				getactor[CURSPRITE].y SPAWN_ORIGY
+				getactor[CURSPRITE].z SPAWN_ORIGZ
+				getactor[CURSPRITE].ang SPAWN_ORIGANG
+				
+				getactor[TEMP].picnum TEMP2
+				ifvare TEMP2 APLAYER
+				{
+					getactor[TEMP].yvel TEMP
+					setplayer[TEMP].posx SPAWN_ORIGX
+					setplayer[TEMP].posy SPAWN_ORIGY
+					setplayer[TEMP].posz SPAWN_ORIGZ
+					setplayer[TEMP].ang SPAWN_ORIGANG
+				}
+				else
+				{
+					setactor[TEMP].x SPAWN_ORIGX
+					setactor[TEMP].y SPAWN_ORIGY
+					setactor[TEMP].z SPAWN_ORIGZ
+					setactor[TEMP].ang SPAWN_ORIGANG
+				}
+				
+				espawn TRANSPORTERBEAM
+				getactor[THISACTOR].x TEMP
+				getactor[THISACTOR].y TEMP2
+				getactor[THISACTOR].z TEMP3
+				setactor[RETURN].x TEMP
+				setactor[RETURN].y TEMP2
+				setactor[RETURN].z TEMP3
+				sound TELEPORTER
+				setvar RETURN 0
+				
+				espawn TRANSPORTERBEAM
+				setactor[RETURN].x SPAWN_ORIGX
+				setactor[RETURN].y SPAWN_ORIGY
+				setactor[RETURN].z SPAWN_ORIGZ
+				actorsound RETURN TELEPORTER
+				setvar RETURN 0
+				
+				setvar CURSPRITE -1
+				break
+			}
+		}
+				
+		nextspritestat CURSPRITE LASTSPRITE
+		setvarvar LASTSPRITE CURSPRITE
+	}
+ends
+
+state zteleporter_search
+	setvarvar LASTSPRITE CURSPRITE
+	whilevarn CURSPRITE -1
+	{
+		dist TEMP THISACTOR CURSPRITE
+		
+		ifvarvarl TEMP LOTAG_MEMORY
+		{
+			state zteleporter_moveactor
+			setvar CURSPRITE -1
+			break
+		}
+				
+		nextspritestat CURSPRITE LASTSPRITE
+		setvarvar LASTSPRITE CURSPRITE
+	}
+ends
+
+actor ZTELEPORTER
+	ifaction 0
+	{
+		cstat 32768
+		action ANULLACTION
+	}
+	
+	headspritestat CURSPRITE 10 // STAT_PLAYER
+	state zteleporter_search
+	
+	headspritestat CURSPRITE 4 // STAT_PROJECTILE
+	state zteleporter_search
+enda
+
+actor ZTDESTINATION
+	ifaction 0
+	{
+		cstat 32768
+		action ANULLACTION
+	}
 enda
 
 state onground_gib_code

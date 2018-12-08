@@ -1,14 +1,861 @@
-useractor notenemy WOMAN PIRATEGALSTRENGTH
-state tipme
+action FEMSHRUNK
+action FEMFROZEN1 1
+action FEMGROW
+action FEMFROZEN2
+action FEMDANCE1 19 1 1 1 16
+action FEMDANCE3 19 1 1 1 26
+action FEMDANCE2 20 2 1 1 10
+action FEMFLASH 18 1 1 1 32
+
+action FEMANIMATESLOW 0 2 1 1 100
+action TOUGHGALANIM   0 5 1 1 25
+action FEMANIMATE
+
+move FEMRESCUED
+move FEMWAITRESPAWN
+
+state babe_wait_respawn
+	ifmultiplayer
+	ifvarn COOP GM_COOPERATIVE
+	ifmove FEMWAITRESPAWN
+	ifcount BABERESPAWNTIME
+	{
+		setactor[THISACTOR].picnum PICNUM_MEMORY
+		setactor[THISACTOR].cstat CSTAT_MEMORY
+		setactor[THISACTOR].extra TOUGH
+		setactor[THISACTOR].xrepeat XREPEAT_MEMORY
+		setactor[THISACTOR].yrepeat YREPEAT_MEMORY
+		setactor[THISACTOR].pal PAL_MEMORY
+		spawn TRANSPORTERSTAR
+		resetcount
+		move 0
+		
+		switch PICNUM_MEMORY
+			case TOUGHGAL: action TOUGHGALANIM break
+			case FEM10: action FEMANIMATESLOW break
+			default: action FEMANIMATE break
+		endswitch
+	}
+ends
+
+state babe_hide_or_destroy
+	move FEMWAITRESPAWN
+	ifmultiplayer
+	{
+		ifvarn COOP GM_COOPERATIVE
+		{
+			cstat 32768
+		}
+		else
+		{
+			killit
+		}
+	}
+	else
+	{
+		killit
+	}
+ends
+
 state femcode
+	state babe_wait_respawn
+	
+	ifmove FEMRESCUED
+	{
+		break
+	}
+	
+	ifactor NAKED1 { }
+	else ifactor FEM6 { }
+    else
+    {
+		fall		
+    }
+
+	ifaction FEMSHRUNK
+	{
+		ifcount SHRUNKDONECOUNT
+		{
+			action FEMANIMATE
+			cstat 257
+		}
+		else ifcount SHRUNKCOUNT
+		{
+			sizeto 40 40
+		}
+		else
+		{
+			state genericshrunkcode
+		}
+	}
+	else ifaction FEMGROW
+	{
+		ifcount 32
+		{
+			respawnhitag
+			guts JIBS4 20
+			guts JIBS6 20
+			spritepal 6
+			
+			ifactor NAKED1
+			{
+				debris SCRAP3 4
+				ifinwater { }
+				else
+				{
+					soundonce LADY_SCREAM
+				}
+			}
+			else ifactor PODFEM1
+			{
+				debris SCRAP3 4
+				soundonce LADY_SCREAM
+			}
+			else
+			{
+				soundonce LADY_SCREAM
+			}
+			
+			sound SQUISHED
+			killit
+		}
+		else
+		{
+			sizeto MAXXSTRETCH MAXYSTRETCH
+		}
+	}
+
+	ifaction FEMFROZEN1
+	{
+		ifcount THAWTIME
+		{
+			action FEMANIMATE
+			getlastpal
+		}
+		else ifcount FROZENDRIPTIME
+		{
+			ifactioncount 26
+			{
+				spawn WATERDRIP
+				resetactioncount
+			}
+		}
+		
+		ifhitweapon
+		{
+			ifwasweapon FREEZEBLAST
+			{
+				strength 0
+				break
+			}
+			lotsofglass 30
+			sound GLASS_BREAKING
+			respawnhitag
+			ifrnd 84
+				spawn BLOODPOOL
+			killit
+		}
+		else ifp pfacing
+		{
+			ifpdistl FROZENQUICKKICKDIST
+			{
+				pkick
+				break
+			}
+		}
+	}
+	else ifaction FEMFROZEN2
+	{
+		ifcount THAWTIME
+		{
+			ifactor TOUGHGAL
+			{
+				action TOUGHGALANIM
+			}
+			else ifactor FEM10
+			{
+				action FEMANIMATESLOW
+			}
+			else
+			{
+				action FEMANIMATE
+			}
+
+			getlastpal
+		}
+		else ifcount FROZENDRIPTIME
+		{
+			ifactioncount 26
+			{
+				spawn WATERDRIP
+				resetactioncount
+			}
+		}
+
+		ifhitweapon
+		{
+			ifwasweapon FREEZEBLAST
+			{
+				strength 0
+				break
+			}
+			
+			lotsofglass 30
+
+			sound GLASS_BREAKING
+			ifrnd 84
+				spawn BLOODPOOL
+			respawnhitag
+
+			ifrnd 128
+				sound DUKE_HIT_STRIPPER1
+			else
+				sound DUKE_HIT_STRIPPER2
+
+			killit
+		}
+		else ifp pfacing
+		{
+			ifpdistl FROZENQUICKKICKDIST
+			{
+				pkick
+				break
+			}
+		}
+	}
+
+	ifhitweapon
+	{
+		// [SM] Immortal Babes
+		ifactor NAKED1
+		{
+			ifinwater { }
+			else
+			{
+				ifvarg IMMORTAL_BABES 0
+				{
+					break
+				}
+			}
+		}
+		else ifactor FEM8 { } // Dead by default
+		else ifvarg IMMORTAL_BABES 0
+		{
+			break
+		}
+	
+		ifdead
+		{ 
+			ifwasweapon GROWSPARK
+			{
+				cstat 0
+				move 0
+				sound ACTOR_GROWING
+				action FEMGROW
+				break
+			}
+			else ifwasweapon FREEZEBLAST
+			{
+				ifaction FEMSHRUNK
+					break
+
+				getactor[THISACTOR].picnum TEMP
+				switch TEMP
+					case NAKED1:
+					case FEM5:
+					case FEM6:
+					case FEM8:
+					case FEM9:
+					case FEM10:
+					case TOUGHGAL:
+					case PODFEM1:
+						action FEMFROZEN2
+						break
+					default:
+						action FEMFROZEN1
+						break
+				endswitch
+
+				move 0
+				spritepal 1
+				strength 0
+
+				sound SOMETHINGFROZE
+				break
+			}
+
+			ifrnd 128
+				sound DUKE_HIT_STRIPPER1
+			else
+				sound DUKE_HIT_STRIPPER2
+
+			respawnhitag
+			state standard_jibs
+			state random_wall_jibs
+			spawn BLOODPOOL
+
+			ifactor FEM1
+			{
+				money 5
+			}
+			else ifactor FEM2
+			{
+				money 7
+				cactor BARBROKE
+				cstat 0
+			}
+			else ifactor FEM3
+			{
+				money 4
+			}
+			else ifactor FEM7
+			{
+				money 8
+			}
+
+			ifactor FEM5
+			{
+				strength TOUGH
+				cactor BLOODYPOLE
+			}
+			else ifactor FEM6
+			{
+				cstat 0
+				cactor FEM6PAD
+			}
+			else ifactor FEM8
+			{
+				strength TOUGH
+				cactor BLOODYPOLE
+			}
+			else
+			{
+				spritepal 6
+				
+				ifactor NAKED1
+				{
+					ifinwater { }
+					else
+					{
+						soundonce LADY_SCREAM
+					}
+					
+					getactor[THISACTOR].cstat TEMP
+					ifvarand TEMP 1 { subvar TEMP 1 }
+					ifvarand TEMP 256 { subvar TEMP 256 }
+					setactor[THISACTOR].cstat TEMP
+			
+					debris SCRAP3 18
+					spritepal 0
+					cactor VINES
+				}
+				else ifactor PODFEM1
+				{
+					soundonce LADY_SCREAM
+					debris SCRAP3 18
+					killit
+				}
+				else
+				{
+					soundonce LADY_SCREAM
+					killit
+				}
+			}
+		}
+		else
+		{
+			ifwasweapon SHRINKSPARK
+			{
+				sound ACTOR_SHRINKING
+				move 0
+				action FEMSHRUNK
+				cstat 0
+				break
+			}
+			else ifwasweapon GROWSPARK
+			{
+				sound EXPANDERHIT
+			}
+			
+			ifactor FEM8
+			{
+				break
+			}
+
+			ifactor TOUGHGAL
+				state toughgalspeech
+			else
+				sound SQUISHED
+
+			guts JIBS6 1
+		}
+	}
+ends
+
+state killme
+	ifinwater { }
+	else
+	{
+		ifp pfacing
+		{
+			ifpdistl 1280
+			{
+				ifhitspace
+				{
+					ifactor NAKED1
+					{
+						ifinwater break
+					}
+					
+					soundonce KILLME
+				}
+			}
+		}
+	}
+ends
+
+state tipsounds
+	getplayer[THISACTOR].i TEMP
+	randvar RANDOM_SOUND 1
+	switch RANDOM_SOUND
+		case 0: actorsound TEMP DUKE_TIP1 break
+		case 1: actorsound TEMP DUKE_TIP2 break
+	endswitch
+ends
+
+state tipme
+	ifmove FEMWAITRESPAWN break
+	ifp pfacing
+	{
+		ifpdistl 1280
+		{
+			ifhitspace
+			{
+				tip
+				state tipsounds
+					
+				ifactor FEM1
+					action FEMDANCE1
+				else ifactor FEM3
+					action FEMFLASH
+			}
+		}
+	}
+ends
+
+state babe_give_items
+	ifmultiplayer
+	ifvarn COOP GM_COOPERATIVE
+	{
+		ifrnd 128
+		{
+			break // Smaller chance in DM.
+		}
+	}
+
+	randvar TEMP 52
+	switch TEMP
+		case 0: espawn PLASMASPRITE break
+		case 1: espawn PLASMAAMMO break
+		case 2: espawn FLAMETHROWERSPRITE break
+		case 3: espawn FLAMETHROWERAMMO break
+		case 4: espawn RAILGUNSPRITE break
+		case 5: espawn RAILGUNAMMO break
+		case 6: espawn SSGSPRITE break
+		case 7: espawn SHOTGUNAMMO break
+		case 8: espawn SHOTGUNSPRITE break
+		case 9: espawn GROWSPRITEICON break
+		case 10: espawn GROWAMMO break
+		case 11: espawn SHRINKERSPRITE break
+		case 12: espawn CRYSTALAMMO break
+		case 13: espawn CHAINGUNSPRITE break
+		case 14: espawn BATTERYAMMO break
+		case 15: espawn FREEZESPRITE break
+		case 16: espawn FREEZEAMMO break
+		case 17: espawn DEVISTATORSPRITE break
+		case 18: espawn DEVISTATORAMMO break
+		case 19: espawn FIRSTGUNSPRITE break
+		case 20: espawn AMMO break
+		case 21: espawn RPGSPRITE break
+		case 22: espawn RPGAMMO break
+		case 23: espawn HBOMBAMMO break
+		case 24: espawn TRIPBOMBSPRITE break
+		case 25: espawn HEATSENSOR break
+		case 26: espawn AIRTANK break
+		case 27: espawn BOOTS break
+		case 28: espawn STEROIDS break
+		
+		case 29:
+		case 30:
+		case 31:
+		case 32: 
+		case 33:
+		case 34:
+		case 35:
+		case 36: 
+			espawn COLA
+			break
+		
+		case 37:
+		case 38:
+		case 39:
+		case 40:
+		case 41:
+		case 42:
+			espawn SIXPAK
+			break
+			
+		case 43:
+		case 44:
+		case 45:
+		case 46:
+			espawn HEALTHBONER
+			break
+			
+		case 47:
+		case 48:
+		case 49:
+		case 50:
+			espawn ARMORBONER
+			break
+			
+		case 51:
+		case 52:
+			espawn ATOMICHEALTH
+			break
+	endswitch
+	
+	setactorvar[RETURN].FROMCAN 2
+	setvar RETURN 0
+ends
+
+state babe_check_all_rescued
+	ifvarvare BABES_RESCUED BABES_TOTAL
+	ifvare BABES_ALLSAVED 0
+	{
+		redefinequote 500 ^08All babes saved!
+		userquote 500
+		globalsound ALL_BABES_SAVED
+		setvar BABES_ALLSAVED 1
+		
+		headspritestat CURSPRITE 10 // STAT_PLAYER
+		setvarvar LASTSPRITE CURSPRITE
+		whilevarn CURSPRITE -1
+		{
+			getactor[CURSPRITE].extra TEMP
+			ifvarg TEMP 0
+			ifvarl TEMP MAXPLAYERHEALTH
+			{
+				setactor[CURSPRITE].extra MAXPLAYERHEALTH
+			}
+				
+			nextspritestat CURSPRITE LASTSPRITE
+			setvarvar LASTSPRITE CURSPRITE
+		}
+	}
+ends
+
+state babe_add_rescued
+	ifmultiplayer
+	{
+		ifvarn COOP GM_COOPERATIVE
+		{
+			break
+		}
+	}
+				
+	addvar BABES_RESCUED 1
+	
+	redefinequote 500 ^12Babe saved!^08 %d ^12/^08 %d
+	qsprintf 500 500 BABES_RESCUED BABES_TOTAL
+	userquote 500
+ends
+
+state babe_rescue_genericsound
+	randvar RANDOM_SOUND 1
+	switch RANDOM_SOUND
+		case 0: sound BABE_SAVED01 break
+		case 1: sound BABE_SAVED02 break
+	endswitch
+ends
+
+state babe_rescue_sounds
+	getactor[THISACTOR].picnum TEMP
+	switch TEMP
+		case FEM10:
+			sound FEM10_SAVED
+			break
+		case NAKED1:
+		case PODFEM1:
+		case FEM5:
+		case FEM6:
+		case TOUGHGAL:
+			// Nothing
+			break
+		default:
+			state babe_rescue_genericsound
+			break
+	endswitch
+ends
+
+state rescueme	
+	ifactor NAKED1
+	{
+		ifinwater break // Drowned, can't be saved.
+	}
+	
+	ifaction FEMSHRUNK break
+	ifaction FEMGROW break
+	ifaction FEMFROZEN1 break
+	ifaction FEMFROZEN2 break
+	
+	ifmove FEMWAITRESPAWN
+	{
+		break
+	}
+	
+	ifmove FEMRESCUED
+	{
+		ifcount 31 { }
+		else ifcount 30
+		{
+			state babe_rescue_sounds
+		}
+		
+		ifcount 75
+		{
+			spawn TRANSPORTERSTAR
+			sound TELEPORTER
+			
+			state babe_check_all_rescued
+			
+			respawnhitag
+			resetcount
+			move FEMWAITRESPAWN
+			
+			state babe_give_items
+			
+			ifactor FEM5
+			{
+				strength TOUGH
+				changespritestat THISACTOR 1
+				cstator 256
+				cactor CLEANPOLE
+			}
+			else ifactor FEM6
+			{
+				strength TOUGH
+				changespritestat THISACTOR 1
+				cstator 256
+				cactor EMPTYPAD
+			}
+			else ifactor PODFEM1
+			{
+				strength TOUGH
+				changespritestat THISACTOR 1
+				cstator 256
+				cactor EMPTYPOD
+			}
+			else ifactor NAKED1
+			{
+				getactor[THISACTOR].cstat TEMP
+				ifvarand TEMP 1 { subvar TEMP 1 }
+				ifvarand TEMP 256 { subvar TEMP 256 }
+				setactor[THISACTOR].cstat TEMP
+				cactor VINES
+			}
+			else
+			{
+				state babe_hide_or_destroy
+			}
+		}
+		break
+	}
+	
+	ifp pfacing
+	{
+		ifpdistl 1280
+		{
+			ifhitspace
+			{
+				resetcount
+				state babe_add_rescued
+				move FEMRESCUED
+			}
+		}
+	}
+ends
+
+state toughgaltalk
+  ifp pfacing
+    ifpdistl 1280
+      ifhitspace
+        state toughgalspeech
+ends
+
+actor FEM1 TOUGH FEMANIMATE // Stripper
+	ifaction FEMDANCE1
+	{
+		ifactioncount 2
+			action FEMDANCE2
+	}
+	else ifaction FEMDANCE2
+	{
+		ifactioncount 8
+			action FEMDANCE3
+	}
+	else ifaction FEMDANCE3
+	{
+		ifactioncount 2
+			action FEMANIMATE
+	}
+	
+	state rescueme
+	state tipme
+	state femcode
+enda
+
+actor FEM2 TOUGH FEMANIMATE // Poledancer
+	state rescueme
+	state tipme
+	state femcode
+enda
+
+actor FEM3 TOUGH FEMANIMATE // Hooker
+	ifaction FEMFLASH
+	{
+		ifactioncount 8
+		action FEMANIMATE
+	}
+	
+	state rescueme
+	state tipme
+	state femcode
+enda
+
+actor FEM4 TOUGH FEMANIMATE // Tribal Babe
+	state rescueme
+	state tipme
+	state femcode
+enda
+
+actor FEM5 TOUGH FEMANIMATE // Pole Babe
+	state rescueme
+	state killme
+	state femcode
+enda
+
+actor FEM6 TOUGH FEMANIMATE // Pad Babe
+	state rescueme
+	state killme
+	state femcode
+enda
+
+actor FEM7 TOUGH FEMANIMATE // Asian Dancer
+	state rescueme
+	state tipme
+	state femcode
+enda
+
+actor FEM8 TOUGH FEMANIMATE // Impaled Babe
+	state femcode
+enda
+
+actor FEM9 TOUGH FEMANIMATE
+	state rescueme
+	state femcode
+enda
+
+actor FEM10 TOUGH FEMANIMATESLOW
+	state rescueme
+	state tipme
+	state femcode
+enda
+
+actor TOUGHGAL MANWOMANSTRENGTH TOUGHGALANIM
+	state rescueme
+	state toughgaltalk
+	state femcode
+enda
+
+actor NAKED1 TOUGH FEMANIMATE // Hanging Babe
+	state rescueme
+	state killme
+	state femcode
+enda
+
+actor PODFEM1 TOUGH FEMANIMATE // Pod Babe
+	state rescueme
+	state killme
+	state femcode
+enda
+
+actor BLOODYPOLE TOUGH
+	ifhitweapon
+	{
+		sound SQUISHED
+		guts JIBS6 1	
+		ifdead
+		{
+			spritepal 8
+			state standard_jibs
+			killit
+		}
+	}
+enda
+
+useractor notenemy WOMAN PIRATEGALSTRENGTH
+	state rescueme
+	state tipme
+	state femcode
 enda
 
 useractor notenemy PIRATE1A PIRATEGALSTRENGTH
-state tipme
-state femcode 
+	state rescueme
+	state tipme
+	state femcode 
 enda
 
 useractor notenemy PIRATE3A PIRATEGALSTRENGTH
-state tipme
-state femcode 
+	state rescueme
+	state tipme
+	state femcode 
+enda
+
+state alienslime_damage
+	ifmultiplayer
+	ifvarn COOP GM_COOPERATIVE
+	{
+		break
+	}
+	
+	ifhitweapon
+	{
+		sound SQUISHED
+		guts JIBS6 1	
+		ifdead
+		{
+			spritepal 8
+			state standard_jibs
+			killit
+		}
+	}
+ends
+
+actor VINES 0
+enda
+
+actor EMPTYPAD TOUGH
+	state babe_wait_respawn
+	state alienslime_damage
+enda
+
+actor EMPTYPOD TOUGH
+	state babe_wait_respawn
+	state alienslime_damage
+enda
+
+actor CLEANPOLE TOUGH
+	state babe_wait_respawn
+	state alienslime_damage
 enda

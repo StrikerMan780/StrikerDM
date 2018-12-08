@@ -455,6 +455,17 @@ tilefromtexture 7129 { file "tiles/7129.png" texture }
 tilefromtexture 7130 { file "tiles/7130.png" texture }
 tilefromtexture 7131 { file "tiles/7131.png" texture }
 tilefromtexture 7132 { file "tiles/7132.png" texture }
+tilefromtexture 7133 { file "tiles/7133.png" }
+tilefromtexture 7134 { file "tiles/7134.png" }
+tilefromtexture 7135 { file "tiles/7135.png" }
+tilefromtexture 7136 { file "tiles/7136.png" }
+tilefromtexture 7137 { file "tiles/7137.png" }
+tilefromtexture 7138 { file "tiles/7138.png" }
+tilefromtexture 7139 { file "tiles/7139.png" }
+tilefromtexture 7140 { file "tiles/7140.png" }
+tilefromtexture 7141 { file "tiles/7141.png" }
+tilefromtexture 7142 { file "tiles/7142.png" }
+tilefromtexture 7143 { file "tiles/7143.png" }
 
 // Animated Textures
 animtilerange 7081 7132 3 ANIM_FORWARD

@@ -1,3 +1,15 @@
+state shoot_distance_sensitive_fireball
+	eshoot FIREBALL
+	getplayer[THISACTOR].i TEMP
+	ldist TEMP2 THISACTOR TEMP
+	divvar TEMP2 7
+				
+	getactor[RETURN].zvel TEMP3
+	subvarvar TEMP3 TEMP2
+	setactor[RETURN].zvel TEMP3 
+	setvar RETURN 0
+ends
+
 spritenoshade FLAMETHROWERFLAME
 defineprojectile FLAMETHROWERFLAME PROJ_WORKSLIKE 49218
 defineprojectile FLAMETHROWERFLAME PROJ_SPAWNS EXPLOSION2
@@ -11,6 +23,22 @@ defineprojectile FLAMETHROWERFLAME PROJ_VEL 644
 defineprojectile FLAMETHROWERFLAME PROJ_RANGE 15
 defineprojectile FLAMETHROWERFLAME PROJ_CSTAT 130
 defineprojectile FLAMETHROWERFLAME PROJ_HITRADIUS 0
+defineprojectile FLAMETHROWERFLAME PROJ_SHADE -127
+
+spritenoshade FIREFLYSPAWNER
+defineprojectile FIREFLYSPAWNER PROJ_WORKSLIKE 49218
+defineprojectile FIREFLYSPAWNER PROJ_SPAWNS FIREFLY
+defineprojectile FIREFLYSPAWNER PROJ_EXTRA 0
+defineprojectile FIREFLYSPAWNER PROJ_XREPEAT 24
+defineprojectile FIREFLYSPAWNER PROJ_YREPEAT 24
+defineprojectile FIREFLYSPAWNER PROJ_PAL 0
+defineprojectile FIREFLYSPAWNER PROJ_SOUND -1
+defineprojectile FIREFLYSPAWNER PROJ_ISOUND -1
+defineprojectile FIREFLYSPAWNER PROJ_VEL 644
+defineprojectile FIREFLYSPAWNER PROJ_RANGE 6
+defineprojectile FIREFLYSPAWNER PROJ_CSTAT 130
+defineprojectile FIREFLYSPAWNER PROJ_HITRADIUS 0
+defineprojectile FIREFLYSPAWNER PROJ_SHADE -127
 
 // -----------------------------------------------------------------------------
 // ACTIONS
@@ -228,16 +256,7 @@ state ffshootfireballstate_ground
 					}
 				}
 				
-				eshoot FIREBALL
-				getplayer[THISACTOR].i TEMP
-				ldist TEMP2 THISACTOR TEMP
-				divvar TEMP2 7
-				
-				getactor[RETURN].zvel TEMP3
-				subvarvar TEMP3 TEMP2
-				setactor[RETURN].zvel TEMP3 
-				setvar RETURN 0
-				
+				state shoot_distance_sensitive_fireball
 				sound FLAMETHROWER_START
 				resetactioncount
 					
@@ -901,12 +920,10 @@ actor FIREFLY FF_STRENGTH 0
     ifaction 0
 	{
 	    spritepal 12
-		cstat 257
-		changespritestat THISACTOR 2
 		sound PRED_RECOG
-        ifspawnedby BOSS5
+        ifspawnedby FIREFLYSPAWNER
 		{
-			sizeat FF_SIZEX FF_SIZEY
+			sizeat FF_SHRUNKSIZEX FF_SHRUNKSIZEY
             action AFFBOSSSPAWN
         }
         else
@@ -917,3 +934,497 @@ actor FIREFLY FF_STRENGTH 0
     }
     state fireflycode
 enda
+
+// **************************************************
+
+action ABOSS5WALK        0  4  5  1  30
+action ABOSS5FROZEN        0  1  5
+action ABOSS5RUN         0  4  5  1  15
+action ABOSS5SHOOT         20 2  5  1  15
+action ABOSS5BREATH         30 2  5  1  105
+action ABOSS5DYING        40 8  1  1  35
+action BOSS5FLINTCH       40 1  1  1  1
+action ABOSS5DEAD         48
+
+move PALBOSS5SHRUNKRUNVELS 32
+move PALBOSS5RUNVELS 84
+move BOSS5WALKVELS 192
+move BOSS5RUNVELS 256
+move BOSS5STOPPED
+move BOSS5BARFED
+
+ai AIBOSS5SEEKENEMY ABOSS5WALK BOSS5WALKVELS seekplayer
+ai AIBOSS5RUNENEMY ABOSS5RUN BOSS5RUNVELS faceplayer
+ai AIBOSS5SHOOTENEMY ABOSS5SHOOT BOSS5STOPPED faceplayer
+ai AIBOSS5SHOOTENEMYFAR ABOSS5SHOOT BOSS5STOPPED faceplayer
+ai AIBOSS5BREATHEFIRE ABOSS5BREATH BOSS5STOPPED faceplayer
+ai AIBOSS5BARFENEMY ABOSS5BREATH BOSS5STOPPED faceplayer
+ai AIBOSS5DYING ABOSS5DYING BOSS5STOPPED faceplayer
+ai AIBOSS5PALSHRINK ABOSS5WALK PALBOSS5SHRUNKRUNVELS furthestdir
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+state BOSS5palshrunkstate
+  ifcount SHRUNKDONECOUNT
+  {
+    cstat 257
+    ai AITROOPSEEKENEMY
+  }
+  else
+    ifcount SHRUNKCOUNT
+      sizeto 40 40
+  else
+    state genericshrunkcode
+ends
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+state checkBOSS5seekstate
+  ai AIBOSS5SEEKENEMY
+  ifspritepal 0 { }
+  else   // a fake way of doing a ifspritepal NOT.
+    move PALBOSS5RUNVELS seekplayer
+ends
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+state BOSS5runenemystate
+	ifcansee
+	{
+		ifactioncount 3
+		{
+			ifcanshoottarget
+			{
+				resetactioncount
+				sound BOS1_WALK
+			}
+			else
+			{
+				ai AIBOSS5SEEKENEMY
+			}
+		}
+		
+		ifcount 48
+		{
+			ifrnd 2
+			{
+				ifp palive
+				{
+					sound BOS2_ATTACK
+					ai AIBOSS5SHOOTENEMY
+				}
+				break
+			}
+		}
+		
+		ifpdistl 3072
+		{
+			ifp palive
+			{
+				ai AIBOSS5BREATHEFIRE
+			}
+		}
+	}
+	else
+	{
+		ai AIBOSS5SEEKENEMY
+	}
+ends
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+state BOSS5seekenemystate
+	ifrnd 2
+		soundonce BOS2_ROAM
+	else ifactioncount 3
+	{
+		resetactioncount
+		sound BOS1_WALK
+	}
+
+	ifcansee
+	ifcount 32
+	ifp palive
+	ifrnd 48
+	ifcanshoottarget
+	{
+		ifrnd 64
+		ifpdistg 4096
+		{
+			ai AIBOSS5RUNENEMY
+			ifspritepal 0
+			{
+				// Do Nothing
+			}
+			else
+			{
+				move PALBOSS5RUNVELS seekplayer
+			}
+			break
+		}
+
+		ifpdistl 3072
+		{
+			sound BOS2_ATTACK
+			ai AIBOSS5BREATHEFIRE
+		}
+		else ifpdistl 10240
+		{
+			sound BOS2_ATTACK
+			ai AIBOSS5SHOOTENEMY
+		}
+		else
+		{
+			ifrnd 128
+			{
+				sound BOS2_ATTACK
+				ai AIBOSS5SHOOTENEMYFAR
+			}
+			else ifrnd 128
+			{
+				sound BOS2_ATTACK
+				ai AIBOSS5BARFENEMY
+			}
+		}
+	}
+ends
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+state BOSS5dyingstate
+  ifaction ABOSS5DEAD
+  {
+    ifspritepal 0
+      break
+    ifrespawn
+      ifcount RESPAWNACTORTIME
+    {
+      spawn TRANSPORTERSTAR
+      cstat 257
+      strength PIGCOPSTRENGTH
+      state checkBOSS5seekstate
+    }
+    else
+    {
+      strength 0
+      ifhitweapon
+        ifwasweapon RADIUSEXPLOSION
+      {
+        sound SQUISHED
+        state standard_jibs
+        killit
+      }
+      break
+    }
+  }
+  ifactioncount 8
+  {
+    iffloordistl 8
+      sound THUD
+    action ABOSS5DEAD
+    cstat 0
+    ifspritepal 0
+        endofgame 52
+  }
+ends
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+state BOSS5breathefire
+	ifcount 72
+	{
+		stopsound FLAMETHROWER_FIRE
+		state checkBOSS5seekstate
+	}
+	else ifaction ABOSS5BREATH
+	{
+		ifcanshoottarget
+		ifactioncount 2
+		{
+			resetactioncount
+		}
+		else ifactioncount 1
+		{
+			shoot FLAMETHROWERFLAME
+			shoot FLAMETHROWERFLAME
+			shoot FLAMETHROWERFLAME
+			shoot FLAMETHROWERFLAME
+			sound FLAMETHROWER_FIRE
+		}
+	}
+ends
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+
+state BOSS5barfenemy
+	ifcansee
+	{
+		ifactioncount 2
+		{
+			move 0
+			state checkBOSS5seekstate
+		}
+		else ifactioncount 1
+		{
+			ifmove BOSS5BARFED { }
+			else
+			{
+				shoot FIREFLYSPAWNER
+				move BOSS5BARFED
+			}
+		}
+	}
+	else
+	{
+		state checkBOSS5seekstate
+	}
+ends
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+state BOSS5shootenemy
+	ifcount 72 
+    {
+        state checkBOSS5seekstate
+    }
+    else 
+    {
+        ifaction ABOSS5SHOOT
+		ifcanshoottarget
+        {
+            ifactioncount 2 
+            {
+				sound FLAMETHROWER_START
+				state shoot_distance_sensitive_fireball
+				state shoot_distance_sensitive_fireball
+				state shoot_distance_sensitive_fireball
+				state shoot_distance_sensitive_fireball
+				state shoot_distance_sensitive_fireball
+				state shoot_distance_sensitive_fireball
+                resetactioncount
+				
+				ifpdistg 10240
+				{
+					ifrnd 32
+					{
+						ai AIBOSS5SHOOTENEMYFAR
+					}
+					else ifrnd 32
+					{
+						ai AIBOSS5RUNENEMY
+					}
+				}
+            }
+        }
+		else
+		{
+			state checkBOSS5seekstate
+		}
+    }
+ends
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+state BOSS5shootenemyfar
+    ifcount 52 
+    {
+        state checkBOSS5seekstate
+    }
+    else 
+    {
+        ifaction ABOSS5SHOOT 
+		ifcanshoottarget
+        {
+            ifactioncount 2
+            {
+				state shoot_distance_sensitive_fireball
+                shoot DEVASTATORMISSILE
+				shoot DEVASTATORMISSILE
+                resetactioncount
+            }
+			else ifactioncount 1
+			{
+				state shoot_distance_sensitive_fireball
+				shoot DEVASTATORMISSILE
+				shoot DEVASTATORMISSILE
+			}
+        }
+		else
+		{
+			state checkBOSS5seekstate
+		}
+    }
+ends
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+state checkBOSS5hitstate
+  ifrnd 2
+    spawn BLOODPOOL
+  ifdead
+  {
+    ifspritepal 0
+      globalsound DUKE_TALKTOBOSSFALL
+    else
+    {
+      ifrnd 64
+        globalsound DUKE_TALKTOBOSSFALL
+      ifwasweapon FREEZEBLAST
+      {
+        sound SOMETHINGFROZE
+        spritepal 1
+        move 0
+        action ABOSS5FROZEN
+        strength 0
+        break
+      }
+    }
+
+    sound BOS2_DYING
+
+    addkills 1
+
+    ai AIBOSS5DYING
+  }
+  else
+  {
+	ifrnd 144
+	{
+		ifrnd 32
+		{
+			action BOSS5FLINTCH
+			move 0
+		}
+		else
+		{
+			sound BOS2_ATTACK
+			
+			ifrnd 144
+			{
+				ai AIBOSS5SHOOTENEMY
+			}
+			else
+			{
+				ai AIBOSS5SHOOTENEMYFAR
+			}
+		}
+    }
+
+    ifspritepal 0 { }
+    else
+      ifwasweapon SHRINKSPARK
+    {
+      sound ACTOR_SHRINKING
+      ai AIBOSS5PALSHRINK
+      break
+    }
+
+    soundonce BOS2_PAIN
+
+    debris SCRAP1 1
+    guts JIBS6 1
+  }
+ends
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+state BOSS5code
+
+  ifaction ABOSS5FROZEN
+  {
+    ifcount THAWTIME
+    {
+      ai AIBOSS5SEEKENEMY
+        spritepal 21
+    }
+    else
+      ifcount FROZENDRIPTIME
+    {
+      ifactioncount 26
+      {
+        spawn WATERDRIP
+        resetactioncount
+      }
+    }
+
+    ifhitweapon
+    {
+      ifwasweapon FREEZEBLAST
+      {
+        strength 0
+        break
+      }
+      addkills 1
+
+      lotsofglass 30
+      sound GLASS_BREAKING
+      ifrnd 84 spawn BLOODPOOL
+      killit
+    }
+    ifp pfacing
+      ifpdistl FROZENQUICKKICKDIST
+        pkick
+    break
+  }
+  ifai 0
+  {
+    ifspritepal 0
+      ai AIBOSS5RUNENEMY
+    else
+    {
+      ifspritepal 21
+        strength BOSS5PALSTRENGTH
+      sound BOS2_ATTACK ai AIBOSS5SHOOTENEMY
+    }
+  }
+  else ifaction BOSS5FLINTCH
+  {
+    ifactioncount 3
+      ai AIBOSS5SEEKENEMY
+  }
+  else ifai AIBOSS5SEEKENEMY
+      state BOSS5seekenemystate
+  else ifai AIBOSS5RUNENEMY
+      state BOSS5runenemystate
+  else ifai AIBOSS5SHOOTENEMY
+      state BOSS5shootenemy
+  else ifai AIBOSS5BREATHEFIRE
+      state BOSS5breathefire
+  else ifai AIBOSS5SHOOTENEMYFAR
+      state BOSS5shootenemyfar
+  else ifai AIBOSS5BARFENEMY
+      state BOSS5barfenemy
+
+  else
+    ifai AIBOSS5PALSHRINK
+      state BOSS5palshrunkstate
+
+  ifai AIBOSS5DYING
+    state BOSS5dyingstate
+  else
+  {
+    ifhitweapon {
+	  ifwasweapon FLAMETHROWERFLAME {
+	  }
+      else {
+	  	state checkBOSS5hitstate
+      }
+	}
+    else
+      ifp palive
+        ifspritepal 0 ifpdistl
+          1280
+    {
+      addphealth -1000
+      palfrom 63 63
+    }
+  }
+
+
+ends
+
+spriteflags BOSS5 SF_ENEMY_NOPUSH_DAMAGEEVENT
+spriteflags BOSS5STAYPUT SF_ENEMYSTAYPUT_NOPUSH_DAMAGEEVENT
+actor BOSS5 BOSS5STRENGTH fall state BOSS5code enda
+actor BOSS5STAYPUT BOSS5STRENGTH cactor BOSS5 enda

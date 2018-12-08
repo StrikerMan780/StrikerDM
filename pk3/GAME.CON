@@ -17,6 +17,7 @@ include cons/SDM_STATES.CON
 include cons/SDM_EVENTS.CON
 
 include cons/SDM_GAME.CON
+include cons/SDM_PLAYER.CON
 
 include cons/weapons/WEAPON_LIST.CON
 include cons/weapons/WEAPON_EVENTS.CON

@@ -20,6 +20,10 @@ state prepare_respawn_hardcoded
 	{
 		break // Do not respawn stuff in COOP.
 	}
+	else ifvarl MULTIMODE 2
+	{
+		break // Nor singleplayer.
+	}
 	
 	espawn RESPAWNHANDLER
 	state pass_on_respawn_vars
@@ -30,42 +34,56 @@ actor RESPAWNHANDLER WEAK
 {
 	ifcount RESPAWNPROPTIME
 	{
-			espawnvar PICNUM_MEMORY
-			state pass_on_respawn_vars
-			setactor[RETURN].picnum PICNUM_MEMORY
-			setactor[RETURN].hitag HITAG_MEMORY
-			setactor[RETURN].lotag LOTAG_MEMORY
-			setactor[RETURN].xrepeat XREPEAT_MEMORY
-			setactor[RETURN].yrepeat YREPEAT_MEMORY
-			setactor[RETURN].clipdist CLIPDIST_MEMORY
-			setactor[RETURN].extra EXTRA_MEMORY
-			setactor[RETURN].cstat CSTAT_MEMORY
-			setactor[RETURN].pal PAL_MEMORY
-			setactor[RETURN].x SPAWN_ORIGX
-			setactor[RETURN].y SPAWN_ORIGY
-			setactor[RETURN].z SPAWN_ORIGZ
-			setactor[RETURN].ang SPAWN_ORIGANG
-			changespritestat RETURN STATNUM_MEMORY
-			setvar RETURN 0
-			
-			ifvarand CSTAT_MEMORY 32768
-			{
-				// Do nothing
-			}
-			else
-			{
-				spawn TRANSPORTERSTAR
-			}
-			killit
+		espawnvar PICNUM_MEMORY
+		state pass_on_respawn_vars
+		setactor[RETURN].picnum PICNUM_MEMORY
+		setactor[RETURN].hitag HITAG_MEMORY
+		setactor[RETURN].lotag LOTAG_MEMORY
+		setactor[RETURN].xrepeat XREPEAT_MEMORY
+		setactor[RETURN].yrepeat YREPEAT_MEMORY
+		setactor[RETURN].clipdist CLIPDIST_MEMORY
+		setactor[RETURN].extra EXTRA_MEMORY
+		setactor[RETURN].cstat CSTAT_MEMORY
+		setactor[RETURN].pal PAL_MEMORY
+		setactor[RETURN].x SPAWN_ORIGX
+		setactor[RETURN].y SPAWN_ORIGY
+		setactor[RETURN].z SPAWN_ORIGZ
+		setactor[RETURN].ang SPAWN_ORIGANG
+		changespritestat RETURN STATNUM_MEMORY
+		setvar RETURN 0
+		
+		ifvarand CSTAT_MEMORY 32768
+		{
+			// Do nothing
+		}
+		else
+		{
+			spawn TRANSPORTERSTAR
+		}
+		killit
 	}
 }
 enda
 
-state init_pickup
-	ifcount 1
-		nullop
-	else ifcount 0
+state check_if_multiplayer_only
+	ifmultiplayer
 	{
+		setactor[THISACTOR].pal 0
+	}
+	else
+	{
+		getactor[THISACTOR].pal TEMP
+		ifvarn TEMP 0
+		{
+			killit
+		}
+	}
+ends
+
+state init_pickup
+	ifaction 0
+	{
+		action ANULLACTION
 		cstat 0
 		getactor[THISACTOR].htowner TEMP
 		ifvarvarn THISACTOR TEMP
@@ -86,13 +104,16 @@ state init_pickup
 			case GROWSPRITEICON:
 			case FLAMETHROWERAMMO:
 			case PLASMAAMMO:
+				state check_if_multiplayer_only
 				sizeat 32 32
 				break
 			case RAILGUNAMMO:
+				state check_if_multiplayer_only
 				sizeat 16 16
 				break
 			case HEALTHBONER:
 			case ARMORBONER:
+				state check_if_multiplayer_only
 				sizeat 32 28
 				break
 		endswitch
@@ -109,9 +130,25 @@ state despawn_item_from_can
 		else ifspawnedby RUBBERCAN setvar FROMCAN 1
 	}
 	
+	ifvare COOP GM_COOPERATIVE
+	{
+		break // Do not despawn stuff in COOP.
+	}
+	else ifvarl MULTIMODE 2
+	{
+		break // Nor singleplayer.
+	}
+	
 	ifvare FROMCAN 1
 	{
 		ifcount RESPAWNPROPTIME
+		{
+			killit
+		}
+	}
+	else ifvare FROMCAN 2
+	{
+		ifcount BABERESPAWNTIME
 		{
 			killit
 		}
@@ -258,7 +295,7 @@ state jib_sounds
 					case 64: actorsound LASTHITBY NEWDUKEGIB48 break
 					case 65: actorsound LASTHITBY NEWDUKEGIB49 break
 					case 66: actorsound LASTHITBY NEWDUKEGIB50 break
-					case 67: actorsound LASTHITBY NEWDUKEGIB51 break
+					case 67: ifrnd 1 actorsound LASTHITBY NEWDUKEGIB51 break
 				endswitch
 			}
 		}
@@ -268,20 +305,24 @@ state jib_sounds
 ends
 
 state randgetweapsnds
-	randvar RANDOM_SOUND 11
+	randvar RANDOM_SOUND 15
 	switch RANDOM_SOUND
-		case 0: globalsound DUKE_GETWEAPON1 break
-		case 1: globalsound DUKE_GETWEAPON2 break
-		case 2: globalsound DUKE_GETWEAPON3 break
-		case 3: globalsound DUKE_GETWEAPON4 break
-		case 4: globalsound DUKE_GETWEAPON5 break
-		case 5: globalsound DUKE_GETWEAPON6 break
-		case 6: globalsound DUKE_GETWEAPON7 break
-		case 7: globalsound DUKE_GETWEAPON8 break
-		case 8: globalsound DUKE_GETWEAPON9 break
-		case 9: globalsound DUKE_GETWEAPON10 break
-		case 10: globalsound DUKE_GETWEAPON11 break
-		case 11: globalsound DUKE_GETWEAPON12 break
+		case 0: globalsound BONUS_SPEECH4 break
+		case 1: globalsound DUKE_GETWEAPON1 break
+		case 2: globalsound DUKE_GETWEAPON2 break
+		case 3: globalsound DUKE_GETWEAPON3 break
+		case 4: globalsound DUKE_GETWEAPON4 break
+		case 5: globalsound DUKE_GETWEAPON5 break
+		case 6: globalsound DUKE_GETWEAPON6 break
+		case 7: globalsound DUKE_GETWEAPON7 break
+		case 8: globalsound DUKE_GETWEAPON8 break
+		case 9: globalsound DUKE_GETWEAPON9 break
+		case 10: globalsound DUKE_GETWEAPON10 break
+		case 11: globalsound DUKE_GETWEAPON11 break
+		case 12: globalsound DUKE_GETWEAPON12 break
+		case 13: globalsound DUKE_GETWEAPON13 break
+		case 14: globalsound DUKE_GETWEAPON14 break
+		case 15: globalsound DUKE_GETWEAPON15 break
 	endswitch
 ends
 
@@ -302,15 +343,6 @@ state getcode_custom
   }
   else
     killit
-ends
-
-state update_lasthitby
-	getactor[THISACTOR].htextra TEMP
-	ifvarg TEMP 0 // if the actor is set to take some damage from a weapon...
-	{
-		getactor[THISACTOR].htowner TEMP
-		setvarvar LASTHITBY TEMP
-	}
 ends
 
 state get_squisher
@@ -366,21 +398,80 @@ state coloredprop_break
 		
 		state toss_colored_scrap
 		
-		ifactor FLESHLIGHT
-		{
-			sound SQUISHED
-			sound VENT_BUST
-			lotsofglass 5
-			debris SCRAP1 2
-			debris SCRAP2 2
-			debris SCRAP3 2
-		}
+		getactor[THISACTOR].picnum TEMP
+		switch TEMP
+			case BD_SOFIA:
+				state toss_colored_scrap
+				break
+			case FLESHLIGHT:
+				sound SQUISHED
+			case VIBRATOR:
+				sound VENT_BUST
+				lotsofglass 5
+				debris SCRAP1 2
+				debris SCRAP2 2
+				debris SCRAP3 2
+				break
+		endswitch
 		
 		killit
 	}
 ends
 
-state jumppadcode // This state goes in the APLAYER actor.
+state handle_jumppad
+	ifvare JUMPPAD_HIT 0
+	{
+		ifp ponground
+		{
+			// TEMP = X
+			// TEMP2 = Y
+			// TEMP3 = Sector Number
+			getplayer[THISACTOR].posx TEMP
+			getplayer[THISACTOR].posy TEMP2
+			getplayer[THISACTOR].cursectnum TEMP3
+			
+			// Set TEMP to florz
+			getflorzofslope TEMP3 TEMP TEMP2 TEMP
+			subvar TEMP 16384 // Subtract height
+			
+			getplayer[THISACTOR].posz TEMP2			
+			ifvarvarg TEMP2 TEMP // Touching floor?
+			{
+				sound JUMPPADSOUND
+				setplayer[THISACTOR].on_ground 0 // No longer on the ground.
+					
+				getplayer[THISACTOR].posz TEMP // Kick them off the ground a little, to stop them from being "magnetized" to the ground.
+				subvar TEMP 16384
+				setplayer[THISACTOR].posz TEMP
+					
+				getplayer[THISACTOR].cursectnum TEMP
+				ifvare SECTOR_JUMPZ[TEMP] 0
+				{
+					setvar TEMP2 -4096 // If not hitag is set, -4096 is the default velocity.
+				}
+				else ifvarg SECTOR_JUMPZ[TEMP] 0
+				{
+					setvar TEMP2 0
+					subvarvar TEMP2 SECTOR_JUMPZ[TEMP]
+				}
+					
+				setplayer[THISACTOR].poszv TEMP2 // Launch				
+				setvar JUMPPAD_HIT 1 // They're in the air.
+					
+				// Set X/Y Velocities
+				setvarvar TEMP2 SECTOR_JUMPX[TEMP]
+				mulvar TEMP2 1024
+				setvarvar JUMPPAD_XVEL TEMP2
+					
+				setvarvar TEMP2 SECTOR_JUMPY[TEMP]
+				mulvar TEMP2 1024
+				setvarvar JUMPPAD_YVEL TEMP2
+			}
+		}
+	}
+ends
+
+state handle_jumppad_movement
 	ifvare JUMPPAD_HIT 1
 	{
 		setplayer[THISACTOR].falling_counter 0 // No falling damage on jump pads.
@@ -422,6 +513,86 @@ state jumppadcode // This state goes in the APLAYER actor.
 	}
 ends
 
+state handle_jumppad_prediction
+	ifvare PREDICT_JUMPPAD_HIT 0
+	{
+		ifvare myonground 1
+		{
+			// Set TEMP to florz
+			getflorzofslope mycursectnum myx myy TEMP
+			subvar TEMP 16384 // Subtract height
+			
+			ifvarvarg myz TEMP // Touching floor?
+			{
+				setvar myonground 0 // No longer on the ground.	
+				subvar myz 16384 // Kick them off the ground a little, to stop them from being "magnetized" to the ground.
+								
+				ifvare SECTOR_JUMPZ[mycursectnum] 0
+				{
+					setvar TEMP2 -4096 // If zvel isn't set, -4096 is the default velocity.
+				}
+				else ifvarg SECTOR_JUMPZ[mycursectnum] 0
+				{
+					setvar TEMP2 0
+					subvarvar TEMP2 SECTOR_JUMPZ[mycursectnum]
+				}
+								
+				setvarvar myzvel TEMP2 // Launch			
+				setvar PREDICT_JUMPPAD_HIT 1 // They're in the air.
+							
+				// Set X/Y Velocities
+				setvarvar TEMP2 SECTOR_JUMPX[mycursectnum]
+				mulvar TEMP2 1024
+				setvarvar PREDICT_JUMPPAD_XVEL TEMP2
+								
+				setvarvar TEMP2 SECTOR_JUMPY[mycursectnum]
+				mulvar TEMP2 1024
+				setvarvar PREDICT_JUMPPAD_YVEL TEMP2
+			}
+		}
+	}
+ends
+
+state handle_jumppad_movement_prediction
+	ifvare PREDICT_JUMPPAD_HIT 1
+	{
+		ifvarn PREDICT_JUMPPAD_XVEL 0
+		{
+			setvarvar myxvel PREDICT_JUMPPAD_XVEL
+		}
+		
+		ifvarn PREDICT_JUMPPAD_YVEL 0
+		{
+			setvarvar myyvel PREDICT_JUMPPAD_YVEL
+		}
+		
+		ifp pdead
+		{
+			setvar PREDICT_JUMPPAD_HIT 0 // No longer launched by jump pad when player gets killed
+			setvar PREDICT_JUMPPAD_XVEL 0
+			setvar PREDICT_JUMPPAD_YVEL 0
+		}
+		else ifvarg myonground 0
+		{
+			setvar PREDICT_JUMPPAD_HIT 0 // No longer launched by jump pad when player hits the ground
+			setvar PREDICT_JUMPPAD_XVEL 0
+			setvar PREDICT_JUMPPAD_YVEL 0
+		}
+		else ifp pjetpack
+		{
+			setvar PREDICT_JUMPPAD_HIT 0 // If they use the jetpack, prevent them from cheating the jump pads to stop fall damage.
+			setvar PREDICT_JUMPPAD_XVEL 0
+			setvar PREDICT_JUMPPAD_YVEL 0
+		}
+		else ifinwater
+		{
+			setvar PREDICT_JUMPPAD_HIT 0 // Cancel out if landed in water.
+			setvar PREDICT_JUMPPAD_XVEL 0
+			setvar PREDICT_JUMPPAD_YVEL 0
+		}
+	}
+ends
+
 state handle_lowgravity
 	getplayer[THISACTOR].poszv TEMP
 	ifvarg TEMP 512
@@ -452,11 +623,16 @@ state handle_sectortypes
 	ifp palive
 	{
 		getactor[THISACTOR].sectnum TEMP
-		switch SECTOR_TYPES[TEMP]
-			case 1:
-				state handle_lowgravity
-				break
-		endswitch
+		ifvarand SECTOR_TYPES[TEMP] SECTORTYPE_LOWGRAVITY
+		{
+			state handle_lowgravity
+		}
+		
+		getactor[THISACTOR].sectnum TEMP
+		ifvarand SECTOR_TYPES[TEMP] SECTORTYPE_JUMPPAD
+		{
+			state handle_jumppad
+		}
 		
 		getsector[THISACTOR].lotag TEMP
 		ifvare TEMP 256
@@ -484,11 +660,15 @@ state handle_sectortypes
 ends
 
 state handle_sectortypes_prediction
-	switch SECTOR_TYPES[mycursectnum]
-		case 1:
-			state handle_lowgravity_prediction
-			break
-	endswitch
+	ifvarand SECTOR_TYPES[mycursectnum] SECTORTYPE_LOWGRAVITY
+	{
+		state handle_lowgravity_prediction
+	}
+	
+	ifvarand SECTOR_TYPES[mycursectnum] SECTORTYPE_JUMPPAD
+	{
+		state handle_jumppad_prediction
+	}
 ends
 
 state handle_rift
@@ -576,6 +756,7 @@ state strip_items
 		case PLASMASPRITE:
 		case FLAMETHROWERSPRITE:
 		case RAILGUNSPRITE:
+		case SSGSPRITE:
 		case AMMO:
 		case AMMOLOTS:
 		case BATTERYAMMO:
@@ -602,4 +783,65 @@ state gibsound
 		case 2: sound GIB_SPLAT3 break
 		case 3: sound GIB_SPLAT4 break
 	endswitch
+ends
+
+state spawn_random_whispysmoke
+	espawn WHISPYSMOKE
+	getactor[THISACTOR].x TEMP
+	randvar TEMP2 256
+	subvar TEMP2 128
+	addvarvar TEMP TEMP2
+	setactor[RETURN].x TEMP
+			
+	getactor[THISACTOR].y TEMP
+	randvar TEMP2 256
+	subvar TEMP2 128
+	addvarvar TEMP TEMP2
+	setactor[RETURN].y TEMP
+		
+	getactor[THISACTOR].z TEMP
+	randvar TEMP2 8192
+	subvarvar TEMP TEMP2
+	setactor[RETURN].z TEMP
+	setvar RETURN 0
+ends
+
+state spawn_random_fire
+	// Fire Sprites
+	espawn ONFIRE
+			
+	// Note: Change to clipdist later.
+	getactor[THISACTOR].x TEMP
+	randvar TEMP2 256
+	subvar TEMP2 128
+	addvarvar TEMP TEMP2
+	setactor[RETURN].x TEMP
+			
+	getactor[THISACTOR].y TEMP
+	randvar TEMP2 256
+	subvar TEMP2 128
+	addvarvar TEMP TEMP2
+	setactor[RETURN].y TEMP
+			
+	// Note: Set this to use tilesizy*yrepeat later.
+	getactor[THISACTOR].z TEMP
+	randvar TEMP2 8192
+	subvarvar TEMP TEMP2
+	setactor[RETURN].z TEMP
+			
+	setvar RETURN 0
+ends
+
+state stop_player_burn
+	getplayer[THISACTOR].i TEMP
+	getactorvar[TEMP].BURNING_TICS TEMP
+	ifvarg TEMP 0
+	{
+		setplayervar[THISACTOR].STOP_BURNING 1
+		state spawn_random_whispysmoke
+		state spawn_random_whispysmoke
+		state spawn_random_whispysmoke
+		state spawn_random_whispysmoke
+		state spawn_random_whispysmoke
+	}
 ends

@@ -282,7 +282,7 @@ ends
 
 state setssg
 	setvar WEAPON2_FLAGS 1024
-	setvar WEAPON2_TOTALTIME 56
+	setvar WEAPON2_TOTALTIME 55
 	setvar WEAPON2_SPAWNTIME 0
 	setvar WEAPON2_SPAWN 0
 	setvar WEAPON2_SHOTSPERBURST 14
@@ -534,15 +534,15 @@ ifp palive
 		ifvare USING_SSG 1
 		{
 			getplayer[THISACTOR].kickback_pic TEMP2
-			ifvare TEMP2 20
+			ifvare TEMP2 19
 			{
 				sound SSG_OPEN
 			}
-			else ifvare TEMP2 36
+			else ifvare TEMP2 35
 			{
 				sound SSG_LOAD
 			}
-			else ifvare TEMP2 47
+			else ifvare TEMP2 46
 			{
 				sound SSG_CLOSE
 			}

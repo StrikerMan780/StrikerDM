@@ -39,6 +39,8 @@ voxel "voxels/props/4547_fries2.kvx" { scale 1 tile 4547 }
 voxel "voxels/props/4548_drink.kvx" { scale 1 tile 4548 }
 voxel "voxels/props/4569_jollymeal.kvx" { scale 1 tile 4569 }
 
+voxel "voxels/props/7054_tombstone.kvx" { scale 1 tile 7054 }
+
 // Switches
 voxel "voxels/switches/0130_accessswitch_red.kvx" { scale 1 tile 130 }
 voxel "voxels/switches/0131_accessswitch_green.kvx" { scale 1 tile 131 }
