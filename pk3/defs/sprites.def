@@ -13,6 +13,11 @@ tilefromtexture 77 { file "tiles/77.png" texture } // Space Sector
 // Shrinker/Expander
 tilefromtexture 25 { file "tiles/25.png" }
 tilefromtexture 32 { file "tiles/32.png" }
+tilefromtexture 1615 { file "tiles/1615.png" }
+tilefromtexture 1616 { file "tiles/1616.png" }
+tilefromtexture 1617 { file "tiles/1617.png" }
+tilefromtexture 1618 { file "tiles/1618.png" }
+tilefromtexture 1619 { file "tiles/1619.png" }
 
 // Alternate Tripmine Colors
 tilefromtexture 2592 { file "tiles/2592.png" texture }

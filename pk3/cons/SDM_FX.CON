@@ -43,7 +43,6 @@ actor SHOCKWAVE 0
 	setactor[THISACTOR].xrepeat TEMP
 	setactor[THISACTOR].yrepeat TEMP
 	
-	
 	ifvarg TEMP 255
 	{
 		killit

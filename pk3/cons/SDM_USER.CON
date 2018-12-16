@@ -50,20 +50,11 @@ definequote 500		PLACEHOLDER QUOTE
 
 define GM_DUKEMATCH 0
 define GM_COOPERATIVE 1
-define GM_DUKEMATCH_NOSPAWN 2
-define GM_TEAMDUKEMATCH 3
-define GM_TEAMDUKEMATCH_NOSPAWN 4
-define GM_DUKEMATCH_WEAPONSTAY 5
-define GM_TEAMDUKEMATCH_WEAPONSTAY 6
-define GM_ROIDMATCH 7
-define GM_INSTAGIB 8
+define GM_TEAMDUKEMATCH 2
+define GM_ROIDMATCH 3
+define GM_INSTAGIB 4
 definegametype GM_DUKEMATCH 19480 Dukematch
-definegametype GM_COOPERATIVE 46051 Cooperative
-definegametype GM_DUKEMATCH_NOSPAWN 16410 Dukematch (no spawn)
 definegametype GM_TEAMDUKEMATCH 216088 Team Dukematch
-definegametype GM_TEAMDUKEMATCH_NOSPAWN 213018 Team Dukematch (no spawn)
-definegametype GM_DUKEMATCH_WEAPONSTAY 19482 Dukematch (Weapons Stay)
-definegametype GM_TEAMDUKEMATCH_WEAPONSTAY 216090 Team Dukematch (Weapons Stay)
 definegametype GM_ROIDMATCH 19480 Roidmatch
 definegametype GM_INSTAGIB 19480 Instagib
 
@@ -246,10 +237,14 @@ definelevelname 10 31 maps/ARRAKIS-SDM.map 66:60 66:60 Arrakis: Multiple Authors
 definelevelname 10 32 maps/GRAVITY!-SDM.map 66:60 66:60 Gravity!: Multiple Authors
 definelevelname 10 33 maps/GANGSDM33-SDM.map 66:60 66:60 Gangs DM: Zillas
 definelevelname 10 34 maps/MONOCHROMIA.map 66:60 66:60 Monochromia: Noldor Ranzou
+definelevelname 10 35 maps/2VS2BASE-SDM.map 66:60 66:60 2vs2 Base (TDM): El_Scorcho
+definelevelname 10 36 maps/2FORTS-I-SDM.map 66:60 66:60 2Forts-I (TDM): Anima
+definelevelname 10 37 maps/TAGFORTS-SDM.map 66:60 66:60 Tagforts (Duketag): Mako
 
 music 11 music/seppuku.ogg music/ancient.ogg music/fortress.ogg music/zerostreets.ogg music/zerotown.ogg
          music/eerie.ogg music/saturntoll.ogg music/echohare.ogg music/apes.mid music/mental.ogg music/breed.mid
-         music/portroyal.mid music/mercenary.mid music/oneinch.mid music/fatcity.mid music/smwathletic.it music/antarctica.mid
+         music/portroyal.mid music/mercenary.mid music/oneinch.mid music/fatcity.mid music/smb3.xm music/antarctica.mid
          music/depression.mid music/vitevoom.mid music/munsters.mid music/bodies.mid music/deathcrush.mid music/pow.mid
          music/nostalgy.mid music/shattered.mid music/hymnof.xm music/an-turr.xm music/starg13.mod music/letni.s3m music/flanns.mod
-         music/ninjaphi.it music/lagoona.xm music/battleofsteel.xm music/d_l24d.it music/qube.mod
+         music/ninjaphi.it music/lagoona.xm music/battleofsteel.xm music/d_l24d.it music/qube.mod music/kernkraft.mod
+         music/icefront.s3m music/episode_666.xm

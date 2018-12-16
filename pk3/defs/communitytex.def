@@ -469,6 +469,7 @@ tilefromtexture 7143 { file "tiles/7143.png" }
 
 // Animated Textures
 animtilerange 7081 7132 3 ANIM_FORWARD
+animtilerange 7140 7141 5 ANIM_FORWARD
 
 // Animated Sprites
 

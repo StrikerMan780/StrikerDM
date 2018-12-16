@@ -70,6 +70,9 @@ gamevar BURNING_INFLICTOR -1 2
 gamevar BURNING_OLDPAL -1 2
 
 // Per-Player Vars
+gamevar WEAPONCHANGETIMER 0 1
+gamevar WEAPONQUOTE 0 1
+
 gamevar JUMPPAD_HIT 0 1
 gamevar JUMPPAD_XVEL 0 1
 gamevar JUMPPAD_YVEL 0 1

@@ -332,7 +332,6 @@ onevent EVENT_KILLIT
 			state prepare_respawn_hardcoded
 		}
 	}
-	
 endevent
 
 state boss_projectile_offset
@@ -808,6 +807,16 @@ onevent EVENT_GAME
 			getactor[TEMP].z TEMP2
 			setactor[THISACTOR].z TEMP2
 			break
+			
+		case WATERBUBBLEMAKER:
+		case WATERBUBBLE:
+			getactor[THISACTOR].sectnum TEMP2
+			ifvarand SECTOR_TYPES[TEMP2] SECTORTYPE_SPACE
+			{
+				killit
+			}
+			break
+			
 		case JIBS1:
 		case JIBS2:
 		case JIBS3:
@@ -818,6 +827,7 @@ onevent EVENT_GAME
 			getactor[THISACTOR].pal TEMP2
 			espawn GIBBLOOD
 			setactor[RETURN].pal TEMP2
+			setvar RETURN 0
 			break
 	endswitch
 	
@@ -1035,22 +1045,43 @@ onevent EVENT_SPAWN
 		case TRIPBOMB:
 			setactor[THISACTOR].mdflags 16
 			break
+		
+		case WATERBUBBLEMAKER:
+		case WATERBUBBLE:
+			getactor[THISACTOR].sectnum TEMP2
+			ifvarand SECTOR_TYPES[TEMP2] SECTORTYPE_SPACE
+			{
+				killit
+			}
+			break
 			
 		case FIREFLY:
+			ifvare MONSTERS_OFF 1
+			{
+				killit
+			}
+			
 			cstator 257
 			ifspawnedby FIREFLY
 			{
 				changespritestat THISACTOR 2
 			}
 			break
+			
 		case BOSS2:
 		case BOSS3:
 		case BOSS2STAYPUT:
 		case BOSS3STAYPUT:
 		case BOSS5:
 		case BOSS5STAYPUT:
+			ifvare MONSTERS_OFF 1
+			{
+				killit
+			}
+			
 			cstator 257
 			changespritestat THISACTOR 2
+			
 			ifspritepal 0
 			{
 				sizeat 80 80
@@ -1618,6 +1649,11 @@ onevent EVENT_DISPLAYREST // !UNSYNCHRONIZED!
 		}
 	}
 	
+	ifvarg WEAPONCHANGETIMER 1
+	{
+		gametext STARTALPHANUM 320 30 WEAPONQUOTE 0 7 16 0 0 xdim ydim
+	}
+	
 	ifvarg BURNING_TICS 0
 	{
 		screentext 3072 160 150 65536 0 0 134 -127 2 16 0 3 5 1 1 8194 0 0 xdim ydim
@@ -1721,6 +1757,14 @@ onevent EVENT_SOUND
 			case 1: setvar RETURN NEW_DRIP2 break
 			case 2: setvar RETURN NEW_DRIP3 break
 		endswitch
+	}
+	else ifvare RETURN DUKE_UNDERWATER
+	{
+		getactor[THISACTOR].sectnum TEMP2
+		ifvarand SECTOR_TYPES[TEMP2] SECTORTYPE_SPACE
+		{
+			setvar RETURN -1
+		}
 	}
 endevent
 
