@@ -134,6 +134,16 @@ onevent EVENT_DAMAGESPRITE
 			setvar RETURN -1
 			break
 		}
+		
+		ifactor GROWSPARK
+		{
+			getuserdef[].return 1 TEMP
+			ifvarn TEMP -1
+			{
+				setvar RETURN -1
+				break
+			}
+		}
 	}
 	
 	ifactor FREEZEBLAST

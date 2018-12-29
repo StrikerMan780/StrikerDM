@@ -1,0 +1,123 @@
+
+------------------------------>  HELL  AWAITS <----------------------------------------
+
+
+title		: Hell awaits
+Filename	: hellaw8z
+Authors		: Merlijn van Oostrum 
+
+E-mail adress	: merlijn_redhot@hotmail.com 
+Authors Info	: 18 year old metal freak who rather wastes his time on building then studying :)
+
+Release Date	: ...
+
+Other levels	: Red1 t/m 4
+		  tunnelz
+		  1 map 4 BN 	
+		  OGBB (with Willy and Maartn)
+		  dozenz of unfinished shit :)
+  	
+
+Future levels	: red5 and maybe some more... you'll see
+
+_______________________________________________________________________________
+
+
+Description 	: I just started building one time with the idea of wasting as much
+		  sectors as possible wich gave some cool results I think. After that
+		  I continued building on it when I felt like it. The resultz are this
+     		  dm map with 666 sectors. :P
+		  It's my first dm map evah so probably the gameplay will suck :)
+
+Story:		You are mister K.Ill, in normal life just the average officeworker at the
+		We Store Your Crap company who spends more time at the burger king then at home,
+                and a true workaholic.
+		But this is about to change when you got transferred to one of the WSYC bases
+		on the other side of the world. This base stands on a rocky Island in the middle
+		of the pacific oceam about 200 meter above sea level. 
+		Something they didn't tell was that the workers there went berserk and are 
+		terrorising the factory, killing each other and shooting at everything that moves.
+	        The reason of these sudden events still remains unknown.
+		They also didn't tell you that you got miniature sensors and camera's with you
+		who will register everything happening as soon as you enter the base, hoping
+		that they will see the reason of all this. They didn't tell you that you are 
+		their guinea pig and that you'll turn into a unstoppable killer also probably.
+		They didn't tell you that there on that Isle, hell awaits....  
+____________________________________________________________________________________________________________________
+
+
+* Play information *
+
+Episode and level    : no comments
+Single Player        : Not really, only some monsters to practice on (on come get some)
+		       It's wise to first scout the area on sp before starting a "botmatch" ;)	
+		       Look where the goodies are and wich places can be used in your
+		       advantage etc.		
+DukeMatch Level      : Yes! 
+Cooperative Match    : Nope
+Difficulty Settings  : Yes, play this map on come get some to get "Commander match"
+		       Play it on Damn I'm good to get "Suicide match" :P
+Atomic Pack Requied  : Yes!
+New Art	             : No 
+New Music	     : No
+New CON-Files	     : No
+New Sounds	     : No (boooring)
+Demos Replaced       : No way :P
+
+___________________________________________________________________________
+
+
+* Construction *
+
+Base		     : New level from nothin' but scratch
+Level editor(s) used : b b b build (duhhh)
+Construction time    : very short maybe 1 month  :D
+Known bugs/problems  : The filename (hellaw8z) is written with a Z, 
+		       wich will cost me at least 30 points :P	  
+		       Real bugs: none. I hope...
+ 	
+* Were to get this MAP file *
+Dumb questions deserve dumb answers. In other words: you've allready got it :P
+
+
+* How to start this map *
+Use dukeroch to launch this map with bots. 
+And maybe also people will play it on internet, would be cool :)
+
+
+_________________________________________________________________________________________________
+
+* Thanks to *
+
+-Bob averill and Alejandro Glavic. You'll see why if you see the rating of
+ details in this map :)
+-Duke community 4 being nice people (slijm slijm slijm :P)
+-Beta testerz
+ *William Gee
+ *Amund
+ *Alejandro
+ *Kuffi 
+ *Maartn
+
+________________________________________________________________________________________________________________________________________
+
+* Xtra: about playing with bots *
+
+I think it's wisest to start this map with 3 opponents or less,
+especially the first time you play it.
+In the beginning this level can be very hard with bots, but you'll
+see that once you know how to handle the bots you'll mob the floor
+with them :P Just find out wich things or locations in the map can be 
+used in your advantage ;)
+1 example: when ur outta ammo you can easily escape bots by using the
+staircases. You'll have to figure the rest out yourself :)
+_____________________________________________________________________________________________________________________________________snuif! Nice line of coke :P
+
+* Copyright (or copyleft :P ) *
+
+Don't rip anything from this map, only release it with THIS txt-file included. thank you :)
+
+
+
+
+#This map is neither made nor supported by coca cola (drink coca cola! It rox!! :P) #

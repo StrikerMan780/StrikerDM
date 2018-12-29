@@ -109,12 +109,12 @@ defineprojectile GROWSPARK PROJ_YREPEAT 24
 defineprojectile GROWSPARK PROJ_EXTRA GROWSPARK_WEAPON_STRENGTH
 defineprojectile GROWSPARK PROJ_EXTRA_RAND 5
 defineprojectile GROWSPARK PROJ_CLIPDIST 8
-defineprojectile GROWSPARK PROJ_HITRADIUS 0
+defineprojectile GROWSPARK PROJ_HITRADIUS 900
 defineprojectile GROWSPARK PROJ_SHADE -127
 defineprojectile GROWSPARK PROJ_ISOUND SHRINKER_HIT
 defineprojectile GROWSPARK PROJ_SPAWNS EXPANDEREXPLOSION
-defineprojectile GROWSPARK PROJ_SXREPEAT 24
-defineprojectile GROWSPARK PROJ_SYREPEAT 24
+defineprojectile GROWSPARK PROJ_SXREPEAT 32
+defineprojectile GROWSPARK PROJ_SYREPEAT 32
 defineprojectile GROWSPARK PROJ_TRAIL EXPANDERTRAIL
 defineprojectile GROWSPARK PROJ_TXREPEAT 24
 defineprojectile GROWSPARK PROJ_TYREPEAT 24
@@ -130,8 +130,8 @@ actor EXPANDEREXPLOSION 0
 	}
 	else
 	{
-		sizeto 24 0
-		sizeto 24 0
+		sizeto 32 0
+		sizeto 32 0
 		ifactioncount 4
 			killit
 	}

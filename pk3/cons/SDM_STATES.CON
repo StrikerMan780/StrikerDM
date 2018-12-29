@@ -468,6 +468,16 @@ state handle_jumppad
 				setvarvar JUMPPAD_YVEL TEMP2
 			}
 		}
+		else
+		{
+			getplayer[THISACTOR].truefz TEMP
+			getplayer[THISACTOR].posz TEMP2
+			subvar TEMP 16384 // Subtract height
+			ifvarvarg TEMP2 TEMP // Touching floor?
+			{
+				setplayer[THISACTOR].falling_counter 0 // Prevent fall damage
+			}
+		}
 	}
 ends
 

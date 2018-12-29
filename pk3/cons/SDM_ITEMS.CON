@@ -36,6 +36,7 @@ useractor notenemy HEALTHBONER WEAK
 	ifphealthl 200
 	ifcanseetarget
 	{
+		state stop_player_burn
 		setplayer[THISACTOR].max_player_health 200
 		addphealth 2
 		setplayer[THISACTOR].max_player_health MAXPLAYERHEALTH
