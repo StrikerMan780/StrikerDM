@@ -175,6 +175,18 @@ onevent EVENT_DAMAGESPRITE
 		setvar RETURN -1 // Do not do the usual radius damage processing
 		break
 	}
+	else ifactor GROWSPARK
+	{
+		getactor[RETURN].picnum TEMP
+		switch TEMP
+			case CRACK1:
+			case CRACK2:
+			case CRACK3:
+			case CRACK4:
+				setvar RETURN -1
+				break
+		endswitch
+	}
 endevent
 
 onevent EVENT_POSTDAMAGESPRITE

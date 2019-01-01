@@ -1,4 +1,6 @@
 // StrikerDM CON Files
+scriptsize 65536
+
 action ANULLACTION 0
 move RESPAWN_ACTOR_FLAG
 
