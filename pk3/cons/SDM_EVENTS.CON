@@ -478,16 +478,16 @@ onevent EVENT_EGS
 				randvar TEMP 2047
 				setactor[RETURN].ang TEMP
 				setvar RETURN 0
-				
-				randvar RANDOM_SOUND 4
-				switch RANDOM_SOUND
-					case 0: sound BULLET_HIT1 break
-					case 1: sound BULLET_HIT2 break
-					case 2: sound BULLET_HIT3 break
-					case 3: sound BULLET_HIT4 break
-					case 4: sound BULLET_HIT5 break
-				endswitch
 			}
+			
+			randvar RANDOM_SOUND 4
+			switch RANDOM_SOUND
+				case 0: sound BULLET_HIT1 break
+				case 1: sound BULLET_HIT2 break
+				case 2: sound BULLET_HIT3 break
+				case 3: sound BULLET_HIT4 break
+				case 4: sound BULLET_HIT5 break
+			endswitch
 		}
 		
 		break

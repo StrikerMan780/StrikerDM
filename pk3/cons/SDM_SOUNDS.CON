@@ -372,11 +372,11 @@ definesound GIB_SPLAT5 sounds/gore/dsflesh5.ogg -32 64 0 0 9000
 definesound GIB_SPLAT6 sounds/gore/dsflesh6.ogg -32 64 0 0 9000
 definesound GIB_SPLAT7 sounds/gore/dsflesh7.ogg -32 64 0 0 9000
 
-definesound BULLET_HIT1 sounds/gore/bulithit.ogg -32 64 0 0 9000
-definesound BULLET_HIT2 sounds/gore/bulithit2.ogg -32 64 0 0 9000
-definesound BULLET_HIT3 sounds/gore/bulithit3.ogg -32 64 0 0 9000
-definesound BULLET_HIT4 sounds/gore/bulithit4.ogg -32 64 0 0 9000
-definesound BULLET_HIT5 sounds/gore/bulithit5.ogg -32 64 0 0 9000
+definesound BULLET_HIT1 sounds/gore/bulithit.ogg -32 64 0 0 8192
+definesound BULLET_HIT2 sounds/gore/bulithit2.ogg -32 64 0 0 8192
+definesound BULLET_HIT3 sounds/gore/bulithit3.ogg -32 64 0 0 8192
+definesound BULLET_HIT4 sounds/gore/bulithit4.ogg -32 64 0 0 8192
+definesound BULLET_HIT5 sounds/gore/bulithit5.ogg -32 64 0 0 8192
 
 definesound BLOOD_SPLAT1 sounds/gore/dsblud.ogg -32 64 0 0 9000
 definesound BLOOD_SPLAT2 sounds/gore/dsblud2.ogg -32 64 0 0 9000
