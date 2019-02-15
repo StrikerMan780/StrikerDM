@@ -10,6 +10,9 @@ tilefromtexture 75 { file "tiles/75.png" texture } // Custom Touchplate
 tilefromtexture 76 { file "tiles/76.png" texture } // Moon gravity
 tilefromtexture 77 { file "tiles/77.png" texture } // Space Sector
 
+// Plasma Ball
+tilefromtexture 1389 { file "tiles/1389.png" }
+
 // Shrinker/Expander
 tilefromtexture 25 { file "tiles/25.png" }
 tilefromtexture 32 { file "tiles/32.png" }
@@ -190,6 +193,17 @@ tilefromtexture 2086 { file "tiles/2086.png" }
 tilefromtexture 2087 { file "tiles/2087.png" }
 tilefromtexture 2088 { file "tiles/2088.png" }
 tilefromtexture 2089 { file "tiles/2089.png" }
+
+// Blood Trails
+tilefromtexture 2100 { file "tiles/2100.png" }
+tilefromtexture 2101 { file "tiles/2101.png" }
+tilefromtexture 2102 { file "tiles/2102.png" }
+tilefromtexture 2103 { file "tiles/2103.png" }
+tilefromtexture 2104 { file "tiles/2104.png" }
+tilefromtexture 2105 { file "tiles/2105.png" }
+tilefromtexture 2106 { file "tiles/2106.png" }
+tilefromtexture 2107 { file "tiles/2107.png" }
+tilefromtexture 2108 { file "tiles/2108.png" }
 
 // Parts for rescued babes
 tilefromtexture 3718 { file "tiles/3718.png" } // Pad

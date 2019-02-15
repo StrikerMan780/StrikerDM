@@ -1,5 +1,8 @@
 cachesize 65536
 
+// Palswaps
+include defs/palswaps.def
+
 // Fonts
 include defs/redfont.def
 include defs/bluefont.def

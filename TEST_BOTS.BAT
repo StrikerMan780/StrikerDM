@@ -1,5 +1,5 @@
 set GRP_PATH=%~dp0Builds
-set MAP=maps/longestduke.map
+set MAP=maps/ktc.map
 C:
 cd "C:\Meltdown\Duke Nukem 3D\EDuke32"
 @echo off
@@ -24,5 +24,5 @@ start eduke32-oldmp -nosetup -tx -c1 -m -g %GRP_PATH%\StrikerDM-DEV.PK3 /q%NUMBO
 exit
 
 :NOAI
-start eduke32-oldmp -nosetup -tx -c1 -m -g %GRP_PATH%\StrikerDM-DEV.PK3 /q8 -map %MAP%
+start eduke32-oldmp -nosetup -tx -c1 -m -g %GRP_PATH%\StrikerDM-DEV.PK3 /q16 -map %MAP%
 exit

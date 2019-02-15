@@ -786,12 +786,15 @@ state strip_items
 ends
 
 state gibsound
-	randvar RANDOM_SOUND 3
+	randvar RANDOM_SOUND 6
 	switch RANDOM_SOUND
 		case 0: sound GIB_SPLAT1 break
 		case 1: sound GIB_SPLAT2 break
 		case 2: sound GIB_SPLAT3 break
 		case 3: sound GIB_SPLAT4 break
+		case 4: sound GIB_SPLAT5 break
+		case 5: sound GIB_SPLAT6 break
+		case 6: sound GIB_SPLAT7 break
 	endswitch
 ends
 
@@ -854,4 +857,90 @@ state stop_player_burn
 		state spawn_random_whispysmoke
 		state spawn_random_whispysmoke
 	}
+ends
+
+state gore_movement
+	getactor[THISACTOR].xvel TEMP
+	ifvarg TEMP 0
+	{
+		subvar TEMP 1
+	}
+	else
+	{
+		setvar TEMP 0
+	}
+	setactor[THISACTOR].xvel TEMP
+	
+	getactor[THISACTOR].zvel TEMP
+	ifvarg TEMP 1024
+	ifvarl TEMP 1280
+	{
+		getactor[THISACTOR].x TEMP
+		getactor[THISACTOR].y TEMP2
+		getactor[THISACTOR].z TEMP3
+		setsprite THISACTOR TEMP TEMP2 TEMP3
+	}
+	
+	getactor[THISACTOR].zvel TEMP
+	ifvarl TEMP 6144
+	{
+		getsector[THISACTOR].lotag TEMP2
+		ifvare TEMP2 2
+		{
+			ifvarl TEMP 1024
+			{
+				addvar TEMP 48
+			}
+			else
+			{
+				setvar TEMP 1024
+			}
+		}
+		else
+		{
+			// Subtract 50 from the gravitational constant for a slower fall.
+			setvarvar TEMP2 gravitationalconstant
+			subvar TEMP2 50
+			addvarvar TEMP TEMP2
+		}
+	}
+	setactor[THISACTOR].zvel TEMP
+	
+	// Get sine of angle+512
+	getactor[THISACTOR].ang TEMP2
+	addvar TEMP2 512
+	sin TEMP TEMP2
+	
+	// Multiply sine by xvel, and right-shift bits by 14
+	getactor[THISACTOR].xvel TEMP2
+	mulvarvar TEMP TEMP2
+	shiftvarr TEMP 14
+	
+	// Add result to x coord.
+	getactor[THISACTOR].x TEMP2
+	setactor[THISACTOR].htbposx TEMP2
+	addvarvar TEMP2 TEMP
+	setactor[THISACTOR].x TEMP2
+	
+	// Get sine of angle
+	getactor[THISACTOR].ang TEMP2
+	sin TEMP TEMP2
+	
+	// Multiply sine by xvel, and right-shift bits by 14
+	getactor[THISACTOR].xvel TEMP2
+	mulvarvar TEMP TEMP2
+	shiftvarr TEMP 14
+	
+	// Add result to y coord.
+	getactor[THISACTOR].y TEMP2
+	setactor[THISACTOR].htbposy TEMP2
+	addvarvar TEMP2 TEMP
+	setactor[THISACTOR].y TEMP2
+	
+	// Add zvel to z coord.
+	getactor[THISACTOR].z TEMP
+	setactor[THISACTOR].htbposz TEMP
+	getactor[THISACTOR].zvel TEMP2
+	addvarvar TEMP TEMP2
+	setactor[THISACTOR].z TEMP
 ends

@@ -312,6 +312,30 @@ state burningstate_flamethrower
 	
 	ifinwater
 		killit
+		
+	// Check if on water surface
+	getsector[THISACTOR].lotag TEMP
+	ifvare TEMP 1
+	{
+		// TEMP = X
+		// TEMP2 = Y
+		// TEMP3 = Sector Number
+		getactor[THISACTOR].x TEMP
+		getactor[THISACTOR].y TEMP2
+		getactor[THISACTOR].sectnum TEMP3
+			
+		// Set TEMP to florz
+		getflorzofslope TEMP3 TEMP TEMP2 TEMP
+		subvar TEMP 512 // Subtract height
+			
+		getactor[THISACTOR].z TEMP2
+		
+		ifvarvarg TEMP2 TEMP // Touching floor?
+		{
+			spawn WHISPYSMOKE
+			killit
+		}
+	}
 	
 	ifcount 128
 	{

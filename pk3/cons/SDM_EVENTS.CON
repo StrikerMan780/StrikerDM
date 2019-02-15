@@ -458,6 +458,47 @@ onevent EVENT_EGS
 		break
 	}
 	
+	ifactor JIBS6
+	{
+		ifspawnedby SHOTSPARK1
+		{
+			ifrnd 128
+			{
+				espawn BLOODSPURT
+				
+				randvar TEMP 48
+				addvar TEMP 16
+				setactor[RETURN].xvel TEMP
+				
+				setvar TEMP -512
+				randvar TEMP2 1024
+				subvarvar TEMP TEMP2
+				setactor[RETURN].zvel TEMP
+				
+				randvar TEMP 2047
+				setactor[RETURN].ang TEMP
+				setvar RETURN 0
+				
+				randvar RANDOM_SOUND 4
+				switch RANDOM_SOUND
+					case 0: sound BULLET_HIT1 break
+					case 1: sound BULLET_HIT2 break
+					case 2: sound BULLET_HIT3 break
+					case 3: sound BULLET_HIT4 break
+					case 4: sound BULLET_HIT5 break
+				endswitch
+			}
+		}
+		
+		break
+	}
+	
+	// Freezeblast speed buff
+	ifactor FREEZEBLAST
+	{
+		setactor[THISACTOR].xvel 768
+	}
+	
 	ifactor FLAMETHROWERFLAME
 	{
 		// Calculate horizontal spread
@@ -722,6 +763,77 @@ state boss_devastatormissile_resize
 	setthisprojectile[THISACTOR].syrepeat 16
 ends
 
+state plasma_spread
+	addvar EXTRA_MEMORY 1
+	ifvarg EXTRA_MEMORY 5
+	{
+		ifactor PLASMABALL setvar PICNUM_MEMORY PLASMABALL2
+		else ifactor PLASMABALL2 setvar PICNUM_MEMORY PLASMABALL3
+		
+		getactor[THISACTOR].x SPAWN_ORIGX
+		getactor[THISACTOR].y SPAWN_ORIGY
+		getactor[THISACTOR].z SPAWN_ORIGZ
+		getactor[THISACTOR].ang SPAWN_ORIGANG
+		getactor[THISACTOR].zvel SPAWN_ORIGZVEL
+		getactor[THISACTOR].owner TEMP2
+			
+		eshootvar PICNUM_MEMORY
+		getactor[THISACTOR].ang TEMP
+		addvar TEMP PLASMARIFLE_X_SPREAD
+		setactor[RETURN].ang TEMP
+		setactor[RETURN].x SPAWN_ORIGX
+		setactor[RETURN].y SPAWN_ORIGY
+		setactor[RETURN].z SPAWN_ORIGZ
+		setactor[RETURN].zvel SPAWN_ORIGZVEL
+		setactor[RETURN].owner TEMP2
+		setvar RETURN 0
+			
+		eshootvar PICNUM_MEMORY
+		getactor[THISACTOR].ang TEMP
+		subvar TEMP PLASMARIFLE_X_SPREAD
+		setactor[RETURN].ang TEMP
+		setactor[RETURN].x SPAWN_ORIGX
+		setactor[RETURN].y SPAWN_ORIGY
+		setactor[RETURN].z SPAWN_ORIGZ
+		setactor[RETURN].zvel SPAWN_ORIGZVEL
+		setactor[RETURN].owner TEMP2
+		setvar RETURN 0
+			
+		eshootvar PICNUM_MEMORY
+		getactor[THISACTOR].zvel TEMP
+		addvar TEMP PLASMARIFLE_Y_SPREAD
+		setactor[RETURN].zvel TEMP
+		setactor[RETURN].x SPAWN_ORIGX
+		setactor[RETURN].y SPAWN_ORIGY
+		setactor[RETURN].z SPAWN_ORIGZ
+		setactor[RETURN].ang SPAWN_ORIGANG
+		setactor[RETURN].owner TEMP2
+		setvar RETURN 0
+			
+		eshootvar PICNUM_MEMORY
+		getactor[THISACTOR].zvel TEMP
+		subvar TEMP PLASMARIFLE_Y_SPREAD
+		setactor[RETURN].zvel TEMP
+		setactor[RETURN].x SPAWN_ORIGX
+		setactor[RETURN].y SPAWN_ORIGY
+		setactor[RETURN].z SPAWN_ORIGZ
+		setactor[RETURN].ang SPAWN_ORIGANG
+		setactor[RETURN].owner TEMP2
+		setvar RETURN 0
+			
+		eshootvar PICNUM_MEMORY
+		setactor[RETURN].x SPAWN_ORIGX
+		setactor[RETURN].y SPAWN_ORIGY
+		setactor[RETURN].z SPAWN_ORIGZ
+		setactor[RETURN].ang SPAWN_ORIGANG
+		setactor[RETURN].zvel SPAWN_ORIGZVEL
+		setactor[RETURN].owner TEMP2
+		setvar RETURN 0
+			
+		killit
+	}
+ends
+
 onevent EVENT_GAME
 	state burning_logic
 	
@@ -752,71 +864,12 @@ onevent EVENT_GAME
 	
 	ifactor PLASMABALL
 	{
-		addvar EXTRA_MEMORY 1
-		ifvarg EXTRA_MEMORY 4
-		{
-			getactor[THISACTOR].x SPAWN_ORIGX
-			getactor[THISACTOR].y SPAWN_ORIGY
-			getactor[THISACTOR].z SPAWN_ORIGZ
-			getactor[THISACTOR].ang SPAWN_ORIGANG
-			getactor[THISACTOR].zvel SPAWN_ORIGZVEL
-			getactor[THISACTOR].owner TEMP2
-			
-			eshoot PLASMABALL2
-			getactor[THISACTOR].ang TEMP
-			addvar TEMP PLASMARIFLE_X_SPREAD
-			setactor[RETURN].ang TEMP
-			setactor[RETURN].x SPAWN_ORIGX
-			setactor[RETURN].y SPAWN_ORIGY
-			setactor[RETURN].z SPAWN_ORIGZ
-			setactor[RETURN].zvel SPAWN_ORIGZVEL
-			setactor[RETURN].owner TEMP2
-			setvar RETURN 0
-			
-			eshoot PLASMABALL2
-			getactor[THISACTOR].ang TEMP
-			subvar TEMP PLASMARIFLE_X_SPREAD
-			setactor[RETURN].ang TEMP
-			setactor[RETURN].x SPAWN_ORIGX
-			setactor[RETURN].y SPAWN_ORIGY
-			setactor[RETURN].z SPAWN_ORIGZ
-			setactor[RETURN].zvel SPAWN_ORIGZVEL
-			setactor[RETURN].owner TEMP2
-			setvar RETURN 0
-			
-			eshoot PLASMABALL2
-			getactor[THISACTOR].zvel TEMP
-			addvar TEMP PLASMARIFLE_Y_SPREAD
-			setactor[RETURN].zvel TEMP
-			setactor[RETURN].x SPAWN_ORIGX
-			setactor[RETURN].y SPAWN_ORIGY
-			setactor[RETURN].z SPAWN_ORIGZ
-			setactor[RETURN].ang SPAWN_ORIGANG
-			setactor[RETURN].owner TEMP2
-			setvar RETURN 0
-			
-			eshoot PLASMABALL2
-			getactor[THISACTOR].zvel TEMP
-			subvar TEMP PLASMARIFLE_Y_SPREAD
-			setactor[RETURN].zvel TEMP
-			setactor[RETURN].x SPAWN_ORIGX
-			setactor[RETURN].y SPAWN_ORIGY
-			setactor[RETURN].z SPAWN_ORIGZ
-			setactor[RETURN].ang SPAWN_ORIGANG
-			setactor[RETURN].owner TEMP2
-			setvar RETURN 0
-			
-			eshoot PLASMABALL2
-			setactor[RETURN].x SPAWN_ORIGX
-			setactor[RETURN].y SPAWN_ORIGY
-			setactor[RETURN].z SPAWN_ORIGZ
-			setactor[RETURN].ang SPAWN_ORIGANG
-			setactor[RETURN].zvel SPAWN_ORIGZVEL
-			setactor[RETURN].owner TEMP2
-			setvar RETURN 0
-			
-			killit
-		}
+		state plasma_spread
+		break
+	}
+	else ifactor PLASMABALL2
+	{
+		state plasma_spread
 		break
 	}
 	
@@ -1253,6 +1306,8 @@ onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
 			case 2: settspr[THISACTOR].tsprpicnum 5012 break
 			case 3: settspr[THISACTOR].tsprpicnum 5015 break
 		endswitch
+		
+		break
 	}
 	else ifactor TRIPBOMB
 	{
@@ -1261,6 +1316,8 @@ onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
 			case 2: settspr[THISACTOR].tsprpicnum 2593 break
 			case 3: settspr[THISACTOR].tsprpicnum 2594 break
 		endswitch
+		
+		break
 	}
 	else ifactor SHELL
 	{
@@ -1272,7 +1329,19 @@ onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
 				case 2534: settspr[THISACTOR].tsprpicnum RIPPERSHELL2 break
 			endswitch
 		}
+		
+		break
 	}
+	
+	getactor[THISACTOR].picnum CL_TEMP1
+	switch CL_TEMP1
+		case BLOODSPURT:
+		case SPURTTRAIL:
+			gettspr[THISACTOR].tsprshade CL_TEMP1
+			subvar CL_TEMP1 6
+			settspr[THISACTOR].tsprshade CL_TEMP1
+			break
+	endswitch
 endevent
 
 onevent EVENT_CHEATGETBOOT

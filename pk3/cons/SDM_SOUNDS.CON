@@ -180,6 +180,20 @@ define GIB_SPLAT1 614
 define GIB_SPLAT2 615
 define GIB_SPLAT3 616
 define GIB_SPLAT4 617
+define GIB_SPLAT5 618
+define GIB_SPLAT6 619
+define GIB_SPLAT7 620
+
+define BULLET_HIT1 621
+define BULLET_HIT2 622
+define BULLET_HIT3 623
+define BULLET_HIT4 624
+define BULLET_HIT5 625
+
+define BLOOD_SPLAT1 626
+define BLOOD_SPLAT2 627
+define BLOOD_SPLAT3 628
+define BLOOD_SPLAT4 629
 
 define DUKE_ROIDS01 681
 define DUKE_ROIDS02 682
@@ -354,6 +368,20 @@ definesound GIB_SPLAT1 sounds/gore/dsflesh1.ogg -32 64 0 0 9000
 definesound GIB_SPLAT2 sounds/gore/dsflesh2.ogg -32 64 0 0 9000
 definesound GIB_SPLAT3 sounds/gore/dsflesh3.ogg -32 64 0 0 9000
 definesound GIB_SPLAT4 sounds/gore/dsflesh4.ogg -32 64 0 0 9000
+definesound GIB_SPLAT5 sounds/gore/dsflesh5.ogg -32 64 0 0 9000
+definesound GIB_SPLAT6 sounds/gore/dsflesh6.ogg -32 64 0 0 9000
+definesound GIB_SPLAT7 sounds/gore/dsflesh7.ogg -32 64 0 0 9000
+
+definesound BULLET_HIT1 sounds/gore/bulithit.ogg -32 64 0 0 9000
+definesound BULLET_HIT2 sounds/gore/bulithit2.ogg -32 64 0 0 9000
+definesound BULLET_HIT3 sounds/gore/bulithit3.ogg -32 64 0 0 9000
+definesound BULLET_HIT4 sounds/gore/bulithit4.ogg -32 64 0 0 9000
+definesound BULLET_HIT5 sounds/gore/bulithit5.ogg -32 64 0 0 9000
+
+definesound BLOOD_SPLAT1 sounds/gore/dsblud.ogg -32 64 0 0 9000
+definesound BLOOD_SPLAT2 sounds/gore/dsblud2.ogg -32 64 0 0 9000
+definesound BLOOD_SPLAT3 sounds/gore/dsblud3.ogg -32 64 0 0 9000
+definesound BLOOD_SPLAT4 sounds/gore/dsblud4.ogg -32 64 0 0 9000
 
 definesound CHANTING sounds/ambience/chanting.ogg 0 0 0 3 0
 definesound DESERTWND sounds/ambience/desertwnd.ogg 0 0 0 3 0

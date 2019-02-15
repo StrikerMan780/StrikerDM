@@ -1,0 +1,6 @@
+palookup 30 { raw { file "/palswaps/orange.raw" } }
+palookup 31 { raw { file "/palswaps/purple.raw" } }
+palookup 32 { raw { file "/palswaps/black.raw" } }
+palookup 33 { raw { file "/palswaps/gold.raw" } }
+palookup 34 { raw { file "/palswaps/cyborg.raw" } }
+palookup 35 { raw { file "/palswaps/lizard.raw" } }

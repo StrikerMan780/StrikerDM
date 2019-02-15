@@ -105,6 +105,7 @@ define KILL_FLAME 4
 
 define ADULT_HIDE 1
 define ADULT_SWAP 2
+define ADULT_LOCKOUTONLY 3
 
 define SF_ENEMY_SLIMEFOOD_DAMAGEEVENT 79700003
 define SF_ENEMYSTAYPUT_SLIMEFOOD_DAMAGEEVENT 79732771
@@ -116,3 +117,14 @@ define SF_ENEMYSTAYPUT_NOPUSH_DAMAGEEVENT 72392739
 define SECTORTYPE_LOWGRAVITY 1
 define SECTORTYPE_JUMPPAD 2
 define SECTORTYPE_SPACE 4
+
+//deleteplayercolor -1
+addplayercolor 17 Green (Blue Skin)
+addplayercolor 19 Gray (Red Skin)
+addplayercolor 20 Gray (Blue Skin)
+addplayercolor 30 Orange
+addplayercolor 31 Purple
+addplayercolor 32 Black
+addplayercolor 33 Gold
+addplayercolor 34 Cyborg
+addplayercolor 35 Lizard

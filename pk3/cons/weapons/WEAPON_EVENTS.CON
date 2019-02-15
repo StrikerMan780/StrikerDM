@@ -268,7 +268,7 @@ onevent EVENT_GETAUTOAIMANGLE
 			}
 			else
 			{
-				setvar AUTOAIMANGLE 16
+				setvar AUTOAIMANGLE 8
 			}
 		}
 	}

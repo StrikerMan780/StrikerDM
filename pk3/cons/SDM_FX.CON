@@ -22,6 +22,11 @@ actor LDEXPLOSION 1 LAMEDUKE_EXPLOSION_FRAMES
 			spritepal 1
 			cstator 2
 		}
+		else ifspawnedby PLASMABALL3
+		{
+			spritepal 1
+			cstator 2
+		}
 	}
 }
 enda
@@ -759,6 +764,88 @@ enda
 
 actor RANDYSSHITTYCOMMENTARY 0
 	killit
+enda
+
+spriteflags BLOODSPURT 8192
+action BLOODSPURT_ANIM 0 4 1 1 4
+action BLOODSPURT_LAND 188 6 1 1 6
+actor BLOODSPURT 0
+	ifaction 0
+	{
+		setactor[THISACTOR].shade -32
+		setactor[THISACTOR].mdflags 16
+		setvar ISADULT ADULT_LOCKOUTONLY
+		sizeat 12 12
+		cstat 128
+		action BLOODSPURT_ANIM
+	}
+	
+	ifaction BLOODSPURT_LAND
+	{
+		fall
+		ifactioncount 6
+		{
+			killit
+		}
+	}
+	else
+	{
+		state gore_movement
+		iffloordistl 4
+		{
+			ifrnd 64
+			{
+				randvar RANDOM_SOUND 3
+				switch RANDOM_SOUND
+					case 0: sound BLOOD_SPLAT1 break
+					case 1: sound BLOOD_SPLAT2 break
+					case 2: sound BLOOD_SPLAT3 break
+					case 3: sound BLOOD_SPLAT4 break
+				endswitch
+			}
+				
+			resetactioncount
+			cstat 0
+			action BLOODSPURT_LAND
+		}
+	}
+	
+	spawn SPURTTRAIL
+enda
+
+action SPURTTRAIL_ANIM 0 5 1 1 8
+actor SPURTTRAIL 0
+	fall
+	
+	ifaction 0
+	{
+		setactor[THISACTOR].shade -32
+		setactor[THISACTOR].mdflags 16
+		setvar ISADULT ADULT_LOCKOUTONLY
+		sizeat 24 24
+		cstat 128
+		
+		ifrnd 128
+		{
+			cstator 4
+		}
+		ifrnd 128
+		{
+			cstator 8
+		}
+		
+		action SPURTTRAIL_ANIM
+	}
+	
+	ifactioncount 5
+	{
+		killit
+	}
+	
+	iffloordistl 4
+	{
+		killit
+	}
 enda
 
 define SCRAP_WORKSLIKE 4226
