@@ -109,7 +109,7 @@ defineprojectile GROWSPARK PROJ_YREPEAT 24
 defineprojectile GROWSPARK PROJ_EXTRA GROWSPARK_WEAPON_STRENGTH
 defineprojectile GROWSPARK PROJ_EXTRA_RAND 5
 defineprojectile GROWSPARK PROJ_CLIPDIST 16
-defineprojectile GROWSPARK PROJ_HITRADIUS 1024
+defineprojectile GROWSPARK PROJ_HITRADIUS 1280
 defineprojectile GROWSPARK PROJ_SHADE -127
 defineprojectile GROWSPARK PROJ_ISOUND SHRINKER_HIT
 defineprojectile GROWSPARK PROJ_SPAWNS EXPANDEREXPLOSION
@@ -127,6 +127,7 @@ actor EXPANDEREXPLOSION 0
 		cstat 128
 		setactor[THISACTOR].shade -127
 		action EXPANDERFRAMES
+		spawn EXPANDERTRAIL
 	}
 	else
 	{
@@ -143,27 +144,60 @@ actor EXPANDERTRAIL 0
 	ifaction 0
 	{
 		cstat 128
-		sizeat 4 4
+		ifspawnedby EXPANDEREXPLOSION
+		{
+			cstator 32
+			sizeat 16 16
+		}
+		else
+		{
+			sizeat 4 4
+		}
 		setactor[THISACTOR].shade -127
 		action ANULLACTION
 	}
 	
 	getactor[THISACTOR].xrepeat TEMP
-	addvar TEMP 4
+	ifspawnedby EXPANDEREXPLOSION
+	{
+		addvar TEMP 16
+	}
+	else
+	{
+		addvar TEMP 4
+	}
 	setactor[THISACTOR].xrepeat TEMP
 	setactor[THISACTOR].yrepeat TEMP
 	
-	ifvarg TEMP 16
+	ifspawnedby EXPANDEREXPLOSION
 	{
-		killit
+		ifvarg TEMP 96
+		{
+			killit
+		}
+		else ifvarg TEMP 64
+		{
+			cstator 512
+		}
+		else ifvarg TEMP 32
+		{
+			cstator 2
+		}
 	}
-	else ifvarg TEMP 12
+	else
 	{
-		cstator 512
-	}
-	else ifvarg TEMP 8
-	{
-		cstator 2
+		ifvarg TEMP 16
+		{
+			killit
+		}
+		else ifvarg TEMP 12
+		{
+			cstator 512
+		}
+		else ifvarg TEMP 8
+		{
+			cstator 2
+		}
 	}
 }
 enda

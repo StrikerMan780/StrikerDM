@@ -574,8 +574,12 @@ state handle_recoil
 	}
 	ifwasweapon PLASMABALL2
 	{
-		palfrom 32 8 8 48
+		palfrom 24 8 8 48
 			break
+	}
+	ifwasweapon PLASMABALL3
+	{
+		palfrom 16 8 8 48
 	}
 	ifwasweapon RAILGUNSHOT
 	{

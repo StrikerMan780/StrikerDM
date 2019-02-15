@@ -1149,23 +1149,31 @@ onevent EVENT_SPAWN
 		case BOSS3STAYPUT:
 		case BOSS5:
 		case BOSS5STAYPUT:
-			ifvare MONSTERS_OFF 1
+			getactor[THISACTOR].cstat TEMP
+			ifvarand TEMP 16
 			{
-				killit
-			}
-			
-			cstator 257
-			changespritestat THISACTOR 2
-			
-			ifspritepal 0
-			{
-				sizeat 80 80
-				setactor[THISACTOR].clipdist 164
+				changespritestat THISACTOR 0
 			}
 			else
 			{
-				sizeat 40 40
-				setactor[THISACTOR].clipdist 80
+				ifvare MONSTERS_OFF 1
+				{
+					killit
+				}
+				
+				cstator 257
+				changespritestat THISACTOR 2
+				
+				ifspritepal 0
+				{
+					sizeat 80 80
+					setactor[THISACTOR].clipdist 164
+				}
+				else
+				{
+					sizeat 40 40
+					setactor[THISACTOR].clipdist 80
+				}
 			}
 			break
 	endswitch
