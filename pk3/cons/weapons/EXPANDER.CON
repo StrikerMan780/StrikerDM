@@ -1,3 +1,5 @@
+gamevar WEAPON11_FIREDELAY 2 1
+
 state draw_expander // GROW_WEAPON:
     state reset_hud_weapon_coordinates
     

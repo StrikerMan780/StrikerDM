@@ -6,7 +6,7 @@ state draw_plasmarifle // PLASMARIFLE_WEAPON:
     addvar hud_y 260
 	
 	ifvarg weaponcount 0
-	ifvarl weaponcount 10
+	ifvarl weaponcount 9
 	ifvarn hud_temp 1
 	{
 		displayrand hud_temp
@@ -20,15 +20,15 @@ state draw_plasmarifle // PLASMARIFLE_WEAPON:
 		subvarvar hud_y hud_temp
 	}
 	
-	ifvarl weaponcount 10
+	ifvarl weaponcount 9
 		setvar hud_tilenum PLASMARIFLE1
-    else ifvarl weaponcount 11
+    else ifvarl weaponcount 10
 		setvar hud_tilenum PLASMARIFLE2
-    else ifvarl weaponcount 12
+    else ifvarl weaponcount 11
 		setvar hud_tilenum PLASMARIFLE3
-    else ifvarl weaponcount 13
+    else ifvarl weaponcount 12
 		setvar hud_tilenum PLASMARIFLE4
-    else ifvarl weaponcount 14
+    else ifvarl weaponcount 13
 		setvar hud_tilenum PLASMARIFLE5
 	else ifvarg weaponcount 14
 		setvar hud_tilenum PLASMARIFLE1
