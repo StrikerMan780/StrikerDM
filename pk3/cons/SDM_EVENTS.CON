@@ -462,9 +462,20 @@ onevent EVENT_EGS
 	{
 		ifspawnedby SHOTSPARK1
 		{
+			getactor[THISACTOR].owner TEMP // Shotspark
+			getactor[TEMP].htg_t 8 TEMP // Target hit
+			getactor[TEMP].picnum TEMP2
+			ifvare TEMP2 APLAYER
+			{
+				getactor[TEMP].pal TEMP2 // Target's pal
+				setactor[THISACTOR].pal TEMP2
+			}
+			
 			ifrnd 128
 			{
 				espawn BLOODSPURT
+				getactor[THISACTOR].pal TEMP2
+				setactor[RETURN].pal TEMP2
 				
 				randvar TEMP 48
 				addvar TEMP 16
@@ -931,6 +942,9 @@ onevent EVENT_GAME
 				else ifvare PICNUM_MEMORY JIBS3 { espawn JIBS3_ONGROUND setactor[RETURN].pal TEMP2 }
 				else ifvare PICNUM_MEMORY JIBS4 { espawn JIBS4_ONGROUND setactor[RETURN].pal TEMP2 }
 				else ifvare PICNUM_MEMORY JIBS5 { espawn JIBS5_ONGROUND setactor[RETURN].pal TEMP2 }
+				else ifvare PICNUM_MEMORY HEADJIB1 { espawn HEADJIB1_ONGROUND setactor[RETURN].pal TEMP2 }
+				else ifvare PICNUM_MEMORY LEGJIB1 { espawn LEGJIB1_ONGROUND setactor[RETURN].pal TEMP2 }
+				else ifvare PICNUM_MEMORY ARMJIB1 { espawn ARMJIB1_ONGROUND setactor[RETURN].pal TEMP2 }
 				else ifvare PICNUM_MEMORY DUKETORSO { espawn DUKETORSO_ONGROUND setactor[RETURN].pal TEMP2 }
 				else ifvare PICNUM_MEMORY DUKEGUN { espawn DUKEGUN_ONGROUND setactor[RETURN].pal TEMP2 }
 				else ifvare PICNUM_MEMORY DUKELEG { espawn DUKELEG_ONGROUND setactor[RETURN].pal TEMP2 }
@@ -1024,6 +1038,18 @@ onevent EVENT_SPAWN
 		state search_for_explosive
 		break
 	}
+
+	ifactor BLOODPOOL
+	{
+		ifspawnedby APLAYER
+		{
+			setactor[THISACTOR].mdflags 16
+			getactor[THISACTOR].owner TEMP
+			getactor[TEMP].pal TEMP2
+			setactor[THISACTOR].pal TEMP2
+		}
+		break
+	}
 	
 	ifactor WATERDRIP // Fix a common mistake with WATERDRIPs
 	{
@@ -1072,6 +1098,9 @@ onevent EVENT_SPAWN
 		case VIBRATOR:
 		case BD_SOFIA:
 		case SHARONMANIM:
+		case FREYACRESCENT:
+		case ROUGESPREAD:
+		case COMMUNITY_XXX01:
 			setactor[THISACTOR].mdflags 16
 			setvar ISADULT ADULT_HIDE
 			break
@@ -1119,6 +1148,16 @@ onevent EVENT_SPAWN
 		// Misc Tiles
 		case TRIPBOMB:
 			setactor[THISACTOR].mdflags 16
+			break
+			
+		case FOOTPRINTS:
+		case FOOTPRINTS2:
+		case FOOTPRINTS3:
+		case FOOTPRINTS4:
+			ifspawnedby APLAYER
+			{
+				setactor[THISACTOR].mdflags 16
+			}
 			break
 		
 		case WATERBUBBLEMAKER:
@@ -1348,6 +1387,37 @@ onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
 			gettspr[THISACTOR].tsprshade CL_TEMP1
 			subvar CL_TEMP1 6
 			settspr[THISACTOR].tsprshade CL_TEMP1
+			break
+		case BLOODPOOL:
+			settspr[THISACTOR].tsprpicnum BLOODPOOL_PLAYER
+			break
+		case FOOTPRINTS:
+			getactor[THISACTOR].pal CL_TEMP1
+			ifvarn CL_TEMP1 0
+			{
+				settspr[THISACTOR].tsprpicnum BLOODY_FOOTPRINT
+			}
+			break
+		case FOOTPRINTS2:
+			getactor[THISACTOR].pal CL_TEMP1
+			ifvarn CL_TEMP1 0
+			{
+				settspr[THISACTOR].tsprpicnum BLOODY_FOOTPRINT2
+			}
+			break
+		case FOOTPRINTS3:
+			getactor[THISACTOR].pal CL_TEMP1
+			ifvarn CL_TEMP1 0
+			{
+				settspr[THISACTOR].tsprpicnum BLOODY_FOOTPRINT3
+			}
+			break
+		case FOOTPRINTS4:
+			getactor[THISACTOR].pal CL_TEMP1
+			ifvarn CL_TEMP1 0
+			{
+				settspr[THISACTOR].tsprpicnum BLOODY_FOOTPRINT4
+			}
 			break
 	endswitch
 endevent
@@ -1748,9 +1818,11 @@ onevent EVENT_DISPLAYREST // !UNSYNCHRONIZED!
 		}
 	}
 	
-	ifvarg WEAPONCHANGETIMER 1
+	ifvarl WEAPONQUOTEALPHA 255
 	{
-		gametext STARTALPHANUM 320 30 WEAPONQUOTE 0 7 16 0 0 xdim ydim
+		//gametext STARTALPHANUM 320 30 WEAPONQUOTE 0 7 16 0 0 xdim ydim
+		
+		screentext STARTALPHANUM 160 30 65536 0 0 WEAPONQUOTE -127 7 16 WEAPONQUOTEALPHA 6 7 0 1 8194 0 0 xdim ydim
 	}
 	
 	ifvarg BURNING_TICS 0

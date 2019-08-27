@@ -8,6 +8,8 @@ include defs.con
 include cons/SDM_DEFS.CON
 include defs/strikerdm.def
 
+//include maphacks/maphacks.def
+
 tint { pal 1 red 100 green 120 blue 148 flags 1 }
 tint { pal 2 red 255 green  48 blue   0 flags 0 }
 tint { pal 4 red   0 green   0 blue   0 flags 0 }

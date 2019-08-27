@@ -1,5 +1,6 @@
 // StrikerDM CON Files
 scriptsize 65536
+setgamename StrikerDM for EDuke32
 
 action ANULLACTION 0
 move RESPAWN_ACTOR_FLAG

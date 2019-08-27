@@ -306,3 +306,30 @@ tilefromtexture 6179 { file "tiles/6179.png" texture }
 tilefromtexture 6180 { file "tiles/6180.png" texture }
 tilefromtexture 6181 { file "tiles/6181.png" texture }
 tilefromtexture 6182 { file "tiles/6182.png" texture }
+
+animtilerange 6183 6191 3 ANIM_FORWARD
+tilefromtexture 6183 { file "tiles/6183.png" texture }
+tilefromtexture 6184 { file "tiles/6184.png" texture }
+tilefromtexture 6185 { file "tiles/6185.png" texture }
+tilefromtexture 6186 { file "tiles/6186.png" texture }
+tilefromtexture 6187 { file "tiles/6187.png" texture }
+tilefromtexture 6188 { file "tiles/6189.png" texture }
+tilefromtexture 6189 { file "tiles/6189.png" texture }
+tilefromtexture 6190 { file "tiles/6190.png" texture }
+tilefromtexture 6191 { file "tiles/6191.png" texture }
+
+animtilerange 6192 6205 4 ANIM_FORWARD
+tilefromtexture 6192 { file "tiles/6192.png" texture }
+tilefromtexture 6193 { file "tiles/6193.png" texture }
+tilefromtexture 6194 { file "tiles/6194.png" texture }
+tilefromtexture 6195 { file "tiles/6195.png" texture }
+tilefromtexture 6196 { file "tiles/6196.png" texture }
+tilefromtexture 6197 { file "tiles/6197.png" texture }
+tilefromtexture 6198 { file "tiles/6198.png" texture }
+tilefromtexture 6199 { file "tiles/6199.png" texture }
+tilefromtexture 6200 { file "tiles/6200.png" texture }
+tilefromtexture 6201 { file "tiles/6201.png" texture }
+tilefromtexture 6202 { file "tiles/6202.png" texture }
+tilefromtexture 6203 { file "tiles/6203.png" texture }
+tilefromtexture 6204 { file "tiles/6204.png" texture }
+tilefromtexture 6205 { file "tiles/6205.png" texture }

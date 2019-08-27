@@ -22,14 +22,17 @@ HMNuke93 - Improved incinerator sprites.
 Brullov - Railgun sprites.
 JoeyTD (aka. BeardedDoomGuy) - Extended reload hand sprite
 ID Software - Doomguy sprites and health/armor bonus sprites.
+Monolith Productions - Blood trails.
 Striker - The various custom effector sprites, the fully-open ejection port with shell for shotgun pump, menu sprites.
 
 Voxels
 ------
-Striker - Table voxel.
+Striker - Table.
 Reaper Man - Voxel pack.
 DotK3D - Voxel pack.
-Shodanbot - Sliding switch voxel.
+Shodanbot - Sliding switch, cans of mace.
+mxrtxn - Desk lamp, bowling pin, red/black Barrel, Duke burger stuff
+Borion - Toilet, urinal, stage lamp, lever switch, garbage can, rubber can, seenine, space suit, coffee machine, ooze filter.
 
 Textures
 --------

@@ -14,6 +14,15 @@ onevent EVENT_WEAPKEY10
 	state checkflamethrower
 endevent
 
+onevent EVENT_CHANGEWEAPON
+	getplayer[THISACTOR].curr_weapon TEMP
+	ifvarn TEMP HANDREMOTE_WEAPON
+	{
+		setvarvar STATE_PARAM1 RETURN
+		state print_weapon_name
+	}
+endevent
+
 onevent EVENT_DOFIRE
 	getplayer[THISACTOR].curr_weapon TEMP
 	ifvare TEMP FREEZE_WEAPON

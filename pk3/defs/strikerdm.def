@@ -20,6 +20,7 @@ include defs/skyboxes.def
 
 include defs/doomtex.def
 include defs/communitytex.def
+include defs/communitytex_highres.def
 include defs/dt_tiles014.def
 include defs/vaporwave.def
 include defs/wt_tiles020.def

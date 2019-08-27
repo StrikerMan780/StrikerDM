@@ -4673,6 +4673,12 @@ state checkpighitstate
       state standard_jibs
       killit
     }
+	else ifwasweapon FIREBALL
+	{
+		sound PIG_DYING
+		ai AIPIGDYING
+		state generic_burn_death
+	}
     else
       ai AIPIGDYING
         sound PIG_DYING

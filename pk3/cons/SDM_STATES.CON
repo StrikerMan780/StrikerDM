@@ -189,13 +189,16 @@ state jib_sounds
 			}
 			else ifvare KILLTYPE KILL_FLAME
 			{
-				randvar RANDOM_SOUND 4
+				randvar RANDOM_SOUND 7
 				switch RANDOM_SOUND
 					case 0: actorsound LASTHITBY DUKE_FLAME01 break
 					case 1: actorsound LASTHITBY DUKE_FLAME02 break
 					case 2: actorsound LASTHITBY DUKE_FLAME03 break
 					case 3: actorsound LASTHITBY DUKE_FLAME04 break
 					case 4: actorsound LASTHITBY DUKE_FLAME05 break
+					case 5: actorsound LASTHITBY DUKE_FLAME06 break
+					case 6: actorsound LASTHITBY DUKE_FLAME07 break
+					case 7: actorsound LASTHITBY DUKE_FLAME08 break
 				endswitch
 			}
 			else ifvare KILLTYPE KILL_SHRINKER
@@ -857,6 +860,17 @@ state stop_player_burn
 		state spawn_random_whispysmoke
 		state spawn_random_whispysmoke
 	}
+ends
+
+state generic_burn_death
+	setactor[THISACTOR].pal 4
+	state spawn_random_whispysmoke
+	state spawn_random_whispysmoke
+	state spawn_random_whispysmoke
+	state spawn_random_whispysmoke
+	state spawn_random_whispysmoke
+	setvar KILLTYPE KILL_FLAME
+	state jib_sounds
 ends
 
 state gore_movement

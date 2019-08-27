@@ -71,6 +71,9 @@ tilefromtexture 1545 { file "tiles/1545.png" }
 // Explosion Shockwave
 tilefromtexture 1888 { file "tiles/1888.png" }
 
+// Extended RPG Flash
+tilefromtexture 2547 { file "tiles/2547.png" xoff -44 yoff -27 }
+
 // Ripper Casing
 tilefromtexture 2587 { file "tiles/2587.png" }
 tilefromtexture 2588 { file "tiles/2588.png" }
@@ -194,6 +197,20 @@ tilefromtexture 2087 { file "tiles/2087.png" }
 tilefromtexture 2088 { file "tiles/2088.png" }
 tilefromtexture 2089 { file "tiles/2089.png" }
 
+// Blood pool for player
+tilefromtexture 1546 { file "tiles/1546.png" }
+
+// Footprints
+tilefromtexture 1590 { file "tiles/1590.png" xoff -7 }
+tilefromtexture 1591 { file "tiles/1591.png" }
+tilefromtexture 1592 { file "tiles/1592.png" }
+tilefromtexture 1593 { file "tiles/1593.png" }
+
+// Trooper Gibs
+tilefromtexture 1765 { file "tiles/1765.png" }
+tilefromtexture 1766 { file "tiles/1766.png" }
+tilefromtexture 1767 { file "tiles/1767.png" }
+
 // Blood Trails
 tilefromtexture 2100 { file "tiles/2100.png" }
 tilefromtexture 2101 { file "tiles/2101.png" }
@@ -204,6 +221,15 @@ tilefromtexture 2105 { file "tiles/2105.png" }
 tilefromtexture 2106 { file "tiles/2106.png" }
 tilefromtexture 2107 { file "tiles/2107.png" }
 tilefromtexture 2108 { file "tiles/2108.png" }
+
+tilefromtexture 2286 { file "tiles/2286.png" xoff -2 }
+tilefromtexture 2287 { file "tiles/2287.png" xoff -2 yoff 1 }
+tilefromtexture 2288 { file "tiles/2288.png" xoff -2 }
+tilefromtexture 2289 { file "tiles/2289.png" yoff -5 }
+tilefromtexture 2290 { file "tiles/2290.png" xoff 1 yoff -4 }
+tilefromtexture 2291 { file "tiles/2291.png" yoff -4 }
+tilefromtexture 2292 { file "tiles/2292.png" yoff -6 }
+tilefromtexture 2293 { file "tiles/2293.png" xoff 3 yoff -9 }
 
 // Parts for rescued babes
 tilefromtexture 3718 { file "tiles/3718.png" } // Pad

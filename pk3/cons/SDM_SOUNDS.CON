@@ -143,6 +143,18 @@ define HEXENHEAVYDOOR 555
 define HEXENELEVATOR 556
 define HEXENELEVATORSTOP 557
 define MARTINCITO 558
+define CANELITA 559
+define PALOMA 560
+define HIPOCRESIA 561
+define RISAPIJA 562
+define CALLATE 563
+define NAVIDAD 564
+define YOURSUCKS 565
+define VALEVERGA 566
+define VANCHOJACKS 567
+define AUTIN 568
+define PIJA 569
+define MOMOSEUMWELCOME 570
 // Community sound submissions should continue from the index above this line
 
 define ALL_BABES_SAVED 583
@@ -268,6 +280,9 @@ define DUKE_FLAME02 801
 define DUKE_FLAME03 802
 define DUKE_FLAME04 803
 define DUKE_FLAME05 804
+define DUKE_FLAME06 805
+define DUKE_FLAME07 806
+define DUKE_FLAME08 807
 
 define FEM10_SAVED 820
 define BABE_SAVED01 821
@@ -428,6 +443,18 @@ definesound HEXENHEAVYDOOR sounds/ambience/hexenheavydoor.wav 0 0 0 0 8192
 definesound HEXENELEVATOR sounds/ambience/hexenelevator.wav 0 0 0 0 8192
 definesound HEXENELEVATORSTOP sounds/ambience/hexenelevatorstop.wav 0 0 0 0 8192
 definesound MARTINCITO sounds/ambience/martincito.ogg 0 0 0 3 0
+definesound CANELITA sounds/ambience/canelita.ogg 0 0 0 0 -8192
+definesound PALOMA sounds/ambience/paloma.ogg 0 0 0 0 -8192
+definesound HIPOCRESIA sounds/ambience/hipocresia.ogg 0 0 0 0 -8192
+definesound RISAPIJA sounds/ambience/risapija.ogg 0 0 0 0 -8192
+definesound CALLATE sounds/ambience/callate.ogg 0 0 0 3 0
+definesound NAVIDAD sounds/ambience/navidad.ogg 0 0 0 3 0
+definesound YOURSUCKS sounds/ambience/yoursucks.ogg 0 0 0 0 -8192
+definesound VALEVERGA sounds/ambience/valeverga.ogg 0 0 0 0 -8192
+definesound VANCHOJACKS sounds/ambience/vanchojacks.ogg 0 0 0 0 -8192
+definesound AUTIN sounds/ambience/autin.ogg 0 0 0 3 0
+definesound PIJA sounds/ambience/pija.ogg 0 0 0 0 -8192
+definesound MOMOSEUMWELCOME  sounds/ambience/momoseumwelcome.ogg 0 0 0 0 -8192
 definesound DOOMPLAT_START sounds/ambience/dspstart.wav 0 0 0 0 0
 definesound DOOMPLAT_STOP sounds/ambience/dspstop.wav 0 0 0 0 0
 definesound SPACEODDITY sounds/ambience/spaceoddity.ogg 0 0 0 3 0
@@ -553,3 +580,6 @@ definesound DUKE_FLAME02 sounds/duke/flame/duke_flame02.wav 0 0 255 4 0
 definesound DUKE_FLAME03 sounds/duke/flame/duke_flame03.wav 0 0 255 4 0
 definesound DUKE_FLAME04 sounds/duke/flame/duke_flame04.wav 0 0 255 4 0
 definesound DUKE_FLAME05 sounds/duke/flame/duke_flame05.wav 0 0 255 4 0
+definesound DUKE_FLAME06 sounds/duke/flame/duke_flame06.wav 0 0 255 4 0
+definesound DUKE_FLAME07 sounds/duke/flame/duke_flame07.wav 0 0 255 4 0
+definesound DUKE_FLAME08 sounds/duke/flame/duke_flame08.wav 0 0 255 4 0

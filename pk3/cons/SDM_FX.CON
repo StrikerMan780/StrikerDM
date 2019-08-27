@@ -468,8 +468,7 @@ actor SNOWFLAKE
 	shiftvarr TEMP3 9
 	addvarvar TEMP TEMP3
 	setvarvar SPAWN_ORIGX TEMP
-	
-	
+		
 	randvar TEMP 7
 	setvarvar TEMP2 EXTRA_MEMORY
 	sin TEMP3 TEMP2
@@ -762,6 +761,36 @@ actor JIBS5_ONGROUND
 }
 enda
 
+actor HEADJIB1_ONGROUND
+{
+	ifspawnedby HEADJIB1_ONGROUND { }
+	else
+	{
+		state onground_gib_code
+	}
+}
+enda
+
+actor ARMJIB1_ONGROUND
+{
+	ifspawnedby ARMJIB1_ONGROUND { }
+	else
+	{
+		state onground_gib_code
+	}
+}
+enda
+
+actor LEGJIB1_ONGROUND
+{
+	ifspawnedby LEGJIB1_ONGROUND { }
+	else
+	{
+		state onground_gib_code
+	}
+}
+enda
+
 actor RANDYSSHITTYCOMMENTARY 0
 	killit
 enda
@@ -810,7 +839,10 @@ actor BLOODSPURT 0
 		}
 	}
 	
-	spawn SPURTTRAIL
+	espawn SPURTTRAIL
+	getactor[THISACTOR].pal TEMP
+	setactor[RETURN].pal TEMP
+	setvar RETURN 0
 enda
 
 action SPURTTRAIL_ANIM 0 5 1 1 8

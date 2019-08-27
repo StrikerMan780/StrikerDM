@@ -49,6 +49,23 @@ definequote 133		SUPER SHOTGUN!
 definequote 134		YOU'RE BURNING, FIND WATER OR HEALTH!
 definequote 500		PLACEHOLDER QUOTE
 
+definequote 690		MIGHTY FOOT
+definequote 691		PISTOL
+definequote 692		SHOTGUN
+definequote 693		RIPPER
+definequote 694		RPG
+definequote 695		PIPEBOMB
+definequote 696		SHRINKER
+definequote 697		DEVASTATOR
+definequote 698		LASER TRIPBOMB
+definequote 699		FREEZETHROWER
+definequote 700		PIPEBOMB DETONATOR
+definequote 701		MICROWAVE EXPANDER
+definequote 702		FLAMETHROWER
+definequote 703		PLASMA RIFLE
+definequote 704		RAILGUN
+definequote 705		SUPER SHOTGUN
+
 define GM_DUKEMATCH 0
 define GM_COOPERATIVE 1
 define GM_TEAMDUKEMATCH 2
@@ -243,6 +260,8 @@ definelevelname 10 36 maps/2FORTS-I-SDM.map 66:60 66:60 2Forts-I (TDM): Anima
 definelevelname 10 37 maps/TAGFORTS-SDM.map 66:60 66:60 Tagforts (Duketag): Mako
 definelevelname 10 38 maps/HELLAW8Z.map 66:60 66:60 Hellaw8z: Merlijn Van Oostrum
 definelevelname 10 39 maps/DECK16-SDM.map 66:60 66:60 Deck 16: Photonic
+definelevelname 10 40 maps/JAYWALKERSTUNNEL.map 66:60 66:60 Jaywalkers Tunnel: M. Authors
+definelevelname 10 41 maps/MEMARIOSMOMOSEUM.map 66:60 66:60 Memario's Momoseum: M. Authors
 
 music 11 music/seppuku.ogg music/ancient.ogg music/fortress.ogg music/zerostreets.ogg music/zerotown.ogg
          music/eerie.ogg music/saturntoll.ogg music/echohare.ogg music/apes.mid music/mental.ogg music/breed.mid
@@ -250,4 +269,4 @@ music 11 music/seppuku.ogg music/ancient.ogg music/fortress.ogg music/zerostreet
          music/depression.mid music/vitevoom.mid music/munsters.mid music/bodies.mid music/deathcrush.mid music/pow.mid
          music/nostalgy.mid music/shattered.mid music/hymnof.xm music/an-turr.xm music/starg13.mod music/letni.s3m music/flanns.mod
          music/ninjaphi.it music/lagoona.xm music/battleofsteel.xm music/d_l24d.it music/qube.mod music/kernkraft.mod
-         music/icefront.s3m music/episode_666.xm music/fire.xm music/godown.it
+         music/icefront.s3m music/episode_666.xm music/fire.xm music/godown.it music/heavystr.it music/memefever.ogg

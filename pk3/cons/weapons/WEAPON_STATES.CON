@@ -197,6 +197,66 @@ ends
 
 // Custom States
 
+// STATE_PARAM1 = Weapon
+state print_weapon_name
+	setvar WEAPONCHANGETIMER 30
+	setvar WEAPONQUOTEALPHA 0
+	switch STATE_PARAM1
+		case KNEE_WEAPON:
+		case PISTOL_WEAPON:
+		case HANDBOMB_WEAPON:
+		case SHRINKER_WEAPON:
+		case DEVISTATOR_WEAPON:
+		case TRIPBOMB_WEAPON:
+		case HANDREMOTE_WEAPON:
+		case GROW_WEAPON:
+			setvar WEAPONQUOTE 690
+			addvarvar WEAPONQUOTE STATE_PARAM1
+			break
+			
+		case SHOTGUN_WEAPON:
+			ifvare USING_SSG 1
+			{
+				setvar WEAPONQUOTE 705
+			}
+			else
+			{
+				setvar WEAPONQUOTE 692
+			}
+			break
+		case CHAINGUN_WEAPON:
+			ifvare USING_PLASMARIFLE 1
+			{
+				setvar WEAPONQUOTE 703
+			}
+			else
+			{
+				setvar WEAPONQUOTE 693
+			}
+			break
+		case RPG_WEAPON:
+			ifvare USING_RAILGUN 1
+			{
+				setvar WEAPONQUOTE 704
+			}
+			else
+			{
+				setvar WEAPONQUOTE 694
+			}
+			break
+		case FREEZE_WEAPON:
+			ifvare USING_FLAMETHROWER 1
+			{
+				setvar WEAPONQUOTE 702
+			}
+			else
+			{
+				setvar WEAPONQUOTE 699
+			}
+			break
+	endswitch
+ends
+
 state setflamethrower
 	setvar WEAPON9_SHOOTS FIREBALL
 	setvar WEAPON9_TOTALTIME 4
@@ -233,7 +293,7 @@ ends
 state setplasmarifle
 	setvar WEAPON3_FLAGS 0
 	setvar WEAPON3_SHOOTS PLASMABALL
-	setvar WEAPON3_FIREDELAY 9
+	setvar WEAPON3_FIREDELAY 8
 	setvar WEAPON3_TOTALTIME 16
 	setvar WEAPON3_HOLDDELAY 0
 	setvar WEAPON3_SPAWN 0
@@ -314,6 +374,9 @@ state checkflamethrower
 		
 		setplayer[THISACTOR].weapon_pos -9
 		soundvar WEAPON9_SELECTSOUND
+		
+		setvar STATE_PARAM1 FREEZE_WEAPON
+		state print_weapon_name
 	}
 ends
 
@@ -338,6 +401,9 @@ state checkplasmarifle
 		
 		setplayer[THISACTOR].weapon_pos -9
 		soundvar WEAPON3_SELECTSOUND
+		
+		setvar STATE_PARAM1 CHAINGUN_WEAPON
+		state print_weapon_name
 	}
 ends
 
@@ -362,6 +428,9 @@ state checkrailgun
 		
 		setplayer[THISACTOR].weapon_pos -9
 		soundvar WEAPON4_SELECTSOUND
+		
+		setvar STATE_PARAM1 RPG_WEAPON
+		state print_weapon_name
 	}
 ends
 
@@ -386,6 +455,9 @@ state checkssg
 		
 		setplayer[THISACTOR].weapon_pos -9
 		soundvar WEAPON2_SELECTSOUND
+		
+		setvar STATE_PARAM1 SHOTGUN_WEAPON
+		state print_weapon_name
 	}
 ends
 
@@ -421,6 +493,18 @@ state handle_recoil
 ends
 
 state player_updateweapons
+ifvarg WEAPONCHANGETIMER 0
+{
+	subvar WEAPONCHANGETIMER 1
+}
+else
+{
+	ifvarl WEAPONQUOTEALPHA 255
+	{
+		addvar WEAPONQUOTEALPHA 32
+	}
+}
+
 ifp palive
 {
 	getplayer[THISACTOR].curr_weapon TEMP
