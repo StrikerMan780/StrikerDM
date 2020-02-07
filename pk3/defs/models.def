@@ -1,0 +1,7 @@
+// Models
+model "models/tracer.md3" {
+    scale 10.0
+    shade 0
+    skin { pal 0 file "models/tracer.png" } 
+    frame { name "AnimFrames00" tile 2507 }
+}

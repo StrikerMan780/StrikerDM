@@ -2571,6 +2571,19 @@ actor SHOTSPARK1 PISTOL_WEAPON_STRENGTH WEAP2FRAMES
 	else ifcount 0
 	{
 		getactor[THISACTOR].yvel TEMP
+		
+		switch TEMP
+			case NEWPISTOLSHOT:
+			case CHAINGUN:
+				setvar STATE_PARAM1 TRACER
+				state spawn_tracer
+				break
+			case SHOTGUN:
+				setvar STATE_PARAM1 PELLET
+				state spawn_tracer
+				break
+		endswitch
+		
 		ifvare TEMP RAILGUNSHOT
 		{
 			getactor[THISACTOR].htg_t 8 TEMP

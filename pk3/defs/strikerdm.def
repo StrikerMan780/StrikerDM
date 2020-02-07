@@ -31,3 +31,6 @@ include defs/xxx.def
 // Voxels
 include defs/voxels.def
 
+// Models
+include defs/models.def
+

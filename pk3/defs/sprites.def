@@ -22,6 +22,10 @@ tilefromtexture 1617 { file "tiles/1617.png" }
 tilefromtexture 1618 { file "tiles/1618.png" }
 tilefromtexture 1619 { file "tiles/1619.png" }
 
+// Tracer/Pellet
+tilefromtexture 2507 { file "tiles/2507.png" }
+tilefromtexture 2508 { file "tiles/2508.png" }
+
 // Alternate Tripmine Colors
 tilefromtexture 2592 { file "tiles/2592.png" texture }
 tilefromtexture 2593 { file "tiles/2593.png" texture }

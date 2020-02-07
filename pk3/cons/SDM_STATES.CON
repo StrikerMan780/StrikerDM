@@ -958,3 +958,81 @@ state gore_movement
 	addvarvar TEMP TEMP2
 	setactor[THISACTOR].z TEMP
 ends
+
+state spawn_tracer
+	// Get coords of impact point. This will be replaced by a translation
+	getactor[THISACTOR].x DEST_X
+	getactor[THISACTOR].y DEST_Y
+	getactor[THISACTOR].z DEST_Z
+	
+	// Check distance from owner, if closer than 4096 units, don't spawn.
+	getactor[THISACTOR].owner TEMP
+	ldist TEMP2 THISACTOR TEMP
+	ifvarl TEMP2 4096 break
+	
+	// Divide distance by TRACERTIME
+	divvar TEMP2 TRACERTIME
+	shiftvarl TEMP2 4
+	
+	// Get coords of shooter.
+	getactor[TEMP].x SPAWN_ORIGX
+	getactor[TEMP].y SPAWN_ORIGY
+	getactor[TEMP].z SPAWN_ORIGZ
+	subvar SPAWN_ORIGZ 8192 // Move z coord up a bit so we're not shooting from our feet.
+	
+	// Get an X/Y offset
+	getactor[THISACTOR].ang SPAWN_ORIGANG
+	setvarvar TEMP3 SPAWN_ORIGANG
+	addvar TEMP3 348 // ?
+	addvar TEMP3 512 // 45 degree angle
+	sin TEMP3 TEMP3
+	divvar TEMP3 512 // Offset?
+	addvarvar SPAWN_ORIGX TEMP3
+	
+	setvarvar TEMP3 SPAWN_ORIGANG
+	addvar TEMP3 348 // ?
+	sin TEMP3 TEMP3
+	divvar TEMP3 512 // Offset?
+	addvarvar SPAWN_ORIGY TEMP3
+	
+	// Get x/y/z translation between source and destination.
+	subvarvar DEST_X SPAWN_ORIGX
+	subvarvar DEST_Y SPAWN_ORIGY
+	subvarvar DEST_Z SPAWN_ORIGZ
+	
+	// Divide translation by tracer lifetime in tics.
+	// This results in how many units on x/y/z we want to move per tic.
+	divvar DEST_X TRACERTIME
+	divvar DEST_Y TRACERTIME
+	divvar DEST_Z TRACERTIME
+	
+	// Get pitch based on distance and z offset.
+	getangle TEMP3 TEMP2 DEST_Z
+	ifvarg TEMP3 1023 // If pitch is greater than 1023, subtract 2048, like in the source.
+	{
+		subvar TEMP3 2048
+	}
+		
+	// Spawn tracer at source, copy DEST_X/Y/Z
+	espawnvar STATE_PARAM1
+	setactor[RETURN].x SPAWN_ORIGX
+	setactor[RETURN].y SPAWN_ORIGY
+	setactor[RETURN].z SPAWN_ORIGZ	
+	setactor[RETURN].pitch TEMP3 // Set model pitch
+	setactorvar[RETURN].DEST_X DEST_X
+	setactorvar[RETURN].DEST_Y DEST_Y
+	setactorvar[RETURN].DEST_Z DEST_Z
+	setvar RETURN 0
+ends
+
+state tracer_movement
+	ifcount TRACERTIME killit
+	
+	getactor[THISACTOR].x SPAWN_ORIGX
+	getactor[THISACTOR].y SPAWN_ORIGY
+	getactor[THISACTOR].z SPAWN_ORIGZ
+	addvarvar SPAWN_ORIGX DEST_X
+	addvarvar SPAWN_ORIGY DEST_Y
+	addvarvar SPAWN_ORIGZ DEST_Z
+	setsprite THISACTOR SPAWN_ORIGX SPAWN_ORIGY SPAWN_ORIGZ
+ends

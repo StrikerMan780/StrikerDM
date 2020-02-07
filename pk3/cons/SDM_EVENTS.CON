@@ -464,7 +464,7 @@ onevent EVENT_EGS
 		{
 			getactor[THISACTOR].owner TEMP // Shotspark
 			getactor[TEMP].htg_t 8 TEMP // Target hit
-			getactor[TEMP].picnum TEMP2
+			getactor[TEMP].picnum TEMP2 // Target picnum
 			ifvare TEMP2 APLAYER
 			{
 				getactor[TEMP].pal TEMP2 // Target's pal
@@ -873,19 +873,18 @@ onevent EVENT_GAME
 		}
 	}
 	
-	ifactor PLASMABALL
-	{
-		state plasma_spread
-		break
-	}
-	else ifactor PLASMABALL2
-	{
-		state plasma_spread
-		break
-	}
-	
 	getactor[THISACTOR].picnum TEMP	
 	switch TEMP
+		case TRACER:
+		case PELLET:
+			state tracer_movement
+			break
+			
+		case PLASMABALL:
+		case PLASMABALL2:
+			state plasma_spread
+			break
+			
 		case RESPAWNMARKERRED:
 		case RESPAWNMARKERYELLOW:
 		case RESPAWNMARKERGREEN:

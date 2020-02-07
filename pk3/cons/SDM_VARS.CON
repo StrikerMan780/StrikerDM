@@ -57,6 +57,10 @@ gamevar PICNUM_MEMORY 0 2
 gamevar CSTAT_MEMORY 0 2
 gamevar PAL_MEMORY 0 2
 
+gamevar DEST_X 0 2
+gamevar DEST_Y 0 2
+gamevar DEST_Z 0 2 
+
 gamevar ISADULT 0 2
 gamevar NORESPAWN 0 2
 gamevar FROMCAN 0 2

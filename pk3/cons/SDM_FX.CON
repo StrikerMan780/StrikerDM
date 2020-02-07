@@ -448,17 +448,10 @@ actor SNOWFLAKE
 			killit
 		}
 		
+		fall
 		cstat 130
 		sizeat 6 6
 		action ANULLACTION
-	}
-	
-	fall
-	
-	getactor[THISACTOR].zvel TEMP
-	ifvarg TEMP 164
-	{
-		setactor[THISACTOR].zvel 164
 	}
 	
 	// s->xvel = (krand()&7)+(sintable[T1&2047]>>9);
@@ -477,6 +470,10 @@ actor SNOWFLAKE
 	setvarvar SPAWN_ORIGY TEMP
 	
 	movesprite THISACTOR SPAWN_ORIGX SPAWN_ORIGY 0 0 CLIPDIST_MEMORY
+	
+	getactor[THISACTOR].z TEMP
+	addvar TEMP 512
+	setactor[THISACTOR].z TEMP
 	
 	// T1 += (krand()&63);
 	randvar TEMP 63
@@ -878,6 +875,49 @@ actor SPURTTRAIL 0
 	{
 		killit
 	}
+enda
+
+spriteflags TRACER 8196
+actor TRACER 0
+	ifaction 0
+	{
+		setactor[THISACTOR].shade -127
+		sizeat 10 10
+		cstat 32768
+		action ANULLACTION
+	}
+	else
+	{
+		ifcount 2 { }
+		else ifcount 1
+		{
+			cstat 2176
+		}
+	}
+	
+	// Broken if in actor code for some reason. See EVENT_GAME.
+	//state tracer_movement
+enda
+
+spriteflags PELLET 8192
+actor PELLET 0
+	ifaction 0
+	{
+		sizeat 10 10
+		cstat 32768
+		action ANULLACTION
+	}
+	else
+	{
+		ifcount 2 { }
+		else ifcount 1
+		{
+			cstat 128
+		}
+	}
+	
+	// Broken if in actor code for some reason. See EVENT_GAME.
+	//state tracer_movement
 enda
 
 define SCRAP_WORKSLIKE 4226
