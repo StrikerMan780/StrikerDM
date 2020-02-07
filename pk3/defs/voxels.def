@@ -1,61 +1,78 @@
 // --- Props ---
-voxel "voxels/props/58_spacesuit.kvx" { tile 58 }
+voxel "voxels/props/0058_spacesuit.kvx" { tile 58 }
 
-voxel "voxels/props/547_faucet.kvx" { tile 574 }
-voxel "voxels/props/670_faucet2.kvx" { tile 670 }
-voxel "voxels/props/671_faucet2.kvx" { tile 671 }
+voxel "voxels/props/0547_faucet.kvx" { tile 574 }
+voxel "voxels/props/0670_faucet2.kvx" { tile 670 }
+voxel "voxels/props/0671_faucet2.kvx" { tile 671 }
 
-voxel "voxels/props/569_toilet.kvx" { tile 569 }
-voxel "voxels/props/615_brokentoilet.kvx" { tile 615 } 
+voxel "voxels/props/0551_lightdome1.kvx" { tile 551 }
+voxel "voxels/props/0552_lightdome2.kvx" { tile 552 }
+voxel "voxels/props/0553_lightdome3.kvx" { tile 553 }
+voxel "voxels/props/0554_lightdome4.kvx" { tile 554 }
 
-voxel "voxels/props/571_urinal.kvx" { tile 571 }
-voxel "voxels/props/573_brokenurinal.kvx" { tile 573 }
+voxel "voxels/props/0556_armchair1.kvx" { tile 556 }
+voxel "voxels/props/0556_armchair1.kvx" { tile 557 }
+voxel "voxels/props/0559_armchair3.kvx" { tile 559 }
 
-voxel "voxels/props/595_grate1.kvx" { tile 595 }
-voxel "voxels/props/596_bgrate2.kvx" { tile 596 }
+voxel "voxels/props/0569_toilet.kvx" { tile 569 }
+voxel "voxels/props/0615_brokentoilet.kvx" { tile 615 } 
 
-voxel "voxels/props/561_soap.kvx" { tile 561 }
+voxel "voxels/props/0571_urinal.kvx" { tile 571 }
+voxel "voxels/props/0573_brokenurinal.kvx" { tile 573 }
 
-voxel "voxels/props/563_waterfountain.kvx" { tile 563 }
-voxel "voxels/props/564_waterfountain.kvx" { tile 564 }
-voxel "voxels/props/565_waterfountain.kvx" { tile 565 }
-voxel "voxels/props/566_waterfountain.kvx" { tile 566 }
-voxel "voxels/props/567_waterfountain.kvx" { tile 567 } 
+voxel "voxels/props/0595_grate1.kvx" { tile 595 }
+voxel "voxels/props/0596_bgrate2.kvx" { tile 596 }
 
-voxel "voxels/props/572_showerpart.kvx" { tile 572 }
-voxel "voxels/props/572_showerpart.kvx" { tile 991 }
+voxel "voxels/props/0561_soap.kvx" { tile 561 }
 
-voxel "voxels/props/606_spacesuitcorpse.kvx" { tile 606 }
+voxel "voxels/props/0563_waterfountain.kvx" { tile 563 }
+voxel "voxels/props/0564_waterfountain.kvx" { tile 564 }
+voxel "voxels/props/0565_waterfountain.kvx" { tile 565 }
+voxel "voxels/props/0566_waterfountain.kvx" { tile 566 }
+voxel "voxels/props/0567_waterfountain.kvx" { tile 567 } 
 
-voxel "voxels/props/621_cameraA1.kvx" { tile 621 tile 622 tile 623 tile 624 tile 625 }
+voxel "voxels/props/0572_showerpart.kvx" { tile 572 }
+voxel "voxels/props/0572_showerpart.kvx" { tile 991 }
 
-voxel "voxels/props/669_vacuumcl.kvx" { tile 669 }
+voxel "voxels/props/0606_spacesuitcorpse.kvx" { tile 606 }
 
-voxel "voxels/props/685_stagelamp.kvx" { tile 685 }
+voxel "voxels/props/0621_cameraA1.kvx" { tile 621 tile 622 tile 623 tile 624 tile 625 }
 
-voxel "voxels/props/762_mike.kvx" { tile 762 }
+voxel "voxels/props/0669_vacuumcl.kvx" { tile 669 }
 
-voxel "voxels/props/765_vase.kvx" { tile 765 }
+voxel "voxels/props/0685_stagelamp.kvx" { tile 685 }
 
-voxel "voxels/props/779_sushiplate.kvx" { tile 779 }
+voxel "voxels/props/0697_pot3.kvx" { tile 697 }
 
-voxel "voxels/props/901_stripeball.kvx" { tile 901 }
-voxel "voxels/props/902_queball.kvx" { tile 902 }
+voxel "voxels/props/0753_geisha1.kvx" { tile 753 }
+voxel "voxels/props/0869_geisha2.kvx" { tile 869 }
 
-voxel "voxels/props/904_constructionbarrier.kvx" { tile 904 tile 905 tile 906 tile 907 }
-voxel "voxels/props/909_treetrunk.kvx" { tile 909 }
+voxel "voxels/props/0762_mike.kvx" { tile 762 }
 
-voxel "voxels/props/911_cactus.kvx" { tile 911 }
-voxel "voxels/props/939_cactusstump.kvx" { tile 939 }
+voxel "voxels/props/0765_vase.kvx" { tile 765 }
 
-voxel "voxels/props/916_fireext.kvx" { tile 916 }
+voxel "voxels/props/0779_sushiplate.kvx" { tile 779 }
 
-voxel "voxels/props/954_bottle1.kvx" { tile 954 }
+voxel "voxels/props/0901_stripeball.kvx" { tile 901 }
+voxel "voxels/props/0902_queball.kvx" { tile 902 }
 
-voxel "voxels/props/978_traffic_cone.kvx" { tile 978 }
-voxel "voxels/props/979_hanglight.kvx" { tile 979 }
+voxel "voxels/props/0904_constructionbarrier.kvx" { tile 904 tile 905 tile 906 tile 907 }
+voxel "voxels/props/0909_treetrunk.kvx" { tile 909 }
 
-voxel "voxels/props/990_tire.kvx" { tile 990 }
+voxel "voxels/props/0911_cactus.kvx" { tile 911 }
+voxel "voxels/props/0939_cactusstump.kvx" { tile 939 }
+
+voxel "voxels/props/0916_fireext.kvx" { tile 916 }
+
+voxel "voxels/props/0954_bottle1.kvx" { tile 954 }
+voxel "voxels/props/0955_bottle2.kvx" { tile 955 }
+voxel "voxels/props/0956_bottle3.kvx" { tile 956 }
+voxel "voxels/props/0957_bottle4.kvx" { tile 957 }
+
+voxel "voxels/props/0978_traffic_cone.kvx" { tile 978 }
+voxel "voxels/props/0979_hanglight.kvx" { tile 979 }
+
+voxel "voxels/props/0990_tire.kvx" { tile 990 }
 
 voxel "voxels/props/1006_barstool.kvx" { tile 1006 }
 
@@ -63,6 +80,9 @@ voxel "voxels/props/1014_gbottle.kvx" { tile 1014 }
 
 voxel "voxels/props/1025_bottle7.kvx" { tile 1025 }
 voxel "voxels/props/1037_table.kvx" { tile 1037 }
+
+voxel "voxels/props/1048_twocables.kvx" { tile 1048 }
+voxel "voxels/props/1049_electricmeter.kvx" { tile 1049 }
 
 voxel "voxels/props/1051_dryer.kvx" { tile 1051 }
 voxel "voxels/props/1052_toweldispenser.kvx" { tile 1052 }
@@ -84,6 +104,7 @@ voxel "voxels/props/1080_oozefilter_frame2.kvx" { tile 1080 }
 voxel "voxels/props/1081_oozefilter_frame3.kvx" { tile 1081 }
 
 voxel "voxels/props/1159_bottle12.kvx" { tile 1159 }
+voxel "voxels/props/1160_bottle13.kvx" { tile 1160 }
 voxel "voxels/props/1161_bottle14.kvx" { tile 1161 }
 voxel "voxels/props/1162_bottle15.kvx" { tile 1162 }
 voxel "voxels/props/1163_bottle16.kvx" { tile 1163 }
@@ -107,6 +128,8 @@ voxel "voxels/props/4373_cups.kvx" { tile 4373 }
 voxel "voxels/props/4426_bowlingpin.kvx" { tile 4426 } 
 voxel "voxels/props/4438_mug.kvx" { tile 4438 } 
 voxel "voxels/props/4440_donuts.kvx" { tile 4440 }
+voxel "voxels/props/4443_usaflag.kvx" { tile 4443 }
+voxel "voxels/props/4444_vhscamera.kvx" { tile 4444 }
 voxel "voxels/props/4454_deskphone.kvx" { tile 4454 }
 voxel "voxels/props/4464_mace.kvx" { tile 4464 }
 voxel "voxels/props/4495_wetfloor_sign.kvx" { tile 4495 }
@@ -119,6 +142,7 @@ voxel "voxels/props/4547_fries2.kvx" { tile 4547 }
 
 voxel "voxels/props/4548_drink.kvx" { tile 4548 }
 voxel "voxels/props/4569_jollymeal.kvx" { tile 4569 }
+voxel "voxels/props/4576_shoppingcart.kvx" { tile 4576 }
 voxel "voxels/props/4580_canwithsomething2.kvx" { tile 4580 }
 voxel "voxels/props/4581_canwithsomething3.kvx" { tile 4581 }
 voxel "voxels/props/4582_canwithsomething4.kvx" { tile 4582 }
@@ -126,77 +150,98 @@ voxel "voxels/props/4582_canwithsomething4.kvx" { tile 4582 }
 voxel "voxels/props/7054_tombstone.kvx" { tile 7054 }
 
 // --- Switches ---
-voxel "voxels/switches/0130_accessswitch_red.kvx" { tile 130 }
-voxel "voxels/switches/0131_accessswitch_green.kvx" { tile 131 }
-
-voxel "voxels/switches/0132_slotdoor_red.kvx" { tile 132 }
-voxel "voxels/switches/0133_slotdoor_green.kvx" { tile 133 }
-
-voxel "voxels/switches/0134_red_lightswitch.kvx" { tile 134 }
-voxel "voxels/switches/0135_green_lightswitch.kvx" { tile 135 }
-
-
-voxel "voxels/switches/0136_red_spacedoorswitch.kvx" { tile 136 }
-voxel "voxels/switches/0137_green_spacedoorswitch.kvx" { tile 137 }
-
-voxel "voxels/switches/0138_red_slideswitch.kvx" { tile 138 }
-voxel "voxels/switches/0139_green_slideswitch.kvx" { tile 139 }
+voxel "voxels/switches/0130_accessswitch_off.kvx" { tile 130 }
+voxel "voxels/switches/0131_accessswitch_on.kvx" { tile 131 }
+voxel "voxels/switches/0132_slotdoor_off.kvx" { tile 132 }
+voxel "voxels/switches/0133_slotdoor_on.kvx" { tile 133 }
+voxel "voxels/switches/0134_lightswitch_off.kvx" { tile 134 }
+voxel "voxels/switches/0135_lightswitch_on.kvx" { tile 135 }
+voxel "voxels/switches/0136_spacedoorswitch_off.kvx" { tile 136 }
+voxel "voxels/switches/0137_spacedoorswitch_on.kvx" { tile 137 }
+voxel "voxels/switches/0138_slideswitch_off.kvx" { tile 138 }
+voxel "voxels/switches/0139_slideswitch_on.kvx" { tile 139 }
 
 voxel "voxels/switches/0140_leverswitch_off.kvx" { tile 140 }
 voxel "voxels/switches/0141_leverswitch_on.kvx" { tile 141 }
-
+voxel "voxels/switches/0142_nukebutton1.kvx" { tile 142 }
+voxel "voxels/switches/0143_nukebutton2.kvx" { tile 143 }
+voxel "voxels/switches/0144_nukebutton3.kvx" { tile 144 }
+voxel "voxels/switches/0145_nukebutton4.kvx" { tile 145 }
 voxel "voxels/switches/0146_multiswitch1.kvx" { tile 146 }
 voxel "voxels/switches/0147_multiswitch2.kvx" { tile 147 }
 voxel "voxels/switches/0148_multiswitch3.kvx" { tile 148 }
 voxel "voxels/switches/0149_multiswitch4.kvx" { tile 149 }
 
-voxel "voxels/switches/0162_dipswitch_red.kvx" { tile 162 }
-voxel "voxels/switches/0163_dipswitch_green.kvx" { tile 163 }
+voxel "voxels/switches/0162_dipswitch_off.kvx" { tile 162 }
+voxel "voxels/switches/0163_dipswitch_on.kvx" { tile 163 }
+voxel "voxels/switches/0164_dipswitch2_off.kvx" { tile 164 }
+voxel "voxels/switches/0165_dipswitch2_on.kvx" { tile 165 }
+voxel "voxels/switches/0166_techswitch_off.kvx" { tile 166 }
+voxel "voxels/switches/0167_techswitch_on.kvx" { tile 167 }
+voxel "voxels/switches/0168_dipswitch3_off.kvx" { tile 168 }
+voxel "voxels/switches/0169_dipswitch3_on.kvx" { tile 169 }
+voxel "voxels/switches/0170_accessswitch2_off.kvx" { tile 170 }
+voxel "voxels/switches/0171_accessswitch2_on.kvx" { tile 171 }
 
-voxel "voxels/switches/0164_dipswitch2_red.kvx" { tile 164 }
-voxel "voxels/switches/0165_dipswitch2_green.kvx" { tile 165 }
+voxel "voxels/switches/0712_lightswitch_off.kvx" { tile 712 }
+voxel "voxels/switches/0713_lightswitch_on.kvx" { tile 713 }
 
-voxel "voxels/switches/0166_red_techswitch.kvx" { tile 166 }
-voxel "voxels/switches/0167_green_techswitch.kvx" { tile 167 }
-
-voxel "voxels/switches/0168_red_dipswitch3.kvx" { tile 168 }
-voxel "voxels/switches/0169_green_dipswitch3.kvx" { tile 169 }
-
-voxel "voxels/switches/0170_accessswitch2_red.kvx" { tile 170 }
-voxel "voxels/switches/0171_accessswitch2_green.kvx" { tile 171 }
-
-voxel "voxels/switches/0712_lightswitch_down.kvx" { tile 712 }
-voxel "voxels/switches/0713_lightswitch_up.kvx" { tile 713 }
-
-voxel "voxels/switches/0860_off_powerswitch1.kvx" { tile 860 }
-voxel "voxels/switches/0861_on_powerswitch1.kvx" { tile 861 }
-
-voxel "voxels/switches/0862_red_lockswitch1.kvx" { tile 862 }
-voxel "voxels/switches/0863_green_lockswitch1.kvx" { tile 863 } 
-
-voxel "voxels/switches/0864_off_powerswitch2.kvx" { tile 864 }
-voxel "voxels/switches/0865_on_powerswitch2.kvx" { tile 865 }
+voxel "voxels/switches/0860_powerswitch1_off.kvx" { tile 860 }
+voxel "voxels/switches/0861_powerswitch1_on.kvx" { tile 861 }
+voxel "voxels/switches/0862_lockswitch1_off.kvx" { tile 862 }
+voxel "voxels/switches/0863_lockswitch1_on.kvx" { tile 863 } 
+voxel "voxels/switches/0864_powerswitch2_off.kvx" { tile 864 }
+voxel "voxels/switches/0865_powerswitch2_on.kvx" { tile 865 }
 
 voxel "voxels/switches/1111_handswitch_off.kvx" { tile 1111 }
 voxel "voxels/switches/1112_handswitch_on.kvx" { tile 1112 }
 
-voxel "voxels/switches/1142_bighole_off.kvx" { tile 1142 }
-voxel "voxels/switches/1143_bighole_on.kvx" { tile 1143 } 
+voxel "voxels/switches/1122_flipswitch_off.kvx" { tile 1122 }
+voxel "voxels/switches/1123_flipswitch_on.kvx" { tile 1123 }
 
-voxel "voxels/switches/4483_broken_switch1.kvx" { tile 4483 }
-voxel "voxels/switches/4954_broken_switch2.kvx" { tile 4954 }
+voxel "voxels/switches/1142_bighole_off.kvx" { tile 1142 }
+voxel "voxels/switches/1143_bighole_on.kvx" { tile 1143 }
+
+voxel "voxels/switches/4483_brokenswitch.kvx" { tile 4483 }
+voxel "voxels/switches/4954_brokenswitch2.kvx" { tile 4954 }
 
 // --- Signs ---
 voxel "voxels/signs/1210_guilty.kvx" { tile 1210 }
 voxel "voxels/signs/1211_innocent.kvx" { tile 1211 }
-voxel "voxels/signs/4891_westore.kvx" { tile 4891 }
-voxel "voxels/signs/4956_funnyb.kvx" { tile 4956 } \
+voxel "voxels/signs/4891_storecrap.kvx" { tile 4891 }
+voxel "voxels/signs/4956_funnyboner.kvx" { tile 4956 }
 
 // --- Monsters ---
 voxel "voxels/monsters/1880-1886_sentry_drone.kvx" { tile0 1880 tile1 1886 }
+voxel "voxels/monsters/0675_slimeregg1.kvx" { tile 675 }
+voxel "voxels/monsters/0676_slimeregg2.kvx" { tile 676 }
+voxel "voxels/monsters/0677_slimeregg3.kvx" { tile 677 } 
+
+// Turret commented out until voxel flipping is supported.
+//voxel "voxels/monsters/2350_turret1.kvx" { tile0 2350 tile1 2354 }
+//voxel "voxels/monsters/2355_turret2.kvx" { tile0 2355 tile1 2359 }
+//voxel "voxels/monsters/2360_turret3.kvx" { tile0 2360 tile1 2364 }
 
 // --- Projectiles ---
 voxel "voxels/projectiles/1650_mortar.kvx" { tile 1650 }
 voxel "voxels/projectiles/1651_mortar.kvx" { tile 1651 }
 voxel "voxels/projectiles/1652_mortar.kvx" { tile 1652 }
 voxel "voxels/projectiles/1653_mortar.kvx" { tile 1653 }
+
+// --- Pickups ---
+voxel "voxels/pickups/0100_atomichealth1.kvx" { tile 100 }
+voxel "voxels/pickups/0101_atomichealth2.kvx" { tile 101 }
+voxel "voxels/pickups/0102_atomichealth3.kvx" { tile 102 }
+voxel "voxels/pickups/0103_atomichealth4.kvx" { tile 103 }
+voxel "voxels/pickups/0104_atomichealth5.kvx" { tile 104 }
+voxel "voxels/pickups/0105_atomichealth6.kvx" { tile 105 }
+voxel "voxels/pickups/0106_atomichealth7.kvx" { tile 106 }
+voxel "voxels/pickups/0107_atomichealth8.kvx" { tile 107 }
+voxel "voxels/pickups/0108_atomichealth9.kvx" { tile 108 }
+voxel "voxels/pickups/0109_atomichealth10.kvx" { tile 109 }
+voxel "voxels/pickups/0110_atomichealth11.kvx" { tile 110 }
+voxel "voxels/pickups/0111_atomichealth12.kvx" { tile 111 }
+voxel "voxels/pickups/0112_atomichealth13.kvx" { tile 112 }
+voxel "voxels/pickups/0113_atomichealth14.kvx" { tile 113 }
+voxel "voxels/pickups/0114_atomichealth15.kvx" { tile 114 }
+voxel "voxels/pickups/0115_atomichealth16.kvx" { tile 115 }
