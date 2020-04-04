@@ -1,66 +1,66 @@
 state draw_shotgun // SHOTGUN_WEAPON:
-    state reset_hud_weapon_coordinates
-    
-    subvar hud_x 8
+	state reset_hud_weapon_coordinates
+	
+	subvar hud_x 8
 
-    switch weaponcount
-        case 1
-        case 2
+	switch weaponcount
+		case 1
+		case 2
 			guniqhudid currentweapon
-            
-            addvar hud_x 146
-            addvar hud_y 202
+			
+			addvar hud_x 146
+			addvar hud_y 202
 			
 			ifvare weaponcount 2
 			{
 				addvar hud_x 4
 				addvar hud_y 4
 			}
-            
-            setvar hud_tilenum SHOTGUN 
-            
-            state G_DrawWeaponTile
+			
+			setvar hud_tilenum SHOTGUN 
+			
+			state G_DrawWeaponTile
 			guniqhudid 0
-            
+			
 			// Flash
-            setvarvar hud_temp4 currentweapon
-            shiftvarl hud_temp4 1
-            guniqhudid hud_temp4
-            
-            setvar hud_shade -128
-            
-            setvar hud_tilenum SHOTGUN_FLASH1
-            
-            state G_DrawWeaponTile
-                             
-            setvarvar hud_shade gs
+			setvarvar hud_temp4 currentweapon
+			shiftvarl hud_temp4 1
+			guniqhudid hud_temp4
+			
+			setvar hud_shade -128
+			
+			setvar hud_tilenum SHOTGUN_FLASH1
+			
+			state G_DrawWeaponTile
+							 
+			setvarvar hud_shade gs
 			break
-        case 0
-        case 6
-        case 7
-        case 8
-            guniqhudid currentweapon
-            
-            addvar hud_x 146
-            addvar hud_y 202
-            
-            setvar hud_tilenum SHOTGUN 
-            
-            state G_DrawWeaponTile
-            guniqhudid 0
-            break
+		case 0
+		case 6
+		case 7
+		case 8
+			guniqhudid currentweapon
+			
+			addvar hud_x 146
+			addvar hud_y 202
+			
+			setvar hud_tilenum SHOTGUN 
+			
+			state G_DrawWeaponTile
+			guniqhudid 0
+			break
 		case 3
-        case 4
-        case 5
-        case 9
-        case 10
-        case 11
-        case 12
+		case 4
+		case 5
+		case 9
+		case 10
+		case 11
+		case 12
 			ifvarg weaponcount 3
-            ifvarl weaponcount 5
-            {
-                addvar hud_y 40
-                addvar hud_x 20
+			ifvarl weaponcount 5
+			{
+				addvar hud_y 40
+				addvar hud_x 20
 			}
 			else ifvare weaponcount 3
 			{
@@ -68,13 +68,13 @@ state draw_shotgun // SHOTGUN_WEAPON:
 				addvar hud_x 10
 			}
 				
-            guniqhudid currentweapon
-            
-            addvar hud_x 158
-            addvar hud_y 220
-            
-            setvar hud_tilenum SHOTGUN
-            addvar hud_tilenum 3
+			guniqhudid currentweapon
+			
+			addvar hud_x 158
+			addvar hud_y 220
+			
+			setvar hud_tilenum SHOTGUN
+			addvar hud_tilenum 3
 			
 			ifvare weaponcount 11
 			{
@@ -86,64 +86,64 @@ state draw_shotgun // SHOTGUN_WEAPON:
 				addvar hud_x 8
 				subvar hud_y 16
 			}
-            
-            state G_DrawWeaponTile
+			
+			state G_DrawWeaponTile
 			guniqhudid 0
-            
+			
 			// Flash
-            ifvarl weaponcount 5
-            {
-                setvarvar hud_temp4 currentweapon
-                shiftvarl hud_temp4 1
-                guniqhudid hud_temp4
+			ifvarl weaponcount 5
+			{
+				setvarvar hud_temp4 currentweapon
+				shiftvarl hud_temp4 1
+				guniqhudid hud_temp4
 
-                setvar hud_shade -128
-                    
-                setvar hud_tilenum SHOTGUN_FLASH2
-                    
-                state G_DrawWeaponTile
+				setvar hud_shade -128
 					
-                setvarvar hud_shade gs
-            }
-            break
-        case 13
-        case 14
-        case 15
-        case 28
-            guniqhudid currentweapon
-            
-            addvar hud_x 198 // 32 + 166
-            addvar hud_y 210
-            
-            setvar hud_tilenum SHOTGUN
-            addvar hud_tilenum 4
-            
-            state G_DrawWeaponTile
-            guniqhudid 0
-            break
+				setvar hud_tilenum SHOTGUN_FLASH2
+					
+				state G_DrawWeaponTile
+					
+				setvarvar hud_shade gs
+			}
+			break
+		case 13
+		case 14
+		case 15
+		case 28
+			guniqhudid currentweapon
+			
+			addvar hud_x 198 // 32 + 166
+			addvar hud_y 210
+			
+			setvar hud_tilenum SHOTGUN
+			addvar hud_tilenum 4
+			
+			state G_DrawWeaponTile
+			guniqhudid 0
+			break
 		case 29
 		case 30
 			guniqhudid currentweapon
-            
-            addvar hud_x 166
-            addvar hud_y 208
-            
-            setvar hud_tilenum SHOTGUN
-            addvar hud_tilenum 3
-            
-            state G_DrawWeaponTile
-            guniqhudid 0
+			
+			addvar hud_x 166
+			addvar hud_y 208
+			
+			setvar hud_tilenum SHOTGUN
+			addvar hud_tilenum 3
+			
+			state G_DrawWeaponTile
+			guniqhudid 0
 			break
-        case 18
-        case 19
+		case 18
+		case 19
 		case 24
-        case 25
+		case 25
 			guniqhudid currentweapon
-            
-            addvar hud_x 234 // 64 + 170
-            addvar hud_y 196
-            
-            setvar hud_tilenum SHOTGUN
+			
+			addvar hud_x 234 // 64 + 170
+			addvar hud_y 196
+			
+			setvar hud_tilenum SHOTGUN
 			
 			ifvarl weaponcount 24 // With shell
 			{
@@ -153,46 +153,46 @@ state draw_shotgun // SHOTGUN_WEAPON:
 			{
 				addvar hud_tilenum 7
 			}
-            
-            state G_DrawWeaponTile
+			
+			state G_DrawWeaponTile
 			break
-        case 16
-        case 17
-        case 26
-        case 27
-            guniqhudid currentweapon
-            
-            addvar hud_x 234 // 64 + 170
-            addvar hud_y 196
-            
-            setvar hud_tilenum SHOTGUN
-            addvar hud_tilenum 5
-            
-            state G_DrawWeaponTile
-            break
-        case 20
-        case 21
-        case 22
-        case 23
-            guniqhudid currentweapon
-            
-            addvar hud_x 240 // 64 + 176
-            addvar hud_y 196
-            
-            setvar hud_tilenum SHOTGUN
+		case 16
+		case 17
+		case 26
+		case 27
+			guniqhudid currentweapon
+			
+			addvar hud_x 234 // 64 + 170
+			addvar hud_y 196
+			
+			setvar hud_tilenum SHOTGUN
+			addvar hud_tilenum 5
+			
+			state G_DrawWeaponTile
+			break
+		case 20
+		case 21
+		case 22
+		case 23
+			guniqhudid currentweapon
+			
+			addvar hud_x 240 // 64 + 176
+			addvar hud_y 196
+			
+			setvar hud_tilenum SHOTGUN
 			
 			ifvarl weaponcount 22 // With shell
 			{
 				addvar hud_tilenum 9
 			}
-            else
+			else
 			{
 				addvar hud_tilenum 6
 			}
-            
-            state G_DrawWeaponTile
-            break
-    endswitch
+			
+			state G_DrawWeaponTile
+			break
+	endswitch
 	
 	// Shell HUD Code
 	ifvare weaponcount 21
@@ -244,15 +244,15 @@ actor SHOTGUNSPRITE
   fall
   state despawn_item_from_can
   ifmove RESPAWN_ACTOR_FLAG
-    state respawnit
+	state respawnit
   else
-    ifp pshrunk nullop
-    else
-      ifp palive
-        ifpdistl RETRIEVEDISTANCE
-          ifcount 6
-            ifcanseetarget
-      {
+	ifp pshrunk nullop
+	else
+	  ifp palive
+		ifpdistl RETRIEVEDISTANCE
+		  ifcount 6
+			ifcanseetarget
+	  {
 		getplayervar[THISACTOR].HAS_SHOTGUN TEMP2
 		ifvare TEMP2 1
 			state checkweaponstay
@@ -279,31 +279,31 @@ actor SHOTGUNSPRITE
 		state addweapon_nobreak
 		quote 57
 
-        ifspawnedby SHOTGUNSPRITE
-          state getweaponcode
-        else
-          state quikweaponget_custom
-      }
+		ifspawnedby SHOTGUNSPRITE
+		  state getweaponcode
+		else
+		  state quikweaponget_custom
+	  }
 enda
 
 actor SHOTGUNAMMO
   fall
   state despawn_item_from_can
   ifmove RESPAWN_ACTOR_FLAG
-    state respawnit
+	state respawnit
   else
-    ifp pshrunk nullop
-    else
-      ifp palive
-        ifcount 6
-          ifpdistl RETRIEVEDISTANCE
-            ifcanseetarget
-      {
-        addammo SHOTGUN_WEAPON SHOTGUNAMMOAMOUNT
-        quote 69
-        ifspawnedby SHOTGUNAMMO
-          state getcode
-        else
-          state quikget
-      }
+	ifp pshrunk nullop
+	else
+	  ifp palive
+		ifcount 6
+		  ifpdistl RETRIEVEDISTANCE
+			ifcanseetarget
+	  {
+		addammo SHOTGUN_WEAPON SHOTGUNAMMOAMOUNT
+		quote 69
+		ifspawnedby SHOTGUNAMMO
+		  state getcode
+		else
+		  state quikget
+	  }
 enda
