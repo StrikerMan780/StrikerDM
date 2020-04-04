@@ -27,31 +27,44 @@ state draw_quick_kick // Quick Kick
         setvar hud_tilenum KNEE
         
         setvar hud_orientation 262148 // o|4|262144
-        
-        setvar hud_temp3 0
-        
-        ifvarg hud_temp 5
-            ifvarl hud_temp 13
-            {
-                addvar hud_x 144 // 160-16
-                
-                addvar hud_y 214
-                
-                addvar hud_tilenum 1
-                
-                state G_DrawTileScaled
-                
-                setvar hud_temp3 1
-            }
-        
-        ifvare hud_temp3 0
-        {
-            addvar hud_x 80
-            
-            addvar hud_y 250
-            
-            state G_DrawTileScaled
-        }
+		
+		switch hud_temp
+			case 0:
+			case 1:
+			case 2:
+			case 13:
+			case 14:
+				addvar hud_x 80
+				addvar hud_y 250
+				subvar hud_tilenum 3
+				break
+			case 5:
+			case 6:
+			case 7:
+				addvar hud_x 144
+				addvar hud_y 214
+				
+				addvar hud_tilenum 1
+				break
+			case 8:
+				addvar hud_x 144
+				addvar hud_y 214
+				
+				subvar hud_tilenum 2
+				break
+			case 9:
+				addvar hud_x 144
+				addvar hud_y 214
+				
+				subvar hud_tilenum 1
+				break
+			default:
+				addvar hud_x 80
+				addvar hud_y 250
+				break
+		endswitch
+		
+		state G_DrawTileScaled
     }
 ends
 
@@ -75,30 +88,42 @@ state draw_kick // KNEE_WEAPON:
         }
         
         setvar hud_tilenum KNEE
-        
-        setvar hud_temp3 0
-        
-        ifvarg weaponcount 4
-            ifvarl weaponcount 10
-            {
-            addvar hud_x 160
-            
-            addvar hud_y 214
-            
-            addvar hud_tilenum 1
-            
-            state G_DrawTileScaled
-            
-            setvar hud_temp3 1
-            }
-        
-        ifvare hud_temp3 0
-        {
-            addvar hud_x 220
-            
-            addvar hud_y 250
-            
-            state G_DrawTileScaled
-        }
+		
+		switch weaponcount
+			case 1:
+			case 2:
+			case 13:
+			case 14:
+				addvar hud_x 220
+				addvar hud_y 250
+				subvar hud_tilenum 3
+				break
+			case 5:
+			case 6:
+			case 7:
+				addvar hud_x 160
+				addvar hud_y 214
+				
+				addvar hud_tilenum 1
+				break
+			case 8:
+				addvar hud_x 160
+				addvar hud_y 214
+				
+				subvar hud_tilenum 2
+				break
+			case 9:
+				addvar hud_x 160
+				addvar hud_y 214
+				
+				subvar hud_tilenum 1
+				break
+			default:
+				addvar hud_x 220
+				addvar hud_y 250
+				break
+		endswitch
+		
+		state G_DrawTileScaled
     }
 ends

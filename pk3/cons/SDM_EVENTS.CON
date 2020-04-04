@@ -875,11 +875,6 @@ onevent EVENT_GAME
 	
 	getactor[THISACTOR].picnum TEMP	
 	switch TEMP
-		case TRACER:
-		case PELLET:
-			state tracer_movement
-			break
-			
 		case PLASMABALL:
 		case PLASMABALL2:
 			state plasma_spread

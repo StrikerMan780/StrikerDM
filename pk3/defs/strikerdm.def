@@ -1,5 +1,3 @@
-cachesize 65536
-
 // Palswaps
 include defs/palswaps.def
 

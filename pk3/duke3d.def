@@ -1,3 +1,5 @@
+cachesize 256000
+
 define ANIM_NONE 0
 define ANIM_OSCILLATING 1
 define ANIM_FORWARD 2

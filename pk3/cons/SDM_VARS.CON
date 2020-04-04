@@ -123,6 +123,9 @@ define SECTORTYPE_LOWGRAVITY 1
 define SECTORTYPE_JUMPPAD 2
 define SECTORTYPE_SPACE 4
 
+// Moves
+move SMOOTH_HACK 0 0 // Remove if my interp patch makes it to mainline
+
 //deleteplayercolor -1
 addplayercolor 17 Green (Blue Skin)
 addplayercolor 19 Gray (Red Skin)

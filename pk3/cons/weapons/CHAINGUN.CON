@@ -1,181 +1,179 @@
 state draw_chaingun // CHAINGUN_WEAPON:
-    // hud_temp4 = FIREDELAY
-    state reset_hud_weapon_coordinates
-    
-    ifvarg weaponcount 0
-    {
-        setvarvar hud_temp weaponcount
-        shiftvarl hud_temp 7
-        sin hud_temp hud_temp
-        shiftvarr hud_temp 12
-        addvarvar hud_y hud_temp
-        
-        state determine_animation
-        ifvarn hud_temp 1
-        {
-            displayrand hud_temp
-            andvar hud_temp 3
-            mulvar hud_temp -1
-            addvar hud_temp 1
-            addvarvar hud_x hud_temp
-        }
-    }
-    
-    // base
-    addvar hud_x 168
-    addvar hud_y 260
-    
-    setvar hud_tilenum CHAINGUN
+	// hud_temp4 = FIREDELAY
+	state reset_hud_weapon_coordinates
+	
+	ifvarg weaponcount 0
+	{
+		setvarvar hud_temp weaponcount
+		shiftvarl hud_temp 7
+		sin hud_temp hud_temp
+		shiftvarr hud_temp 12
+		addvarvar hud_y hud_temp
+		
+		state determine_animation
+		ifvarn hud_temp 1
+		{
+			displayrand hud_temp
+			andvar hud_temp 3
+			mulvar hud_temp -1
+			addvar hud_temp 1
+			addvarvar hud_x hud_temp
+		}
+	}
+	
+	// base
+	addvar hud_x 168
+	addvar hud_y 260
+	
+	setvar hud_tilenum CHAINGUN
 
-    state G_DrawWeaponTile
-    
-    subvar hud_x 168
-    subvar hud_y 260
-    
-    switch weaponcount
-        case 0
-            addvar hud_x 178
-            addvar hud_y 233
-            addvar hud_tilenum 1 // relative
-            
-            state G_DrawWeaponTile
-            break
-        default
-            state determine_animation
+	state G_DrawWeaponTile
+	
+	subvar hud_x 168
+	subvar hud_y 260
+	
+	ifvare weaponcount 0
+	{
+		addvar hud_x 178
+		addvar hud_y 233
+		addvar hud_tilenum 1 // relative
+			
+		state G_DrawWeaponTile
+	}
+	else
+	{
+		state determine_animation
 
-            ifvarvarg weaponcount hud_temp4
-                ifvarvarl weaponcount hud_totaltime
-                {
-                    // muzzleflash 1
-                    ifvarn hud_temp 1
-                    {
-                        displayrand hud_temp3
-                        andvar hud_temp3 7
-                    }
-                    else
-                        setvar hud_temp3 0
+		ifvarvarg weaponcount hud_temp4
+		ifvarvarl weaponcount hud_totaltime
+		{
+			// Left muzzleflash
+			ifvarn hud_temp 1 // If not paused
+			{
+				displayrand hud_temp3
+				andvar hud_temp3 7
+			}
+			else
+				setvar hud_temp3 0
 
-                    addvar hud_x 136 // -4+140
-                    addvarvar hud_x hud_temp3
+			addvar hud_x 136 // -4+140
+			addvarvar hud_x hud_temp3
 
-                    setvarvar hud_temp2 weaponcount
-                    shiftvarr hud_temp2 1
+			setvarvar hud_temp2 weaponcount
+			shiftvarr hud_temp2 1
 
-                    addvarvar hud_y hud_temp3
-                    subvarvar hud_y hud_temp2
-                    addvar hud_y 208
+			addvarvar hud_y hud_temp3
+			subvarvar hud_y hud_temp2
+			addvar hud_y 208
 
-                    setvarvar hud_tilenum weaponcount
-                    subvar hud_tilenum 4
-                    divvar hud_tilenum 5
-                    addvar hud_tilenum CHAINGUN
-                    addvar hud_tilenum 5
+			setvarvar hud_tilenum weaponcount
+			subvar hud_tilenum 4
+			divvar hud_tilenum 2
+			addvar hud_tilenum CHAINGUN
+			addvar hud_tilenum 5
 
-                    state G_DrawWeaponTile
+			state G_DrawWeaponTile
 
-                    // cleanup
-                    subvarvar hud_x hud_temp3
-                    subvarvar hud_y hud_temp3
+			// cleanup
+			subvarvar hud_x hud_temp3
+			subvarvar hud_y hud_temp3
 
-                    // muzzleflash 3
-                    ifvarn hud_temp 1
-                    {
-                        displayrand hud_temp3
-                        andvar hud_temp3 7
-                    }
+			// Right muzzleflash
+			ifvarn hud_temp 1
+			{
+				displayrand hud_temp3
+				andvar hud_temp3 7
+			}
 
-                    addvar hud_x 44 // relative
-                    addvarvar hud_x hud_temp3
-                    addvarvar hud_y hud_temp3
+			addvar hud_x 44 // relative
+			addvarvar hud_x hud_temp3
+			addvarvar hud_y hud_temp3
 
-                    state G_DrawWeaponTile
+			state G_DrawWeaponTile
 
-                    // cleanup
-                    subvar hud_x 180 // -4+140 + 44
-                    subvar hud_y 208
-                    subvarvar hud_x hud_temp3
-                    subvarvar hud_y hud_temp3
-                    addvarvar hud_y hud_temp2
-                }
+			// cleanup
+			subvar hud_x 180 // -4+140 + 44
+			subvar hud_y 208
+			subvarvar hud_x hud_temp3
+			subvarvar hud_y hud_temp3
+			addvarvar hud_y hud_temp2
+		}
 
-            subvar hud_totaltime 4
-            ifvarvarl weaponcount hud_totaltime
-            {
-                // muzzleflash 2
-                ifvarn hud_temp 1
-                {
-                    displayrand hud_temp3
-                    andvar hud_temp3 7
-                }
-                else
-                    setvar hud_temp3 0
+		subvar hud_totaltime 4
+		ifvarvarl weaponcount hud_totaltime
+		{
+			// Center muzzleflash
+			ifvarn hud_temp 1 // If not paused
+			{
+				displayrand hud_temp3
+				andvar hud_temp3 7
+			}
+			else
+				setvar hud_temp3 0
 
-                setvarvar hud_temp2 weaponcount
-                shiftvarr hud_temp2 1
+			setvarvar hud_temp2 weaponcount
+			shiftvarr hud_temp2 1
 
-                addvarvar hud_x hud_temp3
-                addvar hud_x 158 // -4+162
+			addvarvar hud_x hud_temp3
+			addvar hud_x 158 // -4+162
 
-                addvarvar hud_y hud_temp3
-                subvarvar hud_y hud_temp2
-                addvar hud_y 208
+			addvarvar hud_y hud_temp3
+			subvarvar hud_y hud_temp2
+			addvar hud_y 208
 
-                setvarvar hud_tilenum weaponcount
-                subvar hud_tilenum 2
-                divvar hud_tilenum 5
-                addvar hud_tilenum CHAINGUN
-                addvar hud_tilenum 5
+			setvarvar hud_tilenum weaponcount
+			subvar hud_tilenum 2
+			divvar hud_tilenum 2
+			addvar hud_tilenum CHAINGUN
+			addvar hud_tilenum 5
 
-                state G_DrawWeaponTile
+			state G_DrawWeaponTile
 
-                // cleanup
-                subvarvar hud_x hud_temp3
-                subvar hud_x 158
-                subvarvar hud_y hud_temp3
-                addvarvar hud_y hud_temp2
-                subvar hud_y 208
+			// cleanup
+			subvarvar hud_x hud_temp3
+			subvar hud_x 158
+			subvarvar hud_y hud_temp3
+			addvarvar hud_y hud_temp2
+			subvar hud_y 208
 
-                // barrels (hot)
-                addvar hud_x 178
+			// barrels (hot)
+			addvar hud_x 178
+			addvar hud_y 233
 
-                addvar hud_y 233
+			setvar hud_tilenum CHAINGUN
+			addvar hud_tilenum 1
+			addvarvar hud_tilenum hud_temp2
 
-                setvar hud_tilenum CHAINGUN
-                addvar hud_tilenum 1
-                addvarvar hud_tilenum hud_temp2
+			state G_DrawWeaponTile
+		}
+		else
+		{
+			// barrels
+			addvar hud_x 178
+			addvar hud_y 233
 
-                state G_DrawWeaponTile
-            }
-            else
-            {
-                // barrels
-                addvar hud_x 178
+			setvar hud_tilenum CHAINGUN
+			addvar hud_tilenum 1
 
-                addvar hud_y 233
-
-                setvar hud_tilenum CHAINGUN
-                addvar hud_tilenum 1
-
-                state G_DrawWeaponTile
-            }
-            break
-    endswitch
+			state G_DrawWeaponTile
+		}
+	}
 ends
 
 actor CHAINGUNSPRITE
-    fall
+	fall
 	state despawn_item_from_can
-    ifmove RESPAWN_ACTOR_FLAG
+	ifmove RESPAWN_ACTOR_FLAG
 	{
-        state respawnit
+		state respawnit
 	}
-    else ifp pshrunk
+	else ifp pshrunk
 	{
 	}
-    else ifp palive ifpdistl RETRIEVEDISTANCE ifcount 6 ifcanseetarget
-    {
+	else ifp palive ifpdistl RETRIEVEDISTANCE ifcount 6 ifcanseetarget
+	{
 		getplayervar[THISACTOR].HAS_RIPPER TEMP2
-        ifvare TEMP2 1
+		ifvare TEMP2 1
 			state checkweaponstay
 		
 		getplayervar[THISACTOR].RIPPER_AMMO TEMP
@@ -200,30 +198,30 @@ actor CHAINGUNSPRITE
 		setplayervar[THISACTOR].HAS_RIPPER 1 // Give it
 		setvar STATE_PARAM1 CHAINGUN_WEAPON
 		state addweapon_nobreak
-        quote 54
-        ifspawnedby CHAINGUNSPRITE
+		quote 54
+		ifspawnedby CHAINGUNSPRITE
 		{
-            state getweaponcode
+			state getweaponcode
 		}
-        else
+		else
 		{
-            state quikweaponget_custom
+			state quikweaponget_custom
 		}
-    }
+	}
 enda
 
 actor BATTERYAMMO
 	fall
 	state despawn_item_from_can
-    ifmove RESPAWN_ACTOR_FLAG
+	ifmove RESPAWN_ACTOR_FLAG
 	{
-        state respawnit
-    }
-    else ifp pshrunk
+		state respawnit
+	}
+	else ifp pshrunk
 	{
-    }
-    else ifp palive ifcount 6 ifpdistl RETRIEVEDISTANCE ifcanseetarget 
-    {
+	}
+	else ifp palive ifcount 6 ifpdistl RETRIEVEDISTANCE ifcanseetarget 
+	{
 		getplayervar[THISACTOR].RIPPER_AMMO TEMP
 		ifvarl TEMP MAXCHAINGUNAMMO
 		{
@@ -243,5 +241,5 @@ actor BATTERYAMMO
 				state quikget
 			}
 		}
-    }
+	}
 enda

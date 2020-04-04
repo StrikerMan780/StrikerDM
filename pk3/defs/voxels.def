@@ -42,7 +42,10 @@ voxel "voxels/props/0669_vacuumcl.kvx" { tile 669 }
 
 voxel "voxels/props/0685_stagelamp.kvx" { tile 685 }
 
+voxel "voxels/props/0694_pot1.kvx" { tile 694 }
+voxel "voxels/props/0695_pot2.kvx" { tile 695 }
 voxel "voxels/props/0697_pot3.kvx" { tile 697 }
+voxel "voxels/props/0698_sushi.kvx" { tile 698 } 
 
 voxel "voxels/props/0753_geisha1.kvx" { tile 753 }
 voxel "voxels/props/0869_geisha2.kvx" { tile 869 }
@@ -57,7 +60,10 @@ voxel "voxels/props/0901_stripeball.kvx" { tile 901 }
 voxel "voxels/props/0902_queball.kvx" { tile 902 }
 
 voxel "voxels/props/0904_constructionbarrier.kvx" { tile 904 tile 905 tile 906 tile 907 }
+
+voxel "voxels/props/0908_tree1.kvx" { tile 908 } 
 voxel "voxels/props/0909_treetrunk.kvx" { tile 909 }
+voxel "voxels/props/0910_tree2.kvx" { tile 910 }
 
 voxel "voxels/props/0911_cactus.kvx" { tile 911 }
 voxel "voxels/props/0939_cactusstump.kvx" { tile 939 }
@@ -75,6 +81,9 @@ voxel "voxels/props/0979_hanglight.kvx" { tile 979 }
 voxel "voxels/props/0990_tire.kvx" { tile 990 }
 
 voxel "voxels/props/1006_barstool.kvx" { tile 1006 }
+
+voxel "voxels/props/1012_bottle5.kvx" { tile 1012 }
+voxel "voxels/props/1013_bottle6.kvx" { tile 1013 }
 
 voxel "voxels/props/1014_gbottle.kvx" { tile 1014 }
 
@@ -99,15 +108,26 @@ voxel "voxels/props/1063_rubbercan_bend.kvx" { tile 1063 }
 
 voxel "voxels/props/1069_plug.kvx" { tile 1069 }
 
+voxel "voxels/props/1073_lifebuoy.kvx" { tile 1073 }
+
 voxel "voxels/props/1079_oozefilter_frame1.kvx" { tile 1079 }
 voxel "voxels/props/1080_oozefilter_frame2.kvx" { tile 1080 }
 voxel "voxels/props/1081_oozefilter_frame3.kvx" { tile 1081 }
 
+voxel "voxels/props/1158_bottle11.kvx" { tile 1158 }
 voxel "voxels/props/1159_bottle12.kvx" { tile 1159 }
 voxel "voxels/props/1160_bottle13.kvx" { tile 1160 }
 voxel "voxels/props/1161_bottle14.kvx" { tile 1161 }
 voxel "voxels/props/1162_bottle15.kvx" { tile 1162 }
 voxel "voxels/props/1163_bottle16.kvx" { tile 1163 }
+voxel "voxels/props/1164_bottle17.kvx" { tile 1164 }
+voxel "voxels/props/1165_bottle18.kvx" { tile 1165 }
+voxel "voxels/props/1166_bottle19.kvx" { tile 1166 }
+
+voxel "voxels/props/1227_nukebarrel.kvx" { tile 1227 }
+voxel "voxels/props/1228_nukebarreldented.kvx" { tile 1228 }
+voxel "voxels/props/1229_nukebarrelleaked.kvx" { tile 1229 }
+voxel "voxels/props/1230_nukebarrelbreak.kvx" { tile 1230 }
 
 voxel "voxels/props/1232_canwithsomething.kvx" { tile 1232 }
 
@@ -133,6 +153,12 @@ voxel "voxels/props/4444_vhscamera.kvx" { tile 4444 }
 voxel "voxels/props/4454_deskphone.kvx" { tile 4454 }
 voxel "voxels/props/4464_mace.kvx" { tile 4464 }
 voxel "voxels/props/4495_wetfloor_sign.kvx" { tile 4495 }
+
+voxel "voxels/props/4536_foodobject7.kvx" { tile 4536 }
+voxel "voxels/props/4537_foodobject8.kvx" { tile 4537 }
+voxel "voxels/props/4538_foodobject9.kvx" { tile 4538 }
+voxel "voxels/props/4539_foodobject10.kvx" { tile 4539 }
+
 voxel "voxels/props/4540_burger1.kvx" { tile 4540 }
 voxel "voxels/props/4541_burger2.kvx" { tile 4541 }
 voxel "voxels/props/4542_bigmac.kvx" { tile 4542 }
@@ -147,7 +173,15 @@ voxel "voxels/props/4580_canwithsomething2.kvx" { tile 4580 }
 voxel "voxels/props/4581_canwithsomething3.kvx" { tile 4581 }
 voxel "voxels/props/4582_canwithsomething4.kvx" { tile 4582 }
 
-voxel "voxels/props/7054_tombstone.kvx" { tile 7054 }
+//voxel "voxels/props/7054_tombstone.kvx" { tile 7054 }
+definemodel "voxels/props/7054_tombstone.kv6" 1.0 0
+definemodelframe 0 7054 7054
+
+definemodel "voxels/props/7057_chair1.kv6" 1.0 0
+definemodelframe 0 7057 7057
+
+definemodel "voxels/props/7052_ceilingchand2_off.kv6" 1.0 0
+definemodelframe 0 7052 7052
 
 // --- Switches ---
 voxel "voxels/switches/0130_accessswitch_off.kvx" { tile 130 }
@@ -213,6 +247,8 @@ voxel "voxels/signs/4956_funnyboner.kvx" { tile 4956 }
 
 // --- Monsters ---
 voxel "voxels/monsters/1880-1886_sentry_drone.kvx" { tile0 1880 tile1 1886 }
+
+voxel "voxels/monsters/0558_slimeregg0.kvx" { tile 558 }
 voxel "voxels/monsters/0675_slimeregg1.kvx" { tile 675 }
 voxel "voxels/monsters/0676_slimeregg2.kvx" { tile 676 }
 voxel "voxels/monsters/0677_slimeregg3.kvx" { tile 677 } 

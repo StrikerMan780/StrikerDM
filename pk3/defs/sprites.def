@@ -78,6 +78,10 @@ tilefromtexture 1888 { file "tiles/1888.png" }
 // Extended RPG Flash
 tilefromtexture 2547 { file "tiles/2547.png" xoff -44 yoff -27 }
 
+// Interpolated Tip Animation
+tilefromtexture 2578 { file "tiles/2578.png" }
+tilefromtexture 2579 { file "tiles/2579.png" }
+
 // Ripper Casing
 tilefromtexture 2587 { file "tiles/2587.png" }
 tilefromtexture 2588 { file "tiles/2588.png" }
@@ -130,9 +134,17 @@ tilefromtexture 5004 { file "tiles/5004.png" }
 tilefromtexture 5005 { file "tiles/5005.png" }
 
 // Devastator
-tilefromtexture 29 { file "tiles/29.png" }
-tilefromtexture 2510 { file "tiles/2510.png" }
-tilefromtexture 2511 { file "tiles/2511.png" }
+//tilefromtexture 29 { file "tiles/29.png" }
+//tilefromtexture 2510 { file "tiles/2510.png" }
+//tilefromtexture 2511 { file "tiles/2511.png" }
+tilefromtexture 2512 { file "tiles/2512.png" }
+tilefromtexture 2513 { file "tiles/2513.png" }
+
+// Smooth Kick
+tilefromtexture 2518 { file "tiles/2518.png" xoffset 10 yoffset -4 }
+tilefromtexture 2519 { file "tiles/2519.png" xoffset 2 yoffset -2 }
+tilefromtexture 2520 { file "tiles/2520.png" xoffset 2 yoffset -8 }
+
 
 // Widescreen fixes
 tilefromtexture 2325 { file "tiles/2325.png" xoffset 24 }
@@ -153,7 +165,7 @@ tilefromtexture 2528 { file "tiles/2528_dn64.png" xoff -48 yoff 4 }
 tilefromtexture 2529 { file "tiles/2529_dn64.png" xoff -76 yoff 2 }
 */
 
-tilefromtexture 2544 { file "tiles/2544.png" xoffset -115 yoffset -67 }
+tilefromtexture 2544 { file "tiles/2544.png" xoffset -106 yoffset -67 }
 tilefromtexture 2548 { file "tiles/2548.png" xoff -68 yoff 15 }
 tilefromtexture 2550 { file "tiles/2550.png" xoff -7 yoff 18 }
 tilefromtexture 2554 { file "tiles/2554.png" xoffset -4 }
@@ -165,13 +177,13 @@ tilefromtexture 2563 { file "tiles/2563.png" xoffset 90 }
 // Railgun
 tilefromtexture 18 { file "tiles/18.png" }
 tilefromtexture 43 { file "tiles/43.png" }
-tilefromtexture 2513 { file "tiles/2513.png" }
-tilefromtexture 2514 { file "tiles/2514.png" xoff 7 }
-tilefromtexture 2515 { file "tiles/2515.png" xoff 13 }
-tilefromtexture 2516 { file "tiles/2516.png" xoff 14 yoff 2 }
-tilefromtexture 2517 { file "tiles/2517.png" xoff 15 yoff 3 }
-tilefromtexture 2518 { file "tiles/2518.png" xoff 16 yoff 4 }
-tilefromtexture 2519 { file "tiles/2519.png" xoff 6 }
+tilefromtexture 2430 { file "tiles/2430.png" }
+tilefromtexture 2431 { file "tiles/2431.png" xoff 7 }
+tilefromtexture 2432 { file "tiles/2432.png" xoff 13 }
+tilefromtexture 2433 { file "tiles/2433.png" xoff 14 yoff 2 }
+tilefromtexture 2434 { file "tiles/2434.png" xoff 15 yoff 3 }
+tilefromtexture 2435 { file "tiles/2435.png" xoff 16 yoff 4 }
+tilefromtexture 2436 { file "tiles/2436.png" xoff 6 }
 
 // Plasma Rifle
 tilefromtexture 19 { file "tiles/19.png" }

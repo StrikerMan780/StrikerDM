@@ -885,6 +885,7 @@ actor TRACER 0
 		sizeat 10 10
 		cstat 32768
 		action ANULLACTION
+		move SMOOTH_HACK geth getv // Remove if my interp patch makes it to mainline
 	}
 	else
 	{
@@ -895,8 +896,7 @@ actor TRACER 0
 		}
 	}
 	
-	// Broken if in actor code for some reason. See EVENT_GAME.
-	//state tracer_movement
+	state tracer_movement
 enda
 
 spriteflags PELLET 8192
@@ -906,6 +906,7 @@ actor PELLET 0
 		sizeat 10 10
 		cstat 32768
 		action ANULLACTION
+		move SMOOTH_HACK geth getv // Remove if my interp patch makes it to mainline
 	}
 	else
 	{
@@ -916,8 +917,7 @@ actor PELLET 0
 		}
 	}
 	
-	// Broken if in actor code for some reason. See EVENT_GAME.
-	//state tracer_movement
+	state tracer_movement
 enda
 
 define SCRAP_WORKSLIKE 4226
