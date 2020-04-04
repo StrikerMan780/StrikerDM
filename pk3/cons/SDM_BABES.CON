@@ -454,76 +454,41 @@ state babe_give_items
 	}
 
 	randvar TEMP 52
-	switch TEMP
-		case 0: espawn PLASMASPRITE break
-		case 1: espawn PLASMAAMMO break
-		case 2: espawn FLAMETHROWERSPRITE break
-		case 3: espawn FLAMETHROWERAMMO break
-		case 4: espawn RAILGUNSPRITE break
-		case 5: espawn RAILGUNAMMO break
-		case 6: espawn SSGSPRITE break
-		case 7: espawn SHOTGUNAMMO break
-		case 8: espawn SHOTGUNSPRITE break
-		case 9: espawn GROWSPRITEICON break
-		case 10: espawn GROWAMMO break
-		case 11: espawn SHRINKERSPRITE break
-		case 12: espawn CRYSTALAMMO break
-		case 13: espawn CHAINGUNSPRITE break
-		case 14: espawn BATTERYAMMO break
-		case 15: espawn FREEZESPRITE break
-		case 16: espawn FREEZEAMMO break
-		case 17: espawn DEVISTATORSPRITE break
-		case 18: espawn DEVISTATORAMMO break
-		case 19: espawn FIRSTGUNSPRITE break
-		case 20: espawn AMMO break
-		case 21: espawn RPGSPRITE break
-		case 22: espawn RPGAMMO break
-		case 23: espawn HBOMBAMMO break
-		case 24: espawn TRIPBOMBSPRITE break
-		case 25: espawn HEATSENSOR break
-		case 26: espawn AIRTANK break
-		case 27: espawn BOOTS break
-		case 28: espawn STEROIDS break
-		
-		case 29:
-		case 30:
-		case 31:
-		case 32: 
-		case 33:
-		case 34:
-		case 35:
-		case 36: 
-			espawn COLA
-			break
-		
-		case 37:
-		case 38:
-		case 39:
-		case 40:
-		case 41:
-		case 42:
-			espawn SIXPAK
-			break
-			
-		case 43:
-		case 44:
-		case 45:
-		case 46:
-			espawn HEALTHBONER
-			break
-			
-		case 47:
-		case 48:
-		case 49:
-		case 50:
-			espawn ARMORBONER
-			break
-			
-		case 51:
-		case 52:
-			espawn ATOMICHEALTH
-			break
-	endswitch
+	
+	ifvare TEMP 0 espawn PLASMASPRITE else
+	ifvare TEMP 1 espawn PLASMAAMMO else
+	ifvare TEMP 2 espawn FLAMETHROWERSPRITE else
+	ifvare TEMP 3 espawn FLAMETHROWERAMMO else
+	ifvare TEMP 4 espawn RAILGUNSPRITE else
+	ifvare TEMP 5 espawn RAILGUNAMMO else
+	ifvare TEMP 6 espawn SSGSPRITE else
+	ifvare TEMP 7 espawn SHOTGUNAMMO else
+	ifvare TEMP 8 espawn SHOTGUNSPRITE else
+	ifvare TEMP 9 espawn GROWSPRITEICON else
+	ifvare TEMP 10 espawn GROWAMMO else
+	ifvare TEMP 11 espawn SHRINKERSPRITE else
+	ifvare TEMP 12 espawn CRYSTALAMMO else
+	ifvare TEMP 13 espawn CHAINGUNSPRITE else
+	ifvare TEMP 14 espawn BATTERYAMMO else
+	ifvare TEMP 15 espawn FREEZESPRITE else
+	ifvare TEMP 16 espawn FREEZEAMMO else
+	ifvare TEMP 17 espawn DEVISTATORSPRITE else
+	ifvare TEMP 18 espawn DEVISTATORAMMO else
+	ifvare TEMP 19 espawn FIRSTGUNSPRITE else
+	ifvare TEMP 20 espawn AMMO else
+	ifvare TEMP 21 espawn RPGSPRITE else
+	ifvare TEMP 22 espawn RPGAMMO else
+	ifvare TEMP 23 espawn HBOMBAMMO else
+	ifvare TEMP 24 espawn TRIPBOMBSPRITE else
+	ifvare TEMP 25 espawn HEATSENSOR else
+	ifvare TEMP 26 espawn AIRTANK else
+	ifvare TEMP 27 espawn BOOTS else
+	ifvare TEMP 28 espawn STEROIDS else
+	ifvarl TEMP 37 espawn COLA else
+	ifvarl TEMP 43 espawn SIXPAK else
+	ifvarl TEMP 47 espawn HEALTHBONER else
+	ifvarl TEMP 51 espawn ARMORBONER else
+	ifvarl TEMP 53 espawn ATOMICHEALTH
 	
 	setactorvar[RETURN].FROMCAN 2
 	setvar RETURN 0
