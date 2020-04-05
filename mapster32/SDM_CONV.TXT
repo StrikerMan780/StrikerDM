@@ -1,0 +1,1058 @@
+;This file is parsed by WAD2MAP.EXE
+;Much of the DOOM specific information was copied out of the unofficial
+;DOOM spec by Matthew S Fell (msfell@aol.com).
+
+
+
+[DEFINES]     ;You can copy these defines straight out of the NAMES.H file
+#define SECTOREFFECTOR 1
+#define ACTIVATOR 2
+#define TOUCHPLATE 3
+#define ACTIVATORLOCKED 4
+#define MUSICANDSFX 5
+#define LOCATORS 6
+#define CYCLER 7
+#define MASTERSWITCH 8
+#define RESPAWN 9
+#define GPSPEED 10
+#define ARROW 20
+#define FIRSTGUNSPRITE 21
+#define CHAINGUNSPRITE 22
+#define RPGSPRITE 23
+#define FREEZESPRITE 24
+#define SHRINKERSPRITE 25
+#define HEAVYHBOMB 26
+#define TRIPBOMBSPRITE 27
+#define SHOTGUNSPRITE 28
+#define CYCLOIDSPRITE 29
+#define HEALTHBOX 30
+#define AMMOBOX 31
+#define INVENTORYBOX 33
+#define FREEZEAMMO 37
+#define AMMO 40
+#define BATTERYAMMO 41
+#define CYCLOIDAMMO 42
+#define RPGAMMO 44
+#define FUELCAN 45
+#define CRYSTALAMMO 46
+#define HBOMBAMMO 47
+#define AMMOLOTS 48
+#define SHOTGUNAMMO 49
+#define COLA 51
+#define SIXPAK 52
+#define FIRSTAID 53
+#define SHIELD 54
+#define STEROIDS 55
+#define AIRTANK 56
+#define JETPACK 57
+#define HEATSENSOR 59
+#define ACCESSCARD 60
+#define BOOTS 61
+#define RESPAWNMARKER 62
+#define MIRRORBROKE 70
+#define MOONSKY1 80
+#define MOONSKY2 81
+#define MOONSKY3 82
+#define MOONSKY4 83
+#define BIGORBIT1 84
+#define BIGORBIT2 85
+#define BIGORBIT3 86
+#define BIGORBIT4 87
+#define BIGORBIT5 88
+#define LA 89
+#define ATOMICHEALTH 100
+#define TECHLIGHT2 120
+#define TECHLIGHTBUST2 121
+#define TECHLIGHT4 122
+#define TECHLIGHTBUST4 123
+#define WALLLIGHT4 124
+#define WALLLIGHTBUST4 125
+#define ACCESSSWITCH 130
+#define SLOTDOOR 132
+#define LIGHTSWITCH 134
+#define SPACEDOORSWITCH 136
+#define SPACELIGHTSWITCH 138
+#define FRANKENSTINESWITCH 140
+#define NUKEBUTTON 142
+#define MULTISWITCH 146
+#define DOORTILE5 150
+#define DOORTILE6 151
+#define DOORTILE1 152
+#define DOORTILE2 153
+#define DOORTILE3 154
+#define DOORTILE4 155
+#define DOORTILE7 156
+#define DOORTILE8 157
+#define DOORTILE9 158
+#define DOORTILE10 159
+#define DOORSHOCK 160
+#define DIPSWITCH 162
+#define DIPSWITCH2 164
+#define TECHSWITCH 166
+#define DIPSWITCH3 168
+#define ACCESSSWITCH2 170
+#define REFLECTWATERTILE 180
+#define FLOORSLIME 200
+#define BIGFORCE 230
+#define EPISODE 247
+#define W_LIGHT 260
+#define SCREENBREAK1 263
+#define SCREENBREAK2 264
+#define SCREENBREAK3 265
+#define SCREENBREAK4 266
+#define SCREENBREAK5 267
+#define SCREENBREAK6 268
+#define SCREENBREAK7 269
+#define SCREENBREAK8 270
+#define SCREENBREAK9 271
+#define SCREENBREAK10 272
+#define SCREENBREAK11 273
+#define SCREENBREAK12 274
+#define SCREENBREAK13 275
+#define MASKWALL1 285
+#define W_TECHWALL1 293
+#define W_TECHWALL2 297
+#define W_TECHWALL3 301
+#define W_TECHWALL4 305
+#define WATERTILE2 336
+#define BPANNEL1 341
+#define PANNEL1 342
+#define PANNEL2 343
+#define WATERTILE 344
+#define STATIC 351
+#define W_SCREENBREAK 357
+#define W_HITTECHWALL3 360
+#define W_HITTECHWALL4 361
+#define W_HITTECHWALL2 362
+#define W_HITTECHWALL1 363
+#define DOORTILE22 395
+#define FANSPRITE 407
+#define FANSPRITEBROKE 411
+#define FANSHADOW 412
+#define FANSHADOWBROKE 416
+#define DOORTILE18 447
+#define DOORTILE19 448
+#define DOORTILE20 449
+#define SPACESHUTTLE 487
+#define SATELLITE 489
+#define VIEWSCREEN2 499
+#define VIEWSCREENBROKE 501
+#define VIEWSCREEN 502
+#define GLASS 503
+#define GLASS2 504
+#define STAINGLASS1 510
+#define MASKWALL5 514
+#define SATELITE 516
+#define FUELPOD 517
+#define SLIMEPIPE 538
+#define CRACK1 546
+#define CRACK2 547
+#define CRACK3 548
+#define CRACK4 549
+#define FOOTPRINTS 550
+#define DOMELITE 551
+#define CAMERAPOLE 554
+#define CHAIR1 556
+#define CHAIR2 557
+#define BROKENCHAIR 559
+#define MIRROR 560
+#define WATERFOUNTAIN 563
+#define WATERFOUNTAINBROKE 567
+#define FEMMAG1 568
+#define TOILET 569
+#define STALL 571
+#define STALLBROKE 573
+#define FEMMAG2 577
+#define REACTOR2 578
+#define REACTOR2BURNT 579
+#define REACTOR2SPARK 580
+#define GRATE1 595
+#define BGRATE1 596
+#define SOLARPANNEL 602
+#define NAKED1 603
+#define ANTENNA 607
+#define TOILETBROKE 615
+#define PIPETWO 616
+#define PIPETWOBROKE 617
+#define WATERPIPE 618
+#define PIPEONE 619
+#define CAMERA1 621
+#define BRICK 626
+#define SPLINTERWOOD 630
+#define BOLT1 634
+#define W_NUMBERS 640
+#define WATERDRIP 660
+#define WATERBUBBLE 661
+#define WATERBUBBLEMAKER 662
+#define W_FORCEFIELD 663
+#define VACUUM 669
+#define FOOTPRINTS2 672
+#define FOOTPRINTS3 673
+#define FOOTPRINTS4 674
+#define EGG 675
+#define SCALE 678
+#define CHAIR3 680
+#define CAMERALIGHT 685
+#define MOVIECAMERA 686
+#define IVUNIT 689
+#define POT1 694
+#define POT2 695
+#define POT3 697
+#define WALLLIGHT3 701
+#define WALLLIGHTBUST3 702
+#define WALLLIGHT1 703
+#define WALLLIGHTBUST1 704
+#define WALLLIGHT2 705
+#define WALLLIGHTBUST2 706
+#define LIGHTSWITCH2 712
+#define WAITTOBESEATED 716
+#define DOORTILE14 717
+#define STATUE 753
+#define VASE 765
+#define SUSHIPLATE1 768
+#define SUSHIPLATE2 769
+#define SUSHIPLATE3 774
+#define SUSHIPLATE4 779
+#define DOORTILE16 781
+#define SUSHIPLATE5 792
+#define OJ 806
+#define HURTRAIL 859
+#define POWERSWITCH1 860
+#define LOCKSWITCH1 862
+#define POWERSWITCH2 864
+#define ATM 867
+#define STATUEFLASH 869
+#define ATMBROKE 888
+#define BIGHOLE2 893
+#define STRIPEBALL 901
+#define QUEBALL 902
+#define POCKET 903
+#define WOODENHORSE 904
+#define TREE1 908
+#define TREE2 910
+#define CACTUS 911
+#define MASKWALL2 913
+#define MASKWALL3 914
+#define MASKWALL4 915
+#define FIREEXT 916
+#define TOILETWATER 921
+#define NEON1 925
+#define NEON2 926
+#define CACTUSBROKE 939
+#define BOUNCEMINE 940
+#define BROKEFIREHYDRENT 950
+#define BOX 951
+#define BULLETHOLE 952
+#define BOTTLE1 954
+#define BOTTLE2 955
+#define BOTTLE3 956
+#define BOTTLE4 957
+#define FEMPIC5 963
+#define FEMPIC6 964
+#define FEMPIC7 965
+#define HYDROPLANT 969
+#define OCEANSPRITE1 971
+#define OCEANSPRITE2 972
+#define OCEANSPRITE3 973
+#define OCEANSPRITE4 974
+#define OCEANSPRITE5 975
+#define GENERICPOLE 977
+#define CONE 978
+#define HANGLIGHT 979
+#define HYDRENT 981
+#define TIRE 990
+#define BPIPE1 994
+#define BPIPE2 995
+#define BPIPE3 996
+#define BPIPEBROKE 997
+#define BROKEHYDROPLANT 1003
+#define NEON3 1007
+#define NEON4 1008
+#define NEON5 1009
+#define BOTTLE5 1012
+#define BOTTLE6 1013
+#define BOTTLE8 1014
+#define SPOTLITE 1020
+#define HANGOOZ 1022
+#define BOTTLE7 1025
+#define HORSEONSIDE 1026
+#define GLASSPIECES 1031
+#define HORSELITE 1034
+#define NEON6 1046
+#define MASKWALL6 1059
+#define CLOCK 1060
+#define RUBBERCAN 1062
+#define BROKENCLOCK 1067
+#define PLUG 1069
+#define OOZFILTER 1079
+#define FLOORPLASMA 1082
+#define REACTOR 1088
+#define REACTORSPARK 1092
+#define REACTORBURNT 1096
+#define DOORTILE15 1102
+#define HANDSWITCH 1111
+#define CIRCLEPANNEL 1113
+#define CIRCLEPANNELBROKE 1114
+#define PULLSWITCH 1122
+#define MASKWALL8 1124
+#define BIGHOLE 1141
+#define ALIENSWITCH 1142
+#define DOORTILE21 1144
+#define HANDPRINTSWITCH 1155
+#define BOTTLE10 1157
+#define BOTTLE11 1158
+#define BOTTLE12 1159
+#define BOTTLE13 1160
+#define BOTTLE14 1161
+#define BOTTLE15 1162
+#define BOTTLE16 1163
+#define BOTTLE17 1164
+#define BOTTLE18 1165
+#define BOTTLE19 1166
+#define DOORTILE17 1169
+#define MASKWALL7 1174
+#define JAILBARBREAK 1175
+#define DOORTILE11 1178
+#define DOORTILE12 1179
+#define VENDMACHINE 1212
+#define VENDMACHINEBROKE 1214
+#define COLAMACHINE 1215
+#define COLAMACHINEBROKE 1217
+#define CRANEPOLE 1221
+#define CRANE 1222
+#define BARBROKE 1225
+#define BLOODPOOL 1226
+#define NUKEBARREL 1227
+#define NUKEBARRELDENTED 1228
+#define NUKEBARRELLEAKED 1229
+#define CANWITHSOMETHING 1232
+#define MONEY 1233
+#define BANNER 1236
+#define EXPLODINGBARREL 1238
+#define EXPLODINGBARREL2 1239
+#define FIREBARREL 1240
+#define SEENINE 1247
+#define SEENINEDEAD 1248
+#define STEAM 1250
+#define CEILINGSTEAM 1255
+#define TRANSPORTERBEAM 1261
+#define RAT 1267
+#define TRASH 1272
+#define FEMPIC1 1280
+#define FEMPIC2 1289
+#define BLANKSCREEN 1293
+#define PODFEM1 1294
+#define FEMPIC3 1298
+#define FEMPIC4 1306
+#define FEM1 1312
+#define FEM2 1317
+#define FEM3 1321
+#define FEM5 1323
+#define BLODDYPOLE 1324
+#define BLODDYGIRLONPOLE 1335
+#define FEM4 1325
+#define FEM6 1334
+#define FEM8 1336
+#define HELECOPT 1346
+#define FETUSJIB 1347
+#define HOLODUKE 1348
+#define SPACEMARINE 1353
+#define INDY 1355
+#define FETUS 1358
+#define FETUSBROKE 1359
+#define MONK 1352
+#define LUKE 1354
+#define COOLEXPLOSION1 1360
+#define WATERSPLASH2 1380
+#define FIREVASE 1390
+#define SCRATCH 1393
+#define FEM7 1395
+#define APLAYERTOP 1400
+#define APLAYER 1405
+#define PLAYERONWATER 1420
+#define DUKELYINGDEAD 1518
+#define DUKETORSO 1520
+#define DUKEGUN 1528
+#define DUKELEG 1536
+#define BLOOD 1620
+#define FIRELASER 1625
+#define TRANSPORTERSTAR 1630
+#define SPIT 1636
+#define LOOGIE 1637
+#define FIST 1640
+#define FREEZEBLAST 1641
+#define CYCLOIDBLAST 1642
+#define SHRINKSPARK 1646
+#define TONGUE 1647
+#define MORTER 1650
+#define SHRINKEREXPLOSION 1656
+#define RADIUSEXPLOSION 1670
+#define FORCERIPPLE 1671
+#define LIZTROOP 1680
+#define LIZTROOPRUNNING 1681
+#define LIZTROOPSTAYPUT 1682
+#define LIZTOP 1705
+#define LIZTROOPSHOOT 1715
+#define LIZTROOPJETPACK 1725
+#define LIZTROOPDSPRITE 1734
+#define LIZTROOPONTOILET 1741
+#define LIZTROOPDUCKING 1744
+#define HEADJIB1 1768
+#define ARMJIB1 1772
+#define LEGJIB1 1776
+#define OCTABRAIN 1820
+#define OCTABRAINSTAYPUT 1821
+#define OCTATOP 1845
+#define JELLYDEADSPRITE 1855
+#define INNERJAW 1860
+#define DRONE 1880
+#define EXPLOSION2 1890
+#define COMMANDER 1920
+#define COMMANDERSTAYPUT 1921
+#define RECON 1960
+#define PIGCOP 2000
+#define PIGCOPSTAYPUT 2001
+#define PIGCOPDIVE 2045
+#define PIGCOPDEADSPRITE 2060
+#define PIGTOP 2061
+#define LIZMAN 2120
+#define LIZMANSTAYPUT 2121
+#define LIZMANSPITTING 2150
+#define LIZMANFEEDING 2160
+#define LIZMANJUMP 2165
+#define LIZMANDEADSPRITE 2185
+#define FECES 2200
+#define LIZMANHEAD1 2201
+#define LIZMANARM1 2205
+#define LIZMANLEG1 2209
+#define EXPLOSION2BOT 2219
+#define USERWEAPON 2235
+#define HEADERBAR 2242
+#define JIBS1 2245
+#define JIBS2 2250
+#define JIBS3 2255
+#define JIBS4 2260
+#define JIBS5 2265
+#define BURNING 2270
+#define FIRE 2271
+#define JIBS6 2286
+#define BLOODSPLAT1 2296
+#define BLOODSPLAT3 2297
+#define BLOODSPLAT2 2298
+#define BLOODSPLAT4 2299
+#define OOZ 2300
+#define BURNING2 2310
+#define FIRE2 2311
+#define CRACKKNUCKLES 2324
+#define SMALLSMOKE 2329
+#define SMALLSMOKEMAKER 2330
+#define FLOORFLAME 2333
+#define ROTATEGUN 2360
+#define GREENSLIME 2370
+#define WATERDRIPSPLASH 2380
+#define SCRAP6 2390
+#define SCRAP1 2400
+#define SCRAP2 2404
+#define SCRAP3 2408
+#define SCRAP4 2412
+#define SCRAP5 2416
+#define ORGANTIC 2420
+#define BETAVERSION 2440
+#define PLAYERISHERE 2442
+#define PLAYERWASHERE 2443
+#define SELECTDIR 2444
+#define F1HELP 2445
+#define NOTCHON 2446
+#define NOTCHOFF 2447
+#define BACKGROUNDSCREEN 2448
+#define DUKEICON 2452
+#define BADGUYICON 2453
+#define FOODICON 2454
+#define GETICON 2455
+#define MENUSCREEN 2456
+#define MENUBAR 2457
+#define KILLSICON 2458
+#define FIRSTAID_ICON 2460
+#define HEAT_ICON 2461
+#define BOTTOMSTATUSBAR 2462
+#define BOOT_ICON 2463
+#define FRAGBAR 2465
+#define JETPACK_ICON 2467
+#define AIRTANK_ICON 2468
+#define STEROIDS_ICON 2469
+#define HOLODUKE_ICON 2470
+#define ACCESS_ICON 2471
+#define DIGITALNUM 2472
+#define DUKECAR 2491
+#define CAMCORNER 2482
+#define CAMLIGHT 2484
+#define LOGO 2485
+#define TITLE 2486
+#define NUKEWARNINGICON 2487
+#define MOUSECURSOR 2488
+#define SLIDEBAR 2489
+#define DREALMS 2492
+#define BETASCREEN 2493
+#define WINDOWBORDER1 2494
+#define TEXTBOX 2495
+#define WINDOWBORDER2 2496
+#define DUKENUKEM 2497
+#define THREEDEE 2498
+#define INGAMEDUKETHREEDEE 2499
+#define CYCLOID 2510
+#define KNEE 2521
+#define CROSSHAIR 2523
+#define FIRSTGUN 2524
+#define FIRSTGUNRELOAD 2528
+#define FALLINGCLIP 2530
+#define CLIPINHAND 2531
+#define HAND 2532
+#define SHELL 2533
+#define SHOTGUNSHELL 2535
+#define CHAINGUN 2536
+#define RPGGUN 2544
+#define RPGMUZZLEFLASH 2545
+#define FREEZE 2548
+#define CATLITE 2552
+#define SHRINKER 2556
+#define HANDHOLDINGLASER 2563
+#define TRIPBOMB 2566
+#define LASERLINE 2567
+#define HANDHOLDINGACCESS 2568
+#define HANDREMOTE 2570
+#define HANDTHROW 2573
+#define TIP 2576
+#define GLAIR 2578
+#define SCUBAMASK 2581
+#define SPACEMASK 2584
+#define FORCESPHERE 2590
+#define SHOTSPARK1 2595
+#define RPG 2605
+#define LASERSITE 2612
+#define SHOTGUN 2613
+#define BOSS1 2630
+#define BOSS1STAYPUT 2631
+#define BOSS1SHOOT 2660
+#define BOSS1LOB 2670
+#define BOSSTOP 2696
+#define BOSS2 2710
+#define BOSS3 2760
+#define SPINNINGNUKEICON 2813
+#define BIGFNTCURSOR 2820
+#define SMALLFNTCURSOR 2821
+#define STARTALPHANUM 2822
+#define ENDALPHANUM 2915
+#define BIGALPHANUM 2940
+#define BIGPERIOD 3002
+#define BIGCOMMA 3003
+#define BIGX 3004
+#define BIGQ 3005
+#define BIGSEMI 3006
+#define BIGCOLIN 3007
+#define THREEBYFIVE 3010
+#define BIGAPPOS 3022
+#define BLANK 3026
+#define MINIFONT 3072
+#define BUTTON1 3164
+#define GLASS3 3187
+#define BONUSSCREEN 3240
+#define VIEWBORDER 3250
+#define VICTORY1 3260
+#define ORDERING 3270
+#define TEXTSTORY 3280
+#define BLIMP 3400
+#define FOOTPRINT 3701
+#define POOP 3998
+#define FRAMEEFFECT1 3999
+
+#define DOOM_DEADMARINE 3626
+#define HEALTHBONER 4991
+#define ARMORBONER 4995
+
+#define SSGSPRITE 65
+
+
+
+[THINGTYPES]
+
+;Instructions on thing type conversions:
+;[dtype(-dtype)],[field,op,val]...
+;
+;dtype  Can be any short number found in thing[].type of a doom map.
+;field  Can be any field in the BUILD SPRITE structure (sprite assumed)
+;op     Can be any of these standard C operators:  = += -= ^= |= &=
+;val    Can be a number or one of the defines from above
+
+0-4095,xrepeat=56,yrepeat=48,              ;Useful for Doom->Doom to fix aspect ratio
+1,picnum=APLAYER,xrepeat=48,yrepeat=40,               ;Player 1 start
+2,picnum=APLAYER,xrepeat=48,yrepeat=40,               ;Player 2 start
+3,picnum=APLAYER,xrepeat=48,yrepeat=40,               ;Player 3 start
+4,picnum=APLAYER,xrepeat=48,yrepeat=40,               ;Player 4 start
+11,picnum=APLAYER,cstat|=2,xrepeat=48,yrepeat=40,     ;Deathmatch start positions. Should have >= 4/level
+14,picnum=BOMBEMITTER,          ;Teleport landing. Where things land when teleport to its SECTOR
+3004,picnum=LIZTROOP,           ;FORMER HUMAN: regular pistol-shooting zombieman
+84,picnum=SPACEMARINE,         ;WOLFENSTEIN SS: guest appearance by Wolf3D blue guy
+9,picnum=LIZTROOP,pal=21,       ;FORMER HUMAN SERGEANT: black armor, shotgunners
+65,picnum=LIZMAN,         ;HEAVY WEAPON DUDE: red armor, chaingunners
+3001,picnum=PIGCOP,       ;IMP: brown, hurl fireballs
+3002,picnum=OCTABRAIN,       ;DEMON: pink, muscular bull-like chewers
+58,picnum=OCTABRAIN,         ;SPECTRE: invisible version of the DEMON
+3006,picnum=DRONE,       ;LOST SOUL: flying flaming skulls, they really bite
+3005,picnum=COMMANDER,       ;CACODEMON: red one-eyed floating heads. Behold...
+69,picnum=BOSS1,pal=21,         ;HELL KNIGHT: grey-not-pink BARON, weaker
+3003,picnum=BOSS1,       ;BARON OF HELL: cloven hooved minotaur boss
+68,picnum=BOSS1,pal=21,         ;ARACHNOTRON: baby SPIDER, shoots green plasma
+71,picnum=COMMANDER,         ;PAIN ELEMENTAL: shoots LOST SOULS, deserves its name
+66,picnum=COMMANDER,         ;REVENANT: Fast skeletal dude shoots homing missles
+67,picnum=OCTABRAIN,         ;MANCUBUS: Big, slow brown guy shoots barrage of fire
+64,picnum=BOSS1,         ;ARCH-VILE: Super-fire attack, ressurects the dead!
+7,picnum=BOSS2,          ;SPIDER MASTERMIND: giant walking brain boss
+16,picnum=BOSS3,         ;CYBER-DEMON: robo-boss, rocket launcher
+88,picnum=BOSS3,         ;BOSS BRAIN: Horrifying visage of the ultimate demon
+89,picnum=LIZTROOP,         ;Boss Shooter: Shoots spinning skull-blocks
+87,picnum=0,         ;Spawn Spot: Where Todd McFarlane's guys appear
+2005,picnum=FREEZESPRITE,              ;Chainsaw
+2001,picnum=SHOTGUNSPRITE,              ;Shotgun e.g. electrogun
+82,picnum=SSGSPRITE,                ;Double-barreled shotgun
+2002,picnum=CHAINGUNSPRITE,              ;Chaingun, gatling gun, mini-gun, whatever
+2003,picnum=RPGSPRITE,              ;Rocket launcher
+2004,picnum=CYCLOIDSPRITE,              ;Plasma gun
+2006,picnum=SHRINKERSPRITE,              ;Bfg9000
+2007,picnum=AMMO,               ;Ammo clip
+2008,picnum=SHOTGUNAMMO,xrepeat=32               ;Shotgun shells
+2010,picnum=RPGAMMO,xrepeat=32               ;A rocket
+2047,picnum=CYCLOIDAMMO,               ;Cell charge
+2048,picnum=AMMO,               ;Box of Ammo
+2049,picnum=SHOTGUNAMMO,               ;Box of Shells
+2046,picnum=RPGAMMO,               ;Box of Rockets
+17,picnum=CYCLOIDAMMO,                 ;Cell charge pack
+8,picnum=HBOMBAMMO,             ;Backpack: doubles maximum ammo capacities
+2011,picnum=SIXPAK,               ;Stimpak
+2012,picnum=FIRSTAID,               ;Medikit
+2014,picnum=HEALTHBONER,xrepeat=32,yrepeat=28,               ;Health Potion +1% health
+2015,picnum=ARMORBONER,               ;Spirit Armor +1% armor
+2018,picnum=SHIELD,          ;Green armor 100%
+2019,picnum=SHIELD,          ;Blue armor 200%
+83,picnum=TRIPBOMBSPRITE,            ;Megasphere: 200% health, 200% armor
+2013,picnum=TRIPBOMBSPRITE,          ;Soulsphere, Supercharge, +100% health
+2022,picnum=ATOM,          ;Invulnerability
+2023,picnum=STEROIDS,          ;Berserk Strength and 100% health
+2024,picnum=HOLODUKE,          ;Invisibility
+2025,picnum=BOOTS,          ;Radiation suit
+2026,picnum=JETPACK,          ;Computer map
+2045,picnum=HEATSENSOR,          ;Lite Amplification goggles
+5,picnum=ACCESSCARD,               ;Blue keycard
+40,picnum=ACCESSCARD,              ;Blue skullkey
+13,picnum=ACCESSCARD,pal=21,              ;Red keycard
+38,picnum=ACCESSCARD,pal=21,              ;Red skullkey
+6,picnum=ACCESSCARD,pal=23,               ;Yellow keycard
+39,picnum=ACCESSCARD,pal=23,              ;Yellow skullkey
+2035,picnum=EXPLODINGBARREL,cstat|=1,xrepeat=48,yrepeat=40,        ;Barrel; not an obstacle after blown up (BEXP sprite)
+72,picnum=MONK,cstat|=1,          ;A guest appearance by Billy
+48,picnum=160,cstat|=1,yrepeat=64,          ;Tall, techno pillar
+30,picnum=160,cstat|=1,yrepeat=64,          ;Tall green pillar
+32,picnum=160,cstat|=1,yrepeat=64,          ;Tall red pillar
+31,picnum=160,cstat|=1,yrepeat=64,          ;Short green pillar
+36,picnum=160,cstat|=1,yrepeat=64,          ;Short green pillar with beating heart
+33,picnum=160,cstat|=1,yrepeat=64,          ;Short red pillar
+37,picnum=160,cstat|=1,yrepeat=64,          ;Short red pillar with skull
+47,picnum=FEM5,cstat|=1,          ;Stalagmite: small brown pointy stump
+43,picnum=1025,cstat|=1,          ;Burnt tree: gray tree
+54,picnum=1025,cstat|=1,          ;Large brown tree
+2028,picnum=1079,cstat|=1,        ;Floor lamp
+85,picnum=3300,cstat|=1,          ;Tall techno floor lamp
+86,picnum=3304,cstat|=1,          ;Short techno floor lamp
+34,picnum=1079,cstat|=1,          ;Candle
+35,picnum=1079,cstat|=1,          ;Candelabra
+44,picnum=1025,cstat|=1,          ;Tall blue firestick
+45,picnum=1025,cstat|=1,          ;Tall green firestick
+46,picnum=1025,cstat|=1,          ;Tall red firestick
+55,picnum=1025,cstat|=1,          ;Short blue firestick
+56,picnum=1025,cstat|=1,          ;Short green firestick
+57,picnum=1025,cstat|=1,          ;Short red firestick
+70,picnum=1025,cstat|=1,          ;Burning barrel
+41,picnum=1025,cstat|=1,          ;Evil Eye: floating eye in symbol, over candle
+42,picnum=1025,cstat|=1,          ;Floating Skull: flaming skull-rock
+49,picnum=1025,cstat|=1,          ;Hanging victim, twitching (can't walk through)
+63,picnum=1025,                   ;Hanging victim, twitching
+50,picnum=1025,cstat|=1,          ;Hanging victim, arms out (can't walk through)
+59,picnum=1025,                   ;Hanging victim, arms out
+52,picnum=1025,cstat|=1,          ;Hanging pair of legs (can't walk through)
+60,picnum=1025,                   ;Hanging pair of legs
+51,picnum=1025,cstat|=1,          ;Hanging victim, 1-legged (can't walk through)
+61,picnum=1025,                   ;Hanging victim, 1-legged
+53,picnum=1025,cstat|=1,          ;Hanging leg (can't walk through)
+62,picnum=1025,                   ;Hanging leg
+73,picnum=1025,cstat|=1,          ;Hanging victim, guts removed
+74,picnum=1025,cstat|=1,          ;Hanging victim, guts and brain removed
+75,picnum=1025,cstat|=1,          ;Hanging torso, looking down
+76,picnum=1025,cstat|=1,          ;Hanging torso, open skull
+77,picnum=1025,cstat|=1,          ;Hanging torso, looking up
+78,picnum=1025,cstat|=1,          ;Hanging torso, brain removed
+25,picnum=1025,cstat|=1,          ;Impaled human
+26,picnum=1025,cstat|=1,          ;Twitching impaled human
+27,picnum=1025,cstat|=1, ;Skull on a pole
+28,picnum=1025,cstat|=1, ;5 skulls shish kebob
+29,picnum=1025,cstat|=1, ;Pile of skulls and candles
+10,picnum=JIBS1,xrepeat=48,yrepeat=40,          ;Bloody mess (an exploded player)
+12,picnum=JIBS1,xrepeat=48,yrepeat=40,          ;Bloody mess, this thing is exactly the same as 10
+24,picnum=JIBS2,xrepeat=48,yrepeat=40,          ;Pool of blood and flesh
+79,picnum=JIBS3,xrepeat=48,yrepeat=40,          ;Pool of blood
+80,picnum=JIBS4,xrepeat=48,yrepeat=40,          ;Pool of blood
+81,picnum=JIBS5,xrepeat=48,yrepeat=40,          ;Pool of brains
+15,picnum=DOOM_DEADMARINE,xrepeat=48,yrepeat=48,          ;Dead player
+18,picnum=TROOPDEADSPRITE,xrepeat=48,yrepeat=40,          ;Dead former human
+19,picnum=TROOPDEADSPRITE,pal=21,xrepeat=48,yrepeat=40,          ;Dead former sergeant
+20,picnum=LIZMANDEADSPRITE,xrepeat=48,yrepeat=40,          ;Dead imp
+21,picnum=TROOPDEADSPRITE,xrepeat=48,yrepeat=40,          ;Dead demon
+22,picnum=COMMANDERDEADSPRITE,xrepeat=48,yrepeat=40,          ;Dead cacodemon
+23,picnum=TROOPDEADSPRITE,xrepeat=48,yrepeat=40,          ;Dead lost soul, invisible (they blow up when killed)
+
+
+
+[OPTIONTYPES]
+
+BIT0,cstat|=0,                   ;present at skill 1&2
+BIT1,cstat|=0,                   ;present at skill 3
+BIT2,cstat|=0,                   ;present at skill 4&5
+BIT3,cstat|=0,                   ;deaf guard (monsters only)
+BIT4,cstat|=0,                   ;present in multiplayer mode only
+
+
+;Things that start high:
+;   3006,3005,71,49,63,50,59,52,60,51,61,53,62,73,74,75,76,77,78
+
+
+
+[TEXTURELOOKUPS]
+
+;Instructions on texture lookups:
+;[dtext(-dtext) or wadname],[val]
+;
+;dtext   Can be any doom texture number.
+;wadname Can be any wad name representing a texture.
+				You can use the ? wildcard, for example EXIT? repesents both
+				EXIT1 and EXIT2.  The number of characters must be the same for
+				wildcards to pick up names.
+;val     Can be a number or one of the defines from above
+WALL62_2,3551
+BROWNGRN,3551
+
+WALL62_1,3552
+BROWN96,3552
+
+RW10_2, 3553
+BRONZE2,3553
+
+SW19_1, 3549
+STARTAN3, 3549
+
+WALL02_2, 3548
+BROWN1, 3548
+
+SUPPORT2, 3547
+
+WALL47_1, 3546
+METAL, 3546
+
+TP7_1, 3545
+PIPE4, 3545
+
+DOORTRAK, 3544
+
+WALL42_3, 3543
+SUPPORT3, 3543
+
+SW11_4, 3542
+STEP2, 3542
+
+STEP09, 3541
+STEP5, 3541
+
+STEP10, 3540
+STEP6, 3540
+
+W33_7, 3538
+GRAY5, 3538
+
+W94_1, 3519
+TEKWALL4, 3519
+
+DOOR3_6, 3518
+EXITDOOR, 3518
+
+RW47_1, 3517
+MIDSPACE, 3517
+
+GATE1,3520
+GATE2,3521
+GATE3,3522
+GATE4,3523
+SLIME14,3524
+FLAT14,3525
+FLAT23,3526
+FLOOR4_8,3527
+TLITE6_5,3528
+CEIL3_2,3529
+CEIL1_2,3530
+CEIL3_4,3531
+CEIL4_2,3532
+CEIL3_3,3533
+CEIL5_1,3534
+FLOOR0_3,3535
+FLOOR0_1,3536
+FLOOR0_2,3537
+FLAT19,3539
+FLAT1_1,3554
+RROCK12,3555
+RROCK15,3556
+FLOOR7_1,3557
+CEIL5_2,3558
+GRASS1,3559
+GRASS2,3560
+FLAT1_2,3562
+
+	;PARALLAXING SKY
+F_SKY1,3561
+
+
+
+
+
+
+[TAGCONVERSIONS]
+
+
+;Instructions on tag conversions:
+;[dtype(-dtype)],[structname.field,op,val]...
+;
+;dtype       Can be any number found in linedef[].type of a doom map.
+;structname  Can be any of these:
+;  fwall - The front side of a wall
+;  bwall - The back side of a wall
+;  fsector - The front sector of a wall
+;  bsector - The back sector of a wall
+;  f(#)sprite - A sprite that will be inserted into front sector if accessed
+;  b(#)sprite - A sprite that will be inserted into back sector if accessed
+;     For sprites, the # option allows you to choose which of 8 possible
+;     sprites in each sector the field will be put into.  Only touched
+;     sprites will be inserted into the final map.
+;field       Can be any field inside the structure you chose
+;op          Can be any of these standard C operators:  = += -= ^= |= &=
+;val         Can be a number, a define, or the keyword "tag"
+
+
+;smoosh all walls on map
+0-4095,fwall.xrepeat=8,fwall.yrepeat=8,
+0-4095,bwall.xrepeat=8,bwall.yrepeat=8,
+
+;SPECIAL (Continuous effect, no triggereing)
+48,            ;n--,Scrolling wall
+
+
+;LOCAL DOORS ("MANUAL" DOORS)
+1,fsector.lotag=20,f0sprite.picnum=SECTOREFFECTOR,f0sprite.lotag=10,f0sprite.hitag=128,              ;nSRmopen/close(4sec)
+26,fsector.lotag=20,f0sprite.picnum=SECTOREFFECTOR,f0sprite.lotag=10,f0sprite.hitag=128,             ;nSR,open/close BLUE KEY (4 sec)
+28,fsector.lotag=20,f0sprite.picnum=SECTOREFFECTOR,f0sprite.lotag=10,f0sprite.hitag=128,             ;nSR,open/close RED KEY (4 sec)
+27,fsector.lotag=20,f0sprite.picnum=SECTOREFFECTOR,f0sprite.lotag=10,f0sprite.hitag=128,             ;nSR,open/close YELLOW KEY (4 sec)
+31,fsector.lotag=20,                             ;nS1,open
+32,fsector.lotag=20,                             ;nS1,open BLUE KEY
+33,fsector.lotag=20,                             ;nS1,open RED KEY
+34,fsector.lotag=20,                             ;nS1,open YELLOW KEY
+46,fsector.lotag=20,                             ;nGR,open
+117,fsector.lotag=20,f0sprite.picnum=SECTOREFFECTOR,f0sprite.lotag=10,f0sprite.hitag=128,            ;nSR,fast open/close (4 sec)
+117,f1sprite.picnum=GPSPEED,f1sprite.lotag=512,
+118,fsector.lotag=20,f1sprite.picnum=GPSPEED,f1sprite.lotag=512,                            ;nS1,fast open
+
+;REMOTE DOORS
+4,0                              ;W1,open/close (4 sec)
+29,0                             ;S1,open/close (4 sec)
+90,0                         ;WR,open/close (4 sec)
+63,0                         ;SR,open/close (4 sec)
+2,0                          ;W1,open
+103,0                        ;S1,open
+86,0                         ;WR,open
+61,0                         ;SR,open
+3,0                          ;W1,close
+50,0                         ;S1,close
+75,0                         ;WR,close
+42,0                         ;SR,close
+16,0                         ;W1,close/opens (30 sec)
+76,0                         ;WR,close/opens (30 sec)
+108,0                        ;W1,fast open/close (4 sec)
+111,0                        ;WR,fast open/close (4 sec)
+105,0                        ;S1,fast open/close (4 sec)
+114,0                        ;SR,fast open/close (4 sec)
+109,0                        ;W1,fast open
+112,0                        ;S1,fast open
+106,0                        ;WR,fast open
+115,0                        ;SR,fast open
+110,0                        ;W1,fast close
+113,0                        ;S1,fast close
+107,0                        ;WR,fast close
+116,0                        ;SR,fast close
+133,0                        ;S1,fast open BLUE KEY
+99,0                         ;SR,fast open BLUE KEY
+135,0                        ;S1,fast open RED KEY
+134,0                        ;SR,fast open RED KEY
+137,0                        ;S1,fast open YELLOW KEY
+136,0                        ;SR,fast open YELLOW KEY
+
+;CEILINGS
+40,0                         ;W1,up to HEC
+41,0                         ;S1,down to floor
+43,0                         ;SR,down to floor
+44,0                         ;W1,down to floor + 8
+49,0                         ;S1,down to floor + 8
+72,0                         ;WR,down to floor + 8
+
+;LIFTS
+10,fsector.lotag=16,            ;W1,lift (3 sec)
+21,fsector.lotag=16,            ;S1,lift (3 sec)
+88,fsector.lotag=16,            ;WRm,lift (3 sec)
+62,fsector.lotag=16,            ;SR,lift (3 sec)
+121,fsector.lotag=16,           ;W1,fast lift (3 sec)
+122,fsector.lotag=16,           ;S1,fast lift (3 sec)
+120,fsector.lotag=16,           ;WR,fast lift (3 sec)
+123,fsector.lotag=16,           ;SR,fast lift (3 sec)
+
+;FLOORS
+119,0                        ;W1,up to nhEF
+128,0                        ;WR,up to nhEF
+18,0                         ;S1,up to nhEF
+69,0                         ;SR,up to nhEF
+22,0                         ;W1&,up to nhEF (floor texture change)
+95,0                         ;WR&,up to nhEF (floor texture change)
+20,0                         ;S1&,up to nhEF (floor texture change)
+68,0                         ;SR&,up to nhEF (floor texture change)
+47,0                         ;G1&,up to nhEF (floor texture change)
+5,0                          ;W1,up to LIC
+91,0                         ;WR,up to LIC
+101,0                        ;S1,up to LIC
+64,0                         ;SR,up to LIC
+24,0                         ;G1,up to LIC
+130,0                        ;W1,fast up to nhEF
+131,0                        ;S1,fast up to nhEF
+129,0                        ;WR,fast up to nhEF
+132,0                        ;SR,fast up to nhEF
+56,0                         ;W1&,up to LIC-8/CRUSH
+94,0                         ;WR&,up to LIC-8/CRUSH
+55,0                         ;S1,up to LIC-8/CRUSH
+65,0                         ;SR,up to LIC-8/CRUSH
+58,0                         ;W1,up 24
+92,0                         ;WR,up 24
+15,0                         ;S1&,up 24 (floor texture change)
+66,0                         ;SR&,up 24 (floor texture change)
+59,0                         ;W1&,up 24 (special floor texture change)
+93,0                         ;WR&,up 24 (special floor texture change)
+14,0                         ;S1&,up 32 (floor texture changed)
+67,0                         ;SR&,up 32 (floor texture changed)
+140,0                        ;S1,fast up 512
+30,0                         ;W1,up ShortestLowerTexture
+96,0                         ;WR,up ShortestLowerTexture
+38,0                         ;W1,down to LEF
+23,0                         ;S1,down to LEF
+82,0                         ;WR,down to LEF
+60,0                         ;SR,down to LEF
+37,0                         ;W1,down to LEF ((numeric) floor texture changed)
+84,0                         ;WR,down to LEF ((numeric) floor texture changed)
+19,0                         ;W1,down to HEF
+102,0                        ;S1,down to HEF
+83,0                         ;WR,down to HEF
+45,0                         ;SR,down to HEF
+36,0                         ;W1,fast down to HEF + 8
+71,0                         ;S1,fast down to HEF + 8
+98,0                         ;WR,fast down to HEF + 8
+70,0                         ;SR,fast down to HEF + 8
+9,0                          ;S1,donut (see note 12) ((numeric) floor texture changed)
+
+;STAIRS
+8,0                          ;W1,stairs
+7,0                          ;S1,stairs
+100,0                        ;W1,fast stairs (each up 16 not 8) + crush
+127,0                        ;S1,fast stairs (each up 16 not 8) + crush
+
+;MOVING FLOORS
+53,0                         ;W1&,start moving floor (3 sec)
+54,0                         ;W1&,stop moving floor
+87,0                         ;WR&,start moving floor (3 sec)
+89,0                         ;WR&,stop moving floor
+
+;CRUSHING CEILINGS
+6,0                          ;W1&,start crush/fast hurt (0 sec)
+25,0                         ;W1&,start crush/slow hurt (0 sec)
+73,0                         ;WR&,start crush/slow hurt (0 sec)
+77,0                         ;WR&,start crush/fast hurt (0 sec)
+57,0                         ;W1&,stop crush
+74,0                         ;WR&,stop crush
+141,0                        ;W1&,start crush/slow hurt "Silent" (0 sec)
+
+;EXIT LEVEL
+11,0                         ;nS-,End level/go to next level
+51,0                         ;nS-,End level/go to secret level
+52,0                         ;nW-,End level/go to next level
+124,0                        ;nW-,End level/go to secret level
+
+;TELEPORT
+39,f0sprite.picnum=SECTOREFFECTOR,f0sprite.lotag=7,f0sprite.hitag=tag            ;W1m,Teleport
+97,f0sprite.picnum=SECTOREFFECTOR,f0sprite.lotag=7,f0sprite.hitag=tag            ;WRm,Teleport
+125,f0sprite.picnum=SECTOREFFECTOR,f0sprite.lotag=7,f0sprite.hitag=tag           ;W1m,Teleport monsters only
+126,f0sprite.picnum=SECTOREFFECTOR,f0sprite.lotag=7,f0sprite.hitag=tag           ;WRm,Teleport monsters only
+
+;LIGHT
+35,0         ;W1,0
+104,0        ;W1,LE (light level)
+12,0         ;W1,HE (light level)
+13,0         ;W1,255
+79,0         ;WR,0
+80,0         ;WR,HE (light level)
+81,0         ;WR,255
+17,0         ;W1,Light blinks (see [4-9-1] type 3)
+138,0        ;SR,255 (clunk)
+139,0        ;SR,0 (clunk)
+
+[SECTORCONVERSIONS]
+
+;Instructions on sector conversions:
+;[dtype(-dtype)],[structname.field,op,val]...
+;
+;dtype       Can be any number found in linedef[].type of a doom map.
+;structname  Can be any of these:
+;  sector - The front side of a wall
+;  (#)sprite - A sprite that will be inserted into front sector if accessed
+;     For sprites, the # option allows you to choose which of 8 possible
+;     sprites in each sector the field will be put into.  Only touched
+;     sprites will be inserted into the final map.
+;field       Can be any field inside the structure you chose
+;op          Can be any of these standard C operators:  = += -= ^= |= &=
+;val         Can be a number, a define, or the keyword "tag"
+
+
+
+
+0-4095,sector.ceilingstat|=0,sector.floorstat|=0,
+
+;LIGHT EFFECTS
+1,sector.floorshade+=16,0sprite.picnum=SECTOREFFECTOR,0sprite.lotag=4,                   ;random off
+2,sector.floorshade+=16,0sprite.picnum=SECTOREFFECTOR,0sprite.lotag=4,                   ;blink 0.5 second
+3,sector.floorshade+=16,0sprite.picnum=SECTOREFFECTOR,0sprite.lotag=4,                   ;blink 1.0 second
+8,sector.floorshade+=16,0sprite.picnum=CYCLER,0sprite.ang=1536,                   ;oscillates
+12,sector.floorshade+=16,0sprite.picnum=SECTOREFFECTOR,0sprite.lotag=4,                  ;blink 0.5 second, synchronized
+13,sector.floorshade+=16,0sprite.picnum=SECTOREFFECTOR,0sprite.lotag=4,                  ;blink 1.0 second, synchronized
+17,sector.floorshade+=16,0sprite.picnum=SECTOREFFECTOR,0sprite.lotag=4,                  ;flickers on and off randomly (1.666+)
+
+;DAMAGE
+7,sector.tag=1    ;hurt 2-5%
+5,sector.tag=1    ;hurt 5-10%
+16,sector.tag=1   ;hurt 10-20%
+4,sector.tag=1    ;hurt 10-20% & light blink 0.5 second
+4,sector.floorshade+=16,0sprite.picnum=SECTOREFFECTOR,0sprite.lotag=4,
+
+;DOORS/SECRETS
+10,sector.tag=20,0sprite.picnum=SECTOREFFECTOR,0sprite.lotag=10,0sprite.hitag=1024 ;after 30 sec, ceiling closes like door
+14,                  ;after 300 sec, ceiling opens like door
+9,sector.tag=32767                   ;(Secret) If in this sector, you get credit at end
+11,                  ;(End) -10/20% health. When < 11%, level ends
+6,0sprite.picnum=SECTOREFFECTOR,0sprite.lotag=25                   ;crushing ceiling (Doom 2 only)
+15,                  ;ammo creator (Doom 2 only)
+
