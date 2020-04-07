@@ -5,6 +5,8 @@ voxel "voxels/props/0547_faucet.kvx" { tile 574 }
 voxel "voxels/props/0670_faucet2.kvx" { tile 670 }
 voxel "voxels/props/0671_faucet2.kvx" { tile 671 }
 
+voxel "voxels/props/0678_scale.kvx" { tile 678 }
+
 voxel "voxels/props/0551_lightdome1.kvx" { tile 551 }
 voxel "voxels/props/0552_lightdome2.kvx" { tile 552 }
 voxel "voxels/props/0553_lightdome3.kvx" { tile 553 }
@@ -41,6 +43,7 @@ voxel "voxels/props/0621_cameraA1.kvx" { tile 621 tile 622 tile 623 tile 624 til
 voxel "voxels/props/0669_vacuumcl.kvx" { tile 669 }
 
 voxel "voxels/props/0685_stagelamp.kvx" { tile 685 }
+voxel "voxels/props/0689_ivunit.kvx" { tile 689 }
 
 voxel "voxels/props/0694_pot1.kvx" { tile 694 }
 voxel "voxels/props/0695_pot2.kvx" { tile 695 }
@@ -74,6 +77,9 @@ voxel "voxels/props/0954_bottle1.kvx" { tile 954 }
 voxel "voxels/props/0955_bottle2.kvx" { tile 955 }
 voxel "voxels/props/0956_bottle3.kvx" { tile 956 }
 voxel "voxels/props/0957_bottle4.kvx" { tile 957 }
+
+voxel "voxels/props/0969_hydroplant.kvx" { tile 969 }
+voxel "voxels/props/1003_brokehydroplant.kvx" { tile 1003 }
 
 voxel "voxels/props/0978_traffic_cone.kvx" { tile 978 }
 voxel "voxels/props/0979_hanglight.kvx" { tile 979 }
@@ -172,6 +178,25 @@ voxel "voxels/props/4576_shoppingcart.kvx" { tile 4576 }
 voxel "voxels/props/4580_canwithsomething2.kvx" { tile 4580 }
 voxel "voxels/props/4581_canwithsomething3.kvx" { tile 4581 }
 voxel "voxels/props/4582_canwithsomething4.kvx" { tile 4582 }
+
+// ***** TRUE-COLOR VOXELS *****
+definemodel "voxels/props/3614_lamp.kv6" 1.0 0
+definemodelframe 0 3614 3614
+
+definemodel "voxels/props/3898_woodn2.kv6" 1.0 0
+definemodelframe 0 3898 3898
+
+definemodel "voxels/props/3992_katanas.kv6" 1.0 0
+definemodelframe 0 3992 3992
+
+definemodel "voxels/props/3994_plampr2.kv6" 1.0 0
+definemodelframe 0 3994 3994
+
+definemodel "voxels/props/3995_plampb.kv6" 1.0 0
+definemodelframe 0 3995 3995
+
+definemodel "voxels/props/3998_parasol.kv6" 1.0 0
+definemodelframe 0 3998 3998
 
 //voxel "voxels/props/7054_tombstone.kvx" { tile 7054 }
 definemodel "voxels/props/7054_tombstone.kv6" 1.0 0

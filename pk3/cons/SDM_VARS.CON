@@ -84,8 +84,7 @@ gamevar JUMPPAD_YVEL 0 1
 gamevar IN_RIFT 0 1
 
 gamevar RECOIL_AMOUNT 0 1
-gamevar RECOIL_TIME 0 1
-gamevar RECOIL_COUNTER 0 1
+gamevar RECOIL_SPEED 0 1
 gamevar STOP_BURNING 0 1
 
 // Prediction Vars

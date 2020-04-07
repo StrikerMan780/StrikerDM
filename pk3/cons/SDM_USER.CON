@@ -264,6 +264,10 @@ definelevelname 10 38 maps/HELLAW8Z.map 66:60 66:60 Hellaw8z: Merlijn Van Oostru
 definelevelname 10 39 maps/DECK16-SDM.map 66:60 66:60 Deck 16: Photonic
 definelevelname 10 40 maps/JAYWALKERSTUNNEL.map 66:60 66:60 Jaywalkers Tunnel: M. Authors
 definelevelname 10 41 maps/MEMARIOSMOMOSEUM.map 66:60 66:60 Memario's Momoseum: M. Authors
+definelevelname 10 42 maps/QUARRELINGCABINS.map 66:60 66:60 Quarreling Cabins: N. Ranzou
+definelevelname 10 43 maps/OVERLAPPINGSEASONS.map 66:60 66:60 Overlapping Seasons: F. Marquez
+definelevelname 10 44 maps/YAMATOSEABASE.map 66:60 66:60 Yamato Seabase: F. Marquez
+definelevelname 10 45 maps/POISONOUSBRAWL.map 66:60 66:60 Poisonous Brawl: F. Marquez
 
 music 11 music/seppuku.ogg music/ancient.ogg music/fortress.ogg music/zerostreets.ogg music/zerotown.ogg
          music/eerie.ogg music/saturntoll.ogg music/echohare.ogg music/apes.mid music/mental.ogg music/breed.mid
@@ -271,4 +275,5 @@ music 11 music/seppuku.ogg music/ancient.ogg music/fortress.ogg music/zerostreet
          music/depression.mid music/vitevoom.mid music/munsters.mid music/bodies.mid music/deathcrush.mid music/pow.mid
          music/nostalgy.mid music/shattered.mid music/hymnof.xm music/an-turr.xm music/starg13.mod music/letni.s3m music/flanns.mod
          music/ninjaphi.it music/lagoona.xm music/battleofsteel.xm music/d_l24d.it music/qube.mod music/kernkraft.mod
-         music/icefront.s3m music/episode_666.xm music/fire.xm music/godown.it music/heavystr.it music/memefever.ogg
+         music/icefront.s3m music/episode_666.xm music/fire.xm music/godown.it music/heavystr.it music/memefever.ogg music/freeze.s3m
+         music/coldwave.mid music/odyssey2.mid music/takeawil.mid

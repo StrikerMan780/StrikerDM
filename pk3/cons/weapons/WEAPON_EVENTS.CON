@@ -75,7 +75,8 @@ onevent EVENT_DOFIRE
 		}
 		
 		setvar RECOIL_AMOUNT 2
-		setvar RECOIL_TIME 2
+		mulvar RECOIL_AMOUNT 65536
+		setvar RECOIL_SPEED 32768
 	}
 	else ifvare TEMP CHAINGUN_WEAPON
 	{
@@ -94,7 +95,8 @@ onevent EVENT_DOFIRE
 			}
 			
 			setvar RECOIL_AMOUNT 8
-			setvar RECOIL_TIME 4
+			mulvar RECOIL_AMOUNT 65536
+			setvar RECOIL_SPEED 49152
 		}
 		else
 		{
@@ -109,6 +111,9 @@ onevent EVENT_DOFIRE
 			{
 				setvar RIPPER_AMMO 0
 			}
+			
+			setvar RECOIL_AMOUNT 32768
+			setvar RECOIL_SPEED 16384
 		}
 	}
 	else ifvare TEMP RPG_WEAPON
@@ -135,7 +140,8 @@ onevent EVENT_DOFIRE
 			}
 			
 			setvar RECOIL_AMOUNT 4
-			setvar RECOIL_TIME 2
+			mulvar RECOIL_AMOUNT 65536
+			setvar RECOIL_SPEED 65536
 		}
 		else
 		{
@@ -152,7 +158,8 @@ onevent EVENT_DOFIRE
 			}
 			
 			setvar RECOIL_AMOUNT 10
-			setvar RECOIL_TIME 10
+			mulvar RECOIL_AMOUNT 65536
+			setvar RECOIL_SPEED 32768
 		}
 	}
 	else ifvare TEMP SHOTGUN_WEAPON
@@ -171,13 +178,20 @@ onevent EVENT_DOFIRE
 			setplayer[THISACTOR].ammo_amount SHOTGUN_WEAPON TEMP2
 			
 			setvar RECOIL_AMOUNT 8
-			setvar RECOIL_TIME 2
+			mulvar RECOIL_AMOUNT 65536
+			setvar RECOIL_SPEED 65536
 		}
 		else
 		{
 			setvar RECOIL_AMOUNT 4
-			setvar RECOIL_TIME 2
+			mulvar RECOIL_AMOUNT 65536
+			setvar RECOIL_SPEED 65536
 		}
+	}
+	else ifvare TEMP PISTOL_WEAPON
+	{
+		setvar RECOIL_AMOUNT 32768
+		setvar RECOIL_SPEED 10922
 	}
 endevent
 

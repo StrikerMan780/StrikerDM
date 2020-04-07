@@ -650,6 +650,8 @@ tilefromtexture 7320 { file "tiles/7320.png" }
 tilefromtexture 7321 { file "tiles/7321.png" }
 tilefromtexture 7322 { file "tiles/7322.png" }
 tilefromtexture 7323 { file "tiles/7323.png" }
+tilefromtexture 7324 { file "tiles/7324.png" texture }
+tilefromtexture 7325 { file "tiles/7325.png" texture }
 
 // Animated Textures
 animtilerange 7081 7132 3 ANIM_FORWARD

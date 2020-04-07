@@ -65,12 +65,27 @@ state draw_chaingun // CHAINGUN_WEAPON:
 			addvarvar hud_y hud_temp3
 			subvarvar hud_y hud_temp2
 			addvar hud_y 208
-
-			setvarvar hud_tilenum weaponcount
-			subvar hud_tilenum 4
-			divvar hud_tilenum 2
-			addvar hud_tilenum CHAINGUN
-			addvar hud_tilenum 5
+			
+			switch weaponcount
+				case 4
+					setvar hud_tilenum 2541
+					break
+				case 5
+					setvar hud_tilenum RIPPERFLASH_EXTRA1
+					break
+				case 6
+					setvar hud_tilenum 2542
+					break
+				case 7
+					setvar hud_tilenum RIPPERFLASH_EXTRA2
+					break
+				case 8
+					setvar hud_tilenum 2543
+					break
+				case 9
+					setvar hud_tilenum RIPPERFLASH_EXTRA3
+					break
+			endswitch
 
 			state G_DrawWeaponTile
 
@@ -121,11 +136,27 @@ state draw_chaingun // CHAINGUN_WEAPON:
 			subvarvar hud_y hud_temp2
 			addvar hud_y 208
 
-			setvarvar hud_tilenum weaponcount
-			subvar hud_tilenum 2
-			divvar hud_tilenum 2
-			addvar hud_tilenum CHAINGUN
-			addvar hud_tilenum 5
+			switch weaponcount
+				case 1
+				case 2
+					setvar hud_tilenum 2541
+					break
+				case 3
+					setvar hud_tilenum RIPPERFLASH_EXTRA1
+					break
+				case 4
+					setvar hud_tilenum 2542
+					break
+				case 5
+					setvar hud_tilenum RIPPERFLASH_EXTRA2
+					break
+				case 6
+					setvar hud_tilenum 2543
+					break
+				case 7
+					setvar hud_tilenum RIPPERFLASH_EXTRA3
+					break
+			endswitch
 
 			state G_DrawWeaponTile
 
@@ -139,10 +170,40 @@ state draw_chaingun // CHAINGUN_WEAPON:
 			// barrels (hot)
 			addvar hud_x 178
 			addvar hud_y 233
+			
+			switch weaponcount
+				case 1
+					setvar hud_tilenum 2537
+					break
+				case 2
+					setvar hud_tilenum RIPPERBARREL_EXTRA1
+					break
+				case 3
+					setvar hud_tilenum 2538
+					break
+				case 4
+					setvar hud_tilenum RIPPERBARREL_EXTRA2
+					break
+				case 5
+					setvar hud_tilenum 2539
+					break
+				case 6
+					setvar hud_tilenum RIPPERBARREL_EXTRA3
+					break
+				case 7
+					setvar hud_tilenum 2540
+					break
+			endswitch
 
-			setvar hud_tilenum CHAINGUN
-			addvar hud_tilenum 1
-			addvarvar hud_tilenum hud_temp2
+/*			
+			ifvarg hud_tilenum 2537
+			ifvarl hud_tilenum 2541
+			{
+				redefinequote 500 ^08WeaponCount: %d / %d
+				qsprintf 500 500 weaponcount hud_tilenum
+				userquote 500
+			}
+*/
 
 			state G_DrawWeaponTile
 		}

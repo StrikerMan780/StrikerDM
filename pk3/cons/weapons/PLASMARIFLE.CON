@@ -19,19 +19,24 @@ state draw_plasmarifle // PLASMARIFLE_WEAPON:
 
 		subvarvar hud_y hud_temp
 	}
-	
-	ifvarl weaponcount 8
-		setvar hud_tilenum PLASMARIFLE1
-    else ifvarl weaponcount 9
-		setvar hud_tilenum PLASMARIFLE2
-    else ifvarl weaponcount 10
-		setvar hud_tilenum PLASMARIFLE3
-    else ifvarl weaponcount 11
-		setvar hud_tilenum PLASMARIFLE4
-    else ifvarl weaponcount 12
-		setvar hud_tilenum PLASMARIFLE5
-	else ifvarg weaponcount 13
-		setvar hud_tilenum PLASMARIFLE1
+		
+	switch weaponcount
+		case 8
+			setvar hud_tilenum PLASMARIFLE2
+			break
+		case 9
+			setvar hud_tilenum PLASMARIFLE3
+			break
+		case 10
+			setvar hud_tilenum PLASMARIFLE4
+			break
+		case 11
+			setvar hud_tilenum PLASMARIFLE5
+			break
+		default
+			setvar hud_tilenum PLASMARIFLE1
+			break
+	endswitch
 	
 	state G_DrawWeaponTile
 	

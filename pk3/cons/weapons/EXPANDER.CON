@@ -111,25 +111,77 @@ defineprojectile GROWSPARK PROJ_YREPEAT 24
 defineprojectile GROWSPARK PROJ_EXTRA GROWSPARK_WEAPON_STRENGTH
 defineprojectile GROWSPARK PROJ_EXTRA_RAND 5
 defineprojectile GROWSPARK PROJ_CLIPDIST 16
-defineprojectile GROWSPARK PROJ_HITRADIUS 1280
+defineprojectile GROWSPARK PROJ_HITRADIUS 0
 defineprojectile GROWSPARK PROJ_SHADE -127
 defineprojectile GROWSPARK PROJ_ISOUND SHRINKER_HIT
-defineprojectile GROWSPARK PROJ_SPAWNS EXPANDEREXPLOSION
+defineprojectile GROWSPARK PROJ_SPAWNS -1
 defineprojectile GROWSPARK PROJ_SXREPEAT 32
 defineprojectile GROWSPARK PROJ_SYREPEAT 32
 defineprojectile GROWSPARK PROJ_TRAIL EXPANDERTRAIL
 defineprojectile GROWSPARK PROJ_TXREPEAT 24
 defineprojectile GROWSPARK PROJ_TYREPEAT 24
 
-spritenoshade EXPANDEREXPLOSION
+state expander_radius
+	headspritestat CURSPRITE 10 // STAT_PLAYER
+	setvarvar LASTSPRITE CURSPRITE
+	whilevarn CURSPRITE -1
+	{
+		getactor[THISACTOR].owner TEMP
+		getactor[TEMP].yvel TEMP
+		getactor[CURSPRITE].yvel TEMP2
+		
+		ifvarvarn TEMP TEMP2
+		{
+			dist TEMP THISACTOR CURSPRITE
+			ifvarl TEMP 1280
+			{
+				getactor[CURSPRITE].extra TEMP
+				ifvarg TEMP 0
+				{
+					getactor[CURSPRITE].cstat TEMP
+					ifvarand TEMP 256 // Shootable
+					{	
+						getactor[THISACTOR].owner TEMP
+						setactor[CURSPRITE].htowner TEMP
+						setactor[CURSPRITE].htpicnum GROWSPARK
+						
+						getactor[CURSPRITE].extra TEMP
+						subvar TEMP GROWSPARK_WEAPON_STRENGTH
+						ifvarl TEMP 1
+						{
+							getactor[CURSPRITE].htextra TEMP
+							addvar TEMP 999
+							setactor[CURSPRITE].htextra TEMP
+						}
+						else
+						{
+							setactor[CURSPRITE].extra TEMP
+							getactor[CURSPRITE].htextra TEMP
+							addvar TEMP 1
+							setactor[CURSPRITE].htextra TEMP
+						}
+					}
+				}
+			}
+		}
+			
+		nextspritestat CURSPRITE LASTSPRITE
+		setvarvar LASTSPRITE CURSPRITE
+	}
+ends
+
+
+spriteflags EXPANDEREXPLOSION 4
 action EXPANDERFRAMES 0 4 1 1 10
 actor EXPANDEREXPLOSION 0
 	ifaction 0
 	{
 		cstat 128
+		sizeat 32 32
 		setactor[THISACTOR].shade -127
 		action EXPANDERFRAMES
 		spawn EXPANDERTRAIL
+		state expander_radius
 	}
 	else
 	{

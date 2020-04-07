@@ -134,16 +134,6 @@ onevent EVENT_DAMAGESPRITE
 			setvar RETURN -1
 			break
 		}
-		
-		ifactor GROWSPARK
-		{
-			getuserdef[].return 1 TEMP
-			ifvarn TEMP -1
-			{
-				setvar RETURN -1
-				break
-			}
-		}
 	}
 	
 	ifactor FREEZEBLAST
@@ -210,6 +200,15 @@ onevent EVENT_KILLIT
 	ifactor FIREBALL
 	{
 		espawn ONFIRE
+		getactor[THISACTOR].owner TEMP
+		setactor[RETURN].owner TEMP
+		setvar RETURN 0
+		break
+	}
+	
+	ifactor GROWSPARK
+	{
+		espawn EXPANDEREXPLOSION
 		getactor[THISACTOR].owner TEMP
 		setactor[RETURN].owner TEMP
 		setvar RETURN 0
@@ -1857,6 +1856,10 @@ onevent EVENT_DISPLAYMENUREST // Version display. !UNSYNCHRONIZED!
 	}
 	
 	screentext 3072 8 174 65536 0 0 500 -127 6 280 0 3 5 1 1 8192 0 0 xdim ydim
+endevent
+
+onevent EVENT_DISPLAYROOMS // Version display. !UNSYNCHRONIZED!
+	state handle_recoil
 endevent
 
 onevent EVENT_ENTERLEVEL

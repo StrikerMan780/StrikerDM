@@ -114,7 +114,6 @@ state handle_rift
 state handle_sectortypes
 state handle_jumppad_movement
 state player_updateweapons
-state handle_recoil
   ifaction 0
     action PSTAND
 

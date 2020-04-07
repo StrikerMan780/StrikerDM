@@ -201,6 +201,15 @@ tilefromtexture 35 { file "tiles/35.png" }
 tilefromtexture 36 { file "tiles/36.png" }
 animtilerange 34 36 2 ANIM_FORWARD
 
+// Ripper Extra Flash Frames
+tilefromtexture 2624 { file "tiles/2624.png" xoff 0 yoff 11 }
+tilefromtexture 2625 { file "tiles/2625.png" xoff 0 yoff 11 }
+tilefromtexture 2626 { file "tiles/2626.png" xoff 0 yoff 11 }
+
+tilefromtexture 2627 { file "tiles/2627.png" xoff -3 yoff -1 }
+tilefromtexture 2628 { file "tiles/2628.png" xoff -1 yoff -1 }
+tilefromtexture 2629 { file "tiles/2629.png" xoff 0 yoff 0 }
+
 // LameDuke Explosion
 tilefromtexture 2080 { file "tiles/2080.png" }
 tilefromtexture 2081 { file "tiles/2081.png" }

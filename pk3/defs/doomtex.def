@@ -60,6 +60,7 @@ tilefromtexture 3560 { file "tiles/3560.png" texture } // GRASS2
 tilefromtexture 3561 { file "tiles/3561.png" texture } // SKY2
 tilefromtexture 3562 { file "tiles/3562.png" texture } // FLAT1_2
 
+// 3977 - FLAT5_1 (In communitytex. TODO: Move it.)
 
 // Sprites
 tilefromtexture 3465 { file "tiles/3465.png" texture } // Teleport Fog
