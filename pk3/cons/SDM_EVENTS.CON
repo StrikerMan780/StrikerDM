@@ -419,6 +419,8 @@ onevent EVENT_EGS
 	// TODO: Change this to quick-access vars once EDuke32 gets better MP.
 	ifactor FIREBALL
 	{
+		setactor[THISACTOR].blend 255 // Additive Blend
+		
 		// Calculate horizontal spread
 		getactor[THISACTOR].ang TEMP
 		ifspawnedby BOSS5
@@ -454,6 +456,12 @@ onevent EVENT_EGS
 			state boss_projectile_offset
 		}
 		
+		break
+	}
+	
+	ifactor GROWSPARK
+	{
+		setactor[THISACTOR].blend 255
 		break
 	}
 	
@@ -644,6 +652,12 @@ onevent EVENT_EGS
         case DUKEGUN:
         case DUKETORSO:
 			setvarvar PICNUM_MEMORY TEMP
+			break
+			
+		case PLASMABALL:
+		case PLASMABALL2:
+		case PLASMABALL3:
+			setactor[THISACTOR].blend 255
 			break
 			
 		case LASERLINE:
@@ -844,6 +858,25 @@ state plasma_spread
 	}
 ends
 
+onevent EVENT_PREGAME
+	ifactor WATERDRIP
+	{
+		iffloordistl 12
+		{
+			getactor[THISACTOR].pal PAL_MEMORY
+			getactor[THISACTOR].cstat CSTAT_MEMORY
+			getactor[THISACTOR].shade TEMP3
+			getactor[THISACTOR].htfloorz SPAWN_ORIGZ
+			espawn WATERDRIPSPLASH_FIXED
+			setactor[RETURN].pal PAL_MEMORY
+			setactor[RETURN].cstat CSTAT_MEMORY
+			setactor[RETURN].shade TEMP3
+			setactor[RETURN].z SPAWN_ORIGZ
+			setvar RETURN 0
+		}
+	}
+endevent
+
 onevent EVENT_GAME
 	state burning_logic
 	
@@ -860,6 +893,13 @@ onevent EVENT_GAME
 			break
 		}
 	}
+	
+	ifactor SHRINKSPARK
+	{
+		cstator 2
+		setactor[THISACTOR].blend 255
+		break
+	}
 
 	ifactor TRIPBOMB
 	{
@@ -868,8 +908,8 @@ onevent EVENT_GAME
 		{
 			cstator 256
 			setactor[THISACTOR].htflags 136
-			break
 		}
+		break
 	}
 	
 	getactor[THISACTOR].picnum TEMP	
@@ -1068,6 +1108,22 @@ onevent EVENT_SPAWN
 		break
 	}
 	
+	ifactor FIRESHELL
+	{
+		cstat 130
+		setactor[THISACTOR].shade -127
+		setactor[THISACTOR].blend 255
+		break
+	}
+	
+	ifactor EXPANDERTRAIL
+	{
+		cstat 130
+		setactor[THISACTOR].shade -127
+		setactor[THISACTOR].blend 255
+		break
+	}
+	
 	getactor[THISACTOR].picnum PICNUM_MEMORY
 	getactor[THISACTOR].xrepeat XREPEAT_MEMORY
 	getactor[THISACTOR].yrepeat YREPEAT_MEMORY
@@ -1262,6 +1318,24 @@ onevent EVENT_SPAWN
 endevent
 
 onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
+	ifactor FIRESHELL
+	{
+		state handle_shellexpansion
+		break
+	}
+	
+	ifactor SHOCKWAVE
+	{
+		state handle_shellexpansion
+		break
+	}
+	
+	ifactor EXPANDERTRAIL
+	{
+		state handle_shellexpansion
+		break
+	}
+	
 	ifvarg ISADULT 0
 	{
 		getuserdef[].lockout CL_TEMP1
@@ -1726,17 +1800,6 @@ onevent EVENT_DISPLAYREST // !UNSYNCHRONIZED!
 	//qsprintf 500 500 gametype_flags
 	//minitext 48 48 500 -127 1
 	
-	ifvarvarn clockcheck totalclock
-	{
-		setvarvar clockdiff totalclock
-		subvarvar clockdiff clockcheck
-		setvarvar clockcheck totalclock
-	}
-	else
-	{
-		setvar clockdiff 0
-	}
-	
 	// Change orientation to 536 later.
 	getplayer[THISACTOR].curr_weapon CL_TEMP1
 	ifvare CL_TEMP1 FREEZE_WEAPON
@@ -1858,8 +1921,20 @@ onevent EVENT_DISPLAYMENUREST // Version display. !UNSYNCHRONIZED!
 	screentext 3072 8 174 65536 0 0 500 -127 6 280 0 3 5 1 1 8192 0 0 xdim ydim
 endevent
 
-onevent EVENT_DISPLAYROOMS // Version display. !UNSYNCHRONIZED!
+onevent EVENT_DISPLAYROOMS // !UNSYNCHRONIZED!
+	ifvarvarn clockcheck totalclock
+	{
+		setvarvar clockdiff totalclock
+		subvarvar clockdiff clockcheck
+		setvarvar clockcheck totalclock
+	}
+	else
+	{
+		setvar clockdiff 0
+	}
+	
 	state handle_recoil
+	state handle_shake_display
 endevent
 
 onevent EVENT_ENTERLEVEL

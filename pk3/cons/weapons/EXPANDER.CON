@@ -103,7 +103,7 @@ ends
 
 spritenoshade GROWSPARK
 defineprojectile GROWSPARK PROJ_WORKSLIKE 98314
-defineprojectile GROWSPARK PROJ_CSTAT 128
+defineprojectile GROWSPARK PROJ_CSTAT 130
 defineprojectile GROWSPARK PROJ_VEL 768
 defineprojectile GROWSPARK PROJ_VEL_MULT 3
 defineprojectile GROWSPARK PROJ_XREPEAT 24
@@ -176,9 +176,16 @@ action EXPANDERFRAMES 0 4 1 1 10
 actor EXPANDEREXPLOSION 0
 	ifaction 0
 	{
-		cstat 128
+		cstat 130
 		sizeat 32 32
+		
 		setactor[THISACTOR].shade -127
+		setactor[THISACTOR].blend 255
+		
+		espawn FIRESHELL
+		setactor[RETURN].pal 199
+		setvar RETURN 0
+		
 		action EXPANDERFRAMES
 		spawn EXPANDERTRAIL
 		state expander_radius
@@ -197,61 +204,36 @@ actor EXPANDERTRAIL 0
 {
 	ifaction 0
 	{
-		cstat 128
+		ifpdistl 1024
+		{
+			killit
+			break
+		}
+		
+		setactor[THISACTOR].shade -127
+		setactor[THISACTOR].blend 255
+		setactor[THISACTOR].mdflags 16
+		
+		setvar LOTAG_MEMORY 0 // Timer
+		setvar HITAG_MEMORY 16 // End time
+		setvar SPAWN_ORIGANG 0 // Rotational Speed
+		
 		ifspawnedby EXPANDEREXPLOSION
 		{
 			cstator 32
-			sizeat 16 16
+			setvar XREPEAT_MEMORY 16 // Start radius
+			setvar YREPEAT_MEMORY 128 // End radius
 		}
 		else
 		{
-			sizeat 4 4
+			setvar XREPEAT_MEMORY 4 // Start radius
+			setvar YREPEAT_MEMORY 16 // End radius
 		}
-		setactor[THISACTOR].shade -127
+		
 		action ANULLACTION
 	}
 	
-	getactor[THISACTOR].xrepeat TEMP
-	ifspawnedby EXPANDEREXPLOSION
-	{
-		addvar TEMP 16
-	}
-	else
-	{
-		addvar TEMP 4
-	}
-	setactor[THISACTOR].xrepeat TEMP
-	setactor[THISACTOR].yrepeat TEMP
-	
-	ifspawnedby EXPANDEREXPLOSION
-	{
-		ifvarg TEMP 96
-		{
-			killit
-		}
-		else ifvarg TEMP 64
-		{
-			cstator 512
-		}
-		else ifvarg TEMP 32
-		{
-			cstator 2
-		}
-	}
-	else
-	{
-		ifvarg TEMP 16
-		{
-			killit
-		}
-		else ifvarg TEMP 12
-		{
-			cstator 512
-		}
-		else ifvarg TEMP 8
-		{
-			cstator 2
-		}
-	}
+	ifcount 16
+		killit
 }
 enda

@@ -22,6 +22,25 @@ tilefromtexture 1617 { file "tiles/1617.png" }
 tilefromtexture 1618 { file "tiles/1618.png" }
 tilefromtexture 1619 { file "tiles/1619.png" }
 
+// Explosion Spark
+tilefromtexture 2090 { file "tiles/2090.png" }
+tilefromtexture 2091 { file "tiles/2091.png" }
+tilefromtexture 2092 { file "tiles/2092.png" }
+tilefromtexture 2093 { file "tiles/2093.png" }
+tilefromtexture 2094 { file "tiles/2094.png" }
+tilefromtexture 2095 { file "tiles/2095.png" }
+
+// Water Splash
+tilefromtexture 2380 { file "tiles/2380.png" xoff 0 yoff 1 }
+tilefromtexture 2381 { file "tiles/2381.png" xoff 1 yoff 2 }
+tilefromtexture 2382 { file "tiles/2382.png" xoff 1 yoff 3 }
+tilefromtexture 2383 { file "tiles/2383.png" xoff 0 yoff 3 }
+tilefromtexture 2384 { file "tiles/2384.png" xoff -1 yoff 1 }
+tilefromtexture 2385 { file "tiles/2385.png" xoff -1 yoff -3 }
+tilefromtexture 2386 { file "tiles/2386.png" xoff 1 yoff -6 }
+tilefromtexture 2387 { file "tiles/2387.png" xoff 1 yoff -6 }
+tilefromtexture 2388 { file "tiles/2388.png" xoff 1 yoff -7 }
+
 // Tracer/Pellet
 tilefromtexture 2507 { file "tiles/2507.png" }
 tilefromtexture 2508 { file "tiles/2508.png" }
@@ -187,11 +206,17 @@ tilefromtexture 2436 { file "tiles/2436.png" xoff 6 }
 
 // Plasma Rifle
 tilefromtexture 19 { file "tiles/19.png" }
-tilefromtexture 2599 { file "tiles/2599.png" xoffset 10 yoffset 15 }
-tilefromtexture 2600 { file "tiles/2600.png" xoffset 10 yoffset 25 }
-tilefromtexture 2601 { file "tiles/2601.png" xoffset 0 yoffset 26 }
-tilefromtexture 2602 { file "tiles/2602.png" xoffset 10 yoffset 17 }
-tilefromtexture 2603 { file "tiles/2603.png" xoffset 10 yoffset 15 }
+tilefromtexture 3751 { file "tiles/3751.png" xoffset 10 yoffset 15 }
+tilefromtexture 3752 { file "tiles/3752.png" xoffset 10 yoffset 21 }
+tilefromtexture 3753 { file "tiles/3753.png" xoffset 10 yoffset 25 }
+tilefromtexture 3754 { file "tiles/3754.png" xoffset 8 yoffset 26 }
+tilefromtexture 3755 { file "tiles/3755.png" xoffset -2 yoffset 26 }
+tilefromtexture 3756 { file "tiles/3756.png" xoffset 9 yoffset 20 }
+tilefromtexture 3757 { file "tiles/3757.png" xoffset 9 yoffset 17 }
+tilefromtexture 3758 { file "tiles/3758.png" xoffset 9 yoffset 17 }
+tilefromtexture 3759 { file "tiles/3759.png" xoffset 9 yoffset 15 }
+tilefromtexture 3760 { file "tiles/3760.png" xoffset 10 yoffset 15 }
+tilefromtexture 3761 { file "tiles/3761.png" xoffset 10 yoffset 15 }
 animtilerange 1385 1386 2 ANIM_FORWARD
 animtilerange 1387 1388 2 ANIM_FORWARD
 
@@ -261,6 +286,9 @@ tilefromtexture 3718 { file "tiles/3718.png" } // Pad
 tilefromtexture 3719 { file "tiles/3719.png" } // Pod
 tilefromtexture 3720 { file "tiles/3720.png" yoff -83 } // Vines
 tilefromtexture 3721 { file "tiles/3721.png" xoff -5 yoff 1 } // Bloodless Pole
+
+// Venus Statue
+tilefromtexture 4974 { file "tiles/4974.png" } 
 
 tilefromtexture 5131 { file "tiles/5131.png" }
 

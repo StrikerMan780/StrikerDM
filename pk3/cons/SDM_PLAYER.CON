@@ -113,6 +113,7 @@ actor APLAYER MAXPLAYERHEALTH PSTAND 0 0
 state handle_rift
 state handle_sectortypes
 state handle_jumppad_movement
+state handle_shake_timer
 state player_updateweapons
   ifaction 0
     action PSTAND

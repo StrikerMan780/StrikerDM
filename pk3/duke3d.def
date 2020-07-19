@@ -18,3 +18,25 @@ tint { pal 4 red   0 green   0 blue   0 flags 0 }
 tint { pal 6 red 224 green 255 blue 112 flags 3 }
 tint { pal 7 red 227 green 198 blue 20 flags 1 }
 tint { pal 8 red 199 green 226 blue 113 flags 1 }
+
+tint { pal 122 red 255 green 255 blue 0 flags 1 }
+tint { pal 123 red 255 green 0 blue 255 flags 1 }
+tint { pal 124 red 255 green 0 blue 0 flags 1 }
+tint { pal 125 red 0 green 255 blue 0 flags 1 }
+tint { pal 126 red 0 green 0 blue 255 flags 1 }
+
+blendtable 253 // Overlay (I think?)
+{
+	glblend { both { src DST_COLOR dst ONE alpha 1.0 } }
+}
+
+blendtable 254 // Multiplicative
+{
+	glblend { both { src DST_COLOR dst ONE_MINUS_SRC_ALPHA alpha 1.0 } }
+}
+
+blendtable 255
+{
+	raw { file "/blends/blendtable_255.raw" }
+	glblend { both { src SRC_ALPHA dst ONE alpha 1.0 } }
+}

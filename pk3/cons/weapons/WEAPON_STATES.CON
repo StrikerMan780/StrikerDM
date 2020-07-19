@@ -353,111 +353,96 @@ state setssg
 	setplayervar[THISACTOR].USING_SSG 1
 ends
 
-state checkflamethrower
-	ifvarn WEAPON FREEZE_WEAPON
-		break
-		
+state check_alt_weapons
 	getplayer[THISACTOR].kickback_pic TEMP
 	ifvarn TEMP 0
 		break
-		
-	ifvare HAS_FLAMETHROWER 1
+	
+	setvar TEMP2 0 // Check for if we actually switched weapons
+	
+	switch WEAPON
+		case SHOTGUN_WEAPON:
+			ifvare HAS_SSG 1
+			{
+				ifvare USING_SSG 0
+				{
+					state setssg
+				}
+				else ifvare HAS_SHOTGUN 1
+				{
+					state setshotgun
+				}
+				
+				setvar TEMP2 1
+			}
+			break
+		case RPG_WEAPON:
+			ifvare HAS_RAILGUN 1
+			{
+				ifvare USING_RAILGUN 0
+				{
+					state setrailgun
+				}
+				else ifvare HAS_RPG 1
+				{
+					state setrpg
+				}
+				
+				setvar TEMP2 1
+			}
+			break
+		case CHAINGUN_WEAPON:
+			ifvare HAS_PLASMARIFLE 1
+			{
+				ifvare USING_PLASMARIFLE 0
+				{
+					state setplasmarifle
+				}
+				else ifvare HAS_RIPPER 1
+				{
+					state setripper
+				}
+				
+				setvar TEMP2 1
+			}
+			break
+		case FREEZE_WEAPON:
+			ifvare HAS_FLAMETHROWER 1
+			{
+				ifvare USING_FLAMETHROWER 0
+				{
+					state setflamethrower
+				}
+				else ifvare HAS_FREEZETHROWER 1
+				{
+					state setfreezethrower
+				}
+				
+				setvar TEMP2 1
+			}
+			break
+	endswitch
+	
+	ifvare TEMP2 1
 	{
-		ifvare USING_FLAMETHROWER 0
-		{
-			state setflamethrower
-		}
-		else ifvare HAS_FREEZETHROWER 1
-		{
-			state setfreezethrower
-		}
-		
 		setplayer[THISACTOR].weapon_pos -9
-		soundvar WEAPON9_SELECTSOUND
-		
-		setvar STATE_PARAM1 FREEZE_WEAPON
+		setvarvar STATE_PARAM1 WEAPON
 		state print_weapon_name
-	}
-ends
-
-state checkplasmarifle
-	ifvarn WEAPON CHAINGUN_WEAPON
-		break
 		
-	getplayer[THISACTOR].kickback_pic TEMP
-	ifvarn TEMP 0
-		break
-		
-	ifvare HAS_PLASMARIFLE 1
-	{
-		ifvare USING_PLASMARIFLE 0
-		{
-			state setplasmarifle
-		}
-		else ifvare HAS_RIPPER 1
-		{
-			state setripper
-		}
-		
-		setplayer[THISACTOR].weapon_pos -9
-		soundvar WEAPON3_SELECTSOUND
-		
-		setvar STATE_PARAM1 CHAINGUN_WEAPON
-		state print_weapon_name
-	}
-ends
-
-state checkrailgun
-	ifvarn WEAPON RPG_WEAPON
-		break
-		
-	getplayer[THISACTOR].kickback_pic TEMP
-	ifvarn TEMP 0
-		break
-		
-	ifvare HAS_RAILGUN 1
-	{
-		ifvare USING_RAILGUN 0
-		{
-			state setrailgun
-		}
-		else ifvare HAS_RPG 1
-		{
-			state setrpg
-		}
-		
-		setplayer[THISACTOR].weapon_pos -9
-		soundvar WEAPON4_SELECTSOUND
-		
-		setvar STATE_PARAM1 RPG_WEAPON
-		state print_weapon_name
-	}
-ends
-
-state checkssg
-	ifvarn WEAPON SHOTGUN_WEAPON
-		break
-		
-	getplayer[THISACTOR].kickback_pic TEMP
-	ifvarn TEMP 0
-		break
-		
-	ifvare HAS_SSG 1
-	{
-		ifvare USING_SSG 0
-		{
-			state setssg
-		}
-		else ifvare HAS_SHOTGUN 1
-		{
-			state setshotgun
-		}
-		
-		setplayer[THISACTOR].weapon_pos -9
-		soundvar WEAPON2_SELECTSOUND
-		
-		setvar STATE_PARAM1 SHOTGUN_WEAPON
-		state print_weapon_name
+		switch WEAPON
+			case 0: soundvar WEAPON0_SELECTSOUND break
+			case 1: soundvar WEAPON1_SELECTSOUND break
+			case 2: soundvar WEAPON2_SELECTSOUND break
+			case 3: soundvar WEAPON3_SELECTSOUND break
+			case 4: soundvar WEAPON4_SELECTSOUND break
+			case 5: soundvar WEAPON5_SELECTSOUND break
+			case 6: soundvar WEAPON6_SELECTSOUND break
+			case 7: soundvar WEAPON7_SELECTSOUND break
+			case 8: soundvar WEAPON8_SELECTSOUND break
+			case 9: soundvar WEAPON9_SELECTSOUND break
+			case 10: soundvar WEAPON10_SELECTSOUND break
+			case 11: soundvar WEAPON11_SELECTSOUND break
+		endswitch
 	}
 ends
 

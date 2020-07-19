@@ -19,19 +19,38 @@ state draw_plasmarifle // PLASMARIFLE_WEAPON:
 
 		subvarvar hud_y hud_temp
 	}
-		
+	
+	// Totaltime = 16
 	switch weaponcount
-		case 8
+		case 6
 			setvar hud_tilenum PLASMARIFLE2
 			break
-		case 9
+		case 7
 			setvar hud_tilenum PLASMARIFLE3
 			break
-		case 10
+		case 8
 			setvar hud_tilenum PLASMARIFLE4
 			break
-		case 11
+		case 9
 			setvar hud_tilenum PLASMARIFLE5
+			break
+		case 10
+			setvar hud_tilenum PLASMARIFLE6
+			break
+		case 11
+			setvar hud_tilenum PLASMARIFLE7
+			break
+		case 12
+			setvar hud_tilenum PLASMARIFLE8
+			break
+		case 13
+			setvar hud_tilenum PLASMARIFLE9
+			break
+		case 14
+			setvar hud_tilenum PLASMARIFLE10
+			break
+		case 15
+			setvar hud_tilenum PLASMARIFLE11
 			break
 		default
 			setvar hud_tilenum PLASMARIFLE1
@@ -133,7 +152,7 @@ enda
 
 spritenoshade PLASMABALL
 defineprojectile PLASMABALL PROJ_WORKSLIKE 102402
-defineprojectile PLASMABALL PROJ_CSTAT 128
+defineprojectile PLASMABALL PROJ_CSTAT 130
 defineprojectile PLASMABALL PROJ_VEL 1000
 defineprojectile PLASMABALL PROJ_VEL_MULT 2
 defineprojectile PLASMABALL PROJ_XREPEAT 16
@@ -153,7 +172,7 @@ actor PLASMABALL 0 enda
 
 spritenoshade PLASMABALL2
 defineprojectile PLASMABALL2 PROJ_WORKSLIKE 36866
-defineprojectile PLASMABALL2 PROJ_CSTAT 128
+defineprojectile PLASMABALL2 PROJ_CSTAT 130
 defineprojectile PLASMABALL2 PROJ_VEL 1000
 defineprojectile PLASMABALL2 PROJ_VEL_MULT 2
 defineprojectile PLASMABALL2 PROJ_XREPEAT 10
@@ -173,7 +192,7 @@ actor PLASMABALL2 0 enda
 
 spritenoshade PLASMABALL3
 defineprojectile PLASMABALL3 PROJ_WORKSLIKE 36866
-defineprojectile PLASMABALL3 PROJ_CSTAT 128
+defineprojectile PLASMABALL3 PROJ_CSTAT 130
 defineprojectile PLASMABALL3 PROJ_VEL 1000
 defineprojectile PLASMABALL3 PROJ_VEL_MULT 2
 defineprojectile PLASMABALL3 PROJ_XREPEAT 8
@@ -198,4 +217,5 @@ actor PLASMATRAIL 0
 	else ifcount 0
 		cstat 130
 		setactor[THISACTOR].shade -127
+		setactor[THISACTOR].blend 255
 enda

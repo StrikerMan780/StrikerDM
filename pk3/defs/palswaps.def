@@ -1,6 +1,128 @@
-palookup 30 { raw { file "/palswaps/orange.raw" } }
-palookup 31 { raw { file "/palswaps/purple.raw" } }
-palookup 32 { raw { file "/palswaps/black.raw" } }
-palookup 33 { raw { file "/palswaps/gold.raw" } }
-palookup 34 { raw { file "/palswaps/cyborg.raw" } }
-palookup 35 { raw { file "/palswaps/lizard.raw" } }
+palookup 129 { raw { file "/palswaps/orange.raw" } }
+palookup 130 { raw { file "/palswaps/purple.raw" } }
+palookup 131 { raw { file "/palswaps/black.raw" } }
+palookup 132 { raw { file "/palswaps/gold.raw" } }
+palookup 133 { raw { file "/palswaps/cyborg.raw" } }
+palookup 134 { raw { file "/palswaps/lizard.raw" } }
+
+addplayercolor 17 "Green (Blue Skin)"
+addplayercolor 19 "Gray (Red Skin)"
+addplayercolor 20 "Gray (Blue Skin)"
+addplayercolor 129 "Orange"
+addplayercolor 130 "Purple"
+addplayercolor 131 "Black"
+addplayercolor 132 "Gold"
+addplayercolor 133 "Cyborg"
+addplayercolor 134 "Lizard"
+
+// Raw conversion of EXTCLUT by Renegado.
+palookup 26 { raw { file "/palswaps/extclut.raw" noshades } }					// Pal # 26: Everything is pale brown
+palookup 27 { raw { file "/palswaps/extclut.raw" offset 256 noshades } }		// Pal # 27: Everything is gray
+palookup 28 { raw { file "/palswaps/extclut.raw" offset 512 noshades } }		// Pal # 28: Everything is brown
+palookup 29 { raw { file "/palswaps/extclut.raw" offset 768 noshades } }		// Pal # 29: Everything is orange
+palookup 30 { raw { file "/palswaps/extclut.raw" offset 1024 noshades } }		// Pal # 30: Everything is violet
+palookup 31 { raw { file "/palswaps/extclut.raw" offset 1280 noshades } }		// Pal # 31: Everything is spectral
+palookup 32 { raw { file "/palswaps/extclut.raw" offset 1536 noshades } }		// Pal # 32: Everything is bright yellow
+palookup 33 { raw { file "/palswaps/extclut.raw" offset 1792 noshades } }		// Pal # 33: Whiteness
+//palookup 34 { raw { file "/palswaps/extclut.raw" offset 2048 noshades } }		// Pal # 34: FFness (DISABLED)
+
+palookup 35 { raw { file "/palswaps/extclut.raw" offset 2304 noshades } }		// Pal # 35: Blue is orange
+palookup 36 { raw { file "/palswaps/extclut.raw" offset 2560 noshades } }		// Pal # 36: Blue is pale brown
+palookup 37 { raw { file "/palswaps/extclut.raw" offset 2816 noshades } }		// Pal # 37: Blue is light blue
+palookup 38 { raw { file "/palswaps/extclut.raw" offset 3072 noshades } }		// Pal # 38: Blue is light red
+palookup 39 { raw { file "/palswaps/extclut.raw" offset 3328 noshades } }		// Pal # 39: Blue is light gray
+palookup 40 { raw { file "/palswaps/extclut.raw" offset 3584 noshades } }		// Pal # 40: Blue and red are spectral
+palookup 41 { raw { file "/palswaps/extclut.raw" offset 3840 noshades } }		// Pal # 41: Some colors desaturated
+palookup 42 { raw { file "/palswaps/extclut.raw" offset 4096 noshades } }		// Pal # 42: Colors are red-shifted
+palookup 43 { raw { file "/palswaps/extclut.raw" offset 4352 noshades } }		// Pal # 43: Blue is dark brown
+palookup 44 { raw { file "/palswaps/extclut.raw" offset 4608 noshades } }		// Pal # 44: Blue is sand-colored
+palookup 45 { raw { file "/palswaps/extclut.raw" offset 4864 noshades } }		// Pal # 45: Blue is bright brown
+palookup 46 { raw { file "/palswaps/extclut.raw" offset 5120 noshades } }		// Pal # 46: Colors are blue-shifted; red is blue
+palookup 47 { raw { file "/palswaps/extclut.raw" offset 5376 noshades } }		// Pal # 47: Various colors exchanged
+palookup 48 { raw { file "/palswaps/extclut.raw" offset 5632 noshades } }		// Pal # 48: Green is violet
+palookup 49 { raw { file "/palswaps/extclut.raw" offset 5888 noshades } }		// Pal # 49: Blue is violet
+
+palookup 50 { raw { file "/palswaps/extclut.raw" offset 6144 noshades } }		// 50: Bright orange		0
+palookup 51 { raw { file "/palswaps/extclut.raw" offset 6400 noshades } } 		// 51: Pale orange			0
+palookup 52 { raw { file "/palswaps/extclut.raw" offset 6656 noshades } }		// 52: Pale brown			0
+palookup 53 { raw { file "/palswaps/extclut.raw" offset 6912 noshades } }		// 53: White				0
+palookup 54 { raw { file "/palswaps/extclut.raw" offset 7168 noshades } }		// 54: Red					0
+palookup 55 { raw { file "/palswaps/extclut.raw" offset 7424 noshades } }		// 55: Orange				0
+palookup 56 { raw { file "/palswaps/extclut.raw" offset 7680 noshades } }		// 56: Alt. bright orange	0
+palookup 57 { raw { file "/palswaps/extclut.raw" offset 7936 noshades } }		// 57: Yellow				0
+palookup 58 { raw { file "/palswaps/extclut.raw" offset 8192 noshades } }		// 58: Pale yellow			0
+palookup 59 { raw { file "/palswaps/extclut.raw" offset 8448 noshades } }		// 59: Brown				0
+palookup 60 { raw { file "/palswaps/extclut.raw" offset 8704 noshades } }		// 60: Blue               	0
+palookup 61 { raw { file "/palswaps/extclut.raw" offset 8960 noshades } }		// 61: Pale blue			0
+palookup 62 { raw { file "/palswaps/extclut.raw" offset 9216 noshades } }		// 62: Green				0
+palookup 63 { raw { file "/palswaps/extclut.raw" offset 9472 noshades } }		// 63: Violet				0
+
+palookup 64 { raw { file "/palswaps/extclut.raw" offset 9728 noshades } }		// 64: Bright orange		+1
+palookup 65 { raw { file "/palswaps/extclut.raw" offset 9984 noshades } }		// 65: Pale orange			+1
+palookup 66 { raw { file "/palswaps/extclut.raw" offset 10240 noshades } }		// 66: Pale brown			+1
+palookup 67 { raw { file "/palswaps/extclut.raw" offset 10496 noshades } }		// 67: White				+1
+palookup 68 { raw { file "/palswaps/extclut.raw" offset 10752 noshades } }		// 68: Red					+1
+palookup 69 { raw { file "/palswaps/extclut.raw" offset 11008 noshades } }		// 69: Orange				+1
+palookup 70 { raw { file "/palswaps/extclut.raw" offset 11264 noshades } }		// 70: Alt. bright orange	+1
+palookup 71 { raw { file "/palswaps/extclut.raw" offset 11520 noshades } }		// 71: Yellow				+1
+palookup 72 { raw { file "/palswaps/extclut.raw" offset 11776 noshades } }		// 72: Pale yellow			+1
+palookup 73 { raw { file "/palswaps/extclut.raw" offset 12032 noshades } }		// 73: Brown				+1
+palookup 74 { raw { file "/palswaps/extclut.raw" offset 12288 noshades } }		// 74: Blue					+1
+palookup 75 { raw { file "/palswaps/extclut.raw" offset 12544 noshades } }		// 75: Pale blue			+1
+palookup 76 { raw { file "/palswaps/extclut.raw" offset 12800 noshades } }		// 76: Green				+1
+palookup 77 { raw { file "/palswaps/extclut.raw" offset 13056 noshades } }		// 77: Violet				+1
+
+palookup 78 { raw { file "/palswaps/extclut.raw" offset 13312 noshades } }		// 78: Bright orange		+2
+palookup 79 { raw { file "/palswaps/extclut.raw" offset 13568 noshades } }		// 79: Pale orange			+2
+palookup 80 { raw { file "/palswaps/extclut.raw" offset 13824 noshades } }		// 80: Pale brown			+2
+palookup 81 { raw { file "/palswaps/extclut.raw" offset 14080 noshades } }		// 81: White				+2
+palookup 82 { raw { file "/palswaps/extclut.raw" offset 14336 noshades } }		// 82: Red					+2
+palookup 83 { raw { file "/palswaps/extclut.raw" offset 14592 noshades } }		// 83: Orange				+2
+palookup 84 { raw { file "/palswaps/extclut.raw" offset 14848 noshades } }		// 84: Alt. bright orange	+2
+palookup 85 { raw { file "/palswaps/extclut.raw" offset 15104 noshades } }		// 85: Yellow				+2
+palookup 86 { raw { file "/palswaps/extclut.raw" offset 15360 noshades } }		// 86: Pale yellow			+2
+palookup 87 { raw { file "/palswaps/extclut.raw" offset 15616 noshades } }		// 87: Brown				+2
+palookup 88 { raw { file "/palswaps/extclut.raw" offset 15872 noshades } }		// 88: Blue					+2
+palookup 89 { raw { file "/palswaps/extclut.raw" offset 16128 noshades } }		// 89: Pale blue			+2
+palookup 90 { raw { file "/palswaps/extclut.raw" offset 16384 noshades } }		// 90: Green				+2
+palookup 91 { raw { file "/palswaps/extclut.raw" offset 16640 noshades } }		// 91: Violet				+2
+
+palookup 92 { raw { file "/palswaps/extclut.raw" offset 16896 noshades } }		// 92: Bright orange		+3
+palookup 93 { raw { file "/palswaps/extclut.raw" offset 17152 noshades } }		// 93: Pale orange			+3
+palookup 94 { raw { file "/palswaps/extclut.raw" offset 17408 noshades } }		// 94: Pale brown			+3
+palookup 95 { raw { file "/palswaps/extclut.raw" offset 17664 noshades } }		// 95: White				+3
+palookup 96 { raw { file "/palswaps/extclut.raw" offset 17920 noshades } }		// 96: Red					+3
+palookup 97 { raw { file "/palswaps/extclut.raw" offset 18176 noshades } }		// 97: Orange				+3
+palookup 98 { raw { file "/palswaps/extclut.raw" offset 18432 noshades } }		// 98: Alt. bright orange	+3
+palookup 99 { raw { file "/palswaps/extclut.raw" offset 18688 noshades } }		// 99: Yellow				+3
+palookup 100 { raw { file "/palswaps/extclut.raw" offset 18944 noshades } }		// 100: Pale yellow			+3
+palookup 101 { raw { file "/palswaps/extclut.raw" offset 19200 noshades } }		// 101: Brown				+3
+palookup 102 { raw { file "/palswaps/extclut.raw" offset 19456 noshades } }		// 102: Blue				+3
+palookup 103 { raw { file "/palswaps/extclut.raw" offset 19712 noshades } }		// 103: Pale blue			+3
+palookup 104 { raw { file "/palswaps/extclut.raw" offset 19968 noshades } }		// 104: Green				+3
+palookup 105 { raw { file "/palswaps/extclut.raw" offset 20224 noshades } }		// 105: Violet				+3
+
+palookup 106 { raw { file "/palswaps/extclut.raw" offset 20480 noshades } }		// 106: Bright orange		+4
+palookup 107 { raw { file "/palswaps/extclut.raw" offset 20736 noshades } }		// 107: Pale orange			+4
+palookup 108 { raw { file "/palswaps/extclut.raw" offset 20992 noshades } }		// 108: Pale brown			+4
+palookup 109 { raw { file "/palswaps/extclut.raw" offset 21248 noshades } }		// 109: White				+4
+palookup 110 { raw { file "/palswaps/extclut.raw" offset 21504 noshades } }		// 110: Red					+4
+palookup 111 { raw { file "/palswaps/extclut.raw" offset 21760 noshades } }		// 111: Orange				+4
+palookup 112 { raw { file "/palswaps/extclut.raw" offset 22016 noshades } }		// 112: Alt. bright orange	+4
+palookup 113 { raw { file "/palswaps/extclut.raw" offset 22272 noshades } }		// 113: Yellow				+4
+palookup 114 { raw { file "/palswaps/extclut.raw" offset 22528 noshades } }		// 114: Pale yellow			+4
+palookup 115 { raw { file "/palswaps/extclut.raw" offset 22784 noshades } }		// 115: Brown				+4
+palookup 116 { raw { file "/palswaps/extclut.raw" offset 23040 noshades } }		// 116: Blue				+4
+palookup 117 { raw { file "/palswaps/extclut.raw" offset 23296 noshades } }		// 117: Pale blue			+4
+palookup 118 { raw { file "/palswaps/extclut.raw" offset 23552 noshades } }		// 118: Green				+4
+palookup 119 { raw { file "/palswaps/extclut.raw" offset 23808 noshades } }		// 119: Violet				+4
+
+//palookup 120 { raw { file "/palswaps/extclut.raw" offset 24064 noshades } }	// Pal # 120: Collection of special colors (see below)
+//palookup 121 { raw { file "/palswaps/extclut.raw" offset 24320 noshades } }	// Pal # 121: InvLog (negated logarithm of a source channel linear combination)
+palookup 122 { raw { file "/palswaps/extclut.raw" offset 24576 noshades } }		// Pal # 122: Yellow toon
+palookup 123 { raw { file "/palswaps/extclut.raw" offset 24832 noshades } }		// Pal # 123: Purple toon
+palookup 124 { raw { file "/palswaps/extclut.raw" offset 25088 noshades } }		// Pal # 124: Red toon
+palookup 125 { raw { file "/palswaps/extclut.raw" offset 25344 noshades } }		// Pal # 125: Green toon
+palookup 126 { raw { file "/palswaps/extclut.raw" offset 25600 noshades } }		// Pal # 126: Blue toon
+//palookup 127 { raw { file "/palswaps/extclut.raw" offset 25856 noshades } }	// Pal # 127: One more collection of special colors (darkeners only)
+//palookup 128 { raw { file "/palswaps/extclut.raw" offset 26112 noshades } }	// Pal # 128: Same as Pal 0

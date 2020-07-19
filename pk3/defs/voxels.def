@@ -5,8 +5,6 @@ voxel "voxels/props/0547_faucet.kvx" { tile 574 }
 voxel "voxels/props/0670_faucet2.kvx" { tile 670 }
 voxel "voxels/props/0671_faucet2.kvx" { tile 671 }
 
-voxel "voxels/props/0678_scale.kvx" { tile 678 }
-
 voxel "voxels/props/0551_lightdome1.kvx" { tile 551 }
 voxel "voxels/props/0552_lightdome2.kvx" { tile 552 }
 voxel "voxels/props/0553_lightdome3.kvx" { tile 553 }
@@ -38,9 +36,16 @@ voxel "voxels/props/0572_showerpart.kvx" { tile 991 }
 
 voxel "voxels/props/0606_spacesuitcorpse.kvx" { tile 606 }
 
+voxel "voxels/props/0607_antenna1.kvx" { tile 607 }
+voxel "voxels/props/0608_antenna2.kvx" { tile 608 }
+
 voxel "voxels/props/0621_cameraA1.kvx" { tile 621 tile 622 tile 623 tile 624 tile 625 }
 
 voxel "voxels/props/0669_vacuumcl.kvx" { tile 669 }
+
+voxel "voxels/props/0678_scale.kvx" { tile 678 }
+
+voxel "voxels/props/0680_chair3.kvx" { tile 680 tile 681 tile 682 tile 683 tile 684 }
 
 voxel "voxels/props/0685_stagelamp.kvx" { tile 685 }
 voxel "voxels/props/0689_ivunit.kvx" { tile 689 }
@@ -73,6 +78,14 @@ voxel "voxels/props/0939_cactusstump.kvx" { tile 939 }
 
 voxel "voxels/props/0916_fireext.kvx" { tile 916 }
 
+voxel "voxels/props/0917_firealarm.kvx" { tile 917 }
+
+voxel "voxels/props/0918_meter3.kvx" { tile 918 }
+
+voxel "voxels/props/0919_meter2.kvx" { tile 919 }
+
+voxel "voxels/props/0950_brokehydrant.kvx" { tile 950 }
+
 voxel "voxels/props/0954_bottle1.kvx" { tile 954 }
 voxel "voxels/props/0955_bottle2.kvx" { tile 955 }
 voxel "voxels/props/0956_bottle3.kvx" { tile 956 }
@@ -84,7 +97,9 @@ voxel "voxels/props/1003_brokehydroplant.kvx" { tile 1003 }
 voxel "voxels/props/0978_traffic_cone.kvx" { tile 978 }
 voxel "voxels/props/0979_hanglight.kvx" { tile 979 }
 
-voxel "voxels/props/0990_tire.kvx" { tile 990 }
+voxel "voxels/props/0981_hydrant.kvx" { tile 981 }
+
+voxel "voxels/props/0990_tires.kvx" { tile 990 }
 
 voxel "voxels/props/1006_barstool.kvx" { tile 1006 }
 
@@ -95,6 +110,8 @@ voxel "voxels/props/1014_gbottle.kvx" { tile 1014 }
 
 voxel "voxels/props/1025_bottle7.kvx" { tile 1025 }
 voxel "voxels/props/1037_table.kvx" { tile 1037 }
+
+voxel "voxels/props/1045_donuts.kvx" { tile 1045 }
 
 voxel "voxels/props/1048_twocables.kvx" { tile 1048 }
 voxel "voxels/props/1049_electricmeter.kvx" { tile 1049 }
@@ -165,15 +182,15 @@ voxel "voxels/props/4537_foodobject8.kvx" { tile 4537 }
 voxel "voxels/props/4538_foodobject9.kvx" { tile 4538 }
 voxel "voxels/props/4539_foodobject10.kvx" { tile 4539 }
 
-voxel "voxels/props/4540_burger1.kvx" { tile 4540 }
-voxel "voxels/props/4541_burger2.kvx" { tile 4541 }
-voxel "voxels/props/4542_bigmac.kvx" { tile 4542 }
+voxel "voxels/props/4540_foodobject11.kvx" { tile 4540 }
+voxel "voxels/props/4541_foodobject12.kvx" { tile 4541 }
+voxel "voxels/props/4542_foodobject13.kvx" { tile 4542 }
 
-voxel "voxels/props/4546_fries1.kvx" { tile 4546 }
-voxel "voxels/props/4547_fries2.kvx" { tile 4547 }
+voxel "voxels/props/4546_foodobject17.kvx" { tile 4546 }
+voxel "voxels/props/4547_foodobject18.kvx" { tile 4547 }
 
-voxel "voxels/props/4548_drink.kvx" { tile 4548 }
-voxel "voxels/props/4569_jollymeal.kvx" { tile 4569 }
+voxel "voxels/props/4548_foodobject19.kvx" { tile 4548 }
+voxel "voxels/props/4569_burgerbox.kvx" { tile 4569 }
 voxel "voxels/props/4576_shoppingcart.kvx" { tile 4576 }
 voxel "voxels/props/4580_canwithsomething2.kvx" { tile 4580 }
 voxel "voxels/props/4581_canwithsomething3.kvx" { tile 4581 }
@@ -265,6 +282,8 @@ voxel "voxels/switches/4483_brokenswitch.kvx" { tile 4483 }
 voxel "voxels/switches/4954_brokenswitch2.kvx" { tile 4954 }
 
 // --- Signs ---
+voxel "voxels/signs/0925_neon1.kvx" { tile 925 }
+voxel "voxels/signs/0926_neon2.kvx" { tile 926 }
 voxel "voxels/signs/1210_guilty.kvx" { tile 1210 }
 voxel "voxels/signs/1211_innocent.kvx" { tile 1211 }
 voxel "voxels/signs/4891_storecrap.kvx" { tile 4891 }
@@ -279,15 +298,26 @@ voxel "voxels/monsters/0676_slimeregg2.kvx" { tile 676 }
 voxel "voxels/monsters/0677_slimeregg3.kvx" { tile 677 } 
 
 // Turret commented out until voxel flipping is supported.
-//voxel "voxels/monsters/2350_turret1.kvx" { tile0 2350 tile1 2354 }
-//voxel "voxels/monsters/2355_turret2.kvx" { tile0 2355 tile1 2359 }
-//voxel "voxels/monsters/2360_turret3.kvx" { tile0 2360 tile1 2364 }
+voxel "voxels/monsters/2350_turret1.kvx" { tile0 2350 tile1 2354 }
+voxel "voxels/monsters/2355_turret2.kvx" { tile0 2355 tile1 2359 }
+voxel "voxels/monsters/2360_turret3.kvx" { tile0 2360 tile1 2364 }
 
 // --- Projectiles ---
 voxel "voxels/projectiles/1650_mortar.kvx" { tile 1650 }
 voxel "voxels/projectiles/1651_mortar.kvx" { tile 1651 }
 voxel "voxels/projectiles/1652_mortar.kvx" { tile 1652 }
 voxel "voxels/projectiles/1653_mortar.kvx" { tile 1653 }
+voxel "voxels/projectiles/2566_tripbomb.kvx" { tile 2566 }
+
+// ***** TRUE-COLOR PROJECTILE VOXELS *****
+definemodel "voxels/projectiles/2592_green_tripbomb.kv6" 1.0 0
+definemodelframe 0 2592 2592
+
+definemodel "voxels/projectiles/2593_blue_tripbomb.kv6" 1.0 0
+definemodelframe 0 2593 2593
+
+definemodel "voxels/projectiles/2594_yellow_tripbomb.kv6" 1.0 0
+definemodelframe 0 2594 2594
 
 // --- Pickups ---
 voxel "voxels/pickups/0100_atomichealth1.kvx" { tile 100 }
@@ -306,3 +336,30 @@ voxel "voxels/pickups/0112_atomichealth13.kvx" { tile 112 }
 voxel "voxels/pickups/0113_atomichealth14.kvx" { tile 113 }
 voxel "voxels/pickups/0114_atomichealth15.kvx" { tile 114 }
 voxel "voxels/pickups/0115_atomichealth16.kvx" { tile 115 }
+
+// ***** TRUE-COLOR PICKUP VOXELS *****
+/* // Commented out for now until I decide what I want to do with voxel pickups.
+definemodel "voxels/pickups/4991_bon1a.kv6" 1.0 0
+definemodelframe 0 4991 4991
+
+definemodel "voxels/pickups/4992_bon1b.kv6" 1.0 0
+definemodelframe 0 4992 4992
+
+definemodel "voxels/pickups/4993_bon1c.kv6" 1.0 0
+definemodelframe 0 4993 4993
+
+definemodel "voxels/pickups/4994_bon1d.kv6" 1.0 0
+definemodelframe 0 4994 4994
+
+definemodel "voxels/pickups/4995_bon2a.kv6" 1.0 0
+definemodelframe 0 4995 4995
+
+definemodel "voxels/pickups/4996_bon2b.kv6" 1.0 0
+definemodelframe 0 4996 4996
+
+definemodel "voxels/pickups/4997_bon2c.kv6" 1.0 0
+definemodelframe 0 4997 4997
+
+definemodel "voxels/pickups/4998_bon2d.kv6" 1.0 0
+definemodelframe 0 4998 4998
+*/

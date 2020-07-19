@@ -613,6 +613,8 @@ state handle_lowgravity
 		setplayer[THISACTOR].poszv 512
 	}
 	
+	setplayer[THISACTOR].falling_counter 0
+	
 	getplayer[THISACTOR].jumping_counter TEMP
 	ifvare TEMP 1261 
 	{
@@ -692,24 +694,28 @@ state handle_rift
 			break
 		}
 		
-		getsector[THISACTOR].ceilingpicnum TEMP
-		ifvare TEMP 3817
+		getsector[THISACTOR].floorpicnum TEMP
+		getsector[THISACTOR].ceilingpicnum TEMP2
+		ifvarvare TEMP TEMP2
 		{
-			ifvare IN_RIFT 0
+			ifvare TEMP 3817
 			{
-				sound ENTER_RIFT
-				palfrom 56 0 16 64
-				setvar IN_RIFT 1
-			}
-			else
-			{
-				getplayer[THISACTOR].pals_time TEMP
-				ifvarl TEMP 24
+				ifvare IN_RIFT 0
 				{
-					palfrom 24 0 16 64
+					sound ENTER_RIFT
+					palfrom 56 0 16 64
+					setvar IN_RIFT 1
 				}
-				
-				state handle_lowgravity
+				else
+				{
+					getplayer[THISACTOR].pals_time TEMP
+					ifvarl TEMP 24
+					{
+						palfrom 24 0 16 64
+					}
+					
+					state handle_lowgravity
+				}
 			}
 		}
 		else
@@ -732,16 +738,20 @@ state handle_rift_prediction
 			break
 		}
 		
-		getsector[mycursectnum].ceilingpicnum TEMP
-		ifvare TEMP 3817
+		getsector[mycursectnum].floorpicnum TEMP
+		getsector[mycursectnum].ceilingpicnum TEMP2
+		ifvarvare TEMP TEMP2
 		{
-			ifvare PREDICT_IN_RIFT 0
+			ifvare TEMP 3817
 			{
-				setvar PREDICT_IN_RIFT 1
-			}
-			else
-			{
-				state handle_lowgravity_prediction
+				ifvare PREDICT_IN_RIFT 0
+				{
+					setvar PREDICT_IN_RIFT 1
+				}
+				else
+				{
+					state handle_lowgravity_prediction
+				}
 			}
 		}
 		else
@@ -932,7 +942,6 @@ state gore_movement
 	
 	// Add result to x coord.
 	getactor[THISACTOR].x TEMP2
-	setactor[THISACTOR].htbposx TEMP2
 	addvarvar TEMP2 TEMP
 	setactor[THISACTOR].x TEMP2
 	
@@ -947,13 +956,11 @@ state gore_movement
 	
 	// Add result to y coord.
 	getactor[THISACTOR].y TEMP2
-	setactor[THISACTOR].htbposy TEMP2
 	addvarvar TEMP2 TEMP
 	setactor[THISACTOR].y TEMP2
 	
 	// Add zvel to z coord.
 	getactor[THISACTOR].z TEMP
-	setactor[THISACTOR].htbposz TEMP
 	getactor[THISACTOR].zvel TEMP2
 	addvarvar TEMP TEMP2
 	setactor[THISACTOR].z TEMP
@@ -1035,4 +1042,162 @@ state tracer_movement
 	addvarvar SPAWN_ORIGY DEST_Y
 	addvarvar SPAWN_ORIGZ DEST_Z
 	setsprite THISACTOR SPAWN_ORIGX SPAWN_ORIGY SPAWN_ORIGZ
+	
+	ifinwater
+	{
+		spawn WATERBUBBLE
+	}
+ends
+
+state spawn_explosion_spark
+	espawn EXPLOSIONSPARK
+	getactor[THISACTOR].pal TEMP2
+	setactor[RETURN].pal TEMP2
+				
+	randvar TEMP 128
+	addvar TEMP 32
+	setactor[RETURN].xvel TEMP
+				
+	setvar TEMP -512
+	randvar TEMP2 2048
+	subvarvar TEMP TEMP2
+	setactor[RETURN].zvel TEMP
+				
+	randvar TEMP 2047
+	setactor[RETURN].ang TEMP
+	setvar RETURN 0
+ends
+
+// STATE_PARAM1 = Base Intensity
+// STATE_PARAM2 = Radius
+state start_shake
+	headspritestat CURSPRITE 10 // STAT_PLAYER
+	setvarvar LASTSPRITE CURSPRITE
+	whilevarn CURSPRITE -1
+	{
+		dist TEMP CURSPRITE THISACTOR
+		getactor[CURSPRITE].yvel TEMP3
+		
+		ifvarn TEMP 0
+		ifvarvarl TEMP STATE_PARAM2
+		{
+			// FACTOR = DIST * BASE INTENSITY / RADIUS
+			setvarvar TEMP2 STATE_PARAM1
+			mulvarvar TEMP TEMP2
+			divvarvar TEMP STATE_PARAM2
+			
+			// BASE INTENSITY / FACTOR
+			subvarvar TEMP2 TEMP
+			
+			getplayervar[TEMP3].SHAKE_INTENSITY TEMP
+			addvarvar TEMP TEMP2
+			ifvarg TEMP 512 // Cap the shake so we can't rattle the player into oblivion.
+				setvar TEMP 512
+			setplayervar[TEMP3].SHAKE_INTENSITY TEMP
+			
+			setplayervar[TEMP3].SHAKE_TIME 20
+		}
+		
+		nextspritestat CURSPRITE LASTSPRITE
+		setvarvar LASTSPRITE CURSPRITE
+	}
+	
+	setvar STATE_PARAM1 0
+	setvar STATE_PARAM2 0
+ends
+
+state handle_shake_display
+	ifvarg SHAKE_INTENSITY 0
+	ifvarg SHAKE_TIME 0
+	{	
+		// SHAKE_INTENSITY/2
+		setvarvar CL_TEMP1 SHAKE_INTENSITY
+		divvar CL_TEMP1 2
+			
+		// 0 to SHAKE_INTENSITY
+		displayrandvarvar CL_TEMP2 SHAKE_INTENSITY
+		subvarvar CL_TEMP2 CL_TEMP1
+		addvarvar camerax CL_TEMP2
+			
+		// 0 to CL_TEMP1 (scaled intensity)
+		displayrandvarvar CL_TEMP2 SHAKE_INTENSITY
+		subvarvar CL_TEMP2 CL_TEMP1
+		addvarvar cameray CL_TEMP2
+	}
+ends
+
+state handle_shake_timer
+	ifvarg SHAKE_INTENSITY 0
+	{
+		ifvarg SHAKE_TIME 0
+		{
+			setvarvar TEMP SHAKE_INTENSITY
+			divvarvar TEMP SHAKE_TIME
+			subvarvar SHAKE_INTENSITY TEMP
+			subvar SHAKE_TIME 1
+		}
+		else
+		{
+			setvar SHAKE_INTENSITY 0
+		}
+	}
+ends
+
+// LOTAG_MEMORY = timer
+// HITAG_MEMORY = lifetime
+// SPAWN_ORIGANG = rotational speed
+// SPAWN_ORIGZVEL = rotational offset
+// XREPEAT_MEMORY = start radius
+// YREPEAT_MEMORY = end radius
+state handle_shellexpansion
+		ifvarvare LOTAG_MEMORY HITAG_MEMORY
+			break
+		
+		ifvarvarg LOTAG_MEMORY HITAG_MEMORY
+			break
+			
+		ifvarg clockdiff 0 // Sync to 120hz timer
+		{
+			getuserdef[].pause_on CL_TEMP1
+			ifvare CL_TEMP1 0
+			{
+				// Increment timer
+				addvarvar LOTAG_MEMORY clockdiff
+				
+				// Increment angle
+				setvarvar CL_TEMP1 SPAWN_ORIGANG
+				mulvarvar CL_TEMP1 clockdiff
+				addvarvar SPAWN_ORIGZVEL CL_TEMP1
+			}
+		}
+		
+		// Apply rotation
+		gettspr[THISACTOR].tsprang CL_TEMP2
+		addvarvar CL_TEMP2 SPAWN_ORIGZVEL
+		settspr[THISACTOR].tsprang CL_TEMP2
+		
+		// Radius range
+		setvarvar CL_TEMP1 YREPEAT_MEMORY
+		subvarvar CL_TEMP1 XREPEAT_MEMORY
+		
+		// Resulting radius
+		setvarvar CL_TEMP2 LOTAG_MEMORY
+		mulvarvar CL_TEMP2 CL_TEMP1
+		divvarvar CL_TEMP2 HITAG_MEMORY
+		addvarvar CL_TEMP2 XREPEAT_MEMORY
+		
+		// Set x/yrepeat
+		settspr[THISACTOR].tsprxrepeat CL_TEMP2
+		settspr[THISACTOR].tspryrepeat CL_TEMP2
+		
+		// Fade alpha over time
+		setvarvar CL_TEMP2 LOTAG_MEMORY
+		mulvar CL_TEMP2 256
+		divvarvar CL_TEMP2 HITAG_MEMORY
+		
+		ifvarg CL_TEMP2 255
+			setvar CL_TEMP2 255
+
+		// Set alpha
+		setactor[THISACTOR].alpha CL_TEMP2
 ends

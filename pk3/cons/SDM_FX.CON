@@ -11,55 +11,80 @@ actor LDEXPLOSION 1 LAMEDUKE_EXPLOSION_FRAMES
 	else ifcount 0
 	{
 		setactor[THISACTOR].shade -127
-		cstat 128
+		setactor[THISACTOR].blend 255
+		cstat 130
 		ifspawnedby PLASMABALL
 		{
 			spritepal 1
-			cstator 2
 		}
 		else ifspawnedby PLASMABALL2
 		{
 			spritepal 1
-			cstator 2
 		}
 		else ifspawnedby PLASMABALL3
 		{
 			spritepal 1
-			cstator 2
 		}
 	}
 }
 enda
 
 spritenoshade SHOCKWAVE
-action SHOCKWAVE_ANIM 0 1 1 1 4
 actor SHOCKWAVE 0
 {
 	ifaction 0
 	{
-		cstat 10272
-		sizeat 1 1
+		cstat 10274
 		setactor[THISACTOR].shade -127
-		action SHOCKWAVE_ANIM
+		setactor[THISACTOR].blend 255
+		setactor[THISACTOR].mdflags 16
+		
+		setvar LOTAG_MEMORY 0 // Timer
+		setvar HITAG_MEMORY 24 // End time
+		setvar SPAWN_ORIGANG 8 // Rotational Speed
+		
+		setvar XREPEAT_MEMORY 0 // Start radius
+		setvar YREPEAT_MEMORY 255 // End radius
+		
+		action ANULLACTION
 	}
 	
-	getactor[THISACTOR].xrepeat TEMP
-	addvar TEMP 32
-	setactor[THISACTOR].xrepeat TEMP
-	setactor[THISACTOR].yrepeat TEMP
-	
-	ifvarg TEMP 255
-	{
+	ifcount 30
 		killit
-	}
-	else ifvarg TEMP 192
+}
+enda
+
+spritenoshade FIRESHELL
+actor FIRESHELL 0
+{
+	ifaction 0
 	{
-		cstator 512
+		setvar LOTAG_MEMORY 0 // Timer
+		setvar HITAG_MEMORY 64 // End time
+		setvar SPAWN_ORIGANG 64 // Rotational Speed
+		
+		setvar XREPEAT_MEMORY 0 // Start radius
+		setvar YREPEAT_MEMORY 80 // End radius
+		
+		ifspritepal 200 // Shrinker
+		{
+			setvar XREPEAT_MEMORY 48 // Start radius
+			setvar YREPEAT_MEMORY 0 // End radius
+			setvar SPAWN_ORIGANG 32 // Rotational Speed
+		}
+		else ifspritepal 199 // Expander
+		{
+			setvar HITAG_MEMORY 32 // End time
+			setvar XREPEAT_MEMORY 0 // Start radius
+			setvar YREPEAT_MEMORY 48 // End radius
+		}
+		
+		setactor[THISACTOR].mdflags 16
+		action ANULLACTION
 	}
-	else ifvarg TEMP 128
-	{
-		cstator 2
-	}
+	
+	ifcount 30
+		killit
 }
 enda
 
@@ -877,22 +902,51 @@ actor SPURTTRAIL 0
 	}
 enda
 
+action EXPLOSIONSPARK_ANIM 0 6 1 1 8
+spritenoshade EXPLOSIONSPARK
+actor EXPLOSIONSPARK 0	
+	ifaction 0
+	{
+		setactor[THISACTOR].shade -127
+		setactor[THISACTOR].blend 255
+		
+		sizeat 16 16
+		cstat 130
+		
+		ifrnd 128
+		{
+			cstator 4
+		}
+		ifrnd 128
+		{
+			cstator 8
+		}
+		
+		action EXPLOSIONSPARK_ANIM
+	}
+	
+	state gore_movement
+	
+	ifactioncount 6
+		killit
+enda
+
 spriteflags TRACER 8196
 actor TRACER 0
 	ifaction 0
 	{
 		setactor[THISACTOR].shade -127
+		setactor[THISACTOR].blend 255
 		sizeat 10 10
 		cstat 32768
 		action ANULLACTION
-		move SMOOTH_HACK geth getv // Remove if my interp patch makes it to mainline
 	}
 	else
 	{
 		ifcount 2 { }
 		else ifcount 1
 		{
-			cstat 2176
+			cstat 2178
 		}
 	}
 	
@@ -906,7 +960,6 @@ actor PELLET 0
 		sizeat 10 10
 		cstat 32768
 		action ANULLACTION
-		move SMOOTH_HACK geth getv // Remove if my interp patch makes it to mainline
 	}
 	else
 	{
@@ -918,6 +971,24 @@ actor PELLET 0
 	}
 	
 	state tracer_movement
+enda
+
+action WATERDRIPSPLASH_ANIM 1 9 1 1 2
+actor WATERDRIPSPLASH_FIXED 0
+{
+	ifaction 0
+	{
+		ifrnd 128
+			cstator 4
+			
+		sizeat 24 24
+		action WATERDRIPSPLASH_ANIM
+	}
+	else ifactioncount 9
+		killit
+		
+	fall
+}
 enda
 
 define SCRAP_WORKSLIKE 4226

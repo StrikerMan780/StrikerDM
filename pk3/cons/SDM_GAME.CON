@@ -968,59 +968,62 @@ action BURNING_FLAME  0   12   1   1   2
 move BURNING_VELS 
 
 state burningstate
+	sleeptime 300
 
-  sleeptime 300
+	ifspawnedby BURNING
+	{
+		ifgapzl 16
+		break
+	}
+	else ifspawnedby BURNING2
+	{
+		ifgapzl 16
+		break
+	}
 
+	ifpdistg 10240
+		break
 
-  ifspawnedby BURNING
-  {
-    ifgapzl 16
-      break
-  }
-  else
-    ifspawnedby BURNING2
-  {
-    ifgapzl 16
-      break
-  }
+	ifcount 128
+	{
+		ifspawnedby TIRE
+		{
+			ifactioncount 512
+				killit
+				
+			ifrnd 16
+				sizeto 64 48
+		}
+		else
+		{
+			sizeto 8 8
+			sizeto 8 8
+			
+			ifcount 192
+				killit
+		}
+	}
+	else
+	{
+		ifmove 0
+		{
+			move BURNING_VELS
+			cstator 2
+			setactor[THISACTOR].blend 255
+		}
 
-  ifpdistg 10240
-    break
+			sizeto 52 52
 
-  ifcount 128
-  {
-    ifspawnedby TIRE
-    {
-      ifactioncount 512
-        killit
-      ifrnd 16
-        sizeto 64 48
-    }
-    else
-    {
-      sizeto 8 8
-      sizeto 8 8
-      ifcount 192
-        killit
-    }
-  }
-  else
-  {
-    ifmove 0
-      move BURNING_VELS
-
-    sizeto 52 52
-
-    ifp palive
-      ifpdistl 844
-        ifrnd 32
-          ifcansee
-    {
-      soundonce DUKE_LONGTERM_PAIN
-      addphealth -1
-      palfrom 24 16
-    }
-  }
+		ifp palive
+		ifpdistl 844
+		ifrnd 32
+		ifcansee
+		{
+			soundonce DUKE_LONGTERM_PAIN
+			addphealth -1
+			palfrom 24 16
+		}
+	}
 ends
 
 actor BURNING WEAK BURNING_FLAME
@@ -1308,14 +1311,25 @@ enda
 
 action SHRINKERFRAMES 0 4 1 1 10
 actor SHRINKEREXPLOSION 0 SHRINKERFRAMES
-  ifactioncount 4
-    killit
+	ifactioncount 4
+		killit
+	
+	ifcount 1 { }
+	else ifcount 0
+	{
+		cstator 2
+		setactor[THISACTOR].blend 255
+		
+		espawn FIRESHELL
+		setactor[RETURN].pal 200
+		setvar RETURN 0
+	}
 enda
 
 action EXPLOSION_FRAMES 0 20 1 1  4
 actor EXPLOSION2 1 EXPLOSION_FRAMES
-  ifactioncount 20
-    killit
+	ifactioncount 20
+		killit
 	
 	ifcount 1 { }
 	else ifcount 0
@@ -1323,22 +1337,90 @@ actor EXPLOSION2 1 EXPLOSION_FRAMES
 		ifspawnedby RPG
 		{
 			spawn SHOCKWAVE
+			spawn FIRESHELL
+			
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			
+			setvar STATE_PARAM1 256 // Intensity
+			setvar STATE_PARAM2 4096 // Radius
+			state start_shake
 		}
 		else ifspawnedby HEAVYHBOMB
 		{
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			
 			spawn SHOCKWAVE
+			spawn FIRESHELL
+			
+			setvar STATE_PARAM1 256 // Intensity
+			setvar STATE_PARAM2 6144 // Radius
+			state start_shake
+		}
+		else ifspawnedby TRIPBOMB
+		{
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			
+			setvar STATE_PARAM1 384 // Intensity
+			setvar STATE_PARAM2 8192 // Radius
+			state start_shake
+		}
+		else ifspawnedby DEVASTATORMISSILE
+		{
+			setvar STATE_PARAM1 16 // Intensity
+			setvar STATE_PARAM2 2048 // Radius
+			state start_shake
 		}
 		else ifspawnedby FLAMETHROWERFLAME
 		{
-			cstator 2
 			sizeat 16 16
 		}
+		else ifspawnedby SEENINE
+		{
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+		}
+		else ifspawnedby OOZFILTER
+		{
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+		}
+		
+		cstator 2
+		setactor[THISACTOR].blend 255
 	}
 enda
 
 actor EXPLOSION2BOT 1 EXPLOSION_FRAMES
-  ifactioncount 20
-    killit
+	ifactioncount 20
+		killit
+	
+	ifcount 1 { }
+	else ifcount 0
+	{
+		cstator 2
+		setactor[THISACTOR].blend 255
+	}
 enda
 
 action FFLAME_FR 0 16 1 1 1
@@ -1379,6 +1461,10 @@ actor ROTATEGUN ROTTURRETSTRENGTH
   else
     ifaction ASATNSPIN
   {
+	getactor[THISACTOR].ang TEMP
+	subvar TEMP 256
+	setactor[THISACTOR].ang TEMP
+	
     ifactioncount 32
     {
       action ASATWAIT
@@ -2184,12 +2270,15 @@ move FIREVELS
 
 state firestate
 
-  ifaction 0
-    ifrnd 16
-    {
-      action FIRE_FRAMES
-      cstator 128
-    }
+	ifaction 0
+	{
+		action FIRE_FRAMES
+		randvar TEMP 13
+		setactor[THISACTOR].htg_t 2 TEMP
+		setactor[THISACTOR].htg_t 3 TEMP
+		cstator 130
+		setactor[THISACTOR].blend 255
+	}
 
   sleeptime 300         // Never let it fall to sleep
 

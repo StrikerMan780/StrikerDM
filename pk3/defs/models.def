@@ -1,7 +1,16 @@
 // Models
 model "models/tracer.md3" {
-    scale 10.0
-    shade 0
-    skin { pal 0 file "models/tracer.png" } 
-    frame { name "AnimFrames00" tile 2507 }
+	scale 8.0
+	shade 0
+	skin { pal 0 file "models/tracer.png" nocompress nodownsize } 
+	frame { name "AnimFrames00" tile 2507 }
+}
+
+model "models/fireball.md3" {
+	scale 4.0
+	shade 0
+	skin { pal 0 file "models/fireball.png" forcefilter nocompress nodownsize } 
+	skin { pal 200 file "models/shrinkball.png" forcefilter nocompress nodownsize } 
+	skin { pal 199 file "models/expandball.png" forcefilter nocompress nodownsize } 
+	frame { name "none00" tile 1889 }
 }

@@ -1,3 +1,6 @@
+tilefromtexture 3563 { file "tiles/3563.png" texture }
+tilefromtexture 3564 { file "tiles/3564.png" texture }
+tilefromtexture 3565 { file "tiles/3565.png" texture }
 tilefromtexture 3566 { file "tiles/3566.png" texture }
 tilefromtexture 3567 { file "tiles/3567.png" texture }
 tilefromtexture 3568 { file "tiles/3568.png" texture }
@@ -16,6 +19,8 @@ tilefromtexture 3580 { file "tiles/3580.png" texture }
 tilefromtexture 3581 { file "tiles/3581.png" texture }
 tilefromtexture 3582 { file "tiles/3582.png" texture }
 tilefromtexture 3583 { file "tiles/3583.png" }
+
+tilefromtexture 3685 { file "tiles/3685.png" texture }
 
 animtilerange 6113 6137 3 ANIM_FORWARD
 tilefromtexture 6113 { file "tiles/6113.png" texture }

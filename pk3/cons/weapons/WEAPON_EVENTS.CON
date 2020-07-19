@@ -1,17 +1,21 @@
 onevent EVENT_WEAPKEY3
-	state checkssg
+	state check_alt_weapons
 endevent
 
 onevent EVENT_WEAPKEY4
-	state checkplasmarifle
+	state check_alt_weapons
 endevent
 
 onevent EVENT_WEAPKEY5
-	state checkrailgun
+	state check_alt_weapons
 endevent
 
 onevent EVENT_WEAPKEY10
-	state checkflamethrower
+	state check_alt_weapons
+endevent
+
+onevent EVENT_ALTWEAPON
+	state check_alt_weapons
 endevent
 
 onevent EVENT_CHANGEWEAPON
@@ -287,11 +291,11 @@ onevent EVENT_GETAUTOAIMANGLE
 		{
 			ifvare COOP GM_INSTAGIB
 			{
-				setvar AUTOAIMANGLE 0
+				setvar AUTOAIMANGLE 6
 			}
 			else
 			{
-				setvar AUTOAIMANGLE 8
+				setvar AUTOAIMANGLE 12
 			}
 		}
 	}

@@ -167,36 +167,40 @@ enda
 
 spritenoshade ONFIRE
 action ONFIRE_EFFECT    0    10    1    1    2
-actor ONFIRE 1 ONFIRE_EFFECT
-    ifactioncount 10 {
-        killit
-    }
-    ifactioncount 2 {
-        break
-    }
-    ifactioncount 1 {
+actor ONFIRE 0
+	ifaction 0
+	{
 		ifspawnedby FIREBALL
 		{
 			sizeat 40 40
-			//iffloordistl 48
-			//{
-				ifrnd 128
-					espawn BURNING_ALT
-				else
-					espawn BURNING2_ALT
-				getactor[THISACTOR].owner TEMP
-				setactor[RETURN].owner TEMP
-				setvar RETURN 0
-			//}
+			
+			ifrnd 128
+				espawn BURNING_ALT
+			else
+				espawn BURNING2_ALT	
+			getactor[THISACTOR].owner TEMP
+			setactor[RETURN].owner TEMP
+			setvar RETURN 0
 		}
 		else
 		{
 			sizeat 24 24
 		}
+		
+		spawn SMALLSMOKE
+		
 		setactor[THISACTOR].yoffset -16
 		setactor[THISACTOR].shade -127
-        spawn SMALLSMOKE
-    }
+		setactor[THISACTOR].blend 255
+		cstator 2
+
+		action ONFIRE_EFFECT
+	}
+	else
+	{
+		ifactioncount 10
+			killit
+	}
 enda
 
 action ONFIRESMOKEFRAMES    0    9    1    1    8
@@ -271,6 +275,7 @@ actor FIREBALLTRAIL 0
 			
 		cstator 130
 		setactor[THISACTOR].shade -127
+		setactor[THISACTOR].blend 255
 		
 		ifinwater
 		ifrnd 32
@@ -353,6 +358,7 @@ state burningstate_flamethrower
 	{
 		cstat 130
 		setactor[THISACTOR].shade -127
+		setactor[THISACTOR].blend 255
 	}
 ends
 
