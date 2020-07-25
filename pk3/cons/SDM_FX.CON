@@ -659,6 +659,50 @@ actor ZTDESTINATION
 	}
 enda
 
+action PIGJIB1_ANIM 0 6 1 1 16
+action PIGJIB1_LAND 295 6 1 1 6
+actor PIGJIB1 0
+	ifaction 0
+	{
+		setactor[THISACTOR].shade -32
+		setactor[THISACTOR].mdflags 16
+		setvar ISADULT ADULT_LOCKOUTONLY
+		cstat 128
+		action PIGJIB1_ANIM
+	}
+	
+	ifaction PIGJIB1_LAND
+	{
+		fall
+		ifactioncount 6
+		{
+			killit
+		}
+	}
+	else
+	{
+		state gore_movement
+		
+		getactor[THISACTOR].pal TEMP2
+		espawn GIBBLOOD
+		setactor[RETURN].pal TEMP2
+		setvar RETURN 0
+		
+		iffloordistl 4
+		{
+			state gibsound
+			
+			espawn PIGJIB1_ONGROUND
+			setactor[RETURN].pal TEMP2
+			setvar RETURN 0
+			
+			resetactioncount
+			cstat 0
+			action PIGJIB1_LAND
+		}
+	}
+enda
+
 state onground_gib_code
 	fall
 	ifcount 316
@@ -702,6 +746,16 @@ state onground_gib_code
 		setvar RETURN 0
 	}
 ends
+
+actor PIGJIB1_ONGROUND
+{
+	ifspawnedby PIGJIB1_ONGROUND { }
+	else
+	{
+		state onground_gib_code
+	}
+}
+enda
 
 actor DUKETORSO_ONGROUND
 {
@@ -910,7 +964,7 @@ actor EXPLOSIONSPARK 0
 		setactor[THISACTOR].shade -127
 		setactor[THISACTOR].blend 255
 		
-		sizeat 16 16
+		sizeat 20 20
 		cstat 130
 		
 		ifrnd 128

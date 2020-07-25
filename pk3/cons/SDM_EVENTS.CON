@@ -664,6 +664,10 @@ onevent EVENT_EGS
 		case TRIPBOMB:
 			setactor[THISACTOR].mdflags 16
 			break
+		
+		case PIGJIB1:
+			changespritestat THISACTOR 1
+			break
 	endswitch
 endevent
 
@@ -1451,6 +1455,7 @@ onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
 	switch CL_TEMP1
 		case BLOODSPURT:
 		case SPURTTRAIL:
+		case PIGJIB1:
 			gettspr[THISACTOR].tsprshade CL_TEMP1
 			subvar CL_TEMP1 6
 			settspr[THISACTOR].tsprshade CL_TEMP1
@@ -1800,6 +1805,17 @@ onevent EVENT_DISPLAYREST // !UNSYNCHRONIZED!
 	//qsprintf 500 500 gametype_flags
 	//minitext 48 48 500 -127 1
 	
+	ifvarvarn clockcheck totalclock
+	{
+		setvarvar clockdiff totalclock
+		subvarvar clockdiff clockcheck
+		setvarvar clockcheck totalclock
+	}
+	else
+	{
+		setvar clockdiff 0
+	}
+	
 	// Change orientation to 536 later.
 	getplayer[THISACTOR].curr_weapon CL_TEMP1
 	ifvare CL_TEMP1 FREEZE_WEAPON
@@ -1922,17 +1938,6 @@ onevent EVENT_DISPLAYMENUREST // Version display. !UNSYNCHRONIZED!
 endevent
 
 onevent EVENT_DISPLAYROOMS // !UNSYNCHRONIZED!
-	ifvarvarn clockcheck totalclock
-	{
-		setvarvar clockdiff totalclock
-		subvarvar clockdiff clockcheck
-		setvarvar clockcheck totalclock
-	}
-	else
-	{
-		setvar clockdiff 0
-	}
-	
 	state handle_recoil
 	state handle_shake_display
 endevent

@@ -105,7 +105,7 @@ state draw_ssg // SHOTGUN_WEAPON:
 			state G_DrawWeaponTile
 			break
 		case 19:
-			setvar hud_tilenum SSG_RELOAD1
+			//setvar hud_tilenum SSG_RELOAD1
 			addvar hud_y 1
 			state G_DrawWeaponTile
 			break

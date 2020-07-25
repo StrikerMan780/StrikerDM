@@ -452,11 +452,14 @@ state handle_recoil
 	{
 		addvarvar cameraq16horiz RECOIL_AMOUNT
 		
+		ifvarvarn RECOIL_LASTTIC totalclock
 		ifvarg clockdiff 0
 		{
 			setvarvar CL_TEMP1 RECOIL_SPEED
 			mulvarvar CL_TEMP1 clockdiff
 			subvarvar RECOIL_AMOUNT CL_TEMP1
+			
+			setvarvar RECOIL_LASTTIC totalclock
 		}
 	}
 ends

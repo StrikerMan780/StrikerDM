@@ -22,6 +22,15 @@ tilefromtexture 1617 { file "tiles/1617.png" }
 tilefromtexture 1618 { file "tiles/1618.png" }
 tilefromtexture 1619 { file "tiles/1619.png" }
 
+// Pig Gib
+tilefromtexture 1993 { file "tiles/1993.png" }
+tilefromtexture 1994 { file "tiles/1994.png" }
+tilefromtexture 1995 { file "tiles/1995.png" }
+tilefromtexture 1996 { file "tiles/1996.png" }
+tilefromtexture 1997 { file "tiles/1997.png" }
+tilefromtexture 1998 { file "tiles/1998.png" }
+tilefromtexture 1999 { file "tiles/1999.png" }
+
 // Explosion Spark
 tilefromtexture 2090 { file "tiles/2090.png" }
 tilefromtexture 2091 { file "tiles/2091.png" }

@@ -494,7 +494,7 @@ definesound PRED_DYING    sounds/preddy.ogg          0   400 3  0   0
 // Lizard Captain                                                                       
 definesound CAPT_ROAM     sounds/predrm.ogg          0  200  3   0   0
 definesound CAPT_RECOG    predrg.voc        -400  0   3   0   0
-definesound CAPT_ATTACK   chaingun.voc      0     0    3   0   -200
+definesound CAPT_ATTACK   sounds/chaingun.ogg      0     0    3   0   -200
 definesound CAPT_PAIN     sounds/predpn.ogg        -200  100 3   0   0
 definesound CAPT_DYING    sounds/preddy.ogg        -200  100 3   0   0
 definesound LIZARD_SPIT   sounds/lizspit.ogg         0   0   0   0   0
@@ -514,7 +514,7 @@ definesound PIG_ROAM      roam29.voc           -200 400   3   0   0
 definesound PIG_ROAM2     sounds/roam67.ogg           -200 400   3   0   0
 definesound PIG_ROAM3     sounds/pigrm.ogg            -200 400   3   0   0
 definesound PIG_RECOG     sounds/pigrg.ogg           -200 400   3   0   0
-definesound PIG_ATTACK    shotgun7.voc        -256  256  4   0   0
+definesound PIG_ATTACK    sounds/shotgun7.ogg        -256  256  4   0   0
 definesound PIG_PAIN      sounds/pigpn.ogg            100 800   3   0   0
 definesound PIG_DYING     sounds/pigdy.ogg           -800 100   3   0   0
 definesound PIG_CAPTURE_DUKE !pig.voc           0   0   255 8   0
@@ -594,7 +594,7 @@ definesound BOS4_LAY      bqegg1a.voc           1024 1024  255 0  0
 // BOSS1                                                                                
 definesound BOS1_ROAM     sounds/bos1rm.ogg             0   0   3   0   0
 definesound BOS1_RECOG    bos1rg.voc             0   0   5   0   0
-definesound BOS1_ATTACK1  chaingun.voc           0   0   3   0   0
+definesound BOS1_ATTACK1  sounds/chaingun.ogg           0   0   3   0   0
 definesound BOS1_ATTACK2  sounds/rpgfire.ogg            0   0   3   0   0
 definesound BOS1_PAIN     bos1pn.voc             0   0   3   0   0
 definesound BOS1_DYING    bos1dy.voc             0   0   3   0   0
@@ -723,7 +723,7 @@ definesound ELEVATOR_ON         gbelev01.voc       0   0   0   0   0
 definesound ELEVATOR_OFF        gbelev02.voc       0   0   0   0   0
 definesound ALIEN_ELEVATOR1     hydro43.voc        0   0   0   0   0
 definesound SUBWAY              subway.voc         0   0   0   0   0
-definesound SWITCH_ON           switch.voc         0   0   0   0   0
+definesound SWITCH_ON           sounds/switch.wav         0   0   0   0   0
 
 definesound FAN                 fan.voc            0   0   0   0   0
 definesound FLUSH_TOILET        sounds/flush.ogg          0   0   3   2   0

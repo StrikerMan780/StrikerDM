@@ -1344,6 +1344,7 @@ actor EXPLOSION2 1 EXPLOSION_FRAMES
 			state spawn_explosion_spark
 			state spawn_explosion_spark
 			state spawn_explosion_spark
+			state spawn_explosion_spark
 			
 			setvar STATE_PARAM1 256 // Intensity
 			setvar STATE_PARAM2 4096 // Radius
@@ -1351,6 +1352,8 @@ actor EXPLOSION2 1 EXPLOSION_FRAMES
 		}
 		else ifspawnedby HEAVYHBOMB
 		{
+			state spawn_explosion_spark
+			state spawn_explosion_spark
 			state spawn_explosion_spark
 			state spawn_explosion_spark
 			state spawn_explosion_spark
@@ -1369,6 +1372,8 @@ actor EXPLOSION2 1 EXPLOSION_FRAMES
 		}
 		else ifspawnedby TRIPBOMB
 		{
+			state spawn_explosion_spark
+			state spawn_explosion_spark
 			state spawn_explosion_spark
 			state spawn_explosion_spark
 			state spawn_explosion_spark
@@ -1397,9 +1402,11 @@ actor EXPLOSION2 1 EXPLOSION_FRAMES
 			state spawn_explosion_spark
 			state spawn_explosion_spark
 			state spawn_explosion_spark
+			state spawn_explosion_spark
 		}
 		else ifspawnedby OOZFILTER
 		{
+			state spawn_explosion_spark
 			state spawn_explosion_spark
 			state spawn_explosion_spark
 			state spawn_explosion_spark
@@ -1462,7 +1469,7 @@ actor ROTATEGUN ROTTURRETSTRENGTH
     ifaction ASATNSPIN
   {
 	getactor[THISACTOR].ang TEMP
-	subvar TEMP 256
+	subvar TEMP 128
 	setactor[THISACTOR].ang TEMP
 	
     ifactioncount 32
@@ -4517,6 +4524,14 @@ ai AIPIGSHRINK APIGWALK SHRUNKVELS fleeenemy
 ai AIPIGGROW APIGGROW PIGSTOPPED faceplayerslow
 ai AIPIGHIT APIGHIT PIGSTOPPED faceplayer
 
+state pig_jibs
+  ifrnd 128
+    guts PIGJIB1 1
+	
+  ifrnd 64
+    guts PIGJIB1 1
+ends
+
 state pigseekenemystate
 
   ifai AIPIGCHARGE
@@ -4759,6 +4774,7 @@ state checkpighitstate
     ifwasweapon RADIUSEXPLOSION
     {
       sound SQUISHED
+	  state pig_jibs
       state standard_jibs
       killit
     }
@@ -4766,12 +4782,14 @@ state checkpighitstate
       ifwasweapon RPG
     {
       sound SQUISHED
+	  state pig_jibs
       state standard_jibs
       killit
     }
 	else ifwasweapon DEVASTATORMISSILE
     {
       sound SQUISHED
+	  state pig_jibs
       state standard_jibs
       killit
     }
@@ -4837,7 +4855,6 @@ state pigdyingstate
   }
 ends
 
-
 actor PIGCOPDIVE PIGCOPSTRENGTH
   ai AIPIGDIVING
   action APIGDIVESHOOT
@@ -4870,6 +4887,7 @@ actor PIGCOP PIGCOPSTRENGTH APIGSTAND
         ifwasweapon RADIUSEXPLOSION
       {
         sound SQUISHED
+		state pig_jibs
         state standard_jibs
         killit
       }

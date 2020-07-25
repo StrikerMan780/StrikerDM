@@ -1149,6 +1149,7 @@ ends
 // SPAWN_ORIGZVEL = rotational offset
 // XREPEAT_MEMORY = start radius
 // YREPEAT_MEMORY = end radius
+// PICNUM_MEMORY = last processed tic
 state handle_shellexpansion
 		ifvarvare LOTAG_MEMORY HITAG_MEMORY
 			break
@@ -1157,8 +1158,10 @@ state handle_shellexpansion
 			break
 			
 		ifvarg clockdiff 0 // Sync to 120hz timer
-		{
+		{	
 			getuserdef[].pause_on CL_TEMP1
+			ifvarvarn PICNUM_MEMORY totalclock
+			ifvare display_mirror 0
 			ifvare CL_TEMP1 0
 			{
 				// Increment timer
@@ -1168,6 +1171,8 @@ state handle_shellexpansion
 				setvarvar CL_TEMP1 SPAWN_ORIGANG
 				mulvarvar CL_TEMP1 clockdiff
 				addvarvar SPAWN_ORIGZVEL CL_TEMP1
+				
+				setvarvar PICNUM_MEMORY totalclock
 			}
 		}
 		
