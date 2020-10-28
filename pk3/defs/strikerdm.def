@@ -24,6 +24,7 @@ include defs/vaporwave.def
 include defs/wt_tiles020.def
 include defs/wt_tiles021.def
 include defs/wt_tiles022.def
+include defs/fplanet_tex.def
 include defs/xxx.def
 
 // Voxels

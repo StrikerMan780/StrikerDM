@@ -57,32 +57,6 @@ enda
 spritenoshade FIRESHELL
 actor FIRESHELL 0
 {
-	ifaction 0
-	{
-		setvar LOTAG_MEMORY 0 // Timer
-		setvar HITAG_MEMORY 64 // End time
-		setvar SPAWN_ORIGANG 64 // Rotational Speed
-		
-		setvar XREPEAT_MEMORY 0 // Start radius
-		setvar YREPEAT_MEMORY 80 // End radius
-		
-		ifspritepal 200 // Shrinker
-		{
-			setvar XREPEAT_MEMORY 48 // Start radius
-			setvar YREPEAT_MEMORY 0 // End radius
-			setvar SPAWN_ORIGANG 32 // Rotational Speed
-		}
-		else ifspritepal 199 // Expander
-		{
-			setvar HITAG_MEMORY 32 // End time
-			setvar XREPEAT_MEMORY 0 // Start radius
-			setvar YREPEAT_MEMORY 48 // End radius
-		}
-		
-		setactor[THISACTOR].mdflags 16
-		action ANULLACTION
-	}
-	
 	ifcount 30
 		killit
 }
@@ -269,11 +243,10 @@ actor CUSTOMTOUCHPLATE
 enda
 
 // XREPEAT_MEMORY = Internal Timer
-// HITAG = Switch Channel
-// LOTAG = Sector for Platform
-// SPAWN_ORIGZ = Original Z Position
+// LOTAG = Switch Channel
+// SPAWN_ORIGANG = Original Z Position
 // XVEL/SPAWN_ORIGX = Time To Pause
-// YVEL/SPAWN_ORIGY = Destination Z Position
+// Z/SPAWN_ORIGZ = Destination Z Position
 // ZVEL/SPAWN_ORIGZVEL = Z Velocity
 action TRIGGERED 0
 action WAITING 0
@@ -286,7 +259,7 @@ actor TIMEDPLATFORM
 		{
 			setvar XREPEAT_MEMORY 0
 			setsector[THISACTOR].floorzvel SPAWN_ORIGZVEL
-			setsector[THISACTOR].floorzgoal SPAWN_ORIGY
+			setsector[THISACTOR].floorzgoal SPAWN_ORIGZ
 			action TRIGGERED
 		}
 	}
@@ -306,7 +279,7 @@ actor TIMEDPLATFORM
 		ifvarvare XREPEAT_MEMORY SPAWN_ORIGX
 		{
 			setsector[THISACTOR].floorzvel SPAWN_ORIGZVEL
-			setsector[THISACTOR].floorzgoal SPAWN_ORIGZ
+			setsector[THISACTOR].floorzgoal SPAWN_ORIGANG
 			setvar XREPEAT_MEMORY 0
 			action RETURNING
 		}
@@ -325,23 +298,29 @@ actor TIMEDPLATFORM
 	ifaction 0
 	{
 		cstat 32768
-		getsector[THISACTOR].floorz SPAWN_ORIGZ
+		getsector[THISACTOR].floorz SPAWN_ORIGANG
 		getactor[THISACTOR].xvel SPAWN_ORIGX
-		getactor[THISACTOR].yvel SPAWN_ORIGY
+		getactor[THISACTOR].z SPAWN_ORIGZ
 		getactor[THISACTOR].zvel SPAWN_ORIGZVEL
 		action ANULLACTION
 	}
 }
 enda
 
+// HITAG = Stop Sound
+// LOTAG = Start Sound
 state platform_sound
 	ifaction ANULLACTION
 	{
 		getsector[THISACTOR].floorzgoal TEMP
 		ifvarn TEMP -1
 		{
-			soundvar LOTAG_MEMORY
-			stopsoundvar HITAG_MEMORY
+			ifvarn LOTAG_MEMORY -32768 // -32768 = No Sound
+				soundvar LOTAG_MEMORY
+			
+			ifvarn HITAG_MEMORY -32768 // -32768 = No Sound			
+				stopsoundvar HITAG_MEMORY
+				
 			action TRIGGERED
 		}
 	}
@@ -350,14 +329,20 @@ state platform_sound
 	{
 		getsector[THISACTOR].floorzgoal TEMP
 		ifvare TEMP -1
-		{
-			soundvar HITAG_MEMORY
-			stopsoundvar LOTAG_MEMORY
+		{	
+			ifvarn HITAG_MEMORY -32768 // 32768 = No Sound
+				soundvar HITAG_MEMORY
+				
+			ifvarn LOTAG_MEMORY -32768 // -32768 = No Sound
+				stopsoundvar LOTAG_MEMORY
+				
 			action ANULLACTION
 		}
 	}
 ends
 
+// HITAG = Close Sound
+// LOTAG = Open Sound
 state door_sound
 	ifaction ANULLACTION
 	{
@@ -956,7 +941,7 @@ actor SPURTTRAIL 0
 	}
 enda
 
-action EXPLOSIONSPARK_ANIM 0 6 1 1 8
+action EXPLOSIONSPARK_ANIM 0 6 1 1 12
 spritenoshade EXPLOSIONSPARK
 actor EXPLOSIONSPARK 0	
 	ifaction 0
@@ -1042,6 +1027,45 @@ actor WATERDRIPSPLASH_FIXED 0
 		killit
 		
 	fall
+}
+enda
+
+action RICOCHET_SPARK_ANIM1 0 1 1 1 2
+action RICOCHET_SPARK_ANIM2 1 1 1 1 2
+action RICOCHET_SPARK_ANIM3 2 1 1 1 2
+action RICOCHET_SPARK_ANIM4 3 1 1 1 2
+action RICOCHET_SPARK_ANIM5 4 1 1 1 2
+spritenoshade RICOCHET_SPARK
+actor RICOCHET_SPARK 0
+{
+	ifaction 0
+	{
+		sound PISTOL_RICOCHET
+		
+		setactor[THISACTOR].shade -127
+		
+		randvar TEMP3 14
+		addvar TEMP3 10
+		setactor[THISACTOR].xrepeat TEMP3
+		setactor[THISACTOR].yrepeat TEMP3
+		
+		randvar TEMP3 4
+		switch TEMP3
+			case 0: action RICOCHET_SPARK_ANIM1 break
+			case 1: action RICOCHET_SPARK_ANIM2 break
+			case 2: action RICOCHET_SPARK_ANIM3 break
+			case 3: action RICOCHET_SPARK_ANIM4 break
+			case 4: action RICOCHET_SPARK_ANIM5 break
+		endswitch
+	}
+	else
+	{
+		ifactioncount 1
+			cstat 32768
+			
+		ifcount 8
+			killit
+	}
 }
 enda
 

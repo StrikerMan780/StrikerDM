@@ -60,9 +60,8 @@ state draw_railgun // RAILGUN_WEAPON:
 ends
 
 actor RAILGUNSPRITE
-    fall
-	state init_pickup
-	state despawn_item_from_can
+    state item_shared_code
+	
     ifmove RESPAWN_ACTOR_FLAG
 	{
         state respawnit
@@ -111,9 +110,8 @@ actor RAILGUNSPRITE
 enda
 
 actor RAILGUNAMMO
-    fall
-	state init_pickup
-	state despawn_item_from_can
+    state item_shared_code
+	
     ifmove RESPAWN_ACTOR_FLAG
 	{
         state respawnit

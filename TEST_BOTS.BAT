@@ -1,7 +1,7 @@
-set GRP_PATH=%~dp0Builds
-set MAP=maps/ktc.map
-C:
-cd "C:\Meltdown\Duke Nukem 3D\EDuke32"
+set GRP_PATH=%~dp0pk3
+set MAP=maps/thermalbase.map
+D:
+cd "D:\sourcecode\eduke32-cs"
 @echo off
 cls
 echo With AI?
@@ -24,5 +24,5 @@ start eduke32-oldmp -nosetup -tx -c1 -m -g %GRP_PATH%\StrikerDM-DEV.PK3 /q%NUMBO
 exit
 
 :NOAI
-start eduke32-oldmp -nosetup -tx -c1 -m -g %GRP_PATH%\StrikerDM-DEV.PK3 /q16 -map %MAP%
+start eduke32-oldmp -nosetup -tx -c1 -m -j%GRP_PATH% /q16 -map %MAP%
 exit

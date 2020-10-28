@@ -103,6 +103,13 @@ tilefromtexture 1545 { file "tiles/1545.png" }
 // Explosion Shockwave
 tilefromtexture 1888 { file "tiles/1888.png" }
 
+// Ricochet Spark
+tilefromtexture 2365 { file "tiles/2365.png" xoffset 13 yoffset 11 }
+tilefromtexture 2366 { file "tiles/2366.png" xoffset -22 yoffset 2 }
+tilefromtexture 2367 { file "tiles/2367.png" xoffset -2 yoffset 8 }
+tilefromtexture 2368 { file "tiles/2368.png" xoffset 14 yoffset -9 }
+tilefromtexture 2369 { file "tiles/2369.png" xoffset -20 yoffset -2 }
+
 // Extended RPG Flash
 tilefromtexture 2547 { file "tiles/2547.png" xoff -44 yoff -27 }
 
@@ -113,6 +120,12 @@ tilefromtexture 2579 { file "tiles/2579.png" }
 // Ripper Casing
 tilefromtexture 2587 { file "tiles/2587.png" }
 tilefromtexture 2588 { file "tiles/2588.png" }
+
+// Extra Pipebomb Frames
+tilefromtexture 2600 { file "tiles/2600.png" xoffset -16 yoffset 25 }
+tilefromtexture 2601 { file "tiles/2601.png" xoffset -16 yoffset -10 }
+tilefromtexture 2602 { file "tiles/2602.png" xoffset -2 yoffset 1 }
+tilefromtexture 2603 { file "tiles/2603.png" xoffset -14 yoffset -24 }
 
 // Interpolated Shotgun
 tilefromtexture 2614 { file "tiles/2614.png" xoff -27 yoff -5 }
@@ -130,6 +143,9 @@ tilefromtexture 3725 { file "tiles/3725.png" }
 tilefromtexture 3726 { file "tiles/3726.png" }
 tilefromtexture 3727 { file "tiles/3727.png" }
 tilefromtexture 3728 { file "tiles/3728.png" }
+
+// Hanging Vest
+tilefromtexture 3729 { file "tiles/3729.png" }
 
 // Bonuses
 animtilerange 4991 4994 4 ANIM_OSCILLATING
@@ -196,8 +212,8 @@ tilefromtexture 2529 { file "tiles/2529_dn64.png" xoff -76 yoff 2 }
 tilefromtexture 2544 { file "tiles/2544.png" xoffset -106 yoffset -67 }
 tilefromtexture 2548 { file "tiles/2548.png" xoff -68 yoff 15 }
 tilefromtexture 2550 { file "tiles/2550.png" xoff -7 yoff 18 }
-tilefromtexture 2554 { file "tiles/2554.png" xoffset -4 }
-tilefromtexture 2555 { file "tiles/2555.png" xoffset -4 }
+tilefromtexture 2554 { file "tiles/2554.png" xoffset -1 yoffset 1 }
+tilefromtexture 2555 { file "tiles/2555.png" xoffset -1 yoffset 1 }
 tilefromtexture 2556 { file "tiles/2556.png" xoffset -1 yoffset -2 }
 tilefromtexture 2557 { file "tiles/2557.png" xoffset -1 yoffset -2 }
 tilefromtexture 2563 { file "tiles/2563.png" xoffset 90 }

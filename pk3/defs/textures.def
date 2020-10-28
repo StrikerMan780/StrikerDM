@@ -19,6 +19,7 @@ texture 5048 { pal 0 { file "highres/dukeburger/5048_menu4.png" nodownsize } }
 tilefromtexture 5042 { file "tiles/5042.png" texture }
 
 // Posters
+tilefromtexture 5031 { file "tiles/5031.png" texture }
 tilefromtexture 5032 { file "tiles/5032.png" }
 tilefromtexture 5033 { file "tiles/5033.png" }
 tilefromtexture 5034 { file "tiles/5034.png" }

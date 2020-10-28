@@ -222,8 +222,8 @@ state draw_chaingun // CHAINGUN_WEAPON:
 ends
 
 actor CHAINGUNSPRITE
-	fall
-	state despawn_item_from_can
+	state item_shared_code
+	
 	ifmove RESPAWN_ACTOR_FLAG
 	{
 		state respawnit
@@ -272,8 +272,8 @@ actor CHAINGUNSPRITE
 enda
 
 actor BATTERYAMMO
-	fall
-	state despawn_item_from_can
+	state item_shared_code
+	
 	ifmove RESPAWN_ACTOR_FLAG
 	{
 		state respawnit

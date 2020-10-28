@@ -51,6 +51,7 @@ define CHESHIREALIEN_04               445
 define FLAMETHROWER_ENEMY             446
 // End world tour reserved
 
+define DUKE_USEMEDKIT2 448
 define DSTELEPT 449
 define DSITEMUP 450
 define STOMP01 451
@@ -274,6 +275,8 @@ define NEWDUKEGIB48 748
 define NEWDUKEGIB49 749
 define NEWDUKEGIB50 750
 define NEWDUKEGIB51 751
+define NEWDUKEGIB52 752
+define NEWDUKEGIB53 753
 
 define DUKE_FLAME01 800
 define DUKE_FLAME02 801
@@ -287,6 +290,13 @@ define DUKE_FLAME08 807
 define FEM10_SAVED 820
 define BABE_SAVED01 821
 define BABE_SAVED02 822
+
+define DUKE_WALKINDUCTS1 900
+define DUKE_WALKINDUCTS2 901
+define DUKE_WALKINDUCTS3 902
+
+// Freedom Planet
+define FP_LIFTSTOP 990
 
 // World Tour
 definesound E5L7_DUKE_QUIT_YOU    sounds/duke/worldtour/VO_E5L7_Duke_QuitYou.ogg         0   0   255   4   0
@@ -478,6 +488,8 @@ definesound NEW_DRIP2 sounds/drip2.wav -32 32 0 0 9000
 definesound NEW_DRIP3 sounds/drip3.wav -32 32 0 0 9000
 
 // Duke Talk
+definesound DUKE_USEMEDKIT2 sounds/duke/medkit/timetobleed.wav 0 0 255 4 0
+
 definesound STOMP01 sounds/duke/stomp/DUKE_StompLine_01.ogg 0 0 255 4 0
 definesound STOMP02 sounds/duke/stomp/DUKE_StompLine_02.ogg 0 0 255 4 0
 definesound STOMP03 sounds/duke/stomp/DUKE_StompLine_03.ogg 0 0 255 4 0
@@ -574,6 +586,8 @@ definesound NEWDUKEGIB48 sounds/duke/gib/Duke_MP_KillLine_73.ogg 0 0 255 4 0
 definesound NEWDUKEGIB49 sounds/duke/gib/Duke_MP_KillLine_74.ogg 0 0 255 4 0
 definesound NEWDUKEGIB50 sounds/duke/gib/DUKE_RestINPieces_01.ogg 0 0 255 4 0
 definesound NEWDUKEGIB51 sounds/duke/gib/Duke_UltraRareGib_01.ogg 0 0 255 4 0
+definesound NEWDUKEGIB52 sounds/duke/gib/Duke64_DidntFeelSoLucky.wav 0 0 255 4 0
+definesound NEWDUKEGIB53 sounds/duke/gib/Duke64_InAPerfectWorld.wav 0 0 255 4 0
 
 definesound DUKE_FLAME01 sounds/duke/flame/duke_flame01.wav 0 0 255 4 0
 definesound DUKE_FLAME02 sounds/duke/flame/duke_flame02.wav 0 0 255 4 0
@@ -583,3 +597,11 @@ definesound DUKE_FLAME05 sounds/duke/flame/duke_flame05.wav 0 0 255 4 0
 definesound DUKE_FLAME06 sounds/duke/flame/duke_flame06.wav 0 0 255 4 0
 definesound DUKE_FLAME07 sounds/duke/flame/duke_flame07.wav 0 0 255 4 0
 definesound DUKE_FLAME08 sounds/duke/flame/duke_flame08.wav 0 0 255 4 0
+
+// Movement Sounds
+definesound DUKE_WALKINDUCTS1   sounds/ductwlk.wav       -64   128  2   0   0
+definesound DUKE_WALKINDUCTS2   sounds/ductwlk2.wav      -64   128  2   0   0
+definesound DUKE_WALKINDUCTS3   sounds/ductwlk3.wav      -64   128  2   0   0
+
+// Freedom Planet
+definesound FP_LIFTSTOP sounds/fplanet/lift_stop.ogg 0 0 0 0 0

@@ -20,11 +20,8 @@ state quikget_doomitem
 ends
 
 useractor notenemy HEALTHBONER WEAK
-	ifvare HITAG_MEMORY 0
-		fall
-		
-	state init_pickup
-	state despawn_item_from_can
+	state item_shared_code
+	
 	ifmove RESPAWN_ACTOR_FLAG
 		state respawnit
 	else
@@ -49,11 +46,8 @@ useractor notenemy HEALTHBONER WEAK
 enda
 
 useractor notenemy ARMORBONER WEAK
-	ifvare HITAG_MEMORY 0
-		fall
-		
-	state init_pickup
-	state despawn_item_from_can
+	state item_shared_code
+	
 	ifmove RESPAWN_ACTOR_FLAG
 		state respawnit
 	else

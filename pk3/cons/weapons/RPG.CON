@@ -35,8 +35,8 @@ state draw_rpg // RPG_WEAPON:
 ends
 
 actor RPGSPRITE
-    fall
-	state despawn_item_from_can
+    state item_shared_code
+	
     ifmove RESPAWN_ACTOR_FLAG
 	{
         state respawnit
@@ -85,8 +85,8 @@ actor RPGSPRITE
 enda
 
 actor RPGAMMO
-	fall
-	state despawn_item_from_can
+	state item_shared_code
+	
     ifmove RESPAWN_ACTOR_FLAG
 	{
         state respawnit

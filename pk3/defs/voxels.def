@@ -1,6 +1,8 @@
 // --- Props ---
 voxel "voxels/props/0058_spacesuit.kvx" { tile 58 }
 
+voxel "voxels/props/0543_panel.kvx" { tile 543 }
+
 voxel "voxels/props/0574_faucet.kvx" { tile 574 }
 voxel "voxels/props/0670_faucet2.kvx" { tile 670 }
 voxel "voxels/props/0671_faucet3.kvx" { tile 671 }
@@ -60,7 +62,7 @@ voxel "voxels/props/0695_pot2.kvx" { tile 695 }
 voxel "voxels/props/0697_pot3.kvx" { tile 697 }
 voxel "voxels/props/0698_sushi.kvx" { tile 698 } 
 
-voxel "voxels/props/0716_geisha1.kvx" { tile 716 }
+voxel "voxels/props/0716_pleasewait.kvx" { tile 716 }
 
 voxel "voxels/props/0753_geisha1.kvx" { tile 753 }
 voxel "voxels/props/0869_geisha2.kvx" { tile 869 }
@@ -186,7 +188,7 @@ voxel "voxels/props/1260_damagedpipe3.kvx" { tile 1260 }
 
 voxel "voxels/props/1353_spacemarine.kvx" { tile 1353 }
 
-voxel "voxels/props/1810_cannon.kvx" { tile 1810 }
+voxel "voxels/props/1810_cannon.kvx" { tile0 1810 tile1 1816 }
 voxel "voxels/props/1817_cannonball.kvx" { tile 1817 }
 voxel "voxels/props/1818_cannonballs.kvx" { tile 1818 }
 
@@ -231,6 +233,7 @@ voxel "voxels/props/4547_foodobject18.kvx" { tile 4547 }
 
 voxel "voxels/props/4548_foodobject19.kvx" { tile 4548 }
 voxel "voxels/props/4550_redlamp.kvx" { tile 4450 }
+voxel "voxels/props/4552_can_with_worms.kvx" { tile 4552 }
 voxel "voxels/props/4569_burgerbox.kvx" { tile 4569 }
 voxel "voxels/props/4576_shoppingcart.kvx" { tile 4576 }
 voxel "voxels/props/4580_canwithsomething2.kvx" { tile 4580 }

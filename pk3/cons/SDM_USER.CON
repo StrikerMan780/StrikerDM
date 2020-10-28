@@ -49,6 +49,8 @@ definequote 131		RAILGUN!
 definequote 132		AMMO FOR RAILGUN
 definequote 133		SUPER SHOTGUN!
 definequote 134		YOU'RE BURNING, FIND WATER OR HEALTH!
+definequote 135		LIFE PETAL: +7
+definequote 136		CRYSTAL SHARD: +5
 definequote 500		PLACEHOLDER QUOTE
 
 definequote 690		MIGHTY FOOT
@@ -85,8 +87,9 @@ definelevelname 4 2 maps/vapor.map 66:60 66:60 Aesthetic Duel
 definelevelname 4 3 maps/afucktemple.map 66:60 66:60 Buried Temple
 definelevelname 4 4 maps/stayfrosty.map 66:60 66:60 Stay Frosty
 definelevelname 4 5 maps/longestduke.map 66:60 66:60 The Longest Duke
-definelevelname 4 6 maps/rocks.map 66:60 66:60 Feature Test Map
-music 5 music/sexwithex.mid music/darkmatt.mid music/macplus.ogg music/sdungeon.ogg music/sturr31.ogg music/ybb.xm music/ffunk.ogg
+definelevelname 4 6 maps/thermalbase.map 66:60 66:60 Thermal Base (Unfinished)
+definelevelname 4 7 maps/rocks.map 66:60 66:60 Feature Test Map
+music 5 music/sexwithex.mid music/darkmatt.mid music/macplus.ogg music/sdungeon.ogg music/sturr31.ogg music/ybb.xm music/thermalbase.ogg music/ffunk.ogg
 
 definevolumename 5 William Gee's DM Maps
 definelevelname 5 0 maps/wgdm1.map 66:60 66:60 WGDM1 (6P)
@@ -278,6 +281,7 @@ definelevelname 10 52 maps/JANOUSAB-TROR.map 66:60 66:60 Janousab TROR: N. Ranzo
 definelevelname 10 53 maps/KARNAGE3-TROR.map 66:60 66:60 Karnage3 TROR: N. Ranzou
 definelevelname 10 54 maps/MANCER01-TROR.map 66:60 66:60 Mancer01 TROR: N. Ranzou
 definelevelname 10 55 maps/WARHOUSE-TROR.map 66:60 66:60 Warhouse TROR: N. Ranzou
+definelevelname 10 56 maps/ENBLANCOYNEGRO.map 66:60 66:60 En Blanco y Negro: N. Ranzou
 
 music 11 music/seppuku.ogg music/ancient.ogg music/fortress.ogg music/zerostreets.ogg music/zerotown.ogg
          music/eerie.ogg music/saturntoll.ogg music/echohare.ogg music/apes.mid music/mental.ogg music/breed.mid
@@ -287,4 +291,4 @@ music 11 music/seppuku.ogg music/ancient.ogg music/fortress.ogg music/zerostreet
          music/ninjaphi.it music/lagoona.xm music/battleofsteel.xm music/d_l24d.it music/qube.mod music/kernkraft.mod
          music/icefront.s3m music/episode_666.xm music/fire.xm music/godown.it music/heavystr.it music/memefever.ogg music/freeze.s3m
          music/coldwave.mid music/odyssey2.mid music/takeawil.mid music/alienconflict.ogg music/rcrstreet.it music/suprfist.it music/d-lux2.mod
-         music/gringo.it music/idiot2_x.it music/denaris_remix.mod music/hyo-deid.it music/terrortech.xm music/ccity12.s3m
+         music/gringo.it music/idiot2_x.it music/denaris_remix.mod music/hyo-deid.it music/terrortech.xm music/ccity12.s3m music/intotheoutside.mod

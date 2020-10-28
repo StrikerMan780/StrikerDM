@@ -241,8 +241,8 @@ state draw_shotgun // SHOTGUN_WEAPON:
 ends
 
 actor SHOTGUNSPRITE
-  fall
-  state despawn_item_from_can
+  state item_shared_code
+  
   ifmove RESPAWN_ACTOR_FLAG
 	state respawnit
   else
@@ -287,8 +287,8 @@ actor SHOTGUNSPRITE
 enda
 
 actor SHOTGUNAMMO
-  fall
-  state despawn_item_from_can
+  state item_shared_code
+  
   ifmove RESPAWN_ACTOR_FLAG
 	state respawnit
   else

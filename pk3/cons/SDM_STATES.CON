@@ -65,6 +65,41 @@ actor RESPAWNHANDLER WEAK
 }
 enda
 
+state item_despawn_timer
+	ifvare DESPAWN_TYPE 0
+	{
+		ifspawnedby CANWITHSOMETHING setvar DESPAWN_TYPE 1
+		else ifspawnedby CANWITHSOMETHING2 setvar DESPAWN_TYPE 1
+		else ifspawnedby CANWITHSOMETHING3 setvar DESPAWN_TYPE 1
+		else ifspawnedby CANWITHSOMETHING4 setvar DESPAWN_TYPE 1
+		else ifspawnedby RUBBERCAN setvar DESPAWN_TYPE 1
+	}
+	
+	ifvare COOP GM_COOPERATIVE
+	{
+		break // Do not despawn stuff in COOP.
+	}
+	else ifvarl MULTIMODE 2
+	{
+		break // Nor singleplayer.
+	}
+	
+	ifvare DESPAWN_TYPE 1
+	{
+		ifcount RESPAWNPROPTIME
+		{
+			killit
+		}
+	}
+	else ifvare DESPAWN_TYPE 2
+	{
+		ifcount BABERESPAWNTIME
+		{
+			killit
+		}
+	}
+ends
+
 state check_if_multiplayer_only
 	ifmultiplayer
 	{
@@ -80,19 +115,31 @@ state check_if_multiplayer_only
 	}
 ends
 
-state init_pickup
+state yeet_item_on_drop
+	getactor[THISACTOR].htowner TEMP
+	ifvarvarn THISACTOR TEMP
+	{
+		getactor[THISACTOR].z SPAWN_ORIGZ
+		subvar SPAWN_ORIGZ 8192
+			
+		setactor[THISACTOR].z SPAWN_ORIGZ
+		setactor[THISACTOR].zvel -1024
+	}
+ends
+
+state item_shared_code
 	ifaction 0
 	{
 		action ANULLACTION
 		cstat 0
-		getactor[THISACTOR].htowner TEMP
-		ifvarvarn THISACTOR TEMP
+		
+		ifvare HITAG_MEMORY 1
 		{
-			getactor[THISACTOR].z SPAWN_ORIGZ
-			subvar SPAWN_ORIGZ 8192
-			
-			setactor[THISACTOR].z SPAWN_ORIGZ
-			setactor[THISACTOR].zvel -1024
+			addvar QUAKE3BOB_SEQUENCE 64
+			setvarvar QUAKE3BOB QUAKE3BOB_SEQUENCE
+			getactor[THISACTOR].mdflags TEMP2
+			orvar TEMP2 16
+			setactor[THISACTOR].mdflags TEMP2
 		}
 		
 		getactor[THISACTOR].picnum TEMP
@@ -105,54 +152,27 @@ state init_pickup
 			case FLAMETHROWERAMMO:
 			case PLASMAAMMO:
 				state check_if_multiplayer_only
+				state yeet_item_on_drop
 				sizeat 32 32
 				break
 			case RAILGUNAMMO:
 				state check_if_multiplayer_only
+				state yeet_item_on_drop
 				sizeat 16 16
 				break
 			case HEALTHBONER:
 			case ARMORBONER:
 				state check_if_multiplayer_only
+				state yeet_item_on_drop
 				sizeat 32 28
 				break
 		endswitch
 	}
-ends
-
-state despawn_item_from_can
-	ifvare FROMCAN 0
-	{
-		ifspawnedby CANWITHSOMETHING setvar FROMCAN 1
-		else ifspawnedby CANWITHSOMETHING2 setvar FROMCAN 1
-		else ifspawnedby CANWITHSOMETHING3 setvar FROMCAN 1
-		else ifspawnedby CANWITHSOMETHING4 setvar FROMCAN 1
-		else ifspawnedby RUBBERCAN setvar FROMCAN 1
-	}
 	
-	ifvare COOP GM_COOPERATIVE
-	{
-		break // Do not despawn stuff in COOP.
-	}
-	else ifvarl MULTIMODE 2
-	{
-		break // Nor singleplayer.
-	}
-	
-	ifvare FROMCAN 1
-	{
-		ifcount RESPAWNPROPTIME
-		{
-			killit
-		}
-	}
-	else ifvare FROMCAN 2
-	{
-		ifcount BABERESPAWNTIME
-		{
-			killit
-		}
-	}
+	ifvare QUAKE3BOB 0
+		fall
+		
+	state item_despawn_timer
 ends
 
 state roids_voices
@@ -229,7 +249,7 @@ state jib_sounds
 			}
 			else
 			{
-				randvar RANDOM_SOUND 67
+				randvar RANDOM_SOUND 69
 				switch RANDOM_SOUND
 					case 0: actorsound LASTHITBY JIBBED_ACTOR1 break
 					case 1: actorsound LASTHITBY JIBBED_ACTOR2 break
@@ -298,7 +318,9 @@ state jib_sounds
 					case 64: actorsound LASTHITBY NEWDUKEGIB48 break
 					case 65: actorsound LASTHITBY NEWDUKEGIB49 break
 					case 66: actorsound LASTHITBY NEWDUKEGIB50 break
-					case 67: ifrnd 1 actorsound LASTHITBY NEWDUKEGIB51 break
+					case 67: ifrnd 2 actorsound LASTHITBY NEWDUKEGIB51 break
+					case 68: actorsound LASTHITBY NEWDUKEGIB52 break
+					case 69: actorsound LASTHITBY NEWDUKEGIB53 break
 				endswitch
 			}
 		}
@@ -1152,10 +1174,16 @@ ends
 // PICNUM_MEMORY = last processed tic
 state handle_shellexpansion
 		ifvarvare LOTAG_MEMORY HITAG_MEMORY
+		{
+			settspr[THISACTOR].tsprxrepeat 0
 			break
+		}
 		
 		ifvarvarg LOTAG_MEMORY HITAG_MEMORY
+		{
+			settspr[THISACTOR].tsprxrepeat 0
 			break
+		}
 			
 		ifvarg clockdiff 0 // Sync to 120hz timer
 		{	

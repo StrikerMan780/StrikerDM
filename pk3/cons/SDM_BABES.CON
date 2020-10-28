@@ -490,7 +490,7 @@ state babe_give_items
 	ifvarl TEMP 51 espawn ARMORBONER else
 	ifvarl TEMP 53 espawn ATOMICHEALTH
 	
-	setactorvar[RETURN].FROMCAN 2
+	setactorvar[RETURN].DESPAWN_TYPE 2
 	setvar RETURN 0
 ends
 

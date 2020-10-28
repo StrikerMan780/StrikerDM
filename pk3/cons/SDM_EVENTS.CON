@@ -1053,6 +1053,10 @@ onevent EVENT_LOADACTOR
 	case ZTDESTINATION:
 		setactor[THISACTOR].lotag 0
 		break
+	case WATERBUBBLEMAKER:
+		setactor[THISACTOR].lotag 0
+		getactor[THISACTOR].cstat CSTAT_MEMORY
+		break
 	case STARTWEAPONCHANGER:
 		setvarvar START_WEAPON LOTAG_MEMORY
 		setactor[THISACTOR].lotag 0
@@ -1117,6 +1121,29 @@ onevent EVENT_SPAWN
 		cstat 130
 		setactor[THISACTOR].shade -127
 		setactor[THISACTOR].blend 255
+		setactor[THISACTOR].mdflags 16
+		
+		setvar PICNUM_MEMORY -1
+		setvar LOTAG_MEMORY 0 // Timer
+		setvar HITAG_MEMORY 64 // End time
+		setvar SPAWN_ORIGANG 64 // Rotational Speed
+		
+		setvar XREPEAT_MEMORY 0 // Start radius
+		setvar YREPEAT_MEMORY 80 // End radius
+		
+		ifspawnedby SHRINKEREXPLOSION // Shrinker
+		{
+			setvar XREPEAT_MEMORY 48 // Start radius
+			setvar YREPEAT_MEMORY 0 // End radius
+			setvar SPAWN_ORIGANG 32 // Rotational Speed
+		}
+		else ifspawnedby EXPANDEREXPLOSION // Expander
+		{
+			setvar HITAG_MEMORY 32 // End time
+			setvar XREPEAT_MEMORY 0 // Start radius
+			setvar YREPEAT_MEMORY 48 // End radius
+		}
+
 		break
 	}
 	
@@ -1125,6 +1152,44 @@ onevent EVENT_SPAWN
 		cstat 130
 		setactor[THISACTOR].shade -127
 		setactor[THISACTOR].blend 255
+		setactor[THISACTOR].mdflags 16
+		
+		setvar PICNUM_MEMORY -1
+		setvar LOTAG_MEMORY 0 // Timer
+		setvar HITAG_MEMORY 16 // End time
+		setvar SPAWN_ORIGANG 0 // Rotational Speed
+		
+		ifspawnedby EXPANDEREXPLOSION
+		{
+			cstator 32
+			setvar XREPEAT_MEMORY 16 // Start radius
+			setvar YREPEAT_MEMORY 128 // End radius
+		}
+		else
+		{
+			setvar XREPEAT_MEMORY 4 // Start radius
+			setvar YREPEAT_MEMORY 16 // End radius
+		}
+		break
+	}
+	
+	ifactor EXPLOSION2
+	{
+		cstator 2
+		setactor[THISACTOR].blend 255
+		break
+	}
+	
+	ifactor EXPLOSION2BOT
+	{
+		cstator 2
+		setactor[THISACTOR].blend 255
+		break
+	}
+	
+	ifactor WATERBUBBLEMAKER
+	{
+		getactor[THISACTOR].pal PAL_MEMORY
 		break
 	}
 	
@@ -1153,6 +1218,7 @@ onevent EVENT_SPAWN
 		case SHARONMANIM:
 		case FREYACRESCENT:
 		case ROUGESPREAD:
+		case COCOANIM:
 		case COMMUNITY_XXX01:
 			setactor[THISACTOR].mdflags 16
 			setvar ISADULT ADULT_HIDE
@@ -1321,7 +1387,27 @@ onevent EVENT_SPAWN
 	endswitch
 endevent
 
-onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
+onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!	
+	ifvarg QUAKE3BOB 0
+	{
+		setvarvar CL_TEMP1 totalclock
+		addvarvar CL_TEMP1 QUAKE3BOB
+		mulvar CL_TEMP1 6
+		cos CL_TEMP2 CL_TEMP1
+		divvar CL_TEMP2 6
+		
+		gettspr[THISACTOR].tsprz CL_TEMP1
+		subvar CL_TEMP1 3072
+		addvarvar CL_TEMP1 CL_TEMP2
+		settspr[THISACTOR].tsprz CL_TEMP1
+		
+		getactor[THISACTOR].ang CL_TEMP1
+		setvarvar CL_TEMP2 totalclock
+		shiftvarl CL_TEMP2 2
+		addvarvar CL_TEMP1 CL_TEMP2
+		settspr[THISACTOR].tsprang CL_TEMP1
+	}
+	
 	ifactor FIRESHELL
 	{
 		state handle_shellexpansion
@@ -1799,22 +1885,17 @@ state draw_babe_counter
 	}
 ends
 
+onevent EVENT_DISPLAYSTART // !UNSYNCHRONIZED!
+	setvarvar clockdiff totalclock
+	subvarvar clockdiff clockcheck
+	setvarvar clockcheck totalclock
+endevent
+
 onevent EVENT_DISPLAYREST // !UNSYNCHRONIZED!
 
 	//redefinequote 500 %d
 	//qsprintf 500 500 gametype_flags
 	//minitext 48 48 500 -127 1
-	
-	ifvarvarn clockcheck totalclock
-	{
-		setvarvar clockdiff totalclock
-		subvarvar clockdiff clockcheck
-		setvarvar clockcheck totalclock
-	}
-	else
-	{
-		setvar clockdiff 0
-	}
 	
 	// Change orientation to 536 later.
 	getplayer[THISACTOR].curr_weapon CL_TEMP1
@@ -1977,6 +2058,25 @@ onevent EVENT_SOUND
 		endswitch
 	}
 	
+	ifactor WATERSPLASH2
+	{
+		ifvare RETURN ITEM_SPLASH
+		{
+			ifspawnedby WATERBUBBLE
+				setvar RETURN -1
+		}
+		break
+	}
+	
+	ifactor SHOTSPARK1
+	{
+		ifvare RETURN PISTOL_RICOCHET
+		{
+			setvar RETURN -1
+			break
+		}
+	}
+	
 	ifvare RETURN PISTOL_BODYHIT
 	{
 		getactor[THISACTOR].htpicnum CL_TEMP1
@@ -2006,12 +2106,31 @@ onevent EVENT_SOUND
 			case 2: setvar RETURN NEW_DRIP3 break
 		endswitch
 	}
-	else ifvare RETURN DUKE_UNDERWATER
+	
+	ifactor APLAYER
 	{
-		getactor[THISACTOR].sectnum TEMP2
-		ifvarand SECTOR_TYPES[TEMP2] SECTORTYPE_SPACE
+		ifvare RETURN DUKE_USEMEDKIT
 		{
-			setvar RETURN -1
+			displayrandvar CL_TEMP1 100
+			ifvarl CL_TEMP1 15
+				setvar RETURN DUKE_USEMEDKIT2
+		}
+		else ifvare RETURN DUKE_UNDERWATER
+		{
+			getactor[THISACTOR].sectnum TEMP2
+			ifvarand SECTOR_TYPES[TEMP2] SECTORTYPE_SPACE
+			{
+				setvar RETURN -1
+			}
+		}
+		else ifvare RETURN DUKE_WALKINDUCTS
+		{
+			displayrandvar CL_TEMP1 2
+			switch CL_TEMP1
+				case 0: setvar RETURN DUKE_WALKINDUCTS1 break
+				case 1: setvar RETURN DUKE_WALKINDUCTS2 break
+				case 2: setvar RETURN DUKE_WALKINDUCTS3 break
+			endswitch
 		}
 	}
 endevent

@@ -35,15 +35,14 @@ state draw_pipebomb // HANDBOMB_WEAPON:
             addvar hud_y 250
             
             switch weaponcount
-                /*
-                case 0
                 case 1
                 case 2
+					setvar hud_tilenum PIPEBOMB_EXTRA1
+					break
                 case 3
                 case 4
-                    addvar hud_tilenum 0
+                    setvar hud_tilenum PIPEBOMB_EXTRA2
                     break
-                */
                 case 5
                 case 6
                 case 7
@@ -56,13 +55,17 @@ state draw_pipebomb // HANDBOMB_WEAPON:
                 case 12
                 case 13
                 case 14
+					setvar hud_tilenum PIPEBOMB_EXTRA3
+					break
                 case 15
                 case 16
                 case 17
-                case 18
+					addvar hud_tilenum 2
+					break
+				case 18
                 case 19
                 case 20
-                    addvar hud_tilenum 2
+                    setvar hud_tilenum PIPEBOMB_EXTRA4
                     break
             endswitch
             

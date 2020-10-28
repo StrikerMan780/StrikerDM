@@ -80,9 +80,8 @@ state draw_flamethrower // FLAMETHROWER_WEAPON:
 ends
 
 actor FLAMETHROWERSPRITE
-    fall
-	state init_pickup
-	state despawn_item_from_can
+    state item_shared_code
+	
     ifmove RESPAWN_ACTOR_FLAG
 	{
         state respawnit
@@ -131,9 +130,8 @@ actor FLAMETHROWERSPRITE
 enda
 
 actor FLAMETHROWERAMMO
-    fall
-	state init_pickup
-	state despawn_item_from_can
+    state item_shared_code
+	
     ifmove RESPAWN_ACTOR_FLAG
 	{
         state respawnit

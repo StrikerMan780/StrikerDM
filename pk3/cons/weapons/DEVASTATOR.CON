@@ -7,7 +7,7 @@ state draw_devastator // DEVISTATOR_WEAPON:
 	
 	setvar hud_tilenum DEVISTATOR
 	
-	setvar hud_temp -1 // flag
+	setvar hud_temp -1 // flag, -1 if not firing. > 0 otherwise.
 	
 /*
 	// [SM] Make devastator match player color

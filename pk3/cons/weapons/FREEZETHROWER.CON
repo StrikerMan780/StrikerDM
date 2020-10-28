@@ -68,8 +68,8 @@ state draw_freezer // FREEZE_WEAPON:
 ends
 
 actor FREEZESPRITE
-    fall
-	state despawn_item_from_can
+    state item_shared_code
+	
     ifmove RESPAWN_ACTOR_FLAG
 	{
         state respawnit

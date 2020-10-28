@@ -7,7 +7,7 @@ state draw_expander // GROW_WEAPON:
     addvar hud_y 18
     
     setvarvar hud_temp4 hud_pal
-    setvar hud_pal 2
+    setvar hud_pal 19 // Changed from 2 to 19 to leave bolts white
     
     setvarvar hud_temp3 currentweapon
     shiftvarl hud_temp3 1
@@ -210,30 +210,19 @@ actor EXPANDERTRAIL 0
 			break
 		}
 		
-		setactor[THISACTOR].shade -127
-		setactor[THISACTOR].blend 255
-		setactor[THISACTOR].mdflags 16
-		
-		setvar LOTAG_MEMORY 0 // Timer
-		setvar HITAG_MEMORY 16 // End time
-		setvar SPAWN_ORIGANG 0 // Rotational Speed
-		
-		ifspawnedby EXPANDEREXPLOSION
-		{
-			cstator 32
-			setvar XREPEAT_MEMORY 16 // Start radius
-			setvar YREPEAT_MEMORY 128 // End radius
-		}
-		else
-		{
-			setvar XREPEAT_MEMORY 4 // Start radius
-			setvar YREPEAT_MEMORY 16 // End radius
-		}
-		
 		action ANULLACTION
 	}
 	
-	ifcount 16
+	getactor[THISACTOR].mdflags TEMP
+	ifvarand TEMP 16 { }
+	else
+	{
+		redefinequote 500 MDFLAGS OF EXPANDER TRAIL (%d) ISN'T 16! - ACTUAL: %d
+		qsprintf 500 500 THISACTOR TEMP
+		userquote 500
+	}
+	
+	ifcount 6
 		killit
 }
 enda

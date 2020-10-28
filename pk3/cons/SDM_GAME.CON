@@ -1129,9 +1129,31 @@ actor CEILINGSTEAM 0 STEAMFRAMES
 enda
 
 actor WATERBUBBLEMAKER 0 0 randomangle
-  ifpdistl 3084
-    ifrnd 24
-      spawn WATERBUBBLE
+	ifvare LOTAG_MEMORY 0
+	{
+		ifpdistl 6168
+		ifrnd 24
+		{
+			espawn WATERBUBBLE
+			setactor[RETURN].pal PAL_MEMORY
+			setactor[RETURN].cstat CSTAT_MEMORY
+			setvar RETURN 0
+		}
+	}
+	else
+	{
+		ifpdistl 16384
+		{
+			randvar TEMP 256
+			ifvarvarl TEMP LOTAG_MEMORY
+			{
+				espawn WATERBUBBLE
+				setactor[RETURN].pal PAL_MEMORY
+				setactor[RETURN].cstat CSTAT_MEMORY
+				setvar RETURN 0
+			}
+		}
+	}
 enda
 
 action BUBBLE
@@ -1140,43 +1162,45 @@ move BUBMOVE       -10 -36
 move BUBMOVEFAST     -10 -52
 
 actor WATERBUBBLE 0 BUBBLE BUBMOVE getv geth randomangle
+	ifaction CRACKEDBUBBLE
+	{
+		ifinwater
+		ifrnd 192
+			killit
+				
+		ifactioncount 7
+			killit
+	}
+	else
+	{
+		ifcount 4
+		{
+			ifrnd 192
+				move BUBMOVE getv geth randomangle
+			else
+				move BUBMOVEFAST getv geth randomangle
+				
+			resetcount
 
-  ifaction CRACKEDBUBBLE
-  {
-    ifinwater
-      ifrnd 192
-        killit
-    ifactioncount 7
-      killit
-  }
-  else
-  {
-    ifcount 4
-    {
-      ifrnd 192
-        move BUBMOVE getv geth randomangle
-      else
-        move BUBMOVEFAST getv geth randomangle
-      resetcount
+			ifrnd 84
+				sizeat 8 10
+			else ifrnd 84
+				sizeat 10 8
+			else
+				sizeat 9 9
+		}
 
-      ifrnd 84
-        sizeat 8 10
-      else
-        ifrnd 84
-          sizeat 10 8
-      else
-        sizeat 9 9
-    }
-
-    ifonwater
-    {
-      iffloordistl 8
-        action CRACKEDBUBBLE
-    }
-    else
-      ifactioncount 40
-        action CRACKEDBUBBLE
-  }
+		ifonwater
+		{
+			iffloordistl 8
+				action CRACKEDBUBBLE
+		}
+		else
+		{
+			ifactioncount 40
+				action CRACKEDBUBBLE
+		}
+	}
 enda
 
 
@@ -1412,22 +1436,57 @@ actor EXPLOSION2 1 EXPLOSION_FRAMES
 			state spawn_explosion_spark
 			state spawn_explosion_spark
 		}
-		
-		cstator 2
-		setactor[THISACTOR].blend 255
+		else ifspawnedby EXPLODINGBARREL
+		{
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			
+			setvar STATE_PARAM1 256 // Intensity
+			setvar STATE_PARAM2 6144 // Radius
+			state start_shake
+		}
+		else ifspawnedby GUNPOWDERBARREL
+		{
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			
+			setvar STATE_PARAM1 384 // Intensity
+			setvar STATE_PARAM2 8192 // Radius
+			state start_shake
+		}
+		else ifspawnedby CANNONBALL
+		{
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			state spawn_explosion_spark
+			
+			setvar STATE_PARAM1 384 // Intensity
+			setvar STATE_PARAM2 8192 // Radius
+			state start_shake
+		}
 	}
 enda
 
 actor EXPLOSION2BOT 1 EXPLOSION_FRAMES
 	ifactioncount 20
 		killit
-	
-	ifcount 1 { }
-	else ifcount 0
-	{
-		cstator 2
-		setactor[THISACTOR].blend 255
-	}
 enda
 
 action FFLAME_FR 0 16 1 1 1
@@ -1671,8 +1730,8 @@ state quikweaponget
 ends
 
 actor STEROIDS
-  fall
-  state despawn_item_from_can
+  state item_shared_code
+  
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -1695,8 +1754,8 @@ actor STEROIDS
 enda
 
 actor BOOTS
-  fall
-  state despawn_item_from_can
+  state item_shared_code
+  
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -1719,8 +1778,8 @@ actor BOOTS
 enda
 
 actor HEATSENSOR
-  fall
-  state despawn_item_from_can
+  state item_shared_code
+  
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -1743,8 +1802,8 @@ actor HEATSENSOR
 enda
 
 actor SHIELD
-  fall
-  state despawn_item_from_can
+  state item_shared_code
+  
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -1783,8 +1842,8 @@ enda
 
 
 actor AIRTANK
-  fall
-  state despawn_item_from_can
+  state item_shared_code
+  
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -1807,8 +1866,8 @@ enda
 
 action HOLODUKE_FRAMES 0 4 1 1 8
 actor HOLODUKE 0 HOLODUKE_FRAMES
-  fall
-  state despawn_item_from_can
+  state item_shared_code
+  
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -1830,8 +1889,8 @@ actor HOLODUKE 0 HOLODUKE_FRAMES
 enda
 
 actor JETPACK
-  fall
-  state despawn_item_from_can
+  state item_shared_code
+  
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -1853,8 +1912,8 @@ actor JETPACK
 enda
 
 actor ACCESSCARD
-  fall
-  state despawn_item_from_can
+  state item_shared_code
+  
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -1874,8 +1933,8 @@ actor ACCESSCARD
 enda
 
 actor AMMO
-  fall
-  state despawn_item_from_can
+  state item_shared_code
+  
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -1896,8 +1955,8 @@ actor AMMO
 enda
 
 actor FREEZEAMMO
-	fall
-	state despawn_item_from_can
+	state item_shared_code
+	
     ifmove RESPAWN_ACTOR_FLAG
 	{
         state respawnit
@@ -1930,8 +1989,8 @@ actor FREEZEAMMO
 enda
 
 actor AMMOLOTS
-  fall
-  state despawn_item_from_can
+  state item_shared_code
+  
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -1952,8 +2011,8 @@ actor AMMOLOTS
 enda
 
 actor CRYSTALAMMO
-  fall
-  state despawn_item_from_can
+  state item_shared_code
+  
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -1974,8 +2033,8 @@ actor CRYSTALAMMO
 enda
 
 actor GROWAMMO
-  fall
-  state despawn_item_from_can
+  state item_shared_code
+  
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -1996,8 +2055,8 @@ actor GROWAMMO
 enda
 
 actor DEVISTATORAMMO
-  fall
-  state despawn_item_from_can
+  state item_shared_code
+  
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -2018,8 +2077,8 @@ actor DEVISTATORAMMO
 enda
 
 actor HBOMBAMMO
-  fall
-  state despawn_item_from_can
+  state item_shared_code
+  
   ifmove RESPAWN_ACTOR_FLAG state respawnit
   else
     ifp pshrunk nullop
@@ -2044,8 +2103,8 @@ actor HBOMBAMMO
 enda
 
 actor SIXPAK
-  fall
-  state despawn_item_from_can
+  state item_shared_code
+  
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -2068,8 +2127,8 @@ actor SIXPAK
 enda
 
 actor COLA
-  fall
-  state despawn_item_from_can
+  state item_shared_code
+  
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -2092,9 +2151,8 @@ actor COLA
 enda
 
 actor ATOMICHEALTH
-  ifvare HITAG_MEMORY 0
-	fall
-  state despawn_item_from_can
+  state item_shared_code
+  
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -2120,8 +2178,8 @@ enda
 
 
 actor FIRSTAID
-  fall
-  state despawn_item_from_can
+  state item_shared_code
+  
   ifmove RESPAWN_ACTOR_FLAG state respawnit
   else
     ifp pshrunk nullop
@@ -2144,8 +2202,8 @@ enda
 
 
 actor FIRSTGUNSPRITE
-  fall
-  state despawn_item_from_can
+  state item_shared_code
+  
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -2168,8 +2226,8 @@ enda
 
 
 actor TRIPBOMBSPRITE
-  fall
-  state despawn_item_from_can
+  state item_shared_code
+  
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -2193,8 +2251,8 @@ actor TRIPBOMBSPRITE
 enda
 
 actor SHRINKERSPRITE
-  fall
-  state despawn_item_from_can
+  state item_shared_code
+  
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -2217,9 +2275,8 @@ actor SHRINKERSPRITE
 enda
 
 actor GROWSPRITEICON // Functioning Expander Pickup
-  fall
-  state init_pickup
-  state despawn_item_from_can
+  state item_shared_code
+  
   ifmove RESPAWN_ACTOR_FLAG
     state respawnit
   else
@@ -2250,8 +2307,8 @@ actor GROWSPRITEICON // Functioning Expander Pickup
 enda
 
 actor DEVISTATORSPRITE
-  fall
-  state despawn_item_from_can
+  state item_shared_code
+  
   ifmove RESPAWN_ACTOR_FLAG state respawnit
   else
     ifp pshrunk nullop
@@ -2663,9 +2720,15 @@ actor SHOTSPARK1 PISTOL_WEAPON_STRENGTH WEAP2FRAMES
           spawn WATERSPLASH2
   }
 
-	ifcount 1 { }
+	ifcount 1
+	{
+		sizeto 16 16
+	}
 	else ifcount 0
 	{
+		ifrnd 128
+			cstator 4
+			
 		getactor[THISACTOR].yvel TEMP
 		
 		switch TEMP
@@ -2673,10 +2736,36 @@ actor SHOTSPARK1 PISTOL_WEAPON_STRENGTH WEAP2FRAMES
 			case CHAINGUN:
 				setvar STATE_PARAM1 TRACER
 				state spawn_tracer
+				ifrnd 8
+				{
+					getactor[THISACTOR].htg_t 8 TEMP2
+					ifvare TEMP2 -1
+					{
+						spawn RICOCHET_SPARK
+					}
+				}
 				break
 			case SHOTGUN:
 				setvar STATE_PARAM1 PELLET
 				state spawn_tracer
+				ifrnd 4
+				{
+					getactor[THISACTOR].htg_t 8 TEMP2
+					ifvare TEMP2 -1
+					{
+						spawn RICOCHET_SPARK
+					}
+				}
+				break
+			case SHOTSPARK1:
+				ifrnd 4
+				{
+					getactor[THISACTOR].htg_t 8 TEMP2
+					ifvare TEMP2 -1
+					{
+						spawn RICOCHET_SPARK
+					}
+				}
 				break
 		endswitch
 		

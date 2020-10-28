@@ -1,6 +1,6 @@
 set GRP_PATH=%~dp0Builds
-C:
-cd "C:\Meltdown\Duke Nukem 3D\EDuke32"
+D:
+cd "D:\sourcecode\eduke32-cs"
 @echo off
 cls
 echo With AI?
