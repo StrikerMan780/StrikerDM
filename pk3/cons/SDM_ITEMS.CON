@@ -6,7 +6,7 @@ state getcode_doomitem
   ifvare RESPAWN_ITEMS 1
   {
     move RESPAWN_ACTOR_FLAG
-    spawn RESPAWNMARKERRED
+    state create_spawn_marker
     cstat 32768
   }
   else

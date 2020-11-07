@@ -1655,7 +1655,7 @@ state getcode
   ifrespawn
   {
     move RESPAWN_ACTOR_FLAG
-    spawn RESPAWNMARKERRED
+    state create_spawn_marker
     cstat 32768
   }
   else
@@ -1676,7 +1676,7 @@ state getweaponcode
   ifvare RESPAWN_ITEMS 1
   {
     move RESPAWN_ACTOR_FLAG
-    spawn RESPAWNMARKERRED
+    state create_spawn_marker
     cstat 32768
   }
   else ifvare COOP GM_COOPERATIVE
@@ -1684,13 +1684,13 @@ state getweaponcode
 	ifactor HBOMBAMMO
 	{
 		move RESPAWN_ACTOR_FLAG
-		spawn RESPAWNMARKERRED
+		state create_spawn_marker
 		cstat 32768
 	}
 	else ifactor TRIPBOMBSPRITE
 	{
 		move RESPAWN_ACTOR_FLAG
-		spawn RESPAWNMARKERRED
+		state create_spawn_marker
 		cstat 32768
 	}
 	else

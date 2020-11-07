@@ -1387,7 +1387,7 @@ onevent EVENT_SPAWN
 	endswitch
 endevent
 
-onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!	
+onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
 	ifvarg QUAKE3BOB 0
 	{
 		setvarvar CL_TEMP1 totalclock
@@ -1401,11 +1401,47 @@ onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
 		addvarvar CL_TEMP1 CL_TEMP2
 		settspr[THISACTOR].tsprz CL_TEMP1
 		
+		ifactor RESPAWNMARKERRED { }
+		else ifactor RESPAWNMARKERYELLOW { }
+		else ifactor RESPAWNMARKERGREEN { }
+		else
+		{
+			getactor[THISACTOR].ang CL_TEMP1
+			setvarvar CL_TEMP2 totalclock
+			shiftvarl CL_TEMP2 2
+			addvarvar CL_TEMP1 CL_TEMP2
+			settspr[THISACTOR].tsprang CL_TEMP1
+		}
+	}
+	
+	ifactor RESPAWNMARKERRED
+	{
 		getactor[THISACTOR].ang CL_TEMP1
 		setvarvar CL_TEMP2 totalclock
-		shiftvarl CL_TEMP2 2
-		addvarvar CL_TEMP1 CL_TEMP2
+		shiftvarl CL_TEMP2 3
+		subvarvar CL_TEMP1 CL_TEMP2
 		settspr[THISACTOR].tsprang CL_TEMP1
+		break
+	}
+	
+	ifactor RESPAWNMARKERYELLOW
+	{
+		getactor[THISACTOR].ang CL_TEMP1
+		setvarvar CL_TEMP2 totalclock
+		shiftvarl CL_TEMP2 4
+		subvarvar CL_TEMP1 CL_TEMP2
+		settspr[THISACTOR].tsprang CL_TEMP1
+		break
+	}
+	
+	ifactor RESPAWNMARKERGREEN
+	{
+		getactor[THISACTOR].ang CL_TEMP1
+		setvarvar CL_TEMP2 totalclock
+		shiftvarl CL_TEMP2 6
+		subvarvar CL_TEMP1 CL_TEMP2
+		settspr[THISACTOR].tsprang CL_TEMP1
+		break
 	}
 	
 	ifactor FIRESHELL
@@ -2136,8 +2172,11 @@ onevent EVENT_SOUND
 endevent
 
 // Player Input
-//onevent EVENT_PROCESSINPUT
-//endevent
+onevent EVENT_PROCESSINPUT
+	state handle_rift
+	state handle_sectortypes
+	state handle_jumppad_movement
+endevent
 
 // Prediction code
 onevent EVENT_FAKEDOMOVETHINGS

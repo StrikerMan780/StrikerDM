@@ -115,6 +115,13 @@ state check_if_multiplayer_only
 	}
 ends
 
+state create_spawn_marker
+	espawn RESPAWNMARKERRED
+	setactor[RETURN].mdflags 16
+	setactorvar[RETURN].QUAKE3BOB QUAKE3BOB
+	setvar RETURN 0
+ends
+
 state yeet_item_on_drop
 	getactor[THISACTOR].htowner TEMP
 	ifvarvarn THISACTOR TEMP
@@ -363,7 +370,7 @@ state getcode_custom
   ifvare RESPAWN_ITEMS 1
   {
     move RESPAWN_ACTOR_FLAG
-    spawn RESPAWNMARKERRED
+    state create_spawn_marker
     cstat 32768
   }
   else
@@ -659,19 +666,20 @@ ends
 state handle_sectortypes
 	ifp palive
 	{
-		getactor[THISACTOR].sectnum TEMP
+		getplayer[THISACTOR].cursectnum TEMP
 		ifvarand SECTOR_TYPES[TEMP] SECTORTYPE_LOWGRAVITY
 		{
 			state handle_lowgravity
 		}
 		
-		getactor[THISACTOR].sectnum TEMP
+		getplayer[THISACTOR].cursectnum TEMP
 		ifvarand SECTOR_TYPES[TEMP] SECTORTYPE_JUMPPAD
 		{
 			state handle_jumppad
 		}
 		
-		getsector[THISACTOR].lotag TEMP
+		getplayer[THISACTOR].cursectnum TEMP
+		getsector[TEMP].lotag TEMP
 		ifvare TEMP 256
 		{
 			// TEMP = X
@@ -697,14 +705,17 @@ state handle_sectortypes
 ends
 
 state handle_sectortypes_prediction
-	ifvarand SECTOR_TYPES[mycursectnum] SECTORTYPE_LOWGRAVITY
+	ifp palive
 	{
-		state handle_lowgravity_prediction
-	}
-	
-	ifvarand SECTOR_TYPES[mycursectnum] SECTORTYPE_JUMPPAD
-	{
-		state handle_jumppad_prediction
+		ifvarand SECTOR_TYPES[mycursectnum] SECTORTYPE_LOWGRAVITY
+		{
+			state handle_lowgravity_prediction
+		}
+		
+		ifvarand SECTOR_TYPES[mycursectnum] SECTORTYPE_JUMPPAD
+		{
+			state handle_jumppad_prediction
+		}
 	}
 ends
 
