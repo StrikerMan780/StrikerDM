@@ -84,6 +84,8 @@ texture 4965 { pal 0 { file "highres/xxx/4965_champagne.jpg" } }
 texture 4966 { pal 0 { file "highres/xxx/4966_mikhaila2.png" } }
 texture 4967 { pal 0 { file "highres/xxx/4967_geecku2.png" } }
 
+tilefromtexture 4973 { file "tiles/4973.png" texture } // Imp-tan art by Noscium
+
 // Clean versions
 tilefromtexture 3702 { file "tiles/3702.png" } // 3700
 tilefromtexture 4980 { file "tiles/4980.png" texture } // 4960

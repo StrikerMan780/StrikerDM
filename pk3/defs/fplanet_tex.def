@@ -239,3 +239,5 @@ tilefromtexture 8223 { file "tiles/8223.png" texture truenpot }
 tilefromtexture 8224 { file "tiles/8224.png" texture truenpot }
 
 tilefromtexture 8225 { file "tiles/8225.png" texture truenpot }
+
+tilefromtexture 8226 { file "tiles/8226.png" texture truenpot }

@@ -180,17 +180,22 @@ onevent EVENT_DAMAGESPRITE
 endevent
 
 onevent EVENT_POSTDAMAGESPRITE
-	getactor[RETURN].picnum TEMP
-	ifvarn TEMP APLAYER
+	ifactor SHOTSPARK1
 	{
-		ifactor SHOTSPARK1
+		getactor[THISACTOR].yvel TEMP
+		ifvare TEMP RAILGUNSHOT
 		{
-			getactor[THISACTOR].yvel TEMP
-			ifvare TEMP RAILGUNSHOT
+			getactor[RETURN].picnum TEMP
+			ifvarn TEMP APLAYER
 			{
+				setactor[RETURN].htpicnum RADIUSEXPLOSION
 				getactor[RETURN].htextra TEMP
 				addvar TEMP RAILGUN_WEAPON_STRENGTH
 				setactor[RETURN].htextra TEMP
+			}
+			else
+			{
+				setactor[RETURN].htpicnum RAILGUNSHOT
 			}
 		}
 	}
@@ -1220,6 +1225,7 @@ onevent EVENT_SPAWN
 		case ROUGESPREAD:
 		case COCOANIM:
 		case COMMUNITY_XXX01:
+		case IMPTAN:
 			setactor[THISACTOR].mdflags 16
 			setvar ISADULT ADULT_HIDE
 			break
@@ -1958,10 +1964,9 @@ onevent EVENT_DISPLAYREST // !UNSYNCHRONIZED!
 		{
 			ifvarn COOP GM_COOPERATIVE
 			{
-				setvar SCORE_COUNTER 0
 				setvar SCORE_PLAYERINDEX 0
 				setvar SCORE_YOFFSET 8
-				whilevarvarn SCORE_COUNTER MULTIMODE
+				whilevarn SCORE_PLAYERINDEX 16
 				{
 					getplayer[SCORE_PLAYERINDEX].connected SCORE_PLAYERCONNECTED
 					ifvare SCORE_PLAYERCONNECTED 1 // Is connected
@@ -1986,7 +1991,6 @@ onevent EVENT_DISPLAYREST // !UNSYNCHRONIZED!
 						
 						// Move y offset down
 						addvar SCORE_YOFFSET 6
-						addvar SCORE_COUNTER 1
 					}
 					
 					// Move on to the next player

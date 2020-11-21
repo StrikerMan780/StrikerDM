@@ -26,11 +26,6 @@ tint { pal 124 red 255 green 0 blue 0 flags 1 }
 tint { pal 125 red 0 green 255 blue 0 flags 1 }
 tint { pal 126 red 0 green 0 blue 255 flags 1 }
 
-blendtable 253 // Overlay (I think?)
-{
-	glblend { both { src DST_COLOR dst ONE alpha 1.0 } }
-}
-
 blendtable 254 // Multiplicative
 {
 	glblend { both { src DST_COLOR dst ONE_MINUS_SRC_ALPHA alpha 1.0 } }

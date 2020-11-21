@@ -51,6 +51,7 @@ gamevar hud_timer 0 1
 gamevar hud_G_Draw_temp 0 1
 gamevar hud_G_Draw_temp2 0 1
 
+gamevar weapon_sway 0 1
 gamevar weapon_pos 0 1
 gamevar weaponscale 0 1
 gamevar playerid 0 1

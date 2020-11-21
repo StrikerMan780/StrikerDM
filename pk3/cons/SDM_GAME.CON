@@ -2767,20 +2767,14 @@ actor SHOTSPARK1 PISTOL_WEAPON_STRENGTH WEAP2FRAMES
 					}
 				}
 				break
+			case RAILGUNSHOT:
+				getactor[THISACTOR].htg_t 8 TEMP2
+				ifvare TEMP2 -1
+				{
+					hitradius 384 1 1 1 1 // Fugly hack to be able to destroy cracks in walls.
+				}
+				break
 		endswitch
-		
-		ifvare TEMP RAILGUNSHOT
-		{
-			getactor[THISACTOR].htg_t 8 TEMP
-			ifvarn TEMP -1
-			{
-				setactor[TEMP].htpicnum RAILGUNSHOT
-			}
-			else
-			{
-				hitradius 384 1 1 1 1 // Fugly hack to be able to destroy cracks in walls.
-			}
-		}
 	}
 enda
 

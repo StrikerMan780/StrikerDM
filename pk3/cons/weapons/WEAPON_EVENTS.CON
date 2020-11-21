@@ -305,9 +305,45 @@ onevent EVENT_DISPLAYWEAPON // P_DisplayWeapon !UNSYNCHRONIZED!
 
     setvar RETURN -1
     
-    getplayer[THISACTOR].weapon_pos weapon_pos
-    getuserdef[THISACTOR].weaponscale weaponscale
-    getplayer[THISACTOR].i playerid
+	getplayer[THISACTOR].weapon_pos weapon_pos
+	getplayer[THISACTOR].weapon_sway weapon_sway
+	getuserdef[THISACTOR].weaponscale weaponscale
+	getplayer[THISACTOR].i playerid
+	
+	// WEAPON SWAY
+	setvar gun_pos 72
+	setvarvar hud_temp weapon_pos
+	mulvarvar hud_temp weapon_pos
+	subvarvar gun_pos hud_temp
+	
+	sin hud_temp weapon_sway
+	shiftvarr hud_temp 11
+	subvarvar gun_pos hud_temp
+	
+	getplayer[THISACTOR].hard_landing hud_temp
+	shiftvarl hud_temp 3
+	subvarvar gun_pos hud_temp
+	
+	// Jumping bob
+	getplayer[THISACTOR].jumping_counter hud_temp
+	sin hud_temp2 hud_temp
+	shiftvarr hud_temp2 11
+	ifvarl hud_temp2 -1 // Clamp
+		setvar hud_temp2 -1
+	subvarvar gun_pos hud_temp2
+	
+	// View pitch shift
+	ifvarg numplayers 1
+		setvarvar hud_temp myhoriz
+	else
+		getplayer[THISACTOR].horiz hud_temp
+		
+	shiftvarr hud_temp 5
+	subvarvar gun_pos hud_temp
+	
+	ifvarg gun_pos 80 // Clamp Y of weapon to prevent viewing past sprite bottom
+		setvar gun_pos 80
+	// END WEAPON SWAY
 
     getuserdef[THISACTOR].drawweapon hud_temp
     
