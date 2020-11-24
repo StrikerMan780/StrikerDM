@@ -13,6 +13,9 @@ tilefromtexture 77 { file "tiles/77.png" texture } // Space Sector
 // Plasma Ball
 tilefromtexture 1389 { file "tiles/1389.png" }
 
+// Dookie
+tilefromtexture 1629 { file "tiles/1629.png" }
+
 // Shrinker/Expander
 tilefromtexture 25 { file "tiles/25.png" }
 tilefromtexture 32 { file "tiles/32.png" }
@@ -21,6 +24,9 @@ tilefromtexture 1616 { file "tiles/1616.png" }
 tilefromtexture 1617 { file "tiles/1617.png" }
 tilefromtexture 1618 { file "tiles/1618.png" }
 tilefromtexture 1619 { file "tiles/1619.png" }
+tilefromtexture 2697 { file "tiles/2697.png" yoff 1 }
+tilefromtexture 2698 { file "tiles/2698.png" yoff 1 }
+tilefromtexture 2699 { file "tiles/2699.png" yoff 2 }
 
 // Pig Gib
 tilefromtexture 1993 { file "tiles/1993.png" }
@@ -128,6 +134,8 @@ tilefromtexture 2602 { file "tiles/2602.png" xoffset -2 yoffset 1 }
 tilefromtexture 2603 { file "tiles/2603.png" xoffset -14 yoffset -24 }
 
 // Interpolated Shotgun
+//tilefromtexture 2585 { file "tiles/2585.png" xoff -30 yoff -7 }
+tilefromtexture 2586 { file "tiles/2586.png" xoff -29 yoff -6 }
 tilefromtexture 2614 { file "tiles/2614.png" xoff -27 yoff -5 }
 tilefromtexture 2615 { file "tiles/2615.png" xoff -21 yoff 25 }
 tilefromtexture 2619 { file "tiles/2619.png" }

@@ -13,8 +13,8 @@ state draw_shotgun // SHOTGUN_WEAPON:
 			
 			ifvare weaponcount 2
 			{
-				addvar hud_x 4
-				addvar hud_y 4
+				addvar hud_x 2
+				addvar hud_y 2
 			}
 			
 			setvar hud_tilenum SHOTGUN 
@@ -29,7 +29,10 @@ state draw_shotgun // SHOTGUN_WEAPON:
 			
 			setvar hud_shade -128
 			
-			setvar hud_tilenum SHOTGUN_FLASH1
+			ifvare weaponcount 1
+				setvar hud_tilenum SHOTGUN_FLASHEXTRA
+			else
+				setvar hud_tilenum SHOTGUN_FLASH1
 			
 			state G_DrawWeaponTile
 							 

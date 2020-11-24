@@ -35,10 +35,18 @@ state draw_expander // GROW_WEAPON:
             addvar hud_x 184
             addvar hud_y 240
             
-            setvarvar hud_tilenum weaponcount
-            andvar hud_tilenum 3
-            addvar hud_tilenum SHRINKER
-            addvar hud_tilenum 3
+            setvarvar hud_temp3 weaponcount
+            modvar hud_temp3 6
+			
+			switch hud_temp3
+				case 0: setvar hud_tilenum SHRINKERCRYSTAL_FIRE1 break
+				case 1: setvar hud_tilenum SHRINKERCRYSTAL_EXTRA1 break
+				case 2: setvar hud_tilenum SHRINKERCRYSTAL_FIRE2 break
+				case 3: setvar hud_tilenum SHRINKERCRYSTAL_EXTRA2 break
+				case 4: setvar hud_tilenum SHRINKERCRYSTAL_FIRE3 break
+				case 5: setvar hud_tilenum SHRINKERCRYSTAL_EXTRA3 break
+				default: setvar hud_tilenum SHRINKERCRYSTAL break
+			endswitch
             
             setvar hud_shade -32
         
@@ -70,8 +78,7 @@ state draw_expander // GROW_WEAPON:
         
         addvar hud_y 240
         
-        setvar hud_tilenum SHRINKER
-        addvar hud_tilenum 2
+        setvar hud_tilenum SHRINKERCRYSTAL
         
         getplayer[THISACTOR].random_club_frame hud_shade
         andvar hud_shade 2047

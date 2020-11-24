@@ -183,13 +183,13 @@ onevent EVENT_DOFIRE
 			
 			setvar RECOIL_AMOUNT 8
 			mulvar RECOIL_AMOUNT 65536
-			setvar RECOIL_SPEED 65536
+			setvar RECOIL_SPEED 49152
 		}
 		else
 		{
 			setvar RECOIL_AMOUNT 4
 			mulvar RECOIL_AMOUNT 65536
-			setvar RECOIL_SPEED 65536
+			setvar RECOIL_SPEED 49152
 		}
 	}
 	else ifvare TEMP PISTOL_WEAPON
@@ -331,6 +331,17 @@ onevent EVENT_DISPLAYWEAPON // P_DisplayWeapon !UNSYNCHRONIZED!
 	ifvarl hud_temp2 -1 // Clamp
 		setvar hud_temp2 -1
 	subvarvar gun_pos hud_temp2
+
+/*	// Velocity drift
+	getplayer[THISACTOR].poszv hud_temp
+	shiftvarr hud_temp 8
+	ifp pjumping
+	{
+		ifvarl hud_temp 0
+			setvar hud_temp 0
+	}
+	addvarvar gun_pos hud_temp
+*/
 	
 	// View pitch shift
 	ifvarg numplayers 1
