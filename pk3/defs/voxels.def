@@ -1,6 +1,10 @@
 // --- Props ---
 voxel "voxels/props/0058_spacesuit.kvx" { tile 58 }
 
+voxel "voxels/props/0480_observatory.kvx" { tile 480 }
+
+voxel "voxels/props/0487_spaceshuttle.kvx" { tile 487 }
+
 voxel "voxels/props/0543_panel.kvx" { tile 543 }
 
 voxel "voxels/props/0544_connection.kvx" { tile 0544 }
@@ -204,6 +208,8 @@ voxel "voxels/props/1817_cannonball.kvx" { tile 1817 }
 voxel "voxels/props/1818_cannonballs.kvx" { tile 1818 }
 
 voxel "voxels/props/2200_poo.kvx" { tile 2200 }
+
+voxel "voxels/props/3400_dufbeer.kvx" { tile 3400 }
 
 voxel "voxels/props/3190_marker_red.kvx" { tile 3190 tile 3191 tile 3192 tile 3193 tile 3194 tile 3195 tile 3196 }
 voxel "voxels/props/3200_marker_yellow.kvx" { tile 3200 tile 3201 tile 3202 tile 3203 tile 3204 tile 3205 tile 3206 }

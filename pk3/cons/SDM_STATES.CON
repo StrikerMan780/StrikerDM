@@ -749,16 +749,16 @@ state handle_rift
 					
 					state handle_lowgravity
 				}
+				
+				break
 			}
 		}
-		else
+
+		ifvare IN_RIFT 1
 		{
-			ifvare IN_RIFT 1
-			{
-				sound EXIT_RIFT
-				palfrom 48 0 16 64
-				setvar IN_RIFT 0
-			}
+			sound EXIT_RIFT
+			palfrom 48 0 16 64
+			setvar IN_RIFT 0
 		}
 	}
 ends
@@ -785,14 +785,14 @@ state handle_rift_prediction
 				{
 					state handle_lowgravity_prediction
 				}
+				
+				break
 			}
 		}
-		else
+		
+		ifvare PREDICT_IN_RIFT 1
 		{
-			ifvare PREDICT_IN_RIFT 1
-			{
-				setvar PREDICT_IN_RIFT 0
-			}
+			setvar PREDICT_IN_RIFT 0
 		}
 	}
 ends

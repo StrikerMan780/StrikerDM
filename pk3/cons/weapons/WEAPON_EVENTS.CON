@@ -560,3 +560,112 @@ onevent EVENT_DISPLAYWEAPON // P_DisplayWeapon !UNSYNCHRONIZED!
         guniqhudid 0
     }
 endevent
+
+onevent EVENT_DISPLAYTIP
+	setvar RETURN 1
+	
+	// hud pal
+	getactor[playerid].pal hud_pal
+	ifvarn hud_pal 1
+	{
+		getplayer[THISACTOR].cursectnum hud_temp2
+		ifvarg hud_temp2 -1
+			getsector[hud_temp2].floorpal hud_pal
+		else
+			setvar hud_pal 0
+	}
+	
+	// X Position
+	setvar hud_x 170
+	getinput[THISACTOR].avel hud_temp
+	shiftvarr hud_temp 5
+	addvarvar hud_x hud_temp
+	subvarvar hud_x looking_angSR1
+	
+	// Y Position
+	setvar hud_y 240
+	
+	// TipYOffset
+	getplayer[THISACTOR].tipincs hud_temp
+	switch hud_temp
+		case 0: setvar hud_temp2 0 break
+		case 1: setvar hud_temp2 -8 break
+		case 2: setvar hud_temp2 -16 break
+		case 3: setvar hud_temp2 -32 break
+		case 4: setvar hud_temp2 -64 break
+		case 5: setvar hud_temp2 -84 break
+		case 6:
+		case 7:
+		case 8:
+		case 9:
+		case 10:
+		case 11:
+		case 12:
+		case 13:
+		case 14:
+		case 15:
+			setvar hud_temp2 -108
+			break
+		case 16: setvar hud_temp2 -96 break
+		case 17: setvar hud_temp2 -72 break
+		case 18: setvar hud_temp2 -64 break
+		case 19: setvar hud_temp2 -32 break
+		case 20: setvar hud_temp2 -16 break
+		case 21: setvar hud_temp2 0 break
+		case 22: setvar hud_temp2 16 break
+		case 23: setvar hud_temp2 32 break
+		case 24: setvar hud_temp2 48 break
+	endswitch
+	
+	shiftvarr hud_temp2 1
+	addvarvar hud_y hud_temp2
+	
+	// TipY
+	getplayer[THISACTOR].look_ang hud_temp
+	abs hud_temp
+	divvar hud_temp 9
+	getplayer[THISACTOR].hard_landing hud_temp2
+	shiftvarl hud_temp2 3
+	subvarvar hud_temp hud_temp2
+	addvarvar hud_y hud_temp
+	
+	// Tip Y Horiz Offset
+	getplayer[THISACTOR].horiz hud_temp
+	getplayer[THISACTOR].horizoff hud_temp2
+	subvarvar hud_temp hud_temp2
+	shiftvarr hud_temp 4
+	subvarvar hud_y hud_temp
+	
+	// Orientation/Shade/HudID
+	setvar hud_orientation 262144
+	setvarvar hud_shade gs
+	guniqhudid 201
+	
+	// Tilenum
+	getplayer[THISACTOR].tipincs hud_temp
+	ifvarg hud_temp 10
+	{
+		setvar hud_tilenum TIP
+	}
+	else ifvarg hud_temp 9
+	{
+		setvar hud_tilenum TIP_EXTRA1
+	}
+	else ifvarg hud_temp 8
+	{
+		setvar hud_tilenum 2577
+	}
+	else
+	{
+		setvar hud_tilenum TIP_EXTRA2
+	}
+	
+	// Draw
+	state G_DrawTileScaled
+	
+	// cleanup
+	setvar hud_scale 65536
+	setvar hud_orientation 0
+	setvar hud_angle 0
+	guniqhudid 0
+endevent

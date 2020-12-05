@@ -56,8 +56,24 @@ state draw_shrinker // SHRINKER_WEAPON:
             
             addvar hud_x 4
             
-            setvar hud_tilenum SHRINKER
-            addvar hud_tilenum 1
+			switch weaponcount
+				case 1:
+				case 12:
+					setvar hud_tilenum SHRINKER_EXTRA1
+					break
+				case 2:
+				case 11:
+					setvar hud_tilenum SHRINKER_EXTRA2
+					break
+				case 3:
+				case 10:
+					setvar hud_tilenum SHRINKER_EXTRA3
+					break
+				default:
+					setvar hud_tilenum SHRINKER
+					addvar hud_tilenum 1
+					break
+			endswitch
             
             setvarvar hud_shade gs
             

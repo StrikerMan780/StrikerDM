@@ -14,7 +14,7 @@ tilefromtexture 3602 { file "tiles/3602.png" texture } // W28_5
 tilefromtexture 3603 { file "tiles/3603.png" texture } // W28_6
 
 tilefromtexture 3517 { file "tiles/3517.png" texture } // MIDSPACE
-tilefromtexture 3518 { file "tiles/3518.png" texture } // EXITDOOR
+tilefromtexture 3518 { file "tiles/3518.png" texture truenpot } // EXITDOOR
 tilefromtexture 3519 { file "tiles/3519.png" texture } // TEKWALL4
 tilefromtexture 3520 { file "tiles/3520.png" texture } // GATE1
 tilefromtexture 3521 { file "tiles/3521.png" texture } // GATE2

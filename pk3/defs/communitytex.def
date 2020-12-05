@@ -301,7 +301,9 @@ tilefromtexture 3995 { file "tiles/3995.png" texture }
 tilefromtexture 3996 { file "tiles/3996.png" }
 texture 3996 { pal 0 { file "highres/posters/3996_sw_anime.png" } }
 
-tilefromtexture 3997 { file "tiles/3997.png" texture }
+tilefromtexture 3997 { file "tiles/3997.png" }
+texture 3997 { pal 0 { file "highres/posters/3997_sw_anime.png" } }
+
 tilefromtexture 3998 { file "tiles/3998.png" texture }
 tilefromtexture 4014 { file "tiles/4014.png" }
 tilefromtexture 4015 { file "tiles/4015.png" }

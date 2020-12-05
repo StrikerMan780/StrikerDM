@@ -24,6 +24,19 @@ tilefromtexture 1616 { file "tiles/1616.png" }
 tilefromtexture 1617 { file "tiles/1617.png" }
 tilefromtexture 1618 { file "tiles/1618.png" }
 tilefromtexture 1619 { file "tiles/1619.png" }
+
+tilefromtexture 2554 { file "tiles/2554.png" xoffset -1 yoffset 1 }
+tilefromtexture 2555 { file "tiles/2555.png" xoffset -1 yoffset 1 }
+tilefromtexture 2694 { file "tiles/2694.png" xoffset -1 yoffset 1 }
+tilefromtexture 2695 { file "tiles/2695.png" xoffset -1 yoffset 1 }
+tilefromtexture 2696 { file "tiles/2696.png" xoffset -1 yoffset 1 }
+
+tilefromtexture 2556 { file "tiles/2556.png" xoffset -1 yoffset -2 }
+tilefromtexture 2557 { file "tiles/2557.png" xoffset -1 yoffset -2 }
+tilefromtexture 2691 { file "tiles/2691.png" xoffset -1 yoffset -2 }
+tilefromtexture 2692 { file "tiles/2692.png" xoffset -1 yoffset -2 }
+tilefromtexture 2693 { file "tiles/2693.png" xoffset -1 yoffset -2 }
+
 tilefromtexture 2697 { file "tiles/2697.png" yoff 1 }
 tilefromtexture 2698 { file "tiles/2698.png" yoff 1 }
 tilefromtexture 2699 { file "tiles/2699.png" yoff 2 }
@@ -220,10 +233,6 @@ tilefromtexture 2529 { file "tiles/2529_dn64.png" xoff -76 yoff 2 }
 tilefromtexture 2544 { file "tiles/2544.png" xoffset -106 yoffset -67 }
 tilefromtexture 2548 { file "tiles/2548.png" xoff -68 yoff 15 }
 tilefromtexture 2550 { file "tiles/2550.png" xoff -7 yoff 18 }
-tilefromtexture 2554 { file "tiles/2554.png" xoffset -1 yoffset 1 }
-tilefromtexture 2555 { file "tiles/2555.png" xoffset -1 yoffset 1 }
-tilefromtexture 2556 { file "tiles/2556.png" xoffset -1 yoffset -2 }
-tilefromtexture 2557 { file "tiles/2557.png" xoffset -1 yoffset -2 }
 tilefromtexture 2563 { file "tiles/2563.png" xoffset 90 }
 
 // Railgun

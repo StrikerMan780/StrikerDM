@@ -58,8 +58,20 @@ state draw_expander // GROW_WEAPON:
             
             addvar hud_x 4
             
-            setvar hud_tilenum SHRINKER
-            subvar hud_tilenum 1
+			switch weaponcount
+				case 2:
+					setvar hud_tilenum EXPANDER_EXTRA3
+					break
+				case 3:
+					setvar hud_tilenum EXPANDER_EXTRA2
+					break
+				case 4:
+					setvar hud_tilenum EXPANDER_EXTRA1
+					break
+				default:
+					setvar hud_tilenum EXPANDER2
+					break
+			endswitch
             
             setvarvar hud_shade gs
             
@@ -95,8 +107,7 @@ state draw_expander // GROW_WEAPON:
         
         addvar hud_x 4
         
-        setvar hud_tilenum SHRINKER
-        subvar hud_tilenum 2
+        setvar hud_tilenum EXPANDER
         
         setvarvar hud_shade gs
         
