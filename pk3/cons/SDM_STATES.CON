@@ -117,7 +117,6 @@ ends
 
 state create_spawn_marker
 	espawn RESPAWNMARKERRED
-	setactor[RETURN].mdflags 16
 	setactorvar[RETURN].QUAKE3BOB QUAKE3BOB
 	setvar RETURN 0
 ends

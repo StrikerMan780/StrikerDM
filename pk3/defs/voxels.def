@@ -113,6 +113,8 @@ voxel "voxels/props/0957_bottle4.kvx" { tile 957 }
 voxel "voxels/props/0969_hydroplant.kvx" { tile 969 }
 voxel "voxels/props/1003_brokehydroplant.kvx" { tile 1003 }
 
+voxel "voxels/props/0976_airvent.kvx" { tile 976 }
+
 voxel "voxels/props/0977_pole.kvx" { tile 977 }
 
 voxel "voxels/props/0978_traffic_cone.kvx" { tile 978 }
@@ -222,6 +224,7 @@ voxel "voxels/props/4371_plate1.kvx" { tile 4371 }
 voxel "voxels/props/4372_coffeemachine.kvx" { tile 4372 } 
 voxel "voxels/props/4373_cups.kvx" { tile 4373 } 
 voxel "voxels/props/4377_policelightpole.kvx" { tile 4377 } 
+voxel "voxels/props/4386_pipe.kvx" { tile 4386 }
 voxel "voxels/props/4388_bin.kvx" { tile 4388 }
 
 voxel "voxels/props/4407_mouse1.kvx" { tile 4407 }

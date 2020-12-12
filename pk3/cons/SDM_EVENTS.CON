@@ -1084,6 +1084,12 @@ onevent EVENT_SPAWN
 		state search_for_explosive
 		break
 	}
+	
+	ifactor RESPAWNMARKERRED
+	{
+		setactor[THISACTOR].mdflags 16
+		break
+	}
 
 	ifactor BLOODPOOL
 	{
