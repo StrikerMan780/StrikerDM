@@ -79,8 +79,13 @@ actor FREEZESPRITE
 	}
     else ifp palive ifpdistl RETRIEVEDISTANCE ifcount 6 ifcanseetarget
     {
-        getplayervar[THISACTOR].HAS_FREEZETHROWER TEMP2
-		ifvare TEMP2 1
+		// Parameters
+		setvar STATE_PARAM1 FREEZE_WEAPON
+		setvar STATE_PARAM2 WEAP_PRIMARY
+		setvar STATE_PARAM3 1
+		
+		state check_have_weapon
+		ifvare STATE_RETURN 1
 			state checkweaponstay
 		
 		getplayervar[THISACTOR].FREEZETHROWER_AMMO TEMP
@@ -96,14 +101,13 @@ actor FREEZESPRITE
 		}
 		else
 		{
-			ifvare TEMP2 1 // Has freezethrower?
+			ifvare STATE_RETURN 1 // Has freezethrower?
 			{
 				break // Has weapon, and full ammo. Stop here.
 			}
 		}
 		
-		setplayervar[THISACTOR].HAS_FREEZETHROWER 1 // Give it
-		setvar STATE_PARAM1 FREEZE_WEAPON
+		state set_have_weapon
 		state addweapon_nobreak
         quote 59
         ifspawnedby FREEZESPRITE

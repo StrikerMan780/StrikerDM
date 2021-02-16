@@ -16,6 +16,9 @@ tilefromtexture 1389 { file "tiles/1389.png" }
 // Dookie
 tilefromtexture 1629 { file "tiles/1629.png" }
 
+// Duke Face
+tilefromtexture 2349 { file "tiles/2349.png" }
+
 // Shrinker/Expander
 tilefromtexture 25 { file "tiles/25.png" }
 tilefromtexture 32 { file "tiles/32.png" }
@@ -42,13 +45,13 @@ tilefromtexture 2698 { file "tiles/2698.png" yoff 1 }
 tilefromtexture 2699 { file "tiles/2699.png" yoff 2 }
 
 // Pig Gib
-tilefromtexture 1993 { file "tiles/1993.png" }
-tilefromtexture 1994 { file "tiles/1994.png" }
-tilefromtexture 1995 { file "tiles/1995.png" }
-tilefromtexture 1996 { file "tiles/1996.png" }
-tilefromtexture 1997 { file "tiles/1997.png" }
-tilefromtexture 1998 { file "tiles/1998.png" }
-tilefromtexture 1999 { file "tiles/1999.png" }
+tilefromtexture 2113 { file "tiles/2113.png" }
+tilefromtexture 2114 { file "tiles/2114.png" }
+tilefromtexture 2115 { file "tiles/2115.png" }
+tilefromtexture 2116 { file "tiles/2116.png" }
+tilefromtexture 2117 { file "tiles/2117.png" }
+tilefromtexture 2118 { file "tiles/2118.png" }
+tilefromtexture 2119 { file "tiles/2119.png" }
 
 // Explosion Spark
 tilefromtexture 2090 { file "tiles/2090.png" }
@@ -288,6 +291,104 @@ tilefromtexture 2086 { file "tiles/2086.png" }
 tilefromtexture 2087 { file "tiles/2087.png" }
 tilefromtexture 2088 { file "tiles/2088.png" }
 tilefromtexture 2089 { file "tiles/2089.png" }
+
+// Cleaned-up player sprites (Thanks, phredreeke!)
+tilefromtexture 1405 { file "tiles/1405.png" xoffset -1 yoffset 1 }
+tilefromtexture 1406 { file "tiles/1406.png" xoffset 5 yoffset 1 }
+tilefromtexture 1407 { file "tiles/1407.png" xoffset 3 yoffset 1 }
+tilefromtexture 1408 { file "tiles/1408.png" xoffset 1 yoffset 1 }
+tilefromtexture 1409 { file "tiles/1409.png" xoffset 0 yoffset 1 }
+tilefromtexture 1420 { file "tiles/1420.png" xoffset 1 yoffset 1 }
+tilefromtexture 1421 { file "tiles/1421.png" xoffset 0 yoffset 1 }
+tilefromtexture 1422 { file "tiles/1422.png" xoffset 0 yoffset 1 }
+tilefromtexture 1423 { file "tiles/1423.png" xoffset 0 yoffset 1 }
+tilefromtexture 1424 { file "tiles/1424.png" xoffset -4 yoffset 1 }
+tilefromtexture 1425 { file "tiles/1425.png" xoffset 2 yoffset 1 }
+tilefromtexture 1426 { file "tiles/1426.png" xoffset 3 yoffset 1 }
+tilefromtexture 1427 { file "tiles/1427.png" xoffset 0 yoffset 1 }
+tilefromtexture 1428 { file "tiles/1428.png" xoffset 0 yoffset 1 }
+tilefromtexture 1429 { file "tiles/1429.png" xoffset -3 yoffset 1 }
+tilefromtexture 1430 { file "tiles/1430.png" xoffset 0 yoffset 1 }
+tilefromtexture 1431 { file "tiles/1431.png" xoffset 9 yoffset 1 }
+tilefromtexture 1432 { file "tiles/1432.png" xoffset 7 yoffset 1 }
+tilefromtexture 1433 { file "tiles/1433.png" xoffset 1 yoffset 1 }
+tilefromtexture 1434 { file "tiles/1434.png" xoffset -2 yoffset 1 }
+tilefromtexture 1435 { file "tiles/1435.png" xoffset 0 yoffset 1 }
+tilefromtexture 1436 { file "tiles/1436.png" xoffset 10 yoffset 1 }
+tilefromtexture 1437 { file "tiles/1437.png" xoffset 3 yoffset 1 }
+tilefromtexture 1438 { file "tiles/1438.png" xoffset -1 yoffset 1 }
+tilefromtexture 1439 { file "tiles/1439.png" xoffset 0 yoffset 1 }
+tilefromtexture 1440 { file "tiles/1440.png" xoffset 1 yoffset 1 }
+tilefromtexture 1441 { file "tiles/1441.png" xoffset 12 yoffset 1 }
+tilefromtexture 1442 { file "tiles/1442.png" xoffset 8 yoffset 1 }
+tilefromtexture 1443 { file "tiles/1443.png" xoffset 0 yoffset 1 }
+tilefromtexture 1444 { file "tiles/1444.png" xoffset -2 yoffset 1 }
+tilefromtexture 1445 { file "tiles/1445.png" xoffset 4 yoffset 1 }
+tilefromtexture 1446 { file "tiles/1446.png" xoffset 8 yoffset 1 }
+tilefromtexture 1447 { file "tiles/1447.png" xoffset 0 yoffset 1 }
+tilefromtexture 1448 { file "tiles/1448.png" xoffset 0 yoffset 1 }
+tilefromtexture 1449 { file "tiles/1449.png" xoffset -6 yoffset 1 }
+tilefromtexture 1450 { file "tiles/1450.png" xoffset 6 yoffset 1 }
+tilefromtexture 1451 { file "tiles/1451.png" xoffset 9 yoffset 1 }
+tilefromtexture 1452 { file "tiles/1452.png" xoffset 13 yoffset 1 }
+tilefromtexture 1453 { file "tiles/1453.png" xoffset 0 yoffset 1 }
+tilefromtexture 1454 { file "tiles/1454.png" xoffset -9 yoffset 1 }
+tilefromtexture 1455 { file "tiles/1455.png" xoffset 1 yoffset 1 }
+tilefromtexture 1456 { file "tiles/1456.png" xoffset 5 yoffset 1 }
+tilefromtexture 1457 { file "tiles/1457.png" xoffset 0 yoffset 1 }
+tilefromtexture 1458 { file "tiles/1458.png" xoffset 0 yoffset 1 }
+tilefromtexture 1459 { file "tiles/1459.png" xoffset 0 yoffset 1 }
+tilefromtexture 1460 { file "tiles/1460.png" xoffset 0 yoffset 1 }
+tilefromtexture 1461 { file "tiles/1461.png" xoffset 10 yoffset -1 }
+tilefromtexture 1462 { file "tiles/1462.png" xoffset 4 yoffset 1 }
+tilefromtexture 1463 { file "tiles/1463.png" xoffset 0 yoffset 1 }
+tilefromtexture 1464 { file "tiles/1464.png" xoffset 0 yoffset 1 }
+tilefromtexture 1465 { file "tiles/1465.png" xoffset 3 yoffset 1 }
+tilefromtexture 1466 { file "tiles/1466.png" xoffset 0 yoffset 1 }
+tilefromtexture 1467 { file "tiles/1467.png" xoffset 0 yoffset 1 }
+tilefromtexture 1468 { file "tiles/1468.png" xoffset 0 yoffset 1 }
+tilefromtexture 1469 { file "tiles/1469.png" xoffset 0 yoffset 1 }
+tilefromtexture 1491 { file "tiles/1491.png" xoffset 0 yoffset 1 }
+tilefromtexture 1492 { file "tiles/1492.png" xoffset 0 yoffset 1 }
+tilefromtexture 1493 { file "tiles/1493.png" xoffset -6 yoffset 1 }
+tilefromtexture 1494 { file "tiles/1494.png" xoffset 0 yoffset 1 }
+tilefromtexture 1495 { file "tiles/1495.png" xoffset 0 yoffset 1 }
+tilefromtexture 1496 { file "tiles/1496.png" xoffset 0 yoffset 1 }
+tilefromtexture 1497 { file "tiles/1497.png" xoffset 5 yoffset 1 }
+tilefromtexture 1498 { file "tiles/1498.png" xoffset 0 yoffset 1 }
+tilefromtexture 1499 { file "tiles/1499.png" xoffset 0 yoffset 1 }
+tilefromtexture 1500 { file "tiles/1500.png" xoffset 0 yoffset 1 }
+tilefromtexture 1501 { file "tiles/1501.png" xoffset 0 yoffset 1 }
+tilefromtexture 1502 { file "tiles/1502.png" xoffset 0 yoffset 1 }
+tilefromtexture 1503 { file "tiles/1503.png" xoffset 0 yoffset 1 }
+tilefromtexture 1504 { file "tiles/1504.png" xoffset 0 yoffset 1 }
+tilefromtexture 1505 { file "tiles/1505.png" xoffset 8 yoffset 1 }
+tilefromtexture 1511 { file "tiles/1511.png" xoffset 0 yoffset 1 }
+tilefromtexture 1512 { file "tiles/1512.png" xoffset -2 yoffset 33 }
+tilefromtexture 1513 { file "tiles/1513.png" xoffset 3 yoffset 30 }
+tilefromtexture 1514 { file "tiles/1514.png" xoffset 2 yoffset 33 }
+tilefromtexture 1515 { file "tiles/1515.png" xoffset 0 yoffset 29 }
+tilefromtexture 1518 { file "tiles/1518.png" xoffset 0 yoffset 38 }
+tilefromtexture 1780 { file "tiles/1780.png" xoffset 0 yoffset 19 }
+tilefromtexture 1781 { file "tiles/1781.png" xoffset 0 yoffset 20 }
+tilefromtexture 1782 { file "tiles/1782.png" xoffset 0 yoffset 20 }
+tilefromtexture 1783 { file "tiles/1783.png" xoffset 0 yoffset 19 }
+tilefromtexture 1784 { file "tiles/1784.png" xoffset 0 yoffset 20 }
+tilefromtexture 1785 { file "tiles/1785.png" xoffset -1 yoffset 19 }
+tilefromtexture 1786 { file "tiles/1786.png" xoffset 0 yoffset 19 }
+tilefromtexture 1787 { file "tiles/1787.png" xoffset 0 yoffset 18 }
+tilefromtexture 1788 { file "tiles/1788.png" xoffset 0 yoffset 19 }
+tilefromtexture 1789 { file "tiles/1789.png" xoffset 5 yoffset 19 }
+tilefromtexture 1790 { file "tiles/1790.png" xoffset 0 yoffset 19 }
+tilefromtexture 1791 { file "tiles/1791.png" xoffset 15 yoffset 18 }
+tilefromtexture 1792 { file "tiles/1792.png" xoffset 13 yoffset 18 }
+tilefromtexture 1793 { file "tiles/1793.png" xoffset -6 yoffset 19 }
+tilefromtexture 1794 { file "tiles/1794.png" xoffset 3 yoffset 19 }
+tilefromtexture 1795 { file "tiles/1795.png" xoffset 2 yoffset 19 }
+tilefromtexture 1796 { file "tiles/1796.png" xoffset 23 yoffset 18 }
+tilefromtexture 1797 { file "tiles/1797.png" xoffset 24 yoffset 18 }
+tilefromtexture 1798 { file "tiles/1798.png" xoffset 6 yoffset 18 }
+tilefromtexture 1799 { file "tiles/1799.png" xoffset -2 yoffset 18 }
 
 // Blood pool for player
 tilefromtexture 1546 { file "tiles/1546.png" }

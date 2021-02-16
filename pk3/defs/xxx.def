@@ -74,13 +74,13 @@ tilefromtexture 4964 { file "tiles/4964.png" }
 tilefromtexture 4965 { file "tiles/4965.png" }
 tilefromtexture 4966 { file "tiles/4966.png" }
 tilefromtexture 4967 { file "tiles/4967.png" }
-texture 4959 { pal 0 { file "highres/xxx/4959_geecku.jpg" } }
+texture 4959 { pal 0 { file "highres/xxx/4959_geecku.png" } }
 texture 4960 { pal 0 { file "highres/xxx/4960_sharonm.png" } }
 texture 4961 { pal 0 { file "highres/xxx/4961_strikerxhelen.png" } }
 texture 4962 { pal 0 { file "highres/xxx/4962_striker.png" } }
-texture 4963 { pal 0 { file "highres/xxx/4963_sharonm2.jpg" } }
-texture 4964 { pal 0 { file "highres/xxx/4964_mikhaila.jpg" } }
-texture 4965 { pal 0 { file "highres/xxx/4965_champagne.jpg" } }
+texture 4963 { pal 0 { file "highres/xxx/4963_sharonm2.png" } }
+texture 4964 { pal 0 { file "highres/xxx/4964_mikhaila.png" } }
+texture 4965 { pal 0 { file "highres/xxx/4965_champagne.png" } }
 texture 4966 { pal 0 { file "highres/xxx/4966_mikhaila2.png" } }
 texture 4967 { pal 0 { file "highres/xxx/4967_geecku2.png" } }
 
@@ -101,11 +101,11 @@ tilefromtexture 4989 { file "tiles/4989.png" } // 4967
 tilefromtexture 4990 { file "tiles/4990.png" } // 4959
 texture 4984 { pal 0 { file "highres/posters/4984_striker.png" } }
 texture 4985 { pal 0 { file "highres/posters/4985_striker.png" } }
-texture 4986 { pal 0 { file "highres/posters/4986_champagne.jpg" } }
-texture 4987 { pal 0 { file "highres/posters/4987_mikhaila.jpg" } }
+texture 4986 { pal 0 { file "highres/posters/4986_champagne.png" } }
+texture 4987 { pal 0 { file "highres/posters/4987_mikhaila.png" } }
 texture 4988 { pal 0 { file "highres/posters/4988_mikhaila.png" } }
 texture 4989 { pal 0 { file "highres/posters/4989_geecku.png" } }
-texture 4990 { pal 0 { file "highres/posters/4990_geecku.jpg" } }
+texture 4990 { pal 0 { file "highres/posters/4990_geecku.png" } }
 
 // XXX Animations
 animtilerange 6000 6028 3 ANIM_FORWARD

@@ -233,8 +233,13 @@ actor CHAINGUNSPRITE
 	}
 	else ifp palive ifpdistl RETRIEVEDISTANCE ifcount 6 ifcanseetarget
 	{
-		getplayervar[THISACTOR].HAS_RIPPER TEMP2
-		ifvare TEMP2 1
+		// Parameters
+		setvar STATE_PARAM1 CHAINGUN_WEAPON
+		setvar STATE_PARAM2 WEAP_PRIMARY
+		setvar STATE_PARAM3 1
+		
+		state check_have_weapon
+		ifvare STATE_RETURN 1
 			state checkweaponstay
 		
 		getplayervar[THISACTOR].RIPPER_AMMO TEMP
@@ -250,14 +255,13 @@ actor CHAINGUNSPRITE
 		}
 		else
 		{
-			ifvare TEMP2 1 // Has weapon?
+			ifvare STATE_RETURN 1 // Has weapon?
 			{
 				break // Has weapon, and full ammo. Stop here.
 			}
 		}
 		
-		setplayervar[THISACTOR].HAS_RIPPER 1 // Give it
-		setvar STATE_PARAM1 CHAINGUN_WEAPON
+		state set_have_weapon
 		state addweapon_nobreak
 		quote 54
 		ifspawnedby CHAINGUNSPRITE

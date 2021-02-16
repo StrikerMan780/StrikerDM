@@ -2745,6 +2745,7 @@ actor SHOTSPARK1 PISTOL_WEAPON_STRENGTH WEAP2FRAMES
 					}
 				}
 				break
+			case SSGPELLET:
 			case SHOTGUN:
 				setvar STATE_PARAM1 PELLET
 				state spawn_tracer

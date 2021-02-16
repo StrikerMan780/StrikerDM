@@ -39,10 +39,12 @@ gamevar SCORE_SUICIDES 0 0
 // State parameters
 gamevar STATE_TEMP1 0 0
 gamevar STATE_TEMP2 0 0
+gamevar STATE_TEMP3 0 0
+gamevar STATE_TEMP4 0 0 // Reserved for nested states
 gamevar STATE_PARAM1 0 0
 gamevar STATE_PARAM2 0 0
-//gamevar STATE_PARAM3 0 0
-//gamevar STATE_RETURN 0 0
+gamevar STATE_PARAM3 0 0
+gamevar STATE_RETURN 0 0
 
 // Per-Actor Vars
 gamevar SPAWN_ORIGX 0 2
@@ -71,6 +73,7 @@ gamevar NORESPAWN 0 2
 gamevar DESPAWN_TYPE 0 2
 gamevar LASTHITBY 0 2
 gamevar ACTIVATING 0 2
+gamevar PENETRATED 0 2
 
 gamevar KILLTYPE 0 2
 
@@ -84,6 +87,12 @@ gamevar QUAKE3BOB 0 2
 gamevar WEAPONQUOTEALPHA 255 1
 gamevar WEAPONCHANGETIMER 0 1
 gamevar WEAPONQUOTE 0 1
+
+// Bitfields
+gamevar BF_HAS_PRIMARY 0 1
+gamevar BF_HAS_SECONDARY 0 1
+gamevar BF_USING_SECONDARY 0 1
+// ---------
 
 gamevar JUMPPAD_HIT 0 1
 gamevar JUMPPAD_XVEL 0 1
@@ -113,6 +122,9 @@ gamearray SECTOR_JUMPY MAXSECTORS
 gamearray SECTOR_JUMPZ MAXSECTORS
 
 // Defines
+define WEAP_PRIMARY 0
+define WEAP_SECONDARY 1
+
 define KILL_NONE 0
 define KILL_SHRINKER 1
 define KILL_FREEZER 2
@@ -133,6 +145,3 @@ define SF_ENEMYSTAYPUT_NOPUSH_DAMAGEEVENT 72392739
 define SECTORTYPE_LOWGRAVITY 1
 define SECTORTYPE_JUMPPAD 2
 define SECTORTYPE_SPACE 4
-
-// Moves
-move SMOOTH_HACK 0 0 // Remove if my interp patch makes it to mainline

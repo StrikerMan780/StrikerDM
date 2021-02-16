@@ -197,10 +197,298 @@ ends
 
 // Custom States
 
+// STATE_PARAM1 = Weapon Index
+// STATE_PARAM2 = Type (0 = Primary, 1 = Secondary)
+// STATE_PARAM3 = 0 = No, 1 = Yes 
+state set_have_weapon
+	setvar STATE_TEMP4 1
+	shiftvarvarl STATE_TEMP4 STATE_PARAM1
+	
+	ifvare STATE_PARAM2 1 // Secondary
+	{
+		ifvare STATE_PARAM3 1
+			orvarvar BF_HAS_SECONDARY STATE_TEMP4
+		else ifvarvarand BF_HAS_SECONDARY STATE_TEMP4
+			subvarvar BF_HAS_SECONDARY STATE_TEMP4
+	}
+	else
+	{
+		ifvare STATE_PARAM3 1
+			orvarvar BF_HAS_PRIMARY STATE_TEMP4
+		else ifvarvarand BF_HAS_PRIMARY STATE_TEMP4
+			subvarvar BF_HAS_PRIMARY STATE_TEMP4
+	}
+ends
+
+// STATE_PARAM1 = Weapon Index
+// STATE_PARAM2 = 0 = Primary, 1 = Subweapon
+state check_have_weapon
+	setvar STATE_RETURN 0
+	
+	setvar STATE_TEMP4 1
+	shiftvarvarl STATE_TEMP4 STATE_PARAM1
+	
+	ifvare STATE_PARAM2 1
+	{
+		ifvarvarand BF_HAS_SECONDARY STATE_TEMP4
+			setvar STATE_RETURN 1
+	}
+	else
+	{
+		ifvarvarand BF_HAS_PRIMARY STATE_TEMP4
+			setvar STATE_RETURN 1
+	}
+ends
+
+// STATE_PARAM1 = Weapon Index
+// STATE_PARAM2 = State (0 = Using Primary, 1 = Using secondary)
+state set_using_secondary
+	setvar STATE_TEMP4 1
+	shiftvarvarl STATE_TEMP4 STATE_PARAM1
+	
+	ifvare STATE_PARAM2 1
+		orvarvar BF_USING_SECONDARY STATE_TEMP4
+	else ifvarvarand BF_USING_SECONDARY STATE_TEMP4
+		subvarvar BF_USING_SECONDARY STATE_TEMP4
+		
+	// Set Attributes
+	ifvare STATE_PARAM2 1 // Secondary
+	{
+		switch STATE_PARAM1
+			case FREEZE_WEAPON: // Flamethrower
+				setvar WEAPON9_SHOOTS FIREBALL
+				setvar WEAPON9_TOTALTIME 4
+				setvar WEAPON9_FIRESOUND 0
+				setvar WEAPON9_INITIALSOUND FLAMETHROWER_START
+				setplayer[THISACTOR].ammo_amount FREEZE_WEAPON FLAMETHROWER_AMMO
+				break
+				
+			case CHAINGUN_WEAPON: // Plasma Rifle
+				setvar WEAPON3_FLAGS 0
+				setvar WEAPON3_SHOOTS PLASMABALL
+				setvar WEAPON3_FIREDELAY 8
+				setvar WEAPON3_TOTALTIME 16
+				setvar WEAPON3_HOLDDELAY 0
+				setvar WEAPON3_SPAWN 0
+				setvar WEAPON3_SPAWNTIME 0
+				setvar WEAPON3_FIRESOUND PLASMARIFLE_FIRE
+				setvar WEAPON3_INITIALSOUND PLASMARIFLE_CHARGE
+				setvar WEAPON3_SHOTSPERBURST 1
+				setplayer[THISACTOR].ammo_amount CHAINGUN_WEAPON PLASMARIFLE_AMMO
+				break
+				
+			case RPG_WEAPON: // Railgun
+				setvar WEAPON4_FLAGS 0
+				setvar WEAPON4_SHOOTS RAILGUNSHOT
+				setvar WEAPON4_FIREDELAY 2
+				setvar WEAPON4_TOTALTIME 25
+				setvar WEAPON4_FIRESOUND 0
+				setvar WEAPON4_INITIALSOUND 0
+				setplayer[THISACTOR].ammo_amount RPG_WEAPON RAILGUN_AMMO
+				break
+				
+			case SHOTGUN_WEAPON: // SSG
+				setvar WEAPON2_FLAGS 1024
+				setvar WEAPON2_SHOOTS SSGPELLET
+				setvar WEAPON2_TOTALTIME 55
+				setvar WEAPON2_SPAWNTIME 0
+				setvar WEAPON2_SPAWN 0
+				setvar WEAPON2_SHOTSPERBURST 14
+				setvar WEAPON2_FIRESOUND SSG_FIRE
+				setvar WEAPON2_SOUND2SOUND 0
+				setvar WEAPON2_SOUND2TIME 0
+				setvar WEAPON2_SELECTSOUND SSG_CLOSE
+				break
+		endswitch
+	}
+	else // Primary
+	{
+		switch STATE_PARAM1
+			case FREEZE_WEAPON:
+				setvar WEAPON9_SHOOTS FREEZEBLAST
+				setvar WEAPON9_TOTALTIME 5
+				setvar WEAPON9_FIRESOUND FREEZETHROWER_FIRE
+				setvar WEAPON9_INITIALSOUND FREEZETHROWER_FIRE
+				setplayer[THISACTOR].ammo_amount FREEZE_WEAPON FREEZETHROWER_AMMO
+				break
+
+			case CHAINGUN_WEAPON:
+				setvar WEAPON3_FLAGS 73812
+				setvar WEAPON3_SHOOTS CHAINGUN
+				setvar WEAPON3_FIREDELAY 3
+				setvar WEAPON3_TOTALTIME 12
+				setvar WEAPON3_HOLDDELAY 3
+				setvar WEAPON3_SPAWN SHELL
+				setvar WEAPON3_SPAWNTIME 1
+				setvar WEAPON3_FIRESOUND CHAINGUN_FIRE
+				setvar WEAPON3_INITIALSOUND 0
+				setvar WEAPON3_SHOTSPERBURST 0
+				setplayer[THISACTOR].ammo_amount CHAINGUN_WEAPON RIPPER_AMMO
+				break
+
+			case RPG_WEAPON
+				setvar WEAPON4_FLAGS 0
+				setvar WEAPON4_SHOOTS RPG
+				setvar WEAPON4_FIREDELAY 4
+				setvar WEAPON4_TOTALTIME 20
+				setvar WEAPON4_FIRESOUND 0
+				setvar WEAPON4_INITIALSOUND 0
+				setplayer[THISACTOR].ammo_amount RPG_WEAPON RPG_AMMO
+				break
+
+			case SHOTGUN_WEAPON
+				setvar WEAPON2_FLAGS 1024
+				setvar WEAPON2_SHOOTS SHOTGUN
+				setvar WEAPON2_TOTALTIME 30
+				setvar WEAPON2_SPAWNTIME 24
+				setvar WEAPON2_SPAWN SHOTGUNSHELL
+				setvar WEAPON2_SHOTSPERBURST 7
+				setvar WEAPON2_FIRESOUND SHOTGUN_FIRE
+				setvar WEAPON2_SOUND2SOUND SHOTGUN_COCK
+				setvar WEAPON2_SOUND2TIME 15
+				setvar WEAPON2_SELECTSOUND SHOTGUN_COCK
+				break
+		endswitch
+	}
+ends
+
+// STATE_PARAM1 = Weapon Index
+state check_using_secondary
+	setvar STATE_RETURN 0
+	
+	setvar STATE_TEMP4 1
+	shiftvarvarl STATE_TEMP4 STATE_PARAM1
+	
+	ifvarvarand BF_USING_SECONDARY STATE_TEMP4
+		setvar STATE_RETURN 1
+ends
+
+// STATE_PARAM1 = Weapon
+// STATE_PARAM2 = 0 is primary, 1 is secondary
+// STATE_RETURN = 1 if successful switch
+state switch_weapon
+	setvar STATE_RETURN 0
+	
+	state check_have_weapon
+	setvarvar STATE_TEMP1 STATE_RETURN
+	
+	state check_using_secondary
+	setvarvar STATE_TEMP2 STATE_RETURN
+	
+	setvar STATE_RETURN 0
+	
+	//redefinequote 500 Switch #1 - RETURN: %d STATE_TEMP1: %d STATE_TEMP2: %d
+	//qsprintf 500 500 STATE_RETURN STATE_TEMP1 STATE_TEMP2
+	//userquote 500
+	
+	ifvare STATE_PARAM2 1 // Secondary
+	{
+		ifvare STATE_TEMP1 1 // Have Weapon?
+		{
+			ifvare STATE_TEMP2 1 // Already using secondary?
+			{
+				//redefinequote 500 ^2Already using secondary, breaking.
+				//userquote 500
+				break
+			}
+			
+			// Check Ammo
+			switch STATE_PARAM1
+				case FREEZE_WEAPON: // Flamethrower
+					ifvarg FLAMETHROWER_AMMO 0
+						setvar STATE_RETURN 1
+					break
+				case CHAINGUN_WEAPON: // Plasma Rifle
+					ifvarg PLASMARIFLE_AMMO 0
+						setvar STATE_RETURN 1
+					break
+				case RPG_WEAPON: // Railgun
+					ifvarg RAILGUN_AMMO 0
+						setvar STATE_RETURN 1
+					break
+				case SHOTGUN_WEAPON: // SSG
+					getplayer[THISACTOR].ammo_amount SHOTGUN_WEAPON STATE_TEMP1
+					ifvarg STATE_TEMP1 1
+						setvar STATE_RETURN 1
+					break
+			endswitch
+			
+			ifvare STATE_RETURN 1
+			{
+				state set_using_secondary
+				break
+			}
+		}
+	}
+	else // Primary
+	{
+		ifvare STATE_TEMP1 1 // Have Weapon?
+		{
+			ifvare STATE_TEMP2 0 // Already using primary?
+				break
+			
+			// Check Ammo
+			switch STATE_PARAM1
+				case FREEZE_WEAPON: // Freezethrower
+					ifvarg FREEZETHROWER_AMMO 0
+						setvar STATE_RETURN 1
+					break
+				case CHAINGUN_WEAPON: // Ripper
+					ifvarg RIPPER_AMMO 0
+						setvar STATE_RETURN 1
+					break
+				case RPG_WEAPON: // RPG
+					ifvarg RPG_AMMO 0
+						setvar STATE_RETURN 1
+					break
+				case SHOTGUN_WEAPON: // Shotgun
+					getplayer[THISACTOR].ammo_amount SHOTGUN_WEAPON STATE_TEMP1
+					ifvarg STATE_TEMP1 0
+						setvar STATE_RETURN 1
+					break
+			endswitch		
+			
+			ifvare STATE_RETURN 1
+			{
+				state set_using_secondary
+				break
+			}
+		}
+	}
+	
+	setvar STATE_RETURN 0
+ends
+
+state check_weapon_ownership
+	setvarvar STATE_TEMP1 STATE_PARAM1
+	
+	setvar STATE_PARAM1 1 // Weapon Index
+	whilevarn STATE_PARAM1 11
+	{
+		setvar STATE_PARAM2 0
+		state check_have_weapon
+		ifvare STATE_RETURN 0
+		{
+			setvar STATE_PARAM2 1
+			state check_have_weapon
+			ifvare STATE_RETURN 1
+			{
+				state set_using_secondary
+			}
+		}
+		
+		addvar STATE_PARAM1 1
+	}
+	
+	setvarvar STATE_PARAM1 STATE_TEMP1
+ends
+
 // STATE_PARAM1 = Weapon
 state print_weapon_name
 	setvar WEAPONCHANGETIMER 30
 	setvar WEAPONQUOTEALPHA 0
+	state check_using_secondary
+	
 	switch STATE_PARAM1
 		case KNEE_WEAPON:
 		case PISTOL_WEAPON:
@@ -215,7 +503,7 @@ state print_weapon_name
 			break
 			
 		case SHOTGUN_WEAPON:
-			ifvare USING_SSG 1
+			ifvare STATE_RETURN 1
 			{
 				setvar WEAPONQUOTE 705
 			}
@@ -225,7 +513,7 @@ state print_weapon_name
 			}
 			break
 		case CHAINGUN_WEAPON:
-			ifvare USING_PLASMARIFLE 1
+			ifvare STATE_RETURN 1
 			{
 				setvar WEAPONQUOTE 703
 			}
@@ -235,7 +523,7 @@ state print_weapon_name
 			}
 			break
 		case RPG_WEAPON:
-			ifvare USING_RAILGUN 1
+			ifvare STATE_RETURN 1
 			{
 				setvar WEAPONQUOTE 704
 			}
@@ -245,7 +533,7 @@ state print_weapon_name
 			}
 			break
 		case FREEZE_WEAPON:
-			ifvare USING_FLAMETHROWER 1
+			ifvare STATE_RETURN 1
 			{
 				setvar WEAPONQUOTE 702
 			}
@@ -257,179 +545,98 @@ state print_weapon_name
 	endswitch
 ends
 
-state setflamethrower
-	setvar WEAPON9_SHOOTS FIREBALL
-	setvar WEAPON9_TOTALTIME 4
-	setvar WEAPON9_FIRESOUND 0
-	setvar WEAPON9_INITIALSOUND FLAMETHROWER_START
-	setplayervar[THISACTOR].USING_FLAMETHROWER 1
-	setplayer[THISACTOR].ammo_amount FREEZE_WEAPON FLAMETHROWER_AMMO
-ends
-
-state setfreezethrower
-	setvar WEAPON9_SHOOTS FREEZEBLAST
-	setvar WEAPON9_TOTALTIME 5
-	setvar WEAPON9_FIRESOUND FREEZETHROWER_FIRE
-	setvar WEAPON9_INITIALSOUND FREEZETHROWER_FIRE
-	setplayervar[THISACTOR].USING_FLAMETHROWER 0
-	setplayer[THISACTOR].ammo_amount FREEZE_WEAPON FREEZETHROWER_AMMO
-ends
-
-state setripper
-	setvar WEAPON3_FLAGS 73812
-	setvar WEAPON3_SHOOTS CHAINGUN
-	setvar WEAPON3_FIREDELAY 3
-	setvar WEAPON3_TOTALTIME 12
-	setvar WEAPON3_HOLDDELAY 3
-	setvar WEAPON3_SPAWN SHELL
-	setvar WEAPON3_SPAWNTIME 1
-	setvar WEAPON3_FIRESOUND CHAINGUN_FIRE
-	setvar WEAPON3_INITIALSOUND 0
-	setvar WEAPON3_SHOTSPERBURST 0
-	setplayervar[THISACTOR].USING_PLASMARIFLE 0
-	setplayer[THISACTOR].ammo_amount CHAINGUN_WEAPON RIPPER_AMMO
-ends
-
-state setplasmarifle
-	setvar WEAPON3_FLAGS 0
-	setvar WEAPON3_SHOOTS PLASMABALL
-	setvar WEAPON3_FIREDELAY 8
-	setvar WEAPON3_TOTALTIME 16
-	setvar WEAPON3_HOLDDELAY 0
-	setvar WEAPON3_SPAWN 0
-	setvar WEAPON3_SPAWNTIME 0
-	setvar WEAPON3_FIRESOUND PLASMARIFLE_FIRE
-	setvar WEAPON3_INITIALSOUND PLASMARIFLE_CHARGE
-	setvar WEAPON3_SHOTSPERBURST 1
-	setplayervar[THISACTOR].USING_PLASMARIFLE 1
-	setplayer[THISACTOR].ammo_amount CHAINGUN_WEAPON PLASMARIFLE_AMMO
-ends
-
-state setrpg
-	setvar WEAPON4_FLAGS 0
-	setvar WEAPON4_SHOOTS RPG
-	setvar WEAPON4_FIREDELAY 4
-	setvar WEAPON4_TOTALTIME 20
-	setvar WEAPON4_FIRESOUND 0
-	setvar WEAPON4_INITIALSOUND 0
-	setplayervar[THISACTOR].USING_RAILGUN 0
-	setplayer[THISACTOR].ammo_amount RPG_WEAPON RPG_AMMO
-ends
-
-state setrailgun
-	setvar WEAPON4_FLAGS 0
-	setvar WEAPON4_SHOOTS RAILGUNSHOT
-	setvar WEAPON4_FIREDELAY 2
-	setvar WEAPON4_TOTALTIME 25
-	setvar WEAPON4_FIRESOUND 0
-	setvar WEAPON4_INITIALSOUND 0
-	setplayervar[THISACTOR].USING_RAILGUN 1
-	setplayer[THISACTOR].ammo_amount RPG_WEAPON RAILGUN_AMMO
-ends
-
-state setshotgun
-	setvar WEAPON2_FLAGS 1024
-	setvar WEAPON2_TOTALTIME 30
-	setvar WEAPON2_SPAWNTIME 24
-	setvar WEAPON2_SPAWN SHOTGUNSHELL
-	setvar WEAPON2_SHOTSPERBURST 7
-	setvar WEAPON2_FIRESOUND SHOTGUN_FIRE
-	setvar WEAPON2_SOUND2SOUND SHOTGUN_COCK
-	setvar WEAPON2_SOUND2TIME 15
-	setvar WEAPON2_SELECTSOUND SHOTGUN_COCK
-	setplayervar[THISACTOR].USING_SSG 0
-ends
-
-state setssg
-	setvar WEAPON2_FLAGS 1024
-	setvar WEAPON2_TOTALTIME 55
-	setvar WEAPON2_SPAWNTIME 0
-	setvar WEAPON2_SPAWN 0
-	setvar WEAPON2_SHOTSPERBURST 14
-	setvar WEAPON2_FIRESOUND SSG_FIRE
-	setvar WEAPON2_SOUND2SOUND 0
-	setvar WEAPON2_SOUND2TIME 0
-	setvar WEAPON2_SELECTSOUND SSG_CLOSE
-	setplayervar[THISACTOR].USING_SSG 1
-ends
-
+// STATE_PARAM1 = Weapon Index
+// STATE_PARAM2 = Switch type (0 = Key, 1 = Next, 2 = Previous)
 state check_alt_weapons
 	getplayer[THISACTOR].kickback_pic TEMP
 	ifvarn TEMP 0
 		break
 	
-	setvar TEMP2 0 // Check for if we actually switched weapons
+	state check_using_secondary
+	setvarvar TEMP STATE_PARAM1 // Keep PARAM1, since it'll get overwritten
+	setvarvar TEMP2 STATE_PARAM2 // Store PARAM2, since it'll get overwritten
+	setvarvar TEMP3 STATE_RETURN // Store whether we're using the secondary weapon
+	setvar STATE_RETURN 0 // Clear the return
 	
-	switch WEAPON
-		case SHOTGUN_WEAPON:
-			ifvare HAS_SSG 1
-			{
-				ifvare USING_SSG 0
-				{
-					state setssg
-				}
-				else ifvare HAS_SHOTGUN 1
-				{
-					state setshotgun
-				}
-				
-				setvar TEMP2 1
-			}
-			break
-		case RPG_WEAPON:
-			ifvare HAS_RAILGUN 1
-			{
-				ifvare USING_RAILGUN 0
-				{
-					state setrailgun
-				}
-				else ifvare HAS_RPG 1
-				{
-					state setrpg
-				}
-				
-				setvar TEMP2 1
-			}
-			break
-		case CHAINGUN_WEAPON:
-			ifvare HAS_PLASMARIFLE 1
-			{
-				ifvare USING_PLASMARIFLE 0
-				{
-					state setplasmarifle
-				}
-				else ifvare HAS_RIPPER 1
-				{
-					state setripper
-				}
-				
-				setvar TEMP2 1
-			}
-			break
-		case FREEZE_WEAPON:
-			ifvare HAS_FLAMETHROWER 1
-			{
-				ifvare USING_FLAMETHROWER 0
-				{
-					state setflamethrower
-				}
-				else ifvare HAS_FREEZETHROWER 1
-				{
-					state setfreezethrower
-				}
-				
-				setvar TEMP2 1
-			}
-			break
-	endswitch
-	
-	ifvare TEMP2 1
+	ifvare TEMP2 0 // Key
 	{
-		setplayer[THISACTOR].weapon_pos -9
-		setvarvar STATE_PARAM1 WEAPON
-		state print_weapon_name
+		ifvarvarn STATE_PARAM1 WEAPON
+			break
+			
+
+		ifvare TEMP3 0
+		{
+			setvar STATE_PARAM2 WEAP_SECONDARY
+			state switch_weapon
+		}
+		else
+		{
+			setvar STATE_PARAM2 WEAP_PRIMARY
+			state switch_weapon
+		}
+	}
+	else ifvare TEMP2 1 // Next Weapon
+	{
+		//redefinequote 500 Check Alt Next #1 - %d
+		//qsprintf 500 500 STATE_RETURN
+		//userquote 500
 		
-		switch WEAPON
+		setvar STATE_PARAM1 1
+		whilevarn STATE_PARAM1 11
+		{
+			ifvarvarn STATE_PARAM1 WEAPON
+			{
+				setvar STATE_PARAM2 WEAP_PRIMARY
+				state switch_weapon
+			}
+			addvar STATE_PARAM1 1
+		}
+		
+		setvarvar STATE_PARAM1 TEMP
+		setvar STATE_PARAM2 WEAP_SECONDARY
+		state switch_weapon
+		
+		//redefinequote 500 Check Alt Next #2 - %d
+		//qsprintf 500 500 STATE_RETURN
+		//userquote 500
+	}
+	else ifvare TEMP2 2 // Previous Weapon
+	{
+		//redefinequote 500 Check Alt Previous #1 - %d
+		//qsprintf 500 500 STATE_RETURN
+		//userquote 500
+		
+		setvar STATE_PARAM1 1
+		whilevarn STATE_PARAM1 11
+		{
+			ifvarvarn STATE_PARAM1 WEAPON
+			{
+				setvar STATE_PARAM2 WEAP_SECONDARY
+				state switch_weapon
+			}
+			addvar STATE_PARAM1 1
+		}
+		
+		setvarvar STATE_PARAM1 TEMP
+		setvar STATE_PARAM2 WEAP_PRIMARY
+		state switch_weapon
+		
+		//redefinequote 500 Check Alt Previous #2 - %d
+		//qsprintf 500 500 STATE_RETURN
+		//userquote 500
+	}
+	
+	ifvarn STATE_RETURN 0
+	{
+		ifvarg TEMP2 0
+		{
+			setvarvar RETURN STATE_PARAM1
+		}
+		
+		setplayer[THISACTOR].weapon_pos -9
+		state print_weapon_name // Passed STATE_PARAM1
+		
+		switch STATE_PARAM1
 			case 0: soundvar WEAPON0_SELECTSOUND break
 			case 1: soundvar WEAPON1_SELECTSOUND break
 			case 2: soundvar WEAPON2_SELECTSOUND break
@@ -465,221 +672,184 @@ state handle_recoil
 ends
 
 state player_updateweapons
-ifvarg WEAPONCHANGETIMER 0
-{
-	subvar WEAPONCHANGETIMER 1
-}
-else
-{
-	ifvarl WEAPONQUOTEALPHA 255
+	ifvarg WEAPONCHANGETIMER 0
 	{
-		addvar WEAPONQUOTEALPHA 32
+		subvar WEAPONCHANGETIMER 1
 	}
-}
+	else
+	{
+		ifvarl WEAPONQUOTEALPHA 255
+		{
+			addvar WEAPONQUOTEALPHA 32
+		}
+	}
 
-ifp palive
-{
-	getplayer[THISACTOR].curr_weapon TEMP
-	ifvare TEMP FREEZE_WEAPON
+	ifp palive
 	{
-		ifvare USING_FLAMETHROWER 1
+		getplayer[THISACTOR].curr_weapon STATE_PARAM1
+		
+		state check_using_secondary
+		setvarvar TEMP STATE_RETURN
+		setvar STATE_RETURN 0
+		
+		ifvare STATE_PARAM1 FREEZE_WEAPON
 		{
-			setplayer[THISACTOR].ammo_amount FREEZE_WEAPON FLAMETHROWER_AMMO
-			
-			// Flamethrower empty ammo check
-			ifvare HAS_FREEZETHROWER 1
-			ifvare FLAMETHROWER_AMMO 0
-			ifvarg FREEZETHROWER_AMMO 0
+			ifvare TEMP 1
 			{
-				setplayer[THISACTOR].weapon_pos -9
-				state setfreezethrower
+				setplayer[THISACTOR].ammo_amount FREEZE_WEAPON FLAMETHROWER_AMMO
+				// Flamethrower empty ammo check
+				ifvare FLAMETHROWER_AMMO 0
+				{
+					setvar STATE_PARAM2 WEAP_PRIMARY
+					state switch_weapon
+				}
+			}
+			else
+			{
+				setplayer[THISACTOR].ammo_amount FREEZE_WEAPON FREEZETHROWER_AMMO
+				// Freezethrower empty ammo check
+				ifvare FREEZETHROWER_AMMO 0
+				{
+					setvar STATE_PARAM2 WEAP_SECONDARY
+					state switch_weapon
+				}
 			}
 		}
-		else
+		else ifvare STATE_PARAM1 CHAINGUN_WEAPON
 		{
-			setplayer[THISACTOR].ammo_amount FREEZE_WEAPON FREEZETHROWER_AMMO
-			
-			ifvare HAS_FREEZETHROWER 0
-			ifvare HAS_FLAMETHROWER 1
+			ifvare TEMP 1
 			{
-				state setflamethrower
+				setplayer[THISACTOR].ammo_amount CHAINGUN_WEAPON PLASMARIFLE_AMMO
+				// Plasma rifle empty ammo check
+				ifvare PLASMARIFLE_AMMO 0
+				{
+					setvar STATE_PARAM2 WEAP_PRIMARY
+					state switch_weapon
+				}
 			}
-			
-			// Freezethrower empty ammo check
-			ifvare HAS_FLAMETHROWER 1
-			ifvare FREEZETHROWER_AMMO 0
-			ifvarg FLAMETHROWER_AMMO 0
+			else
 			{
-				setplayer[THISACTOR].weapon_pos -9
-				state setflamethrower
+				setplayer[THISACTOR].ammo_amount CHAINGUN_WEAPON RIPPER_AMMO
+				// Ripper empty ammo check
+				ifvare RIPPER_AMMO 0
+				{
+					setvar STATE_PARAM2 WEAP_SECONDARY
+					state switch_weapon
+				}
 			}
 		}
-	}
-	else ifvare TEMP CHAINGUN_WEAPON
-	{
-		ifvare USING_PLASMARIFLE 1
+		else ifvare STATE_PARAM1 RPG_WEAPON
 		{
-			setplayer[THISACTOR].ammo_amount CHAINGUN_WEAPON PLASMARIFLE_AMMO
-			
-			// Plasma rifle empty ammo check
-			ifvare HAS_RIPPER 1
-			ifvare PLASMARIFLE_AMMO 0
-			ifvarg RIPPER_AMMO 0
+			ifvare TEMP 1
 			{
-				setplayer[THISACTOR].weapon_pos -9
-				state setripper
+				setplayer[THISACTOR].ammo_amount RPG_WEAPON RAILGUN_AMMO
+				// Railgun empty ammo check
+				ifvare RAILGUN_AMMO 0
+				{
+					setvar STATE_PARAM2 WEAP_PRIMARY
+					state switch_weapon
+				}
+			}
+			else
+			{
+				setplayer[THISACTOR].ammo_amount RPG_WEAPON RPG_AMMO
+				// RPG empty ammo check
+				ifvare RPG_AMMO 0
+				{
+					setvar STATE_PARAM2 WEAP_SECONDARY
+					state switch_weapon
+				}
 			}
 		}
-		else
+		else ifvare STATE_PARAM1 SHOTGUN_WEAPON
 		{
-			setplayer[THISACTOR].ammo_amount CHAINGUN_WEAPON RIPPER_AMMO
-			
-			ifvare HAS_RIPPER 0
-			ifvare HAS_PLASMARIFLE 1
+			ifvare TEMP 1
 			{
-				state setplasmarifle
+				getplayer[THISACTOR].kickback_pic TEMP2
+				ifvare TEMP2 19
+					sound SSG_OPEN
+				else ifvare TEMP2 35
+					sound SSG_LOAD
+				else ifvare TEMP2 46
+					sound SSG_CLOSE
+				
+				getplayer[THISACTOR].ammo_amount SHOTGUN_WEAPON TEMP3
+				// Switch if less than 2 shells.
+				ifvarl TEMP3 2
+				{
+					setvar STATE_PARAM2 WEAP_PRIMARY
+					state switch_weapon
+				}
 			}
-			
-			// Ripper empty ammo check
-			ifvare HAS_PLASMARIFLE 1
-			ifvare RIPPER_AMMO 0
-			ifvarg PLASMARIFLE_AMMO 0
+			else
 			{
-				setplayer[THISACTOR].weapon_pos -9
-				state setplasmarifle
+				getplayer[THISACTOR].kickback_pic TEMP2
+				ifvare TEMP2 17
+				{
+					randvar RANDOM_SOUND 3
+					switch RANDOM_SOUND
+						case 0: sound SHELL_EJECT1 break
+						case 1: sound SHELL_EJECT2 break
+						case 2: sound SHELL_EJECT3 break
+						case 3: sound SHELL_EJECT4 break
+					endswitch
+				}
 			}
-		}
-	}
-	else ifvare TEMP RPG_WEAPON
-	{
-		ifvare USING_RAILGUN 1
-		{
-			setplayer[THISACTOR].ammo_amount RPG_WEAPON RAILGUN_AMMO
-			
-			// Railgun empty ammo check
-			ifvare HAS_RPG 1
-			ifvare RAILGUN_AMMO 0
-			ifvarg RPG_AMMO 0
-			{
-				setplayer[THISACTOR].weapon_pos -9
-				state setrpg
-			}
-		}
-		else
-		{
-			setplayer[THISACTOR].ammo_amount RPG_WEAPON RPG_AMMO
-			
-			ifvare HAS_RPG 0
-			ifvare HAS_RAILGUN 1
-			{
-				state setrailgun
-			}
-			
-			// RPG empty ammo check
-			ifvare HAS_RAILGUN 1
-			ifvare RPG_AMMO 0
-			ifvarg RAILGUN_AMMO 0
-			{
-				setplayer[THISACTOR].weapon_pos -9
-				state setrailgun
-			}
-		}
-	}
-	else ifvare TEMP SHOTGUN_WEAPON
-	{
-		ifvare USING_SSG 1
-		{
-			getplayer[THISACTOR].kickback_pic TEMP2
-			ifvare TEMP2 19
-			{
-				sound SSG_OPEN
-			}
-			else ifvare TEMP2 35
-			{
-				sound SSG_LOAD
-			}
-			else ifvare TEMP2 46
-			{
-				sound SSG_CLOSE
-			}
-			
-			getplayer[THISACTOR].ammo_amount SHOTGUN_WEAPON TEMP3
-			// Switch if less than 2 shells.
-			ifvare HAS_SHOTGUN 1
-			ifvarl TEMP3 2
-			{
-				setplayer[THISACTOR].weapon_pos -9
-				state setshotgun
-			}
-		}
-		else
-		{
-			ifvare HAS_SHOTGUN 0
-			ifvare HAS_SSG 1
-			{
-				state setssg
-			}
-			
-			getplayer[THISACTOR].kickback_pic TEMP2
-			ifvare TEMP2 17
-			{
-				randvar RANDOM_SOUND 3
-				switch RANDOM_SOUND
-					case 0: sound SHELL_EJECT1 break
-					case 1: sound SHELL_EJECT2 break
-					case 2: sound SHELL_EJECT3 break
-					case 3: sound SHELL_EJECT4 break
-				endswitch
-				break
-			}
-		}
-	}
-	
-	ifvare COOP GM_ROIDMATCH
-	{
-		setplayer[THISACTOR].jetpack_amount 1600
-		setplayer[THISACTOR].steroids_amount 399
-		setplayer[THISACTOR].falling_counter 0
-		setplayer[THISACTOR].gotweapon DEVISTATOR_WEAPON 1
-		setplayer[THISACTOR].ammo_amount DEVISTATOR_WEAPON MAXDEVISTATORAMMO
-		setplayer[THISACTOR].curr_weapon DEVISTATOR_WEAPON
-	}
-	else ifvare COOP GM_INSTAGIB
-	{
-		ifvare USING_RAILGUN 0
-		{
-			state setrailgun
-			setprojectile[RAILGUNSHOT].extra 400
 		}
 		
-		setplayer[THISACTOR].gotweapon RPG_WEAPON 1
-		setplayer[THISACTOR].curr_weapon RPG_WEAPON
-		setplayervar[THISACTOR].RAILGUN_AMMO MAXRAILGUNAMMO
+		ifvare STATE_RETURN 1 // If any switch weapon state returns true
+		{
+			setplayer[THISACTOR].kickback_pic 0
+			setplayer[THISACTOR].weapon_pos -9
+		}
+		
+		ifvare COOP GM_ROIDMATCH
+		{
+			setplayer[THISACTOR].jetpack_amount 1600
+			setplayer[THISACTOR].steroids_amount 399
+			setplayer[THISACTOR].falling_counter 0
+			setplayer[THISACTOR].gotweapon DEVISTATOR_WEAPON 1
+			setplayer[THISACTOR].ammo_amount DEVISTATOR_WEAPON MAXDEVISTATORAMMO
+			setplayer[THISACTOR].curr_weapon DEVISTATOR_WEAPON
+		}
+		else ifvare COOP GM_INSTAGIB
+		{
+			setvar STATE_PARAM1 RPG_WEAPON
+			setvar STATE_PARAM2 WEAP_SECONDARY
+			state check_using_secondary
+			ifvare STATE_RETURN 0
+			{
+				state set_using_secondary
+				setprojectile[RAILGUNSHOT].extra 400
+			}
+			
+			setplayer[THISACTOR].gotweapon RPG_WEAPON 1
+			setplayer[THISACTOR].curr_weapon RPG_WEAPON
+			setplayervar[THISACTOR].RAILGUN_AMMO MAXRAILGUNAMMO
+		}
 	}
-}
 ends
 
 state player_tossweapon
-	getplayer[THISACTOR].curr_weapon TEMP
-	switch TEMP
+	getplayer[THISACTOR].curr_weapon STATE_PARAM1
+	state check_using_secondary
+	
+	switch STATE_PARAM1
 		case PISTOL_WEAPON: spawn FIRSTGUNSPRITE break
 		case SHOTGUN_WEAPON:
-			getplayervar[THISACTOR].USING_SSG TEMP
-			ifvare TEMP 1
+			ifvare STATE_RETURN 1
 				spawn SSGSPRITE
 			else
 				spawn SHOTGUNSPRITE
 			break
 		case CHAINGUN_WEAPON:
-			getplayervar[THISACTOR].USING_PLASMARIFLE TEMP
-			ifvare TEMP 1
+			ifvare STATE_RETURN 1
 				spawn PLASMASPRITE
 			else
 				spawn CHAINGUNSPRITE
 			break
 		case RPG_WEAPON: 
-			getplayervar[THISACTOR].USING_RAILGUN TEMP
-			ifvare TEMP 1
+			ifvare STATE_RETURN 1
 				spawn RAILGUNSPRITE
 			else
 				spawn RPGSPRITE
@@ -689,8 +859,7 @@ state player_tossweapon
 		case DEVISTATOR_WEAPON: spawn DEVISTATORSPRITE break
 		case TRIPBOMB_WEAPON: spawn TRIPBOMBSPRITE break
 		case FREEZE_WEAPON:
-			getplayervar[THISACTOR].USING_FLAMETHROWER TEMP
-			ifvare TEMP 1
+			ifvare STATE_RETURN 1
 				spawn FLAMETHROWERSPRITE
 			else
 				spawn FREEZESPRITE
@@ -712,6 +881,8 @@ ends
 
 // PARAM1 = Weapon
 state addweapon_nobreak
+	state check_weapon_ownership
+	
 	getplayer[THISACTOR].gotweapon STATE_PARAM1 STATE_TEMP1
 	ifvare STATE_TEMP1 1
 	{

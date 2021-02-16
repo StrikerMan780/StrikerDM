@@ -773,7 +773,7 @@ definesound INTO_MENU           sounds/gore/bulithit.ogg    1024 1024  0   0   0
 
 // Six misc ambience city sounds
 
-definesound GENERIC_AMBIENCE1      sounds/grind.ogg       0   0   0   1   0
+definesound GENERIC_AMBIENCE1      sounds/grind.wav       0   0   0   1   0
 definesound GENERIC_AMBIENCE2      sounds/enghum.ogg      0   0   0   2   0
 definesound GENERIC_AMBIENCE3      lava06.voc      0   0   0   2   0
 definesound GENERIC_AMBIENCE4      sounds/bubblamb.ogg -256   0   0   2   0
@@ -801,7 +801,7 @@ definesound SUPERMARKET            sounds/duke/aisle402.ogg    0   0   0   4   0
 
 
 definesound FIRE_CRACKLE           fire09.voc       0   0   254 2   0
-definesound DUMPSTER_MOVE          sounds/grind.ogg       0   0   0   0   0
+definesound DUMPSTER_MOVE          sounds/grind.wav       0   0   0   0   0
 
 definesound JIBBED_ACTOR1       sounds/duke/AMESS06.ogg       0   0   255 4  0
 definesound JIBBED_ACTOR2       sounds/duke/BITCHN04.ogg      0   0   255 4  0

@@ -71,8 +71,13 @@ actor RAILGUNSPRITE
 	}
     else ifp palive ifpdistl RETRIEVEDISTANCE ifcount 6 ifcanseetarget
     {
-		getplayervar[THISACTOR].HAS_RAILGUN TEMP2
-		ifvare TEMP2 1
+		// Parameters
+		setvar STATE_PARAM1 RPG_WEAPON
+		setvar STATE_PARAM2 WEAP_SECONDARY
+		setvar STATE_PARAM3 1
+		
+		state check_have_weapon
+		ifvare STATE_RETURN 1
 			state checkweaponstay
 		
 		getplayervar[THISACTOR].RAILGUN_AMMO TEMP
@@ -88,14 +93,13 @@ actor RAILGUNSPRITE
 		}
 		else
 		{
-			ifvare TEMP2 1 // Has weapon?
+			ifvare STATE_RETURN 1 // Has weapon?
 			{
 				break // Has weapon, and full ammo. Stop here.
 			}
 		}
 		
-		setplayervar[THISACTOR].HAS_RAILGUN 1 // Give it
-		setvar STATE_PARAM1 RPG_WEAPON
+		state set_have_weapon
 		state addweapon_nobreak
         quote 131
         ifspawnedby RAILGUNSPRITE

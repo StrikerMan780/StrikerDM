@@ -179,6 +179,22 @@ onevent EVENT_DAMAGESPRITE
 	}
 endevent
 
+state check_penetration
+	getactor[RETURN].extra TEMP
+	getactor[RETURN].htextra TEMP2
+	ifvarvarl TEMP TEMP2 // Has total incoming damage exceeded target's health? (Ie. Guaranteed to die)
+	{
+		// Make non-shootable, allowing the rest of the shotgun blast to pass through like DOOM.
+		getactor[RETURN].cstat TEMP
+		ifvarand TEMP 256
+		{
+			subvar TEMP 256
+			setactor[RETURN].cstat TEMP
+			setactorvar[RETURN].PENETRATED 1
+		}
+	}
+ends
+
 onevent EVENT_POSTDAMAGESPRITE
 	ifactor SHOTSPARK1
 	{
@@ -196,6 +212,33 @@ onevent EVENT_POSTDAMAGESPRITE
 			else
 			{
 				setactor[RETURN].htpicnum RAILGUNSHOT
+			}
+		}
+		else
+		{
+			ifvare TEMP SSGPELLET
+			{
+				getactor[RETURN].picnum TEMP
+				gettiledata[TEMP].gameflags TEMP2
+				ifvare TEMP APLAYER
+				{
+					state check_penetration
+				}
+				else ifvarand TEMP2 32 // SFLAG_BADGUY
+				{
+					state check_penetration
+				}
+				else ifvarand TEMP2 262144 // SFLAG_HARDCODED_BADGUY
+				{
+					state check_penetration
+				}
+				
+				getactor[THISACTOR].htowner TEMP
+				dist TEMP2 TEMP RETURN
+				ifvarl TEMP2 1024
+				{
+					setactor[RETURN].htpicnum RADIUSEXPLOSION
+				}
 			}
 		}
 	}
@@ -868,14 +911,34 @@ state plasma_spread
 ends
 
 onevent EVENT_PREGAME
+	ifvare PENETRATED 1
+	{
+		getactor[THISACTOR].cstat TEMP
+		orvar TEMP 256
+		setactor[THISACTOR].cstat TEMP
+		setvar PENETRATED 0
+	}
+	
 	ifactor WATERDRIP
 	{
-		iffloordistl 12
+		getactor[THISACTOR].htg_t 1 EXTRA_MEMORY
+	}
+endevent
+
+onevent EVENT_GAME
+	state burning_logic
+	
+	ifactor WATERDRIP
+	{
+		getactor[THISACTOR].htg_t 1 TEMP
+		ifvarvarn TEMP EXTRA_MEMORY
+		ifvare EXTRA_MEMORY 0
 		{
 			getactor[THISACTOR].pal PAL_MEMORY
 			getactor[THISACTOR].cstat CSTAT_MEMORY
 			getactor[THISACTOR].shade TEMP3
 			getactor[THISACTOR].htfloorz SPAWN_ORIGZ
+			subvar CSTAT_MEMORY 32768
 			espawn WATERDRIPSPLASH_FIXED
 			setactor[RETURN].pal PAL_MEMORY
 			setactor[RETURN].cstat CSTAT_MEMORY
@@ -883,11 +946,8 @@ onevent EVENT_PREGAME
 			setactor[RETURN].z SPAWN_ORIGZ
 			setvar RETURN 0
 		}
+		break
 	}
-endevent
-
-onevent EVENT_GAME
-	state burning_logic
 	
 	ifactor DEVASTATORMISSILE
 	{
@@ -939,6 +999,7 @@ onevent EVENT_GAME
 		case WATERBUBBLEMAKER:
 		case WATERBUBBLE:
 			getactor[THISACTOR].sectnum TEMP2
+			ifvarg TEMP2 -1
 			ifvarand SECTOR_TYPES[TEMP2] SECTORTYPE_SPACE
 			{
 				killit
@@ -1154,6 +1215,13 @@ onevent EVENT_SPAWN
 			setvar XREPEAT_MEMORY 0 // Start radius
 			setvar YREPEAT_MEMORY 48 // End radius
 		}
+		else ifspawnedby LDEXPLOSION
+		{
+			setvar HITAG_MEMORY 32 // End time
+			setvar XREPEAT_MEMORY 0 // Start radius
+			setvar YREPEAT_MEMORY 48 // End radius
+			setvar SPAWN_ORIGANG 72 // Rotational Speed
+		}
 
 		break
 	}
@@ -1294,6 +1362,7 @@ onevent EVENT_SPAWN
 		case WATERBUBBLEMAKER:
 		case WATERBUBBLE:
 			getactor[THISACTOR].sectnum TEMP2
+			ifvarg TEMP2 -1
 			ifvarand SECTOR_TYPES[TEMP2] SECTORTYPE_SPACE
 			{
 				killit
@@ -1629,47 +1698,75 @@ onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
 endevent
 
 onevent EVENT_CHEATGETBOOT
-	setvar HAS_FREEZETHROWER 1
-	setvar HAS_FLAMETHROWER 1
 	setvar FLAMETHROWER_AMMO MAXFREEZEAMMO
 	setvar FREEZETHROWER_AMMO MAXFLAMETHROWERAMMO
 	
-	setvar HAS_RIPPER 1
-	setvar HAS_PLASMARIFLE 1
 	setvar RIPPER_AMMO MAXCHAINGUNAMMO
 	setvar PLASMARIFLE_AMMO MAXPLASMARIFLEAMMO
 	
-	setvar HAS_RPG 1
-	setvar HAS_RAILGUN 1
 	setvar RPG_AMMO MAXRPGAMMO
 	setvar RAILGUN_AMMO MAXRAILGUNAMMO
 	
-	setvar HAS_SHOTGUN 1
-	setvar HAS_SSG 1
+	// Give Primaries
+	setvar STATE_PARAM2 WEAP_PRIMARY
+	setvar STATE_PARAM3 1
+	
+	setvar STATE_PARAM1 SHOTGUN_WEAPON
+	state set_have_weapon
+	
+	setvar STATE_PARAM1 CHAINGUN_WEAPON
+	state set_have_weapon
+	
+	setvar STATE_PARAM1 RPG_WEAPON
+	state set_have_weapon
+	
+	setvar STATE_PARAM1 FREEZE_WEAPON
+	state set_have_weapon
+	// --------------------------
+	
+	// Give Secondaries
+	setvar STATE_PARAM2 WEAP_SECONDARY
+	setvar STATE_PARAM3 1
+	
+	setvar STATE_PARAM1 SHOTGUN_WEAPON
+	state set_have_weapon
+	
+	setvar STATE_PARAM1 CHAINGUN_WEAPON
+	state set_have_weapon
+	
+	setvar STATE_PARAM1 RPG_WEAPON
+	state set_have_weapon
+	
+	setvar STATE_PARAM1 FREEZE_WEAPON
+	state set_have_weapon
+	// --------------------------
 endevent
 
 state reset_weapons
-	setvar HAS_FREEZETHROWER 0
-	setvar HAS_FLAMETHROWER 0
+	// Clear Subweapons
+	setvar STATE_PARAM1 1
+	setvar STATE_PARAM3 0 // Weapon not owned
+	whilevarn STATE_PARAM1 11 // Cycle through all
+	{
+		setvar STATE_PARAM2 WEAP_PRIMARY
+		state set_have_weapon
+		
+		setvar STATE_PARAM2 WEAP_SECONDARY
+		state set_have_weapon
+		
+		setvar STATE_PARAM2 0
+		state set_using_secondary
+		
+		addvar STATE_PARAM1 1
+	}
+	
+	// Clear Ammo
 	setvar FLAMETHROWER_AMMO 0
 	setvar FREEZETHROWER_AMMO 0
-	state setfreezethrower
-	
-	setvar HAS_RIPPER 0
-	setvar HAS_PLASMARIFLE 0
 	setvar RIPPER_AMMO 0
 	setvar PLASMARIFLE_AMMO 0
-	state setripper
-
-	setvar HAS_RPG 0
-	setvar HAS_RAILGUN 0
 	setvar RPG_AMMO 0
 	setvar RAILGUN_AMMO 0	
-	state setrpg
-	
-	setvar HAS_SHOTGUN 0
-	setvar HAS_SSG 0
-	state setshotgun
 	
 	ifvarg START_WEAPON -1
 	{
@@ -1683,25 +1780,17 @@ state reset_weapons
 			divvar TEMP 2
 			setplayer[THISACTOR].ammo_amount START_WEAPON TEMP
 			
-			ifvare START_WEAPON SHOTGUN_WEAPON
-			{
-				setvar HAS_SHOTGUN 1
-			}
-			else ifvare START_WEAPON RPG_WEAPON
-			{
-				setvar HAS_RPG 1
+			ifvare START_WEAPON RPG_WEAPON
 				setvarvar RPG_AMMO TEMP
-			}
 			else ifvare START_WEAPON CHAINGUN_WEAPON
-			{
-				setvar HAS_RIPPER 1
 				setvarvar RIPPER_AMMO TEMP
-			}
 			else ifvare START_WEAPON FREEZE_WEAPON
-			{
-				setvar HAS_FREEZETHROWER 1
 				setvarvar FREEZETHROWER_AMMO TEMP
-			}
+			
+			setvarvar STATE_PARAM1 START_WEAPON
+			setvar STATE_PARAM2 WEAP_PRIMARY
+			setvar STATE_PARAM3 1
+			state set_have_weapon
 		
 			setplayer[THISACTOR].curr_weapon START_WEAPON
 		}
@@ -1945,23 +2034,6 @@ onevent EVENT_DISPLAYREST // !UNSYNCHRONIZED!
 	//qsprintf 500 500 gametype_flags
 	//minitext 48 48 500 -127 1
 	
-	// Change orientation to 536 later.
-	getplayer[THISACTOR].curr_weapon CL_TEMP1
-	ifvare CL_TEMP1 FREEZE_WEAPON
-	{
-		ifvare USING_FLAMETHROWER 1
-		{
-			rotatesprite 254 180 32768 0 FLAMETHROWERAMMO_ICON -127 0 24 windowx1 windowy1 windowx2 windowy2
-		}
-	}
-	else ifvare CL_TEMP1 CHAINGUN_WEAPON
-	{
-		ifvare USING_PLASMARIFLE 1
-		{
-			rotatesprite 254 180 32768 0 PLASMAAMMO_ICON -127 0 24 windowx1 windowy1 windowx2 windowy2
-		}
-	}
-	
 	// SO MANY FUCKING TEMP VARS
 	getuserdef[].screen_size CL_TEMP1
 	ifmultiplayer
@@ -2030,6 +2102,317 @@ onevent EVENT_DISPLAYREST // !UNSYNCHRONIZED!
 	}
 	
 	state client_keys
+endevent
+
+state health_color
+	ifvarg CL_TEMP1 150
+		setvar CL_TEMP2 123 // Blue
+	else ifvarg CL_TEMP1 100
+		setvar CL_TEMP2 126 // Purple
+	else ifvarg CL_TEMP1 66
+		setvar CL_TEMP2 125 // Green
+	else ifvarg CL_TEMP1 33
+		setvar CL_TEMP2 122 // Yellow
+	else
+		setvar CL_TEMP2 124 // Red
+ends
+
+onevent EVENT_DISPLAYSBAR // !UNSYNCHRONIZED!
+	getuserdef[].screen_size CL_TEMP1
+	ifvarl CL_TEMP1 8
+	ifvarg CL_TEMP1 0
+	{
+		//setuserdef[].statusbarscale 100
+		
+		// Ammo Icon
+		// Change orientation to 536 later.
+		getplayer[THISACTOR].curr_weapon STATE_PARAM1
+		state check_using_secondary
+		
+		ifvare STATE_PARAM1 HANDREMOTE_WEAPON
+			setvar STATE_PARAM1 HANDBOMB_WEAPON
+		
+		setvar CL_TEMP1 -1
+		setvar CL_TEMP2 32768
+		switch STATE_PARAM1
+			case FREEZE_WEAPON:
+				ifvare STATE_RETURN 1
+					setvar CL_TEMP1 FLAMETHROWERAMMO
+				else
+					setvar CL_TEMP1 FREEZEAMMO
+				break
+				
+			case CHAINGUN_WEAPON:
+				ifvare STATE_RETURN 1
+					setvar CL_TEMP1 PLASMAAMMO
+				else
+					setvar CL_TEMP1 BATTERYAMMO
+				break
+				
+			case RPG_WEAPON:
+				ifvare STATE_RETURN 1
+					setvar CL_TEMP1 RAILGUNAMMO
+				else
+					setvar CL_TEMP1 RPGAMMO
+				break
+				
+			case SHOTGUN_WEAPON:
+				setvar CL_TEMP1 SHOTGUNAMMO
+				break
+				
+			case PISTOL_WEAPON:
+				setvar CL_TEMP1 AMMO
+				setvar CL_TEMP2 16384
+				break
+				
+			case SHRINKER_WEAPON:
+				setvar CL_TEMP1 CRYSTALAMMO
+				break
+				
+			case GROW_WEAPON:
+				setvar CL_TEMP1 GROWAMMO
+				break
+				
+			case HANDBOMB_WEAPON:
+				setvar CL_TEMP1 HBOMBAMMO
+				break
+				
+			case DEVISTATOR_WEAPON:
+				setvar CL_TEMP1 DEVISTATORAMMO
+				break
+				
+			case TRIPBOMB_WEAPON:
+				setvar CL_TEMP1 TRIPBOMBSPRITE
+				break
+		endswitch
+		
+		ifvarn CL_TEMP1 -1
+		{
+			setvar TEMP 295
+			setvar TEMP2 186
+			
+			rotatespritea TEMP TEMP2 CL_TEMP2 0 CL_TEMP1 -127 4 10 128 windowx1 windowy1 windowx2 windowy2
+			subvar TEMP 1
+			subvar TEMP2 1
+			rotatesprite TEMP TEMP2 CL_TEMP2 0 CL_TEMP1 -127 0 10 windowx1 windowy1 windowx2 windowy2
+			
+			// Ammo Number
+			getplayer[THISACTOR].ammo_amount STATE_PARAM1 CL_TEMP1
+			
+			redefinequote 500 %d
+			qsprintf 500 500 CL_TEMP1
+			
+			setvar TEMP 262
+			setvar TEMP2 182
+			screentext DIGITALNUM TEMP TEMP2 65536 0 0 500 -127 4 16 128 6 7 1 1 532482 0 0 xdim ydim
+			subvar TEMP 1
+			subvar TEMP2 1
+			screentext DIGITALNUM TEMP TEMP2 65536 0 0 500 -127 125 16 0 6 7 1 1 532482 0 0 xdim ydim
+		}
+		
+		// Duke Head
+		getactor[THISACTOR].pal CL_TEMP2
+		setvar TEMP 14
+		setvar TEMP2 187
+		rotatespritea TEMP TEMP2 24576 0 DUKEHUDFACE -127 4 10 128 windowx1 windowy1 windowx2 windowy2
+		subvar TEMP 1
+		subvar TEMP2 1
+		rotatesprite TEMP TEMP2 24576 0 DUKEHUDFACE -127 CL_TEMP2 10 windowx1 windowy1 windowx2 windowy2
+		
+		// Health
+		getactor[THISACTOR].extra CL_TEMP1
+		redefinequote 500 %d
+		qsprintf 500 500 CL_TEMP1
+		
+		state health_color
+		
+		setvar TEMP 37
+		setvar TEMP2 182
+		screentext DIGITALNUM TEMP TEMP2 65536 0 0 500 -127 4 16 128 6 7 1 1 532482 0 0 xdim ydim
+		subvar TEMP 1
+		subvar TEMP2 1
+		screentext DIGITALNUM TEMP TEMP2 65536 0 0 500 -127 CL_TEMP2 16 0 6 7 1 1 532482 0 0 xdim ydim
+		
+		// Armor Icon
+		setvar TEMP 56
+		setvar TEMP2 181
+		rotatespritea TEMP TEMP2 32768 0 SHIELD -127 4 16 128 windowx1 windowy1 windowx2 windowy2
+		subvar TEMP 1
+		subvar TEMP2 1
+		rotatesprite TEMP TEMP2 32768 0 SHIELD -127 0 16 windowx1 windowy1 windowx2 windowy2
+		
+		// Armor Value
+		getplayer[THISACTOR].shield_amount CL_TEMP1
+		redefinequote 500 %d
+		qsprintf 500 500 CL_TEMP1
+		
+		state health_color
+		
+		setvar TEMP 86
+		setvar TEMP2 182
+		screentext DIGITALNUM TEMP TEMP2 65536 0 0 500 -127 4 16 128 6 7 1 1 532482 0 0 xdim ydim
+		subvar TEMP 1
+		subvar TEMP2 1
+		screentext DIGITALNUM TEMP TEMP2 65536 0 0 500 -127 CL_TEMP2 16 0 6 7 1 1 532482 0 0 xdim ydim
+		
+		// Inventory Icon
+		getplayer[THISACTOR].inven_icon CL_TEMP1
+		setvar CL_TEMP2 0
+		
+		switch CL_TEMP1
+			case 1:
+				setvar CL_TEMP1 FIRSTAID_ICON
+				getplayer[THISACTOR].firstaid_amount TEMP3
+				break
+			case 2:
+				setvar CL_TEMP1 STEROIDS_ICON
+				getplayer[THISACTOR].steroids_amount TEMP3
+				
+				ifvarl TEMP3 400
+				ifvarg TEMP3 0
+				{
+					setvar CL_TEMP2 1
+				}
+				
+				addvar TEMP3 3
+				shiftvarr TEMP3 2
+				break
+			case 3:
+				setvar CL_TEMP1 HOLODUKE_ICON
+				getplayer[THISACTOR].holoduke_on CL_TEMP2
+				getplayer[THISACTOR].holoduke_amount TEMP3
+				addvar TEMP3 15
+				divvar TEMP3 24
+				break
+			case 4:
+				setvar CL_TEMP1 JETPACK_ICON
+				getplayer[THISACTOR].jetpack_on CL_TEMP2
+				getplayer[THISACTOR].jetpack_amount TEMP3
+				addvar TEMP3 15
+				shiftvarr TEMP3 4
+				break
+			case 5:
+				setvar CL_TEMP1 HEAT_ICON
+				getplayer[THISACTOR].heat_on CL_TEMP2
+				getplayer[THISACTOR].heat_amount TEMP3
+				divvar TEMP3 12
+				break
+			case 6:
+				setvar CL_TEMP1 AIRTANK_ICON
+				getplayer[THISACTOR].scuba_on CL_TEMP2
+				getplayer[THISACTOR].scuba_amount TEMP3
+				addvar TEMP3 63
+				shiftvarr TEMP3 6
+				break
+			case 7:
+				setvar CL_TEMP1 BOOT_ICON
+				getplayer[THISACTOR].boot_amount TEMP3
+				shiftvarr TEMP3 1
+				break
+			default:
+				setvar CL_TEMP1 -1
+				break
+		endswitch
+		
+		ifvarn CL_TEMP1 -1
+		{
+			setvar TEMP 113
+			setvar TEMP2 188
+			rotatespritea TEMP TEMP2 65536 0 CL_TEMP1 -127 4 10 128 windowx1 windowy1 windowx2 windowy2
+			subvar TEMP 1
+			subvar TEMP2 1
+			rotatesprite TEMP TEMP2 65536 0 CL_TEMP1 -127 0 10 windowx1 windowy1 windowx2 windowy2
+			
+			ifvarg CL_TEMP2 0
+			{
+				setvar CL_TEMP1 SPINNINGNUKEICON
+				setvarvar CL_TEMP2 totalclock
+				divvar CL_TEMP2 2
+				modvar CL_TEMP2 8
+				addvarvar CL_TEMP1 CL_TEMP2
+				rotatesprite 115 190 16384 0 CL_TEMP1 -127 0 10 windowx1 windowy1 windowx2 windowy2
+			}
+			
+			setvarvar CL_TEMP1 TEMP3
+			redefinequote 500 %d%%
+			qsprintf 500 500 CL_TEMP1
+			
+			state health_color
+			
+			setvar TEMP 131
+			setvar TEMP2 187
+			screentext MINIFONT TEMP TEMP2 65536 0 0 500 -127 4 16 128 6 7 1 1 8194 0 0 xdim ydim
+			subvar TEMP 1
+			subvar TEMP2 1
+			screentext MINIFONT TEMP TEMP2 65536 0 0 500 -127 CL_TEMP2 16 0 6 7 1 1 8194 0 0 xdim ydim
+		}
+		
+		ifvarand gametype_flags 16384 { } // Start with all access cards
+		else
+		{
+			// Keys
+			setvar TEMP 293  // X
+			setvar TEMP2 160 // Y
+			setvar CL_TEMP2 0 // Key Count
+			getplayer[THISACTOR].got_access CL_TEMP1
+			
+			ifvarand CL_TEMP1 1
+				addvar CL_TEMP2 1
+			ifvarand CL_TEMP1 2
+				addvar CL_TEMP2 1
+			ifvarand CL_TEMP1 4
+				addvar CL_TEMP2 1
+			
+			ifvarg CL_TEMP2 1
+			{
+				subvar TEMP 1
+				subvar TEMP2 1
+			}
+			ifvarg CL_TEMP2 2
+			{
+				subvar TEMP 2
+				subvar TEMP2 2 
+			}
+			
+			ifvarand CL_TEMP1 4 // Yellow
+			{
+				addvar TEMP 1
+				addvar TEMP2 1 
+				rotatespritea TEMP TEMP2 24576 0 ACCESSCARD -127 4 10 128 windowx1 windowy1 windowx2 windowy2
+				subvar TEMP 1
+				subvar TEMP2 1
+				rotatesprite TEMP TEMP2 24576 0 ACCESSCARD -127 23 10 windowx1 windowy1 windowx2 windowy2
+				addvar TEMP 3
+				addvar TEMP2 3
+			}
+			
+			ifvarand CL_TEMP1 2 // Red
+			{
+				addvar TEMP 1
+				addvar TEMP2 1 
+				rotatespritea TEMP TEMP2 24576 0 ACCESSCARD -127 4 10 128 windowx1 windowy1 windowx2 windowy2
+				subvar TEMP 1
+				subvar TEMP2 1
+				rotatesprite TEMP TEMP2 24576 0 ACCESSCARD -127 21 10 windowx1 windowy1 windowx2 windowy2
+				addvar TEMP 3
+				addvar TEMP2 3
+			}
+			
+			ifvarand CL_TEMP1 1 // Blue
+			{
+				addvar TEMP 1
+				addvar TEMP2 1 
+				rotatespritea TEMP TEMP2 24576 0 ACCESSCARD -127 4 10 128 windowx1 windowy1 windowx2 windowy2
+				subvar TEMP 1
+				subvar TEMP2 1
+				rotatesprite TEMP TEMP2 24576 0 ACCESSCARD -127 0 10 windowx1 windowy1 windowx2 windowy2
+				addvar TEMP 3
+				addvar TEMP2 3
+			}
+		}
+	
+		setvar RETURN 1
+	}
 endevent
 
 onevent EVENT_DISPLAYMENUREST // Version display. !UNSYNCHRONIZED!
@@ -2164,6 +2547,7 @@ onevent EVENT_SOUND
 		else ifvare RETURN DUKE_UNDERWATER
 		{
 			getactor[THISACTOR].sectnum TEMP2
+			ifvarg TEMP2 -1
 			ifvarand SECTOR_TYPES[TEMP2] SECTORTYPE_SPACE
 			{
 				setvar RETURN -1

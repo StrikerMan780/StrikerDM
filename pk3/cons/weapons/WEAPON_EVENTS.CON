@@ -1,24 +1,48 @@
 onevent EVENT_WEAPKEY3
+	setvar STATE_PARAM1 SHOTGUN_WEAPON
+	setvar STATE_PARAM2 0
 	state check_alt_weapons
 endevent
 
 onevent EVENT_WEAPKEY4
+	setvar STATE_PARAM1 CHAINGUN_WEAPON
+	setvar STATE_PARAM2 0
 	state check_alt_weapons
 endevent
 
 onevent EVENT_WEAPKEY5
+	setvar STATE_PARAM1 RPG_WEAPON
+	setvar STATE_PARAM2 0
 	state check_alt_weapons
 endevent
 
 onevent EVENT_WEAPKEY10
+	setvar STATE_PARAM1 FREEZE_WEAPON
+	setvar STATE_PARAM2 0
 	state check_alt_weapons
 endevent
 
 onevent EVENT_ALTWEAPON
+	setvarvar STATE_PARAM1 WEAPON
+	setvar STATE_PARAM2 0
+	state check_alt_weapons
+endevent
+
+onevent EVENT_NEXTWEAPON
+	setvarvar STATE_PARAM1 WEAPON
+	setvar STATE_PARAM2 1
+	state check_alt_weapons
+endevent
+
+onevent EVENT_PREVIOUSWEAPON
+	setvarvar STATE_PARAM1 WEAPON
+	setvar STATE_PARAM2 2
 	state check_alt_weapons
 endevent
 
 onevent EVENT_CHANGEWEAPON
+	state check_weapon_ownership
+	
 	getplayer[THISACTOR].curr_weapon TEMP
 	ifvarn TEMP HANDREMOTE_WEAPON
 	{
@@ -28,10 +52,12 @@ onevent EVENT_CHANGEWEAPON
 endevent
 
 onevent EVENT_DOFIRE
-	getplayer[THISACTOR].curr_weapon TEMP
-	ifvare TEMP FREEZE_WEAPON
+	getplayer[THISACTOR].curr_weapon STATE_PARAM1
+	state check_using_secondary
+	
+	ifvare STATE_PARAM1 FREEZE_WEAPON
 	{
-		ifvare USING_FLAMETHROWER 1
+		ifvare STATE_RETURN 1
 		{
 			ifinwater
 			{
@@ -66,7 +92,7 @@ onevent EVENT_DOFIRE
 			}
 		}
 	}
-	else ifvare TEMP DEVISTATOR_WEAPON
+	else ifvare STATE_PARAM1 DEVISTATOR_WEAPON
 	{
 		getplayer[THISACTOR].hbomb_hold_delay TEMP
 		ifvare TEMP 1
@@ -82,9 +108,9 @@ onevent EVENT_DOFIRE
 		mulvar RECOIL_AMOUNT 65536
 		setvar RECOIL_SPEED 32768
 	}
-	else ifvare TEMP CHAINGUN_WEAPON
+	else ifvare STATE_PARAM1 CHAINGUN_WEAPON
 	{
-		ifvare USING_PLASMARIFLE 1
+		ifvare STATE_RETURN 1
 		{
 			ifvarl PLASMARIFLE_AMMO 1
 			{
@@ -120,9 +146,9 @@ onevent EVENT_DOFIRE
 			setvar RECOIL_SPEED 16384
 		}
 	}
-	else ifvare TEMP RPG_WEAPON
+	else ifvare STATE_PARAM1 RPG_WEAPON
 	{
-		ifvare USING_RAILGUN 1
+		ifvare STATE_RETURN 1
 		{
 			ifvarl RAILGUN_AMMO 1
 			{
@@ -166,10 +192,9 @@ onevent EVENT_DOFIRE
 			setvar RECOIL_SPEED 32768
 		}
 	}
-	else ifvare TEMP SHOTGUN_WEAPON
+	else ifvare STATE_PARAM1 SHOTGUN_WEAPON
 	{
-		getplayervar[THISACTOR].USING_SSG TEMP
-		ifvare TEMP 1
+		ifvare STATE_RETURN 1 // SSG
 		{
 			getplayer[THISACTOR].ammo_amount SHOTGUN_WEAPON TEMP2
 			ifvarl TEMP2 2
@@ -181,7 +206,7 @@ onevent EVENT_DOFIRE
 			subvar TEMP2 1
 			setplayer[THISACTOR].ammo_amount SHOTGUN_WEAPON TEMP2
 			
-			setvar RECOIL_AMOUNT 8
+			setvar RECOIL_AMOUNT 16
 			mulvar RECOIL_AMOUNT 65536
 			setvar RECOIL_SPEED 49152
 		}
@@ -192,7 +217,7 @@ onevent EVENT_DOFIRE
 			setvar RECOIL_SPEED 49152
 		}
 	}
-	else ifvare TEMP PISTOL_WEAPON
+	else ifvare STATE_PARAM1 PISTOL_WEAPON
 	{
 		setvar RECOIL_AMOUNT 32768
 		setvar RECOIL_SPEED 10922
@@ -200,10 +225,12 @@ onevent EVENT_DOFIRE
 endevent
 
 onevent EVENT_FIRE
-	getplayer[THISACTOR].curr_weapon TEMP
-	ifvare TEMP FREEZE_WEAPON
+	getplayer[THISACTOR].curr_weapon STATE_PARAM1
+	state check_using_secondary
+	
+	ifvare STATE_PARAM1 FREEZE_WEAPON
 	{
-		ifvare USING_FLAMETHROWER 1
+		ifvare STATE_RETURN 1
 		{
 			ifinwater
 			{
@@ -212,10 +239,9 @@ onevent EVENT_FIRE
 			}
 		}
 	}
-	else ifvare TEMP SHOTGUN_WEAPON
+	else ifvare STATE_PARAM1 SHOTGUN_WEAPON
 	{
-		getplayervar[THISACTOR].USING_SSG TEMP
-		ifvare TEMP 1
+		ifvare STATE_RETURN 1
 		{
 			getplayer[THISACTOR].ammo_amount SHOTGUN_WEAPON TEMP2
 			ifvarl TEMP2 2
@@ -239,8 +265,10 @@ onevent EVENT_GETSHOTRANGE
 		}
 	}
 	
-	getplayer[THISACTOR].curr_weapon TEMP
-	ifvare TEMP PISTOL_WEAPON
+	getplayer[THISACTOR].curr_weapon STATE_PARAM1
+	state check_using_secondary
+	
+	ifvare STATE_PARAM1 PISTOL_WEAPON
 	{
 		ifrnd 72
 		{
@@ -253,22 +281,20 @@ onevent EVENT_GETSHOTRANGE
 			setvar ZRANGE 128
 		}
 	}
-	else ifvare TEMP RPG_WEAPON
+	else ifvare STATE_PARAM1 RPG_WEAPON
 	{
-		getplayervar[THISACTOR].USING_RAILGUN TEMP
-		ifvare TEMP 1
+		ifvare STATE_RETURN 1
 		{
 			setvar ANGRANGE 1
 			setvar ZRANGE 1
 		}
 	}
-	else ifvare TEMP SHOTGUN_WEAPON
+	else ifvare STATE_PARAM1 SHOTGUN_WEAPON
 	{
-		getplayervar[THISACTOR].USING_SSG TEMP
-		ifvare TEMP 1
+		ifvare STATE_RETURN 1
 		{
-			setvar ANGRANGE 56
-			setvar ZRANGE 384
+			setvar ANGRANGE 64
+			setvar ZRANGE 512
 		}
 	}
 endevent
@@ -284,19 +310,14 @@ onevent EVENT_GETAUTOAIMANGLE
 		}
 	}
 	
-	getplayer[THISACTOR].curr_weapon TEMP
-	ifvare TEMP RPG_WEAPON
+	getplayer[THISACTOR].curr_weapon STATE_PARAM1
+	state check_using_secondary
+	
+	ifvare STATE_PARAM1 RPG_WEAPON
 	{
-		ifvare USING_RAILGUN 1
+		ifvare STATE_RETURN 1 // Railgun
 		{
-			ifvare COOP GM_INSTAGIB
-			{
-				setvar AUTOAIMANGLE 6
-			}
-			else
-			{
-				setvar AUTOAIMANGLE 12
-			}
+			setvar AUTOAIMANGLE 12
 		}
 	}
 endevent
@@ -358,6 +379,9 @@ onevent EVENT_DISPLAYWEAPON // P_DisplayWeapon !UNSYNCHRONIZED!
 
     getuserdef[THISACTOR].drawweapon hud_temp
     
+	setvarvar STATE_PARAM1 currentweapon
+	state check_using_secondary
+	
     ifvare hud_temp 2 // weapon icons
     {
         setvar hud_tilenum -1
@@ -367,7 +391,7 @@ onevent EVENT_DISPLAYWEAPON // P_DisplayWeapon !UNSYNCHRONIZED!
                 setvar hud_tilenum FIRSTGUNSPRITE
                 break
             case CHAINGUN_WEAPON
-				ifvare USING_PLASMARIFLE 1
+				ifvare STATE_RETURN 1
 				{
 					setvar hud_tilenum PLASMASPRITE
 				}
@@ -377,7 +401,7 @@ onevent EVENT_DISPLAYWEAPON // P_DisplayWeapon !UNSYNCHRONIZED!
 				}
                 break
             case RPG_WEAPON
-                ifvare USING_RAILGUN 1
+                ifvare STATE_RETURN 1
 				{
 					setvar hud_tilenum RAILGUNSPRITE
 				}
@@ -387,7 +411,7 @@ onevent EVENT_DISPLAYWEAPON // P_DisplayWeapon !UNSYNCHRONIZED!
 				}
                 break
             case FREEZE_WEAPON
-				ifvare USING_FLAMETHROWER 1
+				ifvare STATE_RETURN 1
 				{
 					setvar hud_tilenum FLAMETHROWERSPRITE
 				}
@@ -480,7 +504,7 @@ onevent EVENT_DISPLAYWEAPON // P_DisplayWeapon !UNSYNCHRONIZED!
                 break
             case RPG_WEAPON
                 setvarvar hud_totaltime WEAPON4_TOTALTIME
-				ifvare USING_RAILGUN 1
+				ifvare STATE_RETURN 1
 				{
 					state draw_railgun
 				}
@@ -491,7 +515,7 @@ onevent EVENT_DISPLAYWEAPON // P_DisplayWeapon !UNSYNCHRONIZED!
                 break
             case SHOTGUN_WEAPON
                 setvarvar hud_totaltime WEAPON2_TOTALTIME
-				ifvare USING_SSG 1
+				ifvare STATE_RETURN 1
 				{
 					state draw_ssg
 				}
@@ -503,7 +527,7 @@ onevent EVENT_DISPLAYWEAPON // P_DisplayWeapon !UNSYNCHRONIZED!
             case CHAINGUN_WEAPON
                 setvarvar hud_temp4 WEAPON3_FIREDELAY
                 setvarvar hud_totaltime WEAPON3_TOTALTIME
-				ifvare USING_PLASMARIFLE 1
+				ifvare STATE_RETURN 1
 				{
 					state draw_plasmarifle
 				}
@@ -532,7 +556,7 @@ onevent EVENT_DISPLAYWEAPON // P_DisplayWeapon !UNSYNCHRONIZED!
                 break
             case FREEZE_WEAPON
 				setvarvar hud_totaltime WEAPON9_TOTALTIME
-				ifvare USING_FLAMETHROWER 1
+				ifvare STATE_RETURN 1
 				{
 					state draw_flamethrower
 				}

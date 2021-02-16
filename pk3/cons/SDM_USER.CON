@@ -18,6 +18,8 @@ define PLASMARIFLE_WEAPON_TERTIARY_STRENGTH 8
 define PLASMARIFLE_X_SPREAD 24
 define PLASMARIFLE_Y_SPREAD 768
 
+define SSG_WEAPON_STRENGTH 14
+
 define DEVASTATOR_WEAPON_STRENGTH 35
 define DEVASTATORBLASTRADIUS 890
 
@@ -150,7 +152,7 @@ music 9 music/d_messag.mid music/brit11m1.mid music/d_countd.mid music/flaghate.
 	   
 definevolumename 9 Community Maps 1
 definelevelname 9 0 maps/EL_PASO-SDM.map 66:60 66:60 El Paso: Multiple Authors
-definelevelname 9 1 maps/CIRCENSE-SDM.map 66:60 66:60 Circense: Noldor Ranzou
+definelevelname 9 1 maps/CIRCENSE-SDM.map 66:60 66:60 Circus: Noldor Ranzou
 definelevelname 9 2 maps/QADIM-SDM.map 66:60 66:60 Qadim: Noldor Ranzou
 definelevelname 9 3 maps/TIMBERLAND-SDM.map 66:60 66:60 Timberland: Multiple Authors
 definelevelname 9 4 maps/ZEPPELIN2-SDM.map 66:60 66:60 Zeppelin 2: Multiple Authors
@@ -171,11 +173,11 @@ definelevelname 9 18 maps/LOOPYSHELTER-SDM.map 66:60 66:60 Loopy Shelter: Multip
 definelevelname 9 19 maps/RIKTI-SDM.map 66:60 66:60 Rikti: Vandclash
 definelevelname 9 20 maps/MALUK-SDM.map 66:60 66:60 Maluk: Vandclash
 definelevelname 9 21 maps/GELATOBEACH-SDM.map 66:60 66:60 Gelato Beach: Vandclash
-definelevelname 9 22 maps/DESTILLATEUR-DM-SDM.map 66:60 66:60 Destillateur: Vandclash
+definelevelname 9 22 maps/DESTILLATEUR-DM-SDM.map 66:60 66:60 Distiller: Vandclash
 definelevelname 9 23 maps/V-METRO-SDM.map 66:60 66:60 V-Metro: Vandclash
 definelevelname 9 24 maps/RIPTIDE-STRONGHOLD-SDM.map 66:60 66:60 Riptide Stronghold: Vandclash
 definelevelname 9 25 maps/NRV-LIVINGRAT-SDM.map 66:60 66:60 Living Rat: Vandclash
-definelevelname 9 26 maps/GRANJANUKEM-SDM.map 66:60 66:60 Granja Nukem: Vandclash
+definelevelname 9 26 maps/GRANJANUKEM-SDM.map 66:60 66:60 Nukem Farm: Vandclash
 definelevelname 9 27 maps/TRIPBOMBERMAN.map 66:60 66:60 Tripbomberman: Noldor Ranzou
 definelevelname 9 28 maps/RETROLEDGES.map 66:60 66:60 Retro Ledges: Noldor Ranzou
 definelevelname 9 29 maps/LEGOLAND2-SDM.map 66:60 66:60 Lego Land 2: Noldor Ranzou
@@ -186,7 +188,7 @@ definelevelname 9 33 maps/MEGATON-SDM.map 66:60 66:60 Megaton Delirium: F. Marqu
 definelevelname 9 34 maps/BUJINKAN.map 66:60 66:60 Bujinkan Dojo: Noldor Ranzou
 definelevelname 9 35 maps/CALAMITY-SDM.map 66:60 66:60 Calamity: Noldor Ranzou
 definelevelname 9 36 maps/MANSION-SDM.map 66:60 66:60 Mansion: Multiple Authors
-definelevelname 9 37 maps/ALMACEN-SDM.map 66:60 66:60 Almacen: Mercano
+definelevelname 9 37 maps/ALMACEN-SDM.map 66:60 66:60 Warehouse: Mercano
 definelevelname 9 38 maps/TRAIN262-SDM.map 66:60 66:60 Train 262: Multiple Authors
 definelevelname 9 39 maps/NEONMAZE2-SDM.map 66:60 66:60 Neon Maze 2: Multiple Authors
 definelevelname 9 40 maps/BNAE02-SDM.map 66:60 66:60 Artificial Cave: Roi de Janeiro
@@ -281,7 +283,7 @@ definelevelname 10 52 maps/JANOUSAB-TROR.map 66:60 66:60 Janousab TROR: N. Ranzo
 definelevelname 10 53 maps/KARNAGE3-TROR.map 66:60 66:60 Karnage3 TROR: N. Ranzou
 definelevelname 10 54 maps/MANCER01-TROR.map 66:60 66:60 Mancer01 TROR: N. Ranzou
 definelevelname 10 55 maps/WARHOUSE-TROR.map 66:60 66:60 Warhouse TROR: N. Ranzou
-definelevelname 10 56 maps/ENBLANCOYNEGRO.map 66:60 66:60 En Blanco y Negro: N. Ranzou
+definelevelname 10 56 maps/ENBLANCOYNEGRO.map 66:60 66:60 In Black & White: N. Ranzou
 
 music 11 music/seppuku.ogg music/ancient.ogg music/fortress.ogg music/zerostreets.ogg music/zerotown.ogg
          music/eerie.ogg music/saturntoll.ogg music/echohare.ogg music/apes.mid music/mental.ogg music/breed.mid

@@ -16,6 +16,9 @@ actor LDEXPLOSION 1 LAMEDUKE_EXPLOSION_FRAMES
 		ifspawnedby PLASMABALL
 		{
 			spritepal 1
+			espawn FIRESHELL
+			setactor[RETURN].pal 198
+			setvar RETURN 0
 		}
 		else ifspawnedby PLASMABALL2
 		{

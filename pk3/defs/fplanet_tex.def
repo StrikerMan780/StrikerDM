@@ -241,3 +241,27 @@ tilefromtexture 8224 { file "tiles/8224.png" texture truenpot }
 tilefromtexture 8225 { file "tiles/8225.png" texture truenpot }
 
 tilefromtexture 8226 { file "tiles/8226.png" texture truenpot }
+
+animtilerange 8227 8234 3 ANIM_FORWARD
+tilefromtexture 8227 { file "tiles/8227.png" texture truenpot }
+tilefromtexture 8228 { file "tiles/8228.png" texture truenpot }
+tilefromtexture 8229 { file "tiles/8229.png" texture truenpot }
+tilefromtexture 8230 { file "tiles/8230.png" texture truenpot }
+tilefromtexture 8231 { file "tiles/8231.png" texture truenpot }
+tilefromtexture 8232 { file "tiles/8232.png" texture truenpot }
+tilefromtexture 8233 { file "tiles/8233.png" texture truenpot }
+tilefromtexture 8234 { file "tiles/8234.png" texture truenpot }
+
+animtilerange 8235 8239 4 ANIM_FORWARD
+tilefromtexture 8235 { file "tiles/8235.png" texture truenpot }
+tilefromtexture 8236 { file "tiles/8236.png" texture truenpot }
+tilefromtexture 8237 { file "tiles/8237.png" texture truenpot }
+tilefromtexture 8238 { file "tiles/8238.png" texture truenpot }
+tilefromtexture 8239 { file "tiles/8239.png" texture truenpot }
+
+animtilerange 8240 8244 3 ANIM_FORWARD
+tilefromtexture 8240 { file "tiles/8240.png" texture truenpot }
+tilefromtexture 8241 { file "tiles/8241.png" texture truenpot }
+tilefromtexture 8242 { file "tiles/8242.png" texture truenpot }
+tilefromtexture 8243 { file "tiles/8243.png" texture truenpot }
+tilefromtexture 8244 { file "tiles/8244.png" texture truenpot }

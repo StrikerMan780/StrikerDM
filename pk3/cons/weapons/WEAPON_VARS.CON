@@ -59,23 +59,6 @@ gamevar playerid 0 1
 // ******************
 // Custom Weapon Vars
 // ******************
-gamevar HAS_FREEZETHROWER 0 1
-gamevar HAS_FLAMETHROWER 0 1
-
-gamevar HAS_RIPPER 0 1
-gamevar HAS_PLASMARIFLE 0 1
-
-gamevar HAS_RPG 0 1
-gamevar HAS_RAILGUN 0 1
-
-gamevar HAS_SHOTGUN 0 1
-gamevar HAS_SSG 0 1
-
-gamevar USING_FLAMETHROWER 0 1
-gamevar USING_PLASMARIFLE 0 1
-gamevar USING_RAILGUN 0 1
-gamevar USING_SSG 0 1
-
 gamevar FREEZETHROWER_AMMO 0 1
 gamevar FLAMETHROWER_AMMO 0 1
 

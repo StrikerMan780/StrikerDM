@@ -1,9 +1,17 @@
 // --- Props ---
 voxel "voxels/props/0058_spacesuit.kvx" { tile 58 }
 
+voxel "voxels/props/0160_doorshock.kvx" { tile 160 }
+
+voxel "voxels/props/0479_antennadish.kvx" { tile 479 }
 voxel "voxels/props/0480_observatory.kvx" { tile 480 }
 
 voxel "voxels/props/0487_spaceshuttle.kvx" { tile 487 }
+
+voxel "voxels/props/0517_gastank.kvx" { tile 517 }
+
+voxel "voxels/props/0536_smallpipe1.kvx" { tile 536 }
+voxel "voxels/props/0537_smallpipe2.kvx" { tile 537 }
 
 voxel "voxels/props/0543_panel.kvx" { tile 543 }
 
@@ -18,6 +26,8 @@ voxel "voxels/props/0552_lightdome2.kvx" { tile 552 }
 voxel "voxels/props/0553_lightdome3.kvx" { tile 553 }
 voxel "voxels/props/0554_lightdome4.kvx" { tile 554 }
 
+voxel "voxels/props/0555_smallvalve.kvx" { tile 555 }
+
 voxel "voxels/props/0556_armchair1.kvx" { tile 556 }
 voxel "voxels/props/0556_armchair1.kvx" { tile 557 }
 voxel "voxels/props/0559_armchair3.kvx" { tile 559 }
@@ -27,6 +37,8 @@ voxel "voxels/props/0615_brokentoilet.kvx" { tile 615 }
 
 voxel "voxels/props/0571_urinal.kvx" { tile 571 }
 voxel "voxels/props/0573_brokenurinal.kvx" { tile 573 }
+
+voxel "voxels/props/0578_reactor.kvx" { tile 578 }
 
 voxel "voxels/props/0584_sensor.kvx" { tile 584 }
 
@@ -44,10 +56,14 @@ voxel "voxels/props/0567_waterfountain5.kvx" { tile 567 }
 voxel "voxels/props/0572_showerpart.kvx" { tile 572 }
 voxel "voxels/props/0572_showerpart.kvx" { tile 991 }
 
+voxel "voxels/props/0602_solarpanel.kvx" { tile 602 }
+
 voxel "voxels/props/0606_spacesuitcorpse.kvx" { tile 606 }
 
 voxel "voxels/props/0607_antenna1.kvx" { tile 607 }
 voxel "voxels/props/0608_antenna2.kvx" { tile 608 }
+
+voxel "voxels/props/0610_pipe.kvx" { tile 610 }
 
 voxel "voxels/props/0621_camera1.kvx" { tile 621 tile 622 tile 623 tile 624 tile 625 }
 
@@ -83,6 +99,7 @@ voxel "voxels/props/0901_stripeball.kvx" { tile 901 }
 voxel "voxels/props/0902_queball.kvx" { tile 902 }
 
 voxel "voxels/props/0904_constructionbarrier.kvx" { tile 904 tile 905 tile 906 tile 907 }
+voxel "voxels/props/1026_constructionbarrier_fallen.kvx" { tile0 1026 tile1 1030 }
 
 voxel "voxels/props/0908_tree1.kvx" { tile 908 } 
 voxel "voxels/props/0909_treetrunk.kvx" { tile 909 }
@@ -124,6 +141,8 @@ voxel "voxels/props/0981_hydrant.kvx" { tile 981 }
 
 voxel "voxels/props/0990_tires.kvx" { tile 990 }
 
+voxel "voxels/props/0998_parkingmeter.kvx" { tile 998 tile 999 }
+
 voxel "voxels/props/0994_pipe1.kvx" { tile 994 }
 voxel "voxels/props/0995_pipe2.kvx" { tile 995 }
 voxel "voxels/props/0996_pipe3.kvx" { tile 996 }
@@ -139,6 +158,7 @@ voxel "voxels/props/1014_gbottle.kvx" { tile 1014 }
 
 voxel "voxels/props/1025_bottle7.kvx" { tile 1025 }
 voxel "voxels/props/1037_table.kvx" { tile 1037 }
+voxel "voxels/props/1038_horizontalpipe.kvx" { tile 1038 }
 
 voxel "voxels/props/1045_donuts.kvx" { tile 1045 }
 
@@ -166,6 +186,7 @@ voxel "voxels/props/1079_oozefilter1.kvx" { tile 1079 }
 voxel "voxels/props/1080_oozefilter2.kvx" { tile 1080 }
 voxel "voxels/props/1081_oozefilter3.kvx" { tile 1081 }
 
+voxel "voxels/props/1157_moneyjar.kvx" { tile 1157 }
 voxel "voxels/props/1158_bottle11.kvx" { tile 1158 }
 voxel "voxels/props/1159_bottle12.kvx" { tile 1159 }
 voxel "voxels/props/1160_bottle13.kvx" { tile 1160 }
@@ -196,6 +217,16 @@ voxel "voxels/props/1260_damagedpipe3.kvx" { tile 1260 }
 
 voxel "voxels/props/1267_rat.kvx" { tile0 1267 tile1 1270 }
 
+voxel "voxels/props/1337_helicopter1.kvx" { tile 1337 }
+voxel "voxels/props/1338_helicopter2.kvx" { tile 1338 }
+voxel "voxels/props/1340_debris1.kvx" { tile 1340 }
+voxel "voxels/props/1341_debris2.kvx" { tile 1341 }
+voxel "voxels/props/1342_debris3.kvx" { tile 1342 }
+voxel "voxels/props/1343_brokenwheel.kvx" { tile 1343 }
+voxel "voxels/props/1344_propeller.kvx" { tile 1344 }
+voxel "voxels/props/1345_helicopter3.kvx" { tile 1345 }
+voxel "voxels/props/1346_helicopter4.kvx" { tile 1346 }
+
 voxel "voxels/props/1353_spacemarine.kvx" { tile 1353 }
 
 voxel "voxels/props/1390_firevase.kvx" { tile 1390 }
@@ -211,64 +242,90 @@ voxel "voxels/props/1818_cannonballs.kvx" { tile 1818 }
 
 voxel "voxels/props/2200_poo.kvx" { tile 2200 }
 
-voxel "voxels/props/3400_dufbeer.kvx" { tile 3400 }
+voxel "voxels/props/3400_blimp.kvx" { tile 3400 }
 
 voxel "voxels/props/3190_marker_red.kvx" { tile 3190 tile 3191 tile 3192 tile 3193 tile 3194 tile 3195 tile 3196 }
 voxel "voxels/props/3200_marker_yellow.kvx" { tile 3200 tile 3201 tile 3202 tile 3203 tile 3204 tile 3205 tile 3206 }
 voxel "voxels/props/3210_marker_green.kvx" { tile 3210 tile 3211 tile 3212 tile 3213 tile 3214 tile 3215 tile 3216 }
 
+voxel "voxels/props/4359_target.kvx" { tile 4359 } 
+
 voxel "voxels/props/4360_gunpowderbarrel.kvx" { tile 4360 }
+voxel "voxels/props/4361_duck.kvx" { tile 4361 } 
+voxel "voxels/props/4363_knife.kvx" { tile 4363 }
 voxel "voxels/props/4367_hatrack.kvx" { tile 4367 }
 voxel "voxels/props/4370_desklamp.kvx" { tile 4370 }
 voxel "voxels/props/4371_plate1.kvx" { tile 4371 }
 voxel "voxels/props/4372_coffeemachine.kvx" { tile 4372 } 
 voxel "voxels/props/4373_cups.kvx" { tile 4373 } 
+voxel "voxels/props/4374_gavel.kvx" { tile 4374 tile 7375 }
 voxel "voxels/props/4377_policelightpole.kvx" { tile 4377 } 
 voxel "voxels/props/4386_pipe.kvx" { tile 4386 }
+voxel "voxels/props/4387_duketable.kvx" { tile 4387 }
 voxel "voxels/props/4388_bin.kvx" { tile 4388 }
 
 voxel "voxels/props/4407_mouse1.kvx" { tile 4407 }
 voxel "voxels/props/4408_mouse2.kvx" { tile 4408 }
+
+voxel "voxels/props/4413_mailbag.kvx" { tile 4413 }
+voxel "voxels/props/4416_sidemirror1.kvx" { tile 4416 }
+voxel "voxels/props/4417_sidemirror2.kvx" { tile 4417 }
+
+voxel "voxels/props/4419_brokenpipebomb.kvx" { tile 4419 }
 
 voxel "voxels/props/4426_bowlingpin.kvx" { tile 4426 } 
 voxel "voxels/props/4438_mug.kvx" { tile 4438 } 
 voxel "voxels/props/4440_donuts.kvx" { tile 4440 }
 voxel "voxels/props/4443_usaflag.kvx" { tile 4443 }
 voxel "voxels/props/4444_vhscamera.kvx" { tile 4444 }
+voxel "voxels/props/4446_prisonball.kvx" { tile 4446 }
 voxel "voxels/props/4454_deskphone.kvx" { tile 4454 }
 voxel "voxels/props/4457_rope.kvx" { tile 4457 }
 voxel "voxels/props/4458_gumballmachine1.kvx" { tile 4458 }
 voxel "voxels/props/4459_gumballmachine2.kvx" { tile 4459 }
 voxel "voxels/props/4464_mace.kvx" { tile 4464 }
+voxel "voxels/props/4465_genericpole.kvx" { tile 4465 }
 voxel "voxels/props/4495_wetfloor.kvx" { tile 4495 }
 voxel "voxels/props/4496_broom.kvx" { tile 4496 }
 
 voxel "voxels/props/4524_steedhooks.kvx" { tile 4524 }
 
+voxel "voxels/props/4533_kitchen_object.kvx" { tile 4533 }
+
 voxel "voxels/props/4536_foodobject7.kvx" { tile 4536 }
 voxel "voxels/props/4537_foodobject8.kvx" { tile 4537 }
 voxel "voxels/props/4538_foodobject9.kvx" { tile 4538 }
 voxel "voxels/props/4539_foodobject10.kvx" { tile 4539 }
-
 voxel "voxels/props/4540_foodobject11.kvx" { tile 4540 }
 voxel "voxels/props/4541_foodobject12.kvx" { tile 4541 }
 voxel "voxels/props/4542_foodobject13.kvx" { tile 4542 }
-
 voxel "voxels/props/4546_foodobject17.kvx" { tile 4546 }
 voxel "voxels/props/4547_foodobject18.kvx" { tile 4547 }
-
 voxel "voxels/props/4548_foodobject19.kvx" { tile 4548 }
+voxel "voxels/props/4549_foodobject20.kvx" { tile 4549 }
+
 voxel "voxels/props/4550_redlamp.kvx" { tile 4450 }
-voxel "voxels/props/4552_can_with_worms.kvx" { tile 4552 }
+voxel "voxels/props/4552_canwithworms.kvx" { tile 4552 }
 voxel "voxels/props/4569_burgerbox.kvx" { tile 4569 }
 voxel "voxels/props/4576_shoppingcart.kvx" { tile 4576 }
 voxel "voxels/props/4580_canwithsomething2.kvx" { tile 4580 }
 voxel "voxels/props/4581_canwithsomething3.kvx" { tile 4581 }
 voxel "voxels/props/4582_canwithsomething4.kvx" { tile 4582 }
+voxel "voxels/props/4583_pipe.kvx" { tile 4583 }
+voxel "voxels/props/4585_valve.kvx" { tile 4585 }
+voxel "voxels/props/4586_thinpipe1.kvx" { tile 4586 }
+voxel "voxels/props/4587_thinpipe2.kvx" { tile 4587 }
 
 voxel "voxels/props/4589_warn1.kvx" { tile 4589 }
 
 voxel "voxels/props/4885_driverwheel.kvx" { tile 4885 }
+
+voxel "voxels/props/4943_jury.kvx" { tile 4943 }
+voxel "voxels/props/4946_baseballbat.kvx" { tile 4946 }
+
+// World Tour
+voxel "voxels/props/5384_lamp.kvx" { tile 5384 }
+voxel "voxels/props/5435_mailbox.kvx" { tile 5435 }
 
 // ***** TRUE-COLOR VOXELS *****
 definemodel "voxels/props/3614_lamp.kv6" 1.0 0

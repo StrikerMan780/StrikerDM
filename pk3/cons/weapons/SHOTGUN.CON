@@ -256,29 +256,38 @@ actor SHOTGUNSPRITE
 		  ifcount 6
 			ifcanseetarget
 	  {
-		getplayervar[THISACTOR].HAS_SHOTGUN TEMP2
-		ifvare TEMP2 1
+		// Parameters
+		setvar STATE_PARAM1 SHOTGUN_WEAPON
+		setvar STATE_PARAM2 WEAP_PRIMARY
+		setvar STATE_PARAM3 1
+		
+		state check_have_weapon
+		ifvare STATE_RETURN 1
 			state checkweaponstay
 			
 		getplayer[THISACTOR].ammo_amount SHOTGUN_WEAPON TEMP
 			
 		ifvarl TEMP MAXSHOTGUNAMMO // Ammo under max?
 		{
-			setvar STATE_PARAM1 SHOTGUN_WEAPON
+			// Store Param 2
+			setvarvar TEMP STATE_PARAM2
+			
 			ifspawnedby PIGCOP { randvar STATE_PARAM2 4 }
 			else { setvar STATE_PARAM2 SHOTGUNAMMOAMOUNT }
 			state addammo_nobreak
+			
+			// Restore Param 2
+			setvarvar STATE_PARAM2 TEMP
 		}
 		else
 		{
-			ifvare TEMP2 1 // Has weapon?
+			ifvare STATE_RETURN 1 // Has weapon?
 			{
 				break // Has weapon, and full ammo. Stop here.
 			}
 		}
 		
-		setplayervar[THISACTOR].HAS_SHOTGUN 1
-		setvar STATE_PARAM1 SHOTGUN_WEAPON
+		state set_have_weapon
 		state addweapon_nobreak
 		quote 57
 

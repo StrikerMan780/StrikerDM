@@ -666,12 +666,14 @@ state handle_sectortypes
 	ifp palive
 	{
 		getplayer[THISACTOR].cursectnum TEMP
+		ifvarg TEMP -1
 		ifvarand SECTOR_TYPES[TEMP] SECTORTYPE_LOWGRAVITY
 		{
 			state handle_lowgravity
 		}
 		
 		getplayer[THISACTOR].cursectnum TEMP
+		ifvarg TEMP -1
 		ifvarand SECTOR_TYPES[TEMP] SECTORTYPE_JUMPPAD
 		{
 			state handle_jumppad
@@ -706,11 +708,13 @@ ends
 state handle_sectortypes_prediction
 	ifp palive
 	{
+		ifvarg mycursectnum -1
 		ifvarand SECTOR_TYPES[mycursectnum] SECTORTYPE_LOWGRAVITY
 		{
 			state handle_lowgravity_prediction
 		}
 		
+		ifvarg mycursectnum -1
 		ifvarand SECTOR_TYPES[mycursectnum] SECTORTYPE_JUMPPAD
 		{
 			state handle_jumppad_prediction

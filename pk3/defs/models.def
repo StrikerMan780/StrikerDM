@@ -12,5 +12,6 @@ model "models/fireball.md3" {
 	skin { pal 0 file "models/fireball.png" forcefilter nocompress nodownsize } 
 	skin { pal 200 file "models/shrinkball.png" forcefilter nocompress nodownsize } 
 	skin { pal 199 file "models/expandball.png" forcefilter nocompress nodownsize } 
+	skin { pal 198 file "models/plasmaball.png" forcefilter nocompress nodownsize } 
 	frame { name "none00" tile 1889 }
 }

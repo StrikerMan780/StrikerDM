@@ -91,8 +91,13 @@ actor FLAMETHROWERSPRITE
 	}
     else ifp palive ifpdistl RETRIEVEDISTANCE ifcount 6 ifcanseetarget
     {
-        getplayervar[THISACTOR].HAS_FLAMETHROWER TEMP2
-		ifvare TEMP2 1
+		// Parameters
+		setvar STATE_PARAM1 FREEZE_WEAPON
+		setvar STATE_PARAM2 WEAP_SECONDARY
+		setvar STATE_PARAM3 1
+		
+		state check_have_weapon
+		ifvare STATE_RETURN 1
 			state checkweaponstay
 		
 		getplayervar[THISACTOR].FLAMETHROWER_AMMO TEMP
@@ -108,14 +113,13 @@ actor FLAMETHROWERSPRITE
 		}
 		else
 		{
-			ifvare TEMP2 1 // Has flamethrower?
+			ifvare STATE_RETURN 1 // Has flamethrower?
 			{
 				break // Has weapon, and full ammo. Stop here.
 			}
 		}
 		
-		setplayervar[THISACTOR].HAS_FLAMETHROWER 1 // Give it
-		setvar STATE_PARAM1 FREEZE_WEAPON
+		state set_have_weapon
 		state addweapon_nobreak
         quote 127
         ifspawnedby FLAMETHROWERSPRITE
