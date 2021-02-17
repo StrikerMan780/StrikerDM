@@ -290,7 +290,8 @@ state set_using_secondary
 			case SHOTGUN_WEAPON: // SSG
 				setvar WEAPON2_FLAGS 1024
 				setvar WEAPON2_SHOOTS SSGPELLET
-				setvar WEAPON2_TOTALTIME 55
+				setvar WEAPON2_FIREDELAY 2
+				setvar WEAPON2_TOTALTIME 53
 				setvar WEAPON2_SPAWNTIME 0
 				setvar WEAPON2_SPAWN 0
 				setvar WEAPON2_SHOTSPERBURST 14
@@ -339,6 +340,7 @@ state set_using_secondary
 			case SHOTGUN_WEAPON
 				setvar WEAPON2_FLAGS 1024
 				setvar WEAPON2_SHOOTS SHOTGUN
+				setvar WEAPON2_FIREDELAY 4
 				setvar WEAPON2_TOTALTIME 30
 				setvar WEAPON2_SPAWNTIME 24
 				setvar WEAPON2_SPAWN SHOTGUNSHELL
@@ -768,9 +770,9 @@ state player_updateweapons
 				getplayer[THISACTOR].kickback_pic TEMP2
 				ifvare TEMP2 19
 					sound SSG_OPEN
-				else ifvare TEMP2 35
+				else ifvare TEMP2 33
 					sound SSG_LOAD
-				else ifvare TEMP2 46
+				else ifvare TEMP2 44
 					sound SSG_CLOSE
 				
 				getplayer[THISACTOR].ammo_amount SHOTGUN_WEAPON TEMP3
