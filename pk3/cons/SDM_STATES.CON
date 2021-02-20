@@ -324,7 +324,7 @@ state jib_sounds
 					case 64: actorsound LASTHITBY NEWDUKEGIB48 break
 					case 65: actorsound LASTHITBY NEWDUKEGIB49 break
 					case 66: actorsound LASTHITBY NEWDUKEGIB50 break
-					case 67: ifrnd 2 actorsound LASTHITBY NEWDUKEGIB51 break
+					case 67: ifrnd 16 actorsound LASTHITBY NEWDUKEGIB51 break
 					case 68: actorsound LASTHITBY NEWDUKEGIB52 break
 					case 69: actorsound LASTHITBY NEWDUKEGIB53 break
 				endswitch
