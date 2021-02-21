@@ -326,6 +326,7 @@ voxel "voxels/props/4946_baseballbat.kvx" { tile 4946 }
 // World Tour
 voxel "voxels/props/5384_lamp.kvx" { tile 5384 }
 voxel "voxels/props/5435_mailbox.kvx" { tile 5435 }
+voxel "voxels/props/5436_lamp.kvx" { tile 5436 }
 
 // ***** TRUE-COLOR VOXELS *****
 definemodel "voxels/props/3614_lamp.kv6" 1.0 0
