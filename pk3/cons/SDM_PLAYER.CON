@@ -580,7 +580,7 @@ state player_updateweapons
 	}
 	ifwasweapon RAILGUNSHOT
 	{
-      ifrnd 32
+      ifrnd 64
         spawn BLOOD
       palfrom 48 52
       break

@@ -18,23 +18,27 @@ state babe_wait_respawn
 	ifmultiplayer
 	ifvarn COOP GM_COOPERATIVE
 	ifmove FEMWAITRESPAWN
-	ifcount BABERESPAWNTIME
 	{
-		setactor[THISACTOR].picnum PICNUM_MEMORY
-		setactor[THISACTOR].cstat CSTAT_MEMORY
-		setactor[THISACTOR].extra TOUGH
-		setactor[THISACTOR].xrepeat XREPEAT_MEMORY
-		setactor[THISACTOR].yrepeat YREPEAT_MEMORY
-		setactor[THISACTOR].pal PAL_MEMORY
-		spawn TRANSPORTERSTAR
-		resetcount
-		move 0
+		ifcount BABERESPAWNTIME
+		{
+			setactor[THISACTOR].picnum PICNUM_MEMORY
+			setactor[THISACTOR].cstat CSTAT_MEMORY
+			setactor[THISACTOR].extra TOUGH
+			setactor[THISACTOR].xrepeat XREPEAT_MEMORY
+			setactor[THISACTOR].yrepeat YREPEAT_MEMORY
+			setactor[THISACTOR].pal PAL_MEMORY
+			spawn TRANSPORTERSTAR
+			resetcount
+			move 0
+			
+			switch PICNUM_MEMORY
+				case TOUGHGAL: action TOUGHGALANIM break
+				case FEM10: action FEMANIMATESLOW break
+				default: action FEMANIMATE break
+			endswitch
+		}
 		
-		switch PICNUM_MEMORY
-			case TOUGHGAL: action TOUGHGALANIM break
-			case FEM10: action FEMANIMATESLOW break
-			default: action FEMANIMATE break
-		endswitch
+		return // Stop execution until we respawn
 	}
 ends
 
@@ -61,9 +65,7 @@ state femcode
 	state babe_wait_respawn
 	
 	ifmove FEMRESCUED
-	{
 		break
-	}
 	
 	ifactor NAKED1 { }
 	else ifactor FEM6 { }
@@ -230,12 +232,9 @@ state femcode
 		ifactor NAKED1
 		{
 			ifinwater { }
-			else
+			else ifvarg IMMORTAL_BABES 0
 			{
-				ifvarg IMMORTAL_BABES 0
-				{
-					break
-				}
+				break
 			}
 		}
 		else ifactor FEM8 { } // Dead by default
@@ -424,7 +423,6 @@ state tipsounds
 ends
 
 state tipme
-	ifmove FEMWAITRESPAWN break
 	ifp pfacing
 	{
 		ifpdistl 1280
@@ -522,11 +520,9 @@ ends
 
 state babe_add_rescued
 	ifmultiplayer
+	ifvarn COOP GM_COOPERATIVE
 	{
-		ifvarn COOP GM_COOPERATIVE
-		{
-			break
-		}
+		break
 	}
 				
 	addvar BABES_RESCUED 1
@@ -634,7 +630,8 @@ state rescueme
 				state babe_hide_or_destroy
 			}
 		}
-		break
+		
+		break // Rescued, so don't run the below test again
 	}
 	
 	ifp pfacing
@@ -675,15 +672,15 @@ actor FEM1 TOUGH FEMANIMATE // Stripper
 			action FEMANIMATE
 	}
 	
+	state femcode
 	state rescueme
 	state tipme
-	state femcode
 enda
 
 actor FEM2 TOUGH FEMANIMATE // Poledancer
+	state femcode
 	state rescueme
 	state tipme
-	state femcode
 enda
 
 actor FEM3 TOUGH FEMANIMATE // Hooker
@@ -693,33 +690,33 @@ actor FEM3 TOUGH FEMANIMATE // Hooker
 		action FEMANIMATE
 	}
 	
+	state femcode
 	state rescueme
 	state tipme
-	state femcode
 enda
 
 actor FEM4 TOUGH FEMANIMATE // Tribal Babe
+	state femcode
 	state rescueme
 	state tipme
-	state femcode
 enda
 
 actor FEM5 TOUGH FEMANIMATE // Pole Babe
+	state femcode
 	state rescueme
 	state killme
-	state femcode
 enda
 
 actor FEM6 TOUGH FEMANIMATE // Pad Babe
+	state femcode
 	state rescueme
 	state killme
-	state femcode
 enda
 
 actor FEM7 TOUGH FEMANIMATE // Asian Dancer
+	state femcode
 	state rescueme
 	state tipme
-	state femcode
 enda
 
 actor FEM8 TOUGH FEMANIMATE // Impaled Babe
@@ -727,32 +724,32 @@ actor FEM8 TOUGH FEMANIMATE // Impaled Babe
 enda
 
 actor FEM9 TOUGH FEMANIMATE
-	state rescueme
 	state femcode
+	state rescueme
 enda
 
 actor FEM10 TOUGH FEMANIMATESLOW
+	state femcode
 	state rescueme
 	state tipme
-	state femcode
 enda
 
 actor TOUGHGAL MANWOMANSTRENGTH TOUGHGALANIM
+	state femcode
 	state rescueme
 	state toughgaltalk
-	state femcode
 enda
 
 actor NAKED1 TOUGH FEMANIMATE // Hanging Babe
+	state femcode
 	state rescueme
 	state killme
-	state femcode
 enda
 
 actor PODFEM1 TOUGH FEMANIMATE // Pod Babe
+	state femcode
 	state rescueme
 	state killme
-	state femcode
 enda
 
 actor BLOODYPOLE TOUGH
@@ -770,30 +767,24 @@ actor BLOODYPOLE TOUGH
 enda
 
 useractor notenemy WOMAN PIRATEGALSTRENGTH
+	state femcode
 	state rescueme
 	state tipme
-	state femcode
 enda
 
 useractor notenemy PIRATE1A PIRATEGALSTRENGTH
+	state femcode 
 	state rescueme
 	state tipme
-	state femcode 
 enda
 
 useractor notenemy PIRATE3A PIRATEGALSTRENGTH
+	state femcode 
 	state rescueme
 	state tipme
-	state femcode 
 enda
 
-state alienslime_damage
-	ifmultiplayer
-	ifvarn COOP GM_COOPERATIVE
-	{
-		break
-	}
-	
+state alienslime_damage	
 	ifhitweapon
 	{
 		sound SQUISHED

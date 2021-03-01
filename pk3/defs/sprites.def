@@ -28,6 +28,8 @@ tilefromtexture 1617 { file "tiles/1617.png" }
 tilefromtexture 1618 { file "tiles/1618.png" }
 tilefromtexture 1619 { file "tiles/1619.png" }
 
+tilefromtexture 1655 { file "tiles/1655.png" }
+
 tilefromtexture 2554 { file "tiles/2554.png" xoffset -1 yoffset 1 }
 tilefromtexture 2555 { file "tiles/2555.png" xoffset -1 yoffset 1 }
 tilefromtexture 2694 { file "tiles/2694.png" xoffset -1 yoffset 1 }

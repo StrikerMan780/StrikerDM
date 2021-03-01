@@ -693,17 +693,15 @@ enda
 
 state onground_gib_code
 	fall
-	ifcount 316
+	ifcount 300
 	{
-		killit
-	}
-	else ifcount 308
-	{
-		cstator 512
-	}
-	else ifcount 300
-	{
-		cstator 2
+		//cstator 2
+		getactor[THISACTOR].alpha TEMP
+		addvar TEMP 4
+		setactor[THISACTOR].alpha TEMP
+		
+		ifvarg TEMP 254
+			killit
 	}
 	else ifcount 1 { }
 	else ifcount 0

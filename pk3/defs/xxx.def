@@ -34,7 +34,7 @@ tilefromtexture	5976 { file "tiles/5976.png" xoff 6 } // 1326
 tilefromtexture	5977 { file "tiles/5977.png" xoff 5 } // 1327
 tilefromtexture	5978 { file "tiles/5978.png" xoff 10 } // 1328
 tilefromtexture	5979 { file "tiles/5979.png" xoff 1 } // 1329
-tilefromtexture	5980 { file "tiles/5980.png" xoff -3 } // 1330
+tilefromtexture	5980 { file "tiles/5980.png" xoff -4 } // 1330
 
 tilefromtexture 5981 { file "tiles/5981.png" } // 1395
 tilefromtexture 5982 { file "tiles/5982.png" } // 1396

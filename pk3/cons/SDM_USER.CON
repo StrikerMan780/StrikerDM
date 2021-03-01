@@ -12,7 +12,7 @@ define FLAMETHROWER_WEAPON_STRENGTH 10
 
 define MAXPLASMARIFLEAMMO 48
 define PLASMARIFLEAMMOAMOUNT 8
-define PLASMARIFLE_WEAPON_STRENGTH 101
+define PLASMARIFLE_WEAPON_STRENGTH 64 // Direct impact doubles this.
 define PLASMARIFLE_WEAPON_SECONDARY_STRENGTH 20
 define PLASMARIFLE_WEAPON_TERTIARY_STRENGTH 8
 define PLASMARIFLE_X_SPREAD 24
@@ -284,6 +284,7 @@ definelevelname 10 53 maps/KARNAGE3-TROR.map 66:60 66:60 Karnage3 TROR: N. Ranzo
 definelevelname 10 54 maps/MANCER01-TROR.map 66:60 66:60 Mancer01 TROR: N. Ranzou
 definelevelname 10 55 maps/WARHOUSE-TROR.map 66:60 66:60 Warhouse TROR: N. Ranzou
 definelevelname 10 56 maps/ENBLANCOYNEGRO.map 66:60 66:60 In Black & White: N. Ranzou
+definelevelname 10 57 maps/WARZONE-TROR.map 66:60 66:60 Warzone TROR: N. Ranzou
 
 music 11 music/seppuku.ogg music/ancient.ogg music/fortress.ogg music/zerostreets.ogg music/zerotown.ogg
          music/eerie.ogg music/saturntoll.ogg music/echohare.ogg music/apes.mid music/mental.ogg music/breed.mid
@@ -294,3 +295,4 @@ music 11 music/seppuku.ogg music/ancient.ogg music/fortress.ogg music/zerostreet
          music/icefront.s3m music/episode_666.xm music/fire.xm music/godown.it music/heavystr.it music/memefever.ogg music/freeze.s3m
          music/coldwave.mid music/odyssey2.mid music/takeawil.mid music/alienconflict.ogg music/rcrstreet.it music/suprfist.it music/d-lux2.mod
          music/gringo.it music/idiot2_x.it music/denaris_remix.mod music/hyo-deid.it music/terrortech.xm music/ccity12.s3m music/intotheoutside.mod
+         music/warzone.mid

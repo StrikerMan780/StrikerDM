@@ -8,6 +8,7 @@ gamevar TEMP3 0 0
 
 gamevar RANDOM_SOUND 0 0
 gamevar START_WEAPON -1 0
+gamevar BOSS_COUNT 0 0
 
 gamevar CURSPRITE 0 0
 gamevar LASTSPRITE 0 0

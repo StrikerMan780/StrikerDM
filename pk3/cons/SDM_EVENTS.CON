@@ -206,7 +206,7 @@ onevent EVENT_POSTDAMAGESPRITE
 			{
 				setactor[RETURN].htpicnum RADIUSEXPLOSION
 				getactor[RETURN].htextra TEMP
-				addvar TEMP RAILGUN_WEAPON_STRENGTH
+				addvar TEMP 30
 				setactor[RETURN].htextra TEMP
 			}
 			else
@@ -463,6 +463,15 @@ state devastator_boss_spread
 	setactor[THISACTOR].zvel TEMP
 ends
 
+state boss_devastatormissile_resize
+	setactor[THISACTOR].xrepeat 16
+	setactor[THISACTOR].yrepeat 16
+	setthisprojectile[THISACTOR].txrepeat 16
+	setthisprojectile[THISACTOR].tyrepeat 16
+	setthisprojectile[THISACTOR].sxrepeat 16
+	setthisprojectile[THISACTOR].syrepeat 16
+ends
+
 onevent EVENT_EGS
 	// TODO: Change this to quick-access vars once EDuke32 gets better MP.
 	ifactor FIREBALL
@@ -506,7 +515,7 @@ onevent EVENT_EGS
 		
 		break
 	}
-	
+
 	ifactor GROWSPARK
 	{
 		setactor[THISACTOR].blend 255
@@ -604,10 +613,12 @@ onevent EVENT_EGS
 		ifspawnedby BOSS5
 		{
 			state devastator_boss_spread
+			state boss_devastatormissile_resize
 		}
 		else ifspawnedby BOSS2
 		{
 			state devastator_boss_spread
+			state boss_devastatormissile_resize
 		}
 		else
 		{
@@ -830,15 +841,6 @@ state burning_logic
 	}
 ends
 
-state boss_devastatormissile_resize
-	setactor[THISACTOR].xrepeat 16
-	setactor[THISACTOR].yrepeat 16
-	setthisprojectile[THISACTOR].txrepeat 16
-	setthisprojectile[THISACTOR].tyrepeat 16
-	setthisprojectile[THISACTOR].sxrepeat 16
-	setthisprojectile[THISACTOR].syrepeat 16
-ends
-
 state plasma_spread
 	addvar EXTRA_MEMORY 1
 	ifvarg EXTRA_MEMORY 5
@@ -949,24 +951,39 @@ onevent EVENT_GAME
 		break
 	}
 	
-	ifactor DEVASTATORMISSILE
-	{
-		ifspawnedby BOSS5
-		{
-			state boss_devastatormissile_resize
-			break
-		}
-		else ifspawnedby BOSS2
-		{
-			state boss_devastatormissile_resize
-			break
-		}
-	}
-	
 	ifactor SHRINKSPARK
 	{
 		cstator 2
 		setactor[THISACTOR].blend 255
+		
+		espawn SHRINKERTRAIL
+		getactor[THISACTOR].x TEMP
+		randvar TEMP2 128
+		subvar TEMP2 64
+		addvarvar TEMP TEMP2
+		setactor[RETURN].x TEMP
+		
+		getactor[THISACTOR].y TEMP
+		randvar TEMP2 128
+		subvar TEMP2 64
+		addvarvar TEMP TEMP2
+		setactor[RETURN].y TEMP
+		
+		getactor[THISACTOR].z TEMP
+		randvar TEMP2 2048
+		subvar TEMP2 1024
+		addvarvar TEMP TEMP2
+		setactor[RETURN].z TEMP
+		
+		getactor[THISACTOR].htbposx TEMP
+		setactor[RETURN].htbposx TEMP
+		
+		getactor[THISACTOR].htbposy TEMP
+		setactor[RETURN].htbposy TEMP
+		
+		getactor[THISACTOR].htbposz TEMP
+		setactor[RETURN].htbposz TEMP
+		setvar RETURN 0
 		break
 	}
 
@@ -1127,6 +1144,11 @@ onevent EVENT_LOADACTOR
 		setvarvar START_WEAPON LOTAG_MEMORY
 		setactor[THISACTOR].lotag 0
 		break
+	case BOSS2:
+	case BOSS3:
+	case BOSS5:
+		addvar BOSS_COUNT 1 // Hack for Duke's Nightmare
+		break
 	endswitch
 endevent
 
@@ -1249,6 +1271,24 @@ onevent EVENT_SPAWN
 			setvar XREPEAT_MEMORY 4 // Start radius
 			setvar YREPEAT_MEMORY 16 // End radius
 		}
+		break
+	}
+	
+	ifactor SHRINKERTRAIL
+	{
+		cstat 130
+		setactor[THISACTOR].shade -127
+		setactor[THISACTOR].blend 255
+		setactor[THISACTOR].mdflags 16
+		
+		setvar PICNUM_MEMORY -1
+		setvar LOTAG_MEMORY 0 // Timer
+		setvar HITAG_MEMORY 32 // End time
+		setvar SPAWN_ORIGANG 0 // Rotational Speed
+		
+		setvar XREPEAT_MEMORY 16 // Start radius
+		setvar YREPEAT_MEMORY 0 // End radius
+		
 		break
 	}
 	
@@ -1538,6 +1578,18 @@ onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
 	}
 	
 	ifactor EXPANDERTRAIL
+	{
+		state handle_shellexpansion
+		break
+	}
+	
+	ifactor SHRINKERTRAIL
+	{
+		state handle_shellexpansion
+		break
+	}
+	
+	ifactor SMALLSMOKE
 	{
 		state handle_shellexpansion
 		break

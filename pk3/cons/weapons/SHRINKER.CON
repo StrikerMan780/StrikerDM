@@ -120,3 +120,22 @@ state draw_shrinker // SHRINKER_WEAPON:
         guniqhudid 0
     }
 ends
+
+spritenoshade SHRINKERTRAIL
+actor SHRINKERTRAIL 0
+{
+	ifaction 0
+	{
+		ifpdistl 1024
+		{
+			killit
+			break
+		}
+		
+		action ANULLACTION
+	}
+	
+	ifcount 12
+		killit
+}
+enda

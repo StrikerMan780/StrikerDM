@@ -1081,7 +1081,8 @@ state tracer_movement
 	
 	ifinwater
 	{
-		spawn WATERBUBBLE
+		ifrnd 48
+			spawn WATERBUBBLE
 	}
 ends
 

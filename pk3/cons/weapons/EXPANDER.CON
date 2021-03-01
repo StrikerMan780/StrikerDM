@@ -231,15 +231,6 @@ actor EXPANDERTRAIL 0
 		action ANULLACTION
 	}
 	
-	getactor[THISACTOR].mdflags TEMP
-	ifvarand TEMP 16 { }
-	else
-	{
-		redefinequote 500 MDFLAGS OF EXPANDER TRAIL (%d) ISN'T 16! - ACTUAL: %d
-		qsprintf 500 500 THISACTOR TEMP
-		userquote 500
-	}
-	
 	ifcount 6
 		killit
 }
