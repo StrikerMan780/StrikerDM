@@ -239,6 +239,11 @@ onevent EVENT_POSTDAMAGESPRITE
 				{
 					setactor[RETURN].htpicnum RADIUSEXPLOSION
 				}
+				else ifvarl TEMP2 2048
+				{
+					ifrnd 32
+						setactor[RETURN].htpicnum RADIUSEXPLOSION
+				}
 			}
 		}
 	}

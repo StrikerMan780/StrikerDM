@@ -294,7 +294,7 @@ state set_using_secondary
 				setvar WEAPON2_TOTALTIME 53
 				setvar WEAPON2_SPAWNTIME 0
 				setvar WEAPON2_SPAWN 0
-				setvar WEAPON2_SHOTSPERBURST 14
+				setvar WEAPON2_SHOTSPERBURST 20 // 14
 				setvar WEAPON2_FIRESOUND SSG_FIRE
 				setvar WEAPON2_SOUND2SOUND 0
 				setvar WEAPON2_SOUND2TIME 0
