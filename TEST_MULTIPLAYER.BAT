@@ -1,4 +1,4 @@
-set MAP=e3l9.map
+set EXTRACMD=-map _ZOO.map +r_showfps 1
 set NUMPLAYERS=2
 set PORT=30000
 rem set PORT=23513
@@ -30,30 +30,30 @@ goto START
 :START
 cd /d %EDUKE_PATH%
 
-start /affinity 1 eduke32-oldmp -nologo -noinstancechecking -nosetup -name Player1 -debugsync -t23 -c1 -m -j%GRP_PATH% -map %MAP% /net /n0:%NUMPLAYERS%
+start /affinity 1 netduke32 -name Player1 +r_maxfps 60 -nologo -noinstancechecking -nosetup -debugsync -t23 -c1 -j%GRP_PATH% %EXTRACMD% /net /n0:%NUMPLAYERS%
 
-start /affinity 2 eduke32-oldmp -cfg player2.cfg -nologo -noinstancechecking -nosetup -debugsync -name Player2 -j%GRP_PATH% -map %MAP% /net /n0 127.0.0.1:%PORT% /p23122
+start /affinity 2 netduke32 -cfg player2.cfg -name Player2 +r_maxfps 30 -nologo -noinstancechecking -nosetup -debugsync -j%GRP_PATH% %EXTRACMD% /net /n0 127.0.0.1:%PORT% /p23122
 if %NUMPLAYERS%==2 goto EXIT
 
-start /affinity 3 eduke32-oldmp -cfg player3.cfg -nologo -noinstancechecking -nosetup -debugsync -name Player3 -j%GRP_PATH% -map %MAP% /net /n0 127.0.0.1:%PORT% /p23123
+start /affinity 3 netduke32 -cfg player3.cfg -name Player3 +r_maxfps 30 -nologo -noinstancechecking -nosetup -debugsync -j%GRP_PATH% %EXTRACMD% /net /n0 127.0.0.1:%PORT% /p23123
 if %NUMPLAYERS%==3 goto EXIT
 
-start /affinity 4 eduke32-oldmp -cfg player4.cfg -nologo -noinstancechecking -nosetup -debugsync -name Player4 -j%GRP_PATH% -map %MAP% /net /n0 127.0.0.1:%PORT% /p23124
+start /affinity 4 netduke32 -cfg player4.cfg -name Player4 +r_maxfps 30 -nologo -noinstancechecking -nosetup -debugsync -j%GRP_PATH% %EXTRACMD% /net /n0 127.0.0.1:%PORT% /p23124
 if %NUMPLAYERS%==4 goto EXIT
 
-start /affinity 5 eduke32-oldmp -cfg player5.cfg -nologo -noinstancechecking -nosetup -debugsync -name Player5 -j%GRP_PATH% -map %MAP% /net /n0 127.0.0.1:%PORT% /p23125
+start /affinity 5 netduke32 -cfg player5.cfg -name Player5 +r_maxfps 30 -nologo -noinstancechecking -nosetup -debugsync -j%GRP_PATH% %EXTRACMD% /net /n0 127.0.0.1:%PORT% /p23125
 if %NUMPLAYERS%==5 goto EXIT
 
-start /affinity 6 eduke32-oldmp -cfg player6.cfg -nologo -noinstancechecking -nosetup -debugsync -name Player6 -j%GRP_PATH% -map %MAP% /net /n0 127.0.0.1:%PORT% /p23126
+start /affinity 6 netduke32 -cfg player6.cfg -name Player6 +r_maxfps 30 -nologo -noinstancechecking -nosetup -debugsync -j%GRP_PATH% %EXTRACMD% /net /n0 127.0.0.1:%PORT% /p23126
 if %NUMPLAYERS%==6 goto EXIT
 
-start /affinity 7 eduke32-oldmp -cfg player7.cfg -nologo -noinstancechecking -nosetup -debugsync -name Player7 -j%GRP_PATH% -map %MAP% /net /n0 127.0.0.1:%PORT% /p23127
+start /affinity 7 netduke32 -cfg player7.cfg -name Player7 +r_maxfps 30 -nologo -noinstancechecking -nosetup -debugsync -j%GRP_PATH% %EXTRACMD% /net /n0 127.0.0.1:%PORT% /p23127
 if %NUMPLAYERS%==7 goto EXIT
 
-start /affinity 8 eduke32-oldmp -cfg player8.cfg -nologo -noinstancechecking -nosetup -debugsync -name Player8 -j%GRP_PATH% -map %MAP% /net /n0 127.0.0.1:%PORT% /p23128
+start /affinity 8 netduke32 -cfg player8.cfg -name Player8 +r_maxfps 30 -nologo -noinstancechecking -nosetup -debugsync -j%GRP_PATH% %EXTRACMD% /net /n0 127.0.0.1:%PORT% /p23128
 if %NUMPLAYERS%==8 goto EXIT
 
-start /affinity 9 eduke32-oldmp -cfg player9.cfg -nologo -noinstancechecking -nosetup -debugsync -name Player9 -j%GRP_PATH% -map %MAP% /net /n0 127.0.0.1:%PORT% /p23128
+start /affinity 9 netduke32 -cfg player9.cfg -name Player9 +r_maxfps 30 -nologo -noinstancechecking -nosetup -debugsync -j%GRP_PATH% %EXTRACMD% /net /n0 127.0.0.1:%PORT% /p23128
 if %NUMPLAYERS%==9 goto EXIT
 
 :EXIT

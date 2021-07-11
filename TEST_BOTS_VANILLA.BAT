@@ -19,9 +19,9 @@ IF ERRORLEVEL 4 SET NUMBOTS=5
 IF ERRORLEVEL 5 SET NUMBOTS=6
 IF ERRORLEVEL 6 SET NUMBOTS=7
 IF ERRORLEVEL 7 SET NUMBOTS=8
-start eduke32-oldmp -nosetup -tx -c1 -m /q%NUMBOTS% /a -map e3l9.map
+start netduke32 -nosetup -tx -c1 -m /q%NUMBOTS% /a -map e3l9.map
 exit
 
 :NOAI
-start eduke32-oldmp -nosetup -tx -c1 -m /q8 -map e3l9.map
+start netduke32 -nosetup -tx -c1 -m /q8 -map e3l9.map
 exit
