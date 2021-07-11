@@ -21,6 +21,7 @@ The Mechanic, w0rm - Dukenuds sprites.
 HMNuke93 - Improved incinerator sprites.
 Brullov - Railgun sprites.
 JoeyTD (aka. BeardedDoomGuy) - Extended reload hand sprite
+Shtovladya - BLOODINFLUID2 sprites (initial work).
 ID Software - Doomguy sprites and health/armor bonus sprites.
 Monolith Productions - Blood trails.
 Striker - The various custom effector sprites, the fully-open ejection port with shell for shotgun pump, menu sprites.
