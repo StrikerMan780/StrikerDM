@@ -57,7 +57,7 @@ onevent EVENT_DOFIRE
 	
 	ifvare STATE_PARAM1 FREEZE_WEAPON
 	{
-		ifvare STATE_RETURN 1
+		ifvare STATE_RETURN WEAP_SECONDARY
 		{
 			ifinwater
 			{
@@ -103,14 +103,10 @@ onevent EVENT_DOFIRE
 		{
 			sound DEVASTATOR_FIRELEFT
 		}
-		
-		setvar RECOIL_AMOUNT 2
-		mulvar RECOIL_AMOUNT 65536
-		setvar RECOIL_SPEED 32768
 	}
 	else ifvare STATE_PARAM1 CHAINGUN_WEAPON
 	{
-		ifvare STATE_RETURN 1
+		ifvare STATE_RETURN WEAP_SECONDARY
 		{
 			ifvarl PLASMARIFLE_AMMO 1
 			{
@@ -123,10 +119,6 @@ onevent EVENT_DOFIRE
 			{
 				setvar PLASMARIFLE_AMMO 0
 			}
-			
-			setvar RECOIL_AMOUNT 8
-			mulvar RECOIL_AMOUNT 65536
-			setvar RECOIL_SPEED 49152
 		}
 		else
 		{
@@ -141,14 +133,11 @@ onevent EVENT_DOFIRE
 			{
 				setvar RIPPER_AMMO 0
 			}
-			
-			setvar RECOIL_AMOUNT 32768
-			setvar RECOIL_SPEED 16384
 		}
 	}
 	else ifvare STATE_PARAM1 RPG_WEAPON
 	{
-		ifvare STATE_RETURN 1
+		ifvare STATE_RETURN WEAP_SECONDARY
 		{
 			ifvarl RAILGUN_AMMO 1
 			{
@@ -168,10 +157,6 @@ onevent EVENT_DOFIRE
 			{
 				setvar RAILGUN_AMMO 0
 			}
-			
-			setvar RECOIL_AMOUNT 4
-			mulvar RECOIL_AMOUNT 65536
-			setvar RECOIL_SPEED 65536
 		}
 		else
 		{
@@ -186,15 +171,11 @@ onevent EVENT_DOFIRE
 			{
 				setvar RPG_AMMO 0
 			}
-			
-			setvar RECOIL_AMOUNT 10
-			mulvar RECOIL_AMOUNT 65536
-			setvar RECOIL_SPEED 32768
 		}
 	}
 	else ifvare STATE_PARAM1 SHOTGUN_WEAPON
 	{
-		ifvare STATE_RETURN 1 // SSG
+		ifvare STATE_RETURN WEAP_SECONDARY // SSG
 		{
 			getplayer[THISACTOR].ammo_amount SHOTGUN_WEAPON TEMP2
 			ifvarl TEMP2 2
@@ -205,23 +186,11 @@ onevent EVENT_DOFIRE
 			
 			subvar TEMP2 1
 			setplayer[THISACTOR].ammo_amount SHOTGUN_WEAPON TEMP2
-			
-			setvar RECOIL_AMOUNT 16
-			mulvar RECOIL_AMOUNT 65536
-			setvar RECOIL_SPEED 49152
-		}
-		else
-		{
-			setvar RECOIL_AMOUNT 4
-			mulvar RECOIL_AMOUNT 65536
-			setvar RECOIL_SPEED 49152
 		}
 	}
-	else ifvare STATE_PARAM1 PISTOL_WEAPON
-	{
-		setvar RECOIL_AMOUNT 32768
-		setvar RECOIL_SPEED 10922
-	}
+	
+	state do_recoil
+	
 endevent
 
 onevent EVENT_FIRE
@@ -323,9 +292,8 @@ onevent EVENT_GETAUTOAIMANGLE
 endevent
 
 onevent EVENT_DISPLAYWEAPON // P_DisplayWeapon !UNSYNCHRONIZED!
-
-    setvar RETURN -1
-    
+	setvar RETURN -1
+	
 	getplayer[THISACTOR].weapon_pos weapon_pos
 	getplayer[THISACTOR].weapon_sway weapon_sway
 	getuserdef[THISACTOR].weaponscale weaponscale
@@ -365,10 +333,7 @@ onevent EVENT_DISPLAYWEAPON // P_DisplayWeapon !UNSYNCHRONIZED!
 */
 	
 	// View pitch shift
-	ifvarg numplayers 1
-		setvarvar hud_temp myhoriz
-	else
-		getplayer[THISACTOR].horiz hud_temp
+	getplayer[THISACTOR].horiz hud_temp
 		
 	shiftvarr hud_temp 5
 	subvarvar gun_pos hud_temp
@@ -661,7 +626,7 @@ onevent EVENT_DISPLAYTIP
 	subvarvar hud_y hud_temp
 	
 	// Orientation/Shade/HudID
-	setvar hud_orientation 262144
+	setvar hud_orientation DRAWEAP_CENTER
 	setvarvar hud_shade gs
 	guniqhudid 201
 	

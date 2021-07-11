@@ -111,7 +111,6 @@ move PGROWINGPOP        // Used only as a variable
 
 actor APLAYER MAXPLAYERHEALTH PSTAND 0 0
 state handle_shake_timer
-state player_updateweapons
   ifaction 0
     action PSTAND
 

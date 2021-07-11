@@ -173,6 +173,9 @@ tilefromtexture 3728 { file "tiles/3728.png" }
 // Hanging Vest
 tilefromtexture 3729 { file "tiles/3729.png" }
 
+// Renamon Shirt
+tilefromtexture 3730 { file "tiles/3730.png" }
+
 // Bonuses
 animtilerange 4991 4994 4 ANIM_OSCILLATING
 tilefromtexture 4991 { file "tiles/4991.png" }
@@ -431,6 +434,42 @@ tilefromtexture 3718 { file "tiles/3718.png" } // Pad
 tilefromtexture 3719 { file "tiles/3719.png" } // Pod
 tilefromtexture 3720 { file "tiles/3720.png" yoff -83 } // Vines
 tilefromtexture 3721 { file "tiles/3721.png" xoff -5 yoff 1 } // Bloodless Pole
+
+// Blood in Liquid
+tilefromtexture 4706 { file "tiles/4706.png" }
+tilefromtexture 4707 { file "tiles/4707.png" }
+tilefromtexture 4708 { file "tiles/4708.png" }
+tilefromtexture 4709 { file "tiles/4709.png" }
+tilefromtexture 4710 { file "tiles/4710.png" }
+tilefromtexture 4711 { file "tiles/4711.png" }
+tilefromtexture 4712 { file "tiles/4712.png" }
+tilefromtexture 4713 { file "tiles/4713.png" }
+tilefromtexture 4714 { file "tiles/4714.png" }
+tilefromtexture 4715 { file "tiles/4715.png" }
+tilefromtexture 4716 { file "tiles/4716.png" }
+tilefromtexture 4717 { file "tiles/4717.png" }
+tilefromtexture 4718 { file "tiles/4718.png" }
+tilefromtexture 4719 { file "tiles/4719.png" }
+tilefromtexture 4720 { file "tiles/4720.png" }
+tilefromtexture 4721 { file "tiles/4721.png" }
+
+// Blood in Liquid 2
+tilefromtexture 4722 { file "tiles/4722.png" }
+tilefromtexture 4723 { file "tiles/4723.png" }
+tilefromtexture 4724 { file "tiles/4724.png" }
+tilefromtexture 4725 { file "tiles/4725.png" }
+tilefromtexture 4726 { file "tiles/4726.png" }
+tilefromtexture 4727 { file "tiles/4727.png" }
+tilefromtexture 4728 { file "tiles/4728.png" }
+tilefromtexture 4729 { file "tiles/4729.png" }
+tilefromtexture 4730 { file "tiles/4730.png" }
+tilefromtexture 4731 { file "tiles/4731.png" }
+tilefromtexture 4732 { file "tiles/4732.png" }
+tilefromtexture 4733 { file "tiles/4733.png" }
+tilefromtexture 4734 { file "tiles/4734.png" }
+tilefromtexture 4735 { file "tiles/4735.png" }
+tilefromtexture 4736 { file "tiles/4736.png" }
+tilefromtexture 4737 { file "tiles/4737.png" }
 
 // Venus Statue
 tilefromtexture 4974 { file "tiles/4974.png" } 

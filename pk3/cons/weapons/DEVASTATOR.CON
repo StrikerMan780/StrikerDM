@@ -1,10 +1,6 @@
 state draw_devastator // DEVISTATOR_WEAPON:
 	state reset_hud_weapon_coordinates
 	
-	// for guniqhudid
-	setvarvar hud_temp4 currentweapon
-	shiftvarl hud_temp4 1
-	
 	setvar hud_tilenum DEVISTATOR
 	
 	setvar hud_temp -1 // flag, -1 if not firing. > 0 otherwise.
@@ -74,7 +70,8 @@ state draw_devastator // DEVISTATOR_WEAPON:
 			getplayer[THISACTOR].hbomb_hold_delay OLDMP_TEMP
 			ifvarn OLDMP_TEMP 0
 			{
-				guniqhudid currentweapon
+				// Right Firing
+				guniqhudid W_DEVASTATOR_RIGHT
 				
 				setvarvar hud_temp2 hud_temp
 				shiftvarr hud_temp2 1
@@ -88,31 +85,33 @@ state draw_devastator // DEVISTATOR_WEAPON:
 				
 				setvar hud_shade -32
 				
+				orvar hud_orientation RS_FORCELERP
+				
 				state G_DrawWeaponTile
+				// ----
 				
 				state reset_hud_weapon_coordinates
-				
-				subvarvar hud_tilenum hud_temp3
+				setvar hud_tilenum DEVISTATOR
 				setvarvar hud_shade gs
 				
-				guniqhudid hud_temp4
+				guniqhudid W_DEVASTATOR_LEFT
 				
 				addvar hud_x 30
 				addvar hud_y 240
 				
-				ifvarand hud_orientation 4 nullop else
-					addvar hud_orientation 4
+				orvar hud_orientation RS_YFLIP
 				
 				state G_DrawWeaponTile
 				
-				ifvarand hud_orientation 4
-					subvar hud_orientation 4
+				ifvarand hud_orientation RS_YFLIP
+					subvar hud_orientation RS_YFLIP
 				
 				guniqhudid 0
 			}
 			else
 			{
-				guniqhudid hud_temp4
+				// Left Firing
+				guniqhudid W_DEVASTATOR_LEFT
 				
 				addvar hud_x 30
 				setvarvar hud_temp2 hud_temp
@@ -126,19 +125,20 @@ state draw_devastator // DEVISTATOR_WEAPON:
 				
 				setvar hud_shade -32
 				
-				ifvarand hud_orientation 4 nullop else
-					addvar hud_orientation 4
+				orvar hud_orientation RS_YFLIP
+				orvar hud_orientation RS_FORCELERP
 				
 				state G_DrawWeaponTile
-				state reset_hud_weapon_coordinates
+				// ----
 				
-				subvarvar hud_tilenum hud_temp3
+				state reset_hud_weapon_coordinates	
+				setvar hud_tilenum DEVISTATOR
 				setvarvar hud_shade gs
 				
-				ifvarand hud_orientation 4
-					subvar hud_orientation 4
+				ifvarand hud_orientation RS_YFLIP
+					subvar hud_orientation RS_YFLIP
 				
-				guniqhudid currentweapon
+				guniqhudid W_DEVASTATOR_RIGHT
 				
 				addvar hud_x 268
 				addvar hud_y 238
@@ -151,29 +151,30 @@ state draw_devastator // DEVISTATOR_WEAPON:
 		}
 	}
 	
+	// Idle Frames
 	ifvare hud_temp -1
 	{
-		guniqhudid currentweapon
+		// Right
+		guniqhudid W_DEVASTATOR_RIGHT
 		
 		addvar hud_x 268
 		addvar hud_y 238
 		
 		state G_DrawWeaponTile
+		// ----
 		
 		state reset_hud_weapon_coordinates
-		
-		guniqhudid hud_temp4
+		guniqhudid W_DEVASTATOR_LEFT
 		
 		addvar hud_x 30     
 		addvar hud_y 240
 				
-		ifvarand hud_orientation 4 nullop else
-			addvar hud_orientation 4
+		orvar hud_orientation RS_YFLIP
 			
 		state G_DrawWeaponTile
 		
-		ifvarand hud_orientation 4
-			subvar hud_orientation 4
+		ifvarand hud_orientation RS_YFLIP
+			subvar hud_orientation RS_YFLIP
 		
 		guniqhudid 0
 	}
@@ -183,13 +184,13 @@ ends
 spritenoshade DEVASTATORMISSILE
 gamevar WEAPON7_SHOOTS DEVASTATORMISSILE 1
 gamevar WEAPON7_INITIALSOUND 0 1
-defineprojectile DEVASTATORMISSILE PROJ_WORKSLIKE 2 //32770
+defineprojectile DEVASTATORMISSILE PROJ_WORKSLIKE 65538 //32770
 defineprojectile DEVASTATORMISSILE PROJ_CSTAT 128
 defineprojectile DEVASTATORMISSILE PROJ_VEL 680
 defineprojectile DEVASTATORMISSILE PROJ_XREPEAT 8
 defineprojectile DEVASTATORMISSILE PROJ_YREPEAT 8
 defineprojectile DEVASTATORMISSILE PROJ_EXTRA DEVASTATOR_WEAPON_STRENGTH
-defineprojectile DEVASTATORMISSILE PROJ_EXTRA_RAND 5
+defineprojectile DEVASTATORMISSILE PROJ_EXTRA_RAND 3
 defineprojectile DEVASTATORMISSILE PROJ_HITRADIUS DEVASTATORBLASTRADIUS
 defineprojectile DEVASTATORMISSILE PROJ_SHADE -127
 defineprojectile DEVASTATORMISSILE PROJ_OFFSET 14354 // Centered, offset handled in EVENT_EGS

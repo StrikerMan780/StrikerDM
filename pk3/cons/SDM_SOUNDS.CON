@@ -156,6 +156,9 @@ define VANCHOJACKS 567
 define AUTIN 568
 define PIJA 569
 define MOMOSEUMWELCOME 570
+define PERFECTO 571
+define UFO 572
+define CORAJE 573
 // Community sound submissions should continue from the index above this line
 
 define ALL_BABES_SAVED 583
@@ -465,6 +468,10 @@ definesound VANCHOJACKS sounds/ambience/vanchojacks.ogg 0 0 0 0 -8192
 definesound AUTIN sounds/ambience/autin.ogg 0 0 0 3 0
 definesound PIJA sounds/ambience/pija.ogg 0 0 0 0 -8192
 definesound MOMOSEUMWELCOME  sounds/ambience/momoseumwelcome.ogg 0 0 0 0 -8192
+definesound PERFECTO sounds/ambience/perfecto.ogg 0 0 0 0 -8192
+definesound UFO sounds/ambience/ufo.wav 0 0 0 3 0
+definesound CORAJE sounds/ambience/coraje.wav 0 0 0 3 0
+
 definesound DOOMPLAT_START sounds/ambience/dspstart.wav 0 0 0 0 0
 definesound DOOMPLAT_STOP sounds/ambience/dspstop.wav 0 0 0 0 0
 definesound SPACEODDITY sounds/ambience/spaceoddity.ogg 0 0 0 3 0

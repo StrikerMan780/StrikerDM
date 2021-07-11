@@ -19,14 +19,14 @@ state draw_quick_kick // Quick Kick
                 getplayer[THISACTOR].palookup hud_pal
         }
 
-        guniqhudid 100
+        guniqhudid W_KNEE2
         
         // common calculations
         state reset_hud_weapon_coordinates
         
         setvar hud_tilenum KNEE
         
-        setvar hud_orientation 262148 // o|4|262144
+        setvar hud_orientation DRAWEAP_CENTER_YFLIP
 		
 		switch hud_temp
 			case 0:

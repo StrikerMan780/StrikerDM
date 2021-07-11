@@ -57,7 +57,12 @@ state draw_plasmarifle // PLASMARIFLE_WEAPON:
 			break
 	endswitch
 	
+	ifvarg weaponcount 0
+		orvar hud_orientation RS_FORCELERP
+	
+	guniqhudid W_PLASMARIFLE
 	state G_DrawWeaponTile
+	guniqhudid 0
 	
 	//subvar hud_x 168
     //subvar hud_y 260

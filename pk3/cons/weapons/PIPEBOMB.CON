@@ -31,7 +31,6 @@ state draw_pipebomb // HANDBOMB_WEAPON:
             }
             
             addvar hud_x 190
-            
             addvar hud_y 250
             
             switch weaponcount
@@ -69,6 +68,9 @@ state draw_pipebomb // HANDBOMB_WEAPON:
                     break
             endswitch
             
+			ifvarg weaponcount 0
+				orvar hud_orientation RS_FORCELERP
+				
             state G_DrawWeaponTile
         }
     }

@@ -1,5 +1,7 @@
 state draw_rpg // RPG_WEAPON:
-    
+	guniqhudid W_RPG
+    setvar hud_tilenum RPGGUN
+	
     setvarvar hud_x weapon_xoffset
     setvarvar hud_y looking_arc
     shiftvarl hud_y 1
@@ -16,22 +18,37 @@ state draw_rpg // RPG_WEAPON:
     subvarvar hud_y hud_temp
     
     addvar hud_x 164
-    
     addvar hud_y 176
     
-    setvar hud_tilenum RPGGUN
-    
+	ifvarg weaponcount 0
+		orvar hud_orientation RS_FORCELERP
+				
     state G_DrawWeaponTile
+
+	ifvarg weaponcount 1
+    ifvarl weaponcount 8
+    {
+		// Would set guniqhudid W_RPG_MUZZLE here, but it causes misalignment.
+		switch weaponcount
+			case 2:
+			case 3:
+				setvar hud_tilenum 2545
+				break
+			case 4:
+			case 5:
+				setvar hud_tilenum 2546
+				break
+			case 6:
+			case 7:
+				setvar hud_tilenum 2547
+				break
+		endswitch
+		
+		orvar hud_orientation RS_FORCELERP
+        state G_DrawWeaponTile
+    }
 	
-	    ifvarg weaponcount 0
-        ifvarl weaponcount 8
-        {
-            setvarvar hud_tilenum weaponcount
-            shiftvarr hud_tilenum 1
-            addvar hud_tilenum RPGGUN
-            
-            state G_DrawWeaponTile
-        }
+	guniqhudid 0
 ends
 
 actor RPGSPRITE

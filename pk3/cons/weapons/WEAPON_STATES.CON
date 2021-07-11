@@ -3,196 +3,190 @@
 // preliminary functions
 
 state G_DrawTile
-    getplayer[THISACTOR].cursectnum hud_G_Draw_temp2
-    ifvarg hud_G_Draw_temp2 -1
-        getsector[hud_G_Draw_temp2].floorpal hud_G_Draw_temp2
-    else
-        setvar hud_G_Draw_temp2 0
+	getplayer[THISACTOR].cursectnum hud_G_Draw_temp2
+	ifvarg hud_G_Draw_temp2 -1
+		getsector[hud_G_Draw_temp2].floorpal hud_G_Draw_temp2
+	else
+		setvar hud_G_Draw_temp2 0
 
-    ifvarand hud_orientation 4
-        addvar hud_angle 1024
-        
-    ifvarand hud_orientation 2 nullop else
-        addvar hud_orientation 2
-                 
-    rotatesprite hud_x hud_y hud_scale hud_angle hud_tilenum hud_shade hud_G_Draw_temp2 hud_orientation windowx1 windowy1 windowx2 windowy2
-        
-    ifvarand hud_orientation 2 nullop else
-        subvar hud_orientation 2
-    
-    ifvarand hud_orientation 4
-        subvar hud_angle 1024
+	ifvarand hud_orientation RS_YFLIP
+		addvar hud_angle 1024
+		
+	orvar hud_orientation RS_AUTO
+				 
+	rotatesprite hud_x hud_y hud_scale hud_angle hud_tilenum hud_shade hud_G_Draw_temp2 hud_orientation windowx1 windowy1 windowx2 windowy2
+		
+	ifvarand hud_orientation RS_AUTO nullop else
+		subvar hud_orientation RS_AUTO
+	
+	ifvarand hud_orientation RS_YFLIP
+		subvar hud_angle 1024
 ends
 
 state G_DrawTilePal
-    ifvarand hud_orientation 4
-        addvar hud_angle 1024
-        
-    ifvarand hud_orientation 2 nullop else
-        addvar hud_orientation 2
+	ifvarand hud_orientation RS_YFLIP
+		addvar hud_angle 1024
+		
+	orvar hud_orientation RS_AUTO
 
-    rotatesprite hud_x hud_y hud_scale hud_angle hud_tilenum hud_shade hud_pal hud_orientation windowx1 windowy1 windowx2 windowy2
-        
-    ifvarand hud_orientation 2 nullop else
-        subvar hud_orientation 2
-    
-    ifvarand hud_orientation 4
-        subvar hud_angle 1024
+	rotatesprite hud_x hud_y hud_scale hud_angle hud_tilenum hud_shade hud_pal hud_orientation windowx1 windowy1 windowx2 windowy2
+		
+	ifvarand hud_orientation RS_AUTO nullop else
+		subvar hud_orientation RS_AUTO
+	
+	ifvarand hud_orientation RS_YFLIP
+		subvar hud_angle 1024
 ends
 
 state G_DrawTileScaled
-    setvar hud_G_Draw_temp 192 // xoff
+	setvar hud_G_Draw_temp 192 // xoff
 
-    switch currentweapon
-        case DEVISTATOR_WEAPON
-        case TRIPBOMB_WEAPON
-            setvar hud_G_Draw_temp 160
-            break
-        default
-            ifvarand hud_orientation 262144
-            {
-                setvar hud_G_Draw_temp 160
-                subvar hud_orientation 262144
-            }
-            break
-    endswitch
+	switch currentweapon
+		case DEVISTATOR_WEAPON
+		case TRIPBOMB_WEAPON
+			setvar hud_G_Draw_temp 160
+			break
+		default
+			ifvarand hud_orientation DRAWEAP_CENTER
+			{
+				setvar hud_G_Draw_temp 160
+				subvar hud_orientation DRAWEAP_CENTER
+			}
+			break
+	endswitch
 
-    ifvarand hud_orientation 4
-        addvar hud_angle 1024
-        
-    /*
-    ifvarg rendermode 2
-        ifvarn usemodels 0
-            ifhasmodel hud_tilenum hud_pal
-            {
-                setvar hud_G_Draw_temp2 224
-                mulvarvar hud_G_Draw_temp2 weaponscale
-                divvar hud_G_Draw_temp2 100
-                
-                addvar hud_y 224
-                subvarvar hud_y hud_G_Draw_temp2
-            }
-    */
-    
-    mulvarvar hud_x weaponscale
-    divvar hud_x 100
-    setvarvar hud_G_Draw_temp2 hud_G_Draw_temp
-    mulvarvar hud_G_Draw_temp2 weaponscale
-    divvar hud_G_Draw_temp2 100
-    subvarvar hud_G_Draw_temp hud_G_Draw_temp2
-    addvarvar hud_x hud_G_Draw_temp
-    
-    mulvarvar hud_y weaponscale
-    divvar hud_y 100
-    setvar hud_G_Draw_temp 200
-    setvarvar hud_G_Draw_temp2 hud_G_Draw_temp
-    mulvarvar hud_G_Draw_temp2 weaponscale
-    divvar hud_G_Draw_temp2 100
-    subvarvar hud_G_Draw_temp hud_G_Draw_temp2
-    addvarvar hud_y hud_G_Draw_temp
-    
-    // setvar hud_scale 65536 // do this elsewhere; leave it open for modification
-    mulvarvar hud_scale weaponscale
-    divvar hud_scale 100
-    
-    ifvarand hud_orientation 2 nullop else
-        addvar hud_orientation 2
-    
-    rotatesprite hud_x hud_y hud_scale hud_angle hud_tilenum hud_shade hud_pal hud_orientation windowx1 windowy1 windowx2 windowy2
-        
-    ifvarand hud_orientation 2 nullop else
-        subvar hud_orientation 2
-    
-    ifvarand hud_orientation 4
-        subvar hud_angle 1024
+	ifvarand hud_orientation RS_YFLIP
+		addvar hud_angle 1024
+		
+	/*
+	ifvarg rendermode 2
+		ifvarn usemodels 0
+			ifhasmodel hud_tilenum hud_pal
+			{
+				setvar hud_G_Draw_temp2 224
+				mulvarvar hud_G_Draw_temp2 weaponscale
+				divvar hud_G_Draw_temp2 100
+				
+				addvar hud_y 224
+				subvarvar hud_y hud_G_Draw_temp2
+			}
+	*/
+	
+	mulvarvar hud_x weaponscale
+	divvar hud_x 100
+	setvarvar hud_G_Draw_temp2 hud_G_Draw_temp
+	mulvarvar hud_G_Draw_temp2 weaponscale
+	divvar hud_G_Draw_temp2 100
+	subvarvar hud_G_Draw_temp hud_G_Draw_temp2
+	addvarvar hud_x hud_G_Draw_temp
+	
+	mulvarvar hud_y weaponscale
+	divvar hud_y 100
+	setvar hud_G_Draw_temp 200
+	setvarvar hud_G_Draw_temp2 hud_G_Draw_temp
+	mulvarvar hud_G_Draw_temp2 weaponscale
+	divvar hud_G_Draw_temp2 100
+	subvarvar hud_G_Draw_temp hud_G_Draw_temp2
+	addvarvar hud_y hud_G_Draw_temp
+	
+	// setvar hud_scale 65536 // do this elsewhere; leave it open for modification
+	mulvarvar hud_scale weaponscale
+	divvar hud_scale 100
+
+	orvar hud_orientation RS_AUTO
+	
+	// Interp fix for Trip Mines and weapon switching.
+	getplayer[THISACTOR].weapon_pos hud_G_Draw_temp
+	ifvarn hud_G_Draw_temp -9
+	ifvarl hud_G_Draw_temp 9
+	{
+		orvar hud_orientation RS_LERP
+	}
+	
+	// Custom flag to disable lerp in certain weapon states.
+	ifvarand hud_orientation DRAWEAP_NOLERP
+	{
+		ifvarand hud_orientation RS_LERP
+			subvar hud_orientation RS_LERP
+			
+		subvar hud_orientation DRAWEAP_NOLERP
+	}
+	
+	rotatesprite hud_x hud_y hud_scale hud_angle hud_tilenum hud_shade hud_pal hud_orientation windowx1 windowy1 windowx2 windowy2
+		
+	ifvarand hud_orientation RS_AUTO
+		subvar hud_orientation RS_AUTO
+
+	ifvarand hud_orientation RS_LERP
+		subvar hud_orientation RS_LERP
+		
+	ifvarand hud_orientation RS_FORCELERP
+		subvar hud_orientation RS_FORCELERP
+	
+	ifvarand hud_orientation RS_YFLIP
+		subvar hud_angle 1024
 ends
 
 state G_DrawWeaponTile
-    // basic fading between player weapon shades
-    ifvarvarn hud_shade hud_shadef
-    {
-        setvar hud_G_Draw_temp 0
-        ifvare hud_pal 0 setvar hud_G_Draw_temp 1
-        ifvarvare hud_pal hud_palf setvar hud_G_Draw_temp 1
-        ifvare hud_G_Draw_temp 1
-        {
-            setvarvar hud_G_Draw_temp hud_shade
-            subvarvar hud_G_Draw_temp hud_shadef
-            setvarvar hud_G_Draw_temp2 hud_G_Draw_temp
-            shiftvarr hud_G_Draw_temp 2
-            addvarvar hud_shadef hud_G_Draw_temp
-            
-            ifvare hud_G_Draw_temp 0
-            {
-                shiftvarr hud_G_Draw_temp2 1
-                addvarvar hud_shadef hud_G_Draw_temp2
-                ifvare hud_G_Draw_temp2 0
-                    setvarvar hud_shadef hud_shade
-            }
-        }
-    }
-    else
-        setvarvar hud_shadef hud_shade
-        
-    setvarvar hud_palf hud_pal
-    setvarvar hud_shade hud_shadef
-    
-    state G_DrawTileScaled
-ends
-
-state G_DrawWeaponTile_crystal
-    // basic fading between player weapon shades
-    ifvarvarn hud_shade hud_shadef_crystal
-    {
-        setvarvar hud_G_Draw_temp hud_shade
-        subvarvar hud_G_Draw_temp hud_shadef_crystal
-        setvarvar hud_G_Draw_temp2 hud_G_Draw_temp
-        shiftvarr hud_G_Draw_temp 2
-        addvarvar hud_shadef_crystal hud_G_Draw_temp
-        
-        ifvare hud_G_Draw_temp 0
-        {
-            shiftvarr hud_G_Draw_temp2 1
-            addvarvar hud_shadef_crystal hud_G_Draw_temp2
-            ifvare hud_G_Draw_temp2 0
-                setvarvar hud_shadef_crystal hud_shade
-        }
-    }
-    else
-        setvarvar hud_shadef_crystal hud_shade
-        
-    setvarvar hud_shade hud_shadef_crystal
-    
-    state G_DrawTileScaled
+	// basic fading between player weapon shades
+	ifvarvarn hud_shade hud_shadef
+	{
+		setvar hud_G_Draw_temp 0
+		ifvare hud_pal 0 setvar hud_G_Draw_temp 1
+		ifvarvare hud_pal hud_palf setvar hud_G_Draw_temp 1
+		ifvare hud_G_Draw_temp 1
+		{
+			setvarvar hud_G_Draw_temp hud_shade
+			subvarvar hud_G_Draw_temp hud_shadef
+			setvarvar hud_G_Draw_temp2 hud_G_Draw_temp
+			shiftvarr hud_G_Draw_temp 2
+			addvarvar hud_shadef hud_G_Draw_temp
+			
+			ifvare hud_G_Draw_temp 0
+			{
+				shiftvarr hud_G_Draw_temp2 1
+				addvarvar hud_shadef hud_G_Draw_temp2
+				ifvare hud_G_Draw_temp2 0
+					setvarvar hud_shadef hud_shade
+			}
+		}
+	}
+	else
+		setvarvar hud_shadef hud_shade
+		
+	setvarvar hud_palf hud_pal
+	setvarvar hud_shade hud_shadef
+	
+	state G_DrawTileScaled
 ends
 
 // helper states
 
 state reset_hud_weapon_x_coordinate
-    setvarvar hud_x weapon_xoffset
-    subvarvar hud_x looking_angSR1
+	setvarvar hud_x weapon_xoffset
+	subvarvar hud_x looking_angSR1
 ends
 state reset_hud_weapon_y_coordinate
-    setvarvar hud_y looking_arc
-    subvarvar hud_y gun_pos
+	setvarvar hud_y looking_arc
+	subvarvar hud_y gun_pos
 ends
 state reset_hud_weapon_coordinates
-    state reset_hud_weapon_x_coordinate
-    state reset_hud_weapon_y_coordinate
+	state reset_hud_weapon_x_coordinate
+	state reset_hud_weapon_y_coordinate
 ends
 
 state determine_animation
-    getuserdef[THISACTOR].pause_on hud_temp
-    ifvarn hud_temp 0
-        setvar hud_temp 1
+	getuserdef[THISACTOR].pause_on hud_temp
+	ifvarn hud_temp 0
+		setvar hud_temp 1
 	
 	getplayer[THISACTOR].gm OLDMP_TEMP
-    ifvarand OLDMP_TEMP 1 // MODE_MENU
-        orvar hud_temp 1
+	ifvarand OLDMP_TEMP 1 // MODE_MENU
+		orvar hud_temp 1
 
-    getactor[playerid].pal hud_G_Draw_temp
-    ifvare hud_G_Draw_temp 1
-        orvar hud_temp 1
+	getactor[playerid].pal hud_G_Draw_temp
+	ifvare hud_G_Draw_temp 1
+		orvar hud_temp 1
 ends
 
 // Custom States
@@ -242,7 +236,7 @@ ends
 
 // STATE_PARAM1 = Weapon Index
 // STATE_PARAM2 = State (0 = Using Primary, 1 = Using secondary)
-state set_using_secondary
+state set_weapontype	
 	setvar STATE_TEMP4 1
 	shiftvarvarl STATE_TEMP4 STATE_PARAM1
 	
@@ -417,7 +411,7 @@ state switch_weapon
 			
 			ifvare STATE_RETURN 1
 			{
-				state set_using_secondary
+				state set_weapontype
 				break
 			}
 		}
@@ -452,7 +446,7 @@ state switch_weapon
 			
 			ifvare STATE_RETURN 1
 			{
-				state set_using_secondary
+				state set_weapontype
 				break
 			}
 		}
@@ -475,7 +469,7 @@ state check_weapon_ownership
 			state check_have_weapon
 			ifvare STATE_RETURN 1
 			{
-				state set_using_secondary
+				state set_weapontype
 			}
 		}
 		
@@ -487,6 +481,10 @@ ends
 
 // STATE_PARAM1 = Weapon
 state print_weapon_name
+	ifvarg numplayers 1
+	ifvarn predicting 1
+		break
+		
 	setvar WEAPONCHANGETIMER 30
 	setvar WEAPONQUOTEALPHA 0
 	state check_using_secondary
@@ -565,7 +563,6 @@ state check_alt_weapons
 		ifvarvarn STATE_PARAM1 WEAPON
 			break
 			
-
 		ifvare TEMP3 0
 		{
 			setvar STATE_PARAM2 WEAP_SECONDARY
@@ -655,6 +652,66 @@ state check_alt_weapons
 	}
 ends
 
+state do_recoil
+	// Break out if we're in multiplayer, and are not in the first phase of prediction.
+	ifvarg numplayers 1
+	ifvarn predicting 1
+		break
+		
+	switch STATE_PARAM1
+		case DEVISTATOR_WEAPON:
+			setvar RECOIL_AMOUNT 2
+			mulvar RECOIL_AMOUNT 65536
+			setvar RECOIL_SPEED 32768
+			break
+		case CHAINGUN_WEAPON:
+			ifvare STATE_RETURN WEAP_SECONDARY
+			{
+				setvar RECOIL_AMOUNT 8
+				mulvar RECOIL_AMOUNT 65536
+				setvar RECOIL_SPEED 49152
+			}
+			else
+			{
+				setvar RECOIL_AMOUNT 32768
+				setvar RECOIL_SPEED 16384
+			}
+			break
+		case RPG_WEAPON:
+			ifvare STATE_RETURN WEAP_SECONDARY
+			{
+				setvar RECOIL_AMOUNT 4
+				mulvar RECOIL_AMOUNT 65536
+				setvar RECOIL_SPEED 65536
+			}
+			else
+			{
+				setvar RECOIL_AMOUNT 10
+				mulvar RECOIL_AMOUNT 65536
+				setvar RECOIL_SPEED 32768
+			}
+			break
+		case SHOTGUN_WEAPON:
+			ifvare STATE_RETURN WEAP_SECONDARY
+			{
+				setvar RECOIL_AMOUNT 16
+				mulvar RECOIL_AMOUNT 65536
+				setvar RECOIL_SPEED 49152
+			}
+			else
+			{
+				setvar RECOIL_AMOUNT 4
+				mulvar RECOIL_AMOUNT 65536
+				setvar RECOIL_SPEED 49152
+			}
+			break
+		case PISTOL_WEAPON:
+			setvar RECOIL_AMOUNT 32768
+			setvar RECOIL_SPEED 10922
+			break
+	endswitch
+ends
+
 state handle_recoil
 	ifvarg RECOIL_AMOUNT 0
 	ifvarg RECOIL_SPEED 0
@@ -662,10 +719,10 @@ state handle_recoil
 		addvarvar cameraq16horiz RECOIL_AMOUNT
 		
 		ifvarvarn RECOIL_LASTTIC totalclock
-		ifvarg clockdiff 0
+		ifvarg clock_diff 0
 		{
 			setvarvar CL_TEMP1 RECOIL_SPEED
-			mulvarvar CL_TEMP1 clockdiff
+			mulvarvar CL_TEMP1 clock_diff
 			subvarvar RECOIL_AMOUNT CL_TEMP1
 			
 			setvarvar RECOIL_LASTTIC totalclock
@@ -673,7 +730,11 @@ state handle_recoil
 	}
 ends
 
-state player_updateweapons
+state handle_weaponchangetimer
+	ifvarg numplayers 1
+	ifvarn predicting 1
+		break
+		
 	ifvarg WEAPONCHANGETIMER 0
 	{
 		subvar WEAPONCHANGETIMER 1
@@ -685,7 +746,11 @@ state player_updateweapons
 			addvar WEAPONQUOTEALPHA 32
 		}
 	}
+ends
 
+state player_updateweapons
+	state handle_weaponchangetimer
+	
 	ifp palive
 	{
 		getplayer[THISACTOR].curr_weapon STATE_PARAM1
@@ -821,8 +886,11 @@ state player_updateweapons
 			state check_using_secondary
 			ifvare STATE_RETURN 0
 			{
-				state set_using_secondary
-				setprojectile[RAILGUNSHOT].extra 400
+				state set_weapontype
+				ifvare predicting 0 // Prediction check to prevent desync
+				{
+					setprojectile[RAILGUNSHOT].extra 400
+				}
 			}
 			
 			setplayer[THISACTOR].gotweapon RPG_WEAPON 1

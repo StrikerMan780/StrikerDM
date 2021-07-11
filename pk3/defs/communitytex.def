@@ -654,6 +654,33 @@ tilefromtexture 7322 { file "tiles/7322.png" }
 tilefromtexture 7323 { file "tiles/7323.png" }
 tilefromtexture 7324 { file "tiles/7324.png" texture }
 tilefromtexture 7325 { file "tiles/7325.png" texture }
+tilefromtexture 7326 { file "tiles/7326.png" texture }
+tilefromtexture 7327 { file "tiles/7327.png" texture }
+tilefromtexture 7328 { file "tiles/7328.png" texture }
+tilefromtexture 7329 { file "tiles/7329.png" texture }
+tilefromtexture 7330 { file "tiles/7330.png" texture }
+tilefromtexture 7331 { file "tiles/7331.png" texture }
+tilefromtexture 7332 { file "tiles/7332.png" texture }
+tilefromtexture 7333 { file "tiles/7333.png" texture }
+tilefromtexture 7334 { file "tiles/7334.png" texture }
+tilefromtexture 7335 { file "tiles/7335.png" texture }
+tilefromtexture 7336 { file "tiles/7336.png" texture }
+tilefromtexture 7337 { file "tiles/7337.png" texture }
+tilefromtexture 7338 { file "tiles/7338.png" texture }
+tilefromtexture 7339 { file "tiles/7339.png" texture }
+tilefromtexture 7340 { file "tiles/7340.png" texture }
+tilefromtexture 7341 { file "tiles/7341.png" texture }
+tilefromtexture 7342 { file "tiles/7342.png" texture }
+tilefromtexture 7343 { file "tiles/7343.png" texture }
+tilefromtexture 7344 { file "tiles/7344.png" texture }
+tilefromtexture 7345 { file "tiles/7345.png" texture }
+tilefromtexture 7346 { file "tiles/7346.png" texture }
+tilefromtexture 7347 { file "tiles/7347.png" texture }
+tilefromtexture 7348 { file "tiles/7348.png" texture }
+tilefromtexture 7349 { file "tiles/7349.png" texture }
+tilefromtexture 7350 { file "tiles/7350.png" texture }
+tilefromtexture 7351 { file "tiles/7351.png" texture }
+tilefromtexture 7352 { file "tiles/7352.png" texture }
 
 // Animated Textures
 animtilerange 7081 7132 3 ANIM_FORWARD

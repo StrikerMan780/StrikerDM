@@ -24,19 +24,21 @@ state draw_flamethrower // FLAMETHROWER_WEAPON:
                 addvarvar hud_y hud_temp
             }
             
-            guniqhudid 0
+			// Base
+            guniqhudid W_FLAME_BASE
             
             addvar hud_x 210
-            
             addvar hud_y 277 // 16 + 261
             
             addvar hud_tilenum 1
-            
             setvar hud_shade -32
             
+			orvar hud_orientation DRAWEAP_NOLERP
             state G_DrawWeaponTile
+			// ----
             
-            guniqhudid currentweapon
+			// Muzzle
+            guniqhudid W_FLAME_TOP
             
             subvar hud_y 26 // relative
             
@@ -46,37 +48,41 @@ state draw_flamethrower // FLAMETHROWER_WEAPON:
             addvar hud_tilenum 1
             addvarvar hud_tilenum hud_temp
             
+			orvar hud_orientation DRAWEAP_NOLERP
             state G_DrawWeaponTile
+			// ----
             
             guniqhudid 0
             
             setvar hud_temp3 1
         }
     }
-    ifvare hud_temp3 0
-    {
+	
+	ifvare hud_temp3 0
+	{
 		addvar hud_x 210
-        addvar hud_y 261
+		addvar hud_y 261
 		
 		ifinwater
 		{
 		}
 		else
 		{
+			guniqhudid W_FLAME_PILOT
 			setvar hud_tilenum 5174
-		
+			
 			subvar hud_shadef 32
 			state G_DrawWeaponTile
 			addvar hud_shadef 32
 		}
 		
+		guniqhudid W_FLAME
 		setvar hud_tilenum FLAMETHROWER
-        guniqhudid currentweapon
-        
-        state G_DrawWeaponTile
-        
-        guniqhudid 0
-    }
+		
+		state G_DrawWeaponTile
+		
+		guniqhudid 0
+	}
 ends
 
 actor FLAMETHROWERSPRITE
@@ -271,13 +277,20 @@ action FIREBALL_TRAIL  0   3   1   1   2
 actor FIREBALLTRAIL 0
 {
 	ifaction 0
-	{
-		ifpdistl 512
-			killit
-			
+	{		
 		cstator 130
 		setactor[THISACTOR].shade -127
 		setactor[THISACTOR].blend 255
+		setactor[THISACTOR].mdflags 16
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_SHELLEXPANSION
+		
+		setvar LOTAG_MEMORY 0 // Timer
+		setvar HITAG_MEMORY 32 // End time
+		setvar SPAWN_ORIGANG 0 // Rotational Speed
+		
+		getactor[THISACTOR].xrepeat TEMP
+		setvarvar XREPEAT_MEMORY TEMP // Start radius
+		setvar YREPEAT_MEMORY 0 // End radius
 		
 		ifinwater
 		ifrnd 32
@@ -287,13 +300,9 @@ actor FIREBALLTRAIL 0
 		
 		action FIREBALL_TRAIL
 	}
-	else
-	{
-		sizeto 0 0
-		sizeto 0 0
-		sizeto 0 0
-		sizeto 0 0
-	}
+	
+	ifcount 8
+		killit
 } 
 enda
 

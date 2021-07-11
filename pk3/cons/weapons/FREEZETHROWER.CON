@@ -24,19 +24,21 @@ state draw_freezer // FREEZE_WEAPON:
                 addvarvar hud_y hud_temp
             }
             
-            guniqhudid 0
+			// Base
+            guniqhudid W_FREEZE_BASE
             
             addvar hud_x 210
-            
             addvar hud_y 277 // 16 + 261
             
             addvar hud_tilenum 2
-            
             setvar hud_shade -32
             
+			orvar hud_orientation DRAWEAP_NOLERP
             state G_DrawWeaponTile
+			// ----
             
-            guniqhudid currentweapon
+			// Muzzle
+            guniqhudid W_FREEZE_TOP
             
             subvar hud_y 26 // relative
             
@@ -46,19 +48,20 @@ state draw_freezer // FREEZE_WEAPON:
             addvar hud_tilenum 1
             addvarvar hud_tilenum hud_temp
             
+			orvar hud_orientation DRAWEAP_NOLERP
             state G_DrawWeaponTile
-            
-            guniqhudid 0
+			// ----
+			
+			guniqhudid 0
             
             setvar hud_temp3 1
         }
     }
     ifvare hud_temp3 0
     {
-        guniqhudid currentweapon
+        guniqhudid W_FREEZE_BASE
         
         addvar hud_x 210
-        
         addvar hud_y 261
         
         state G_DrawWeaponTile

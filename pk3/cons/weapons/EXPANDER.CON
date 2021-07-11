@@ -9,9 +9,6 @@ state draw_expander // GROW_WEAPON:
     setvarvar hud_temp4 hud_pal
     setvar hud_pal 19 // Changed from 2 to 19 to leave bolts white
     
-    setvarvar hud_temp3 currentweapon
-    shiftvarl hud_temp3 1
-    
     setvar hud_temp2 0
     
     ifvarg weaponcount 0
@@ -35,6 +32,8 @@ state draw_expander // GROW_WEAPON:
             addvar hud_x 184
             addvar hud_y 240
             
+			// Crystal
+			guniqhudid W_SHRINKER_CRYSTAL
             setvarvar hud_temp3 weaponcount
             modvar hud_temp3 6
 			
@@ -49,12 +48,12 @@ state draw_expander // GROW_WEAPON:
 			endswitch
             
             setvar hud_shade -32
-        
-            guniqhudid hud_temp3
+			
+			orvar hud_orientation RS_FORCELERP
+            state G_DrawTileScaled
+			// ----
             
-            state G_DrawWeaponTile_crystal
-            
-            guniqhudid currentweapon
+            guniqhudid W_SHRINKER
             
             addvar hud_x 4
             
@@ -74,9 +73,9 @@ state draw_expander // GROW_WEAPON:
 			endswitch
             
             setvarvar hud_shade gs
-            
             setvarvar hud_pal hud_temp4
             
+			orvar hud_orientation RS_FORCELERP
             state G_DrawWeaponTile
             
             guniqhudid 0
@@ -87,9 +86,10 @@ state draw_expander // GROW_WEAPON:
     ifvare hud_temp2 0
     {
         addvar hud_x 184
-        
         addvar hud_y 240
         
+		// Crystal
+		guniqhudid W_SHRINKER_CRYSTAL
         setvar hud_tilenum SHRINKERCRYSTAL
         
         getplayer[THISACTOR].random_club_frame hud_shade
@@ -99,18 +99,16 @@ state draw_expander // GROW_WEAPON:
         mulvar hud_shade -1
         addvar hud_shade 16
         
-        guniqhudid hud_temp3
+        state G_DrawTileScaled
+		// ----
         
-        state G_DrawWeaponTile_crystal
-        
-        guniqhudid currentweapon
+        guniqhudid W_SHRINKER
         
         addvar hud_x 4
         
         setvar hud_tilenum EXPANDER
         
         setvarvar hud_shade gs
-        
         setvarvar hud_pal hud_temp4
         
         state G_DrawWeaponTile

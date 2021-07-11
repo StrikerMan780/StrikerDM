@@ -13,31 +13,32 @@ actor SATELLITE TOUGH
 enda
 
 state standard_jibs
-  guts JIBS2 1
-  guts JIBS3 2
-  guts JIBS4 3
-  guts JIBS5 2
-  guts JIBS6 3
-  ifrnd 6
-  {
-    guts JIBS1 1
-    spawn BLOODPOOL
-  }         // a badly drawn spine
+	guts JIBS2 1
+	guts JIBS3 2
+	guts JIBS4 3
+	guts JIBS5 2
+	guts JIBS6 3
+	ifrnd 6
+	{
+		guts JIBS1 1
+		spawn BLOODPOOL
+	} // a badly drawn spine
 
-  state jib_sounds
+	state underwater_blood
+	state jib_sounds
 ends
 
 state genericshrunkcode
-  ifcount 32
-  {
-    ifpdistl SQUISHABLEDISTANCE
-    pstomp
-  }
-  else
-  {
-    sizeto MINXSTRETCH MINYSTRETCH
-    spawn FRAMEEFFECT1
-  }
+	ifcount 32
+	{
+		ifpdistl SQUISHABLEDISTANCE
+			pstomp
+	}
+	else
+	{
+		sizeto MINXSTRETCH MINYSTRETCH
+		spawn FRAMEEFFECT1
+	}
 ends
 
 state genericgrowcode
@@ -81,168 +82,160 @@ move SHARKFASTVELS 72
 move SHARKFLEEVELS 40
 
 actor SHARK SHARKSTRENGTH ASHARKCRUZING SHARKVELS randomangle geth
-  ifaction ASHARKSHRUNK
-  {
-    ifcount SHRUNKDONECOUNT
-      action ASHARKCRUZING
-    else ifcount SHRUNKCOUNT
-      sizeto 60 60
-    else
-      state genericshrunkcode
-    break
-  }
-  else
-    ifaction ASHARKGROW
-  {
-    ifcount SHRUNKDONECOUNT
-      action ASHARKCRUZING
-    else
-      ifcount SHRUNKCOUNT
-        sizeto 24 24
-    else
-      state genericgrowcode
-  }
-  else
-    ifaction ASHARKFROZEN
-  {
-    fall
+	ifaction ASHARKSHRUNK
+	{
+		ifcount SHRUNKDONECOUNT
+			action ASHARKCRUZING
+		else ifcount SHRUNKCOUNT
+			sizeto 60 60
+		else
+			state genericshrunkcode
+		break
+	}
+	else ifaction ASHARKGROW
+	{
+		ifcount SHRUNKDONECOUNT
+			action ASHARKCRUZING
+		else ifcount SHRUNKCOUNT
+			sizeto 24 24
+		else
+			state genericgrowcode
+	}
+	else ifaction ASHARKFROZEN
+	{
+		fall
 
-    ifp pfacing
-      ifpdistl FROZENQUICKKICKDIST
-        pkick
+		ifp pfacing
+		ifpdistl FROZENQUICKKICKDIST
+			pkick
 
-    ifcount THAWTIME
-    {
-      action ASHARKFLEE
-      getlastpal
-      break
-    }
-    else
-      ifcount FROZENDRIPTIME
-        ifactioncount 26
-          resetactioncount
+		ifcount THAWTIME
+		{
+			action ASHARKFLEE
+			getlastpal
+			break
+		}
+		else ifcount FROZENDRIPTIME
+		ifactioncount 26
+			resetactioncount
 
-    ifhitweapon
-    {
-      ifwasweapon FREEZEBLAST
-        break
+		ifhitweapon
+		{
+			ifwasweapon FREEZEBLAST
+				break
 
-      lotsofglass 30
-      sound GLASS_BREAKING
-      addkills 1
-      killit
-    }
-    break
-  }
-  else
-    ifaction ASHARKFLEE
-  {
-    ifcount 16
-      ifrnd 48
-    {
-      action ASHARKCRUZING
-      move SHARKVELS randomangle geth
-    }
-  }
-  else
-    ifaction ASHARKCRUZING
-  {
-    ifcansee
-      ifcount 48
-        ifrnd 2
-          ifcanshoottarget
-    {
-      action ASHARKATACK
-      move SHARKFASTVELS faceplayerslow getv break
-    }
-    ifcount 32
-      ifnotmoving
-    {
-      ifrnd 128
-        move SHARKVELS randomangle geth
-      else
-        move SHARKFASTVELS randomangle geth
-    }
-  }
-  else
-    ifaction ASHARKATACK
-  {
-    ifcount 4
-    {
-      ifpdistl 1280
-      {
-        ifp palive ifcanshoottarget
-        {
-          sound DUKE_GRUNT
-          palfrom 32 32
-          addphealth SHARKBITESTRENGTH
-        }
-        action ASHARKFLEE
-        move SHARKFLEEVELS fleeenemy
-      }
-    }
-    else
-      ifnotmoving
-    {
-      ifcount 32
-      {
-        action ASHARKCRUZING
-        move SHARKVELS randomangle geth
-      }
-    }
-    else
-      ifcount 48
-        ifrnd 2
-    {
-      action ASHARKCRUZING
-      move SHARKFASTVELS randomangle geth
-    }
-  }
+			lotsofglass 30
+			sound GLASS_BREAKING
+			addkills 1
+			killit
+		}
+		break
+	}
+	else ifaction ASHARKFLEE
+	{
+		ifcount 16
+		ifrnd 48
+		{
+			action ASHARKCRUZING
+			move SHARKVELS randomangle geth
+		}
+	}
+	else ifaction ASHARKCRUZING
+	{
+		ifcansee
+		ifcount 48
+		ifrnd 2
+		ifcanshoottarget
+		{
+			action ASHARKATACK
+			move SHARKFASTVELS faceplayerslow getv break
+		}
+		ifcount 32
+		ifnotmoving
+		{
+			ifrnd 128
+				move SHARKVELS randomangle geth
+			else
+				move SHARKFASTVELS randomangle geth
+		}
+	}
+	else ifaction ASHARKATACK
+	{
+		ifcount 4
+		{
+			ifpdistl 1280
+			{
+				ifp palive ifcanshoottarget
+				{
+					sound DUKE_GRUNT
+					palfrom 32 32
+					addphealth SHARKBITESTRENGTH
+				}
+				action ASHARKFLEE
+				move SHARKFLEEVELS fleeenemy
+			}
+		}
+		else ifnotmoving
+		{
+			ifcount 32
+			{
+				action ASHARKCRUZING
+				move SHARKVELS randomangle geth
+			}
+		}
+		else ifcount 48
+		{
+			ifrnd 2
+			{
+				action ASHARKCRUZING
+				move SHARKFASTVELS randomangle geth
+			}
+		}
+	}
 
-  ifhitweapon
-  {
-    ifdead
-    {
-      ifwasweapon GROWSPARK
-      {
-        move 0
-        cstat 0
-        action ASHARKGROW
-        sound ACTOR_GROWING
-        break
-      }
-      else
-        ifwasweapon FREEZEBLAST
-      {
-        spritepal 1
-        strength 0
-        action ASHARKFROZEN
-        sound SOMETHINGFROZE
-      }
-      else
-      {
-        sound SQUISHED
-        guts JIBS6 5
-        addkills 1
-        killit
-      }
-    }
-    else
-    {
-      ifwasweapon SHRINKSPARK
-      {
-        action ASHARKSHRUNK
-        sound ACTOR_SHRINKING
-        move 0
-        break
-      }
-      else
-        ifwasweapon GROWSPARK
-          sound EXPANDERHIT
+	ifhitweapon
+	{
+		ifdead
+		{
+			ifwasweapon GROWSPARK
+			{
+				move 0
+				cstat 0
+				action ASHARKGROW
+				sound ACTOR_GROWING
+				break
+			}
+			else ifwasweapon FREEZEBLAST
+			{
+				spritepal 1
+				strength 0
+				action ASHARKFROZEN
+				sound SOMETHINGFROZE
+			}
+			else
+			{
+				sound SQUISHED
+				guts JIBS6 5
+				state underwater_blood
+				addkills 1
+				killit
+			}
+		}
+		else
+		{
+			ifwasweapon SHRINKSPARK
+			{
+				action ASHARKSHRUNK
+				sound ACTOR_SHRINKING
+				move 0
+				break
+			}
+			else ifwasweapon GROWSPARK
+				sound EXPANDERHIT
 
-      move SHARKVELS randomangle geth
-    }
-  }
+			move SHARKVELS randomangle geth
+		}
+	}
 enda
 
 
@@ -1224,7 +1217,7 @@ actor SMALLSMOKE 0 SMOKEFRAMES
 			cstat 514
 
 		setactor[THISACTOR].mdflags 16
-		setvar PICNUM_MEMORY -1
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_SHELLEXPANSION
 		setvar LOTAG_MEMORY 0 // Timer
 		setvar HITAG_MEMORY 45 // End time
 		setvar SPAWN_ORIGANG 0 // Rotational Speed
@@ -2645,6 +2638,7 @@ actor EGG TOUGH
 
       sound SQUISHED
 
+      spritepal 8
       state standard_jibs
       killit
     }
@@ -2713,6 +2707,7 @@ actor DEVISTATORBLAST FREEZETHROWER_WEAPON_STRENGTH enda
 actor COOLEXPLOSION1 COOL_EXPLOSION_STRENGTH enda
 actor TRIPBOMB TRIPBOMB_STRENGTH enda
 
+spritenoshade SHOTSPARK1
 action WEAP2FRAMES 0  4  1  1  6
 actor SHOTSPARK1 PISTOL_WEAPON_STRENGTH WEAP2FRAMES
   ifdead
@@ -2741,7 +2736,8 @@ actor SHOTSPARK1 PISTOL_WEAPON_STRENGTH WEAP2FRAMES
 	{
 		ifrnd 128
 			cstator 4
-			
+		
+		setactor[THISACTOR].shade -127
 		getactor[THISACTOR].yvel TEMP
 		
 		switch TEMP

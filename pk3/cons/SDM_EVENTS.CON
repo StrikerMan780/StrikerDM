@@ -113,23 +113,23 @@ state set_on_fire
 ends
 
 onevent EVENT_DAMAGESPRITE
-	getactor[THISACTOR].owner TEMP
+	getactor[THISACTOR].owner TEMP // DON'T OVERWRITE
 	setactorvar[RETURN].LASTHITBY TEMP
 	
 	ifvarvare TEMP RETURN // If owner is the same as victim
 	{
-		getactor[RETURN].picnum TEMP // Make bosses unable to hurt themselves
-		ifvare TEMP BOSS2
+		getactor[RETURN].picnum TEMP2 // Make bosses unable to hurt themselves
+		ifvare TEMP2 BOSS2
 		{
 			setvar RETURN -1
 			break
 		}
-		else ifvare TEMP BOSS3
+		else ifvare TEMP2 BOSS3
 		{
 			setvar RETURN -1
 			break
 		}
-		else ifvare TEMP BOSS5
+		else ifvare TEMP2 BOSS5
 		{
 			setvar RETURN -1
 			break
@@ -138,8 +138,8 @@ onevent EVENT_DAMAGESPRITE
 	
 	ifactor FREEZEBLAST
 	{
-		getactorvar[RETURN].BURNING_TICS TEMP
-		ifvarg TEMP 0
+		getactorvar[RETURN].BURNING_TICS TEMP2
+		ifvarg TEMP2 0
 		{
 			setactor[THISACTOR].extra 1
 		}
@@ -148,10 +148,12 @@ onevent EVENT_DAMAGESPRITE
 	else ifactor FIREBALL
 	{
 		state set_on_fire
+		break
 	}
 	else ifactor FLAMETHROWERFLAME
 	{
 		state set_on_fire
+		break
 	}
 	else ifactor BURNING_ALT
 	{
@@ -164,6 +166,44 @@ onevent EVENT_DAMAGESPRITE
 		state set_on_fire
 		setvar RETURN -1 // Do not do the usual radius damage processing
 		break
+	}
+	else ifactor DEVASTATORMISSILE
+	{
+		getactor[RETURN].picnum TEMP2
+		
+		switch TEMP2
+			case APLAYER:
+				getuserdef[].return 1 TEMP2		
+				ifvare TEMP2 -1
+				{
+					getactor[RETURN].htextra TEMP2
+					addvar TEMP2 3
+					setactor[RETURN].htextra TEMP2
+					setactor[RETURN].htpicnum DEVASTATORMISSILE
+					setactor[RETURN].htowner TEMP
+					
+					getactor[THISACTOR].ang TEMP2
+					setactor[RETURN].htang TEMP2
+					setvar RETURN -1 // Break out of this crap.
+				}
+				break
+			case CRACK1:
+			case CRACK2:
+			case CRACK3:
+			case CRACK4:
+				setactor[RETURN].htpicnum RADIUSEXPLOSION
+				break
+			default:
+				getactor[RETURN].statnum TEMP2
+				ifvare TEMP2 12 // STAT_FALLER
+				{
+					setactor[RETURN].htpicnum RADIUSEXPLOSION
+					setactor[RETURN].htextra 5
+					setactor[RETURN].htowner TEMP
+					setvar RETURN -1
+				}
+				break
+		endswitch
 	}
 	else ifactor GROWSPARK
 	{
@@ -214,36 +254,34 @@ onevent EVENT_POSTDAMAGESPRITE
 				setactor[RETURN].htpicnum RAILGUNSHOT
 			}
 		}
-		else
+		else ifvare TEMP SSGPELLET
 		{
-			ifvare TEMP SSGPELLET
+			getactor[RETURN].picnum TEMP
+			gettiledata[TEMP].gameflags TEMP2
+			
+			ifvare TEMP APLAYER
 			{
-				getactor[RETURN].picnum TEMP
-				gettiledata[TEMP].gameflags TEMP2
-				ifvare TEMP APLAYER
-				{
-					state check_penetration
-				}
-				else ifvarand TEMP2 32 // SFLAG_BADGUY
-				{
-					state check_penetration
-				}
-				else ifvarand TEMP2 262144 // SFLAG_HARDCODED_BADGUY
-				{
-					state check_penetration
-				}
+				state check_penetration
+			}
+			else ifvarand TEMP2 32 // SFLAG_BADGUY
+			{
+				state check_penetration
+			}
+			else ifvarand TEMP2 262144 // SFLAG_HARDCODED_BADGUY
+			{
+				state check_penetration
+			}
 				
-				getactor[THISACTOR].htowner TEMP
-				dist TEMP2 TEMP RETURN
-				ifvarl TEMP2 1024
-				{
+			getactor[THISACTOR].htowner TEMP
+			dist TEMP2 TEMP RETURN
+			ifvarl TEMP2 1024
+			{
+				setactor[RETURN].htpicnum RADIUSEXPLOSION
+			}
+			else ifvarl TEMP2 2048
+			{
+				ifrnd 32
 					setactor[RETURN].htpicnum RADIUSEXPLOSION
-				}
-				else ifvarl TEMP2 2048
-				{
-					ifrnd 32
-						setactor[RETURN].htpicnum RADIUSEXPLOSION
-				}
 			}
 		}
 	}
@@ -482,6 +520,7 @@ onevent EVENT_EGS
 	ifactor FIREBALL
 	{
 		setactor[THISACTOR].blend 255 // Additive Blend
+		setactor[THISACTOR].mdflags 16
 		
 		// Calculate horizontal spread
 		getactor[THISACTOR].ang TEMP
@@ -540,7 +579,27 @@ onevent EVENT_EGS
 				setactor[THISACTOR].pal TEMP2
 			}
 			
-			ifrnd 128
+			randvar RANDOM_SOUND 4
+			switch RANDOM_SOUND
+				case 0: sound BULLET_HIT1 break
+				case 1: sound BULLET_HIT2 break
+				case 2: sound BULLET_HIT3 break
+				case 3: sound BULLET_HIT4 break
+				case 4: sound BULLET_HIT5 break
+			endswitch
+
+			ifinwater
+			{
+				espawn BLOODINFLUID1
+				getactor[THISACTOR].pal TEMP2
+				setactor[RETURN].pal TEMP2
+				randvar TEMP 8
+				addvar TEMP 8
+				setactor[RETURN].xrepeat TEMP
+				setactor[RETURN].yrepeat TEMP
+				setvar RETURN 0
+			}
+			else
 			{
 				espawn BLOODSPURT
 				getactor[THISACTOR].pal TEMP2
@@ -559,15 +618,6 @@ onevent EVENT_EGS
 				setactor[RETURN].ang TEMP
 				setvar RETURN 0
 			}
-			
-			randvar RANDOM_SOUND 4
-			switch RANDOM_SOUND
-				case 0: sound BULLET_HIT1 break
-				case 1: sound BULLET_HIT2 break
-				case 2: sound BULLET_HIT3 break
-				case 3: sound BULLET_HIT4 break
-				case 4: sound BULLET_HIT5 break
-			endswitch
 		}
 		
 		break
@@ -856,63 +906,91 @@ state plasma_spread
 		getactor[THISACTOR].x SPAWN_ORIGX
 		getactor[THISACTOR].y SPAWN_ORIGY
 		getactor[THISACTOR].z SPAWN_ORIGZ
+		getactor[THISACTOR].htbposx DEST_X
+		getactor[THISACTOR].htbposy DEST_Y
+		getactor[THISACTOR].htbposz DEST_Z
 		getactor[THISACTOR].ang SPAWN_ORIGANG
 		getactor[THISACTOR].zvel SPAWN_ORIGZVEL
-		getactor[THISACTOR].owner TEMP2
+		getactor[THISACTOR].owner TEMP2 // Do NOT overwrite!
+		
+		randvar TEMP3 16
+		subvar TEMP3 8
+		addvarvar SPAWN_ORIGANG TEMP3
+		
+		randvar TEMP3 512
+		subvar TEMP3 256
+		addvarvar SPAWN_ORIGZVEL TEMP3
 			
 		eshootvar PICNUM_MEMORY
-		getactor[THISACTOR].ang TEMP
+		setvarvar TEMP SPAWN_ORIGANG
 		addvar TEMP PLASMARIFLE_X_SPREAD
 		setactor[RETURN].ang TEMP
 		setactor[RETURN].x SPAWN_ORIGX
 		setactor[RETURN].y SPAWN_ORIGY
 		setactor[RETURN].z SPAWN_ORIGZ
+		setactor[RETURN].htbposx DEST_X
+		setactor[RETURN].htbposy DEST_Y
+		setactor[RETURN].htbposz DEST_Z
 		setactor[RETURN].zvel SPAWN_ORIGZVEL
 		setactor[RETURN].owner TEMP2
 		setvar RETURN 0
 			
 		eshootvar PICNUM_MEMORY
-		getactor[THISACTOR].ang TEMP
+		setvarvar TEMP SPAWN_ORIGANG
 		subvar TEMP PLASMARIFLE_X_SPREAD
 		setactor[RETURN].ang TEMP
 		setactor[RETURN].x SPAWN_ORIGX
 		setactor[RETURN].y SPAWN_ORIGY
 		setactor[RETURN].z SPAWN_ORIGZ
+		setactor[RETURN].htbposx DEST_X
+		setactor[RETURN].htbposy DEST_Y
+		setactor[RETURN].htbposz DEST_Z
 		setactor[RETURN].zvel SPAWN_ORIGZVEL
 		setactor[RETURN].owner TEMP2
 		setvar RETURN 0
 			
 		eshootvar PICNUM_MEMORY
-		getactor[THISACTOR].zvel TEMP
+		setvarvar TEMP SPAWN_ORIGZVEL
 		addvar TEMP PLASMARIFLE_Y_SPREAD
 		setactor[RETURN].zvel TEMP
 		setactor[RETURN].x SPAWN_ORIGX
 		setactor[RETURN].y SPAWN_ORIGY
 		setactor[RETURN].z SPAWN_ORIGZ
+		setactor[RETURN].htbposx DEST_X
+		setactor[RETURN].htbposy DEST_Y
+		setactor[RETURN].htbposz DEST_Z
 		setactor[RETURN].ang SPAWN_ORIGANG
 		setactor[RETURN].owner TEMP2
 		setvar RETURN 0
 			
 		eshootvar PICNUM_MEMORY
-		getactor[THISACTOR].zvel TEMP
+		setvarvar TEMP SPAWN_ORIGZVEL
 		subvar TEMP PLASMARIFLE_Y_SPREAD
 		setactor[RETURN].zvel TEMP
 		setactor[RETURN].x SPAWN_ORIGX
 		setactor[RETURN].y SPAWN_ORIGY
 		setactor[RETURN].z SPAWN_ORIGZ
+		setactor[RETURN].htbposx DEST_X
+		setactor[RETURN].htbposy DEST_Y
+		setactor[RETURN].htbposz DEST_Z
 		setactor[RETURN].ang SPAWN_ORIGANG
 		setactor[RETURN].owner TEMP2
 		setvar RETURN 0
-			
+		
+		// Center shot
 		eshootvar PICNUM_MEMORY
 		setactor[RETURN].x SPAWN_ORIGX
 		setactor[RETURN].y SPAWN_ORIGY
 		setactor[RETURN].z SPAWN_ORIGZ
+		setactor[RETURN].htbposx DEST_X
+		setactor[RETURN].htbposy DEST_Y
+		setactor[RETURN].htbposz DEST_Z
 		setactor[RETURN].ang SPAWN_ORIGANG
 		setactor[RETURN].zvel SPAWN_ORIGZVEL
 		setactor[RETURN].owner TEMP2
 		setvar RETURN 0
-			
+		
+		changespritestat THISACTOR 2
 		killit
 	}
 ends
@@ -1035,15 +1113,36 @@ onevent EVENT_GAME
 		case JIBS5:
 		case DUKETORSO:
 		case DUKELEG:
-			getactor[THISACTOR].pal TEMP2
-			espawn GIBBLOOD
-			setactor[RETURN].pal TEMP2
-			setvar RETURN 0
+			addvar EXTRA_MEMORY 1 // Timer
+			setvarvar TEMP EXTRA_MEMORY
+			
+			ifvarg Numsprites 10000
+				modvar TEMP 4 // Spawn blood every 4th tic
+			else
+				modvar TEMP 2 // Spawn blood every 2nd tic
+				
+			ifvare TEMP 0
+			ifvarl Numsprites 14000 // Prevent "Too Many Sprites Spawned"
+			{
+				getactor[THISACTOR].pal TEMP2
+				espawn GIBBLOOD
+				setactor[RETURN].pal TEMP2
+				setvar RETURN 0
+			}
 			break
 	endswitch
 	
 	ifactor JIBS6
 	{
+		ifspawnedby SHOTSPARK1
+		ifinwater
+		{
+			changespritestat THISACTOR 2
+			killit
+			break
+		}
+		
+		// Check if actor was changed from one of these.
 		switch PICNUM_MEMORY
 			case JIBS1:
 			case JIBS2:
@@ -1059,22 +1158,25 @@ onevent EVENT_GAME
 			case DUKELEG:
 			case DUKEGUN:
 			case DUKETORSO:
-				state gibsound
+				state gibsound // Impact splat noise
 				
-				getactor[THISACTOR].pal TEMP2
-				ifvare PICNUM_MEMORY JIBS1 { espawn JIBS1_ONGROUND setactor[RETURN].pal TEMP2 }
-				else ifvare PICNUM_MEMORY JIBS2 { espawn JIBS2_ONGROUND setactor[RETURN].pal TEMP2 }
-				else ifvare PICNUM_MEMORY JIBS3 { espawn JIBS3_ONGROUND setactor[RETURN].pal TEMP2 }
-				else ifvare PICNUM_MEMORY JIBS4 { espawn JIBS4_ONGROUND setactor[RETURN].pal TEMP2 }
-				else ifvare PICNUM_MEMORY JIBS5 { espawn JIBS5_ONGROUND setactor[RETURN].pal TEMP2 }
-				else ifvare PICNUM_MEMORY HEADJIB1 { espawn HEADJIB1_ONGROUND setactor[RETURN].pal TEMP2 }
-				else ifvare PICNUM_MEMORY LEGJIB1 { espawn LEGJIB1_ONGROUND setactor[RETURN].pal TEMP2 }
-				else ifvare PICNUM_MEMORY ARMJIB1 { espawn ARMJIB1_ONGROUND setactor[RETURN].pal TEMP2 }
-				else ifvare PICNUM_MEMORY DUKETORSO { espawn DUKETORSO_ONGROUND setactor[RETURN].pal TEMP2 }
-				else ifvare PICNUM_MEMORY DUKEGUN { espawn DUKEGUN_ONGROUND setactor[RETURN].pal TEMP2 }
-				else ifvare PICNUM_MEMORY DUKELEG { espawn DUKELEG_ONGROUND setactor[RETURN].pal TEMP2 }
+				ifvarl Numsprites 14000 // Prevent "Too Many Sprites"
+				{
+					getactor[THISACTOR].pal TEMP2
+					ifvare PICNUM_MEMORY JIBS1 { espawn JIBS1_ONGROUND setactor[RETURN].pal TEMP2 }
+					else ifvare PICNUM_MEMORY JIBS2 { espawn JIBS2_ONGROUND setactor[RETURN].pal TEMP2 }
+					else ifvare PICNUM_MEMORY JIBS3 { espawn JIBS3_ONGROUND setactor[RETURN].pal TEMP2 }
+					else ifvare PICNUM_MEMORY JIBS4 { espawn JIBS4_ONGROUND setactor[RETURN].pal TEMP2 }
+					else ifvare PICNUM_MEMORY JIBS5 { espawn JIBS5_ONGROUND setactor[RETURN].pal TEMP2 }
+					else ifvare PICNUM_MEMORY HEADJIB1 { espawn HEADJIB1_ONGROUND setactor[RETURN].pal TEMP2 }
+					else ifvare PICNUM_MEMORY LEGJIB1 { espawn LEGJIB1_ONGROUND setactor[RETURN].pal TEMP2 }
+					else ifvare PICNUM_MEMORY ARMJIB1 { espawn ARMJIB1_ONGROUND setactor[RETURN].pal TEMP2 }
+					else ifvare PICNUM_MEMORY DUKETORSO { espawn DUKETORSO_ONGROUND setactor[RETURN].pal TEMP2 }
+					else ifvare PICNUM_MEMORY DUKEGUN { espawn DUKEGUN_ONGROUND setactor[RETURN].pal TEMP2 }
+					else ifvare PICNUM_MEMORY DUKELEG { espawn DUKELEG_ONGROUND setactor[RETURN].pal TEMP2 }
+				}
 				
-				setvar PICNUM_MEMORY 0
+				setvar PICNUM_MEMORY 0 // Clear this so it doesn't repeat
 			break
 		endswitch
 	}
@@ -1221,8 +1323,8 @@ onevent EVENT_SPAWN
 		setactor[THISACTOR].shade -127
 		setactor[THISACTOR].blend 255
 		setactor[THISACTOR].mdflags 16
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_SHELLEXPANSION
 		
-		setvar PICNUM_MEMORY -1
 		setvar LOTAG_MEMORY 0 // Timer
 		setvar HITAG_MEMORY 64 // End time
 		setvar SPAWN_ORIGANG 64 // Rotational Speed
@@ -1259,8 +1361,8 @@ onevent EVENT_SPAWN
 		setactor[THISACTOR].shade -127
 		setactor[THISACTOR].blend 255
 		setactor[THISACTOR].mdflags 16
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_SHELLEXPANSION
 		
-		setvar PICNUM_MEMORY -1
 		setvar LOTAG_MEMORY 0 // Timer
 		setvar HITAG_MEMORY 16 // End time
 		setvar SPAWN_ORIGANG 0 // Rotational Speed
@@ -1285,8 +1387,8 @@ onevent EVENT_SPAWN
 		setactor[THISACTOR].shade -127
 		setactor[THISACTOR].blend 255
 		setactor[THISACTOR].mdflags 16
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_SHELLEXPANSION
 		
-		setvar PICNUM_MEMORY -1
 		setvar LOTAG_MEMORY 0 // Timer
 		setvar HITAG_MEMORY 32 // End time
 		setvar SPAWN_ORIGANG 0 // Rotational Speed
@@ -1513,7 +1615,7 @@ onevent EVENT_SPAWN
 	endswitch
 endevent
 
-onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
+onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!	
 	ifvarg QUAKE3BOB 0
 	{
 		setvarvar CL_TEMP1 totalclock
@@ -1539,6 +1641,110 @@ onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
 			settspr[THISACTOR].tsprang CL_TEMP1
 		}
 	}
+	
+	// LOTAG_MEMORY = timer
+	// HITAG_MEMORY = lifetime
+	// SPAWN_ORIGANG = rotational speed
+	// SPAWN_ORIGZVEL = rotational offset
+	// XREPEAT_MEMORY = start radius
+	// YREPEAT_MEMORY = end radius
+	ifvarand ANIMATE_FLAGS ANIMATE_FLAG_SHELLEXPANSION
+	{	
+		ifvarvare LOTAG_MEMORY HITAG_MEMORY
+		{
+			settspr[THISACTOR].tsprxrepeat 0
+			break
+		}
+		
+		ifvarvarg LOTAG_MEMORY HITAG_MEMORY
+		{
+			settspr[THISACTOR].tsprxrepeat 0
+			break
+		}
+			
+		ifvarg clock_diff 0 // Sync to 120hz timer
+		{	
+			getuserdef[].pause_on CL_TEMP1
+			ifvarvarn ANIMATE_CLOCKLAST totalclock
+			ifvare CL_TEMP1 0
+			{
+				// Increment timer
+				addvarvar LOTAG_MEMORY clock_diff
+				
+				// Increment angle
+				setvarvar CL_TEMP1 SPAWN_ORIGANG
+				mulvarvar CL_TEMP1 clock_diff
+				addvarvar SPAWN_ORIGZVEL CL_TEMP1
+				
+				// Set last animate tic to keep speed correct.
+				setvarvar ANIMATE_CLOCKLAST totalclock
+			}
+		}
+		
+		// Apply rotation
+		gettspr[THISACTOR].tsprang CL_TEMP2
+		addvarvar CL_TEMP2 SPAWN_ORIGZVEL
+		settspr[THISACTOR].tsprang CL_TEMP2
+		
+		// Radius range
+		setvarvar CL_TEMP1 YREPEAT_MEMORY
+		subvarvar CL_TEMP1 XREPEAT_MEMORY
+		
+		// Resulting radius
+		setvarvar CL_TEMP2 LOTAG_MEMORY
+		mulvarvar CL_TEMP2 CL_TEMP1
+		divvarvar CL_TEMP2 HITAG_MEMORY
+		addvarvar CL_TEMP2 XREPEAT_MEMORY
+		
+		ifvarg CL_TEMP2 255
+			setvar CL_TEMP2 255
+		ifvarl CL_TEMP2 0
+			setvar CL_TEMP2 0
+		
+		// Set x/yrepeat
+		settspr[THISACTOR].tsprxrepeat CL_TEMP2
+		settspr[THISACTOR].tspryrepeat CL_TEMP2
+		
+		// Fade alpha over time
+		setvarvar CL_TEMP2 LOTAG_MEMORY
+		mulvar CL_TEMP2 256
+		divvarvar CL_TEMP2 HITAG_MEMORY
+		
+		ifvarg CL_TEMP2 255
+			setvar CL_TEMP2 255
+		ifvarl CL_TEMP2 0
+			setvar CL_TEMP2 0
+
+		// Set alpha
+		setactor[THISACTOR].alpha CL_TEMP2
+	}
+	
+	// Hack to keep your own fireballs from blinding you.
+	ifactor FIREBALL
+	{
+		getactor[THISACTOR].owner CL_TEMP1
+		ldist CL_TEMP2 THISACTOR CL_TEMP1	
+		ifvarl CL_TEMP2 512
+		{
+			settspr[THISACTOR].tsprxrepeat 0
+			settspr[THISACTOR].tspryrepeat 0
+		}
+		break
+	}
+	
+	ifactor FIREBALLTRAIL
+	{
+		getactor[THISACTOR].htowner CL_TEMP1
+		getactor[CL_TEMP1].owner CL_TEMP1
+		ldist CL_TEMP2 THISACTOR CL_TEMP1
+		ifvarl CL_TEMP2 512
+		{
+			settspr[THISACTOR].tsprxrepeat 0
+			settspr[THISACTOR].tspryrepeat 0
+		}
+		break
+	}
+	// ----
 	
 	ifactor RESPAWNMARKERRED
 	{
@@ -1567,36 +1773,6 @@ onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
 		shiftvarl CL_TEMP2 6
 		subvarvar CL_TEMP1 CL_TEMP2
 		settspr[THISACTOR].tsprang CL_TEMP1
-		break
-	}
-	
-	ifactor FIRESHELL
-	{
-		state handle_shellexpansion
-		break
-	}
-	
-	ifactor SHOCKWAVE
-	{
-		state handle_shellexpansion
-		break
-	}
-	
-	ifactor EXPANDERTRAIL
-	{
-		state handle_shellexpansion
-		break
-	}
-	
-	ifactor SHRINKERTRAIL
-	{
-		state handle_shellexpansion
-		break
-	}
-	
-	ifactor SMALLSMOKE
-	{
-		state handle_shellexpansion
 		break
 	}
 	
@@ -1811,8 +1987,8 @@ state reset_weapons
 		setvar STATE_PARAM2 WEAP_SECONDARY
 		state set_have_weapon
 		
-		setvar STATE_PARAM2 0
-		state set_using_secondary
+		setvar STATE_PARAM2 WEAP_PRIMARY
+		state set_weapontype
 		
 		addvar STATE_PARAM1 1
 	}
@@ -2080,9 +2256,9 @@ state draw_babe_counter
 ends
 
 onevent EVENT_DISPLAYSTART // !UNSYNCHRONIZED!
-	setvarvar clockdiff totalclock
-	subvarvar clockdiff clockcheck
-	setvarvar clockcheck totalclock
+	setvarvar clock_diff totalclock
+	subvarvar clock_diff clock_last
+	setvarvar clock_last totalclock
 endevent
 
 onevent EVENT_DISPLAYREST // !UNSYNCHRONIZED!
@@ -2493,13 +2669,9 @@ onevent EVENT_DISPLAYMENUREST // Version display. !UNSYNCHRONIZED!
 	screentext 3072 8 180 65536 0 0 500 -127 6 280 0 3 5 1 1 8192 0 0 xdim ydim
 	
 	ifvare CL_XXXCONTENT 1
-	{
 		redefinequote 500 ^12XXX Content: ^08ON
-	}
 	else
-	{
 		redefinequote 500 ^12XXX Content: ^02OFF
-	}
 	
 	screentext 3072 8 174 65536 0 0 500 -127 6 280 0 3 5 1 1 8192 0 0 xdim ydim
 endevent
@@ -2627,11 +2799,5 @@ onevent EVENT_PROCESSINPUT
 	state handle_rift
 	state handle_sectortypes
 	state handle_jumppad_movement
-endevent
-
-// Prediction code
-onevent EVENT_FAKEDOMOVETHINGS
-	state handle_rift_prediction
-	state handle_sectortypes_prediction
-	state handle_jumppad_movement_prediction
+	state player_updateweapons
 endevent

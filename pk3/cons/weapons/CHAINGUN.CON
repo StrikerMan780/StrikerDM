@@ -25,9 +25,11 @@ state draw_chaingun // CHAINGUN_WEAPON:
 	addvar hud_x 168
 	addvar hud_y 260
 	
+	guniqhudid W_CHAINGUN_BOTTOM
 	setvar hud_tilenum CHAINGUN
-
+	
 	state G_DrawWeaponTile
+	guniqhudid 0
 	
 	subvar hud_x 168
 	subvar hud_y 260
@@ -36,9 +38,13 @@ state draw_chaingun // CHAINGUN_WEAPON:
 	{
 		addvar hud_x 178
 		addvar hud_y 233
+		
+		guniqhudid W_CHAINGUN_TOP
 		addvar hud_tilenum 1 // relative
-			
+		
+		orvar hud_orientation RS_FORCELERP
 		state G_DrawWeaponTile
+		guniqhudid 0
 	}
 	else
 	{
@@ -204,8 +210,11 @@ state draw_chaingun // CHAINGUN_WEAPON:
 				userquote 500
 			}
 */
-
+			guniqhudid W_CHAINGUN_TOP
+			
+			orvar hud_orientation RS_FORCELERP
 			state G_DrawWeaponTile
+			guniqhudid 0
 		}
 		else
 		{
@@ -213,10 +222,13 @@ state draw_chaingun // CHAINGUN_WEAPON:
 			addvar hud_x 178
 			addvar hud_y 233
 
+			guniqhudid W_CHAINGUN_TOP
 			setvar hud_tilenum CHAINGUN
 			addvar hud_tilenum 1
-
+			
+			orvar hud_orientation RS_FORCELERP
 			state G_DrawWeaponTile
+			guniqhudid 0
 		}
 	}
 ends

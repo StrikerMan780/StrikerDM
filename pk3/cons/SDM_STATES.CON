@@ -554,86 +554,6 @@ state handle_jumppad_movement
 	}
 ends
 
-state handle_jumppad_prediction
-	ifvare PREDICT_JUMPPAD_HIT 0
-	{
-		ifvare myonground 1
-		{
-			// Set TEMP to florz
-			getflorzofslope mycursectnum myx myy TEMP
-			subvar TEMP 16384 // Subtract height
-			
-			ifvarvarg myz TEMP // Touching floor?
-			{
-				setvar myonground 0 // No longer on the ground.	
-				subvar myz 16384 // Kick them off the ground a little, to stop them from being "magnetized" to the ground.
-								
-				ifvare SECTOR_JUMPZ[mycursectnum] 0
-				{
-					setvar TEMP2 -4096 // If zvel isn't set, -4096 is the default velocity.
-				}
-				else ifvarg SECTOR_JUMPZ[mycursectnum] 0
-				{
-					setvar TEMP2 0
-					subvarvar TEMP2 SECTOR_JUMPZ[mycursectnum]
-				}
-								
-				setvarvar myzvel TEMP2 // Launch			
-				setvar PREDICT_JUMPPAD_HIT 1 // They're in the air.
-							
-				// Set X/Y Velocities
-				setvarvar TEMP2 SECTOR_JUMPX[mycursectnum]
-				mulvar TEMP2 1024
-				setvarvar PREDICT_JUMPPAD_XVEL TEMP2
-								
-				setvarvar TEMP2 SECTOR_JUMPY[mycursectnum]
-				mulvar TEMP2 1024
-				setvarvar PREDICT_JUMPPAD_YVEL TEMP2
-			}
-		}
-	}
-ends
-
-state handle_jumppad_movement_prediction
-	ifvare PREDICT_JUMPPAD_HIT 1
-	{
-		ifvarn PREDICT_JUMPPAD_XVEL 0
-		{
-			setvarvar myxvel PREDICT_JUMPPAD_XVEL
-		}
-		
-		ifvarn PREDICT_JUMPPAD_YVEL 0
-		{
-			setvarvar myyvel PREDICT_JUMPPAD_YVEL
-		}
-		
-		ifp pdead
-		{
-			setvar PREDICT_JUMPPAD_HIT 0 // No longer launched by jump pad when player gets killed
-			setvar PREDICT_JUMPPAD_XVEL 0
-			setvar PREDICT_JUMPPAD_YVEL 0
-		}
-		else ifvarg myonground 0
-		{
-			setvar PREDICT_JUMPPAD_HIT 0 // No longer launched by jump pad when player hits the ground
-			setvar PREDICT_JUMPPAD_XVEL 0
-			setvar PREDICT_JUMPPAD_YVEL 0
-		}
-		else ifp pjetpack
-		{
-			setvar PREDICT_JUMPPAD_HIT 0 // If they use the jetpack, prevent them from cheating the jump pads to stop fall damage.
-			setvar PREDICT_JUMPPAD_XVEL 0
-			setvar PREDICT_JUMPPAD_YVEL 0
-		}
-		else ifinwater
-		{
-			setvar PREDICT_JUMPPAD_HIT 0 // Cancel out if landed in water.
-			setvar PREDICT_JUMPPAD_XVEL 0
-			setvar PREDICT_JUMPPAD_YVEL 0
-		}
-	}
-ends
-
 state handle_lowgravity
 	getplayer[THISACTOR].poszv TEMP
 	ifvarg TEMP 512
@@ -647,18 +567,6 @@ state handle_lowgravity
 	ifvare TEMP 1261 
 	{
 		setplayer[THISACTOR].jumping_counter 902
-	}
-ends
-
-state handle_lowgravity_prediction
-	ifvarg myzvel 512
-	{
-		setvar myzvel 512
-	}
-	
-	ifvare myjumpingcounter 1261 
-	{
-		setvar myjumpingcounter 902
 	}
 ends
 
@@ -705,23 +613,6 @@ state handle_sectortypes
 	}
 ends
 
-state handle_sectortypes_prediction
-	ifp palive
-	{
-		ifvarg mycursectnum -1
-		ifvarand SECTOR_TYPES[mycursectnum] SECTORTYPE_LOWGRAVITY
-		{
-			state handle_lowgravity_prediction
-		}
-		
-		ifvarg mycursectnum -1
-		ifvarand SECTOR_TYPES[mycursectnum] SECTORTYPE_JUMPPAD
-		{
-			state handle_jumppad_prediction
-		}
-	}
-ends
-
 state handle_rift
 	ifp palive
 	{
@@ -762,40 +653,6 @@ state handle_rift
 			sound EXIT_RIFT
 			palfrom 48 0 16 64
 			setvar IN_RIFT 0
-		}
-	}
-ends
-
-state handle_rift_prediction
-	ifp palive
-	{
-		ifinwater
-		{
-			break
-		}
-		
-		getsector[mycursectnum].floorpicnum TEMP
-		getsector[mycursectnum].ceilingpicnum TEMP2
-		ifvarvare TEMP TEMP2
-		{
-			ifvare TEMP 3817
-			{
-				ifvare PREDICT_IN_RIFT 0
-				{
-					setvar PREDICT_IN_RIFT 1
-				}
-				else
-				{
-					state handle_lowgravity_prediction
-				}
-				
-				break
-			}
-		}
-		
-		ifvare PREDICT_IN_RIFT 1
-		{
-			setvar PREDICT_IN_RIFT 0
 		}
 	}
 ends
@@ -1003,11 +860,6 @@ state gore_movement
 ends
 
 state spawn_tracer
-	// Get coords of impact point. This will be replaced by a translation
-	getactor[THISACTOR].x DEST_X
-	getactor[THISACTOR].y DEST_Y
-	getactor[THISACTOR].z DEST_Z
-	
 	// Check distance from owner, if closer than 4096 units, don't spawn.
 	getactor[THISACTOR].owner TEMP
 	ldist TEMP2 THISACTOR TEMP
@@ -1037,6 +889,11 @@ state spawn_tracer
 	sin TEMP3 TEMP3
 	divvar TEMP3 512 // Offset?
 	addvarvar SPAWN_ORIGY TEMP3
+	
+	// Get coords of impact point. This will be replaced by a translation
+	getactor[THISACTOR].x DEST_X
+	getactor[THISACTOR].y DEST_Y
+	getactor[THISACTOR].z DEST_Z
 	
 	// Get x/y/z translation between source and destination.
 	subvarvar DEST_X SPAWN_ORIGX
@@ -1070,14 +927,14 @@ ends
 
 state tracer_movement
 	ifcount TRACERTIME killit
-	
-	getactor[THISACTOR].x SPAWN_ORIGX
-	getactor[THISACTOR].y SPAWN_ORIGY
-	getactor[THISACTOR].z SPAWN_ORIGZ
-	addvarvar SPAWN_ORIGX DEST_X
-	addvarvar SPAWN_ORIGY DEST_Y
-	addvarvar SPAWN_ORIGZ DEST_Z
-	setsprite THISACTOR SPAWN_ORIGX SPAWN_ORIGY SPAWN_ORIGZ
+															// Proposed refactor?
+	getactor[THISACTOR].x SPAWN_ORIGX 						// TEMP
+	getactor[THISACTOR].y SPAWN_ORIGY 						// TEMP2
+	getactor[THISACTOR].z SPAWN_ORIGZ 						// TEMP3
+	addvarvar SPAWN_ORIGX DEST_X 							// TEMP SPAWN_ORIGX
+	addvarvar SPAWN_ORIGY DEST_Y 							// TEMP2 SPAWN_ORIGY
+	addvarvar SPAWN_ORIGZ DEST_Z 							// TEMP3 SPAWN_ORIGZ
+	setsprite THISACTOR SPAWN_ORIGX SPAWN_ORIGY SPAWN_ORIGZ // TEMP TEMP2 TEMP3
 	
 	ifinwater
 	{
@@ -1180,72 +1037,42 @@ state handle_shake_timer
 	}
 ends
 
-// LOTAG_MEMORY = timer
-// HITAG_MEMORY = lifetime
-// SPAWN_ORIGANG = rotational speed
-// SPAWN_ORIGZVEL = rotational offset
-// XREPEAT_MEMORY = start radius
-// YREPEAT_MEMORY = end radius
-// PICNUM_MEMORY = last processed tic
-state handle_shellexpansion
-		ifvarvare LOTAG_MEMORY HITAG_MEMORY
-		{
-			settspr[THISACTOR].tsprxrepeat 0
-			break
-		}
+state underwater_blood
+	ifinwater
+	{
+		espawn BLOODINFLUID2
+		getactor[THISACTOR].pal TEMP
+		setactor[RETURN].pal TEMP
 		
-		ifvarvarg LOTAG_MEMORY HITAG_MEMORY
-		{
-			settspr[THISACTOR].tsprxrepeat 0
-			break
-		}
-			
-		ifvarg clockdiff 0 // Sync to 120hz timer
-		{	
-			getuserdef[].pause_on CL_TEMP1
-			ifvarvarn PICNUM_MEMORY totalclock
-			ifvare display_mirror 0
-			ifvare CL_TEMP1 0
-			{
-				// Increment timer
-				addvarvar LOTAG_MEMORY clockdiff
-				
-				// Increment angle
-				setvarvar CL_TEMP1 SPAWN_ORIGANG
-				mulvarvar CL_TEMP1 clockdiff
-				addvarvar SPAWN_ORIGZVEL CL_TEMP1
-				
-				setvarvar PICNUM_MEMORY totalclock
-			}
-		}
+		getactor[THISACTOR].picnum TEMP
+		gettiledata[TEMP].xsize STATE_TEMP1
+		gettiledata[TEMP].ysize STATE_TEMP2
+		getactor[THISACTOR].xrepeat STATE_TEMP3
+		getactor[THISACTOR].yrepeat STATE_TEMP4
 		
-		// Apply rotation
-		gettspr[THISACTOR].tsprang CL_TEMP2
-		addvarvar CL_TEMP2 SPAWN_ORIGZVEL
-		settspr[THISACTOR].tsprang CL_TEMP2
+		// Get Y size + offset
+		gettiledata[TEMP].yoffset TEMP2 // Get Y Offset
+		setvarvar TEMP STATE_TEMP2 // Copy Y size
+		mulvarvar TEMP STATE_TEMP4
+		mulvarvar TEMP2 STATE_TEMP4
+		shiftvarl TEMP 1	// Half of sprite size to map units
+		shiftvarl TEMP2 2	// Full sprite offset to map units
+		addvarvar TEMP TEMP2
 		
-		// Radius range
-		setvarvar CL_TEMP1 YREPEAT_MEMORY
-		subvarvar CL_TEMP1 XREPEAT_MEMORY
+		getactor[THISACTOR].z TEMP2
+		subvarvar TEMP2 TEMP
+		setactor[RETURN].z TEMP2
 		
-		// Resulting radius
-		setvarvar CL_TEMP2 LOTAG_MEMORY
-		mulvarvar CL_TEMP2 CL_TEMP1
-		divvarvar CL_TEMP2 HITAG_MEMORY
-		addvarvar CL_TEMP2 XREPEAT_MEMORY
+		setvarvar TEMP STATE_TEMP1
+		mulvarvar TEMP STATE_TEMP3
+		setvarvar TEMP2 STATE_TEMP2
+		mulvarvar TEMP2 STATE_TEMP4
+		addvarvar TEMP TEMP2
+		divvar TEMP 2
+		shiftvarr TEMP 6
 		
-		// Set x/yrepeat
-		settspr[THISACTOR].tsprxrepeat CL_TEMP2
-		settspr[THISACTOR].tspryrepeat CL_TEMP2
-		
-		// Fade alpha over time
-		setvarvar CL_TEMP2 LOTAG_MEMORY
-		mulvar CL_TEMP2 256
-		divvarvar CL_TEMP2 HITAG_MEMORY
-		
-		ifvarg CL_TEMP2 255
-			setvar CL_TEMP2 255
-
-		// Set alpha
-		setactor[THISACTOR].alpha CL_TEMP2
+		setactor[RETURN].xrepeat TEMP
+		setactor[RETURN].yrepeat TEMP
+		setvar RETURN 0
+	}
 ends

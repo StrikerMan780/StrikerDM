@@ -11,7 +11,7 @@ defineprojectile RAILGUNSHOT PROJ_SYREPEAT 16
 defineprojectile RAILGUNSHOT PROJ_WORKSLIKE 8388609
 
 state draw_railgun // RAILGUN_WEAPON:
-    
+    guniqhudid W_RAILGUN
     setvarvar hud_x weapon_xoffset
     setvarvar hud_y looking_arc
     shiftvarl hud_y 1
@@ -56,7 +56,11 @@ state draw_railgun // RAILGUN_WEAPON:
 	else ifvarg weaponcount 7
 		setvar hud_tilenum RAILGUN1
     
+	ifvarg weaponcount 0
+		orvar hud_orientation RS_FORCELERP
+		
     state G_DrawWeaponTile
+	guniqhudid 0
 ends
 
 actor RAILGUNSPRITE

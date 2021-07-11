@@ -26,11 +26,14 @@ state draw_pistol // PISTOL_WEAPON:
             subvar hud_x 3
         
         ifvarl weaponcount 3
+		{
             addvarvar hud_tilenum weaponcount
+			
+			ifvarg weaponcount 0
+				orvar hud_orientation RS_FORCELERP
+		}
         
-        setvar hud_orientation 2
-        
-        guniqhudid currentweapon
+        guniqhudid W_PISTOL
         
         state G_DrawWeaponTile
         
@@ -42,7 +45,7 @@ state draw_pistol // PISTOL_WEAPON:
         
         ifvarg hud_temp3 17
         {
-            guniqhudid currentweapon
+            guniqhudid W_PISTOL
 			setvar hud_tilenum 2528 // First reload frame
             
             setvar hud_x 194
@@ -84,6 +87,7 @@ state draw_pistol // PISTOL_WEAPON:
         else ifvarg hud_temp3 12
         {
 			// Start magazine
+			guniqhudid W_PISTOL_CLIP
             setvar hud_tilenum 2530
             
             setvarvar hud_temp weaponcount
@@ -103,10 +107,8 @@ state draw_pistol // PISTOL_WEAPON:
             // End magazine
 			
             state reset_hud_weapon_y_coordinate
-            //subvarvar hud_y hud_temp2
+			guniqhudid W_PISTOL
             setvar hud_tilenum 2529 // Second reload frame
-            
-            guniqhudid currentweapon
             
             setvar hud_x 224
             subvarvar hud_x looking_angSR1
@@ -114,12 +116,12 @@ state draw_pistol // PISTOL_WEAPON:
             addvar hud_y 220
             
             state G_DrawWeaponTile
-            
             guniqhudid 0
         }
         else ifvarg hud_temp3 7
         {
 			// Magazine
+			guniqhudid W_PISTOL_CLIP
             setvar hud_tilenum 2531
             
             setvarvar hud_temp weaponcount
@@ -134,15 +136,13 @@ state draw_pistol // PISTOL_WEAPON:
             
             addvar hud_y 408
             subvarvar hud_y hud_temp2
+			
+			state G_DrawWeaponTile
 			// End magazine
             
-            state G_DrawWeaponTile
-            
             state reset_hud_weapon_y_coordinate
-            //addvarvar hud_y hud_temp2
+			guniqhudid W_PISTOL
             setvar hud_tilenum 2529 // Second reload frame
-            
-            guniqhudid currentweapon
             
             setvar hud_x 224
             subvarvar hud_x looking_angSR1
@@ -160,19 +160,20 @@ state draw_pistol // PISTOL_WEAPON:
         }
         else ifvarg hud_temp3 4
         {
+			// Start Hand
+			guniqhudid W_PISTOL_HAND
+			setvar hud_tilenum 2532 // Second reload hand
             setvar hud_x 184
             subvarvar hud_x looking_angSR1
             
             addvar hud_y 235
             
-            setvar hud_tilenum 2532 // Second reload hand
-            
             state G_DrawWeaponTile
+			// End Hand
             
             subvar hud_y 235
+			guniqhudid W_PISTOL
             setvar hud_tilenum 2529 // Second reload frame
-            
-            guniqhudid currentweapon
             
             setvar hud_x 224
             subvarvar hud_x looking_angSR1
@@ -185,19 +186,18 @@ state draw_pistol // PISTOL_WEAPON:
         }
         else ifvarg hud_temp3 2
         {
+			guniqhudid W_PISTOL_HAND
+			setvar hud_tilenum 2532 // Second reload hand
             setvar hud_x 164
             subvarvar hud_x looking_angSR1
             
             addvar hud_y 245
             
-            setvar hud_tilenum 2532 // Second reload hand
-            
             state G_DrawWeaponTile
             
             subvar hud_y 245
+			guniqhudid W_PISTOL
             setvar hud_tilenum 2529 // Second reload frame
-            
-            guniqhudid currentweapon
             
             setvar hud_x 224
             subvarvar hud_x looking_angSR1
@@ -221,7 +221,8 @@ state draw_pistol // PISTOL_WEAPON:
         }
         else ifvarg hud_temp3 0
         {
-            guniqhudid currentweapon
+            guniqhudid W_PISTOL
+			setvar hud_tilenum 2529 // Second reload frame
             
             setvar hud_x 194
             subvarvar hud_x looking_angSR1
@@ -233,8 +234,6 @@ state draw_pistol // PISTOL_WEAPON:
 				addvar hud_y 10
 			}
 			
-            setvar hud_tilenum 2529 // Second reload frame
-            
             state G_DrawWeaponTile
             
             guniqhudid 0

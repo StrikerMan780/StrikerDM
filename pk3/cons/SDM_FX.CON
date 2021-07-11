@@ -41,6 +41,7 @@ actor SHOCKWAVE 0
 		setactor[THISACTOR].shade -127
 		setactor[THISACTOR].blend 255
 		setactor[THISACTOR].mdflags 16
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_SHELLEXPANSION
 		
 		setvar LOTAG_MEMORY 0 // Timer
 		setvar HITAG_MEMORY 24 // End time
@@ -91,8 +92,23 @@ actor GIBBLOOD 0 GIBBLOODFRAMES
 	}
 	else
 	{
-		cstator 128
-		cstator 2
+		ifinwater
+		{
+			ifrnd 30
+			{
+				espawn BLOODINFLUID2
+				getactor[THISACTOR].pal TEMP2
+				setactor[RETURN].pal TEMP2
+				randvar TEMP2 8
+				addvar TEMP2 8
+				setactor[RETURN].xrepeat TEMP2
+				setactor[RETURN].yrepeat TEMP2
+				setvar RETURN 0
+			}
+			killit
+		}
+		
+		cstat 130
 	
 		ifrnd 128
 			sizeat 32 32
@@ -100,17 +116,18 @@ actor GIBBLOOD 0 GIBBLOODFRAMES
 			sizeat 24 24
 	
 		ifrnd 128
-		{
 			cstator 4
-		}
+			
 		ifrnd 128
-		{
 			cstator 8
-		}
 	}
   
-	sizeto 72 72 sizeto 72 72 sizeto 72 72
-	ifactioncount 4 killit
+	sizeto 72 72
+	sizeto 72 72
+	sizeto 72 72
+	
+	ifactioncount 4
+		killit
 }
 enda
 
@@ -423,8 +440,8 @@ enda
 
 action TELEFOG1 0 2 1 1 12
 action TELEFOG2 0 10 1 1 12
-spritenoshade DOOM_TELEFOG
-actor DOOM_TELEFOG
+spriteflags DOOM_TELEFOG 16388
+actor DOOM_TELEFOG 10
 {
 	ifaction TELEFOG1
 	{
@@ -904,6 +921,12 @@ actor BLOODSPURT 0
 	espawn SPURTTRAIL
 	getactor[THISACTOR].pal TEMP
 	setactor[RETURN].pal TEMP
+	getactor[THISACTOR].htbposx TEMP
+	setactor[RETURN].htbposx TEMP
+	getactor[THISACTOR].htbposy TEMP
+	setactor[RETURN].htbposy TEMP
+	getactor[THISACTOR].htbposz TEMP
+	setactor[RETURN].htbposz TEMP
 	setvar RETURN 0
 enda
 
@@ -1031,6 +1054,68 @@ actor WATERDRIPSPLASH_FIXED 0
 }
 enda
 
+action BLOODINFLUID1_ANIM 0 16 1 1 8
+actor BLOODINFLUID1 0
+{
+	ifaction 0
+	{
+		cstat 130
+		
+		ifrnd 128
+			cstator 4
+		ifrnd 128
+			cstator 8
+		
+		setactor[THISACTOR].mdflags 16
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_SHELLEXPANSION
+		
+		setvar LOTAG_MEMORY 0 // Timer
+		setvar HITAG_MEMORY 256 // End time
+		setvar SPAWN_ORIGANG 0 // Rotational Speed
+		
+		getactor[THISACTOR].xrepeat TEMP
+		setvarvar XREPEAT_MEMORY TEMP // Start radius
+		mulvar TEMP 3
+		setvarvar YREPEAT_MEMORY TEMP // End radius
+		
+		action BLOODINFLUID1_ANIM
+	}
+	
+	ifactioncount 16
+		killit
+}
+enda
+
+action BLOODINFLUID2_ANIM 0 16 1 1 8
+actor BLOODINFLUID2 0
+{
+	ifaction 0
+	{
+		cstat 130
+		
+		ifrnd 128
+			cstator 4
+		
+		setactor[THISACTOR].mdflags 16
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_SHELLEXPANSION
+		
+		setvar LOTAG_MEMORY 0 // Timer
+		setvar HITAG_MEMORY 256 // End time
+		setvar SPAWN_ORIGANG 0 // Rotational Speed
+		
+		getactor[THISACTOR].xrepeat TEMP
+		setvarvar XREPEAT_MEMORY TEMP // Start radius
+		mulvar TEMP 4
+		setvarvar YREPEAT_MEMORY TEMP // End radius
+		
+		action BLOODINFLUID2_ANIM
+	}
+	
+	ifactioncount 16
+		killit
+}
+enda
+
 action RICOCHET_SPARK_ANIM1 0 1 1 1 2
 action RICOCHET_SPARK_ANIM2 1 1 1 1 2
 action RICOCHET_SPARK_ANIM3 2 1 1 1 2
@@ -1069,6 +1154,8 @@ actor RICOCHET_SPARK 0
 	}
 }
 enda
+
+actor JIBS6 0 enda
 
 define SCRAP_WORKSLIKE 4226
 defineprojectile COLORSCRAP1 PROJ_WORKSLIKE SCRAP_WORKSLIKE
