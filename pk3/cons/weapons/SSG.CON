@@ -14,7 +14,6 @@ state draw_ssg // SHOTGUN_WEAPON:
 	setvar hud_tilenum SSG
 	switch weaponcount
 		case 0:
-			nullop
 			break
 		case 1:
 			setvar hud_tilenum SSG_FIRE1
@@ -63,7 +62,6 @@ state draw_ssg // SHOTGUN_WEAPON:
 			addvar hud_y 2
 			break
 		case 11:
-			nullop
 			break
 		case 12:
 			addvar hud_x -1
@@ -187,7 +185,6 @@ state draw_ssg // SHOTGUN_WEAPON:
 			addvar hud_y 1
 			break
 		case 46:
-			nullop
 			break
 		case 47:
 			setvar hud_tilenum SSG_RELOAD1

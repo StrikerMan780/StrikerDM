@@ -65,6 +65,8 @@ voxel "voxels/props/0608_antenna2.kvx" { tile 608 }
 
 voxel "voxels/props/0610_pipe.kvx" { tile 610 }
 
+voxel "voxels/props/0620_betagenerator.kvx" { tile 620 }
+
 voxel "voxels/props/0621_camera1.kvx" { tile 621 tile 622 tile 623 tile 624 tile 625 }
 
 voxel "voxels/props/0669_vacuumcleaner.kvx" { tile 669 }
@@ -118,6 +120,8 @@ voxel "voxels/props/0919_meter2.kvx" { tile 919 }
 
 voxel "voxels/props/0920_chain.kvx" { tile 920 }
 
+voxel "voxels/props/0927_trafficlight.kvx" { tile 927 }
+
 voxel "voxels/props/0950_brokehydrant.kvx" { tile 950 }
 
 voxel "voxels/props/0951_box.kvx" { tile 951 }
@@ -142,6 +146,8 @@ voxel "voxels/props/0981_hydrant.kvx" { tile 981 }
 voxel "voxels/props/0990_tires.kvx" { tile 990 }
 
 voxel "voxels/props/0998_parkingmeter.kvx" { tile 998 tile 999 }
+
+voxel "voxels/props/0993_damagedpole.kvx" { tile 993 }
 
 voxel "voxels/props/0994_pipe1.kvx" { tile 994 }
 voxel "voxels/props/0995_pipe2.kvx" { tile 995 }
@@ -276,6 +282,8 @@ voxel "voxels/props/4419_brokenpipebomb.kvx" { tile 4419 }
 voxel "voxels/props/4426_bowlingpin.kvx" { tile 4426 } 
 voxel "voxels/props/4438_mug.kvx" { tile 4438 } 
 voxel "voxels/props/4440_donuts.kvx" { tile 4440 }
+voxel "voxels/props/4441_mcclain.kvx" { tile 4441 }
+voxel "voxels/props/4442_callahan.kvx" { tile 4442 }
 voxel "voxels/props/4443_usaflag.kvx" { tile 4443 }
 voxel "voxels/props/4444_vhscamera.kvx" { tile 4444 }
 voxel "voxels/props/4446_prisonball.kvx" { tile 4446 }
@@ -283,8 +291,10 @@ voxel "voxels/props/4454_deskphone.kvx" { tile 4454 }
 voxel "voxels/props/4457_rope.kvx" { tile 4457 }
 voxel "voxels/props/4458_gumballmachine1.kvx" { tile 4458 }
 voxel "voxels/props/4459_gumballmachine2.kvx" { tile 4459 }
+voxel "voxels/props/4463_bone.kvx" { tile 4463 }
 voxel "voxels/props/4464_mace.kvx" { tile 4464 }
 voxel "voxels/props/4465_genericpole.kvx" { tile 4465 }
+voxel "voxels/props/4473_dredd.kvx" { tile 4473 }
 voxel "voxels/props/4495_wetfloor.kvx" { tile 4495 }
 voxel "voxels/props/4496_broom.kvx" { tile 4496 }
 
@@ -299,6 +309,9 @@ voxel "voxels/props/4539_foodobject10.kvx" { tile 4539 }
 voxel "voxels/props/4540_foodobject11.kvx" { tile 4540 }
 voxel "voxels/props/4541_foodobject12.kvx" { tile 4541 }
 voxel "voxels/props/4542_foodobject13.kvx" { tile 4542 }
+voxel "voxels/props/4543_foodobject14.kvx" { tile 4543 }
+voxel "voxels/props/4544_foodobject15.kvx" { tile 4544 }
+voxel "voxels/props/4545_foodobject16.kvx" { tile 4545 }
 voxel "voxels/props/4546_foodobject17.kvx" { tile 4546 }
 voxel "voxels/props/4547_foodobject18.kvx" { tile 4547 }
 voxel "voxels/props/4548_foodobject19.kvx" { tile 4548 }
