@@ -453,18 +453,16 @@ state babe_give_items
 
 	ifvare BABES_ALLSAVED 1
 	{
-		randvar TEMP 6
+		randvar TEMP 4
 		ifvare TEMP 0 espawn PLASMASPRITE else
-		ifvare TEMP 1 espawn PLASMAAMMO else
-		ifvare TEMP 2 espawn FLAMETHROWERSPRITE else
-		ifvare TEMP 3 espawn FLAMETHROWERAMMO else
-		ifvare TEMP 4 espawn RAILGUNSPRITE else
-		ifvare TEMP 5 espawn RAILGUNAMMO else
-		ifvare TEMP 6 espawn GROWAMMO
+		ifvare TEMP 1 espawn FLAMETHROWERSPRITE else
+		ifvare TEMP 2 espawn RAILGUNSPRITE else
+		ifvare TEMP 3 espawn SSGSPRITE else
+		ifvare TEMP 4 espawn GROWAMMO
 	}
 	else
 	{
-		randvar TEMP 52
+		randvar TEMP 46
 		ifvare TEMP 0 espawn PLASMASPRITE else
 		ifvare TEMP 1 espawn PLASMAAMMO else
 		ifvare TEMP 2 espawn FLAMETHROWERSPRITE else
@@ -496,9 +494,7 @@ state babe_give_items
 		ifvare TEMP 28 espawn STEROIDS else
 		ifvarl TEMP 37 espawn COLA else
 		ifvarl TEMP 43 espawn SIXPAK else
-		ifvarl TEMP 47 espawn HEALTHBONER else
-		ifvarl TEMP 51 espawn ARMORBONER else
-		ifvarl TEMP 53 espawn ATOMICHEALTH
+		ifvarl TEMP 47 espawn ATOMICHEALTH
 	}
 	
 	setactorvar[RETURN].DESPAWN_TYPE 2
