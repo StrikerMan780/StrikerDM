@@ -18,6 +18,7 @@ tilefromtexture 1629 { file "tiles/1629.png" }
 
 // Duke Face
 tilefromtexture 2349 { file "tiles/2349.png" }
+tilefromtexture 2399 { file "tiles/2399.png" }
 
 // Shrinker/Expander
 tilefromtexture 25 { file "tiles/25.png" }

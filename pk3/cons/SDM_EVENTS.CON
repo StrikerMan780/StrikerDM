@@ -573,11 +573,16 @@ onevent EVENT_EGS
 			getactor[THISACTOR].owner TEMP // Shotspark
 			getactor[TEMP].htg_t 8 TEMP // Target hit
 			getactor[TEMP].picnum TEMP2 // Target picnum
-			ifvare TEMP2 APLAYER
-			{
-				getactor[TEMP].pal TEMP2 // Target's pal
-				setactor[THISACTOR].pal TEMP2
-			}
+			
+			switch TEMP2
+				case APLAYER:
+					getactor[TEMP].pal TEMP2 // Target's pal
+					setactor[THISACTOR].pal TEMP2
+					break
+				case NEWBEAST:
+					setactor[THISACTOR].pal 125
+					break
+			endswitch
 			
 			randvar RANDOM_SOUND 4
 			switch RANDOM_SOUND
@@ -2444,13 +2449,23 @@ onevent EVENT_DISPLAYSBAR // !UNSYNCHRONIZED!
 		}
 		
 		// Duke Head
+		getplayer[THISACTOR].frag CL_TEMP1
+		getplayer[THISACTOR].fraggedself CL_TEMP2
+		subvarvar CL_TEMP1 CL_TEMP2
 		getactor[THISACTOR].pal CL_TEMP2
+		
+		ifvarl CL_TEMP1 0
+			setvar CL_TEMP1 DUKEGACHIFACE
+		else
+			setvar CL_TEMP1 DUKEHUDFACE
+		
+		
 		setvar TEMP 14
 		setvar TEMP2 187
-		rotatespritea TEMP TEMP2 24576 0 DUKEHUDFACE -127 4 10 128 windowx1 windowy1 windowx2 windowy2
+		rotatespritea TEMP TEMP2 24576 0 CL_TEMP1 -127 4 10 128 windowx1 windowy1 windowx2 windowy2
 		subvar TEMP 1
 		subvar TEMP2 1
-		rotatesprite TEMP TEMP2 24576 0 DUKEHUDFACE -127 CL_TEMP2 10 windowx1 windowy1 windowx2 windowy2
+		rotatesprite TEMP TEMP2 24576 0 CL_TEMP1 -127 CL_TEMP2 10 windowx1 windowy1 windowx2 windowy2
 		
 		// Health
 		getactor[THISACTOR].extra CL_TEMP1
