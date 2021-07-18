@@ -3258,7 +3258,7 @@ state checktroophit
 	else ifwasweapon FIREBALL
 	{
 		sound PRED_DYING
-		action AITROOPDYING
+		action ATROOPDYING
 		state generic_burn_death
 		break
 	}
