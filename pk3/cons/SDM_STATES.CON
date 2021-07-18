@@ -215,7 +215,7 @@ state jib_sounds
 			}
 			else ifvare KILLTYPE KILL_FLAME
 			{
-				randvar RANDOM_SOUND 7
+				randvar RANDOM_SOUND 8
 				switch RANDOM_SOUND
 					case 0: actorsound LASTHITBY DUKE_FLAME01 break
 					case 1: actorsound LASTHITBY DUKE_FLAME02 break
@@ -225,6 +225,7 @@ state jib_sounds
 					case 5: actorsound LASTHITBY DUKE_FLAME06 break
 					case 6: actorsound LASTHITBY DUKE_FLAME07 break
 					case 7: actorsound LASTHITBY DUKE_FLAME08 break
+					case 8: actorsound LASTHITBY DUKE_FLAME09 break
 				endswitch
 			}
 			else ifvare KILLTYPE KILL_SHRINKER

@@ -289,6 +289,7 @@ define DUKE_FLAME05 804
 define DUKE_FLAME06 805
 define DUKE_FLAME07 806
 define DUKE_FLAME08 807
+define DUKE_FLAME09 808
 
 define FEM10_SAVED 820
 define BABE_SAVED01 821
@@ -604,6 +605,7 @@ definesound DUKE_FLAME05 sounds/duke/flame/duke_flame05.wav 0 0 255 4 0
 definesound DUKE_FLAME06 sounds/duke/flame/duke_flame06.wav 0 0 255 4 0
 definesound DUKE_FLAME07 sounds/duke/flame/duke_flame07.wav 0 0 255 4 0
 definesound DUKE_FLAME08 sounds/duke/flame/duke_flame08.wav 0 0 255 4 0
+definesound DUKE_FLAME09 sounds/duke/flame/duke_flame09.wav 0 0 255 4 0
 
 // Movement Sounds
 definesound DUKE_WALKINDUCTS1   sounds/ductwlk.wav       -64   128  2   0   0

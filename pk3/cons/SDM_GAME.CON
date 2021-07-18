@@ -3255,6 +3255,13 @@ state checktroophit
       state standard_jibs
       killit
     }
+	else ifwasweapon FIREBALL
+	{
+		sound PRED_DYING
+		action AITROOPDYING
+		state generic_burn_death
+		break
+	}
     else
     {
       sound PRED_DYING
