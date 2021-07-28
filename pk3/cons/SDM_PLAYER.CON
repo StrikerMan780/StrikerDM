@@ -563,6 +563,22 @@ state handle_shake_timer
       palfrom 48 52
       break
     }
+	ifwasweapon DFGBALL
+	{
+		ifrnd 32
+			spawn BLOOD
+			
+		palfrom 48 32 0 64
+		break
+	}
+	ifwasweapon DFGTRACER
+	{
+		ifrnd 32
+			spawn BLOOD
+			
+		palfrom 24 32 0 64
+		break
+	}
 	ifwasweapon PLASMABALL
 	{
 		palfrom 32 8 8 48

@@ -392,390 +392,318 @@ state jibfood
 ends
 
 state breakobject
-  ifaction 0
-  {
-    action ANULLACTION
-    cstator 257
-    ifactor ROBOTMOUSE
-      clipdist 64
-  }
-  else
-    ifactor ROBOTMOUSE
-  {
-      ifdead
-      {
-        ifcount 32
-        {
-          globalsound MOUSEANNOY
-          killit
-        }
-        break
-      }
-      ifcount 64 ifrnd 6
-      {
-        ifrnd 128
-          move MOUSEVELS randomangle geth
-        else
-        {
-          ifrnd 64
-            soundonce HAPPYMOUSESND1
-          else
-            ifrnd 64
-              soundonce HAPPYMOUSESND2
-          else
-            ifrnd 64
-              soundonce HAPPYMOUSESND3
-          else
-            soundonce HAPPYMOUSESND4
-        }
-        resetcount
-      }
-  }
-
-  ifhitweapon
-  {
-    ifdead
-    {
-      ifactor FOODOBJECT6
-        state jibfood
-      else
-        ifactor FOODOBJECT11
-          state jibfood
-      else
-        ifactor FOODOBJECT12
-          state jibfood
-      else
-        ifactor FOODOBJECT13
-          state jibfood
-      else
-        ifactor FOODOBJECT14
-          state jibfood
-      else
-        ifactor FOODOBJECT15
-          state jibfood
-      else
-        ifactor FOODOBJECT16
-          state jibfood
-      else
-        ifactor FOODOBJECT17
-          state jibfood
-      else
-        ifactor SKINNEDCHICKEN
-          state jibfood
-      else
-        ifactor SHOPPINGCART
-      {
-        debris SCRAP1 5
-        debris SCRAP2 5
-        debris SCRAP3 5
-        sound GLASS_HEAVYBREAK
-        killit
-      }
-      else
-        ifactor ROBOTDOG2
-      {
-	    // Unblock instead of killing this adorable pup.
-		ifvarg IMMORTAL_BABES 0
+	ifaction 0
+	{
+		action ANULLACTION
+		cstator 257
+		ifactor ROBOTMOUSE
+			clipdist 64
+	}
+	else ifactor ROBOTMOUSE
+	{
+		ifdead
 		{
-			cstat 0
+			ifcount 32
+			{
+				globalsound MOUSEANNOY
+				killit
+			}
 			break
 		}
-        soundonce DEAD_DOG
-        guts JIBS2 1
-        guts JIBS3 2
-        guts JIBS6 3
-        killit
-      }
-      else
-        ifactor FEATHEREDCHICKEN
-          state jibfood
-      else
-        ifactor DOLPHIN1
-      {
-        guts JIBS2 1
-        guts JIBS3 2
-        guts JIBS4 3
-        guts JIBS5 2
-        state jibfood
-      }
-      else
-        ifactor DOLPHIN2
-      {
-        guts JIBS2 1
-        guts JIBS3 2
-        guts JIBS4 3
-        guts JIBS5 2
-        state jibfood
-      }
-      else
-        ifactor SNAKEP
-      {
-        guts JIBS2 1
-        guts JIBS3 2
-        guts JIBS4 3
-        guts JIBS5 2
-        state jibfood
-      }
-      else
-        ifactor DONUTS
-      {
-        spritepal 7
-        guts JIBS6 2
-        killit
-      }
-      else
-        ifactor DONUTS2
-      {
-        debris SCRAP1 1
-        spritepal 7
-        guts JIBS6 2
-        killit
-      }
-      else
-        ifactor MAILBAG
-        {
-          mail 30
-          debris SCRAP3 5
-          debris SCRAP4 3
-          killit
-        }
-      else
-        ifactor TEDDYBEAR
-      {
-        debris SCRAP3 5
-        spritepal 1
-        debris SCRAP3 6
-      }
-      else
-      {
-        ifrnd 128
-          sound GLASS_BREAKING
-        else
-          sound GLASS_HEAVYBREAK
-      }
+		ifcount 64 ifrnd 6
+		{
+			ifrnd 128
+				move MOUSEVELS randomangle geth
+			else
+			{
+				ifrnd 64
+					soundonce HAPPYMOUSESND1
+				else ifrnd 64
+					soundonce HAPPYMOUSESND2
+				else ifrnd 64
+					soundonce HAPPYMOUSESND3
+				else
+					soundonce HAPPYMOUSESND4
+			}
+			resetcount
+		}
+	}
 
-      ifactor CLOCK
-      {
-        cactor BROKENCLOCK
-        break
-      }
-      else
-        ifactor JOLLYMEAL
-      {
-        spawn ATOMICHEALTH
-        debris SCRAP3 1
-        debris SCRAP4 2
-      }
-      else
-        ifactor GUMBALLMACHINE
-      {
-        cactor GUMBALLMACHINEBROKE
-        strength 1
-        debris SCRAP4 2
-        lotsofglass 10
-        break
-      }
-      else
-        ifactor GUMBALLMACHINEBROKE
-      {
-        debris SCRAP3 3
-        debris SCRAP4 2
-        lotsofglass 10
-      }
-      else
-        ifactor DUKEBURGER
-      {
-        debris SCRAP3 14
-        debris SCRAP1 13
-        debris SCRAP4 12
-        debris SCRAP2 12
-        debris SCRAP5 11
-      }
-      else
-        ifactor POLICELIGHTPOLE
-      {
-        debris SCRAP3 4
-        debris SCRAP1 3
-        debris SCRAP4 2
-        debris SCRAP2 2
-        debris SCRAP5 1
-      }
-      else
-        ifactor TOPSECRET
-          paper 10
-      else
-        ifactor GUNPOWDERBARREL
-      {
-        spawn EXPLOSION2
-        sound PIPEBOMB_EXPLODE
-        hitradius 2048 WEAKEST WEAK MEDIUMSTRENGTH TOUGH
-        ifpdistl 2048
-          wackplayer
-        debris SCRAP1 10      // Weapons and ammo!
-        debris SCRAP2 13
-        debris SCRAP3 4
-        debris SCRAP4 17
-        debris SCRAP5 6
-      }
-      else
-        ifactor FLOORBASKET
-      {
-        spawn PUKE
-        debris SCRAP1 2
-        debris SCRAP3 3
-        debris SCRAP4 2
-      }
-      else
-        ifactor ROBOTMOUSE
-      {
-        debris SCRAP2 10
-        spritepal 1
-        debris SCRAP3 4
-        resetcount
-        cstat 32768
-        break
-      }
-      else
-        ifactor ROBOTPIRATE
-      {
-        debris SCRAP2 10
-        debris SCRAP1 5
-        debris SCRAP3 3
-        lotsofglass 10
-      }
-      else
-        ifactor PIRATE1A
-      {
-        debris SCRAP2 10
-        debris SCRAP1 5
-        debris SCRAP3 3
-        lotsofglass 10
-      }
-      else
-        ifactor MAN
-      {
-        debris SCRAP2 10
-        debris SCRAP1 5
-        debris SCRAP3 3
-        lotsofglass 10
-      }
-      else
-        ifactor MAN2
-      {
-        debris SCRAP2 10
-        debris SCRAP1 5
-        debris SCRAP3 3
-        lotsofglass 10
-      }
-      else
-        ifactor PIRATE2A
-      {
-        debris SCRAP2 10
-        debris SCRAP1 5
-        debris SCRAP3 3
-        lotsofglass 10
-      }
-      else
-        ifactor PIRATE3A
-      {
-        debris SCRAP2 10
-        debris SCRAP1 5
-        debris SCRAP3 3
-        lotsofglass 10
-      }
-      else
-        ifactor PIRATE4A
-      {
-        debris SCRAP2 10
-        debris SCRAP1 5
-        debris SCRAP3 3
-        lotsofglass 10
-      }
-      else
-        ifactor PIRATE4A
-      {
-        debris SCRAP2 10
-        debris SCRAP1 5
-        debris SCRAP3 3
-        lotsofglass 10
-      }
-      else
-        ifactor PIRATE5A
-      {
-        debris SCRAP2 10
-        debris SCRAP1 5
-        debris SCRAP3 3
-        lotsofglass 10
-      }
-      else
-        ifactor PIRATE6A
-      {
-        debris SCRAP2 10
-        debris SCRAP1 5
-        debris SCRAP3 3
-        lotsofglass 10
-      }
-      else
-      {
-        lotsofglass 10
-        debris SCRAP4 3
-      }
-      killit
-    }
-    else
-      ifactor DOLPHIN1
-    {
-      guts JIBS6 1
-      soundonce DOLPHINSND
-      ifstrength TOUGH
-      {
-        cactor DOLPHIN2
-        sound SQUISHED
-      }
-    }
-    else
-      ifactor DOLPHIN2
-    {
-      guts JIBS6 1
-      soundonce DOLPHINSND
-    }
-    else
-      ifactor ROBOTDOG2
-    {
-      guts JIBS6 1
-      soundonce WHINING_DOG
-    }
-  }
-  else
-  {
-    ifactor CLOCK
-      nullop
-    else
-      ifactor TOPSECRET
-        nullop
-    else
-      ifactor SKINNEDCHICKEN
-        nullop
-    else
-      ifactor FEATHEREDCHICKEN
-        nullop
-    else
-      ifactor FOODOBJECT2
-        nullop
-    else
-      ifactor FOODOBJECT6
-        nullop
-    else
-      ifactor DOLPHIN1
-        nullop
-    else
-      ifactor DOLPHIN2
-        nullop
-    else
-      fall
-  }
+	ifhitweapon
+	{
+		ifdead
+		{
+			getactor[THISACTOR].picnum TEMP
+			switch TEMP
+				case FOODOBJECT6
+				case FOODOBJECT11
+				case FOODOBJECT12
+				case FOODOBJECT13
+				case FOODOBJECT14
+				case FOODOBJECT15
+				case FOODOBJECT16
+				case FOODOBJECT17
+				case SKINNEDCHICKEN
+				case FEATHEREDCHICKEN
+					state jibfood
+					break
+				case SHOPPINGCART
+					debris SCRAP1 5
+					debris SCRAP2 5
+					debris SCRAP3 5
+					sound GLASS_HEAVYBREAK
+					killit
+					break
+				case ROBOTDOG2
+					// Unblock instead of killing this adorable pup.
+					ifvarg IMMORTAL_BABES 0
+					{
+						cstat 0
+					}
+					else
+					{
+						soundonce DEAD_DOG
+						guts JIBS2 1
+						guts JIBS3 2
+						guts JIBS6 3
+						killit
+					}
+					break
+				case DOLPHIN1
+				case DOLPHIN2
+				case SNAKEP
+					guts JIBS2 1
+					guts JIBS3 2
+					guts JIBS4 3
+					guts JIBS5 2
+					state jibfood
+					break
+				case DONUTS
+					spritepal 7
+					guts JIBS6 2
+					killit
+					break
+				case DONUTS2
+					debris SCRAP1 1
+					spritepal 7
+					guts JIBS6 2
+					killit
+					break
+				case MAILBAG
+					mail 30
+					debris SCRAP3 5
+					debris SCRAP4 3
+					killit
+					break
+				case TEDDYBEAR
+					debris SCRAP3 5
+					spritepal 1
+					debris SCRAP3 6
+					break
+				default
+					ifrnd 128
+						sound GLASS_BREAKING
+					else
+						sound GLASS_HEAVYBREAK
+					break
+			endswitch
 
-
+			ifactor CLOCK
+			{
+				cactor BROKENCLOCK
+				break
+			}
+			else ifactor JOLLYMEAL
+			{
+				spawn ATOMICHEALTH
+				debris SCRAP3 1
+				debris SCRAP4 2
+			}
+			else ifactor GUMBALLMACHINE
+			{
+				cactor GUMBALLMACHINEBROKE
+				strength 1
+				debris SCRAP4 2
+				lotsofglass 10
+				break
+			}
+			else ifactor GUMBALLMACHINEBROKE
+			{
+				debris SCRAP3 3
+				debris SCRAP4 2
+				lotsofglass 10
+			}
+			else ifactor DUKEBURGER
+			{
+				debris SCRAP3 14
+				debris SCRAP1 13
+				debris SCRAP4 12
+				debris SCRAP2 12
+				debris SCRAP5 11
+			}
+			else ifactor POLICELIGHTPOLE
+			{
+				debris SCRAP3 4
+				debris SCRAP1 3
+				debris SCRAP4 2
+				debris SCRAP2 2
+				debris SCRAP5 1
+			}
+			else ifactor TOPSECRET
+				paper 10
+			else ifactor GUNPOWDERBARREL
+			{
+				spawn EXPLOSION2
+				sound PIPEBOMB_EXPLODE
+				hitradius 2048 WEAKEST WEAK MEDIUMSTRENGTH TOUGH
+				ifpdistl 2048
+					wackplayer
+				debris SCRAP1 10      // Weapons and ammo!
+				debris SCRAP2 13
+				debris SCRAP3 4
+				debris SCRAP4 17
+				debris SCRAP5 6
+			}
+			else ifactor FLOORBASKET
+			{
+				spawn PUKE
+				debris SCRAP1 2
+				debris SCRAP3 3
+				debris SCRAP4 2
+			}
+			else ifactor ROBOTMOUSE
+			{
+				ifrnd 128
+					spawn HEALTHBONER
+				else
+					spawn ARMORBONER
+					
+				debris SCRAP2 10
+				spritepal 1
+				debris SCRAP3 4
+				resetcount
+				cstat 32768
+				break
+			}
+			else ifactor ROBOTPIRATE
+			{
+				debris SCRAP2 10
+				debris SCRAP1 5
+				debris SCRAP3 3
+				lotsofglass 10
+			}
+			else ifactor PIRATE1A
+			{
+				debris SCRAP2 10
+				debris SCRAP1 5
+				debris SCRAP3 3
+				lotsofglass 10
+			}
+			else ifactor MAN
+			{
+				debris SCRAP2 10
+				debris SCRAP1 5
+				debris SCRAP3 3
+				lotsofglass 10
+			}
+			else ifactor MAN2
+			{
+				debris SCRAP2 10
+				debris SCRAP1 5
+				debris SCRAP3 3
+				lotsofglass 10
+			}
+			else ifactor PIRATE2A
+			{
+				debris SCRAP2 10
+				debris SCRAP1 5
+				debris SCRAP3 3
+				lotsofglass 10
+			}
+			else ifactor PIRATE3A
+			{
+				debris SCRAP2 10
+				debris SCRAP1 5
+				debris SCRAP3 3
+				lotsofglass 10
+			}
+			else ifactor PIRATE4A
+			{
+				debris SCRAP2 10
+				debris SCRAP1 5
+				debris SCRAP3 3
+				lotsofglass 10
+			}
+			else ifactor PIRATE4A
+			{
+				debris SCRAP2 10
+				debris SCRAP1 5
+				debris SCRAP3 3
+				lotsofglass 10
+			}
+			else ifactor PIRATE5A
+			{
+				debris SCRAP2 10
+				debris SCRAP1 5
+				debris SCRAP3 3
+				lotsofglass 10
+			}
+			else ifactor PIRATE6A
+			{
+				debris SCRAP2 10
+				debris SCRAP1 5
+				debris SCRAP3 3
+				lotsofglass 10
+			}
+			else
+			{
+				lotsofglass 10
+				debris SCRAP4 3
+			}
+			killit
+		}
+		else ifactor DOLPHIN1
+		{
+			guts JIBS6 1
+			soundonce DOLPHINSND
+			ifstrength TOUGH
+			{
+				cactor DOLPHIN2
+				sound SQUISHED
+			}
+		}
+		else ifactor DOLPHIN2
+		{
+			guts JIBS6 1
+			soundonce DOLPHINSND
+		}
+		else ifactor ROBOTDOG2
+		{
+			guts JIBS6 1
+			soundonce WHINING_DOG
+		}
+	}
+	else
+	{
+		ifactor CLOCK
+			nullop
+		else ifactor TOPSECRET
+			nullop
+		else ifactor SKINNEDCHICKEN
+			nullop
+		else ifactor FEATHEREDCHICKEN
+			nullop
+		else ifactor FOODOBJECT2
+			nullop
+		else ifactor FOODOBJECT6
+			nullop
+		else ifactor DOLPHIN1
+			nullop
+		else ifactor DOLPHIN2
+			nullop
+		else
+			fall
+	}
 ends
 
 action ABURGERROTS 0 1 5
@@ -1669,70 +1597,43 @@ state getcode
 ends
 
 state getweaponcode
-  state randgetweapsnds
-  palfrom 32 0 32
-  
-  ifactor HBOMBAMMO
-	nullop
-  else ifactor TRIPBOMBSPRITE
-    nullop
-  else ifgotweaponce 1 // If weapon stay is on, break.
-    break
+	state randgetweapsnds
+		palfrom 32 0 32
 	
-  ifvare RESPAWN_ITEMS 1
-  {
-    move RESPAWN_ACTOR_FLAG
-    state create_spawn_marker
-    cstat 32768
-  }
-  else ifvare COOP GM_COOPERATIVE
-  {
 	ifactor HBOMBAMMO
+		nullop
+	else ifactor TRIPBOMBSPRITE
+		nullop
+	else ifgotweaponce 1 // If weapon stay is on, break.
+		break
+	
+	ifvare RESPAWN_ITEMS 1
 	{
 		move RESPAWN_ACTOR_FLAG
 		state create_spawn_marker
 		cstat 32768
 	}
-	else ifactor TRIPBOMBSPRITE
+	else ifvare COOP GM_COOPERATIVE
 	{
-		move RESPAWN_ACTOR_FLAG
-		state create_spawn_marker
-		cstat 32768
+		ifactor HBOMBAMMO
+		{
+			move RESPAWN_ACTOR_FLAG
+			state create_spawn_marker
+			cstat 32768
+		}
+		else ifactor TRIPBOMBSPRITE
+		{
+			move RESPAWN_ACTOR_FLAG
+			state create_spawn_marker
+			cstat 32768
+		}
+		else
+		{
+			killit
+		}
 	}
 	else
-	{
 		killit
-	}
-  }
-  else
-    killit
-ends
-
-state respawnit
-  ifcount RESPAWNITEMTIME
-  {
-    spawn TRANSPORTERSTAR
-    move 0
-    cstat 0
-    sound TELEPORTER
-  }
-ends
-
-state quikget
-  ifactor ATOMICHEALTH
-    globalsound GETATOMICHEALTH
-  else
-    globalsound DUKE_GET
-  palfrom 16 0 32
-  killit
-ends
-
-state quikweaponget
-  state randgetweapsnds
-  palfrom 32 0 32
-  ifgotweaponce 1
-    break
-  killit
 ends
 
 actor STEROIDS
@@ -2060,28 +1961,6 @@ actor GROWAMMO
       }
 enda
 
-actor DEVISTATORAMMO
-  state item_shared_code
-  
-  ifmove RESPAWN_ACTOR_FLAG
-    state respawnit
-  else
-    ifp pshrunk nullop
-    else
-      ifp palive
-        ifpdistl RETRIEVEDISTANCE
-          ifcount 6
-            ifcanseetarget
-      {
-        addammo DEVISTATOR_WEAPON DEVISTATORAMMOAMOUNT
-        quote 14
-        ifspawnedby DEVISTATORAMMO
-          state getcode
-        else
-          state quikget
-      }
-enda
-
 actor HBOMBAMMO
   state item_shared_code
   
@@ -2309,29 +2188,6 @@ actor GROWSPRITEICON // Functioning Expander Pickup
 		{
           state quikweaponget_custom
 		}
-      }
-enda
-
-actor DEVISTATORSPRITE
-  state item_shared_code
-  
-  ifmove RESPAWN_ACTOR_FLAG state respawnit
-  else
-    ifp pshrunk nullop
-    else
-      ifp palive
-        ifpdistl RETRIEVEDISTANCE
-          ifcount 6
-            ifcanseetarget
-      {
-        ifgotweaponce 0
-          break
-        addweapon DEVISTATOR_WEAPON DEVISTATORAMMOAMOUNT
-        quote 87
-        ifspawnedby DEVISTATORSPRITE
-          state getweaponcode
-        else
-          state quikweaponget
       }
 enda
 
@@ -2797,38 +2653,41 @@ actor SHOTSPARK1 PISTOL_WEAPON_STRENGTH WEAP2FRAMES
 enda
 
 actor ORGANTIC TURRETSTRENGTH
-  ifcount 48
-    resetcount
-  else
-  {
-    ifcount 32
-    sizeto 32 32
-  }
-  else
-    ifcount 16
-    {
-      sizeto 48 18
-      ifpdistl 2048
-      {
-        sound TURR_ATTACK
-        addphealth -2
-        palfrom 32 16
-      }
-    }
-  ifhitweapon
-  {
-    ifdead
-    {
-      addkills 1
-      sound TURR_DYING
-      guts JIBS5 10
-      killit
-    }
-    sound TURR_PAIN
-    break
-  }
-  ifrnd 1
-    soundonce TURR_ROAM
+	ifcount 48
+	{
+		resetcount
+	}
+	else ifcount 32
+	{
+		sizeto 32 32
+	}
+	else ifcount 16
+	{
+		sizeto 48 18
+		ifpdistl 2048
+		{
+			sound TURR_ATTACK
+			addphealth -2
+			palfrom 32 16
+		}
+	}
+	
+	ifhitweapon
+	{
+		ifdead
+		{
+			addkills 1
+			sound TURR_DYING
+			guts JIBS5 10
+			guts JIBS6 10
+			killit
+		}
+		sound TURR_PAIN
+		break
+	}
+	
+	ifrnd 1
+		soundonce TURR_ROAM
 enda
 
 state rf

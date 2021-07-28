@@ -5,6 +5,7 @@ state draw_plasmarifle // PLASMARIFLE_WEAPON:
     addvar hud_x 168
     addvar hud_y 260
 	
+	state determine_animation
 	ifvarg weaponcount 0
 	ifvarl weaponcount 8
 	ifvarn hud_temp 1

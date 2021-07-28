@@ -285,6 +285,14 @@ onevent EVENT_POSTDAMAGESPRITE
 			}
 		}
 	}
+	else ifactor DFGBALL
+	{
+		getactor[RETURN].picnum TEMP2
+		ifvarn TEMP2 APLAYER
+		{
+			setactor[RETURN].htpicnum RADIUSEXPLOSION
+		}
+	}
 endevent
 
 onevent EVENT_KILLIT
@@ -300,6 +308,15 @@ onevent EVENT_KILLIT
 	ifactor GROWSPARK
 	{
 		espawn EXPANDEREXPLOSION
+		getactor[THISACTOR].owner TEMP
+		setactor[RETURN].owner TEMP
+		setvar RETURN 0
+		break
+	}
+	
+	ifactor DFGBALL
+	{
+		espawn DFGEXPLOSION
 		getactor[THISACTOR].owner TEMP
 		setactor[RETURN].owner TEMP
 		setvar RETURN 0
@@ -558,6 +575,12 @@ onevent EVENT_EGS
 		}
 		
 		break
+	}
+	
+	ifactor SCRAP1
+	ifspawnedby BLIMP
+	{
+		state set_blimp_drops
 	}
 
 	ifactor GROWSPARK
@@ -1039,6 +1062,13 @@ onevent EVENT_GAME
 		break
 	}
 	
+	ifactor SCRAP1
+	ifspawnedby BLIMP
+	{
+		state blimp_hack
+		break
+	}
+	
 	ifactor SHRINKSPARK
 	{
 		cstator 2
@@ -1265,6 +1295,11 @@ onevent EVENT_LOADACTOR
 endevent
 
 onevent EVENT_SPAWN
+	ifvarg predicting 0
+	{
+		redefinequote 500 EVENT_SPAWN: Something attempting to spawn during prediction!
+	}
+	
 	ifactor MASTERSWITCH
 	{
 		state search_for_explosive
@@ -1354,6 +1389,13 @@ onevent EVENT_SPAWN
 			setvar HITAG_MEMORY 32 // End time
 			setvar XREPEAT_MEMORY 0 // Start radius
 			setvar YREPEAT_MEMORY 48 // End radius
+			setvar SPAWN_ORIGANG 72 // Rotational Speed
+		}
+		else ifspawnedby DFGEXPLOSION
+		{
+			setvar HITAG_MEMORY 48 // End time
+			setvar XREPEAT_MEMORY 0 // Start radius
+			setvar YREPEAT_MEMORY 164 // End radius
 			setvar SPAWN_ORIGANG 72 // Rotational Speed
 		}
 
@@ -1450,6 +1492,7 @@ onevent EVENT_SPAWN
 		case FREYACRESCENT:
 		case ROUGESPREAD:
 		case COCOANIM:
+		case RENARIDE:
 		case COMMUNITY_XXX01:
 		case IMPTAN:
 			setactor[THISACTOR].mdflags 16
@@ -1724,6 +1767,51 @@ onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
 		setactor[THISACTOR].alpha CL_TEMP2
 	}
 	
+	// LOTAG_MEMORY = timer
+	// HITAG_MEMORY = lifetime
+	ifvarand ANIMATE_FLAGS ANIMATE_FLAG_FADEOUT
+	{	
+		ifvarvare LOTAG_MEMORY HITAG_MEMORY
+		{
+			settspr[THISACTOR].tsprxrepeat 0
+			break
+		}
+		
+		ifvarvarg LOTAG_MEMORY HITAG_MEMORY
+		{
+			settspr[THISACTOR].tsprxrepeat 0
+			break
+		}
+		
+		// Perhaps move this to the top of all effects
+		ifvarg clock_diff 0 // Sync to 120hz timer
+		{	
+			getuserdef[].pause_on CL_TEMP1
+			ifvarvarn ANIMATE_CLOCKLAST totalclock
+			ifvare CL_TEMP1 0
+			{
+				// Increment timer
+				addvarvar LOTAG_MEMORY clock_diff
+				
+				// Set last animate tic to keep speed correct.
+				setvarvar ANIMATE_CLOCKLAST totalclock
+			}
+		}
+		
+		// Fade alpha over time
+		setvarvar CL_TEMP2 LOTAG_MEMORY
+		mulvar CL_TEMP2 256
+		divvarvar CL_TEMP2 HITAG_MEMORY
+		
+		ifvarg CL_TEMP2 255
+			setvar CL_TEMP2 255
+		ifvarl CL_TEMP2 0
+			setvar CL_TEMP2 0
+
+		// Set alpha
+		setactor[THISACTOR].alpha CL_TEMP2
+	}
+	
 	// Hack to keep your own fireballs from blinding you.
 	ifactor FIREBALL
 	{
@@ -1945,6 +2033,9 @@ onevent EVENT_CHEATGETBOOT
 	setvar RPG_AMMO MAXRPGAMMO
 	setvar RAILGUN_AMMO MAXRAILGUNAMMO
 	
+	setvar DEVASTATOR_AMMO MAXDEVISTATORAMMO
+	setvar DFG_AMMO MAXDFGAMMO
+	
 	// Give Primaries
 	setvar STATE_PARAM2 WEAP_PRIMARY
 	setvar STATE_PARAM3 1
@@ -1956,6 +2047,9 @@ onevent EVENT_CHEATGETBOOT
 	state set_have_weapon
 	
 	setvar STATE_PARAM1 RPG_WEAPON
+	state set_have_weapon
+	
+	setvar STATE_PARAM1 DEVISTATOR_WEAPON
 	state set_have_weapon
 	
 	setvar STATE_PARAM1 FREEZE_WEAPON
@@ -1973,6 +2067,9 @@ onevent EVENT_CHEATGETBOOT
 	state set_have_weapon
 	
 	setvar STATE_PARAM1 RPG_WEAPON
+	state set_have_weapon
+	
+	setvar STATE_PARAM1 DEVISTATOR_WEAPON
 	state set_have_weapon
 	
 	setvar STATE_PARAM1 FREEZE_WEAPON
@@ -2004,7 +2101,9 @@ state reset_weapons
 	setvar RIPPER_AMMO 0
 	setvar PLASMARIFLE_AMMO 0
 	setvar RPG_AMMO 0
-	setvar RAILGUN_AMMO 0	
+	setvar RAILGUN_AMMO 0
+	setvar DEVASTATOR_AMMO 0
+	setvar DFG_AMMO 0
 	
 	ifvarg START_WEAPON -1
 	{
@@ -2024,6 +2123,8 @@ state reset_weapons
 				setvarvar RIPPER_AMMO TEMP
 			else ifvare START_WEAPON FREEZE_WEAPON
 				setvarvar FREEZETHROWER_AMMO TEMP
+			else ifvare START_WEAPON DEVISTATOR_WEAPON
+				setvarvar DEVASTATOR_AMMO TEMP
 			
 			setvarvar STATE_PARAM1 START_WEAPON
 			setvar STATE_PARAM2 WEAP_PRIMARY
@@ -2077,6 +2178,9 @@ onevent EVENT_PRELEVEL
 endevent
 
 onevent EVENT_USEMEDKIT
+	ifvarn predicting 0 // Desync prevention
+		break
+		
 	getplayer[THISACTOR].firstaid_amount TEMP
 	ifvarg TEMP 0
 	{
@@ -2416,7 +2520,10 @@ onevent EVENT_DISPLAYSBAR // !UNSYNCHRONIZED!
 				break
 				
 			case DEVISTATOR_WEAPON:
-				setvar CL_TEMP1 DEVISTATORAMMO
+				ifvare STATE_RETURN 1
+					setvar CL_TEMP1 DFGAMMO
+				else
+					setvar CL_TEMP1 DEVISTATORAMMO
 				break
 				
 			case TRIPBOMB_WEAPON:
@@ -2452,14 +2559,23 @@ onevent EVENT_DISPLAYSBAR // !UNSYNCHRONIZED!
 		getplayer[THISACTOR].frag CL_TEMP1
 		getplayer[THISACTOR].fraggedself CL_TEMP2
 		subvarvar CL_TEMP1 CL_TEMP2
-		getactor[THISACTOR].pal CL_TEMP2
 		
-		ifvarl CL_TEMP1 0
-			setvar CL_TEMP1 DUKEGACHIFACE
+		ifvarand gametype_flags 1 // COOP
+		{
+			ifvarl CL_TEMP1 -14
+				setvar CL_TEMP1 DUKEGACHIFACE
+			else
+				setvar CL_TEMP1 DUKEHUDFACE
+		}
 		else
-			setvar CL_TEMP1 DUKEHUDFACE
+		{
+			ifvarl CL_TEMP1 -4
+				setvar CL_TEMP1 DUKEGACHIFACE
+			else
+				setvar CL_TEMP1 DUKEHUDFACE
+		}
 		
-		
+		getactor[THISACTOR].pal CL_TEMP2
 		setvar TEMP 14
 		setvar TEMP2 187
 		rotatespritea TEMP TEMP2 24576 0 CL_TEMP1 -127 4 10 128 windowx1 windowy1 windowx2 windowy2
@@ -2815,4 +2931,7 @@ onevent EVENT_PROCESSINPUT
 	state handle_sectortypes
 	state handle_jumppad_movement
 	state player_updateweapons
+	
+	// Keep this at the bottom!
+	state handle_special_attacks
 endevent

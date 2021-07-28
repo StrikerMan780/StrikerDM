@@ -27,6 +27,11 @@ define MAXRAILGUNAMMO 32
 define RAILGUNAMMOAMOUNT 8
 define RAILGUN_WEAPON_STRENGTH 80
 
+define MAXDFGAMMO 15
+define DFGAMMOAMOUNT 3
+define DFG_WEAPON_STRENGTH 400
+define DFG_TRACER_STRENGTH 86
+
 define ENEMY_FLAME_STRENGTH 1
 define FF_STRENGTH 50
 define FF_SIZEX 48
@@ -53,6 +58,8 @@ definequote 133		SUPER SHOTGUN!
 definequote 134		YOU'RE BURNING, FIND WATER OR HEALTH!
 definequote 135		LIFE PETAL: +7
 definequote 136		CRYSTAL SHARD: +5
+definequote 137		DFG 69K!
+definequote 138		AMMO FOR DFG 69K
 definequote 500		PLACEHOLDER QUOTE
 
 definequote 690		MIGHTY FOOT
@@ -71,6 +78,7 @@ definequote 702		FLAMETHROWER
 definequote 703		PLASMA RIFLE
 definequote 704		RAILGUN
 definequote 705		SUPER SHOTGUN
+definequote 706		DFG 69K
 
 define GM_DUKEMATCH 0
 define GM_COOPERATIVE 1

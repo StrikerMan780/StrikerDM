@@ -616,7 +616,7 @@ definesound SHOTGUN_COCK        sounds/shotgnck.ogg      96    192   3   0   0
 definesound RPG_SHOOT           sounds/rpgfire.ogg       -32   0     4   0   0
 definesound FLY_BY              sounds/flyby.ogg         -256  256   3   0   0
 definesound RPG_EXPLODE         sounds/bombexpl.ogg      -1024 1024  128 0   0
-definesound CAT_FIRE            catfire.voc       512   768   4   0   0
+definesound CAT_FIRE            sounds/flametrap.wav       0   384   4   0   0
 definesound SHRINKER_FIRE       sounds/shrinker.ogg      -512  0     5   0   0
 definesound ACTOR_SHRINKING     shrink.voc        0     0     2   0   0
 definesound ACTOR_GROWING       enlarge.voc    1024     0     2   0   0

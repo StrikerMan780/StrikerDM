@@ -462,7 +462,7 @@ state babe_give_items
 	}
 	else
 	{
-		randvar TEMP 46
+		randvar TEMP 48
 		ifvare TEMP 0 espawn PLASMASPRITE else
 		ifvare TEMP 1 espawn PLASMAAMMO else
 		ifvare TEMP 2 espawn FLAMETHROWERSPRITE else
@@ -494,7 +494,9 @@ state babe_give_items
 		ifvare TEMP 28 espawn STEROIDS else
 		ifvarl TEMP 37 espawn COLA else
 		ifvarl TEMP 43 espawn SIXPAK else
-		ifvarl TEMP 47 espawn ATOMICHEALTH
+		ifvarl TEMP 47 espawn ATOMICHEALTH else
+		ifvarl TEMP 48 espawn DFGSPRITE else
+		ifvarl TEMP 49 espawn DFGAMMO
 	}
 	
 	setactorvar[RETURN].DESPAWN_TYPE 2

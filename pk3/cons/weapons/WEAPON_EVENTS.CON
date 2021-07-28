@@ -16,6 +16,12 @@ onevent EVENT_WEAPKEY5
 	state check_alt_weapons
 endevent
 
+onevent EVENT_WEAPKEY8
+	setvar STATE_PARAM1 DEVISTATOR_WEAPON
+	setvar STATE_PARAM2 0
+	state check_alt_weapons
+endevent
+
 onevent EVENT_WEAPKEY10
 	setvar STATE_PARAM1 FREEZE_WEAPON
 	setvar STATE_PARAM2 0
@@ -52,6 +58,8 @@ onevent EVENT_CHANGEWEAPON
 endevent
 
 onevent EVENT_DOFIRE
+	state player_updateweapons
+	
 	getplayer[THISACTOR].curr_weapon STATE_PARAM1
 	state check_using_secondary
 	
@@ -90,18 +98,6 @@ onevent EVENT_DOFIRE
 			{
 				setvar FREEZETHROWER_AMMO 0
 			}
-		}
-	}
-	else ifvare STATE_PARAM1 DEVISTATOR_WEAPON
-	{
-		getplayer[THISACTOR].hbomb_hold_delay TEMP
-		ifvare TEMP 1
-		{
-			sound DEVASTATOR_FIRERIGHT
-		}
-		else
-		{
-			sound DEVASTATOR_FIRELEFT
 		}
 	}
 	else ifvare STATE_PARAM1 CHAINGUN_WEAPON
@@ -173,11 +169,52 @@ onevent EVENT_DOFIRE
 			}
 		}
 	}
+	else ifvare STATE_PARAM1 DEVISTATOR_WEAPON
+	{
+		ifvare STATE_RETURN WEAP_SECONDARY
+		{
+			ifvarl DFG_AMMO 1
+			{
+				setvar RETURN 1
+				break
+			}
+			
+			subvar DFG_AMMO 1
+			ifvarl DFG_AMMO 0
+			{
+				setvar DFG_AMMO 0
+			}
+		}
+		else
+		{
+			ifvarl DEVASTATOR_AMMO 1
+			{
+				setvar RETURN 1
+				break
+			}
+			
+			subvar DEVASTATOR_AMMO 1
+			ifvarl DEVASTATOR_AMMO 0
+			{
+				setvar DEVASTATOR_AMMO 0
+			}
+			
+			getplayer[THISACTOR].hbomb_hold_delay TEMP
+			ifvare TEMP 1
+			{
+				sound DEVASTATOR_FIRERIGHT
+			}
+			else
+			{
+				sound DEVASTATOR_FIRELEFT
+			}
+		}
+	}
 	else ifvare STATE_PARAM1 SHOTGUN_WEAPON
 	{
 		ifvare STATE_RETURN WEAP_SECONDARY // SSG
 		{
-			getplayer[THISACTOR].ammo_amount SHOTGUN_WEAPON TEMP2
+			getplayer[THISACTOR].ammo_amount STATE_PARAM1 TEMP2
 			ifvarl TEMP2 2
 			{
 				setvar RETURN 1
@@ -185,12 +222,22 @@ onevent EVENT_DOFIRE
 			}
 			
 			subvar TEMP2 1
-			setplayer[THISACTOR].ammo_amount SHOTGUN_WEAPON TEMP2
+			setplayer[THISACTOR].ammo_amount STATE_PARAM1 TEMP2
 		}
 	}
 	
-	state do_recoil
+	ifvarn RETURN 1
+		state do_recoil
+endevent
+
+// This will need to be ported to mainline
+onevent EVENT_FIREEVERYOTHER
+	state player_updateweapons
 	
+	getplayer[THISACTOR].curr_weapon STATE_PARAM1
+	
+	ifvare STATE_PARAM1 DEVISTATOR_WEAPON
+		subvar DEVASTATOR_AMMO 1
 endevent
 
 onevent EVENT_FIRE
@@ -392,7 +439,14 @@ onevent EVENT_DISPLAYWEAPON // P_DisplayWeapon !UNSYNCHRONIZED!
                 setvar hud_tilenum GROWSPRITEICON
                 break
             case DEVISTATOR_WEAPON
-                setvar hud_tilenum DEVISTATORSPRITE
+				ifvare STATE_RETURN 1
+				{
+					setvar hud_tilenum DFGSPRITE
+				}
+				else
+				{
+					setvar hud_tilenum DEVISTATORSPRITE
+				}
                 break
             case TRIPBOMB_WEAPON
                 setvar hud_tilenum TRIPBOMBSPRITE
@@ -517,7 +571,14 @@ onevent EVENT_DISPLAYWEAPON // P_DisplayWeapon !UNSYNCHRONIZED!
                 break
             case DEVISTATOR_WEAPON
                 setvarvar hud_totaltime WEAPON7_TOTALTIME
-                state draw_devastator
+				ifvare STATE_RETURN 1
+				{
+					state draw_dfg
+				}
+				else
+				{
+					state draw_devastator
+				}
                 break
             case FREEZE_WEAPON
 				setvarvar hud_totaltime WEAPON9_TOTALTIME
@@ -546,6 +607,7 @@ onevent EVENT_DISPLAYWEAPON // P_DisplayWeapon !UNSYNCHRONIZED!
         // cleanup
         setvar hud_orientation 0
         setvar hud_angle 0
+		setvar hud_alpha 0
         guniqhudid 0
     }
 endevent

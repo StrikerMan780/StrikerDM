@@ -665,7 +665,7 @@ actor ZTDESTINATION
 enda
 
 action PIGJIB1_ANIM 0 6 1 1 16
-action PIGJIB1_LAND 295 6 1 1 6
+action PIGJIB1_LAND 175 6 1 1 6
 actor PIGJIB1 0
 	ifaction 0
 	{

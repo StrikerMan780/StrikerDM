@@ -37,6 +37,9 @@ define W_FLAME 100
 define W_FLAME_PILOT 101
 define W_FLAME_BASE 102
 define W_FLAME_TOP 103
+define W_DFG 104
+define W_DFG_PIPES 105
+define W_DFG_MUZZLE 106
 
 /*
 gamevar currentweapon 0 0 //  (system) (pointer)
@@ -65,6 +68,7 @@ gamevar hud_angle 0 CLIENTONLY_PERPLAYER
 gamevar hud_shade 0 CLIENTONLY_PERPLAYER 
 gamevar hud_pal 0 CLIENTONLY_PERPLAYER 
 gamevar hud_orientation 0 CLIENTONLY_PERPLAYER 
+gamevar hud_alpha 0 CLIENTONLY_PERPLAYER
 
 gamevar hud_fistsign 0 CLIENTONLY_PERPLAYER 
 gamevar hud_totaltime 0 CLIENTONLY_PERPLAYER 
@@ -102,3 +106,6 @@ gamevar PLASMARIFLE_AMMO 0 1
 
 gamevar RPG_AMMO 0 1
 gamevar RAILGUN_AMMO 0 1
+
+gamevar DEVASTATOR_AMMO 0 1
+gamevar DFG_AMMO 0 1

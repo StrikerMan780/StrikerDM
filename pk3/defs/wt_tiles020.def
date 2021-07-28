@@ -64,6 +64,9 @@ tilefromtexture 5254 { file "tiles/5254.png" xoffset -4 yoffset -1 }
 tilefromtexture 5255 { file "tiles/5255.png" xoffset 2 yoffset -1 }
 // End Firefly Sprites
 
+// Starry Sky
+tilefromtexture 5284 { file "tiles/5284.png" }
+
 // Firefly Shrink Star
 tilefromtexture 5296 { file "tiles/5296.png" }
 tilefromtexture 5297 { file "tiles/5297.png" }

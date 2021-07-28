@@ -1,22 +1,47 @@
-gamevar ITEM_TEMP1 0 2
+state respawnit
+	ifcount RESPAWNITEMTIME
+	{
+		spawn TRANSPORTERSTAR
+		move 0
+		cstat 0
+		sound TELEPORTER
+	}
+ends
+
+state quikget
+	ifactor ATOMICHEALTH
+		globalsound GETATOMICHEALTH
+	else
+		globalsound DUKE_GET
+	palfrom 16 0 32
+	killit
+ends
+
+state quikweaponget
+	state randgetweapsnds
+	palfrom 32 0 32
+	ifgotweaponce 1
+		break
+	killit
+ends
 
 state getcode_doomitem
-  globalsound DSITEMUP
-  palfrom 16 32 32 8
-  ifvare RESPAWN_ITEMS 1
-  {
-    move RESPAWN_ACTOR_FLAG
-    state create_spawn_marker
-    cstat 32768
-  }
-  else
-    killit
+	globalsound DSITEMUP
+	palfrom 16 32 32 8
+	ifvare RESPAWN_ITEMS 1
+	{
+		move RESPAWN_ACTOR_FLAG
+		state create_spawn_marker
+		cstat 32768
+	}
+	else
+		killit
 ends
 
 state quikget_doomitem
-  globalsound DSITEMUP
-  palfrom 16 32 32 8
-  killit
+	globalsound DSITEMUP
+	palfrom 16 32 32 8
+	killit
 ends
 
 useractor notenemy HEALTHBONER WEAK
@@ -26,7 +51,7 @@ useractor notenemy HEALTHBONER WEAK
 		state respawnit
 	else
 		ifp pshrunk nullop
-    else
+	else
 	ifp palive
 	ifpdistl RETRIEVEDISTANCE
 	ifcount 6
@@ -58,15 +83,15 @@ useractor notenemy ARMORBONER WEAK
 	ifcount 6
 	ifcanseetarget
 	{
-		getplayer[THISACTOR].shield_amount ITEM_TEMP1
-		ifvarl ITEM_TEMP1 200
+		getplayer[THISACTOR].shield_amount TEMP
+		ifvarl TEMP 200
 		{
 			setplayer[THISACTOR].max_shield_amount 200
 			addinventory GET_SHIELD 2
 			setplayer[THISACTOR].max_shield_amount SHIELD_AMOUNT
 			quote 128
 			
-			ifvarg ITEM_TEMP1 200
+			ifvarg TEMP 200
 			{
 				setplayer[THISACTOR].shield_amount 200
 			}

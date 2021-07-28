@@ -1,0 +1,442 @@
+defineprojectile DFGBALL PROJ_WORKSLIKE 32770
+defineprojectile DFGBALL PROJ_EXTRA DFG_WEAPON_STRENGTH
+defineprojectile DFGBALL PROJ_EXTRA_RAND 200 // RNJesus Christ
+defineprojectile DFGBALL PROJ_HITRADIUS 0
+defineprojectile DFGBALL PROJ_CSTAT 128
+defineprojectile DFGBALL PROJ_CLIPDIST 40
+defineprojectile DFGBALL PROJ_VEL 644
+defineprojectile DFGBALL PROJ_VEL_MULT 1
+defineprojectile DFGBALL PROJ_SHADE -127
+defineprojectile DFGBALL PROJ_XREPEAT 56
+defineprojectile DFGBALL PROJ_YREPEAT 48
+defineprojectile DFGBALL PROJ_OFFSET 224
+defineprojectile DFGBALL PROJ_SPAWNS -1
+defineprojectile DFGBALL PROJ_TRAIL DFGTRAIL
+defineprojectile DFGBALL PROJ_TXREPEAT 56
+defineprojectile DFGBALL PROJ_TYREPEAT 48
+defineprojectile DFGBALL PROJ_SOUND DFG_FIRE
+defineprojectile DFGBALL PROJ_ISOUND DFG_EXPLODE
+spritenoshade DFGBALL
+actor DFGBALL 0 enda
+
+state draw_dfg // DFG_WEAPON:
+	state reset_hud_weapon_coordinates
+	
+	addvar hud_x 200
+	addvar hud_y 240
+	
+	state determine_animation
+	ifvarg weaponcount 0
+	ifvarl weaponcount 30
+	ifvarn hud_temp 1 // Not paused, let's SHAKE!
+	{
+		displayrand hud_temp
+		andvar hud_temp 3
+				
+		addvarvar hud_x hud_temp
+
+		displayrand hud_temp
+		andvar hud_temp 3
+
+		subvarvar hud_y hud_temp
+	}
+	
+	ifvarg weaponcount 29
+	ifvarl weaponcount 46
+	{
+		setvarvar hud_temp weaponcount
+		subvarvar hud_temp WEAPON7_FIREDELAY
+		shiftvarl hud_temp 7
+		sin hud_temp hud_temp
+		shiftvarr hud_temp 10
+		
+		ifvarl weaponcount 38
+		{
+			mulvar hud_temp 3
+		}
+		else
+		{
+			divvar hud_temp 3
+		}
+		
+		addvarvar hud_x hud_temp
+		addvarvar hud_y hud_temp
+		shiftvarl hud_temp 9
+		addvarvar hud_scale hud_temp
+	}
+	
+	guniqhudid W_DFG
+	setvar hud_tilenum DFG
+	ifvarg weaponcount 0
+	{
+		ifvarl weaponcount 10
+			setvar hud_tilenum DFG_FIRE1
+		else ifvarl weaponcount 20
+			setvar hud_tilenum DFG_FIRE2
+		else ifvarl weaponcount 30
+			setvar hud_tilenum DFG_FIRE3
+	}
+		
+	setvar hud_alpha 0
+	setvarvar hud_shade gs
+	
+	ifvarg weaponcount 0
+		orvar hud_orientation RS_FORCELERP
+    state G_DrawWeaponTile
+	
+	guniqhudid W_DFG_PIPES
+	setvar hud_tilenum DFG_PIPES
+	setvar hud_shade -127
+	
+	setvarvar hud_temp totalclock
+	shiftvarl hud_temp 3
+	
+	sin hud_temp2 hud_temp
+	shiftvarr hud_temp2 7
+	addvar hud_temp2 128
+	
+	// Clamp alpha
+	ifvarl hud_temp2 0
+		setvar hud_temp2 0
+	ifvarg hud_temp2 255
+		setvar hud_temp2 255
+		
+	setvarvar hud_alpha hud_temp2
+	
+	ifvare weaponcount 30
+		setvar hud_alpha 0
+	
+	setvar hud_pal 0
+	ifvarg weaponcount 0
+		orvar hud_orientation RS_FORCELERP
+	state G_DrawTileScaled
+	
+	setvarvar hud_alpha 0
+	
+	ifvarg weaponcount 29
+	ifvarl weaponcount 34
+	{
+		guniqhudid W_DFG_MUZZLE
+		switch weaponcount
+			case 30:
+			case 31:
+				setvar hud_tilenum DFG_MUZZLE1
+				break
+			case 32:
+			case 33:
+				setvar hud_tilenum DFG_MUZZLE2
+				break
+		endswitch
+		
+		setvar hud_shade -127
+		state G_DrawTileScaled
+	}
+	
+	guniqhudid 0
+	
+	//redefinequote 500 hud_temp2: %d
+	//qsprintf 500 500 hud_temp2
+	//screentext 3072 160 150 65536 0 0 500 -127 2 16 0 3 5 1 1 8194 0 0 xdim ydim
+ends
+
+actor DFGSPRITE
+	state item_shared_code
+	
+	ifmove RESPAWN_ACTOR_FLAG
+	{
+		state respawnit
+	}
+	else ifp pshrunk
+	{
+	}
+	else ifp palive ifpdistl RETRIEVEDISTANCE ifcount 6 ifcanseetarget
+	{
+		// Parameters
+		setvar STATE_PARAM1 DEVISTATOR_WEAPON
+		setvar STATE_PARAM2 WEAP_SECONDARY
+		setvar STATE_PARAM3 1
+		
+		state check_have_weapon
+		ifvare STATE_RETURN 1
+			state checkweaponstay
+		
+		getplayervar[THISACTOR].DFG_AMMO TEMP
+		ifvarl TEMP MAXDFGAMMO // Ammo under max?
+		{
+			addvarvar TEMP DFGAMMOAMOUNT
+			ifvarg TEMP MAXDFGAMMO // If over, cap it.
+			{
+				setvar TEMP MAXDFGAMMO
+			}
+			
+			setplayervar[THISACTOR].DFG_AMMO TEMP
+		}
+		else
+		{
+			ifvare STATE_RETURN 1 // Has weapon?
+			{
+				break // Has weapon, and full ammo. Stop here.
+			}
+		}
+		
+		state set_have_weapon
+		state addweapon_nobreak
+		quote 137
+		ifspawnedby DFGSPRITE
+		{
+			state getweaponcode
+		}
+		else
+		{
+			state quikweaponget_custom
+		}
+	}
+enda
+
+actor DFGAMMO
+	state item_shared_code
+	
+	ifmove RESPAWN_ACTOR_FLAG
+	{
+		state respawnit
+	}
+	else ifp pshrunk
+	{
+	}
+	else ifp palive ifcount 6 ifpdistl RETRIEVEDISTANCE ifcanseetarget 
+	{
+		getplayervar[THISACTOR].DFG_AMMO TEMP
+		ifvarl TEMP MAXDFGAMMO
+		{
+			addvarvar TEMP DFGAMMOAMOUNT
+			ifvarg TEMP MAXDFGAMMO
+			{
+				setvar TEMP MAXDFGAMMO
+			}
+			
+			setplayervar[THISACTOR].DFG_AMMO TEMP
+			
+			quote 138
+			ifspawnedby DFGAMMO {
+				state getcode_custom
+			}
+			else {
+				state quikget
+			}
+		}
+	}
+enda
+
+action DFGSPARK_ANIM 0 3 1 1 2
+spritenoshade DFGSPARK
+actor DFGSPARK 0	
+	ifaction 0
+	{
+		setactor[THISACTOR].shade -127
+		setactor[THISACTOR].blend 255
+		setactor[THISACTOR].mdflags 16
+		
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_FADEOUT
+		setvar LOTAG_MEMORY 0 // Timer
+		
+		ifspawnedby DFGTRAIL
+			setvar HITAG_MEMORY 60 // End time
+		else
+			setvar HITAG_MEMORY 120 // End time
+		
+		ifspawnedby DFGEXPLOSION
+			sizeat 12 12
+		else
+			sizeat 8 8
+			
+		cstat 130
+		
+		ifrnd 128
+		{
+			cstator 4
+		}
+		ifrnd 128
+		{
+			cstator 8
+		}
+		
+		action DFGSPARK_ANIM
+	}
+	
+	state gore_movement
+	
+	ifcount 30
+		killit
+enda
+
+state spawn_dfg_spark
+	espawn DFGSPARK
+	getactor[THISACTOR].pal TEMP2
+	setactor[RETURN].pal TEMP2
+				
+	randvar TEMP 128
+	
+	ifactor DFGEXPLOSION
+	{
+		randvar TEMP 128
+		addvar TEMP 128
+	}
+	
+	setactor[RETURN].xvel TEMP
+				
+	setvar TEMP 0
+	randvar TEMP2 2048
+	
+	ifactor DFGEXPLOSION
+		randvar TEMP2 4096
+	
+	subvarvar TEMP TEMP2
+	setactor[RETURN].zvel TEMP
+				
+	randvar TEMP 2047
+	setactor[RETURN].ang TEMP
+	setvar RETURN 0
+ends
+
+
+spriteflags DFGTRACER 68
+action DFGTRACER_FRAMES 0 4 1 1 8
+action DFGTRACER_HOLD 0 2 1 1 16
+actor DFGTRACER 0
+	ifaction 0
+	{
+		action DFGTRACER_HOLD
+	
+		randvar RANDOM_SOUND 2
+		switch RANDOM_SOUND
+			case 0: sound DFG_TRACER1 break
+			case 1: sound DFG_TRACER2 break
+			case 2: sound DFG_TRACER3 break
+		endswitch
+		
+		state spawn_dfg_spark
+		state spawn_dfg_spark
+		state spawn_dfg_spark
+		state spawn_dfg_spark
+
+		getactor[THISACTOR].z TEMP
+		getactor[THISACTOR].xrepeat TEMP2
+		getactor[THISACTOR].yrepeat TEMP3
+		
+		ifvarn EXTRA_MEMORY 1
+		{
+			// Spawn child effect.
+			espawn DFGTRACER
+			setactor[RETURN].z TEMP
+			setactor[RETURN].shade -127
+			setactor[RETURN].xrepeat TEMP2
+			setactor[RETURN].yrepeat TEMP3
+			setactor[RETURN].cstat 32
+			setactorvar[RETURN].EXTRA_MEMORY 1
+			setvar RETURN 0
+		}
+	}
+	else ifaction DFGTRACER_HOLD
+	{
+		ifactioncount 2
+		{
+			action DFGTRACER_FRAMES
+			setactor[THISACTOR].mdflags 16
+			setvar ANIMATE_FLAGS ANIMATE_FLAG_FADEOUT
+			setvar LOTAG_MEMORY 0 // Timer
+			setvar HITAG_MEMORY 64 // End time
+		}
+		break
+	}
+	
+	ifactioncount 4
+		killit
+enda
+
+spriteflags DFGTRAIL 68
+action DFGTRAIL_FRAMES -1 1 1 1 4
+actor DFGTRAIL 0
+	ifaction 0
+	{
+		action DFGTRAIL_FRAMES
+		cstat 128
+		setactor[THISACTOR].shade -127
+		setactor[THISACTOR].mdflags 16
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_FADEOUT
+		
+		setvar LOTAG_MEMORY 0 // Timer
+		setvar HITAG_MEMORY 16 // End time
+		
+		ifrnd 128
+			state spawn_dfg_spark
+	}
+	
+	ifcount 16
+		killit
+enda
+
+spriteflags DFGEXPLOSION 68
+action DFGFRAMES1 0 1 1 1 16
+action DFGFRAMES2 0 6 1 1 4
+actor DFGEXPLOSION 0
+	ifaction 0
+	{
+		cstat 128 //130
+		sizeat 56 48
+		
+		setactor[THISACTOR].shade -127
+		//setactor[THISACTOR].blend 255
+		
+		setvar STATE_PARAM1 256 // Intensity
+		setvar STATE_PARAM2 10240 // Radius
+		state start_shake
+		
+		setvar EXTRA_MEMORY 0
+		whilevarn EXTRA_MEMORY 16
+		{
+			state spawn_dfg_spark
+			addvar EXTRA_MEMORY 1
+		}
+		
+		action DFGFRAMES1
+	}
+	else ifaction DFGFRAMES1
+	{
+		ifactioncount 1
+		{
+			action DFGFRAMES2
+			setactor[THISACTOR].mdflags 16
+			setvar ANIMATE_FLAGS ANIMATE_FLAG_SHELLEXPANSION
+		
+			setvar LOTAG_MEMORY 0 // Timer
+			setvar HITAG_MEMORY 64 // End time
+		
+			setvar XREPEAT_MEMORY 64 // Start radius
+			setvar YREPEAT_MEMORY 128 // End radius
+			
+			espawn FIRESHELL
+			setactor[RETURN].pal 197
+			setvar RETURN 0
+			
+			setvar EXTRA_MEMORY 0
+			whilevarn EXTRA_MEMORY 8
+			{
+				state spawn_dfg_spark
+				addvar EXTRA_MEMORY 1
+			}
+			
+			// Keep angle and tell player to do the tracers
+			getactor[THISACTOR].ang TEMP2
+			getactor[THISACTOR].owner TEMP
+			getactor[TEMP].yvel TEMP
+			setplayervar[TEMP].SPECIAL_ATTACK SPEC_ATTACK_DFG
+			setplayervar[TEMP].SPECIAL_ATTACK_ANG TEMP2
+			setplayervar[TEMP].SPECIAL_ATTACK_SPR THISACTOR
+		}
+	}
+	else
+	{
+		ifactioncount 6
+			killit
+	}
+enda

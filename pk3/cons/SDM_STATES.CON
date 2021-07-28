@@ -122,6 +122,9 @@ state create_spawn_marker
 ends
 
 state yeet_item_on_drop
+	ifspawnedby SCRAP1
+		break
+		
 	getactor[THISACTOR].htowner TEMP
 	ifvarvarn THISACTOR TEMP
 	{
@@ -151,15 +154,21 @@ state item_shared_code
 		getactor[THISACTOR].picnum TEMP
 		switch TEMP
 			case PLASMASPRITE:
+			case PLASMAAMMO:
 			case RAILGUNSPRITE:
 			case FLAMETHROWERSPRITE:
+			case FLAMETHROWERAMMO:
 			case SSGSPRITE:
 			case GROWSPRITEICON:
-			case FLAMETHROWERAMMO:
-			case PLASMAAMMO:
 				state check_if_multiplayer_only
 				state yeet_item_on_drop
 				sizeat 32 32
+				break
+			case DFGSPRITE:
+			case DFGAMMO:
+				state check_if_multiplayer_only
+				state yeet_item_on_drop
+				sizeat 28 28
 				break
 			case RAILGUNAMMO:
 				state check_if_multiplayer_only
@@ -674,6 +683,7 @@ state strip_items
 		case FLAMETHROWERSPRITE:
 		case RAILGUNSPRITE:
 		case SSGSPRITE:
+		case DFGSPRITE:
 		case AMMO:
 		case AMMOLOTS:
 		case BATTERYAMMO:
@@ -685,6 +695,7 @@ state strip_items
 		case DEVISTATORAMMO:
 		case PLASMAAMMO:
 		case RAILGUNAMMO:
+		case DFGAMMO:
 		case FLAMETHROWERAMMO:
 		case JETPACK:
 			killit
@@ -1077,3 +1088,239 @@ state underwater_blood
 		setvar RETURN 0
 	}
 ends
+
+state set_blimp_drops
+	randvar TEMP3 26
+	switch TEMP3
+		case 0: setvar PICNUM_MEMORY RPGSPRITE break
+		case 1: setvar PICNUM_MEMORY CHAINGUNSPRITE break
+		case 2: setvar PICNUM_MEMORY DEVISTATORAMMO break
+		case 3: setvar PICNUM_MEMORY RPGAMMO break
+		case 4: setvar PICNUM_MEMORY RPGAMMO break
+		case 5: setvar PICNUM_MEMORY JETPACK break
+		case 6: setvar PICNUM_MEMORY SHIELD break
+		case 7: setvar PICNUM_MEMORY FIRSTAID break
+		case 8: setvar PICNUM_MEMORY STEROIDS break
+		case 9: setvar PICNUM_MEMORY RPGAMMO break
+		case 10: setvar PICNUM_MEMORY RPGAMMO break
+		case 11: setvar PICNUM_MEMORY RPGSPRITE break
+		case 12: setvar PICNUM_MEMORY RPGAMMO break
+		case 13: setvar PICNUM_MEMORY FREEZESPRITE break
+		case 14: setvar PICNUM_MEMORY FREEZEAMMO break
+		case 15: setvar PICNUM_MEMORY SSGSPRITE break
+		case 16: setvar PICNUM_MEMORY PLASMASPRITE break
+		case 17: setvar PICNUM_MEMORY RAILGUNSPRITE break
+		case 18: setvar PICNUM_MEMORY FLAMETHROWERSPRITE break
+		case 19: setvar PICNUM_MEMORY PLASMAAMMO break
+		case 20: setvar PICNUM_MEMORY FLAMETHROWERAMMO break
+		case 21: setvar PICNUM_MEMORY GROWSPRITEICON break
+		case 22: setvar PICNUM_MEMORY GROWAMMO break
+		case 23: setvar PICNUM_MEMORY CRYSTALAMMO break
+		case 24:
+			setvar PICNUM_MEMORY RAILGUNAMMO
+			sizeat 16 16
+			break
+		case 25:
+			setvar PICNUM_MEMORY DFGAMMO
+			sizeat 28 28
+			break
+		case 26:
+			setvar PICNUM_MEMORY DFGSPRITE
+			sizeat 28 28
+			break
+	endswitch
+ends
+
+state blimp_hack
+	ifvarg PICNUM_MEMORY -1
+	{
+		setactor[THISACTOR].yvel PICNUM_MEMORY
+		setvar PICNUM_MEMORY -1
+	}
+ends
+
+state zap_a_cunt
+	// Can't hurt yourself unless you're too close to impact.
+	ifvarvare CURSPRITE THISACTOR
+	{
+		ifvarg SPECIAL_ATTACK_SPR -1
+		{
+			dist TEMP CURSPRITE SPECIAL_ATTACK_SPR
+			setvar SPECIAL_ATTACK_SPR -1
+			ifvarg TEMP 2048
+				break
+		}
+		else break
+	}
+	
+	// Friendly fire check
+	ifvarvarn CURSPRITE THISACTOR
+	{
+		getactor[CURSPRITE].picnum TEMP
+		ifvare TEMP APLAYER
+		{
+			ifvarand gametype_flags 4096 // All players friendly
+				break
+			
+			ifvarand gametype_flags 65536 // Team DM
+			{
+				getactor[CURSPRITE].yvel TEMP
+				getplayer[TEMP].team TEMP	
+				getplayer[THISACTOR].team TEMP2
+						
+				ifvarvare TEMP TEMP2 // Team matches?
+				{
+					break // Bail.
+				}
+			}
+		}
+	}
+	
+	// Found 40 targets? Time to bail.
+	ifvare HITAG_MEMORY 40
+		break
+	
+	getactor[CURSPRITE].cstat TEMP
+	ifvarand TEMP 256
+	{
+		dist TEMP CURSPRITE THISACTOR
+		ifvarg TEMP 12288
+			break
+			
+		getactor[CURSPRITE].x TEMP
+		getactor[CURSPRITE].y TEMP2
+		getplayer[THISACTOR].posx SPAWN_ORIGX
+		getplayer[THISACTOR].posy SPAWN_ORIGY
+		subvarvar TEMP SPAWN_ORIGX
+		subvarvar TEMP2 SPAWN_ORIGY
+		getangle SPAWN_ORIGANG TEMP TEMP2
+		getincangle TEMP2 SPECIAL_ATTACK_ANG SPAWN_ORIGANG
+		shiftvarr TEMP2 1
+		andvar TEMP2 2047
+		
+		ifvarg TEMP2 1023
+			subvar TEMP2 2047
+		ifvarl TEMP2 -1023
+			addvar TEMP2 2047
+		
+		abs TEMP2
+		
+		ifvarvare CURSPRITE THISACTOR // You can damage yourself
+			setvar TEMP2 0
+
+		ifvarl TEMP2 128 // Is this asshole in our view cone?
+		{
+			getactor[CURSPRITE].x SPAWN_ORIGX
+			getactor[CURSPRITE].y SPAWN_ORIGY
+			getactor[CURSPRITE].z SPAWN_ORIGZ
+			getactor[CURSPRITE].sectnum SECTNUM_MEMORY
+			
+			// Get picnum and dimensions
+			getactor[CURSPRITE].picnum TEMP
+			gettiledata[TEMP].xsize STATE_TEMP1
+			gettiledata[TEMP].ysize STATE_TEMP2
+			getactor[CURSPRITE].yrepeat STATE_TEMP3
+			
+			// Get Y size + offset
+			gettiledata[TEMP].yoffset TEMP2 // Get Y Offset
+			setvarvar TEMP STATE_TEMP2 // Copy Y size
+			mulvarvar TEMP STATE_TEMP3
+			mulvarvar TEMP2 STATE_TEMP3
+			shiftvarl TEMP 1	// Half of sprite size to map units
+			shiftvarl TEMP2 2	// Full sprite offset to map units
+			addvarvar TEMP TEMP2
+			
+			// Sub yzize/offset from z coord
+			subvarvar SPAWN_ORIGZ TEMP
+			
+			getplayer[THISACTOR].posx TEMP
+			getplayer[THISACTOR].posy TEMP2
+			getplayer[THISACTOR].posz TEMP3
+			getplayer[THISACTOR].cursectnum SPAWN_ORIGANG
+			cansee SPAWN_ORIGX SPAWN_ORIGY SPAWN_ORIGZ SECTNUM_MEMORY TEMP TEMP2 TEMP3 SPAWN_ORIGANG EXTRA_MEMORY
+			ifvare EXTRA_MEMORY 1
+			{
+				// Zap the cunt
+				setactor[CURSPRITE].htowner THISACTOR
+				getactor[CURSPRITE].picnum TEMP
+				setvar TEMP2 DFG_TRACER_STRENGTH
+				ifvare TEMP APLAYER
+				{
+					setactor[CURSPRITE].htpicnum DFGTRACER
+				}
+				else
+				{
+					setactor[CURSPRITE].htpicnum RADIUSEXPLOSION
+					mulvar TEMP2 3 // Triple damage to monsters
+				}
+				
+				getactor[CURSPRITE].htextra TEMP3
+				addvarvar TEMP3 TEMP2
+				setactor[CURSPRITE].htextra TEMP3
+				
+				espawn DFGTRACER
+				setactor[RETURN].x SPAWN_ORIGX
+				setactor[RETURN].y SPAWN_ORIGY
+				setactor[RETURN].z SPAWN_ORIGZ
+				setactor[RETURN].cstat 128
+				setactor[RETURN].xrepeat 56
+				setactor[RETURN].yrepeat 56
+				setvar RETURN 0
+				
+				addvar HITAG_MEMORY 1
+			}
+		}
+	}
+ends
+
+state handle_special_attacks
+	ifvarg predicting 0  // Safeguard
+		break
+	
+	ifvare SPECIAL_ATTACK SPEC_ATTACK_DFG
+	{
+		setvar SPECIAL_ATTACK 0
+		setvar HITAG_MEMORY 0
+		
+		headspritestat CURSPRITE 10 // STAT_PLAYER
+		setvarvar LASTSPRITE CURSPRITE
+		whilevarn CURSPRITE -1
+		{
+			state zap_a_cunt
+			
+			nextspritestat CURSPRITE LASTSPRITE
+			setvarvar LASTSPRITE CURSPRITE
+		}
+		
+		headspritestat CURSPRITE 1 // STAT_ACTOR
+		setvarvar LASTSPRITE CURSPRITE
+		whilevarn CURSPRITE -1
+		{
+			state zap_a_cunt
+			
+			nextspritestat CURSPRITE LASTSPRITE
+			setvarvar LASTSPRITE CURSPRITE
+		}
+		
+		headspritestat CURSPRITE 2 // STAT_ZOMBIEACTOR
+		setvarvar LASTSPRITE CURSPRITE
+		whilevarn CURSPRITE -1
+		{
+			state zap_a_cunt
+			
+			nextspritestat CURSPRITE LASTSPRITE
+			setvarvar LASTSPRITE CURSPRITE
+		}
+
+		headspritestat CURSPRITE 6 // STAT_STANDABLE
+		setvarvar LASTSPRITE CURSPRITE
+		whilevarn CURSPRITE -1
+		{
+			state zap_a_cunt
+			
+			nextspritestat CURSPRITE LASTSPRITE
+			setvarvar LASTSPRITE CURSPRITE
+		}
+	}
+ends
+

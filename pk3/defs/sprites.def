@@ -149,7 +149,7 @@ tilefromtexture 2588 { file "tiles/2588.png" }
 // Extra Pipebomb Frames
 tilefromtexture 2600 { file "tiles/2600.png" xoffset -16 yoffset 25 }
 tilefromtexture 2601 { file "tiles/2601.png" xoffset -16 yoffset -10 }
-tilefromtexture 2602 { file "tiles/2602.png" xoffset -2 yoffset 1 }
+tilefromtexture 2602 { file "tiles/2602.png" xoffset -17 yoffset -20 }
 tilefromtexture 2603 { file "tiles/2603.png" xoffset -14 yoffset -24 }
 
 // Interpolated Shotgun
@@ -429,6 +429,38 @@ tilefromtexture 2290 { file "tiles/2290.png" xoff 1 yoff -4 }
 tilefromtexture 2291 { file "tiles/2291.png" yoff -4 }
 tilefromtexture 2292 { file "tiles/2292.png" yoff -6 }
 tilefromtexture 2293 { file "tiles/2293.png" xoff 3 yoff -9 }
+
+// BFG Projectile
+animtilerange 3738 3739 2 ANIM_FORWARD
+tilefromtexture 3738 { file "tiles/3738.png" texture }
+tilefromtexture 3739 { file "tiles/3739.png" texture }
+tilefromtexture 3740 { file "tiles/3740.png" texture }
+tilefromtexture 3741 { file "tiles/3741.png" texture xoff -2 yoff 2 }
+tilefromtexture 3742 { file "tiles/3742.png" texture }
+tilefromtexture 3743 { file "tiles/3743.png" texture xoff -6 }
+tilefromtexture 3744 { file "tiles/3744.png" texture xoff -2 yoff -8 }
+tilefromtexture 3745 { file "tiles/3745.png" texture xoff 4 yoff -4 }
+tilefromtexture 3746 { file "tiles/3746.png" texture }
+tilefromtexture 3747 { file "tiles/3747.png" texture }
+tilefromtexture 3748 { file "tiles/3748.png" texture xoff 2 yoff 2 }
+tilefromtexture 3749 { file "tiles/3749.png" texture yoff -2 }
+
+// BFG
+tilefromtexture 3762 { file "tiles/3762.png" }
+tilefromtexture 3763 { file "tiles/3763.png" }
+tilefromtexture 3764 { file "tiles/3764.png" }
+tilefromtexture 3765 { file "tiles/3765.png" }
+tilefromtexture 3766 { file "tiles/3766.png" texture yoff 23 }
+tilefromtexture 3767 { file "tiles/3767.png" texture yoff 23 }
+tilefromtexture 3768 { file "tiles/3768.png" texture }
+tilefromtexture 3769 { file "tiles/3769.png" }
+
+animtilerange 3770 3774 4 ANIM_OSCILLATING
+tilefromtexture 3770 { file "tiles/3770.png" }
+tilefromtexture 3771 { file "tiles/3771.png" }
+tilefromtexture 3772 { file "tiles/3772.png" }
+tilefromtexture 3773 { file "tiles/3773.png" }
+tilefromtexture 3774 { file "tiles/3774.png" }
 
 // Parts for rescued babes
 tilefromtexture 3718 { file "tiles/3718.png" } // Pad

@@ -14,7 +14,7 @@ state G_DrawTile
 		
 	orvar hud_orientation RS_AUTO
 				 
-	rotatesprite hud_x hud_y hud_scale hud_angle hud_tilenum hud_shade hud_G_Draw_temp2 hud_orientation windowx1 windowy1 windowx2 windowy2
+	rotatespritea hud_x hud_y hud_scale hud_angle hud_tilenum hud_shade hud_G_Draw_temp2 hud_orientation hud_alpha windowx1 windowy1 windowx2 windowy2
 		
 	ifvarand hud_orientation RS_AUTO nullop else
 		subvar hud_orientation RS_AUTO
@@ -29,7 +29,7 @@ state G_DrawTilePal
 		
 	orvar hud_orientation RS_AUTO
 
-	rotatesprite hud_x hud_y hud_scale hud_angle hud_tilenum hud_shade hud_pal hud_orientation windowx1 windowy1 windowx2 windowy2
+	rotatespritea hud_x hud_y hud_scale hud_angle hud_tilenum hud_shade hud_pal hud_orientation hud_alpha windowx1 windowy1 windowx2 windowy2
 		
 	ifvarand hud_orientation RS_AUTO nullop else
 		subvar hud_orientation RS_AUTO
@@ -112,7 +112,7 @@ state G_DrawTileScaled
 		subvar hud_orientation DRAWEAP_NOLERP
 	}
 	
-	rotatesprite hud_x hud_y hud_scale hud_angle hud_tilenum hud_shade hud_pal hud_orientation windowx1 windowy1 windowx2 windowy2
+	rotatespritea hud_x hud_y hud_scale hud_angle hud_tilenum hud_shade hud_pal hud_orientation hud_alpha windowx1 windowy1 windowx2 windowy2
 		
 	ifvarand hud_orientation RS_AUTO
 		subvar hud_orientation RS_AUTO
@@ -190,6 +190,23 @@ state determine_animation
 ends
 
 // Custom States
+
+state do_select_sound
+	switch STATE_PARAM1
+		case 0: soundvar WEAPON0_SELECTSOUND break
+		case 1: soundvar WEAPON1_SELECTSOUND break
+		case 2: soundvar WEAPON2_SELECTSOUND break
+		case 3: soundvar WEAPON3_SELECTSOUND break
+		case 4: soundvar WEAPON4_SELECTSOUND break
+		case 5: soundvar WEAPON5_SELECTSOUND break
+		case 6: soundvar WEAPON6_SELECTSOUND break
+		case 7: soundvar WEAPON7_SELECTSOUND break
+		case 8: soundvar WEAPON8_SELECTSOUND break
+		case 9: soundvar WEAPON9_SELECTSOUND break
+		case 10: soundvar WEAPON10_SELECTSOUND break
+		case 11: soundvar WEAPON11_SELECTSOUND break
+	endswitch
+ends
 
 // STATE_PARAM1 = Weapon Index
 // STATE_PARAM2 = Type (0 = Primary, 1 = Secondary)
@@ -294,6 +311,19 @@ state set_weapontype
 				setvar WEAPON2_SOUND2TIME 0
 				setvar WEAPON2_SELECTSOUND SSG_CLOSE
 				break
+				
+			case DEVISTATOR_WEAPON // DFG
+				setvar WEAPON7_WORKSLIKE 7
+				setvar WEAPON7_FIREDELAY 30
+				setvar WEAPON7_TOTALTIME 50
+				setvar WEAPON7_HOLDDELAY 0
+				setvar WEAPON7_FLAGS 0
+				setvar WEAPON7_SHOOTS DFGBALL
+				setvar WEAPON7_SHOTSPERBURST 1
+				setvar WEAPON7_INITIALSOUND DFG_CHARGE
+				setvar WEAPON7_SELECTSOUND SELECT_WEAPON
+				setplayer[THISACTOR].ammo_amount DEVISTATOR_WEAPON DFG_AMMO
+				break
 		endswitch
 	}
 	else // Primary
@@ -343,6 +373,19 @@ state set_weapontype
 				setvar WEAPON2_SOUND2SOUND SHOTGUN_COCK
 				setvar WEAPON2_SOUND2TIME 15
 				setvar WEAPON2_SELECTSOUND SHOTGUN_COCK
+				break
+				
+			case DEVISTATOR_WEAPON
+				setvar WEAPON7_WORKSLIKE 7
+				setvar WEAPON7_FIREDELAY 3
+				setvar WEAPON7_TOTALTIME 6
+				setvar WEAPON7_HOLDDELAY 5
+				setvar WEAPON7_FLAGS 72
+				setvar WEAPON7_SHOOTS DEVASTATORMISSILE
+				setvar WEAPON7_SHOTSPERBURST 2
+				setvar WEAPON7_INITIALSOUND 0
+				setvar WEAPON7_SELECTSOUND SELECT_WEAPON
+				setplayer[THISACTOR].ammo_amount DEVISTATOR_WEAPON DEVASTATOR_AMMO
 				break
 		endswitch
 	}
@@ -402,6 +445,10 @@ state switch_weapon
 					ifvarg RAILGUN_AMMO 0
 						setvar STATE_RETURN 1
 					break
+				case DEVISTATOR_WEAPON: // DFG
+					ifvarg DFG_AMMO 0
+						setvar STATE_RETURN 1
+					break
 				case SHOTGUN_WEAPON: // SSG
 					getplayer[THISACTOR].ammo_amount SHOTGUN_WEAPON STATE_TEMP1
 					ifvarg STATE_TEMP1 1
@@ -437,6 +484,10 @@ state switch_weapon
 					ifvarg RPG_AMMO 0
 						setvar STATE_RETURN 1
 					break
+				case DEVISTATOR_WEAPON: // Devastator
+					ifvarg DEVASTATOR_AMMO 0
+						setvar STATE_RETURN 1
+					break
 				case SHOTGUN_WEAPON: // Shotgun
 					getplayer[THISACTOR].ammo_amount SHOTGUN_WEAPON STATE_TEMP1
 					ifvarg STATE_TEMP1 0
@@ -456,18 +507,18 @@ state switch_weapon
 ends
 
 state check_weapon_ownership
-	setvarvar STATE_TEMP1 STATE_PARAM1
+	setvarvar STATE_TEMP1 STATE_PARAM1 // Store first parameter to pevent clobbering
 	
 	setvar STATE_PARAM1 1 // Weapon Index
 	whilevarn STATE_PARAM1 11
 	{
-		setvar STATE_PARAM2 0
+		setvar STATE_PARAM2 WEAP_PRIMARY // Check for primary
 		state check_have_weapon
-		ifvare STATE_RETURN 0
+		ifvare STATE_RETURN 0 // No primary.
 		{
-			setvar STATE_PARAM2 1
+			setvar STATE_PARAM2 WEAP_SECONDARY // Check for secondary
 			state check_have_weapon
-			ifvare STATE_RETURN 1
+			ifvare STATE_RETURN 1 // Secondary is available, switch.
 			{
 				state set_weapontype
 			}
@@ -476,7 +527,7 @@ state check_weapon_ownership
 		addvar STATE_PARAM1 1
 	}
 	
-	setvarvar STATE_PARAM1 STATE_TEMP1
+	setvarvar STATE_PARAM1 STATE_TEMP1 // Restore first parameter
 ends
 
 // STATE_PARAM1 = Weapon
@@ -494,7 +545,6 @@ state print_weapon_name
 		case PISTOL_WEAPON:
 		case HANDBOMB_WEAPON:
 		case SHRINKER_WEAPON:
-		case DEVISTATOR_WEAPON:
 		case TRIPBOMB_WEAPON:
 		case HANDREMOTE_WEAPON:
 		case GROW_WEAPON:
@@ -530,6 +580,16 @@ state print_weapon_name
 			else
 			{
 				setvar WEAPONQUOTE 694
+			}
+			break
+		case DEVISTATOR_WEAPON:
+			ifvare STATE_RETURN 1
+			{
+				setvar WEAPONQUOTE 706
+			}
+			else
+			{
+				setvar WEAPONQUOTE 697
 			}
 			break
 		case FREEZE_WEAPON:
@@ -635,20 +695,7 @@ state check_alt_weapons
 		setplayer[THISACTOR].weapon_pos -9
 		state print_weapon_name // Passed STATE_PARAM1
 		
-		switch STATE_PARAM1
-			case 0: soundvar WEAPON0_SELECTSOUND break
-			case 1: soundvar WEAPON1_SELECTSOUND break
-			case 2: soundvar WEAPON2_SELECTSOUND break
-			case 3: soundvar WEAPON3_SELECTSOUND break
-			case 4: soundvar WEAPON4_SELECTSOUND break
-			case 5: soundvar WEAPON5_SELECTSOUND break
-			case 6: soundvar WEAPON6_SELECTSOUND break
-			case 7: soundvar WEAPON7_SELECTSOUND break
-			case 8: soundvar WEAPON8_SELECTSOUND break
-			case 9: soundvar WEAPON9_SELECTSOUND break
-			case 10: soundvar WEAPON10_SELECTSOUND break
-			case 11: soundvar WEAPON11_SELECTSOUND break
-		endswitch
+		state do_select_sound
 	}
 ends
 
@@ -658,11 +705,21 @@ state do_recoil
 	ifvarn predicting 1
 		break
 		
+	state check_using_secondary	
 	switch STATE_PARAM1
 		case DEVISTATOR_WEAPON:
-			setvar RECOIL_AMOUNT 2
-			mulvar RECOIL_AMOUNT 65536
-			setvar RECOIL_SPEED 32768
+			ifvare STATE_RETURN WEAP_SECONDARY
+			{
+				setvar RECOIL_AMOUNT 16
+				mulvar RECOIL_AMOUNT 65536
+				setvar RECOIL_SPEED 16384
+			}
+			else
+			{
+				setvar RECOIL_AMOUNT 2
+				mulvar RECOIL_AMOUNT 65536
+				setvar RECOIL_SPEED 32768
+			}
 			break
 		case CHAINGUN_WEAPON:
 			ifvare STATE_RETURN WEAP_SECONDARY
@@ -761,9 +818,9 @@ state player_updateweapons
 		
 		ifvare STATE_PARAM1 FREEZE_WEAPON
 		{
-			ifvare TEMP 1
+			ifvare TEMP WEAP_SECONDARY
 			{
-				setplayer[THISACTOR].ammo_amount FREEZE_WEAPON FLAMETHROWER_AMMO
+				setplayer[THISACTOR].ammo_amount STATE_PARAM1 FLAMETHROWER_AMMO
 				// Flamethrower empty ammo check
 				ifvare FLAMETHROWER_AMMO 0
 				{
@@ -773,7 +830,7 @@ state player_updateweapons
 			}
 			else
 			{
-				setplayer[THISACTOR].ammo_amount FREEZE_WEAPON FREEZETHROWER_AMMO
+				setplayer[THISACTOR].ammo_amount STATE_PARAM1 FREEZETHROWER_AMMO
 				// Freezethrower empty ammo check
 				ifvare FREEZETHROWER_AMMO 0
 				{
@@ -784,9 +841,9 @@ state player_updateweapons
 		}
 		else ifvare STATE_PARAM1 CHAINGUN_WEAPON
 		{
-			ifvare TEMP 1
+			ifvare TEMP WEAP_SECONDARY
 			{
-				setplayer[THISACTOR].ammo_amount CHAINGUN_WEAPON PLASMARIFLE_AMMO
+				setplayer[THISACTOR].ammo_amount STATE_PARAM1 PLASMARIFLE_AMMO
 				// Plasma rifle empty ammo check
 				ifvare PLASMARIFLE_AMMO 0
 				{
@@ -796,7 +853,7 @@ state player_updateweapons
 			}
 			else
 			{
-				setplayer[THISACTOR].ammo_amount CHAINGUN_WEAPON RIPPER_AMMO
+				setplayer[THISACTOR].ammo_amount STATE_PARAM1 RIPPER_AMMO
 				// Ripper empty ammo check
 				ifvare RIPPER_AMMO 0
 				{
@@ -807,9 +864,9 @@ state player_updateweapons
 		}
 		else ifvare STATE_PARAM1 RPG_WEAPON
 		{
-			ifvare TEMP 1
+			ifvare TEMP WEAP_SECONDARY
 			{
-				setplayer[THISACTOR].ammo_amount RPG_WEAPON RAILGUN_AMMO
+				setplayer[THISACTOR].ammo_amount STATE_PARAM1 RAILGUN_AMMO
 				// Railgun empty ammo check
 				ifvare RAILGUN_AMMO 0
 				{
@@ -819,7 +876,7 @@ state player_updateweapons
 			}
 			else
 			{
-				setplayer[THISACTOR].ammo_amount RPG_WEAPON RPG_AMMO
+				setplayer[THISACTOR].ammo_amount STATE_PARAM1 RPG_AMMO
 				// RPG empty ammo check
 				ifvare RPG_AMMO 0
 				{
@@ -828,9 +885,32 @@ state player_updateweapons
 				}
 			}
 		}
+		else ifvare STATE_PARAM1 DEVISTATOR_WEAPON
+		{
+			ifvare TEMP WEAP_SECONDARY // DFG
+			{
+				setplayer[THISACTOR].ammo_amount STATE_PARAM1 DFG_AMMO
+				// DFG empty ammo check
+				ifvare DFG_AMMO 0
+				{
+					setvar STATE_PARAM2 WEAP_PRIMARY
+					state switch_weapon
+				}
+			}
+			else
+			{
+				setplayer[THISACTOR].ammo_amount STATE_PARAM1 DEVASTATOR_AMMO
+				// Devastator empty ammo check
+				ifvare DEVASTATOR_AMMO 0
+				{
+					setvar STATE_PARAM2 WEAP_SECONDARY
+					state switch_weapon
+				}
+			}
+		}
 		else ifvare STATE_PARAM1 SHOTGUN_WEAPON
 		{
-			ifvare TEMP 1
+			ifvare TEMP WEAP_SECONDARY
 			{
 				getplayer[THISACTOR].kickback_pic TEMP2
 				ifvare TEMP2 19
@@ -840,7 +920,7 @@ state player_updateweapons
 				else ifvare TEMP2 44
 					sound SSG_CLOSE
 				
-				getplayer[THISACTOR].ammo_amount SHOTGUN_WEAPON TEMP3
+				getplayer[THISACTOR].ammo_amount STATE_PARAM1 TEMP3
 				// Switch if less than 2 shells.
 				ifvarl TEMP3 2
 				{
@@ -868,10 +948,17 @@ state player_updateweapons
 		{
 			setplayer[THISACTOR].kickback_pic 0
 			setplayer[THISACTOR].weapon_pos -9
+			setplayer[THISACTOR].wantweaponfire -1
+			setvar RETURN 1
+			break
 		}
 		
 		ifvare COOP GM_ROIDMATCH
 		{
+			//setvar STATE_PARAM1 DEVISTATOR_WEAPON
+			//setvar STATE_PARAM2 WEAP_PRIMARY
+			//state set_weapontype
+			
 			setplayer[THISACTOR].jetpack_amount 1600
 			setplayer[THISACTOR].steroids_amount 399
 			setplayer[THISACTOR].falling_counter 0
@@ -926,7 +1013,12 @@ state player_tossweapon
 			break
 		case HANDBOMB_WEAPON: spawn HBOMBAMMO break
 		case SHRINKER_WEAPON: spawn SHRINKERSPRITE break
-		case DEVISTATOR_WEAPON: spawn DEVISTATORSPRITE break
+		case DEVISTATOR_WEAPON: 
+			ifvare STATE_RETURN 1
+				spawn DFGSPRITE
+			else
+				spawn DEVISTATORSPRITE
+			break
 		case TRIPBOMB_WEAPON: spawn TRIPBOMBSPRITE break
 		case FREEZE_WEAPON:
 			ifvare STATE_RETURN 1
@@ -952,9 +1044,10 @@ ends
 // PARAM1 = Weapon
 state addweapon_nobreak
 	state check_weapon_ownership
+	state do_select_sound // Play our weapon's select sound upon pickup.
 	
 	getplayer[THISACTOR].gotweapon STATE_PARAM1 STATE_TEMP1
-	ifvare STATE_TEMP1 1
+	ifvare STATE_TEMP1 1 // Already got this weapon? No further action necessary.
 	{
 		break
 	}

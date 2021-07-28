@@ -5,6 +5,9 @@ define ANIM_OSCILLATING 1
 define ANIM_FORWARD 2
 define ANIM_BACKWARD 3
 
+//loadgrp DukeItOut_SDM.pk3
+loadgrp WorldTour_SDM.pk3
+
 //include duke3d_hrp.def
 include defs.con
 include cons/SDM_DEFS.CON
@@ -26,6 +29,11 @@ tint { pal 123 red 128 green 0 blue 128 flags 5 } // Purple
 tint { pal 124 red 128 green 0 blue 0 flags 5 } // Red
 tint { pal 125 red 0 green 128 blue 0 flags 5 } // Green
 tint { pal 126 red 0 green 0 blue 128 flags 5 } // Blue
+
+blendtable 253 // Screen-ish
+{
+	glblend { both { src SRC_ALPHA dst ONE_MINUS_SRC_COLOR alpha 1.0 } }
+}
 
 blendtable 254 // Multiplicative
 {

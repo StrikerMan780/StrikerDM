@@ -180,6 +180,93 @@ state draw_devastator // DEVISTATOR_WEAPON:
 	}
 ends
 
+actor DEVISTATORSPRITE
+	state item_shared_code
+	
+	ifmove RESPAWN_ACTOR_FLAG
+	{
+		state respawnit
+	}
+	else ifp pshrunk
+	{
+	}
+	else ifp palive ifpdistl RETRIEVEDISTANCE ifcount 6 ifcanseetarget
+	{
+		// Parameters
+		setvar STATE_PARAM1 DEVISTATOR_WEAPON
+		setvar STATE_PARAM2 WEAP_PRIMARY
+		setvar STATE_PARAM3 1
+		
+		state check_have_weapon
+		ifvare STATE_RETURN 1
+			state checkweaponstay
+		
+		getplayervar[THISACTOR].DEVASTATOR_AMMO TEMP
+		ifvarl TEMP MAXDEVISTATORAMMO // Ammo under max?
+		{
+			addvarvar TEMP DEVISTATORAMMOAMOUNT
+			ifvarg TEMP MAXDEVISTATORAMMO // If over, cap it.
+			{
+				setvar TEMP MAXDEVISTATORAMMO
+			}
+			
+			setplayervar[THISACTOR].DEVASTATOR_AMMO TEMP
+		}
+		else
+		{
+			ifvare STATE_RETURN 1 // Has weapon?
+			{
+				break // Has weapon, and full ammo. Stop here.
+			}
+		}
+		
+		state set_have_weapon
+		state addweapon_nobreak
+		quote 87
+		ifspawnedby DEVISTATORSPRITE
+		{
+			state getweaponcode
+		}
+		else
+		{
+			state quikweaponget_custom
+		}
+	}
+enda
+
+actor DEVISTATORAMMO
+	state item_shared_code
+	
+	ifmove RESPAWN_ACTOR_FLAG
+	{
+		state respawnit
+	}
+	else ifp pshrunk
+	{
+	}
+	else ifp palive ifcount 6 ifpdistl RETRIEVEDISTANCE ifcanseetarget 
+	{
+		getplayervar[THISACTOR].DEVASTATOR_AMMO TEMP
+		ifvarl TEMP MAXDEVISTATORAMMO
+		{
+			addvarvar TEMP DEVISTATORAMMOAMOUNT
+			ifvarg TEMP MAXDEVISTATORAMMO
+			{
+				setvar TEMP MAXDEVISTATORAMMO
+			}
+			
+			setplayervar[THISACTOR].DEVASTATOR_AMMO TEMP
+			
+			quote 14
+			ifspawnedby DEVISTATORAMMO {
+				state getcode
+			}
+			else {
+				state quikget
+			}
+		}
+    }
+enda
 
 spritenoshade DEVASTATORMISSILE
 gamevar WEAPON7_SHOOTS DEVASTATORMISSILE 1

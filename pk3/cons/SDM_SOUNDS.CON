@@ -211,6 +211,13 @@ define BLOOD_SPLAT2 627
 define BLOOD_SPLAT3 628
 define BLOOD_SPLAT4 629
 
+define DFG_CHARGE 630
+define DFG_FIRE 631
+define DFG_EXPLODE 632
+define DFG_TRACER1 633
+define DFG_TRACER2 634
+define DFG_TRACER3 635
+
 define DUKE_ROIDS01 681
 define DUKE_ROIDS02 682
 define DUKE_ROIDS03 683
@@ -373,6 +380,12 @@ definesound SSG_FIRE sounds/dsdshtgn.wav -16 64 4 0 0
 definesound SSG_OPEN sounds/dsdbopn.wav -16 16 4 0 0
 definesound SSG_LOAD sounds/dsdbload.wav -16 16 4 0 0
 definesound SSG_CLOSE sounds/dsdbcls.wav -16 16 4 0 0
+definesound DFG_CHARGE sounds/dfgcharge.ogg 0 0 4 0 -1024
+definesound DFG_EXPLODE sounds/dfgexplode.ogg 0 0 4 0 -2048
+definesound DFG_FIRE sounds/dfgfire.ogg 0 0 4 0 -2048
+definesound DFG_TRACER1 sounds/dfgtracer1.ogg 0 0 4 0 2048
+definesound DFG_TRACER2 sounds/dfgtracer2.ogg 0 0 4 0 2048
+definesound DFG_TRACER3 sounds/dfgtracer3.ogg 0 0 4 0 2048
 
 definesound CASING1 sounds/casings/dscasin1.ogg 0 0 0 0 8192
 definesound CASING2 sounds/casings/dscasin2.ogg 0 0 0 0 8192
