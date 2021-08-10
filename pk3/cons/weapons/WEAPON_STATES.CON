@@ -955,15 +955,17 @@ state player_updateweapons
 		
 		ifvare COOP GM_ROIDMATCH
 		{
-			//setvar STATE_PARAM1 DEVISTATOR_WEAPON
-			//setvar STATE_PARAM2 WEAP_PRIMARY
-			//state set_weapontype
+			setvar STATE_PARAM1 DEVISTATOR_WEAPON
+			setvar STATE_PARAM2 WEAP_PRIMARY
+			state set_weapontype
+			
+			setvar DEVASTATOR_AMMO MAXDEVISTATORAMMO
 			
 			setplayer[THISACTOR].jetpack_amount 1600
 			setplayer[THISACTOR].steroids_amount 399
 			setplayer[THISACTOR].falling_counter 0
+			setplayer[THISACTOR].gotweapon PISTOL_WEAPON 0
 			setplayer[THISACTOR].gotweapon DEVISTATOR_WEAPON 1
-			setplayer[THISACTOR].ammo_amount DEVISTATOR_WEAPON MAXDEVISTATORAMMO
 			setplayer[THISACTOR].curr_weapon DEVISTATOR_WEAPON
 		}
 		else ifvare COOP GM_INSTAGIB
@@ -980,6 +982,7 @@ state player_updateweapons
 				}
 			}
 			
+			setplayer[THISACTOR].gotweapon PISTOL_WEAPON 0
 			setplayer[THISACTOR].gotweapon RPG_WEAPON 1
 			setplayer[THISACTOR].curr_weapon RPG_WEAPON
 			setplayervar[THISACTOR].RAILGUN_AMMO MAXRAILGUNAMMO

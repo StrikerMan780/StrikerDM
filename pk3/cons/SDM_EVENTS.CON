@@ -1151,13 +1151,13 @@ onevent EVENT_GAME
 			addvar EXTRA_MEMORY 1 // Timer
 			setvarvar TEMP EXTRA_MEMORY
 			
-			ifvarg Numsprites 10000
+			ifvarg Numsprites 8192
 				modvar TEMP 4 // Spawn blood every 4th tic
 			else
 				modvar TEMP 2 // Spawn blood every 2nd tic
 				
 			ifvare TEMP 0
-			ifvarl Numsprites 14000 // Prevent "Too Many Sprites Spawned"
+			ifvarl Numsprites 12288 // Prevent "Too Many Sprites Spawned"
 			{
 				getactor[THISACTOR].pal TEMP2
 				espawn GIBBLOOD
@@ -1195,7 +1195,7 @@ onevent EVENT_GAME
 			case DUKETORSO:
 				state gibsound // Impact splat noise
 				
-				ifvarl Numsprites 14000 // Prevent "Too Many Sprites"
+				ifvarl Numsprites 12288 // Prevent "Too Many Sprites"
 				{
 					getactor[THISACTOR].pal TEMP2
 					ifvare PICNUM_MEMORY JIBS1 { espawn JIBS1_ONGROUND setactor[RETURN].pal TEMP2 }

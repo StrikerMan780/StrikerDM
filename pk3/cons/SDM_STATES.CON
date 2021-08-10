@@ -585,39 +585,46 @@ state handle_sectortypes
 	{
 		getplayer[THISACTOR].cursectnum TEMP
 		ifvarg TEMP -1
-		ifvarand SECTOR_TYPES[TEMP] SECTORTYPE_LOWGRAVITY
 		{
-			state handle_lowgravity
+			ifvarand SECTOR_TYPES[TEMP] SECTORTYPE_LOWGRAVITY
+			{
+				state handle_lowgravity
+			}
 		}
 		
 		getplayer[THISACTOR].cursectnum TEMP
 		ifvarg TEMP -1
-		ifvarand SECTOR_TYPES[TEMP] SECTORTYPE_JUMPPAD
 		{
-			state handle_jumppad
+			ifvarand SECTOR_TYPES[TEMP] SECTORTYPE_JUMPPAD
+			{
+				state handle_jumppad
+			}
 		}
 		
 		getplayer[THISACTOR].cursectnum TEMP
-		getsector[TEMP].lotag TEMP
-		ifvare TEMP 256
+		ifvarg TEMP -1
 		{
-			// TEMP = X
-			// TEMP2 = Y
-			// TEMP3 = Sector Number
-			getactor[THISACTOR].x TEMP
-			getactor[THISACTOR].y TEMP2
-			updatesector TEMP TEMP2 TEMP3
-			
-			// Set TEMP to florz
-			getflorzofslope TEMP3 TEMP TEMP2 TEMP
-			subvar TEMP 512 // Subtract height
-			
-			getactor[THISACTOR].z TEMP2
-			
-			ifvarvarg TEMP2 TEMP // Touching floor?
+			getsector[TEMP].lotag TEMP
+			ifvare TEMP 256
 			{
-				setactor[THISACTOR].htextra 1000
-				setactor[THISACTOR].htpicnum RADIUSEXPLOSION
+				// TEMP = X
+				// TEMP2 = Y
+				// TEMP3 = Sector Number
+				getactor[THISACTOR].x TEMP
+				getactor[THISACTOR].y TEMP2
+				updatesector TEMP TEMP2 TEMP3
+				
+				// Set TEMP to florz
+				getflorzofslope TEMP3 TEMP TEMP2 TEMP
+				subvar TEMP 512 // Subtract height
+				
+				getactor[THISACTOR].z TEMP2
+				
+				ifvarvarg TEMP2 TEMP // Touching floor?
+				{
+					setactor[THISACTOR].htextra 1000
+					setactor[THISACTOR].htpicnum RADIUSEXPLOSION
+				}
 			}
 		}
 	}
@@ -1183,8 +1190,12 @@ state zap_a_cunt
 	getactor[CURSPRITE].cstat TEMP
 	ifvarand TEMP 256
 	{
+		getactor[CURSPRITE].extra TEMP
+		ifvarl TEMP 1 // Already dead?
+			break
+			
 		dist TEMP CURSPRITE THISACTOR
-		ifvarg TEMP 12288
+		ifvarg TEMP 12288 // Too Far?
 			break
 			
 		getactor[CURSPRITE].x TEMP

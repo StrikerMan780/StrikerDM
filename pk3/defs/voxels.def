@@ -486,6 +486,7 @@ voxel "voxels/pickups/0114_atomichealth15.kvx" { tile 114 }
 voxel "voxels/pickups/0115_atomichealth16.kvx" { tile 115 }
 
 voxel "voxels/pickups/0018_railgun.kvx" { tile 18 }
+voxel "voxels/pickups/0019_plasmarifle.kvx" { tile 19 }
 voxel "voxels/pickups/0021_pistol.kvx" { tile 21 }
 voxel "voxels/pickups/0022_chaingun.kvx" { tile 22 }
 voxel "voxels/pickups/0023_rpg.kvx" { tile 23 }
