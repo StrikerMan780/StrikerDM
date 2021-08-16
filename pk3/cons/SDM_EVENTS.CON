@@ -2711,8 +2711,16 @@ onevent EVENT_DISPLAYSBAR // !UNSYNCHRONIZED!
 			screentext MINIFONT TEMP TEMP2 65536 0 0 500 -127 CL_TEMP2 16 0 6 7 1 1 8194 0 0 xdim ydim
 		}
 		
-		ifvarand gametype_flags 16384 { } // Start with all access cards
-		else
+		setvar CL_TEMP1 1
+		ifvarg MULTIMODE 1
+		{
+			ifvarand gametype_flags 16384 // Start with all access cards
+			{
+				setvar CL_TEMP1 0 // Don't display keys
+			}
+		}
+		
+		ifvare CL_TEMP1 1
 		{
 			// Keys
 			setvar TEMP 293  // X

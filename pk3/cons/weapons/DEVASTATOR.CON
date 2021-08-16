@@ -265,7 +265,7 @@ actor DEVISTATORAMMO
 				state quikget
 			}
 		}
-    }
+	}
 enda
 
 spritenoshade DEVASTATORMISSILE
