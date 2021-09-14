@@ -430,6 +430,11 @@ tilefromtexture 2291 { file "tiles/2291.png" yoff -4 }
 tilefromtexture 2292 { file "tiles/2292.png" yoff -6 }
 tilefromtexture 2293 { file "tiles/2293.png" xoff 3 yoff -9 }
 
+// Becky Reference
+tilefromtexture 3707 { file "tiles/3707.png" texture }
+tilefromtexture 3708 { file "tiles/3708.png" texture }
+tilefromtexture 3709 { file "tiles/3709.png" texture }
+
 // BFG Projectile
 animtilerange 3738 3739 2 ANIM_FORWARD
 tilefromtexture 3738 { file "tiles/3738.png" texture }

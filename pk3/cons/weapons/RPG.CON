@@ -1,35 +1,39 @@
 state draw_rpg // RPG_WEAPON:
 	guniqhudid W_RPG
-    setvar hud_tilenum RPGGUN
+	setvar hud_tilenum RPGGUN
 	
-    setvarvar hud_x weapon_xoffset
-    setvarvar hud_y looking_arc
-    shiftvarl hud_y 1
-    subvarvar hud_y gun_pos
-    
-    setvarvar hud_temp weaponcount
-    shiftvarl hud_temp 7
-    addvar hud_temp 768
-    andvar hud_temp 2047
-    sin hud_temp hud_temp
-    shiftvarr hud_temp 11
-    
-    subvarvar hud_x hud_temp
-    subvarvar hud_y hud_temp
-    
-    addvar hud_x 164
-    addvar hud_y 176
-    
+	setvarvar hud_x weapon_xoffset
+	setvarvar hud_y looking_arc
+	shiftvarl hud_y 1
+	subvarvar hud_y gun_pos
+	
+	setvarvar hud_temp weaponcount
+	shiftvarl hud_temp 7
+	addvar hud_temp 768
+	andvar hud_temp 2047
+	sin hud_temp hud_temp
+	shiftvarr hud_temp 11
+	
+	subvarvar hud_x hud_temp
+	subvarvar hud_y hud_temp
+	
+	addvar hud_x 164
+	addvar hud_y 176
+	
 	ifvarg weaponcount 0
 		orvar hud_orientation RS_FORCELERP
-				
-    state G_DrawWeaponTile
+	
+	state G_DrawWeaponTile
 
-	ifvarg weaponcount 1
-    ifvarl weaponcount 8
-    {
-		// Would set guniqhudid W_RPG_MUZZLE here, but it causes misalignment.
+	ifvarg weaponcount 0
+	ifvarl weaponcount 8
+	{
+		guniqhudid W_RPG_MUZZLE
 		switch weaponcount
+			case 1: // Interp hack
+				setvar hud_tilenum 2545
+				setvar hud_alpha 255
+				break
 			case 2:
 			case 3:
 				setvar hud_tilenum 2545
@@ -45,8 +49,8 @@ state draw_rpg // RPG_WEAPON:
 		endswitch
 		
 		orvar hud_orientation RS_FORCELERP
-        state G_DrawWeaponTile
-    }
+		state G_DrawWeaponTile
+	}
 	
 	guniqhudid 0
 ends
