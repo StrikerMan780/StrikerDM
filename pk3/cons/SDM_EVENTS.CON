@@ -1398,6 +1398,12 @@ onevent EVENT_SPAWN
 			setvar YREPEAT_MEMORY 164 // End radius
 			setvar SPAWN_ORIGANG 72 // Rotational Speed
 		}
+		else ifspawnedby TANK
+		{
+			setvar HITAG_MEMORY 56 // End time
+			setvar XREPEAT_MEMORY 0 // Start radius
+			setvar YREPEAT_MEMORY 255 // End radius
+		}
 
 		break
 	}
@@ -2823,6 +2829,57 @@ endevent
 onevent EVENT_ENTERLEVEL
 	readgamevar CL_XXXCONTENT
 	readgamevar CL_LASERCOLOR
+	
+	// **** ACTIVE MAPHACKS ***
+	// These are what I like to call active maphacks.
+	// These use heuristics to detect unmodified stock maps, and add new monsters and items.
+	ifvare VOLUME 3 // Episode 4
+	{
+		switch LEVEL
+			case 1: // Duke Burger
+				setvar CL_TEMP1 673
+				getactor[CL_TEMP1].picnum CL_TEMP2
+				getactor[CL_TEMP1].sectnum CL_TEMP3
+				getactor[CL_TEMP1].ang CL_TEMP4
+				ifvare CL_TEMP2 FOOTPRINTS2
+				ifvare CL_TEMP3 42
+				ifvare CL_TEMP4 1536
+				{
+					userquote 200
+					
+					espawn FLAMETHROWERSPRITE
+					setactor[RETURN].htpicnum FLAMETHROWERSPRITE
+					setactor[RETURN].x 34688
+					setactor[RETURN].y 24768
+					setactor[RETURN].z -16384
+					setactor[RETURN].ang 512
+					setactor[RETURN].cstat 0
+					setactor[RETURN].pal 0
+					setactor[RETURN].xrepeat 32
+					setactor[RETURN].yrepeat 32
+					setactor[RETURN].owner RETURN
+					setactor[RETURN].htowner RETURN
+					changespritesect RETURN 159
+					setvar RETURN 0
+					
+					espawn FLAMETHROWERAMMO
+					setactor[RETURN].htpicnum FLAMETHROWERAMMO
+					setactor[RETURN].x 34688
+					setactor[RETURN].y 25344
+					setactor[RETURN].z -16384
+					setactor[RETURN].ang 640
+					setactor[RETURN].cstat 0
+					setactor[RETURN].pal 0
+					setactor[RETURN].xrepeat 32
+					setactor[RETURN].yrepeat 32
+					setactor[RETURN].owner RETURN
+					setactor[RETURN].htowner RETURN
+					changespritesect RETURN 159
+					setvar RETURN 0
+				}
+			break
+		endswitch
+	}
 endevent
 
 onevent EVENT_INIT

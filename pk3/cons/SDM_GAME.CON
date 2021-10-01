@@ -1354,6 +1354,10 @@ actor EXPLOSION2 1 EXPLOSION_FRAMES
 		{
 			sizeat 16 16
 		}
+		else ifspawnedby TANK
+		{
+			sizeat 128 128
+		}
 		else ifspawnedby SEENINE
 		{
 			state spawn_explosion_spark
@@ -6412,143 +6416,154 @@ move TANKFORWARD 100
 move TANKSTOP
 
 useractor enemy TANK TANKSTRENGTH fall
+	ifaction 0
+	{
+		sizeat 60 60
+		action ATANKWAIT
+		cstat 257
+		clipdist 100
+	}
+	else ifaction ATANKSPIN
+	{
+		soundonce TANK_ROAM
 
-  ifaction 0
-  {
-    sizeat 60 60
-    action ATANKWAIT
-    cstat 257
-    clipdist 100
-  }
-  else
-    ifaction ATANKSPIN
-  {
-    soundonce TANK_ROAM
+		ifactioncount 20
+		{
+			ifrnd 16
+			ifcansee
+			ifcanshoottarget
+			{
+				move TANKSTOP geth
+				action ATANKSHOOTING
+				stopsound TANK_ROAM
+			}
+		}
 
-    ifactioncount 20
-    {
-      ifrnd 16
-        ifcansee
-          ifcanshoottarget
-      {
-        move TANKSTOP geth
-        action ATANKSHOOTING
-        stopsound TANK_ROAM
-      }
-    }
+		ifrnd 16
+			move TANKFORWARD seekplayer
+	}
+	else ifaction ATANKSHOOTING
+	{
+		ifactioncount 22
+		{
+			ifpdistg 8192
+			{
+				sound BOS1_ATTACK2
+				shoot MORTER
+			}
+			resetcount
+			move 0
+			action ATANKWAIT
+		}
+		else ifactioncount 2
+		{
+			ifcansee
+			{
+				ifpdistl 16384
+				{
+					ifrnd 128
+					{
+						sound PISTOL_FIRE
+						shoot SHOTSPARK1
+					}
+				}
+				else ifrnd 128
+				{
+					sound PRED_ATTACK
+					shoot FIRELASER
+				}
+			}
+			else
+			{
+				move TANKFORWARD seekplayer
+				action ATANKSPIN
+			}
+		}
 
-    ifrnd 16
-      move TANKFORWARD seekplayer
-  }
-  else
-    ifaction ATANKSHOOTING
-  {
-    ifactioncount 22
-    {
-      ifpdistg 8192
-      {
-        sound BOS1_ATTACK2
-        shoot MORTER
-      }
-      resetcount
-      move 0 action ATANKWAIT
-    }
-    else
-      ifactioncount 2
-    {
-      ifcansee
-      {
-        ifpdistl 16384
-        {
-          ifrnd 128
-          {
-            sound PISTOL_FIRE
-            shoot SHOTSPARK1
-          }
-        }
-        else
-          ifrnd 128
-        {
-          sound PRED_ATTACK
-          shoot FIRELASER
-        }
-      }
-      else
-      {
-        move TANKFORWARD seekplayer
-        action ATANKSPIN
-      }
-    }
+		ifrnd 16
+		{
+			stopsound TANK_ROAM
+			move TANKSTOP faceplayerslow
+		}
+	}
+	else ifaction ATANKWAIT
+	{
+		ifactioncount 32
+		{
+			move TANKFORWARD seekplayer
+			action ATANKSPIN
+		}
+	}
+	else ifaction ATANKDESTRUCT
+	{
+		ifactioncount 64
+			action ATANKDEAD
+		else ifactioncount 56
+			sound LASERTRIP_ARMING
+		else ifactioncount 48
+			sound LASERTRIP_ARMING
+		else ifactioncount 32
+			sound LASERTRIP_ARMING
+		else ifactioncount 16
+			sound LASERTRIP_ARMING
+			
+		break
+	}
+	else ifaction ATANKDEAD
+	{
+		addkills 1
+		hitradius 6144 TOUGH TOUGH TOUGH TOUGH
+		sound LASERTRIP_EXPLODE
+		debris SCRAP1 15
+		spawn EXPLOSION2
+		
+		state spawn_explosion_spark
+		state spawn_explosion_spark
+		state spawn_explosion_spark
+		state spawn_explosion_spark
+		state spawn_explosion_spark
+		state spawn_explosion_spark
+		state spawn_explosion_spark
+		state spawn_explosion_spark
+		state spawn_explosion_spark
+		state spawn_explosion_spark
+			
+		spawn SHOCKWAVE
+		spawn FIRESHELL
+			
+		setvar STATE_PARAM1 256 // Intensity
+		setvar STATE_PARAM2 8192 // Radius
+		state start_shake
+		
+		ifrnd 128
+			spawn PIGCOP
+		killit
+	}
 
-    ifrnd 16
-    {
-      stopsound TANK_ROAM
-      move TANKSTOP faceplayerslow
-    }
-  }
-  else
-    ifaction ATANKWAIT
-  {
-    ifactioncount 32
-    {
-      move TANKFORWARD seekplayer
-      action ATANKSPIN
-    }
-  }
-  else
-    ifaction ATANKDESTRUCT
-  {
-    ifactioncount 64
-      action ATANKDEAD
-    else
-      ifactioncount 56
-       sound LASERTRIP_ARMING
-     else
-       ifactioncount 48
-         sound LASERTRIP_ARMING
-     else
-       ifactioncount 32
-         sound LASERTRIP_ARMING
-     else
-       ifactioncount 16
-         sound LASERTRIP_ARMING
-     break
-  }
-  else
-    ifaction ATANKDEAD
-  {
-    addkills 1
-    hitradius 6144 TOUGH TOUGH TOUGH TOUGH
-    sound LASERTRIP_EXPLODE
-    debris SCRAP1 15
-    spawn EXPLOSION2
-    ifrnd 128 spawn PIGCOP
-    killit
-  }
+	ifhitweapon
+	{
+		ifdead
+			action ATANKDEAD
+		else
+		{
+			debris SCRAP1 1
+			ifaction ATANKSHOOTING
+				break
 
-  ifhitweapon
-  {
-    ifdead
-      action ATANKDEAD
-    else
-    {
-      debris SCRAP1 1
-      ifaction ATANKSHOOTING break
+			ifrnd 192
+			{
+				move TANKSTOP geth
+				action ATANKSHOOTING
+				stopsound TANK_ROAM
+			}
+		}
+	}
 
-      ifrnd 192
-      {
-        move TANKSTOP geth
-        action ATANKSHOOTING
-        stopsound TANK_ROAM
-      }
-    }
-  }
-
-  ifpdistl 1280
-    ifhitspace
-      ifp pfacing
-        ifangdiffl 512
-          action ATANKDESTRUCT
+	ifpdistl 1280
+	ifhitspace
+	ifp pfacing
+	ifangdiffl 512
+		action ATANKDESTRUCT
 enda
 
 

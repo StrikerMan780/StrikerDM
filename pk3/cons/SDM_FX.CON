@@ -48,7 +48,12 @@ actor SHOCKWAVE 0
 		setvar SPAWN_ORIGANG 8 // Rotational Speed
 		
 		setvar XREPEAT_MEMORY 0 // Start radius
-		setvar YREPEAT_MEMORY 255 // End radius
+		setvar YREPEAT_MEMORY 128 // End radius
+		
+		ifspawnedby TANK
+		{
+			setvar YREPEAT_MEMORY 255
+		}
 		
 		action ANULLACTION
 	}
@@ -973,7 +978,15 @@ actor EXPLOSIONSPARK 0
 		setactor[THISACTOR].shade -127
 		setactor[THISACTOR].blend 255
 		
-		sizeat 20 20
+		ifspawnedby TANK
+		{
+			sizeat 32 32
+		}
+		else
+		{
+			sizeat 20 20
+		}
+		
 		cstat 130
 		
 		ifrnd 128

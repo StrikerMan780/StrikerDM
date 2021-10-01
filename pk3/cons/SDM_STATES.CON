@@ -966,9 +966,17 @@ state spawn_explosion_spark
 	espawn EXPLOSIONSPARK
 	getactor[THISACTOR].pal TEMP2
 	setactor[RETURN].pal TEMP2
-				
-	randvar TEMP 128
-	addvar TEMP 32
+	
+	ifactor TANK
+	{
+		randvar TEMP 512
+		addvar TEMP 128
+	}
+	else
+	{
+		randvar TEMP 128
+		addvar TEMP 32
+	}
 	setactor[RETURN].xvel TEMP
 				
 	setvar TEMP -512
