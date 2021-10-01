@@ -721,7 +721,6 @@ definesound SQUISHED            sounds/squish.ogg      -128   0   3   0   0
 definesound TELEPORTER          teleport.voc       0   0   0   0   0
 definesound ELEVATOR_ON         gbelev01.voc       0   0   0   0   0
 definesound ELEVATOR_OFF        gbelev02.voc       0   0   0   0   0
-definesound ALIEN_ELEVATOR1     hydro43.voc        0   0   0   0   0
 definesound SUBWAY              subway.voc         0   0   0   0   0
 definesound SWITCH_ON           sounds/switch.wav         0   0   0   0   0
 
@@ -796,9 +795,6 @@ definesound GENERIC_AMBIENCE20     sounds/duke/con03.ogg       0   0   0   4   0
 definesound GENERIC_AMBIENCE21     !prison.voc     0   0   255 4   0
 definesound GENERIC_AMBIENCE22     vpiss2.voc      0   0   255 4   0
 definesound GENERIC_AMBIENCE23     sounds/duke/2ride06.ogg     0   0   255 4   0
-
-definesound SUPERMARKET            sounds/duke/aisle402.ogg    0   0   0   4   0
-
 
 definesound FIRE_CRACKLE           fire09.voc       0   0   254 2   0
 definesound DUMPSTER_MOVE          sounds/grind.wav       0   0   0   0   0
