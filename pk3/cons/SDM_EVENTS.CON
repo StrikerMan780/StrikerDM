@@ -2826,10 +2826,7 @@ onevent EVENT_DISPLAYROOMS // !UNSYNCHRONIZED!
 	state handle_shake_display
 endevent
 
-onevent EVENT_ENTERLEVEL
-	readgamevar CL_XXXCONTENT
-	readgamevar CL_LASERCOLOR
-	
+state do_active_maphacks
 	// **** ACTIVE MAPHACKS ***
 	// These are what I like to call active maphacks.
 	// These use heuristics to detect unmodified stock maps, and add new monsters and items.
@@ -2880,6 +2877,13 @@ onevent EVENT_ENTERLEVEL
 			break
 		endswitch
 	}
+ends
+
+onevent EVENT_ENTERLEVEL
+	readgamevar CL_XXXCONTENT
+	readgamevar CL_LASERCOLOR
+	
+	state do_active_maphacks
 endevent
 
 onevent EVENT_INIT
