@@ -682,6 +682,16 @@ tilefromtexture 7350 { file "tiles/7350.png" texture }
 tilefromtexture 7351 { file "tiles/7351.png" texture }
 tilefromtexture 7352 { file "tiles/7352.png" texture }
 
+// 3D Lemmings Red Sky
+tilefromtexture 7353 { file "tiles/7353.png" texture truenpot }
+multipsky 7353
+{
+	lognumtiles 1
+	horizfrac 32768
+	panel 0 0
+	panel 1 0
+}
+
 // Animated Textures
 animtilerange 7081 7132 3 ANIM_FORWARD
 animtilerange 7140 7141 5 ANIM_FORWARD

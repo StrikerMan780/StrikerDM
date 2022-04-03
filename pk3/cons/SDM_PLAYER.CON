@@ -80,26 +80,32 @@ move PSTOPED
 move PSHRINKING // used as a var only
 
 state check_pstandard
-  ifp pwalking
-    action PWALK
-  else
-    ifp pkicking
-      action PAKICKING
-  else
-    ifp pwalkingback
-      action PWALKBACK
-  else
-    ifp prunning
-      action PRUN
-  else
-    ifp prunningback
-      action PRUNBACK
-  else
-    ifp pjumping
-      action PJUMPING
-  else
-    ifp pducking
-      action PDUCKING
+	ifp pwalking
+		action PWALK
+	else ifp pkicking
+		action PAKICKING
+	else ifp pwalkingback
+		action PWALKBACK
+	else ifp prunning
+		action PRUN
+	else ifp prunningback
+		action PRUNBACK
+	else ifp pjumping
+		action PJUMPING
+	else ifp pducking
+		action PDUCKING
+ends
+
+state check_jumppadanim
+	ifvare JUMPPAD_HIT 1
+	{
+		ifaction PJUMPING { }
+		else ifaction PFALLING { }
+		else
+		{
+			action PJUMPING
+		}
+	}
 ends
 
 state reset_player
@@ -899,4 +905,6 @@ state handle_shake_timer
       ifp pducking
         action PDUCKING
   }
+  
+  state check_jumppadanim
 enda

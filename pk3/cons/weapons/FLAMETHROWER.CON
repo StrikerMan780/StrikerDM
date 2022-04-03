@@ -282,7 +282,7 @@ actor FIREBALLTRAIL 0
 		setactor[THISACTOR].shade -127
 		setactor[THISACTOR].blend 255
 		setactor[THISACTOR].mdflags 16
-		setvar ANIMATE_FLAGS ANIMATE_FLAG_SHELLEXPANSION
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_ALL
 		
 		setvar LOTAG_MEMORY 0 // Timer
 		setvar HITAG_MEMORY 32 // End time

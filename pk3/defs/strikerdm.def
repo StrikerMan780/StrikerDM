@@ -1,7 +1,9 @@
 // Palswaps
+echo "Palswaps"
 include defs/palswaps.def
 
 // Fonts
+echo "Fonts"
 include defs/redfont.def
 include defs/bluefont.def
 include defs/smallfont.def
@@ -9,13 +11,14 @@ include defs/digital.def
 include defs/greyfont.def
 
 // UI
+echo "UI Graphics"
 include defs/ui.def
 
 // Sprites & Textures
+echo "Sprites & Textures"
 include defs/sprites.def
 include defs/textures.def
 include defs/skyboxes.def
-
 include defs/doomtex.def
 include defs/communitytex.def
 include defs/communitytex_highres.def
@@ -28,8 +31,10 @@ include defs/fplanet_tex.def
 include defs/xxx.def
 
 // Voxels
+echo "Voxels"
 include defs/voxels.def
 
 // Models
+echo "Models"
 include defs/models.def
 

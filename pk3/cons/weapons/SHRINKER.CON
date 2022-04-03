@@ -132,7 +132,7 @@ actor SHRINKERTRAIL 0
 		
 		action ANULLACTION
 	}
-	
+		
 	ifcount 12
 		killit
 }

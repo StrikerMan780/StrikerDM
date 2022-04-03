@@ -1428,3 +1428,153 @@ spriteflags BOSS5 SF_ENEMY_NOPUSH_DAMAGEEVENT
 spriteflags BOSS5STAYPUT SF_ENEMYSTAYPUT_NOPUSH_DAMAGEEVENT
 actor BOSS5 BOSS5STRENGTH fall state BOSS5code enda
 actor BOSS5STAYPUT BOSS5STRENGTH cactor BOSS5 enda
+
+definequote 666 ... so, you've found me...
+definequote 667 I admire your detective skills...
+definequote 668 ...I've been so lonely, trapped here...
+definequote 669 .. festering in the decaying recesses of this damaged mind...
+definequote 670 . but, you already knew that, didn't you?#
+definequote 671 .. otherwise, you wouldn't have freed me, right?..#
+definequote 672 ... This long isolation has left me with a gnawing hunger...
+definequote 673 I must go..#. I'll be seeing you.
+definequote 674 ... You can't hide forever.#.!.
+definequote 675 .. I will spare the one who freed me from this hunger... for now...
+definequote 689 You are filled with an incredible sense of dread...
+
+state apparition_playspeech
+	randvar TEMP 5
+	switch TEMP
+		case 0: sound APPARITION_01 break
+		case 1: sound APPARITION_02 break
+		case 2: sound APPARITION_03 break
+		case 3: sound APPARITION_04 break
+		case 4: sound APPARITION_05 break
+		case 5: sound APPARITION_06 break
+	endswitch
+ends
+
+action APPARITION_HUNT 0 4 1 1 4
+action APPARITION_SPEAK 0 4 1 1 4
+action APPARITION_IDLE 0 2 1 1 4
+action APPARITION_WAIT 0 1 1 1 4
+action APPARITION_TELEPORT 0 2 1 1 4
+actor APPARITION 0
+	ifaction 0
+	{
+		sizeat 44 40
+		action APPARITION_IDLE
+	}
+	
+	ifaction APPARITION_IDLE
+	{
+		ifpdistl 1024
+		ifp pfacing
+		ifhitspace
+		{
+			state apparition_playspeech
+			action APPARITION_SPEAK
+			userquote 689
+			resetcount
+			
+			getplayer[THISACTOR].i TEMP
+			getactor[TEMP].yvel TEMP
+			setvarvar APPARITION_SUMMONER TEMP
+			setvarvar APPARITION_TARGET TEMP
+			
+			setvar APPARITION_QUOTE 666
+			setvar APPARITION_QTIME 60
+			
+			randvar TEMP 48
+			subvar TEMP 24
+			setvarvar APPARITION_QANGLE TEMP
+			
+			setvar APPARITION_QYOFF 120
+		}
+	}
+	
+	ifaction APPARITION_SPEAK
+	{
+		getactor[THISACTOR].htg_t 0 TEMP
+		setvar TEMP2 0
+		
+		switch TEMP
+			case 60:
+				setvar APPARITION_QUOTE 667
+				setvar TEMP2 1
+				break
+			case 120:
+				setvar APPARITION_QUOTE 668
+				setvar TEMP2 1
+				break
+			case 180:
+				setvar APPARITION_QUOTE 669
+				setvar TEMP2 1
+				break
+			case 240:
+				setvar APPARITION_QUOTE 670
+				setvar TEMP2 1
+				break
+			case 300:
+				setvar APPARITION_QUOTE 671
+				setvar TEMP2 1
+				break
+			case 420:
+				setvar APPARITION_QUOTE 672
+				setvar TEMP2 1
+				break
+			case 540:
+				setvar APPARITION_QUOTE 673
+				setvar TEMP2 1
+				action APPARITION_TELEPORT
+				break
+		endswitch
+		
+		ifvare TEMP2 1 // Refresh string time & angle
+		{
+			setvar APPARITION_QTIME 120
+			
+			randvar TEMP 48
+			subvar TEMP 24
+			setvarvar APPARITION_QANGLE TEMP
+			
+			randvar APPARITION_QYOFF 100
+			addvar APPARITION_QYOFF 60
+			
+			state apparition_playspeech
+		}
+	}
+	
+	ifaction APPARITION_TELEPORT
+	{
+		sizeto 1 40
+		sizeto 1 40
+		getactor[THISACTOR].xrepeat TEMP
+		ifvare TEMP 1
+		{
+			// Pick a target
+			
+			action APPARITION_WAIT
+		}
+	}
+	
+	// Done here, because we don't want more than one of these guys anyway.
+	ifvarg APPARITION_QTIME 0
+		subvar APPARITION_QTIME 1
+	
+	getactor[THISACTOR].xrepeat TEMP
+	ifvare TEMP 1 // Teleported Out
+	{
+		cstat 32768
+	}
+	else
+	{
+		cstat 0
+		ifrnd 8
+			cstator 4
+			
+		ifrnd 32
+			cstator 2
+		else ifrnd 8
+			cstator 514
+	}
+enda

@@ -406,7 +406,7 @@ actor DFGEXPLOSION 0
 		{
 			action DFGFRAMES2
 			setactor[THISACTOR].mdflags 16
-			setvar ANIMATE_FLAGS ANIMATE_FLAG_SHELLEXPANSION
+			setvar ANIMATE_FLAGS ANIMATE_FLAG_ALL
 		
 			setvar LOTAG_MEMORY 0 // Timer
 			setvar HITAG_MEMORY 64 // End time

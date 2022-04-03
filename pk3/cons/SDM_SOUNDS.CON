@@ -218,6 +218,38 @@ define DFG_TRACER1 633
 define DFG_TRACER2 634
 define DFG_TRACER3 635
 
+define THALASIN_AMB 636
+define CREEPYAMB_01 637
+define CREEPYAMB_02 638
+define CREEPYAMB_03 639
+define CREEPYAMB_04 640
+define CREEPYAMB_05 641
+define CREEPYAMB_06 642
+define CREEPYAMB_07 643
+define CREEPYAMB_08 644
+define CREEPYAMB_09 645
+define CREEPYAMB_10 646
+define CREEPYAMB_11 647
+define CREEPYAMB_12 648
+define CREEPYAMB_13 649
+define CREEPYAMB_14 650
+define CREEPYAMB_15 651
+define CREEPYAMB_16 652
+define CREEPYAMB_17 653
+define CREEPYAMB_18 654
+define CREEPYAMB_19 655
+define CREEPYAMB_20 656 // Unused
+define APPARITION_01 657
+define APPARITION_02 658
+define APPARITION_03 659
+define APPARITION_04 660
+define APPARITION_05 661
+define APPARITION_06 662
+define DISTORTED_PIPEBOMB 677
+define DISTORTED_TRIPMINE 678
+define DISTORTED_EXPLOSION 679
+define BURNINGMEMORY_AMB 680
+
 define DUKE_ROIDS01 681
 define DUKE_ROIDS02 682
 define DUKE_ROIDS03 683
@@ -486,6 +518,8 @@ definesound PERFECTO sounds/ambience/perfecto.ogg 0 0 0 0 -8192
 definesound UFO sounds/ambience/ufo.wav 0 0 0 3 0
 definesound CORAJE sounds/ambience/coraje.wav 0 0 0 3 0
 
+definesound THALASIN_AMB sounds/ambience/thalasin1.wav 0 0 0 3 8192
+
 definesound DOOMPLAT_START sounds/ambience/dspstart.wav 0 0 0 0 0
 definesound DOOMPLAT_STOP sounds/ambience/dspstop.wav 0 0 0 0 0
 definesound SPACEODDITY sounds/ambience/spaceoddity.ogg 0 0 0 3 0
@@ -627,3 +661,34 @@ definesound DUKE_WALKINDUCTS3   sounds/ductwlk3.wav      -64   128  2   0   0
 
 // Freedom Planet
 definesound FP_LIFTSTOP sounds/fplanet/lift_stop.ogg 0 0 0 0 0
+
+// HATEOT
+definesound CREEPYAMB_01 sounds/hateot/creep1.ogg -1024 512 0 0 0
+definesound CREEPYAMB_02 sounds/hateot/creep2.ogg -1024 512 0 0 0
+definesound CREEPYAMB_03 sounds/hateot/creep3.ogg -1024 512 0 0 0
+definesound CREEPYAMB_04 sounds/hateot/creep4.ogg -1024 512 0 0 0
+definesound CREEPYAMB_05 sounds/hateot/creep5.ogg -1024 512 0 0 0
+definesound CREEPYAMB_06 sounds/hateot/creep6.ogg -1024 512 0 0 0
+definesound CREEPYAMB_07 sounds/hateot/creep7.ogg -1024 512 0 0 0
+definesound CREEPYAMB_08 sounds/hateot/creep8.ogg -1024 512 0 0 0
+definesound CREEPYAMB_09 sounds/hateot/creep9.ogg -1024 512 0 0 0
+definesound CREEPYAMB_10 sounds/hateot/creep10.ogg -1024 512 0 0 0
+definesound CREEPYAMB_11 sounds/hateot/creep11.ogg -1024 512 0 0 0
+definesound CREEPYAMB_12 sounds/hateot/creep12.ogg -1024 512 0 0 0
+definesound CREEPYAMB_13 sounds/hateot/creep13.ogg -1024 512 0 0 0
+definesound CREEPYAMB_14 sounds/hateot/creep14.ogg -1024 512 0 0 0
+definesound CREEPYAMB_15 sounds/hateot/creep15.ogg -1024 512 0 0 0
+definesound CREEPYAMB_16 sounds/hateot/creep16.ogg -1024 512 0 0 0
+definesound CREEPYAMB_17 sounds/hateot/creep17.ogg -1024 512 0 0 0
+definesound CREEPYAMB_18 sounds/hateot/creep18.ogg -1024 512 0 0 0
+definesound CREEPYAMB_19 sounds/hateot/creep19.ogg -1024 512 0 0 0
+definesound APPARITION_01 sounds/hateot/appr_speak1.ogg -512 512 0 0 0
+definesound APPARITION_02 sounds/hateot/appr_speak2.ogg -512 512 0 0 0
+definesound APPARITION_03 sounds/hateot/appr_speak3.ogg -512 512 0 0 0
+definesound APPARITION_04 sounds/hateot/appr_speak4.ogg -512 512 0 0 0
+definesound APPARITION_05 sounds/hateot/appr_speak5.ogg -512 512 0 0 0
+definesound APPARITION_06 sounds/hateot/appr_speak6.ogg -512 512 0 0 0
+definesound DISTORTED_PIPEBOMB sounds/hateot/dist_pipe.ogg 0 0 2 0 6144
+definesound DISTORTED_TRIPMINE sounds/hateot/dist_trip.ogg -128 128 3 0 0
+definesound DISTORTED_EXPLOSION sounds/hateot/dist_expl.ogg  -1024 512 128 144 0
+definesound BURNINGMEMORY_AMB sounds/hateot/burningmemory.ogg 0 0 0 3 0

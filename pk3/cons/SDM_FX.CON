@@ -12,22 +12,28 @@ actor LDEXPLOSION 1 LAMEDUKE_EXPLOSION_FRAMES
 	{
 		setactor[THISACTOR].shade -127
 		setactor[THISACTOR].blend 255
+		setactor[THISACTOR].mdflags 16
 		cstat 130
-		ifspawnedby PLASMABALL
-		{
-			spritepal 1
-			espawn FIRESHELL
-			setactor[RETURN].pal 198
-			setvar RETURN 0
-		}
-		else ifspawnedby PLASMABALL2
-		{
-			spritepal 1
-		}
-		else ifspawnedby PLASMABALL3
-		{
-			spritepal 1
-		}
+		
+		getactor[THISACTOR].htpicnum TEMP
+		switch TEMP
+			case PLASMABALL:
+				espawn FIRESHELL
+				setactor[RETURN].pal 198
+				setvar RETURN 0
+				// fallthrough
+			case PLASMABALL2:
+			case PLASMABALL3:
+				setvar ANIMATE_FLAGS ANIMATE_FLAG_SCALE
+				setvar LOTAG_MEMORY 0 // Timer
+				setvar HITAG_MEMORY 96 // End time
+				getactor[THISACTOR].xrepeat TEMP
+				setvarvar XREPEAT_MEMORY TEMP // Start radius
+				mulvar TEMP 3
+				setvarvar YREPEAT_MEMORY TEMP // End radius
+				spritepal 1
+				break
+		endswitch
 	}
 }
 enda
@@ -41,7 +47,7 @@ actor SHOCKWAVE 0
 		setactor[THISACTOR].shade -127
 		setactor[THISACTOR].blend 255
 		setactor[THISACTOR].mdflags 16
-		setvar ANIMATE_FLAGS ANIMATE_FLAG_SHELLEXPANSION
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_ALL
 		
 		setvar LOTAG_MEMORY 0 // Timer
 		setvar HITAG_MEMORY 24 // End time
@@ -64,6 +70,7 @@ actor SHOCKWAVE 0
 enda
 
 spritenoshade FIRESHELL
+spritenopal FIRESHELL
 actor FIRESHELL 0
 {
 	ifcount 30
@@ -1080,7 +1087,7 @@ actor BLOODINFLUID1 0
 			cstator 8
 		
 		setactor[THISACTOR].mdflags 16
-		setvar ANIMATE_FLAGS ANIMATE_FLAG_SHELLEXPANSION
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_ALL
 		
 		setvar LOTAG_MEMORY 0 // Timer
 		setvar HITAG_MEMORY 256 // End time
@@ -1110,7 +1117,7 @@ actor BLOODINFLUID2 0
 			cstator 4
 		
 		setactor[THISACTOR].mdflags 16
-		setvar ANIMATE_FLAGS ANIMATE_FLAG_SHELLEXPANSION
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_ALL
 		
 		setvar LOTAG_MEMORY 0 // Timer
 		setvar HITAG_MEMORY 256 // End time
@@ -1168,7 +1175,111 @@ actor RICOCHET_SPARK 0
 }
 enda
 
-actor JIBS6 0 enda
+//actor JIBS6 0 enda
+action TROLLGE_ANIM1 0 1 1 1 4
+action TROLLGE_ANIM2 1 1 1 1 4
+action TROLLGE_ANIM3 2 1 1 1 4
+action TROLLGE_ANIM4 3 1 1 1 4
+action TROLLGE_ANIM5 4 1 1 1 4
+action TROLLGE_ANIM6 5 1 1 1 4
+action TROLLGE_ANIM7 6 1 1 1 4
+action TROLLGE_WAIT 0 1 1 1 40
+
+state random_creepy_sound
+	randvar TEMP 18
+	switch TEMP
+		case 0: sound CREEPYAMB_01 break
+		case 1: sound CREEPYAMB_02 break
+		case 2: sound CREEPYAMB_03 break
+		case 3: sound CREEPYAMB_04 break
+		case 4: sound CREEPYAMB_05 break
+		case 5: sound CREEPYAMB_06 break
+		case 6: sound CREEPYAMB_07 break
+		case 7: sound CREEPYAMB_08 break
+		case 8: sound CREEPYAMB_09 break
+		case 9: sound CREEPYAMB_10 break
+		case 10: sound CREEPYAMB_11 break
+		case 11: sound CREEPYAMB_12 break
+		case 12: sound CREEPYAMB_13 break
+		case 13: sound CREEPYAMB_14 break
+		case 14: sound CREEPYAMB_15 break
+		case 15: sound CREEPYAMB_16 break
+		case 16: sound CREEPYAMB_17 break
+		case 17: sound CREEPYAMB_18 break
+		case 18: sound CREEPYAMB_19 break
+	endswitch
+ends
+
+actor TROLLGE 0
+	ifaction 0
+	{
+		sizeat 64 64
+		cstat 32768
+		setvar EXTRA_MEMORY 900
+		state random_creepy_sound
+		action TROLLGE_WAIT
+	}
+	else ifaction TROLLGE_WAIT
+	{
+		subvar EXTRA_MEMORY 1
+		ifvarl EXTRA_MEMORY 1
+		{
+			setvarvar TEMP2 MULTIMODE
+			subvar TEMP2 1
+			randvarvar TEMP TEMP2
+			getplayer[TEMP].posx SPAWN_ORIGX
+			getplayer[TEMP].posy SPAWN_ORIGY
+			getplayer[TEMP].posz SPAWN_ORIGZ
+			getplayer[TEMP].cursectnum SECTNUM_MEMORY
+			changespritesect THISACTOR SECTNUM_MEMORY
+			
+			randvar TEMP 8192
+			subvar TEMP 4096
+			addvarvar SPAWN_ORIGX TEMP
+			
+			randvar TEMP 8192
+			subvar TEMP 4096
+			addvarvar SPAWN_ORIGY TEMP
+			
+			randvar TEMP 4096
+			subvarvar SPAWN_ORIGZ TEMP
+			
+			setsprite THISACTOR SPAWN_ORIGX SPAWN_ORIGY SPAWN_ORIGZ
+			
+			randvar TEMP 6
+			switch TEMP
+				case 0: action TROLLGE_ANIM1 break
+				case 1: action TROLLGE_ANIM2 break
+				case 2: action TROLLGE_ANIM3 break
+				case 3: action TROLLGE_ANIM4 break
+				case 4: action TROLLGE_ANIM5 break
+				case 5: action TROLLGE_ANIM6 break
+				case 6: action TROLLGE_ANIM7 break
+			endswitch
+			
+			resetactioncount
+			cstat 2
+			
+			randvar EXTRA_MEMORY 4500
+			addvar EXTRA_MEMORY 4500
+			divvarvar EXTRA_MEMORY MULTIMODE
+			state random_creepy_sound
+		}
+	}
+	else
+	{
+		ifactioncount 3
+		{
+			cstat 32768
+			action TROLLGE_WAIT
+		}
+		else ifactioncount 2
+		{
+			cstator 512
+		}
+	}
+	
+enda
 
 define SCRAP_WORKSLIKE 4226
 defineprojectile COLORSCRAP1 PROJ_WORKSLIKE SCRAP_WORKSLIKE

@@ -274,13 +274,13 @@ onevent EVENT_POSTDAMAGESPRITE
 				
 			getactor[THISACTOR].htowner TEMP
 			dist TEMP2 TEMP RETURN
-			ifvarl TEMP2 1024
+			ifvarl TEMP2 SSG_GIB_DISTANCE // SSG gibs at point-blank
 			{
 				setactor[RETURN].htpicnum RADIUSEXPLOSION
 			}
-			else ifvarl TEMP2 2048
+			else ifvarl TEMP2 SSG_MIGHT_GIB_DISTANCE
 			{
-				ifrnd 32
+				ifrnd 64
 					setactor[RETURN].htpicnum RADIUSEXPLOSION
 			}
 		}
@@ -809,6 +809,10 @@ onevent EVENT_EGS
 		
 		case PIGJIB1:
 			changespritestat THISACTOR 1
+			break
+			
+		case APLAYER:
+			setactor[THISACTOR].mdflags 16
 			break
 	endswitch
 endevent
@@ -1363,7 +1367,7 @@ onevent EVENT_SPAWN
 		setactor[THISACTOR].shade -127
 		setactor[THISACTOR].blend 255
 		setactor[THISACTOR].mdflags 16
-		setvar ANIMATE_FLAGS ANIMATE_FLAG_SHELLEXPANSION
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_ALL
 		
 		setvar LOTAG_MEMORY 0 // Timer
 		setvar HITAG_MEMORY 64 // End time
@@ -1414,7 +1418,7 @@ onevent EVENT_SPAWN
 		setactor[THISACTOR].shade -127
 		setactor[THISACTOR].blend 255
 		setactor[THISACTOR].mdflags 16
-		setvar ANIMATE_FLAGS ANIMATE_FLAG_SHELLEXPANSION
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_ALL
 		
 		setvar LOTAG_MEMORY 0 // Timer
 		setvar HITAG_MEMORY 16 // End time
@@ -1440,7 +1444,7 @@ onevent EVENT_SPAWN
 		setactor[THISACTOR].shade -127
 		setactor[THISACTOR].blend 255
 		setactor[THISACTOR].mdflags 16
-		setvar ANIMATE_FLAGS ANIMATE_FLAG_SHELLEXPANSION
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_ALL
 		
 		setvar LOTAG_MEMORY 0 // Timer
 		setvar HITAG_MEMORY 32 // End time
@@ -1487,6 +1491,26 @@ onevent EVENT_SPAWN
 	getactor[THISACTOR].ang SPAWN_ORIGANG
 	
 	getactor[THISACTOR].picnum TEMP
+	ifvare VOLUME 4 // Striker's Maps
+	ifvare LEVEL 7 // Burning Memory
+	{
+		switch TEMP
+			case 3591: // Alien Slime/Tentacles
+			case 5376:
+			case 5377:
+			case 5378:
+			case 5379:
+			case 5406: // Hanging slime/blood
+			case 5407:
+			case 5408:
+			case 5409:
+				getactor[THISACTOR].htflags TEMP2
+				orvar TEMP2 64
+				setactor[THISACTOR].htflags TEMP2
+				break
+		endswitch
+	}
+	
 	switch TEMP
 		// XXX tiles (Hide if XXX content is off)
 		case FLESHLIGHT:
@@ -1501,6 +1525,8 @@ onevent EVENT_SPAWN
 		case RENARIDE:
 		case COMMUNITY_XXX01:
 		case IMPTAN:
+		case RUBBER:
+		case KRYSTALANIM:
 			setactor[THISACTOR].mdflags 16
 			setvar ISADULT ADULT_HIDE
 			break
@@ -1533,12 +1559,13 @@ onevent EVENT_SPAWN
 		case MIKHAILA:
 		case MIKHAILA2:
 		case CHAMPAGNE:
+		case CHAMPAGNE2:
 		case STRIKER:
 		case STRIKERXHELEN:
 		case HENTAIANIM:
 		case PUSSYGRIND:
-		case DAWNSEXANIM:
-		case SALLYMASTURBATE:
+		case DAWNANIM:
+		case SALLYANIM:
 		case SHARONM:
 		case DILDO:
 			setactor[THISACTOR].mdflags 16
@@ -1696,126 +1723,121 @@ onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
 		}
 	}
 	
-	// LOTAG_MEMORY = timer
-	// HITAG_MEMORY = lifetime
-	// SPAWN_ORIGANG = rotational speed
-	// SPAWN_ORIGZVEL = rotational offset
-	// XREPEAT_MEMORY = start radius
-	// YREPEAT_MEMORY = end radius
-	ifvarand ANIMATE_FLAGS ANIMATE_FLAG_SHELLEXPANSION
-	{	
-		ifvarvare LOTAG_MEMORY HITAG_MEMORY
-		{
-			settspr[THISACTOR].tsprxrepeat 0
-			break
-		}
-		
-		ifvarvarg LOTAG_MEMORY HITAG_MEMORY
-		{
-			settspr[THISACTOR].tsprxrepeat 0
-			break
-		}
-			
+	ifvarg ANIMATE_FLAGS 0
+	{
 		ifvarg clock_diff 0 // Sync to 120hz timer
 		{	
 			getuserdef[].pause_on CL_TEMP1
 			ifvarvarn ANIMATE_CLOCKLAST totalclock
 			ifvare CL_TEMP1 0
 			{
+				setvar CL_DOANIMS 1
+				
 				// Increment timer
 				addvarvar LOTAG_MEMORY clock_diff
-				
+					
+				// Set last animate tic to keep speed correct.
+				setvarvar ANIMATE_CLOCKLAST totalclock
+			}
+			else setvar CL_DOANIMS 0
+		}
+		else setvar CL_DOANIMS 0
+		
+		ifvarand ANIMATE_FLAGS ANIMATE_FLAG_ROTATE
+		{
+			ifvare CL_DOANIMS 1
+			{
 				// Increment angle
 				setvarvar CL_TEMP1 SPAWN_ORIGANG
 				mulvarvar CL_TEMP1 clock_diff
 				addvarvar SPAWN_ORIGZVEL CL_TEMP1
-				
-				// Set last animate tic to keep speed correct.
-				setvarvar ANIMATE_CLOCKLAST totalclock
 			}
+			
+			// Apply rotation
+			gettspr[THISACTOR].tsprang CL_TEMP1
+			addvarvar CL_TEMP1 SPAWN_ORIGZVEL
+			settspr[THISACTOR].tsprang CL_TEMP1
 		}
 		
-		// Apply rotation
-		gettspr[THISACTOR].tsprang CL_TEMP2
-		addvarvar CL_TEMP2 SPAWN_ORIGZVEL
-		settspr[THISACTOR].tsprang CL_TEMP2
+		// LOTAG_MEMORY = timer
+		// HITAG_MEMORY = lifetime
+		// SPAWN_ORIGANG = rotational speed
+		// SPAWN_ORIGZVEL = rotational offset
+		// XREPEAT_MEMORY = start radius
+		// YREPEAT_MEMORY = end radius
+		ifvarand ANIMATE_FLAGS ANIMATE_FLAG_SCALE
+		{		
+			// Radius range
+			setvarvar CL_TEMP1 YREPEAT_MEMORY
+			subvarvar CL_TEMP1 XREPEAT_MEMORY
+			
+			// Resulting radius
+			setvarvar CL_TEMP2 LOTAG_MEMORY
+			mulvarvar CL_TEMP2 CL_TEMP1
+			divvarvar CL_TEMP2 HITAG_MEMORY
+			addvarvar CL_TEMP2 XREPEAT_MEMORY
+			
+			ifvarg CL_TEMP2 255
+				setvar CL_TEMP2 255
+			ifvarl CL_TEMP2 0
+				setvar CL_TEMP2 0
+				
+			// Set x/yrepeat
+			settspr[THISACTOR].tsprxrepeat CL_TEMP2
+			settspr[THISACTOR].tspryrepeat CL_TEMP2
+		}
 		
-		// Radius range
-		setvarvar CL_TEMP1 YREPEAT_MEMORY
-		subvarvar CL_TEMP1 XREPEAT_MEMORY
+		// LOTAG_MEMORY = timer
+		// HITAG_MEMORY = lifetime
+		ifvarand ANIMATE_FLAGS ANIMATE_FLAG_FADEOUT
+		{	
+			ifvarvare LOTAG_MEMORY HITAG_MEMORY
+			{
+				settspr[THISACTOR].tsprxrepeat 0
+				break
+			}
+			
+			ifvarvarg LOTAG_MEMORY HITAG_MEMORY
+			{
+				settspr[THISACTOR].tsprxrepeat 0
+				break
+			}
 		
-		// Resulting radius
-		setvarvar CL_TEMP2 LOTAG_MEMORY
-		mulvarvar CL_TEMP2 CL_TEMP1
-		divvarvar CL_TEMP2 HITAG_MEMORY
-		addvarvar CL_TEMP2 XREPEAT_MEMORY
-		
-		ifvarg CL_TEMP2 255
-			setvar CL_TEMP2 255
-		ifvarl CL_TEMP2 0
-			setvar CL_TEMP2 0
-		
-		// Set x/yrepeat
-		settspr[THISACTOR].tsprxrepeat CL_TEMP2
-		settspr[THISACTOR].tspryrepeat CL_TEMP2
-		
-		// Fade alpha over time
-		setvarvar CL_TEMP2 LOTAG_MEMORY
-		mulvar CL_TEMP2 256
-		divvarvar CL_TEMP2 HITAG_MEMORY
-		
-		ifvarg CL_TEMP2 255
-			setvar CL_TEMP2 255
-		ifvarl CL_TEMP2 0
-			setvar CL_TEMP2 0
+			// Fade alpha over time
+			setvarvar CL_TEMP2 LOTAG_MEMORY
+			mulvar CL_TEMP2 256
+			divvarvar CL_TEMP2 HITAG_MEMORY
+			
+			ifvarg CL_TEMP2 255
+				setvar CL_TEMP2 255
+			ifvarl CL_TEMP2 0
+				setvar CL_TEMP2 0
 
-		// Set alpha
-		setactor[THISACTOR].alpha CL_TEMP2
+			// Set alpha
+			setactor[THISACTOR].alpha CL_TEMP2
+		}
 	}
 	
-	// LOTAG_MEMORY = timer
-	// HITAG_MEMORY = lifetime
-	ifvarand ANIMATE_FLAGS ANIMATE_FLAG_FADEOUT
-	{	
-		ifvarvare LOTAG_MEMORY HITAG_MEMORY
-		{
-			settspr[THISACTOR].tsprxrepeat 0
-			break
-		}
-		
-		ifvarvarg LOTAG_MEMORY HITAG_MEMORY
-		{
-			settspr[THISACTOR].tsprxrepeat 0
-			break
-		}
-		
-		// Perhaps move this to the top of all effects
-		ifvarg clock_diff 0 // Sync to 120hz timer
+	ifactor APLAYER
+	{
+		ifvare VOLUME 4 // Striker's Maps
+		ifvare LEVEL 7 // Burning Memory
 		{	
-			getuserdef[].pause_on CL_TEMP1
-			ifvarvarn ANIMATE_CLOCKLAST totalclock
-			ifvare CL_TEMP1 0
-			{
-				// Increment timer
-				addvarvar LOTAG_MEMORY clock_diff
+			getactor[THISACTOR].xrepeat CL_TEMP1
+			gettspr[THISACTOR].tsprcstat CL_TEMP2
+			ifvarl CL_TEMP1 40
+				orvar CL_TEMP2 2
+			else
+				orvar CL_TEMP2 514
+			settspr[THISACTOR].tsprcstat CL_TEMP2
 				
-				// Set last animate tic to keep speed correct.
-				setvarvar ANIMATE_CLOCKLAST totalclock
-			}
+			gettspr[THISACTOR].tsprpal CL_TEMP1
+			ifvare CL_TEMP1 6 // Nightvision unveils all
+				break
+			
+			settspr[THISACTOR].tsprpal 4
 		}
-		
-		// Fade alpha over time
-		setvarvar CL_TEMP2 LOTAG_MEMORY
-		mulvar CL_TEMP2 256
-		divvarvar CL_TEMP2 HITAG_MEMORY
-		
-		ifvarg CL_TEMP2 255
-			setvar CL_TEMP2 255
-		ifvarl CL_TEMP2 0
-			setvar CL_TEMP2 0
-
-		// Set alpha
-		setactor[THISACTOR].alpha CL_TEMP2
+		break
 	}
 	
 	// Hack to keep your own fireballs from blinding you.
@@ -1935,12 +1957,13 @@ onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
 					// XXX tiles with clean versions
 					case DILDO: settspr[THISACTOR].tsprpicnum 3702 break
 					case SHARONM: settspr[THISACTOR].tsprpicnum 4980 break
-					case SALLYMASTURBATE: settspr[THISACTOR].tsprpicnum 4981 break
-					case DAWNSEXANIM: settspr[THISACTOR].tsprpicnum 4982 break
+					case SALLYANIM: settspr[THISACTOR].tsprpicnum 4981 break
+					case DAWNANIM: settspr[THISACTOR].tsprpicnum 4982 break
 					case HENTAIANIM: settspr[THISACTOR].tsprpicnum 4983 break
 					case STRIKERXHELEN: settspr[THISACTOR].tsprpicnum 4984 break
 					case STRIKER: settspr[THISACTOR].tsprpicnum 4985 break
 					case CHAMPAGNE: settspr[THISACTOR].tsprpicnum 4986 break
+					case CHAMPAGNE2: settspr[THISACTOR].tsprpicnum 4979 break
 					case MIKHAILA: settspr[THISACTOR].tsprpicnum 4987 break
 					case MIKHAILA2: settspr[THISACTOR].tsprpicnum 4988 break
 					case GEECKU2: settspr[THISACTOR].tsprpicnum 4989 break
@@ -2283,6 +2306,14 @@ onevent EVENT_GETLOADTILE // !UNSYNCHRONIZED!
 	ifvare COOP GM_ROIDMATCH
 	{
 		setvar RETURN ROIDLOAD
+		break
+	}
+	
+	ifvare VOLUME 4 // Striker's Maps
+	ifvare LEVEL 7 // Burning Memory
+	{
+		setvar RETURN 6656
+		break
 	}
 endevent
 
@@ -2388,42 +2419,7 @@ onevent EVENT_DISPLAYREST // !UNSYNCHRONIZED!
 	{
 		ifvarg CL_TEMP1 0
 		{
-			ifvarn COOP GM_COOPERATIVE
-			{
-				setvar SCORE_PLAYERINDEX 0
-				setvar SCORE_YOFFSET 8
-				whilevarn SCORE_PLAYERINDEX 16
-				{
-					getplayer[SCORE_PLAYERINDEX].connected SCORE_PLAYERCONNECTED
-					ifvare SCORE_PLAYERCONNECTED 1 // Is connected
-					{
-						// Print Background Bar
-						myos 267 SCORE_YOFFSET NAMEBAR -127 569
-						
-						// Get palette
-						getplayer[SCORE_PLAYERINDEX].palookup SCORE_PLAYERPAL
-						
-						// Get and print name
-						getpname 500 SCORE_PLAYERINDEX
-						screentext 3072 268 SCORE_YOFFSET 65536 0 0 500 -127 SCORE_PLAYERPAL 536 0 3 5 1 1 8192 0 0 xdim ydim 
-						
-						// Get and print frags
-						getplayer[SCORE_PLAYERINDEX].frag SCORE_FRAGS
-						getplayer[SCORE_PLAYERINDEX].fraggedself SCORE_SUICIDES
-						subvarvar SCORE_FRAGS SCORE_SUICIDES
-						redefinequote 500 %d
-						qsprintf 500 500 SCORE_FRAGS
-						screentext 3072 318 SCORE_YOFFSET 65536 0 0 500 -127 SCORE_PLAYERPAL 536 0 3 5 1 1 8193 0 0 xdim ydim 
-						
-						// Move y offset down
-						addvar SCORE_YOFFSET 6
-					}
-					
-					// Move on to the next player
-					addvar SCORE_PLAYERINDEX 1
-				}
-			}
-			else
+			ifvare COOP GM_COOPERATIVE
 			{
 				state draw_babe_counter
 			}
@@ -2447,6 +2443,59 @@ onevent EVENT_DISPLAYREST // !UNSYNCHRONIZED!
 	ifvarg BURNING_TICS 0
 	{
 		screentext 3072 160 150 65536 0 0 134 -127 2 16 0 3 5 1 1 8194 0 0 xdim ydim
+	}
+	
+	ifvare VOLUME 4 // Striker's Maps
+	ifvare LEVEL 7 // Burning Memory
+	{
+		ifvarvare APPARITION_TARGET screenpeek
+		ifvarg APPARITION_QTIME 0
+		{
+			displayrandvar CL_TEMP1 128
+			subvar CL_TEMP1 64
+			
+			displayrandvar CL_TEMP2 8
+			subvar CL_TEMP2 4
+			addvarvar CL_TEMP2 APPARITION_QANGLE
+			
+			setvar CL_TEMP4 0
+			displayrandvar CL_TEMP3 100
+			ifvarl CL_TEMP3 64
+			{
+				displayrandvar CL_TEMP4 12
+				subvar CL_TEMP4 6
+			}
+			addvar CL_TEMP4 MINIFONT
+			
+			screentext CL_TEMP4 160 APPARITION_QYOFF 65536 CL_TEMP2 CL_TEMP1 APPARITION_QUOTE 20 13 16 0 6 7 1 1 8194 0 0 xdim ydim
+		}
+		
+		setvarvar CL_TEMP1 totalclock
+		displayrandvar CL_TEMP2 8
+		addvarvar CL_TEMP1 CL_TEMP2
+		divvar CL_TEMP1 4
+		modvar CL_TEMP1 24
+		addvar CL_TEMP1 6650 // Initial Static Tile
+		setvar CL_TEMP4 128
+		
+		displayrandvar CL_TEMP2 512
+		getplayer[THISACTOR].dead_flag CL_TEMP3
+		ifvarn CL_TEMP3 0
+		{
+			displayrandvar CL_TEMP2 128
+			setvar CL_TEMP4 0
+		}
+		
+		ifvare CL_TEMP2 1
+			setvar CL_TEMP1 6674
+		else ifvare CL_TEMP2 2
+			setvar CL_TEMP1 6675
+		else ifvare CL_TEMP2 3
+			setvar CL_TEMP1 6675
+		else ifvare CL_TEMP2 4
+			setvar CL_TEMP1 6676
+		
+		rotatespritea 0 0 65536 0 CL_TEMP1 0 0 1042 CL_TEMP4 0 0 xdim ydim
 	}
 	
 	state client_keys
@@ -2877,6 +2926,15 @@ state do_active_maphacks
 			break
 		endswitch
 	}
+	
+	ifvare VOLUME 4 // Striker's Maps
+	ifvare LEVEL 7 // Burning Memory
+	{
+		inittimer 90
+		break
+	}
+	
+	inittimer 120 // Needed to reset the timer.
 ends
 
 onevent EVENT_ENTERLEVEL
@@ -2914,6 +2972,103 @@ onevent EVENT_SOUND
 				setvar RETURN MENU_BACK
 				break
 		endswitch
+	}
+	
+	ifvare VOLUME 4 // Striker's Maps
+	ifvare LEVEL 7 // Burning Memory
+	{
+		ifactor APLAYER
+		{
+			ifvare RETURN DUKE_LAND
+				break
+			ifvare RETURN SQUISHED
+				break
+				
+			getactor[THISACTOR].yvel CL_TEMP1
+			ifvarvarn CL_TEMP1 myconnectindex
+			{
+				setvar RETURN -1
+				break
+			}
+		}
+		
+		// Casing sounds play less often
+		ifactor SHELL
+		{
+			displayrandvar CL_TEMP1 100
+			ifvarl CL_TEMP1 95
+			{
+				setvar RETURN -1
+				break
+			}
+		}
+		
+		ifactor SHOTGUNSHELL
+		{
+			displayrandvar CL_TEMP1 100
+			ifvarl CL_TEMP1 95
+			{
+				setvar RETURN -1
+				break
+			}
+		}
+		
+		// Ricochets are a bit obnoxious and ruin this map's atmosphere.
+		ifvare RETURN PISTOL_RICOCHET
+		{
+			setvar RETURN -1
+			break
+		}
+		
+		// Sounds out of line of sight are muffled/distorted.
+		switch RETURN
+			case PIPEBOMB_EXPLODE:
+			case RPG_EXPLODE:
+			case LASERTRIP_EXPLODE:
+			case LASERTRIP_ARMING:
+			case PIPEBOMB_BOUNCE:
+				getplayer[screenpeek].i CL_TEMP1
+				canseespr THISACTOR CL_TEMP1 CL_TEMP2
+				ifvarn CL_TEMP2 1
+				{
+					ifvare RETURN PIPEBOMB_BOUNCE
+						setvar RETURN DISTORTED_PIPEBOMB
+					else ifvare RETURN LASERTRIP_ARMING
+						setvar RETURN DISTORTED_TRIPMINE
+					else
+						setvar RETURN DISTORTED_EXPLOSION
+				}
+				break
+		endswitch
+		ifvare RETURN DISTORTED_EXPLOSION
+			break
+		
+		// Teleporter sounds replaced by random ambiance
+		ifvare RETURN TELEPORTER
+		{
+			displayrandvar CL_TEMP1 100
+			ifvarl CL_TEMP1 75 // Only 25% of the sounds should make it through
+			{
+				setvar RETURN -1
+				break
+			}
+			
+			displayrandvar CL_TEMP1 12
+			switch CL_TEMP1
+				case 1 setvar RETURN DUKE_LAND break
+				case 2 setvar RETURN DUKE_HARTBEAT break
+				case 3 setvar RETURN THUD break
+				case 4 setvar RETURN ITEM_SPLASH break
+				case 5 setvar RETURN LASERTRIP_ONWALL break
+				case 6 setvar RETURN DUKE_WALKINDUCTS break
+				case 7 setvar RETURN KICK_HIT break
+				case 8 setvar RETURN BLOOD_SPLAT1 break
+				case 9 setvar RETURN FAUCET_ON break
+				case 10 setvar RETURN FAUCET_OFF break
+				case 11 setvar RETURN SOMETHING_DRIPPING break
+				case 12 setvar RETURN NITEVISION_ONOFF break
+			endswitch
+		}
 	}
 	
 	ifactor WATERSPLASH2

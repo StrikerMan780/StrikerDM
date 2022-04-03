@@ -162,6 +162,9 @@ tilefromtexture 2620 { file "tiles/2620.png" }
 tilefromtexture 2621 { file "tiles/2621.png" }
 tilefromtexture 2622 { file "tiles/2622.png" }
 
+// Light Spot
+tilefromtexture 3325 { file "tiles/3325.png" }
+
 // Lo Wang statue
 tilefromtexture 3678 { file "tiles/3678.png" texture }
 
@@ -224,11 +227,11 @@ tilefromtexture 2520 { file "tiles/2520.png" xoffset 2 yoffset -8 }
 tilefromtexture 2325 { file "tiles/2325.png" xoffset 24 }
 tilefromtexture 2326 { file "tiles/2326.png" xoffset 16 }
 
-tilefromtexture 2524 { file "tiles/2524.png" xoffset -14 yoffset 3 }
-tilefromtexture 2525 { file "tiles/2525.png" xoffset -7 yoffset 13 }
-tilefromtexture 2526 { file "tiles/2526.png" xoffset -16 yoffset 12 }
-tilefromtexture 2528 { file "tiles/2528.png" xoffset -38 yoffset -6 }
-tilefromtexture 2529 { file "tiles/2529.png" xoffset -74 yoffset 5 }
+//tilefromtexture 2524 { file "tiles/2524.png" xoffset -14 yoffset 3 }
+//tilefromtexture 2525 { file "tiles/2525.png" xoffset -7 yoffset 13 }
+//tilefromtexture 2526 { file "tiles/2526.png" xoffset -16 yoffset 12 }
+//tilefromtexture 2528 { file "tiles/2528.png" xoffset -38 yoffset -6 }
+//tilefromtexture 2529 { file "tiles/2529.png" xoffset -74 yoffset 5 }
 tilefromtexture 2532 { file "tiles/2532.png" xoffset -16 yoffset -30 }
 
 /* // Duke64 Pistol for later.
@@ -239,6 +242,14 @@ tilefromtexture 2528 { file "tiles/2528_dn64.png" xoff -48 yoff 4 }
 tilefromtexture 2529 { file "tiles/2529_dn64.png" xoff -76 yoff 2 }
 */
 
+// GodTC Pistol
+tilefromtexture 2524 { file "tiles/2524_godtc.png" xoffset -25 yoffset 8 }
+tilefromtexture 2525 { file "tiles/2525_godtc.png" xoffset -24 yoffset 12 }
+tilefromtexture 2526 { file "tiles/2526_godtc.png" xoffset -31 yoffset 8 }
+tilefromtexture 2528 { file "tiles/2528_2529_godtc.png" xoffset -70 yoffset -5 }
+tilefromtexture 2529 { file "tiles/2528_2529_godtc.png" xoffset -70 yoffset 17 }
+
+// RPG
 tilefromtexture 2544 { file "tiles/2544.png" xoffset -106 yoffset -67 }
 tilefromtexture 2548 { file "tiles/2548.png" xoff -68 yoff 15 }
 tilefromtexture 2550 { file "tiles/2550.png" xoff -7 yoff 18 }
@@ -434,6 +445,7 @@ tilefromtexture 2293 { file "tiles/2293.png" xoff 3 yoff -9 }
 tilefromtexture 3707 { file "tiles/3707.png" texture }
 tilefromtexture 3708 { file "tiles/3708.png" texture }
 tilefromtexture 3709 { file "tiles/3709.png" texture }
+tilefromtexture 3710 { file "tiles/3710.png" texture }
 
 // BFG Projectile
 animtilerange 3738 3739 2 ANIM_FORWARD
@@ -725,3 +737,17 @@ tilefromtexture 5941 { file "tiles/5941.png" }
 tilefromtexture 5942 { file "tiles/5942.png" xoff 8 yoff -30 }
 tilefromtexture 5943 { file "tiles/5943.png" xoff 23 yoff -24 }
 tilefromtexture 5944 { file "tiles/5944.png" }
+
+tilefromtexture 6688 { file "tiles/6688.png" }
+tilefromtexture 6689 { file "tiles/6689.png" }
+tilefromtexture 6690 { file "tiles/6690.png" }
+tilefromtexture 6691 { file "tiles/6691.png" }
+tilefromtexture 6692 { file "tiles/6692.png" }
+tilefromtexture 6693 { file "tiles/6693.png" }
+tilefromtexture 6694 { file "tiles/6694.png" }
+
+//animtilerange 6696 6699 3 ANIM_FORWARD
+tilefromtexture 6696 { file "tiles/6696.png" }
+tilefromtexture 6697 { file "tiles/6697.png" }
+tilefromtexture 6698 { file "tiles/6698.png" }
+tilefromtexture 6699 { file "tiles/6699.png" }

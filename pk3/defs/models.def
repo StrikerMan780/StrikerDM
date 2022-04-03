@@ -3,7 +3,7 @@ model "models/tracer.md3" {
 	scale 8.0
 	shade 0
 	skin { pal 0 file "models/tracer.png" nocompress nodownsize } 
-	frame { name "AnimFrames00" tile 2507 }
+	frame { name "none00" tile 2507 }
 }
 
 model "models/fireball.md3" {

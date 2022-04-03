@@ -201,6 +201,11 @@ state roids_voices
 ends
 
 state jib_sounds
+	// Duke's got a more serious tone in this map, break so he shuts up.
+	ifvare VOLUME 4 // Striker's Maps
+	ifvare LEVEL 7 // Burning Memory
+		break
+		
 	getactor[LASTHITBY].picnum TEMP
 	getactor[LASTHITBY].extra TEMP2
 	ifvare TEMP APLAYER
@@ -346,6 +351,11 @@ state jib_sounds
 ends
 
 state randgetweapsnds
+	// Duke's got a more serious tone in this map, break so he shuts up.
+	ifvare VOLUME 4 // Striker's Maps
+	ifvare LEVEL 7 // Burning Memory
+		break
+
 	randvar RANDOM_SOUND 15
 	switch RANDOM_SOUND
 		case 0: globalsound BONUS_SPEECH4 break

@@ -19,6 +19,8 @@ define PLASMARIFLE_X_SPREAD 24
 define PLASMARIFLE_Y_SPREAD 768
 
 define SSG_WEAPON_STRENGTH 10 // 14
+define SSG_GIB_DISTANCE 1280
+define SSG_MIGHT_GIB_DISTANCE 2560
 
 define DEVASTATOR_WEAPON_STRENGTH 35
 define DEVASTATORBLASTRADIUS -890
@@ -62,7 +64,8 @@ definequote 137		DFG 69K!
 definequote 138		AMMO FOR DFG 69K
 definequote 200		STOCK MAP DETECTED, ADDING NEW ITEMS.
 definequote 500		PLACEHOLDER QUOTE
-
+// 666
+// 689
 definequote 690		MIGHTY FOOT
 definequote 691		PISTOL
 definequote 692		SHOTGUN
@@ -86,10 +89,8 @@ define GM_COOPERATIVE 1
 define GM_TEAMDUKEMATCH 2
 define GM_ROIDMATCH 3
 define GM_INSTAGIB 4
-definegametype GM_DUKEMATCH 19480 Dukematch
-definegametype GM_TEAMDUKEMATCH 216088 Team Dukematch
-definegametype GM_ROIDMATCH 19480 Roidmatch
-definegametype GM_INSTAGIB 19480 Instagib
+definegametype GM_ROIDMATCH 19484 Roidmatch
+definegametype GM_INSTAGIB 19484 Instagib
 
 definevolumename 4 Striker's Maps
 definelevelname 4 0 maps/ktc.map 66:60 66:60 Killer Titty Club
@@ -99,8 +100,9 @@ definelevelname 4 3 maps/afucktemple.map 66:60 66:60 Buried Temple
 definelevelname 4 4 maps/stayfrosty.map 66:60 66:60 Stay Frosty
 definelevelname 4 5 maps/longestduke.map 66:60 66:60 The Longest Duke
 definelevelname 4 6 maps/thermalbase.map 66:60 66:60 Thermal Base (Unfinished)
-definelevelname 4 7 maps/rocks.map 66:60 66:60 Feature Test Map
-music 5 music/sexwithex.mid music/darkmatt.mid music/macplus.ogg music/sdungeon.ogg music/sturr31.ogg music/ybb.xm music/thermalbase.ogg music/ffunk.ogg
+definelevelname 4 7 maps/burningmemory.map 66:60 66:60 Hotel At The End of Time
+definelevelname 4 8 maps/rocks.map 66:60 66:60 Feature Test Map
+music 5 music/sexwithex.mid music/darkmatt.mid music/vldc9_abstract.ogg music/sdungeon.ogg music/sturr31.ogg music/ybb.xm music/thermalbase.ogg music/hstatic.ogg music/ffunk.ogg
 
 definevolumename 5 William Gee's DM Maps
 definelevelname 5 0 maps/wgdm1.map 66:60 66:60 WGDM1 (6P)
@@ -296,6 +298,9 @@ definelevelname 10 56 maps/ENBLANCOYNEGRO.map 66:60 66:60 In Black & White: N. R
 definelevelname 10 57 maps/WARZONE-TROR.map 66:60 66:60 Warzone TROR: N. Ranzou
 definelevelname 10 58 maps/AWP-INDIA-SDM.map 66:60 66:60 AWP India: MarioJCH
 definelevelname 10 59 maps/MIDDLEOFNOWHERE.map 66:60 66:60 Middle of Nowhere: M. Authors
+definelevelname 10 60 maps/DELUSIONAL-SDM.map 66:60 66:60 Delusional: St1llWanted
+definelevelname 10 61 maps/ROYALFUMBLE.map 66:60 66:60 Royal Fumble: Multiple Authors
+definelevelname 10 62 maps/ACROSSTHENETWORK.map 66:60 66:60 Across The Network: M. Authors
 
 music 11 music/seppuku.ogg music/ancient.ogg music/fortress.ogg music/zerostreets.ogg music/zerotown.ogg
          music/eerie.ogg music/saturntoll.ogg music/echohare.ogg music/apes.mid music/mental.ogg music/breed.mid
@@ -306,4 +311,4 @@ music 11 music/seppuku.ogg music/ancient.ogg music/fortress.ogg music/zerostreet
          music/icefront.s3m music/episode_666.xm music/fire.xm music/godown.it music/heavystr.it music/memefever.ogg music/freeze.s3m
          music/coldwave.mid music/odyssey2.mid music/takeawil.mid music/alienconflict.ogg music/rcrstreet.it music/suprfist.it music/d-lux2.mod
          music/gringo.it music/idiot2_x.it music/denaris_remix.mod music/hyo-deid.it music/terrortech.xm music/ccity12.s3m music/intotheoutside.mod
-         music/warzone.mid music/arena1.s3m music/windmill.ogg
+         music/warzone.mid music/arena1.s3m music/windmill.ogg music/corner.mid music/finalfall.ogg music/computerzone1.ogg

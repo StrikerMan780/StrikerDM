@@ -22,6 +22,26 @@ tilefromtexture 3583 { file "tiles/3583.png" }
 
 tilefromtexture 3685 { file "tiles/3685.png" texture }
 
+// Vapormeat/Vinerizon
+tilefromtexture 3715 { file "tiles/3715.png" texture }
+
+// Sky
+tilefromtexture 3716 { file "tiles/3716.png" texture }
+multipsky 3716
+{
+	lognumtiles 3
+	horizfrac 65536
+	yscale 37450
+	panel 0 0
+	panel 1 0
+	panel 2 0
+	panel 3 0
+	panel 4 0
+	panel 5 0
+	panel 6 0
+	panel 7 0
+}
+
 animtilerange 6113 6137 3 ANIM_FORWARD
 tilefromtexture 6113 { file "tiles/6113.png" texture }
 tilefromtexture 6114 { file "tiles/6114.png" texture }

@@ -105,7 +105,7 @@ define THAWTIME 138
 
 define RPGBLASTRADIUS           1780
 define PIPEBOMBRADIUS           2500
-define SHRINKERBLASTRADIUS      680
+define SHRINKERBLASTRADIUS      768 //680
 define TRIPBOMBBLASTRADIUS      3880
 define MORTERBLASTRADIUS        2500
 define BOUNCEMINEBLASTRADIUS    2500
@@ -607,7 +607,7 @@ definesound BOS1_WALK     sounds/thud.ogg               0   0   3   0   0
 definesound KICK_HIT            sounds/kickhit.ogg       0     0     4   0   0
 definesound PISTOL_RICOCHET     sounds/ricochet.ogg      0     0     0   0 4096
 definesound PISTOL_BODYHIT      sounds/gore/bulithit.ogg      0     0     0   0   0
-definesound PISTOL_FIRE         sounds/pistol.ogg      -64     0   254   0   0
+definesound PISTOL_FIRE         sounds/pistol.wav      -64     0   254   0   0
 definesound EJECT_CLIP          sounds/clipout.ogg       0     0     3   0   0
 definesound INSERT_CLIP         sounds/clipin.ogg        512   512   3   0   0
 definesound CHAINGUN_FIRE       sounds/chaingun.ogg     -204 -204  254   0   512
