@@ -76,6 +76,7 @@ voxel "voxels/props/0678_scale.kvx" { tile 678 }
 voxel "voxels/props/0680_chair3.kvx" { tile 680 tile 681 tile 682 tile 683 tile 684 }
 
 voxel "voxels/props/0685_stagelamp.kvx" { tile 685 }
+voxel "voxels/props/0688_movie_clapper.kvx" { tile 688 }
 voxel "voxels/props/0689_ivunit.kvx" { tile 689 }
 
 voxel "voxels/props/0691_cleaver.kvx" { tile 691 }
@@ -133,6 +134,8 @@ voxel "voxels/props/0957_bottle4.kvx" { tile 957 }
 
 voxel "voxels/props/0969_hydroplant.kvx" { tile 969 }
 voxel "voxels/props/1003_brokehydroplant.kvx" { tile 1003 }
+
+voxel "voxels/props/0974_greenalgae.kvx" { tile 974 }
 
 voxel "voxels/props/0976_airvent.kvx" { tile 976 }
 
@@ -250,9 +253,9 @@ voxel "voxels/props/2200_poo.kvx" { tile 2200 }
 
 voxel "voxels/props/3400_blimp.kvx" { tile 3400 }
 
-voxel "voxels/props/3190_marker_red.kvx" { tile 3190 tile 3191 tile 3192 tile 3193 tile 3194 tile 3195 tile 3196 }
-voxel "voxels/props/3200_marker_yellow.kvx" { tile 3200 tile 3201 tile 3202 tile 3203 tile 3204 tile 3205 tile 3206 }
-voxel "voxels/props/3210_marker_green.kvx" { tile 3210 tile 3211 tile 3212 tile 3213 tile 3214 tile 3215 tile 3216 }
+voxel "voxels/props/3190_marker_red.kvx" { tile0 3190 tile1 3196 }
+voxel "voxels/props/3200_marker_yellow.kvx" { tile0 3200 tile1 3206 }
+voxel "voxels/props/3210_marker_green.kvx" { tile0 3210 tile1 3216 }
 
 voxel "voxels/props/4359_target.kvx" { tile 4359 } 
 
@@ -270,6 +273,9 @@ voxel "voxels/props/4386_pipe.kvx" { tile 4386 }
 voxel "voxels/props/4387_duketable.kvx" { tile 4387 }
 voxel "voxels/props/4388_bin.kvx" { tile 4388 }
 
+voxel "voxels/props/4400_teddy_bear.kvx" { tile 4400 }
+
+voxel "voxels/props/4406_steering_wheel.kvx" { tile 4406 }
 voxel "voxels/props/4407_mouse1.kvx" { tile 4407 }
 voxel "voxels/props/4408_mouse2.kvx" { tile 4408 }
 
@@ -287,6 +293,7 @@ voxel "voxels/props/4442_callahan.kvx" { tile 4442 }
 voxel "voxels/props/4443_usaflag.kvx" { tile 4443 }
 voxel "voxels/props/4444_vhscamera.kvx" { tile 4444 }
 voxel "voxels/props/4446_prisonball.kvx" { tile 4446 }
+voxel "voxels/props/4453_meter.kvx" { tile 4453 }
 voxel "voxels/props/4454_deskphone.kvx" { tile 4454 }
 voxel "voxels/props/4457_rope.kvx" { tile 4457 }
 voxel "voxels/props/4458_gumballmachine1.kvx" { tile 4458 }
@@ -297,7 +304,9 @@ voxel "voxels/props/4465_genericpole.kvx" { tile 4465 }
 voxel "voxels/props/4473_dredd.kvx" { tile 4473 }
 voxel "voxels/props/4495_wetfloor.kvx" { tile 4495 }
 voxel "voxels/props/4496_broom.kvx" { tile 4496 }
+voxel "voxels/props/4497_mop.kvx" { tile 4497 }
 
+voxel "voxels/props/4520_treasurechest.kvx" { tile 4520 }
 voxel "voxels/props/4524_steedhooks.kvx" { tile 4524 }
 
 voxel "voxels/props/4533_kitchen_object.kvx" { tile 4533 }
@@ -319,6 +328,8 @@ voxel "voxels/props/4549_foodobject20.kvx" { tile 4549 }
 
 voxel "voxels/props/4550_redlamp.kvx" { tile 4450 }
 voxel "voxels/props/4552_canwithworms.kvx" { tile 4552 }
+voxel "voxels/props/4554_chicken1.kvx" { tile 4554 }
+voxel "voxels/props/4555_chicken2.kvx" { tile 4555 }
 voxel "voxels/props/4569_burgerbox.kvx" { tile 4569 }
 voxel "voxels/props/4576_shoppingcart.kvx" { tile 4576 }
 voxel "voxels/props/4580_canwithsomething2.kvx" { tile 4580 }
@@ -328,6 +339,8 @@ voxel "voxels/props/4583_pipe.kvx" { tile 4583 }
 voxel "voxels/props/4585_valve.kvx" { tile 4585 }
 voxel "voxels/props/4586_thinpipe1.kvx" { tile 4586 }
 voxel "voxels/props/4587_thinpipe2.kvx" { tile 4587 }
+
+voxel "voxels/props/4588_sign.kvx" { tile 4588 }
 
 voxel "voxels/props/4589_warn1.kvx" { tile 4589 }
 
@@ -345,33 +358,18 @@ voxel "voxels/props/5679_bridgelamp1.kvx" { tile 5679 }
 voxel "voxels/props/5680_bridgelamp2.kvx" { tile 5680 }
 
 // ***** TRUE-COLOR VOXELS *****
-definemodel "voxels/props/3614_lamp.kv6" 1.0 0
-definemodelframe 0 3614 3614
+model "voxels/props/3614_lamp.kv6" { scale 1.0 frame { name "" tile 3614 } }
 
-definemodel "voxels/props/3898_woodn2.kv6" 1.0 0
-definemodelframe 0 3898 3898
+model "voxels/props/3898_woodn2.kv6" { scale 1.0 frame { name "" tile 3898 } }
 
-definemodel "voxels/props/3992_katanas.kv6" 1.0 0
-definemodelframe 0 3992 3992
+model "voxels/props/3992_katanas.kv6" { scale 1.0 frame { name "" tile 3992 } }
+model "voxels/props/3994_plampr2.kv6" { scale 1.0 frame { name "" tile 3994 } }
+model "voxels/props/3995_plampb.kv6" { scale 1.0 frame { name "" tile 3995 } }
+model "voxels/props/3998_parasol.kv6" { scale 1.0 frame { name "" tile 3998 } }
 
-definemodel "voxels/props/3994_plampr2.kv6" 1.0 0
-definemodelframe 0 3994 3994
-
-definemodel "voxels/props/3995_plampb.kv6" 1.0 0
-definemodelframe 0 3995 3995
-
-definemodel "voxels/props/3998_parasol.kv6" 1.0 0
-definemodelframe 0 3998 3998
-
-//voxel "voxels/props/7054_tombstone.kvx" { tile 7054 }
-definemodel "voxels/props/7054_tombstone.kv6" 1.0 0
-definemodelframe 0 7054 7054
-
-definemodel "voxels/props/7057_chair1.kv6" 1.0 0
-definemodelframe 0 7057 7057
-
-definemodel "voxels/props/7052_ceilingchand2_off.kv6" 1.0 0
-definemodelframe 0 7052 7052
+model "voxels/props/7054_tombstone.kv6" { scale 1.0 frame { name "" tile 7054 } }
+model "voxels/props/7057_chair1.kv6" { scale 1.0 frame { name "" tile 7057 } }
+model "voxels/props/7052_ceilingchand2_off.kv6" { scale 1.0 frame { name "" tile 7052 } }
 
 // --- Switches ---
 voxel "voxels/switches/0130_accessswitch_off.kvx" { tile 130 }
@@ -458,14 +456,9 @@ voxel "voxels/projectiles/1653_mortar.kvx" { tile 1653 }
 voxel "voxels/projectiles/2566_tripbomb.kvx" { tile 2566 }
 
 // ***** TRUE-COLOR PROJECTILE VOXELS *****
-definemodel "voxels/projectiles/2592_green_tripbomb.kv6" 1.0 0
-definemodelframe 0 2592 2592
-
-definemodel "voxels/projectiles/2593_blue_tripbomb.kv6" 1.0 0
-definemodelframe 0 2593 2593
-
-definemodel "voxels/projectiles/2594_yellow_tripbomb.kv6" 1.0 0
-definemodelframe 0 2594 2594
+model "voxels/projectiles/2592_green_tripbomb.kv6" { scale 1.0 frame { name "" tile 2592 } }
+model "voxels/projectiles/2593_blue_tripbomb.kv6" { scale 1.0 frame { name "" tile 2593 } }
+model "voxels/projectiles/2594_yellow_tripbomb.kv6" { scale 1.0 frame { name "" tile 2594 } }
 
 // --- Pickups ---
 voxel "voxels/pickups/0100_atomichealth1.kvx" { tile 100 }
@@ -536,26 +529,12 @@ voxel "voxels/pickups/1351_holoduke4.kvx" { tile 1351 }
 
 // ***** TRUE-COLOR PICKUP VOXELS *****
 
-definemodel "voxels/pickups/4991_bon1a.kv6" 1.0 0
-definemodelframe 0 4991 4991
+model "voxels/pickups/4991_bon1a.kv6" { scale 1.0 frame { name "" tile 4991 } }
+model "voxels/pickups/4992_bon1b.kv6" { scale 1.0 frame { name "" tile 4992 } }
+model "voxels/pickups/4993_bon1c.kv6" { scale 1.0 frame { name "" tile 4993 } }
+model "voxels/pickups/4994_bon1d.kv6" { scale 1.0 frame { name "" tile 4994 } }
 
-definemodel "voxels/pickups/4992_bon1b.kv6" 1.0 0
-definemodelframe 0 4992 4992
-
-definemodel "voxels/pickups/4993_bon1c.kv6" 1.0 0
-definemodelframe 0 4993 4993
-
-definemodel "voxels/pickups/4994_bon1d.kv6" 1.0 0
-definemodelframe 0 4994 4994
-
-definemodel "voxels/pickups/4995_bon2a.kv6" 1.0 0
-definemodelframe 0 4995 4995
-
-definemodel "voxels/pickups/4996_bon2b.kv6" 1.0 0
-definemodelframe 0 4996 4996
-
-definemodel "voxels/pickups/4997_bon2c.kv6" 1.0 0
-definemodelframe 0 4997 4997
-
-definemodel "voxels/pickups/4998_bon2d.kv6" 1.0 0
-definemodelframe 0 4998 4998
+model "voxels/pickups/4995_bon2a.kv6" { scale 1.0 frame { name "" tile 4995 } }
+model "voxels/pickups/4996_bon2b.kv6" { scale 1.0 frame { name "" tile 4996 } }
+model "voxels/pickups/4997_bon2c.kv6" { scale 1.0 frame { name "" tile 4997 } }
+model "voxels/pickups/4998_bon2d.kv6" { scale 1.0 frame { name "" tile 4998 } }
