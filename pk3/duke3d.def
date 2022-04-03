@@ -9,20 +9,29 @@ define ANIM_BACKWARD 3
 loadgrp WorldTour_SDM.pk3
 
 //include duke3d_hrp.def
+echo "Parsing CON labels"
 include defs.con
 include cons/SDM_DEFS.CON
+
+echo "Parsing StrikerDM DEFs"
 include defs/strikerdm.def
 
-//include maphacks/maphacks.def
+echo "Parsing Maphacks"
+include maphacks/maphacks.def
+
+music { id "loading" file "music/intrmisn.mid" }
 
 tint { pal 1 red 100 green 120 blue 148 flags 1 }
-tint { pal 2 red 255 green  48 blue   0 flags 0 }
+tint { pal 2 red 255 green  48 blue   0 flags 1 }
 tint { pal 4 red   0 green   0 blue   0 flags 0 }
 tint { pal 6 red 224 green 255 blue 112 flags 3 }
 tint { pal 7 red 227 green 198 blue 20 flags 1 }
 tint { pal 8 red 199 green 226 blue 113 flags 1 }
 
+tint { pal 26 red 216 green 184 blue 172 flags 1 } // Greyscale (Brownish)
 tint { pal 27 red 255 green 244 blue 246 flags 1 } // Greyscale
+
+tint { pal 61 red 164 green 196 blue 228 flags 0 } // Blue Tint
 
 tint { pal 122 red 128 green 128 blue 0 flags 5 } // Yellow
 tint { pal 123 red 128 green 0 blue 128 flags 5 } // Purple

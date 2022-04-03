@@ -1,0 +1,17 @@
+// Maphacks for Duke Caribbean: Life's A Beach Plus - Vacation HRP
+
+// Title    : The Wavemistress
+// Author   : Charlie Wiederhold
+// Filename : vaca4.map
+// mapmd4   : 72b4f56c3cf7de22dfbb3ee5863f00b4 // 2011-03-22 (Vaca Plus r24)
+
+// Curr. HRP: r5.4.726
+
+//         <-> vacadm3-r24.mhk
+
+// Vaca Plus Maphacks by Evan 'Hendricks266' Ramos
+
+sprite   709 pitch     -80         // tile0551 domelite
+sprite   708 pitch     -80         // tile0551 domelite
+
+sprite   322 angoff    -512        // tile0762 mike
