@@ -12,11 +12,9 @@ texture 2469 { pal 0 { file "highres/hud/steroids_icon.png" forcefilter } }
 texture 2470 { pal 0 { file "highres/hud/holoduke_icon.png" forcefilter } }
 
 // Status Bar
-tilefromtexture 2462 { file "tiles/2462.png" }
 texture 2462 { pal 0 { file "highres/hud/statusbar_widescreen.png" forcefilter } }
 
 // Menu Logo
-tilefromtexture 2503 { file "tiles/2503.png" xoffset 8 yoffset -8 }
 texture 2503 { pal 0 { file "highres/menu/2503_MenuLogo.png" nocompress nodownsize forcefilter } }
 texture 2499 { pal 0 { file "highres/menu/2499_Duke3D.png" nocompress nodownsize forcefilter } }
 
@@ -25,14 +23,6 @@ texture 2499 { pal 0 { file "highres/menu/2499_Duke3D.png" nocompress nodownsize
 texture 2523 { pal 0 { file "highres/hud/crosshair2.png" forcefilter } }
 
 // Menu Cursor
-tilefromtexture 2813 { file "tiles/2813.png" }
-tilefromtexture 2814 { file "tiles/2814.png" }
-tilefromtexture 2815 { file "tiles/2815.png" }
-tilefromtexture 2816 { file "tiles/2816.png" }
-tilefromtexture 2817 { file "tiles/2817.png" }
-tilefromtexture 2818 { file "tiles/2818.png" }
-tilefromtexture 2819 { file "tiles/2819.png" }
-tilefromtexture 2820 { file "tiles/2820.png" }
 texture 2813 { pal 0 { file "highres/menu/2813_cursor.png" nocompress nodownsize forcefilter } }
 texture 2814 { pal 0 { file "highres/menu/2814_cursor.png" nocompress nodownsize forcefilter } }
 texture 2815 { pal 0 { file "highres/menu/2815_cursor.png" nocompress nodownsize forcefilter } }
@@ -43,35 +33,4 @@ texture 2819 { pal 0 { file "highres/menu/2819_cursor.png" nocompress nodownsize
 texture 2820 { pal 0 { file "highres/menu/2820_cursor.png" nocompress nodownsize forcefilter } }
 
 // Screens
-tilefromtexture 3281 { file "tiles/3281.png" }
-tilefromtexture 3282 { file "tiles/3282.png" }
 //texture 3281 { pal 0 { file "highres/3281_loadscreen.tga" forcefilter } }
-
-// Static
-tilefromtexture 6650 { file "tiles/6650.png" }
-tilefromtexture 6651 { file "tiles/6651.png" }
-tilefromtexture 6652 { file "tiles/6652.png" }
-tilefromtexture 6653 { file "tiles/6653.png" }
-tilefromtexture 6654 { file "tiles/6654.png" }
-tilefromtexture 6655 { file "tiles/6655.png" }
-tilefromtexture 6656 { file "tiles/6656.png" }
-tilefromtexture 6657 { file "tiles/6657.png" }
-tilefromtexture 6658 { file "tiles/6658.png" }
-tilefromtexture 6659 { file "tiles/6659.png" }
-tilefromtexture 6660 { file "tiles/6660.png" }
-tilefromtexture 6661 { file "tiles/6661.png" }
-tilefromtexture 6662 { file "tiles/6662.png" }
-tilefromtexture 6663 { file "tiles/6663.png" }
-tilefromtexture 6664 { file "tiles/6664.png" }
-tilefromtexture 6665 { file "tiles/6665.png" }
-tilefromtexture 6666 { file "tiles/6666.png" }
-tilefromtexture 6667 { file "tiles/6667.png" }
-tilefromtexture 6668 { file "tiles/6668.png" }
-tilefromtexture 6669 { file "tiles/6669.png" }
-tilefromtexture 6670 { file "tiles/6670.png" }
-tilefromtexture 6671 { file "tiles/6671.png" }
-tilefromtexture 6672 { file "tiles/6672.png" }
-tilefromtexture 6673 { file "tiles/6673.png" }
-tilefromtexture 6674 { file "tiles/6674.png" }
-tilefromtexture 6675 { file "tiles/6675.png" }
-tilefromtexture 6676 { file "tiles/6676.png" }

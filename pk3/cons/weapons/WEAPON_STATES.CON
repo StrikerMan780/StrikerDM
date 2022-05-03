@@ -72,6 +72,7 @@ state G_DrawTileScaled
 			}
 	*/
 	
+	setvarvar hud_x_memory hud_x // Memorize X
 	mulvarvar hud_x weaponscale
 	divvar hud_x 100
 	setvarvar hud_G_Draw_temp2 hud_G_Draw_temp
@@ -80,6 +81,7 @@ state G_DrawTileScaled
 	subvarvar hud_G_Draw_temp hud_G_Draw_temp2
 	addvarvar hud_x hud_G_Draw_temp
 	
+	setvarvar hud_y_memory hud_y // Memorize Y
 	mulvarvar hud_y weaponscale
 	divvar hud_y 100
 	setvar hud_G_Draw_temp 200
@@ -90,6 +92,7 @@ state G_DrawTileScaled
 	addvarvar hud_y hud_G_Draw_temp
 	
 	// setvar hud_scale 65536 // do this elsewhere; leave it open for modification
+	setvarvar hud_scale_memory hud_scale // Memorize scale
 	mulvarvar hud_scale weaponscale
 	divvar hud_scale 100
 
@@ -113,6 +116,10 @@ state G_DrawTileScaled
 	}
 	
 	rotatespritea hud_x hud_y hud_scale hud_angle hud_tilenum hud_shade hud_pal hud_orientation hud_alpha windowx1 windowy1 windowx2 windowy2
+	
+	setvarvar hud_x hud_x_memory // Restore old X.
+	setvarvar hud_y hud_y_memory // Restore old Y.
+	setvarvar hud_scale hud_scale_memory // Restore old scale.
 		
 	ifvarand hud_orientation RS_AUTO
 		subvar hud_orientation RS_AUTO
@@ -805,6 +812,38 @@ state handle_weaponchangetimer
 	}
 ends
 
+// STATE_PARAM3 = Offset
+state spawn_ssg_shell
+	espawn SHOTGUNSHELL
+	
+	getactor[RETURN].zvel TEMP2
+	addvar TEMP2 -384
+	setactor[RETURN].zvel TEMP2
+	getactor[THISACTOR].ang TEMP2
+	addvar TEMP2 512
+	setactor[RETURN].ang TEMP2
+	
+	// Get an X/Y offset
+	getactor[THISACTOR].ang TEMP3
+	addvar TEMP3 348 // ?
+	addvar TEMP3 512 // 45 degree angle
+	sin TEMP3 TEMP3
+	divvarvar TEMP3 STATE_PARAM3 // Offset
+	getactor[RETURN].x TEMP2
+	addvarvar TEMP2 TEMP3
+	setactor[RETURN].x TEMP2
+	
+	getactor[THISACTOR].ang TEMP3
+	addvar TEMP3 348 // ?
+	sin TEMP3 TEMP3
+	divvarvar TEMP3 STATE_PARAM3 // Offset
+	getactor[RETURN].y TEMP2
+	addvarvar TEMP2 TEMP3
+	setactor[RETURN].y TEMP2
+	
+	setvar RETURN 0
+ends
+
 state player_updateweapons
 	state handle_weaponchangetimer
 	
@@ -914,7 +953,15 @@ state player_updateweapons
 			{
 				getplayer[THISACTOR].kickback_pic TEMP2
 				ifvare TEMP2 19
+				{
 					sound SSG_OPEN
+					
+					setvar STATE_PARAM3 448
+					state spawn_ssg_shell
+					
+					setvar STATE_PARAM3 256
+					state spawn_ssg_shell
+				}
 				else ifvare TEMP2 33
 					sound SSG_LOAD
 				else ifvare TEMP2 44

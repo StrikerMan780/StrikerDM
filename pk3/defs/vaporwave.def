@@ -1,32 +1,33 @@
-tilefromtexture 3563 { file "tiles/3563.png" texture }
-tilefromtexture 3564 { file "tiles/3564.png" texture }
-tilefromtexture 3565 { file "tiles/3565.png" texture }
-tilefromtexture 3566 { file "tiles/3566.png" texture }
-tilefromtexture 3567 { file "tiles/3567.png" texture }
-tilefromtexture 3568 { file "tiles/3568.png" texture }
-tilefromtexture 3569 { file "tiles/3569.png" texture }
-tilefromtexture 3570 { file "tiles/3570.png" texture }
-tilefromtexture 3571 { file "tiles/3571.png" texture }
-tilefromtexture 3572 { file "tiles/3572.png" texture }
-tilefromtexture 3573 { file "tiles/3573.png" texture }
-tilefromtexture 3574 { file "tiles/3574.png" texture }
-tilefromtexture 3575 { file "tiles/3575.png" texture }
-tilefromtexture 3576 { file "tiles/3576.png" texture }
-tilefromtexture 3577 { file "tiles/3577.png" texture }
-tilefromtexture 3578 { file "tiles/3578.png" texture }
-tilefromtexture 3579 { file "tiles/3579.png" texture }
-tilefromtexture 3580 { file "tiles/3580.png" texture }
-tilefromtexture 3581 { file "tiles/3581.png" texture }
-tilefromtexture 3582 { file "tiles/3582.png" texture }
-tilefromtexture 3583 { file "tiles/3583.png" }
+texture 3563 { pal 0 { file "tiles/3563.png" artquality } }
+texture 3564 { pal 0 { file "tiles/3564.png" artquality } }
+texture 3565 { pal 0 { file "tiles/3565.png" artquality } }
+texture 3566 { pal 0 { file "tiles/3566.png" artquality } }
+texture 3567 { pal 0 { file "tiles/3567.png" artquality } }
+texture 3568 { pal 0 { file "tiles/3568.png" artquality } }
+texture 3569 { pal 0 { file "tiles/3569.png" artquality } }
+texture 3570 { pal 0 { file "tiles/3570.png" artquality } }
+texture 3571 { pal 0 { file "tiles/3571.png" artquality } }
+texture 3572 { pal 0 { file "tiles/3572.png" artquality } }
+texture 3573 { pal 0 { file "tiles/3573.png" artquality } }
+texture 3574 { pal 0 { file "tiles/3574.png" artquality } }
+texture 3575 { pal 0 { file "tiles/3575.png" artquality } }
+texture 3576 { pal 0 { file "tiles/3576.png" artquality } }
+texture 3577 { pal 0 { file "tiles/3577.png" artquality } }
+texture 3578 { pal 0 { file "tiles/3578.png" artquality } }
+texture 3579 { pal 0 { file "tiles/3579.png" artquality } }
+texture 3580 { pal 0 { file "tiles/3580.png" artquality } }
+texture 3581 { pal 0 { file "tiles/3581.png" artquality } }
+texture 3582 { pal 0 { file "tiles/3582.png" artquality } }
+//tilefromtexture 3583 { file "tiles/3583.png" }
 
-tilefromtexture 3685 { file "tiles/3685.png" texture }
+texture 3685 { pal 0 { file "tiles/3685.png" artquality } }
 
 // Vapormeat/Vinerizon
-tilefromtexture 3715 { file "tiles/3715.png" texture }
+texture 3715 { pal 0 { file "tiles/3715.png" artquality } }
 
+//texture 3716 { pal 0 { file "tiles/3716.png" artquality } } // Seems broken with multipsky...
+tilefromtexture 3716 { file "tiles/3716.png" texture } // So is this... WTF?
 // Sky
-tilefromtexture 3716 { file "tiles/3716.png" texture }
 multipsky 3716
 {
 	lognumtiles 3
@@ -42,48 +43,46 @@ multipsky 3716
 	panel 7 0
 }
 
-animtilerange 6113 6137 3 ANIM_FORWARD
-tilefromtexture 6113 { file "tiles/6113.png" texture }
-tilefromtexture 6114 { file "tiles/6114.png" texture }
-tilefromtexture 6115 { file "tiles/6115.png" texture }
-tilefromtexture 6116 { file "tiles/6116.png" texture }
-tilefromtexture 6117 { file "tiles/6117.png" texture }
-tilefromtexture 6118 { file "tiles/6118.png" texture }
-tilefromtexture 6119 { file "tiles/6119.png" texture }
-tilefromtexture 6120 { file "tiles/6120.png" texture }
-tilefromtexture 6121 { file "tiles/6121.png" texture }
-tilefromtexture 6122 { file "tiles/6122.png" texture }
-tilefromtexture 6123 { file "tiles/6123.png" texture }
-tilefromtexture 6124 { file "tiles/6124.png" texture }
-tilefromtexture 6125 { file "tiles/6125.png" texture }
-tilefromtexture 6126 { file "tiles/6126.png" texture }
-tilefromtexture 6127 { file "tiles/6127.png" texture }
-tilefromtexture 6128 { file "tiles/6128.png" texture }
-tilefromtexture 6129 { file "tiles/6129.png" texture }
-tilefromtexture 6130 { file "tiles/6130.png" texture }
-tilefromtexture 6131 { file "tiles/6131.png" texture }
-tilefromtexture 6132 { file "tiles/6132.png" texture }
-tilefromtexture 6133 { file "tiles/6133.png" texture }
-tilefromtexture 6134 { file "tiles/6134.png" texture }
-tilefromtexture 6135 { file "tiles/6135.png" texture }
-tilefromtexture 6136 { file "tiles/6136.png" texture }
-tilefromtexture 6137 { file "tiles/6137.png" texture }
+texture 6113 { pal 0 { file "tiles/6113.png" artquality } }
+texture 6114 { pal 0 { file "tiles/6114.png" artquality } }
+texture 6115 { pal 0 { file "tiles/6115.png" artquality } }
+texture 6116 { pal 0 { file "tiles/6116.png" artquality } }
+texture 6117 { pal 0 { file "tiles/6117.png" artquality } }
+texture 6118 { pal 0 { file "tiles/6118.png" artquality } }
+texture 6119 { pal 0 { file "tiles/6119.png" artquality } }
+texture 6120 { pal 0 { file "tiles/6120.png" artquality } }
+texture 6121 { pal 0 { file "tiles/6121.png" artquality } }
+texture 6122 { pal 0 { file "tiles/6122.png" artquality } }
+texture 6123 { pal 0 { file "tiles/6123.png" artquality } }
+texture 6124 { pal 0 { file "tiles/6124.png" artquality } }
+texture 6125 { pal 0 { file "tiles/6125.png" artquality } }
+texture 6126 { pal 0 { file "tiles/6126.png" artquality } }
+texture 6127 { pal 0 { file "tiles/6127.png" artquality } }
+texture 6128 { pal 0 { file "tiles/6128.png" artquality } }
+texture 6129 { pal 0 { file "tiles/6129.png" artquality } }
+texture 6130 { pal 0 { file "tiles/6130.png" artquality } }
+texture 6131 { pal 0 { file "tiles/6131.png" artquality } }
+texture 6132 { pal 0 { file "tiles/6132.png" artquality } }
+texture 6133 { pal 0 { file "tiles/6133.png" artquality } }
+texture 6134 { pal 0 { file "tiles/6134.png" artquality } }
+texture 6135 { pal 0 { file "tiles/6135.png" artquality } }
+texture 6136 { pal 0 { file "tiles/6136.png" artquality } }
+texture 6137 { pal 0 { file "tiles/6137.png" artquality } }
 
-animtilerange 6138 6154 3 ANIM_FORWARD
-tilefromtexture 6138 { file "tiles/6138.png" texture }
-tilefromtexture 6139 { file "tiles/6139.png" texture }
-tilefromtexture 6140 { file "tiles/6140.png" texture }
-tilefromtexture 6141 { file "tiles/6141.png" texture }
-tilefromtexture 6142 { file "tiles/6142.png" texture }
-tilefromtexture 6143 { file "tiles/6143.png" texture }
-tilefromtexture 6144 { file "tiles/6144.png" texture }
-tilefromtexture 6145 { file "tiles/6145.png" texture }
-tilefromtexture 6146 { file "tiles/6146.png" texture }
-tilefromtexture 6147 { file "tiles/6147.png" texture }
-tilefromtexture 6148 { file "tiles/6148.png" texture }
-tilefromtexture 6149 { file "tiles/6149.png" texture }
-tilefromtexture 6150 { file "tiles/6150.png" texture }
-tilefromtexture 6151 { file "tiles/6151.png" texture }
-tilefromtexture 6152 { file "tiles/6152.png" texture }
-tilefromtexture 6153 { file "tiles/6153.png" texture }
-tilefromtexture 6154 { file "tiles/6154.png" texture }
+texture 6138 { pal 0 { file "tiles/6138.png" artquality } }
+texture 6139 { pal 0 { file "tiles/6139.png" artquality } }
+texture 6140 { pal 0 { file "tiles/6140.png" artquality } }
+texture 6141 { pal 0 { file "tiles/6141.png" artquality } }
+texture 6142 { pal 0 { file "tiles/6142.png" artquality } }
+texture 6143 { pal 0 { file "tiles/6143.png" artquality } }
+texture 6144 { pal 0 { file "tiles/6144.png" artquality } }
+texture 6145 { pal 0 { file "tiles/6145.png" artquality } }
+texture 6146 { pal 0 { file "tiles/6146.png" artquality } }
+texture 6147 { pal 0 { file "tiles/6147.png" artquality } }
+texture 6148 { pal 0 { file "tiles/6148.png" artquality } }
+texture 6149 { pal 0 { file "tiles/6149.png" artquality } }
+texture 6150 { pal 0 { file "tiles/6150.png" artquality } }
+texture 6151 { pal 0 { file "tiles/6151.png" artquality } }
+texture 6152 { pal 0 { file "tiles/6152.png" artquality } }
+texture 6153 { pal 0 { file "tiles/6153.png" artquality } }
+texture 6154 { pal 0 { file "tiles/6154.png" artquality } }

@@ -14,8 +14,8 @@ spritenoshade FLAMETHROWERFLAME
 defineprojectile FLAMETHROWERFLAME PROJ_WORKSLIKE 49218
 defineprojectile FLAMETHROWERFLAME PROJ_SPAWNS EXPLOSION2
 defineprojectile FLAMETHROWERFLAME PROJ_EXTRA ENEMY_FLAME_STRENGTH
-defineprojectile FLAMETHROWERFLAME PROJ_XREPEAT 16
-defineprojectile FLAMETHROWERFLAME PROJ_YREPEAT 16
+//defineprojectile FLAMETHROWERFLAME PROJ_XREPEAT 16 // Set in EXPLOSION2 for now.
+//defineprojectile FLAMETHROWERFLAME PROJ_YREPEAT 16
 defineprojectile FLAMETHROWERFLAME PROJ_PAL 0
 defineprojectile FLAMETHROWERFLAME PROJ_SOUND FLAMETHROWER_FIRE
 defineprojectile FLAMETHROWERFLAME PROJ_ISOUND -1
@@ -1458,6 +1458,7 @@ action APPARITION_SPEAK 0 4 1 1 4
 action APPARITION_IDLE 0 2 1 1 4
 action APPARITION_WAIT 0 1 1 1 4
 action APPARITION_TELEPORT 0 2 1 1 4
+action APPARITION_FINDTARGET 0 1 1 1 4
 actor APPARITION 0
 	ifaction 0
 	{
@@ -1525,7 +1526,7 @@ actor APPARITION 0
 			case 540:
 				setvar APPARITION_QUOTE 673
 				setvar TEMP2 1
-				action APPARITION_TELEPORT
+				action APPARITION_FINDTARGET
 				break
 		endswitch
 		
@@ -1544,6 +1545,25 @@ actor APPARITION 0
 		}
 	}
 	
+	ifaction APPARITION_FINDTARGET
+	{
+		// Pick a target
+		randvarvar TEMP MULTIMODE
+		ifvarvare TEMP APPARITION_SUMMONER
+			addvar TEMP 1
+		ifvarvare TEMP APPARITION_TARGET
+			addvar TEMP 1
+		modvarvar TEMP MULTIMODE
+		
+		setvarvar APPARITION_TARGET TEMP
+		
+		setvar STATE_PARAM1 16 // Intensity
+		setvar STATE_PARAM2 8192 // Radius
+		state start_shake
+		
+		action APPARITION_TELEPORT
+	}
+	
 	ifaction APPARITION_TELEPORT
 	{
 		sizeto 1 40
@@ -1551,8 +1571,8 @@ actor APPARITION 0
 		getactor[THISACTOR].xrepeat TEMP
 		ifvare TEMP 1
 		{
-			// Pick a target
-			
+			resetcount
+			cstat 32768
 			action APPARITION_WAIT
 		}
 	}
@@ -1560,21 +1580,18 @@ actor APPARITION 0
 	// Done here, because we don't want more than one of these guys anyway.
 	ifvarg APPARITION_QTIME 0
 		subvar APPARITION_QTIME 1
+		
+	ifaction APPARITION_WAIT
+	{
+		break
+	}
 	
-	getactor[THISACTOR].xrepeat TEMP
-	ifvare TEMP 1 // Teleported Out
-	{
-		cstat 32768
-	}
-	else
-	{
-		cstat 0
-		ifrnd 8
-			cstator 4
-			
-		ifrnd 32
-			cstator 2
-		else ifrnd 8
-			cstator 514
-	}
+	cstat 0
+	ifrnd 8
+		cstator 4
+		
+	ifrnd 32
+		cstator 2
+	else ifrnd 8
+		cstator 514
 enda

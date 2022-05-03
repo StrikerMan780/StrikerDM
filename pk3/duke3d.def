@@ -9,14 +9,37 @@ define ANIM_BACKWARD 3
 loadgrp WorldTour_SDM.pk3
 
 //include duke3d_hrp.def
-echo "Parsing CON labels"
-include defs.con
-include cons/SDM_DEFS.CON
 
 echo "Parsing StrikerDM DEFs"
-include defs/strikerdm.def
+include defs.con
+include cons/SDM_DEFS.CON
+include defs/palswaps.def
 
-echo "Parsing Maphacks"
+// Textures
+artfile { file "artfiles/strikerdm.art" tile 0 }
+artfile { file "artfiles/community1.art" tile 3840 }
+artfile { file "artfiles/community2.art" tile 7000 }
+
+include defs/redfont.def
+include defs/bluefont.def
+include defs/smallfont.def
+include defs/digital.def
+include defs/greyfont.def
+include defs/ui.def
+
+include defs/sprites.def
+include defs/textures.def
+include defs/skyboxes.def
+include defs/doomtex.def
+include defs/communitytex.def
+include defs/communitytex_highres.def
+include defs/vaporwave.def
+include defs/fplanet_tex.def
+include defs/xxx.def
+
+include defs/voxels.def
+include defs/models.def
+
 include maphacks/maphacks.def
 
 music { id "loading" file "music/intrmisn.mid" }
@@ -51,6 +74,6 @@ blendtable 254 // Multiplicative
 
 blendtable 255
 {
-	raw { file "/blends/blendtable_255.raw" }
+	raw { file "blends/blendtable_255.raw" }
 	glblend { both { src SRC_ALPHA dst ONE alpha 1.0 } }
 }

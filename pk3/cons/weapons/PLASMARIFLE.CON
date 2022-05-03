@@ -221,9 +221,25 @@ actor PLASMABALL3 0 enda
 spritenoshade PLASMATRAIL
 actor PLASMATRAIL 0
 	ifcount 2
+	{
 		killit
+	}
 	else ifcount 0
+	{
 		cstat 130
+		
+		ifrnd 85
+			cstator 4
+			
+		ifrnd 85
+			cstator 8
+		
 		setactor[THISACTOR].shade -127
 		setactor[THISACTOR].blend 255
+		setactor[THISACTOR].mdflags 16
+		
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_FADEOUT
+		setvar LOTAG_MEMORY 0 // Timer
+		setvar HITAG_MEMORY 8 // End time
+	}
 enda

@@ -6,7 +6,20 @@ model "models/tracer.md3" {
 	frame { name "none00" tile 2507 }
 }
 
+/*
 model "models/fireball.md3" {
+	scale 4.0
+	shade 0
+	skin { pal 0 file "models/fireball.png" forcefilter nocompress nodownsize } 
+	skin { pal 200 file "models/shrinkball.png" forcefilter nocompress nodownsize } 
+	skin { pal 199 file "models/expandball.png" forcefilter nocompress nodownsize } 
+	skin { pal 198 file "models/plasmaball.png" forcefilter nocompress nodownsize } 
+	skin { pal 197 file "models/dfgball.png" forcefilter nocompress nodownsize } 
+	frame { name "none00" tile 1889 }
+}
+*/
+
+model "models/fireball2.md3" {
 	scale 4.0
 	shade 0
 	skin { pal 0 file "models/fireball.png" forcefilter nocompress nodownsize } 

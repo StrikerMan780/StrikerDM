@@ -245,6 +245,9 @@ define APPARITION_03 659
 define APPARITION_04 660
 define APPARITION_05 661
 define APPARITION_06 662
+define DISTORTED_DFGCHARGE 674
+define DISTORTED_ONWATER 675
+define DISTORTED_DOOR 676
 define DISTORTED_PIPEBOMB 677
 define DISTORTED_TRIPMINE 678
 define DISTORTED_EXPLOSION 679
@@ -319,6 +322,7 @@ define NEWDUKEGIB50 750
 define NEWDUKEGIB51 751
 define NEWDUKEGIB52 752
 define NEWDUKEGIB53 753
+define NEWDUKEGIB54 754
 
 define DUKE_FLAME01 800
 define DUKE_FLAME02 801
@@ -338,8 +342,20 @@ define DUKE_WALKINDUCTS1 900
 define DUKE_WALKINDUCTS2 901
 define DUKE_WALKINDUCTS3 902
 
+define VMEAT1 903
+define VMEAT2 904
+define VMEAT3 905
+define VMEAT4 906
+define VMEAT5 907
+define VMEAT6 908
+
 // Freedom Planet
 define FP_LIFTSTOP 990
+define FP_SYNTAX 991
+define FP_SHARDGET 992
+define FP_PETALGET 993
+define FP_HAZARDALARM 994
+define FP_CRUSHER 995
 
 // World Tour
 definesound E5L7_DUKE_QUIT_YOU    sounds/duke/worldtour/VO_E5L7_Duke_QuitYou.ogg         0   0   255   4   0
@@ -643,6 +659,7 @@ definesound NEWDUKEGIB50 sounds/duke/gib/DUKE_RestINPieces_01.ogg 0 0 255 4 0
 definesound NEWDUKEGIB51 sounds/duke/gib/Duke_UltraRareGib_01.ogg 0 0 255 4 0
 definesound NEWDUKEGIB52 sounds/duke/gib/Duke64_DidntFeelSoLucky.wav 0 0 255 4 0
 definesound NEWDUKEGIB53 sounds/duke/gib/Duke64_InAPerfectWorld.wav 0 0 255 4 0
+definesound NEWDUKEGIB54 sounds/duke/gib/Duke_ShutYouUp.wav 0 0 255 4 0
 
 definesound DUKE_FLAME01 sounds/duke/flame/duke_flame01.wav 0 0 255 4 0
 definesound DUKE_FLAME02 sounds/duke/flame/duke_flame02.wav 0 0 255 4 0
@@ -659,36 +676,52 @@ definesound DUKE_WALKINDUCTS1   sounds/ductwlk.wav       -64   128  2   0   0
 definesound DUKE_WALKINDUCTS2   sounds/ductwlk2.wav      -64   128  2   0   0
 definesound DUKE_WALKINDUCTS3   sounds/ductwlk3.wav      -64   128  2   0   0
 
+// Vinemeat Sounds
+definesound VMEAT1 sounds/meat/MEAT1.wav -32 32 0 0 -32768
+definesound VMEAT2 sounds/meat/MEAT2.wav -32 32 0 0 -32768
+definesound VMEAT3 sounds/meat/MEAT3.wav -32 32 0 0 -32768
+definesound VMEAT4 sounds/meat/MEAT4.wav -32 32 0 0 -32768
+definesound VMEAT5 sounds/meat/MEAT5.wav -32 32 0 0 -32768
+definesound VMEAT6 sounds/meat/MEAT6.wav -32 32 0 0 -32768
+
 // Freedom Planet
 definesound FP_LIFTSTOP sounds/fplanet/lift_stop.ogg 0 0 0 0 0
+definesound FP_SYNTAX sounds/fplanet/syntax_on.ogg 0 0 0 0 -2048
+definesound FP_SHARDGET sounds/fplanet/crystal_shard_get.ogg 0 0 0 0 0
+definesound FP_PETALGET sounds/fplanet/life_petal_get.ogg 0 0 0 0 0
+definesound FP_HAZARDALARM sounds/fplanet/hazard_alarm.ogg 0 0 0 0 -2048
+definesound FP_CRUSHER sounds/fplanet/crusher.ogg 0 0 0 0 -8192
 
 // HATEOT
-definesound CREEPYAMB_01 sounds/hateot/creep1.ogg -1024 512 0 0 0
-definesound CREEPYAMB_02 sounds/hateot/creep2.ogg -1024 512 0 0 0
-definesound CREEPYAMB_03 sounds/hateot/creep3.ogg -1024 512 0 0 0
-definesound CREEPYAMB_04 sounds/hateot/creep4.ogg -1024 512 0 0 0
-definesound CREEPYAMB_05 sounds/hateot/creep5.ogg -1024 512 0 0 0
-definesound CREEPYAMB_06 sounds/hateot/creep6.ogg -1024 512 0 0 0
-definesound CREEPYAMB_07 sounds/hateot/creep7.ogg -1024 512 0 0 0
-definesound CREEPYAMB_08 sounds/hateot/creep8.ogg -1024 512 0 0 0
-definesound CREEPYAMB_09 sounds/hateot/creep9.ogg -1024 512 0 0 0
-definesound CREEPYAMB_10 sounds/hateot/creep10.ogg -1024 512 0 0 0
-definesound CREEPYAMB_11 sounds/hateot/creep11.ogg -1024 512 0 0 0
-definesound CREEPYAMB_12 sounds/hateot/creep12.ogg -1024 512 0 0 0
-definesound CREEPYAMB_13 sounds/hateot/creep13.ogg -1024 512 0 0 0
-definesound CREEPYAMB_14 sounds/hateot/creep14.ogg -1024 512 0 0 0
-definesound CREEPYAMB_15 sounds/hateot/creep15.ogg -1024 512 0 0 0
-definesound CREEPYAMB_16 sounds/hateot/creep16.ogg -1024 512 0 0 0
-definesound CREEPYAMB_17 sounds/hateot/creep17.ogg -1024 512 0 0 0
-definesound CREEPYAMB_18 sounds/hateot/creep18.ogg -1024 512 0 0 0
-definesound CREEPYAMB_19 sounds/hateot/creep19.ogg -1024 512 0 0 0
-definesound APPARITION_01 sounds/hateot/appr_speak1.ogg -512 512 0 0 0
-definesound APPARITION_02 sounds/hateot/appr_speak2.ogg -512 512 0 0 0
-definesound APPARITION_03 sounds/hateot/appr_speak3.ogg -512 512 0 0 0
-definesound APPARITION_04 sounds/hateot/appr_speak4.ogg -512 512 0 0 0
-definesound APPARITION_05 sounds/hateot/appr_speak5.ogg -512 512 0 0 0
-definesound APPARITION_06 sounds/hateot/appr_speak6.ogg -512 512 0 0 0
+definesound CREEPYAMB_01 sounds/hateot/creep1.ogg -1024 512 255 0 -32768
+definesound CREEPYAMB_02 sounds/hateot/creep2.ogg -1024 512 255 0 -32768
+definesound CREEPYAMB_03 sounds/hateot/creep3.ogg -1024 512 255 0 -32768
+definesound CREEPYAMB_04 sounds/hateot/creep4.ogg -1024 512 255 0 -32768
+definesound CREEPYAMB_05 sounds/hateot/creep5.ogg -1024 512 255 0 -32768
+definesound CREEPYAMB_06 sounds/hateot/creep6.ogg -1024 512 255 0 -32768
+definesound CREEPYAMB_07 sounds/hateot/creep7.ogg -1024 512 255 0 -32768
+definesound CREEPYAMB_08 sounds/hateot/creep8.ogg -1024 512 255 0 -32768
+definesound CREEPYAMB_09 sounds/hateot/creep9.ogg -1024 512 255 0 -32768
+definesound CREEPYAMB_10 sounds/hateot/creep10.ogg -1024 512 255 0 -32768
+definesound CREEPYAMB_11 sounds/hateot/creep11.ogg -1024 512 255 0 -32768
+definesound CREEPYAMB_12 sounds/hateot/creep12.ogg -1024 512 255 0 -32768
+definesound CREEPYAMB_13 sounds/hateot/creep13.ogg -1024 512 255 0 -32768
+definesound CREEPYAMB_14 sounds/hateot/creep14.ogg -1024 512 255 0 -32768
+definesound CREEPYAMB_15 sounds/hateot/creep15.ogg -1024 512 255 0 -32768
+definesound CREEPYAMB_16 sounds/hateot/creep16.ogg -1024 512 255 0 -32768
+definesound CREEPYAMB_17 sounds/hateot/creep17.ogg -1024 512 255 0 -32768
+definesound CREEPYAMB_18 sounds/hateot/creep18.ogg -1024 512 255 0 -32768
+definesound CREEPYAMB_19 sounds/hateot/creep19.ogg -1024 512 255 0 -32768
+definesound APPARITION_01 sounds/hateot/appr_speak1.ogg -512 512 255 0 0
+definesound APPARITION_02 sounds/hateot/appr_speak2.ogg -512 512 255 0 0
+definesound APPARITION_03 sounds/hateot/appr_speak3.ogg -512 512 255 0 0
+definesound APPARITION_04 sounds/hateot/appr_speak4.ogg -512 512 255 0 0
+definesound APPARITION_05 sounds/hateot/appr_speak5.ogg -512 512 255 0 0
+definesound APPARITION_06 sounds/hateot/appr_speak6.ogg -512 512 255 0 0
+definesound DISTORTED_DFGCHARGE sounds/hateot/dfgcharge.wav 0 0 4 0 -1024
+definesound DISTORTED_ONWATER sounds/hateot/wetfeet.wav 0 0 4 0 0
+definesound DISTORTED_DOOR sounds/hateot/opendoor.wav -256 0 0 0 0
 definesound DISTORTED_PIPEBOMB sounds/hateot/dist_pipe.ogg 0 0 2 0 6144
 definesound DISTORTED_TRIPMINE sounds/hateot/dist_trip.ogg -128 128 3 0 0
 definesound DISTORTED_EXPLOSION sounds/hateot/dist_expl.ogg  -1024 512 128 144 0
-definesound BURNINGMEMORY_AMB sounds/hateot/burningmemory.ogg 0 0 0 3 0
+definesound BURNINGMEMORY_AMB sounds/hateot/burningmemory.ogg 0 0 255 3 0

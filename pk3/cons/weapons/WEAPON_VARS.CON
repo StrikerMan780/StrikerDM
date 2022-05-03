@@ -61,9 +61,15 @@ gamevar windowy2 0 0 //  (system) (pointer) (read only)
 gamevar OLDMP_TEMP 0 CLIENTONLY_PERPLAYER 
 
 gamevar hud_tilenum 0 CLIENTONLY_PERPLAYER 
+
 gamevar hud_x 0 CLIENTONLY_PERPLAYER 
+gamevar hud_x_memory 0 CLIENTONLY_PERPLAYER 
 gamevar hud_y 0 CLIENTONLY_PERPLAYER 
+gamevar hud_y_memory 0 CLIENTONLY_PERPLAYER 
+
 gamevar hud_scale 65536 CLIENTONLY_PERPLAYER 
+gamevar hud_scale_memory 65536 CLIENTONLY_PERPLAYER
+
 gamevar hud_angle 0 CLIENTONLY_PERPLAYER 
 gamevar hud_shade 0 CLIENTONLY_PERPLAYER 
 gamevar hud_pal 0 CLIENTONLY_PERPLAYER 

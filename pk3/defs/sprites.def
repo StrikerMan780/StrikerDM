@@ -1,238 +1,58 @@
 // Special Actors
-
 tilefromtexture 14 { file "tiles/14.png" texture } // Jump Pad
 tilefromtexture 15 { file "tiles/15.png" texture } // Timed Platform
 tilefromtexture 16 { file "tiles/16.png" texture } // Platform Sound
-tilefromtexture 17 { file "tiles/17.png" } // Start Weapon Changer
 tilefromtexture 71 { file "tiles/71.png" texture } // Z-Sensitive Teleport
 tilefromtexture 72 { file "tiles/72.png" texture } // Z-Sensitive Teleport Destination
 tilefromtexture 75 { file "tiles/75.png" texture } // Custom Touchplate
 tilefromtexture 76 { file "tiles/76.png" texture } // Moon gravity
 tilefromtexture 77 { file "tiles/77.png" texture } // Space Sector
 
-// Plasma Ball
-tilefromtexture 1389 { file "tiles/1389.png" }
-
-// Dookie
-tilefromtexture 1629 { file "tiles/1629.png" }
-
-// Duke Face
-tilefromtexture 2349 { file "tiles/2349.png" }
-tilefromtexture 3362 { file "tiles/3362.png" }
-
-// Shrinker/Expander
-tilefromtexture 25 { file "tiles/25.png" }
-tilefromtexture 32 { file "tiles/32.png" }
-tilefromtexture 1615 { file "tiles/1615.png" }
-tilefromtexture 1616 { file "tiles/1616.png" }
-tilefromtexture 1617 { file "tiles/1617.png" }
-tilefromtexture 1618 { file "tiles/1618.png" }
-tilefromtexture 1619 { file "tiles/1619.png" }
-
-tilefromtexture 1655 { file "tiles/1655.png" }
-
-tilefromtexture 2554 { file "tiles/2554.png" xoffset -1 yoffset 1 }
-tilefromtexture 2555 { file "tiles/2555.png" xoffset -1 yoffset 1 }
-tilefromtexture 2694 { file "tiles/2694.png" xoffset -1 yoffset 1 }
-tilefromtexture 2695 { file "tiles/2695.png" xoffset -1 yoffset 1 }
-tilefromtexture 2696 { file "tiles/2696.png" xoffset -1 yoffset 1 }
-
-tilefromtexture 2556 { file "tiles/2556.png" xoffset -1 yoffset -2 }
-tilefromtexture 2557 { file "tiles/2557.png" xoffset -1 yoffset -2 }
-tilefromtexture 2691 { file "tiles/2691.png" xoffset -1 yoffset -2 }
-tilefromtexture 2692 { file "tiles/2692.png" xoffset -1 yoffset -2 }
-tilefromtexture 2693 { file "tiles/2693.png" xoffset -1 yoffset -2 }
-
-tilefromtexture 2697 { file "tiles/2697.png" yoff 1 }
-tilefromtexture 2698 { file "tiles/2698.png" yoff 1 }
-tilefromtexture 2699 { file "tiles/2699.png" yoff 2 }
-
-// Pig Gib
-tilefromtexture 2113 { file "tiles/2113.png" }
-tilefromtexture 2114 { file "tiles/2114.png" }
-tilefromtexture 2115 { file "tiles/2115.png" }
-tilefromtexture 2116 { file "tiles/2116.png" }
-tilefromtexture 2117 { file "tiles/2117.png" }
-tilefromtexture 2118 { file "tiles/2118.png" }
-tilefromtexture 2119 { file "tiles/2119.png" }
-
-// Explosion Spark
-tilefromtexture 2090 { file "tiles/2090.png" }
-tilefromtexture 2091 { file "tiles/2091.png" }
-tilefromtexture 2092 { file "tiles/2092.png" }
-tilefromtexture 2093 { file "tiles/2093.png" }
-tilefromtexture 2094 { file "tiles/2094.png" }
-tilefromtexture 2095 { file "tiles/2095.png" }
-
-// Water Splash
-tilefromtexture 2380 { file "tiles/2380.png" xoff 0 yoff 1 }
-tilefromtexture 2381 { file "tiles/2381.png" xoff 1 yoff 2 }
-tilefromtexture 2382 { file "tiles/2382.png" xoff 1 yoff 3 }
-tilefromtexture 2383 { file "tiles/2383.png" xoff 0 yoff 3 }
-tilefromtexture 2384 { file "tiles/2384.png" xoff -1 yoff 1 }
-tilefromtexture 2385 { file "tiles/2385.png" xoff -1 yoff -3 }
-tilefromtexture 2386 { file "tiles/2386.png" xoff 1 yoff -6 }
-tilefromtexture 2387 { file "tiles/2387.png" xoff 1 yoff -6 }
-tilefromtexture 2388 { file "tiles/2388.png" xoff 1 yoff -7 }
-
-// Tracer/Pellet
-tilefromtexture 2507 { file "tiles/2507.png" }
-tilefromtexture 2508 { file "tiles/2508.png" }
-
 // Alternate Tripmine Colors
-tilefromtexture 2592 { file "tiles/2592.png" texture }
-tilefromtexture 2593 { file "tiles/2593.png" texture }
-tilefromtexture 2594 { file "tiles/2594.png" texture }
+texture 2592 { pal 0 { file "tiles/2592.png" artquality } }
+texture 2593 { pal 0 { file "tiles/2593.png" artquality } }
+texture 2594 { pal 0 { file "tiles/2594.png" artquality } }
 
 // Red Laser
-animtilerange 5006 5008 2 ANIM_FORWARD
-tilefromtexture 5006 { file "tiles/5006.png" xoffset -64 }
-tilefromtexture 5007 { file "tiles/5007.png" xoffset -64 }
-tilefromtexture 5008 { file "tiles/5008.png" xoffset -64 }
-texture 5006 { pal 0 { file "tiles/5006.png" nocompress nodownsize forcefilter } }
-texture 5007 { pal 0 { file "tiles/5007.png" nocompress nodownsize forcefilter } }
-texture 5008 { pal 0 { file "tiles/5008.png" nocompress nodownsize forcefilter } }
+texture 5006 { pal 0 { file "tiles/5006.png" artquality forcefilter } }
+texture 5007 { pal 0 { file "tiles/5007.png" artquality forcefilter } }
+texture 5008 { pal 0 { file "tiles/5008.png" artquality forcefilter } }
 
 // Green Laser
-animtilerange 5009 5011 2 ANIM_FORWARD
-tilefromtexture 5009 { file "tiles/5009.png" xoffset -64 }
-tilefromtexture 5010 { file "tiles/5010.png" xoffset -64 }
-tilefromtexture 5011 { file "tiles/5011.png" xoffset -64 }
-texture 5009 { pal 0 { file "tiles/5009.png" nocompress nodownsize forcefilter } }
-texture 5010 { pal 0 { file "tiles/5010.png" nocompress nodownsize forcefilter } }
-texture 5011 { pal 0 { file "tiles/5011.png" nocompress nodownsize forcefilter } }
+texture 5009 { pal 0 { file "tiles/5009.png" artquality forcefilter } }
+texture 5010 { pal 0 { file "tiles/5010.png" artquality forcefilter } }
+texture 5011 { pal 0 { file "tiles/5011.png" artquality forcefilter } }
 
 // Blue Laser
-animtilerange 5012 5014 2 ANIM_FORWARD
-tilefromtexture 5012 { file "tiles/5012.png" xoffset -64 }
-tilefromtexture 5013 { file "tiles/5013.png" xoffset -64 }
-tilefromtexture 5014 { file "tiles/5014.png" xoffset -64 }
-texture 5012 { pal 0 { file "tiles/5012.png" nocompress nodownsize forcefilter } }
-texture 5013 { pal 0 { file "tiles/5013.png" nocompress nodownsize forcefilter } }
-texture 5014 { pal 0 { file "tiles/5014.png" nocompress nodownsize forcefilter } }
+texture 5012 { pal 0 { file "tiles/5012.png" artquality forcefilter } }
+texture 5013 { pal 0 { file "tiles/5013.png" artquality forcefilter } }
+texture 5014 { pal 0 { file "tiles/5014.png" artquality forcefilter } }
 
 // Yellow Laser
-animtilerange 5015 5017 2 ANIM_FORWARD
-tilefromtexture 5015 { file "tiles/5015.png" xoffset -64 }
-tilefromtexture 5016 { file "tiles/5016.png" xoffset -64 }
-tilefromtexture 5017 { file "tiles/5017.png" xoffset -64 }
-texture 5015 { pal 0 { file "tiles/5015.png" nocompress nodownsize forcefilter } }
-texture 5016 { pal 0 { file "tiles/5016.png" nocompress nodownsize forcefilter } }
-texture 5017 { pal 0 { file "tiles/5017.png" nocompress nodownsize forcefilter } }
-
-// Gibs
-tilefromtexture 1519 { file "tiles/1519.png" }
-tilefromtexture 1544 { file "tiles/1544.png" }
-tilefromtexture 1545 { file "tiles/1545.png" }
-
-// Explosion Shockwave
-tilefromtexture 1888 { file "tiles/1888.png" }
-
-// Ricochet Spark
-tilefromtexture 2365 { file "tiles/2365.png" xoffset 13 yoffset 11 }
-tilefromtexture 2366 { file "tiles/2366.png" xoffset -22 yoffset 2 }
-tilefromtexture 2367 { file "tiles/2367.png" xoffset -2 yoffset 8 }
-tilefromtexture 2368 { file "tiles/2368.png" xoffset 14 yoffset -9 }
-tilefromtexture 2369 { file "tiles/2369.png" xoffset -20 yoffset -2 }
-
-// Extended RPG Flash
-tilefromtexture 2547 { file "tiles/2547.png" xoff -44 yoff -27 }
-
-// Interpolated Tip Animation
-tilefromtexture 2578 { file "tiles/2578.png" }
-tilefromtexture 2579 { file "tiles/2579.png" }
-
-// Ripper Casing
-tilefromtexture 2587 { file "tiles/2587.png" }
-tilefromtexture 2588 { file "tiles/2588.png" }
-
-// Extra Pipebomb Frames
-tilefromtexture 2600 { file "tiles/2600.png" xoffset -16 yoffset 25 }
-tilefromtexture 2601 { file "tiles/2601.png" xoffset -16 yoffset -10 }
-tilefromtexture 2602 { file "tiles/2602.png" xoffset -17 yoffset -20 }
-tilefromtexture 2603 { file "tiles/2603.png" xoffset -14 yoffset -24 }
-
-// Interpolated Shotgun
-//tilefromtexture 2585 { file "tiles/2585.png" xoff -30 yoff -7 }
-tilefromtexture 2586 { file "tiles/2586.png" xoff -29 yoff -6 }
-tilefromtexture 2614 { file "tiles/2614.png" xoff -27 yoff -5 }
-tilefromtexture 2615 { file "tiles/2615.png" xoff -21 yoff 25 }
-tilefromtexture 2619 { file "tiles/2619.png" }
-tilefromtexture 2620 { file "tiles/2620.png" }
-tilefromtexture 2621 { file "tiles/2621.png" }
-tilefromtexture 2622 { file "tiles/2622.png" }
-
-// Light Spot
-tilefromtexture 3325 { file "tiles/3325.png" }
+texture 5015 { pal 0 { file "tiles/5015.png" artquality forcefilter } }
+texture 5016 { pal 0 { file "tiles/5016.png" artquality forcefilter } }
+texture 5017 { pal 0 { file "tiles/5017.png" artquality forcefilter } }
 
 // Lo Wang statue
-tilefromtexture 3678 { file "tiles/3678.png" texture }
-
-// Colored scrap
-tilefromtexture 3725 { file "tiles/3725.png" }
-tilefromtexture 3726 { file "tiles/3726.png" }
-tilefromtexture 3727 { file "tiles/3727.png" }
-tilefromtexture 3728 { file "tiles/3728.png" }
-
-// Hanging Vest
-tilefromtexture 3729 { file "tiles/3729.png" }
-
-// Renamon Shirt
-tilefromtexture 3730 { file "tiles/3730.png" }
+texture 3678 { pal 0 { file "tiles/3678.png" artquality } }
 
 // Bonuses
-animtilerange 4991 4994 4 ANIM_OSCILLATING
-tilefromtexture 4991 { file "tiles/4991.png" }
-tilefromtexture 4992 { file "tiles/4992.png" }
-tilefromtexture 4993 { file "tiles/4993.png" }
-tilefromtexture 4994 { file "tiles/4994.png" }
-texture 4991 { pal 0 { file "highres/items/4991_healthvial.png" nocompress nodownsize } }
-texture 4992 { pal 0 { file "highres/items/4992_healthvial.png" nocompress nodownsize } }
-texture 4993 { pal 0 { file "highres/items/4993_healthvial.png" nocompress nodownsize } }
-texture 4994 { pal 0 { file "highres/items/4994_healthvial.png" nocompress nodownsize } }
+texture 4991 { pal 0 { file "highres/items/4991_healthvial.png" artquality } }
+texture 4992 { pal 0 { file "highres/items/4992_healthvial.png" artquality } }
+texture 4993 { pal 0 { file "highres/items/4993_healthvial.png" artquality } }
+texture 4994 { pal 0 { file "highres/items/4994_healthvial.png" artquality } }
 
-animtilerange 4995 4998 4 ANIM_OSCILLATING
-tilefromtexture 4995 { file "tiles/4995.png" }
-tilefromtexture 4996 { file "tiles/4996.png" }
-tilefromtexture 4997 { file "tiles/4997.png" }
-tilefromtexture 4998 { file "tiles/4998.png" }
-texture 4995 { pal 0 { file "highres/items/4995_armorhelmet.png" nocompress nodownsize } }
-texture 4996 { pal 0 { file "highres/items/4996_armorhelmet.png" nocompress nodownsize } }
-texture 4997 { pal 0 { file "highres/items/4997_armorhelmet.png" nocompress nodownsize } }
-texture 4998 { pal 0 { file "highres/items/4998_armorhelmet.png" nocompress nodownsize } }
+texture 4995 { pal 0 { file "highres/items/4995_armorhelmet.png" artquality } }
+texture 4996 { pal 0 { file "highres/items/4996_armorhelmet.png" artquality } }
+texture 4997 { pal 0 { file "highres/items/4997_armorhelmet.png" artquality } }
+texture 4998 { pal 0 { file "highres/items/4998_armorhelmet.png" artquality } }
 
-// Devastator Missile
-tilefromtexture 4999 { file "tiles/4999.png" }
-tilefromtexture 5000 { file "tiles/5000.png" }
-tilefromtexture 5001 { file "tiles/5001.png" }
-tilefromtexture 5002 { file "tiles/5002.png" }
-tilefromtexture 5003 { file "tiles/5003.png" }
-tilefromtexture 5004 { file "tiles/5004.png" }
-tilefromtexture 5005 { file "tiles/5005.png" }
-
-// Devastator
-//tilefromtexture 29 { file "tiles/29.png" }
-//tilefromtexture 2510 { file "tiles/2510.png" }
-//tilefromtexture 2511 { file "tiles/2511.png" }
-tilefromtexture 2512 { file "tiles/2512.png" }
-tilefromtexture 2513 { file "tiles/2513.png" }
-
-// Smooth Kick
-tilefromtexture 2518 { file "tiles/2518.png" xoffset 10 yoffset -4 }
-tilefromtexture 2519 { file "tiles/2519.png" xoffset 2 yoffset -2 }
-tilefromtexture 2520 { file "tiles/2520.png" xoffset 2 yoffset -8 }
-
-
-// Widescreen fixes
-tilefromtexture 2325 { file "tiles/2325.png" xoffset 24 }
-tilefromtexture 2326 { file "tiles/2326.png" xoffset 16 }
-
+// Skinny Pistol
 //tilefromtexture 2524 { file "tiles/2524.png" xoffset -14 yoffset 3 }
 //tilefromtexture 2525 { file "tiles/2525.png" xoffset -7 yoffset 13 }
 //tilefromtexture 2526 { file "tiles/2526.png" xoffset -16 yoffset 12 }
 //tilefromtexture 2528 { file "tiles/2528.png" xoffset -38 yoffset -6 }
 //tilefromtexture 2529 { file "tiles/2529.png" xoffset -74 yoffset 5 }
-tilefromtexture 2532 { file "tiles/2532.png" xoffset -16 yoffset -30 }
 
 /* // Duke64 Pistol for later.
 tilefromtexture 2524 { file "tiles/2524_dn64.png" xoff -32 yoff 10 }
@@ -249,505 +69,31 @@ tilefromtexture 2526 { file "tiles/2526_godtc.png" xoffset -31 yoffset 8 }
 tilefromtexture 2528 { file "tiles/2528_2529_godtc.png" xoffset -70 yoffset -5 }
 tilefromtexture 2529 { file "tiles/2528_2529_godtc.png" xoffset -70 yoffset 17 }
 
-// RPG
-tilefromtexture 2544 { file "tiles/2544.png" xoffset -106 yoffset -67 }
-tilefromtexture 2548 { file "tiles/2548.png" xoff -68 yoff 15 }
-tilefromtexture 2550 { file "tiles/2550.png" xoff -7 yoff 18 }
-tilefromtexture 2563 { file "tiles/2563.png" xoffset 90 }
-
-// Railgun
-tilefromtexture 18 { file "tiles/18.png" }
-tilefromtexture 43 { file "tiles/43.png" }
-tilefromtexture 2430 { file "tiles/2430.png" }
-tilefromtexture 2431 { file "tiles/2431.png" xoff 7 }
-tilefromtexture 2432 { file "tiles/2432.png" xoff 13 }
-tilefromtexture 2433 { file "tiles/2433.png" xoff 14 yoff 2 }
-tilefromtexture 2434 { file "tiles/2434.png" xoff 15 yoff 3 }
-tilefromtexture 2435 { file "tiles/2435.png" xoff 16 yoff 4 }
-tilefromtexture 2436 { file "tiles/2436.png" xoff 6 }
-
-// Plasma Rifle
-tilefromtexture 19 { file "tiles/19.png" }
-tilefromtexture 3751 { file "tiles/3751.png" xoffset 10 yoffset 15 }
-tilefromtexture 3752 { file "tiles/3752.png" xoffset 10 yoffset 21 }
-tilefromtexture 3753 { file "tiles/3753.png" xoffset 10 yoffset 25 }
-tilefromtexture 3754 { file "tiles/3754.png" xoffset 8 yoffset 26 }
-tilefromtexture 3755 { file "tiles/3755.png" xoffset -2 yoffset 26 }
-tilefromtexture 3756 { file "tiles/3756.png" xoffset 9 yoffset 20 }
-tilefromtexture 3757 { file "tiles/3757.png" xoffset 9 yoffset 17 }
-tilefromtexture 3758 { file "tiles/3758.png" xoffset 9 yoffset 17 }
-tilefromtexture 3759 { file "tiles/3759.png" xoffset 9 yoffset 15 }
-tilefromtexture 3760 { file "tiles/3760.png" xoffset 10 yoffset 15 }
-tilefromtexture 3761 { file "tiles/3761.png" xoffset 10 yoffset 15 }
-animtilerange 1385 1386 2 ANIM_FORWARD
-animtilerange 1387 1388 2 ANIM_FORWARD
-
-// Plasma Ammo
-tilefromtexture 34 { file "tiles/34.png" }
-tilefromtexture 35 { file "tiles/35.png" }
-tilefromtexture 36 { file "tiles/36.png" }
-animtilerange 34 36 2 ANIM_FORWARD
-
-// Ripper Extra Flash Frames
-tilefromtexture 2624 { file "tiles/2624.png" xoff 0 yoff 11 }
-tilefromtexture 2625 { file "tiles/2625.png" xoff 0 yoff 11 }
-tilefromtexture 2626 { file "tiles/2626.png" xoff 0 yoff 11 }
-
-tilefromtexture 2627 { file "tiles/2627.png" xoff -3 yoff -1 }
-tilefromtexture 2628 { file "tiles/2628.png" xoff -1 yoff -1 }
-tilefromtexture 2629 { file "tiles/2629.png" xoff 0 yoff 0 }
-
-// LameDuke Explosion
-tilefromtexture 2080 { file "tiles/2080.png" }
-tilefromtexture 2081 { file "tiles/2081.png" }
-tilefromtexture 2082 { file "tiles/2082.png" }
-tilefromtexture 2083 { file "tiles/2083.png" }
-tilefromtexture 2084 { file "tiles/2084.png" }
-tilefromtexture 2085 { file "tiles/2085.png" }
-tilefromtexture 2086 { file "tiles/2086.png" }
-tilefromtexture 2087 { file "tiles/2087.png" }
-tilefromtexture 2088 { file "tiles/2088.png" }
-tilefromtexture 2089 { file "tiles/2089.png" }
-
-// Cleaned-up player sprites (Thanks, phredreeke!)
-tilefromtexture 1405 { file "tiles/1405.png" xoffset -1 yoffset 1 }
-tilefromtexture 1406 { file "tiles/1406.png" xoffset 5 yoffset 1 }
-tilefromtexture 1407 { file "tiles/1407.png" xoffset 3 yoffset 1 }
-tilefromtexture 1408 { file "tiles/1408.png" xoffset 1 yoffset 1 }
-tilefromtexture 1409 { file "tiles/1409.png" xoffset 0 yoffset 1 }
-tilefromtexture 1420 { file "tiles/1420.png" xoffset 1 yoffset 1 }
-tilefromtexture 1421 { file "tiles/1421.png" xoffset 0 yoffset 1 }
-tilefromtexture 1422 { file "tiles/1422.png" xoffset 0 yoffset 1 }
-tilefromtexture 1423 { file "tiles/1423.png" xoffset 0 yoffset 1 }
-tilefromtexture 1424 { file "tiles/1424.png" xoffset -4 yoffset 1 }
-tilefromtexture 1425 { file "tiles/1425.png" xoffset 2 yoffset 1 }
-tilefromtexture 1426 { file "tiles/1426.png" xoffset 3 yoffset 1 }
-tilefromtexture 1427 { file "tiles/1427.png" xoffset 0 yoffset 1 }
-tilefromtexture 1428 { file "tiles/1428.png" xoffset 0 yoffset 1 }
-tilefromtexture 1429 { file "tiles/1429.png" xoffset -3 yoffset 1 }
-tilefromtexture 1430 { file "tiles/1430.png" xoffset 0 yoffset 1 }
-tilefromtexture 1431 { file "tiles/1431.png" xoffset 9 yoffset 1 }
-tilefromtexture 1432 { file "tiles/1432.png" xoffset 7 yoffset 1 }
-tilefromtexture 1433 { file "tiles/1433.png" xoffset 1 yoffset 1 }
-tilefromtexture 1434 { file "tiles/1434.png" xoffset -2 yoffset 1 }
-tilefromtexture 1435 { file "tiles/1435.png" xoffset 0 yoffset 1 }
-tilefromtexture 1436 { file "tiles/1436.png" xoffset 10 yoffset 1 }
-tilefromtexture 1437 { file "tiles/1437.png" xoffset 3 yoffset 1 }
-tilefromtexture 1438 { file "tiles/1438.png" xoffset -1 yoffset 1 }
-tilefromtexture 1439 { file "tiles/1439.png" xoffset 0 yoffset 1 }
-tilefromtexture 1440 { file "tiles/1440.png" xoffset 1 yoffset 1 }
-tilefromtexture 1441 { file "tiles/1441.png" xoffset 12 yoffset 1 }
-tilefromtexture 1442 { file "tiles/1442.png" xoffset 8 yoffset 1 }
-tilefromtexture 1443 { file "tiles/1443.png" xoffset 0 yoffset 1 }
-tilefromtexture 1444 { file "tiles/1444.png" xoffset -2 yoffset 1 }
-tilefromtexture 1445 { file "tiles/1445.png" xoffset 4 yoffset 1 }
-tilefromtexture 1446 { file "tiles/1446.png" xoffset 8 yoffset 1 }
-tilefromtexture 1447 { file "tiles/1447.png" xoffset 0 yoffset 1 }
-tilefromtexture 1448 { file "tiles/1448.png" xoffset 0 yoffset 1 }
-tilefromtexture 1449 { file "tiles/1449.png" xoffset -6 yoffset 1 }
-tilefromtexture 1450 { file "tiles/1450.png" xoffset 6 yoffset 1 }
-tilefromtexture 1451 { file "tiles/1451.png" xoffset 9 yoffset 1 }
-tilefromtexture 1452 { file "tiles/1452.png" xoffset 13 yoffset 1 }
-tilefromtexture 1453 { file "tiles/1453.png" xoffset 0 yoffset 1 }
-tilefromtexture 1454 { file "tiles/1454.png" xoffset -9 yoffset 1 }
-tilefromtexture 1455 { file "tiles/1455.png" xoffset 1 yoffset 1 }
-tilefromtexture 1456 { file "tiles/1456.png" xoffset 5 yoffset 1 }
-tilefromtexture 1457 { file "tiles/1457.png" xoffset 0 yoffset 1 }
-tilefromtexture 1458 { file "tiles/1458.png" xoffset 0 yoffset 1 }
-tilefromtexture 1459 { file "tiles/1459.png" xoffset 0 yoffset 1 }
-tilefromtexture 1460 { file "tiles/1460.png" xoffset 0 yoffset 1 }
-tilefromtexture 1461 { file "tiles/1461.png" xoffset 10 yoffset -1 }
-tilefromtexture 1462 { file "tiles/1462.png" xoffset 4 yoffset 1 }
-tilefromtexture 1463 { file "tiles/1463.png" xoffset 0 yoffset 1 }
-tilefromtexture 1464 { file "tiles/1464.png" xoffset 0 yoffset 1 }
-tilefromtexture 1465 { file "tiles/1465.png" xoffset 3 yoffset 1 }
-tilefromtexture 1466 { file "tiles/1466.png" xoffset 0 yoffset 1 }
-tilefromtexture 1467 { file "tiles/1467.png" xoffset 0 yoffset 1 }
-tilefromtexture 1468 { file "tiles/1468.png" xoffset 0 yoffset 1 }
-tilefromtexture 1469 { file "tiles/1469.png" xoffset 0 yoffset 1 }
-tilefromtexture 1491 { file "tiles/1491.png" xoffset 0 yoffset 1 }
-tilefromtexture 1492 { file "tiles/1492.png" xoffset 0 yoffset 1 }
-tilefromtexture 1493 { file "tiles/1493.png" xoffset -6 yoffset 1 }
-tilefromtexture 1494 { file "tiles/1494.png" xoffset 0 yoffset 1 }
-tilefromtexture 1495 { file "tiles/1495.png" xoffset 0 yoffset 1 }
-tilefromtexture 1496 { file "tiles/1496.png" xoffset 0 yoffset 1 }
-tilefromtexture 1497 { file "tiles/1497.png" xoffset 5 yoffset 1 }
-tilefromtexture 1498 { file "tiles/1498.png" xoffset 0 yoffset 1 }
-tilefromtexture 1499 { file "tiles/1499.png" xoffset 0 yoffset 1 }
-tilefromtexture 1500 { file "tiles/1500.png" xoffset 0 yoffset 1 }
-tilefromtexture 1501 { file "tiles/1501.png" xoffset 0 yoffset 1 }
-tilefromtexture 1502 { file "tiles/1502.png" xoffset 0 yoffset 1 }
-tilefromtexture 1503 { file "tiles/1503.png" xoffset 0 yoffset 1 }
-tilefromtexture 1504 { file "tiles/1504.png" xoffset 0 yoffset 1 }
-tilefromtexture 1505 { file "tiles/1505.png" xoffset 8 yoffset 1 }
-tilefromtexture 1511 { file "tiles/1511.png" xoffset 0 yoffset 1 }
-tilefromtexture 1512 { file "tiles/1512.png" xoffset -2 yoffset 33 }
-tilefromtexture 1513 { file "tiles/1513.png" xoffset 3 yoffset 30 }
-tilefromtexture 1514 { file "tiles/1514.png" xoffset 2 yoffset 33 }
-tilefromtexture 1515 { file "tiles/1515.png" xoffset 0 yoffset 29 }
-tilefromtexture 1518 { file "tiles/1518.png" xoffset 0 yoffset 38 }
-tilefromtexture 1780 { file "tiles/1780.png" xoffset 0 yoffset 19 }
-tilefromtexture 1781 { file "tiles/1781.png" xoffset 0 yoffset 20 }
-tilefromtexture 1782 { file "tiles/1782.png" xoffset 0 yoffset 20 }
-tilefromtexture 1783 { file "tiles/1783.png" xoffset 0 yoffset 19 }
-tilefromtexture 1784 { file "tiles/1784.png" xoffset 0 yoffset 20 }
-tilefromtexture 1785 { file "tiles/1785.png" xoffset -1 yoffset 19 }
-tilefromtexture 1786 { file "tiles/1786.png" xoffset 0 yoffset 19 }
-tilefromtexture 1787 { file "tiles/1787.png" xoffset 0 yoffset 18 }
-tilefromtexture 1788 { file "tiles/1788.png" xoffset 0 yoffset 19 }
-tilefromtexture 1789 { file "tiles/1789.png" xoffset 5 yoffset 19 }
-tilefromtexture 1790 { file "tiles/1790.png" xoffset 0 yoffset 19 }
-tilefromtexture 1791 { file "tiles/1791.png" xoffset 15 yoffset 18 }
-tilefromtexture 1792 { file "tiles/1792.png" xoffset 13 yoffset 18 }
-tilefromtexture 1793 { file "tiles/1793.png" xoffset -6 yoffset 19 }
-tilefromtexture 1794 { file "tiles/1794.png" xoffset 3 yoffset 19 }
-tilefromtexture 1795 { file "tiles/1795.png" xoffset 2 yoffset 19 }
-tilefromtexture 1796 { file "tiles/1796.png" xoffset 23 yoffset 18 }
-tilefromtexture 1797 { file "tiles/1797.png" xoffset 24 yoffset 18 }
-tilefromtexture 1798 { file "tiles/1798.png" xoffset 6 yoffset 18 }
-tilefromtexture 1799 { file "tiles/1799.png" xoffset -2 yoffset 18 }
-
-// Blood pool for player
-tilefromtexture 1546 { file "tiles/1546.png" }
-
-// Footprints
-tilefromtexture 1590 { file "tiles/1590.png" xoff -7 }
-tilefromtexture 1591 { file "tiles/1591.png" }
-tilefromtexture 1592 { file "tiles/1592.png" }
-tilefromtexture 1593 { file "tiles/1593.png" }
-
-// Trooper Gibs
-tilefromtexture 1765 { file "tiles/1765.png" }
-tilefromtexture 1766 { file "tiles/1766.png" }
-tilefromtexture 1767 { file "tiles/1767.png" }
-
-// Blood Trails
-tilefromtexture 2100 { file "tiles/2100.png" }
-tilefromtexture 2101 { file "tiles/2101.png" }
-tilefromtexture 2102 { file "tiles/2102.png" }
-tilefromtexture 2103 { file "tiles/2103.png" }
-tilefromtexture 2104 { file "tiles/2104.png" }
-tilefromtexture 2105 { file "tiles/2105.png" }
-tilefromtexture 2106 { file "tiles/2106.png" }
-tilefromtexture 2107 { file "tiles/2107.png" }
-tilefromtexture 2108 { file "tiles/2108.png" }
-
-tilefromtexture 2286 { file "tiles/2286.png" xoff -2 }
-tilefromtexture 2287 { file "tiles/2287.png" xoff -2 yoff 1 }
-tilefromtexture 2288 { file "tiles/2288.png" xoff -2 }
-tilefromtexture 2289 { file "tiles/2289.png" yoff -5 }
-tilefromtexture 2290 { file "tiles/2290.png" xoff 1 yoff -4 }
-tilefromtexture 2291 { file "tiles/2291.png" yoff -4 }
-tilefromtexture 2292 { file "tiles/2292.png" yoff -6 }
-tilefromtexture 2293 { file "tiles/2293.png" xoff 3 yoff -9 }
-
 // Becky Reference
-tilefromtexture 3707 { file "tiles/3707.png" texture }
-tilefromtexture 3708 { file "tiles/3708.png" texture }
-tilefromtexture 3709 { file "tiles/3709.png" texture }
-tilefromtexture 3710 { file "tiles/3710.png" texture }
+texture 3707 { pal 0 { file "tiles/3707.png" artquality } }
+texture 3708 { pal 0 { file "tiles/3708.png" artquality } }
+texture 3709 { pal 0 { file "tiles/3709.png" artquality } }
+texture 3710 { pal 0 { file "tiles/3710.png" artquality } }
 
 // BFG Projectile
-animtilerange 3738 3739 2 ANIM_FORWARD
-tilefromtexture 3738 { file "tiles/3738.png" texture }
-tilefromtexture 3739 { file "tiles/3739.png" texture }
-tilefromtexture 3740 { file "tiles/3740.png" texture }
-tilefromtexture 3741 { file "tiles/3741.png" texture xoff -2 yoff 2 }
-tilefromtexture 3742 { file "tiles/3742.png" texture }
-tilefromtexture 3743 { file "tiles/3743.png" texture xoff -6 }
-tilefromtexture 3744 { file "tiles/3744.png" texture xoff -2 yoff -8 }
-tilefromtexture 3745 { file "tiles/3745.png" texture xoff 4 yoff -4 }
-tilefromtexture 3746 { file "tiles/3746.png" texture }
-tilefromtexture 3747 { file "tiles/3747.png" texture }
-tilefromtexture 3748 { file "tiles/3748.png" texture xoff 2 yoff 2 }
-tilefromtexture 3749 { file "tiles/3749.png" texture yoff -2 }
+texture 3738 { pal 0 { file "tiles/3738.png" artquality } }
+texture 3739 { pal 0 { file "tiles/3739.png" artquality } }
+texture 3740 { pal 0 { file "tiles/3740.png" artquality } }
+texture 3741 { pal 0 { file "tiles/3741.png" artquality } }
+texture 3742 { pal 0 { file "tiles/3742.png" artquality } }
+texture 3743 { pal 0 { file "tiles/3743.png" artquality } }
+texture 3744 { pal 0 { file "tiles/3744.png" artquality } }
+texture 3745 { pal 0 { file "tiles/3745.png" artquality } }
+texture 3746 { pal 0 { file "tiles/3746.png" artquality } }
+texture 3747 { pal 0 { file "tiles/3747.png" artquality } }
+texture 3748 { pal 0 { file "tiles/3748.png" artquality } }
+texture 3749 { pal 0 { file "tiles/3749.png" artquality } }
 
 // BFG
-tilefromtexture 3762 { file "tiles/3762.png" }
-tilefromtexture 3763 { file "tiles/3763.png" }
-tilefromtexture 3764 { file "tiles/3764.png" }
-tilefromtexture 3765 { file "tiles/3765.png" }
-tilefromtexture 3766 { file "tiles/3766.png" texture yoff 23 }
-tilefromtexture 3767 { file "tiles/3767.png" texture yoff 23 }
-tilefromtexture 3768 { file "tiles/3768.png" texture }
-tilefromtexture 3769 { file "tiles/3769.png" }
-
-animtilerange 3770 3774 4 ANIM_OSCILLATING
-tilefromtexture 3770 { file "tiles/3770.png" }
-tilefromtexture 3771 { file "tiles/3771.png" }
-tilefromtexture 3772 { file "tiles/3772.png" }
-tilefromtexture 3773 { file "tiles/3773.png" }
-tilefromtexture 3774 { file "tiles/3774.png" }
-
-// Parts for rescued babes
-tilefromtexture 3718 { file "tiles/3718.png" } // Pad
-tilefromtexture 3719 { file "tiles/3719.png" } // Pod
-tilefromtexture 3720 { file "tiles/3720.png" yoff -83 } // Vines
-tilefromtexture 3721 { file "tiles/3721.png" xoff -5 yoff 1 } // Bloodless Pole
-
-// Blood in Liquid
-tilefromtexture 4706 { file "tiles/4706.png" }
-tilefromtexture 4707 { file "tiles/4707.png" }
-tilefromtexture 4708 { file "tiles/4708.png" }
-tilefromtexture 4709 { file "tiles/4709.png" }
-tilefromtexture 4710 { file "tiles/4710.png" }
-tilefromtexture 4711 { file "tiles/4711.png" }
-tilefromtexture 4712 { file "tiles/4712.png" }
-tilefromtexture 4713 { file "tiles/4713.png" }
-tilefromtexture 4714 { file "tiles/4714.png" }
-tilefromtexture 4715 { file "tiles/4715.png" }
-tilefromtexture 4716 { file "tiles/4716.png" }
-tilefromtexture 4717 { file "tiles/4717.png" }
-tilefromtexture 4718 { file "tiles/4718.png" }
-tilefromtexture 4719 { file "tiles/4719.png" }
-tilefromtexture 4720 { file "tiles/4720.png" }
-tilefromtexture 4721 { file "tiles/4721.png" }
-
-// Blood in Liquid 2
-tilefromtexture 4722 { file "tiles/4722.png" }
-tilefromtexture 4723 { file "tiles/4723.png" }
-tilefromtexture 4724 { file "tiles/4724.png" }
-tilefromtexture 4725 { file "tiles/4725.png" }
-tilefromtexture 4726 { file "tiles/4726.png" }
-tilefromtexture 4727 { file "tiles/4727.png" }
-tilefromtexture 4728 { file "tiles/4728.png" }
-tilefromtexture 4729 { file "tiles/4729.png" }
-tilefromtexture 4730 { file "tiles/4730.png" }
-tilefromtexture 4731 { file "tiles/4731.png" }
-tilefromtexture 4732 { file "tiles/4732.png" }
-tilefromtexture 4733 { file "tiles/4733.png" }
-tilefromtexture 4734 { file "tiles/4734.png" }
-tilefromtexture 4735 { file "tiles/4735.png" }
-tilefromtexture 4736 { file "tiles/4736.png" }
-tilefromtexture 4737 { file "tiles/4737.png" }
-
-// Venus Statue
-tilefromtexture 4974 { file "tiles/4974.png" } 
-
-tilefromtexture 5131 { file "tiles/5131.png" }
-
-// Flamethrower pickup
-tilefromtexture 5134 { file "tiles/5134.png" xoff 3 yoff -5 }
-
-// Flamethrower ammo
-animtilerange 5135 5137 4 ANIM_FORWARD
-tilefromtexture 5135 { file "tiles/5135.png" }
-tilefromtexture 5136 { file "tiles/5136.png" }
-tilefromtexture 5137 { file "tiles/5137.png" }
-
-// Flamethrower HUD
-tilefromtexture 5138 { file "tiles/5138.png" xoff -68 yoff 15 }
-tilefromtexture 5139 { file "tiles/5139.png" xoff -7 yoff 18 }
-tilefromtexture 5140 { file "tiles/5140.png" xoff 29 yoff 27 }
-tilefromtexture 5141 { file "tiles/5141.png" xoff 29 yoff 27 }
-tilefromtexture 5142 { file "tiles/5142.png" xoff 29 yoff 27 }
-
-animtilerange 5174 5178 4 ANIM_FORWARD
-tilefromtexture 5174 { file "tiles/5174.png" xoff 60 yoff 39 }
-tilefromtexture 5175 { file "tiles/5175.png" xoff 60 yoff 39 }
-tilefromtexture 5176 { file "tiles/5176.png" xoff 60 yoff 39 }
-tilefromtexture 5177 { file "tiles/5177.png" xoff 60 yoff 39 }
-tilefromtexture 5178 { file "tiles/5178.png" xoff 60 yoff 39 }
-
-
-// Smoke
-tilefromtexture 5143 { file "tiles/5143.png" }
-tilefromtexture 5144 { file "tiles/5144.png" }
-tilefromtexture 5145 { file "tiles/5145.png" }
-tilefromtexture 5146 { file "tiles/5146.png" }
-tilefromtexture 5147 { file "tiles/5147.png" }
-tilefromtexture 5148 { file "tiles/5148.png" }
-tilefromtexture 5149 { file "tiles/5149.png" }
-tilefromtexture 5150 { file "tiles/5150.png" }
-tilefromtexture 5151 { file "tiles/5151.png" }
-
-// Flame
-tilefromtexture 5152 { file "tiles/5152.png" }
-tilefromtexture 5153 { file "tiles/5153.png" }
-tilefromtexture 5154 { file "tiles/5154.png" }
-tilefromtexture 5155 { file "tiles/5155.png" }
-tilefromtexture 5156 { file "tiles/5156.png" }
-tilefromtexture 5157 { file "tiles/5157.png" }
-tilefromtexture 5158 { file "tiles/5158.png" }
-tilefromtexture 5159 { file "tiles/5159.png" }
-tilefromtexture 5160 { file "tiles/5160.png" }
-tilefromtexture 5161 { file "tiles/5161.png" }
-tilefromtexture 5162 { file "tiles/5162.png" }
-
-// Fireball
-animtilerange 5163 5166 4 ANIM_FORWARD
-tilefromtexture 5163 { file "tiles/5163.png" }
-tilefromtexture 5164 { file "tiles/5164.png" }
-tilefromtexture 5165 { file "tiles/5165.png" }
-tilefromtexture 5166 { file "tiles/5166.png" }
-
-// Burnt corpse
-tilefromtexture 5173 { file "tiles/5173.png" }
-
-// Whispy Smoke
-tilefromtexture 5268 { file "tiles/5268.png" }
-tilefromtexture 5269 { file "tiles/5269.png" }
-tilefromtexture 5270 { file "tiles/5270.png" }
-tilefromtexture 5271 { file "tiles/5271.png" }
-tilefromtexture 5272 { file "tiles/5272.png" }
-tilefromtexture 5273 { file "tiles/5273.png" }
-tilefromtexture 5274 { file "tiles/5274.png" }
-tilefromtexture 5275 { file "tiles/5275.png" }
-tilefromtexture 5276 { file "tiles/5276.png" }
-tilefromtexture 5277 { file "tiles/5277.png" }
-
-// On-ground flamethrower fire
-tilefromtexture 5591 { file "tiles/5591.png" xoff -1 yoff 24 }
-tilefromtexture 5592 { file "tiles/5592.png" xoff -1 yoff 27 }
-tilefromtexture 5593 { file "tiles/5593.png" xoff -1 yoff 28 }
-tilefromtexture 5594 { file "tiles/5594.png" xoff -1 yoff 29 }
-tilefromtexture 5595 { file "tiles/5595.png" xoff -1 yoff 30 }
-tilefromtexture 5596 { file "tiles/5596.png" xoff -1 yoff 31 }
-tilefromtexture 5597 { file "tiles/5597.png" xoff -1 yoff 33 }
-tilefromtexture 5598 { file "tiles/5598.png" xoff -1 yoff 35 }
-tilefromtexture 5599 { file "tiles/5599.png" xoff -1 yoff 36 }
-tilefromtexture 5600 { file "tiles/5600.png" xoff -1 yoff 38 }
-tilefromtexture 5601 { file "tiles/5601.png" xoff -1 yoff 39 }
-tilefromtexture 5602 { file "tiles/5602.png" xoff -1 yoff 31 }
-tilefromtexture 5603 { file "tiles/5603.png" xoff -1 yoff 33 }
-tilefromtexture 5604 { file "tiles/5604.png" xoff -1 yoff 26 }
-
-tilefromtexture 5605 { file "tiles/5605.png" xoff 1 yoff 33 }
-tilefromtexture 5606 { file "tiles/5606.png" xoff 1 yoff 35 }
-tilefromtexture 5607 { file "tiles/5607.png" xoff 1 yoff 35 }
-tilefromtexture 5608 { file "tiles/5608.png" xoff -2 yoff 31 }
-tilefromtexture 5609 { file "tiles/5609.png" xoff -1 yoff 35 }
-tilefromtexture 5610 { file "tiles/5610.png" xoff 0 yoff 38 }
-tilefromtexture 5611 { file "tiles/5611.png" xoff -1 yoff 33 }
-tilefromtexture 5612 { file "tiles/5612.png" xoff -1 yoff 34 }
-tilefromtexture 5613 { file "tiles/5613.png" xoff 0 yoff 35 }
-tilefromtexture 5614 { file "tiles/5614.png" xoff -1 yoff 37 }
-tilefromtexture 5615 { file "tiles/5615.png" xoff -1 yoff 37 }
-tilefromtexture 5616 { file "tiles/5616.png" xoff -1 yoff 39 }
-tilefromtexture 5617 { file "tiles/5617.png" xoff 0 yoff 39 }
-tilefromtexture 5618 { file "tiles/5618.png" xoff 0 yoff 40 }
+texture 3766 { pal 0 { file "tiles/3766.png" artquality } }
+texture 3767 { pal 0 { file "tiles/3767.png" artquality } }
+texture 3768 { pal 0 { file "tiles/3768.png" artquality } }
 
 // Snow
-tilefromtexture 5848 { file "tiles/5848.png" texture }
-tilefromtexture 5849 { file "tiles/5849.png" texture }
-
-// Railgun Trail
-tilefromtexture 5850 { file "tiles/5850.png" }
-tilefromtexture 5851 { file "tiles/5851.png" }
-tilefromtexture 5852 { file "tiles/5852.png" }
-tilefromtexture 5853 { file "tiles/5853.png" }
-tilefromtexture 5854 { file "tiles/5854.png" }
-tilefromtexture 5855 { file "tiles/5855.png" }
-tilefromtexture 5856 { file "tiles/5856.png" }
-tilefromtexture 5857 { file "tiles/5857.png" }
-tilefromtexture 5858 { file "tiles/5858.png" }
-tilefromtexture 5859 { file "tiles/5859.png" }
-
-tilefromtexture 5860 { file "tiles/5860.png" }
-tilefromtexture 5861 { file "tiles/5861.png" }
-tilefromtexture 5862 { file "tiles/5862.png" }
-tilefromtexture 5863 { file "tiles/5863.png" }
-tilefromtexture 5864 { file "tiles/5864.png" }
-tilefromtexture 5865 { file "tiles/5865.png" }
-tilefromtexture 5866 { file "tiles/5866.png" }
-tilefromtexture 5867 { file "tiles/5867.png" }
-tilefromtexture 5868 { file "tiles/5868.png" }
-tilefromtexture 5869 { file "tiles/5869.png" }
-
-tilefromtexture 5870 { file "tiles/5870.png" }
-tilefromtexture 5871 { file "tiles/5871.png" }
-tilefromtexture 5872 { file "tiles/5872.png" }
-tilefromtexture 5873 { file "tiles/5873.png" }
-tilefromtexture 5874 { file "tiles/5874.png" }
-tilefromtexture 5875 { file "tiles/5875.png" }
-tilefromtexture 5876 { file "tiles/5876.png" }
-tilefromtexture 5877 { file "tiles/5877.png" }
-tilefromtexture 5878 { file "tiles/5878.png" }
-tilefromtexture 5879 { file "tiles/5879.png" }
-
-tilefromtexture 5880 { file "tiles/5880.png" }
-tilefromtexture 5881 { file "tiles/5881.png" }
-tilefromtexture 5882 { file "tiles/5882.png" }
-tilefromtexture 5883 { file "tiles/5883.png" }
-tilefromtexture 5884 { file "tiles/5884.png" }
-tilefromtexture 5885 { file "tiles/5885.png" }
-tilefromtexture 5886 { file "tiles/5886.png" }
-tilefromtexture 5887 { file "tiles/5887.png" }
-tilefromtexture 5888 { file "tiles/5888.png" }
-tilefromtexture 5889 { file "tiles/5889.png" }
-
-tilefromtexture 5890 { file "tiles/5890.png" }
-tilefromtexture 5891 { file "tiles/5891.png" }
-tilefromtexture 5892 { file "tiles/5892.png" }
-tilefromtexture 5893 { file "tiles/5893.png" }
-tilefromtexture 5894 { file "tiles/5894.png" }
-tilefromtexture 5895 { file "tiles/5895.png" }
-tilefromtexture 5896 { file "tiles/5896.png" }
-tilefromtexture 5897 { file "tiles/5897.png" }
-tilefromtexture 5898 { file "tiles/5898.png" }
-tilefromtexture 5899 { file "tiles/5899.png" }
-
-tilefromtexture 5900 { file "tiles/5900.png" }
-tilefromtexture 5901 { file "tiles/5901.png" }
-tilefromtexture 5902 { file "tiles/5902.png" }
-tilefromtexture 5903 { file "tiles/5903.png" }
-tilefromtexture 5904 { file "tiles/5904.png" }
-tilefromtexture 5905 { file "tiles/5905.png" }
-tilefromtexture 5906 { file "tiles/5906.png" }
-tilefromtexture 5907 { file "tiles/5907.png" }
-tilefromtexture 5908 { file "tiles/5908.png" }
-tilefromtexture 5909 { file "tiles/5909.png" }
-
-tilefromtexture 5910 { file "tiles/5910.png" }
-tilefromtexture 5911 { file "tiles/5911.png" }
-tilefromtexture 5912 { file "tiles/5912.png" }
-tilefromtexture 5913 { file "tiles/5913.png" }
-tilefromtexture 5914 { file "tiles/5914.png" }
-tilefromtexture 5915 { file "tiles/5915.png" }
-tilefromtexture 5916 { file "tiles/5916.png" }
-tilefromtexture 5917 { file "tiles/5917.png" }
-tilefromtexture 5918 { file "tiles/5918.png" }
-tilefromtexture 5919 { file "tiles/5919.png" }
-
-tilefromtexture 5920 { file "tiles/5920.png" }
-tilefromtexture 5921 { file "tiles/5921.png" }
-tilefromtexture 5922 { file "tiles/5922.png" }
-tilefromtexture 5923 { file "tiles/5923.png" }
-tilefromtexture 5924 { file "tiles/5924.png" }
-tilefromtexture 5925 { file "tiles/5925.png" }
-tilefromtexture 5926 { file "tiles/5926.png" }
-tilefromtexture 5927 { file "tiles/5927.png" }
-tilefromtexture 5928 { file "tiles/5928.png" }
-tilefromtexture 5929 { file "tiles/5929.png" }
-
-// Double Barrel Shotgun
-tilefromtexture 65 { file "tiles/65.png" }
-tilefromtexture 5930 { file "tiles/5930.png" }
-tilefromtexture 5931 { file "tiles/5931.png" xoff 2 yoff 7 }
-tilefromtexture 5932 { file "tiles/5932.png" xoff 5 yoff 10 }
-tilefromtexture 5933 { file "tiles/5933.png" xoff 5 yoff 11 }
-tilefromtexture 5934 { file "tiles/5934.png" xoff -6 yoff 21 }
-tilefromtexture 5935 { file "tiles/5935.png" xoff 0 yoff -14 }
-tilefromtexture 5936 { file "tiles/5936.png" xoff 2 yoff -16 }
-tilefromtexture 5937 { file "tiles/5937.png" xoff -1 yoff -21 }
-tilefromtexture 5938 { file "tiles/5938.png" xoff -5 yoff -21 }
-tilefromtexture 5939 { file "tiles/5939.png" xoff -5 yoff -21 }
-tilefromtexture 5940 { file "tiles/5940.png" xoff 0 yoff -14 }
-tilefromtexture 5941 { file "tiles/5941.png" }
-tilefromtexture 5942 { file "tiles/5942.png" xoff 8 yoff -30 }
-tilefromtexture 5943 { file "tiles/5943.png" xoff 23 yoff -24 }
-tilefromtexture 5944 { file "tiles/5944.png" }
-
-tilefromtexture 6688 { file "tiles/6688.png" }
-tilefromtexture 6689 { file "tiles/6689.png" }
-tilefromtexture 6690 { file "tiles/6690.png" }
-tilefromtexture 6691 { file "tiles/6691.png" }
-tilefromtexture 6692 { file "tiles/6692.png" }
-tilefromtexture 6693 { file "tiles/6693.png" }
-tilefromtexture 6694 { file "tiles/6694.png" }
-
-//animtilerange 6696 6699 3 ANIM_FORWARD
-tilefromtexture 6696 { file "tiles/6696.png" }
-tilefromtexture 6697 { file "tiles/6697.png" }
-tilefromtexture 6698 { file "tiles/6698.png" }
-tilefromtexture 6699 { file "tiles/6699.png" }
+texture 5848 { pal 0 { file "tiles/5848.png" artquality } }
+texture 5849 { pal 0 { file "tiles/5849.png" artquality } } // Spawner

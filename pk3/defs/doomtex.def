@@ -1,90 +1,105 @@
 // Textures
-tilefromtexture 3587 { file "tiles/3587.png" texture } // BIGBRIK2
-tilefromtexture 3588 { file "tiles/3588.png" texture } // RW26_1
-tilefromtexture 3589 { file "tiles/3589.png" texture } // SILVER2
-tilefromtexture 3590 { file "tiles/3590.png" texture } // BIGDOOR2
-tilefromtexture 3593 { file "tiles/3593.png" texture } // SGCRATE2
-tilefromtexture 3594 { file "tiles/3594.png" texture } // MIDBARS1
-tilefromtexture 3596 { file "tiles/3596.png" texture } // SW11_1
-tilefromtexture 3597 { file "tiles/3597.png" texture } // SUP2
-tilefromtexture 3598 { file "tiles/3598.png" texture } // TOMW2_1
-tilefromtexture 3599 { file "tiles/3599.png" texture } // TOM22_2
-tilefromtexture 3601 { file "tiles/3601.png" texture } // W17_1
-tilefromtexture 3602 { file "tiles/3602.png" texture } // W28_5
-tilefromtexture 3603 { file "tiles/3603.png" texture } // W28_6
+texture 3517 { pal 0 { file "tiles/3517.png" artquality } } // MIDSPACE
 
-tilefromtexture 3517 { file "tiles/3517.png" texture } // MIDSPACE
-tilefromtexture 3518 { file "tiles/3518.png" texture truenpot } // EXITDOOR
-tilefromtexture 3519 { file "tiles/3519.png" texture } // TEKWALL4
-tilefromtexture 3520 { file "tiles/3520.png" texture } // GATE1
-tilefromtexture 3521 { file "tiles/3521.png" texture } // GATE2
-tilefromtexture 3522 { file "tiles/3522.png" texture } // GATE3
-tilefromtexture 3523 { file "tiles/3523.png" texture } // GATE4
-tilefromtexture 3524 { file "tiles/3524.png" texture } // SLIME14
-tilefromtexture 3525 { file "tiles/3525.png" texture } // FLAT14
-tilefromtexture 3526 { file "tiles/3526.png" texture } // FLAT23
-tilefromtexture 3527 { file "tiles/3527.png" texture } // FLOOR4_8
-tilefromtexture 3528 { file "tiles/3528.png" texture } // TLITE6_5
-tilefromtexture 3529 { file "tiles/3529.png" texture } // CEIL3_2
-tilefromtexture 3530 { file "tiles/3530.png" texture } // CEIL1_2
-tilefromtexture 3531 { file "tiles/3531.png" texture } // CEIL3_4
-tilefromtexture 3532 { file "tiles/3532.png" texture } // CEIL4_2
-tilefromtexture 3533 { file "tiles/3533.png" texture } // CEIL3_3
-tilefromtexture 3534 { file "tiles/3534.png" texture } // CEIL5_1
-tilefromtexture 3535 { file "tiles/3535.png" texture } // FLOOR0_3
-tilefromtexture 3536 { file "tiles/3536.png" texture } // FLOOR0_1
-tilefromtexture 3537 { file "tiles/3537.png" texture } // FLOOR0_2
-tilefromtexture 3538 { file "tiles/3538.png" texture } // GRAY5
-tilefromtexture 3539 { file "tiles/3539.png" texture } // FLAT19
-tilefromtexture 3540 { file "tiles/3540.png" texture } // STEP6
-tilefromtexture 3541 { file "tiles/3541.png" texture } // STEP5
-tilefromtexture 3542 { file "tiles/3542.png" texture } // STEP2
-tilefromtexture 3543 { file "tiles/3543.png" texture } // SUPPORT3
-tilefromtexture 3544 { file "tiles/3544.png" texture } // DOORTRAK
-tilefromtexture 3545 { file "tiles/3545.png" texture } // PIPE4
-tilefromtexture 3546 { file "tiles/3546.png" texture } // METAL
-tilefromtexture 3547 { file "tiles/3547.png" texture } // SUPPORT2
-tilefromtexture 3548 { file "tiles/3548.png" texture } // BROWN1
-tilefromtexture 3549 { file "tiles/3549.png" texture } // STARTAN3
-tilefromtexture 3550 { file "tiles/3550.png" texture } // SKY1
-tilefromtexture 3551 { file "tiles/3551.png" texture } // BROWNGRN
-tilefromtexture 3552 { file "tiles/3552.png" texture } // BROWN96
-tilefromtexture 3553 { file "tiles/3553.png" texture } // BRONZE2
-tilefromtexture 3554 { file "tiles/3554.png" texture } // FLAT1_1
-tilefromtexture 3555 { file "tiles/3555.png" texture } // RROCK12
-tilefromtexture 3556 { file "tiles/3556.png" texture } // RROCK15
-tilefromtexture 3557 { file "tiles/3557.png" texture } // FLOOR7_1
-tilefromtexture 3558 { file "tiles/3558.png" texture } // CEIL5_2
-tilefromtexture 3559 { file "tiles/3559.png" texture } // GRASS1
-tilefromtexture 3560 { file "tiles/3560.png" texture } // GRASS2
-tilefromtexture 3561 { file "tiles/3561.png" texture } // SKY2
-tilefromtexture 3562 { file "tiles/3562.png" texture } // FLAT1_2
+tilefromtexture 3518 { truenpot xoff 0 yoff 0 } // Setting .art tile to truenpot
+texture 3518 { pal 0 { file "tiles/3518.png" artquality } } // EXITDOOR
 
-// 3977 - FLAT5_1 (In communitytex. TODO: Move it.)
+texture 3519 { pal 0 { file "tiles/3519.png" artquality } } // TEKWALL4
+texture 3520 { pal 0 { file "tiles/3520.png" artquality } } // GATE1
+texture 3521 { pal 0 { file "tiles/3521.png" artquality } } // GATE2
+texture 3522 { pal 0 { file "tiles/3522.png" artquality } } // GATE3
+texture 3523 { pal 0 { file "tiles/3523.png" artquality } } // GATE4
+texture 3524 { pal 0 { file "tiles/3524.png" artquality } } // SLIME14
+texture 3525 { pal 0 { file "tiles/3525.png" artquality } } // FLAT14
+texture 3526 { pal 0 { file "tiles/3526.png" artquality } } // FLAT23
+texture 3527 { pal 0 { file "tiles/3527.png" artquality } } // FLOOR4_8
+texture 3528 { pal 0 { file "tiles/3528.png" artquality } } // TLITE6_5
+texture 3529 { pal 0 { file "tiles/3529.png" artquality } } // CEIL3_2
+texture 3530 { pal 0 { file "tiles/3530.png" artquality } } // CEIL1_2
+texture 3531 { pal 0 { file "tiles/3531.png" artquality } } // CEIL3_4
+texture 3532 { pal 0 { file "tiles/3532.png" artquality } } // CEIL4_2
+texture 3533 { pal 0 { file "tiles/3533.png" artquality } } // CEIL3_3
+texture 3534 { pal 0 { file "tiles/3534.png" artquality } } // CEIL5_1
+texture 3535 { pal 0 { file "tiles/3535.png" artquality } } // FLOOR0_3
+texture 3536 { pal 0 { file "tiles/3536.png" artquality } } // FLOOR0_1
+texture 3537 { pal 0 { file "tiles/3537.png" artquality } } // FLOOR0_2
+texture 3538 { pal 0 { file "tiles/3538.png" artquality } } // GRAY5
+texture 3539 { pal 0 { file "tiles/3539.png" artquality } } // FLAT19
+texture 3540 { pal 0 { file "tiles/3540.png" artquality } } // STEP6
+texture 3541 { pal 0 { file "tiles/3541.png" artquality } } // STEP5
+texture 3542 { pal 0 { file "tiles/3542.png" artquality } } // STEP2
+texture 3543 { pal 0 { file "tiles/3543.png" artquality } } // SUPPORT3
+texture 3544 { pal 0 { file "tiles/3544.png" artquality } } // DOORTRAK
+texture 3545 { pal 0 { file "tiles/3545.png" artquality } } // PIPE4
+texture 3546 { pal 0 { file "tiles/3546.png" artquality } } // METAL
+texture 3547 { pal 0 { file "tiles/3547.png" artquality } } // SUPPORT2
+texture 3548 { pal 0 { file "tiles/3548.png" artquality } } // BROWN1
+texture 3549 { pal 0 { file "tiles/3549.png" artquality } } // STARTAN3
+texture 3550 { pal 0 { file "tiles/3550.png" artquality } } // SKY1
+texture 3551 { pal 0 { file "tiles/3551.png" artquality } } // BROWNGRN
+texture 3552 { pal 0 { file "tiles/3552.png" artquality } } // BROWN96
+texture 3553 { pal 0 { file "tiles/3553.png" artquality } } // BRONZE2
+texture 3554 { pal 0 { file "tiles/3554.png" artquality } } // FLAT1_1
+texture 3555 { pal 0 { file "tiles/3555.png" artquality } } // RROCK12
+texture 3556 { pal 0 { file "tiles/3556.png" artquality } } // RROCK15
+texture 3557 { pal 0 { file "tiles/3557.png" artquality } } // FLOOR7_1
+texture 3558 { pal 0 { file "tiles/3558.png" artquality } } // CEIL5_2
+texture 3559 { pal 0 { file "tiles/3559.png" artquality } } // GRASS1
+texture 3560 { pal 0 { file "tiles/3560.png" artquality } } // GRASS2
+texture 3561 { pal 0 { file "tiles/3561.png" artquality } } // SKY2
+texture 3562 { pal 0 { file "tiles/3562.png" artquality } } // FLAT1_2
+
+texture 3585 { pal 0 { file "tiles/3585.png" artquality } } // Some comp texture (NEEDS NAME)
+
+texture 3587 { pal 0 { file "tiles/3587.png" artquality } } // BIGBRIK2
+texture 3588 { pal 0 { file "tiles/3588.png" artquality } } // RW26_1
+texture 3589 { pal 0 { file "tiles/3589.png" artquality } } // SILVER2
+texture 3590 { pal 0 { file "tiles/3590.png" artquality } } // BIGDOOR2
+texture 3593 { pal 0 { file "tiles/3593.png" artquality } } // SGCRATE2
+texture 3594 { pal 0 { file "tiles/3594.png" artquality } } // MIDBARS1
+texture 3596 { pal 0 { file "tiles/3596.png" artquality } } // SW11_1
+texture 3597 { pal 0 { file "tiles/3597.png" artquality } } // SUP2
+texture 3598 { pal 0 { file "tiles/3598.png" artquality } } // TOMW2_1
+texture 3599 { pal 0 { file "tiles/3599.png" artquality } } // TOM22_2
+
+//tilefromtexture 3600 { file "tiles/3600.png" } // Vines. Might leave paletted, and import non-pal one as new tile. (NEEDS NAME)
+
+texture 3601 { pal 0 { file "tiles/3601.png" artquality } } // W17_1
+texture 3602 { pal 0 { file "tiles/3602.png" artquality } } // W28_5
+texture 3603 { pal 0 { file "tiles/3603.png" artquality } } // W28_6
+
+
+texture 3627 { pal 0 { file "tiles/3627.png" } } // DOOM (Face Background)
+
+texture 3977 { pal 0 { file "tiles/3977.png" artquality } } // FLAT5_1
+texture 3978 { pal 0 { file "tiles/3978.png" artquality } } // Marble (NEEDS NAME)
+tilefromtexture 3979 { truenpot xoff 0 yoff 0 } // Setting .art tile to truenpot
+texture 3979 { pal 0 { file "tiles/3979.png" artquality } } // Skin Texture (NEEDS NAME)
 
 // Sprites
-tilefromtexture 3465 { file "tiles/3465.png" texture } // Teleport Fog
-tilefromtexture 3466 { file "tiles/3466.png" texture }
-tilefromtexture 3467 { file "tiles/3467.png" texture }
-tilefromtexture 3468 { file "tiles/3468.png" texture }
-tilefromtexture 3469 { file "tiles/3469.png" texture }
-tilefromtexture 3470 { file "tiles/3470.png" texture }
-tilefromtexture 3471 { file "tiles/3471.png" texture }
-tilefromtexture 3472 { file "tiles/3472.png" texture }
-tilefromtexture 3473 { file "tiles/3473.png" texture }
-tilefromtexture 3474 { file "tiles/3474.png" texture }
+texture 3465 { pal 0 { file "tiles/3465.png" artquality } } // Teleport Fog
+texture 3466 { pal 0 { file "tiles/3466.png" artquality } }
+texture 3467 { pal 0 { file "tiles/3467.png" artquality } }
+texture 3468 { pal 0 { file "tiles/3468.png" artquality } }
+texture 3469 { pal 0 { file "tiles/3469.png" artquality } }
+texture 3470 { pal 0 { file "tiles/3470.png" artquality } }
+texture 3471 { pal 0 { file "tiles/3471.png" artquality } }
+texture 3472 { pal 0 { file "tiles/3472.png" artquality } }
+texture 3473 { pal 0 { file "tiles/3473.png" artquality } }
+texture 3474 { pal 0 { file "tiles/3474.png" artquality } }
 
-tilefromtexture 3300 { file "tiles/3300.png" texture } // Tall Lamp
-tilefromtexture 3301 { file "tiles/3301.png" texture }
-tilefromtexture 3302 { file "tiles/3302.png" texture }
-tilefromtexture 3303 { file "tiles/3303.png" texture }
-animtilerange 3300 3303 4 ANIM_FORWARD
+texture 3300 { pal 0 { file "tiles/3300.png" artquality } } // Tall Lamp
+texture 3301 { pal 0 { file "tiles/3301.png" artquality } }
+texture 3302 { pal 0 { file "tiles/3302.png" artquality } }
+texture 3303 { pal 0 { file "tiles/3303.png" artquality } }
 
-tilefromtexture 3304 { file "tiles/3304.png" texture } // Short Lamp
-tilefromtexture 3305 { file "tiles/3305.png" texture }
-tilefromtexture 3306 { file "tiles/3306.png" texture }
-tilefromtexture 3307 { file "tiles/3307.png" texture }
-animtilerange 3304 3307 4 ANIM_FORWARD
+texture 3304 { pal 0 { file "tiles/3304.png" artquality } } // Short Lamp
+texture 3305 { pal 0 { file "tiles/3305.png" artquality } }
+texture 3306 { pal 0 { file "tiles/3306.png" artquality } }
+texture 3307 { pal 0 { file "tiles/3307.png" artquality } }
 
-tilefromtexture 3626 { file "tiles/3626.png" texture } // Dead Marine
-tilefromtexture 3630 { file "tiles/3630.png" texture } // Marine in pain
+texture 3619 { pal 0 { file "tiles/3619.png" artquality } } // Hanging Corpse (TO-DO: Move, then animate)
+texture 3626 { pal 0 { file "tiles/3626.png" artquality } } // Dead Marine
+texture 3630 { pal 0 { file "tiles/3630.png" artquality } } // Marine in pain
+
+texture 4093 { pal 0 { file "tiles/4093.png" artquality } } // Doom Candlestick

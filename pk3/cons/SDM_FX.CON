@@ -1,29 +1,33 @@
 spritenoshade LDEXPLOSION
-action LAMEDUKE_EXPLOSION_FRAMES 0 10 1 1 2
-action LAMEDUKE_EXPLOSION_FRAMES_SLOW 0 10 1 1 4
-actor LDEXPLOSION 1 LAMEDUKE_EXPLOSION_FRAMES
+action LAMEDUKE_EXPLOSION_FRAMES 0 20 1 1 2
+action LAMEDUKE_EXPLOSION_FRAMES_SLOW 0 20 1 1 4
+actor LDEXPLOSION 0
 {
-	ifactioncount 10
+	ifactioncount 20
 		killit
 	
-	ifcount 1
-		nullop
-	else ifcount 0
+	ifaction 0
 	{
+		action LAMEDUKE_EXPLOSION_FRAMES
 		setactor[THISACTOR].shade -127
 		setactor[THISACTOR].blend 255
 		setactor[THISACTOR].mdflags 16
 		cstat 130
+		
+		ifrnd 128
+			cstator 4
 		
 		getactor[THISACTOR].htpicnum TEMP
 		switch TEMP
 			case PLASMABALL:
 				espawn FIRESHELL
 				setactor[RETURN].pal 198
+				setactorvar[RETURN].HITAG_MEMORY 32 // End time
+				setactorvar[RETURN].XREPEAT_MEMORY 0 // Start radius
+				setactorvar[RETURN].YREPEAT_MEMORY 48 // End radius
+				setactorvar[RETURN].SPAWN_ORIGANG 72 // Rotational Speed
 				setvar RETURN 0
-				// fallthrough
-			case PLASMABALL2:
-			case PLASMABALL3:
+				
 				setvar ANIMATE_FLAGS ANIMATE_FLAG_SCALE
 				setvar LOTAG_MEMORY 0 // Timer
 				setvar HITAG_MEMORY 96 // End time
@@ -31,6 +35,10 @@ actor LDEXPLOSION 1 LAMEDUKE_EXPLOSION_FRAMES
 				setvarvar XREPEAT_MEMORY TEMP // Start radius
 				mulvar TEMP 3
 				setvarvar YREPEAT_MEMORY TEMP // End radius
+				
+				// fallthrough
+			case PLASMABALL2:
+			case PLASMABALL3:
 				spritepal 1
 				break
 		endswitch
@@ -47,7 +55,7 @@ actor SHOCKWAVE 0
 		setactor[THISACTOR].shade -127
 		setactor[THISACTOR].blend 255
 		setactor[THISACTOR].mdflags 16
-		setvar ANIMATE_FLAGS ANIMATE_FLAG_ALL
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_ROTATE_SCALE_AND_FADE
 		
 		setvar LOTAG_MEMORY 0 // Timer
 		setvar HITAG_MEMORY 24 // End time
@@ -216,7 +224,7 @@ state trigger_actors
 		getactorvar[CURSPRITE].LOTAG_MEMORY TEMP
 		ifvarvare LOTAG_MEMORY TEMP // Check if lotag matches
 		{
-			setactorvar[CURSPRITE].ACTIVATING 1
+			setactorvar[CURSPRITE].PAL_MEMORY 1 // PAL_MEMORY = Activating state for timed platforms
 		}
 				
 		nextspritestat CURSPRITE LASTSPRITE
@@ -287,7 +295,7 @@ actor TIMEDPLATFORM
 {
 	ifaction ANULLACTION
 	{
-		ifvare ACTIVATING 1
+		ifvare PAL_MEMORY 1 // ACTIVATING
 		{
 			setvar XREPEAT_MEMORY 0
 			setsector[THISACTOR].floorzvel SPAWN_ORIGZVEL
@@ -322,7 +330,7 @@ actor TIMEDPLATFORM
 		getsector[THISACTOR].floorzgoal TEMP
 		ifvare TEMP -1
 		{
-			setvar ACTIVATING 0
+			setvar PAL_MEMORY 0 // No longer activating
 			action ANULLACTION
 		}
 	}
@@ -683,6 +691,7 @@ actor PIGJIB1 0
 	{
 		setactor[THISACTOR].shade -32
 		setactor[THISACTOR].mdflags 16
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_BLOODBRIGHT
 		setvar ISADULT ADULT_LOCKOUTONLY
 		cstat 128
 		action PIGJIB1_ANIM
@@ -894,6 +903,7 @@ actor BLOODSPURT 0
 	{
 		setactor[THISACTOR].shade -32
 		setactor[THISACTOR].mdflags 16
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_BLOODBRIGHT
 		setvar ISADULT ADULT_LOCKOUTONLY
 		sizeat 12 12
 		cstat 128
@@ -950,6 +960,7 @@ actor SPURTTRAIL 0
 	{
 		setactor[THISACTOR].shade -32
 		setactor[THISACTOR].mdflags 16
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_BLOODBRIGHT
 		setvar ISADULT ADULT_LOCKOUTONLY
 		sizeat 24 24
 		cstat 128
@@ -1087,7 +1098,8 @@ actor BLOODINFLUID1 0
 			cstator 8
 		
 		setactor[THISACTOR].mdflags 16
-		setvar ANIMATE_FLAGS ANIMATE_FLAG_ALL
+		orvar ANIMATE_FLAGS ANIMATE_FLAG_SCALE
+		orvar ANIMATE_FLAGS ANIMATE_FLAG_FADEOUT
 		
 		setvar LOTAG_MEMORY 0 // Timer
 		setvar HITAG_MEMORY 256 // End time
@@ -1117,7 +1129,8 @@ actor BLOODINFLUID2 0
 			cstator 4
 		
 		setactor[THISACTOR].mdflags 16
-		setvar ANIMATE_FLAGS ANIMATE_FLAG_ALL
+		orvar ANIMATE_FLAGS ANIMATE_FLAG_SCALE
+		orvar ANIMATE_FLAGS ANIMATE_FLAG_FADEOUT
 		
 		setvar LOTAG_MEMORY 0 // Timer
 		setvar HITAG_MEMORY 256 // End time
@@ -1176,14 +1189,6 @@ actor RICOCHET_SPARK 0
 enda
 
 //actor JIBS6 0 enda
-action TROLLGE_ANIM1 0 1 1 1 4
-action TROLLGE_ANIM2 1 1 1 1 4
-action TROLLGE_ANIM3 2 1 1 1 4
-action TROLLGE_ANIM4 3 1 1 1 4
-action TROLLGE_ANIM5 4 1 1 1 4
-action TROLLGE_ANIM6 5 1 1 1 4
-action TROLLGE_ANIM7 6 1 1 1 4
-action TROLLGE_WAIT 0 1 1 1 40
 
 state random_creepy_sound
 	randvar TEMP 18
@@ -1209,6 +1214,28 @@ state random_creepy_sound
 		case 18: sound CREEPYAMB_19 break
 	endswitch
 ends
+
+state random_stinger
+	randvar TEMP 6
+	switch TEMP
+		case 0: sound CREEPYAMB_02 break
+		case 1: sound CREEPYAMB_03 break
+		case 2: sound CREEPYAMB_09 break
+		case 3: sound CREEPYAMB_10 break
+		case 4: sound CREEPYAMB_11 break
+		case 5: sound CREEPYAMB_17 break
+		case 6: sound CREEPYAMB_18 break
+	endswitch
+ends
+
+action TROLLGE_ANIM1 0 1 1 1 4
+action TROLLGE_ANIM2 1 1 1 1 4
+action TROLLGE_ANIM3 2 1 1 1 4
+action TROLLGE_ANIM4 3 1 1 1 4
+action TROLLGE_ANIM5 4 1 1 1 4
+action TROLLGE_ANIM6 5 1 1 1 4
+action TROLLGE_ANIM7 6 1 1 1 4
+action TROLLGE_WAIT 0 1 1 1 40
 
 actor TROLLGE 0
 	ifaction 0
@@ -1241,8 +1268,9 @@ actor TROLLGE 0
 			subvar TEMP 4096
 			addvarvar SPAWN_ORIGY TEMP
 			
-			randvar TEMP 4096
-			subvarvar SPAWN_ORIGZ TEMP
+			randvar TEMP 2048
+			subvar TEMP 1024
+			addvarvar SPAWN_ORIGZ TEMP
 			
 			setsprite THISACTOR SPAWN_ORIGX SPAWN_ORIGY SPAWN_ORIGZ
 			
@@ -1260,9 +1288,8 @@ actor TROLLGE 0
 			resetactioncount
 			cstat 2
 			
-			randvar EXTRA_MEMORY 4500
-			addvar EXTRA_MEMORY 4500
-			divvarvar EXTRA_MEMORY MULTIMODE
+			randvar EXTRA_MEMORY 750
+			addvar EXTRA_MEMORY 1800
 			state random_creepy_sound
 		}
 	}
@@ -1279,6 +1306,122 @@ actor TROLLGE 0
 		}
 	}
 	
+enda
+
+action SUS_ANIM1 0 1 1 1 4
+action SUS_ANIM2 -1 1 1 1 4
+action SUS_ANIM3 -2 1 1 1 4
+action SUS_ANIM4 -3 1 1 1 4
+action SUS_ANIM5 -4 1 1 1 4
+action SUS_ANIM6 -5 1 1 1 4
+action SUS_ANIM7 -6 1 1 1 4
+action SUS_WAIT 0 1 1 1 40
+spritenoshade SUS
+actor SUS 0
+	ifaction 0
+	{
+		cstator 32768
+		randvar EXTRA_MEMORY 600
+		addvar EXTRA_MEMORY 100
+		action SUS_WAIT
+	}
+	else ifaction SUS_WAIT
+	{
+		ifpdistl 2500
+		{
+			ifp pfacing
+			ifcansee
+			{
+				subvar EXTRA_MEMORY 1
+				
+				// Nightvision makes them angry...
+				getplayer[THISACTOR].heat_on TEMP
+				ifvare TEMP 1
+					subvar EXTRA_MEMORY 1
+			}
+		}
+		
+		ifvarl EXTRA_MEMORY 1
+		{
+			randvar EXTRA_MEMORY 600
+			addvar EXTRA_MEMORY 200
+			setactor[THISACTOR].alpha 0
+			getactor[THISACTOR].cstat TEMP
+			ifvarand TEMP 32768
+			{
+				xorvar TEMP 32768
+				setactor[THISACTOR].cstat TEMP
+			}
+			
+			randvar TEMP 6
+			switch TEMP
+				case 0: action SUS_ANIM1 break
+				case 1: action SUS_ANIM2 break
+				case 2: action SUS_ANIM3 break
+				case 3: action SUS_ANIM4 break
+				case 4: action SUS_ANIM5 break
+				case 5: action SUS_ANIM6 break
+				case 6: action SUS_ANIM7 break
+			endswitch
+			
+			state random_stinger
+			
+			getplayer[THISACTOR].heat_on TEMP
+			ifvare TEMP 1
+				addphealth -25
+				
+			addphealth -25
+			palfrom 16 63 63 63
+		}
+	}
+	else
+	{
+		ifactioncount 5
+		{
+			cstator 32768
+			action SUS_WAIT
+		}
+		else ifactioncount 4
+		{
+			setactor[THISACTOR].alpha 128
+		}
+		else ifactioncount 3
+		{
+			setactor[THISACTOR].alpha 64
+		}
+		else ifactioncount 2
+		{
+			setactor[THISACTOR].alpha 8
+		}
+	}
+enda
+
+move SHADOWP_MOVE 80 0
+spriteflags SHADOWPLAYER 2
+action SHADOWP_STAND 1 1 5 1 1
+action SHADOWP_WALK 21 4 5 1 16
+actor SHADOWPLAYER 0
+	fall
+	ifaction 0
+	{
+		setactor[THISACTOR].cstat 514
+		setactor[THISACTOR].mdflags 16
+		resetcount
+		
+		ifrnd 32
+		{
+			action SHADOWP_WALK
+			move SHADOWP_MOVE geth
+		}
+		else
+			action SHADOWP_STAND
+	}
+	
+	ifcount 90
+	ifrnd 1
+	{
+		killit
+	}
 enda
 
 define SCRAP_WORKSLIKE 4226
