@@ -246,7 +246,7 @@ onevent EVENT_POSTDAMAGESPRITE
 			{
 				setactor[RETURN].htpicnum RADIUSEXPLOSION
 				getactor[RETURN].htextra TEMP
-				addvar TEMP 30
+				addvar TEMP 20
 				setactor[RETURN].htextra TEMP
 			}
 			else
@@ -695,6 +695,8 @@ onevent EVENT_EGS
 		}
 		subvarvar TEMP TEMP2
 		setactor[THISACTOR].zvel TEMP
+		
+		setactor[THISACTOR].blend 255 // Additive Blend
 		break
 	}
 	
@@ -1439,14 +1441,14 @@ onevent EVENT_SPAWN
 	ifactor EXPLOSION2
 	{
 		cstator 2
-		setactor[THISACTOR].blend 255
+		setactor[THISACTOR].blend 255 // Additive Blend
 		break
 	}
 	
 	ifactor EXPLOSION2BOT
 	{
 		cstator 2
-		setactor[THISACTOR].blend 255
+		setactor[THISACTOR].blend 255 // Additive Blend
 		break
 	}
 	
@@ -2490,7 +2492,7 @@ onevent EVENT_DISPLAYREST // !UNSYNCHRONIZED!
 			}
 			addvar CL_TEMP4 MINIFONT
 			
-			screentext CL_TEMP4 160 APPARITION_QYOFF 65536 CL_TEMP2 CL_TEMP1 APPARITION_QUOTE 20 13 16 0 6 7 1 1 8194 0 0 xdim ydim
+			screentext CL_TEMP4 160 APPARITION_QYOFF 65536 CL_TEMP2 CL_TEMP1 APPARITION_QUOTE 0 26 16 0 6 7 1 1 8194 0 0 xdim ydim
 		}
 		
 		setvarvar CL_TEMP1 totalclock
@@ -2983,9 +2985,10 @@ ends
 
 state find_next_locator
 	// STATE_TEMP1 = CURSPRITE
-	// STATE_TEMP2 = LASTSPRITE
+	// STATE_TEMP2 = Got Sprite?
+	setvar STATE_TEMP2 0
+	
 	headspritestat STATE_TEMP1 7 // STAT_LOCATOR
-	setvarvar STATE_TEMP2 STATE_TEMP1
 	whilevarn STATE_TEMP1 -1
 	{
 		ifvarvarn CURSPRITE STATE_TEMP1
@@ -3007,22 +3010,23 @@ state find_next_locator
 
 				ifvarvare TEMP2 TEMP3 // This sprite next in the sequence?
 				{
-					redefinequote 500 Locator %d with hitag %d found %d with lotag %d
-					qsprintf 500 500 CURSPRITE TEMP STATE_TEMP1 TEMP3
-					userquote 500
+					//redefinequote 500 Locator %d with hitag %d found %d with lotag %d
+					//qsprintf 500 500 CURSPRITE TEMP STATE_TEMP1 TEMP3
+					//userquote 500
 					
-					setvarvar STATE_RETURN STATE_TEMP1
+					setactorvar[CURSPRITE].EXTRA_MEMORY STATE_TEMP1
+					setvar STATE_TEMP2 1
 					setvar STATE_TEMP1 -1
 					break
 				}
 			}
 		}
 		
-		nextspritestat STATE_TEMP1 STATE_TEMP2
-		setvarvar STATE_TEMP2 STATE_TEMP1
+		nextspritestat STATE_TEMP1 STATE_TEMP1
 	}
 	
-	setvar STATE_RETURN -1
+	ifvarn STATE_TEMP2 1 // Didn't find anything, set our var to -1
+		setactorvar[CURSPRITE].EXTRA_MEMORY -1
 ends
 
 onevent EVENT_ENTERLEVEL
@@ -3031,15 +3035,15 @@ onevent EVENT_ENTERLEVEL
 	
 	state do_active_maphacks
 	
-	headspritestat CURSPRITE 7 // STAT_LOCATOR
-	setvarvar LASTSPRITE CURSPRITE
-	whilevarn CURSPRITE -1
+	ifvare DEMENTIA 1
 	{
-		state find_next_locator
-		setvarvar EXTRA_MEMORY STATE_RETURN
-		
-		nextspritestat CURSPRITE LASTSPRITE
-		setvarvar LASTSPRITE CURSPRITE
+		headspritestat CURSPRITE 7 // STAT_LOCATOR
+		whilevarn CURSPRITE -1
+		{
+			state find_next_locator
+			
+			nextspritestat CURSPRITE CURSPRITE
+		}
 	}
 endevent
 

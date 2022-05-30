@@ -12,27 +12,14 @@ texture 5047 { pal 0 { file "highres/dukeburger/5047_menu3.png" nodownsize } }
 texture 5048 { pal 0 { file "highres/dukeburger/5048_menu4.png" nodownsize } }
 
 // Graffiti
-tilefromtexture 5042 { file "tiles/5042.png" texture }
+texture 5042 { pal 0 { file "tiles/5042.png" artquality } }
 
 // Posters
-tilefromtexture 5040 { file "tiles/5040.png" texture }
-tilefromtexture 5041 { file "tiles/5041.png" }
-tilefromtexture 5043 { file "tiles/5043.png" }
-tilefromtexture 5044 { file "tiles/5044.png" }
-tilefromtexture 5049 { file "tiles/5049.png" texture }
-tilefromtexture 5050 { file "tiles/5050.png" }
-tilefromtexture 5051 { file "tiles/5051.png" }
-tilefromtexture 5052 { file "tiles/5052.png" }
-tilefromtexture 5053 { file "tiles/5053.png" }
-tilefromtexture 5054 { file "tiles/5054.png" texture }
-tilefromtexture 5055 { file "tiles/5055.png" }
-tilefromtexture 5056 { file "tiles/5056.png" texture }
-tilefromtexture 5057 { file "tiles/5057.png" texture }
-tilefromtexture 5058 { file "tiles/5058.png" }
-tilefromtexture 5059 { file "tiles/5059.png" }
-tilefromtexture 5060 { file "tiles/5060.png" }
-tilefromtexture 5061 { file "tiles/5061.png" }
-tilefromtexture 5062 { file "tiles/5062.png" }
+texture 5040 { pal 0 { file "tiles/5040.png" artquality } }
+texture 5049 { pal 0 { file "tiles/5049.png" artquality } }
+texture 5054 { pal 0 { file "tiles/5054.png" artquality } }
+texture 5056 { pal 0 { file "tiles/5056.png" artquality } }
+texture 5057 { pal 0 { file "tiles/5057.png" artquality } }
 
 texture 5032 { pal 0 { file "highres/posters/5032_dukelovesladies.png" } }
 

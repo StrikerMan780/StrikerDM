@@ -873,6 +873,7 @@ state fireflycode
     }
 ends
 
+spritenoshade FIREFLYSHRINKEFFECT
 action SHRINK_FRAMES 0 7 1 1 4
 actor FIREFLYSHRINKEFFECT 0 SHRINK_FRAMES
 	ifactioncount 7 {
@@ -883,10 +884,13 @@ actor FIREFLYSHRINKEFFECT 0 SHRINK_FRAMES
 	else ifcount 0
 	{
 		sizeat 32 32
-		cstator 18432 
+		cstator 2
+		setactor[THISACTOR].blend 255
+		setactor[THISACTOR].shade -127
 	}
 enda
 
+spritenoshade FIREFLYGROWEFFECT
 action GROW_FRAMES 0 7 1 -1 4
 actor FIREFLYGROWEFFECT 0 GROW_FRAMES
 	ifactioncount 7 {
@@ -897,10 +901,13 @@ actor FIREFLYGROWEFFECT 0 GROW_FRAMES
 	ifcount 0
 	{
 		sizeat 32 32
-		cstator 18432 
+		cstator 2 
+		setactor[THISACTOR].blend 255
+		setactor[THISACTOR].shade -127
 	}
 enda
 
+spritenoshade FIREFLYFLYINGEFFECT
 action FLYING_FRAMES 0 7 1 1 4
 actor FIREFLYFLYINGEFFECT 0 FLYING_FRAMES
 	ifactioncount 7 {
@@ -911,11 +918,13 @@ actor FIREFLYFLYINGEFFECT 0 FLYING_FRAMES
 	else ifcount 0
 	{
 		sizeat 32 32
-		cstator 18432 
+		cstator 2 
+		setactor[THISACTOR].blend 255
+		setactor[THISACTOR].shade -127
 	}
 enda
 
-spriteflags FIREFLY 79700003
+spriteflags FIREFLY SF_ENEMY_SLIMEFOOD_DAMAGEEVENT
 actor FIREFLY FF_STRENGTH 0
     ifaction 0
 	{
@@ -1437,7 +1446,9 @@ definequote 670 . but, you already knew that, didn't you?#
 definequote 671 .. otherwise, you wouldn't have freed me, right?..#
 definequote 672 ... This long isolation has left me with a gnawing hunger...
 definequote 673 I must go..#. I'll be seeing you.
+
 definequote 674 ... You can't hide forever.#.!.
+
 definequote 675 .. I will spare the one who freed me from this hunger... for now...
 definequote 689 You are filled with an incredible sense of dread...
 
@@ -1453,15 +1464,66 @@ state apparition_playspeech
 	endswitch
 ends
 
-action APPARITION_HUNT 0 4 1 1 4
+gamevar apparition_debug 0 0
+state apparition_get_first_path_node
+	ifvare NUM_PATHS 0 // No paths, bail.
+		break
+	
+	setvar APPARITION_LOCATOR -1 // Clear our path.
+	
+	randvarvar APPARITION_PATHNUM NUM_PATHS
+	modvarvar APPARITION_PATHNUM NUM_PATHS
+	addvar APPARITION_PATHNUM 1
+	
+	// APPARITION_DEBUG
+	ifvarg apparition_debug 0
+		setvarvar APPARITION_PATHNUM apparition_debug
+	
+	headspritestat CURSPRITE 7 // STAT_LOCATOR
+	whilevarn CURSPRITE -1
+	{
+		getactor[CURSPRITE].hitag TEMP
+		getactor[CURSPRITE].lotag TEMP2
+		ifvarvare APPARITION_PATHNUM TEMP
+		ifvare TEMP2 0
+		{
+			setvarvar APPARITION_LOCATOR CURSPRITE
+			getactor[APPARITION_LOCATOR].x DEST_X
+			getactor[APPARITION_LOCATOR].y DEST_Y
+			getactor[APPARITION_LOCATOR].z DEST_Z
+			setsprite THISACTOR DEST_X DEST_Y DEST_Z
+			setvar CURSPRITE -1
+			
+			ifvarn apparition_debug 0
+			{
+				redefinequote 500 FOUND LOCATOR %d ON PATH %d
+				qsprintf 500 500 APPARITION_LOCATOR APPARITION_PATHNUM
+				userquote 500
+			}
+					
+			break
+		}
+		
+		ifvarn CURSPRITE -1
+			nextspritestat CURSPRITE CURSPRITE
+	}
+ends
+
+action APPARITION_CHASE 0 4 1 1 2
+action APPARITION_PATROL 0 4 1 1 4
 action APPARITION_SPEAK 0 4 1 1 4
 action APPARITION_IDLE 0 2 1 1 4
 action APPARITION_WAIT 0 1 1 1 4
-action APPARITION_TELEPORT 0 2 1 1 4
+action APPARITION_TELEPORT_OUT 0 2 1 1 4
+action APPARITION_TELEPORT_IN 0 2 1 1 4
 action APPARITION_FINDTARGET 0 1 1 1 4
+
+//SFLAG_SHADOW(1) + SFLAG_NOSHADE(4) + SFLAG_NOPAL(64) + SFLAG_NOCLIP(2048) = 2117
+spriteflags APPARITION 2117
 actor APPARITION 0
 	ifaction 0
 	{
+		fall
 		sizeat 44 40
 		action APPARITION_IDLE
 	}
@@ -1495,6 +1557,7 @@ actor APPARITION 0
 	
 	ifaction APPARITION_SPEAK
 	{
+		sleeptime 0
 		getactor[THISACTOR].htg_t 0 TEMP
 		setvar TEMP2 0
 		
@@ -1547,25 +1610,39 @@ actor APPARITION 0
 	
 	ifaction APPARITION_FINDTARGET
 	{
+		sleeptime 0
 		// Pick a target
-		randvarvar TEMP MULTIMODE
-		ifvarvare TEMP APPARITION_SUMMONER
-			addvar TEMP 1
-		ifvarvare TEMP APPARITION_TARGET
-			addvar TEMP 1
-		modvarvar TEMP MULTIMODE
+		setvar TEMP2 0
+		whilevarn TEMP2 1
+		{
+			randvarvar TEMP MULTIMODE
+			modvarvar TEMP MULTIMODE
+			ifvarvarn TEMP APPARITION_SUMMONER
+			ifvarvarn TEMP APPARITION_TARGET
+			{
+				setvar TEMP2 1
+			}
+		}
 		
 		setvarvar APPARITION_TARGET TEMP
+		
+		ifvarn apparition_debug 0
+		{
+			redefinequote 500 Changing Target to %d
+			qsprintf 500 500 APPARITION_TARGET
+			userquote 500
+		}
 		
 		setvar STATE_PARAM1 16 // Intensity
 		setvar STATE_PARAM2 8192 // Radius
 		state start_shake
 		
-		action APPARITION_TELEPORT
+		action APPARITION_TELEPORT_OUT
 	}
 	
-	ifaction APPARITION_TELEPORT
+	ifaction APPARITION_TELEPORT_OUT
 	{
+		sleeptime 0
 		sizeto 1 40
 		sizeto 1 40
 		getactor[THISACTOR].xrepeat TEMP
@@ -1576,6 +1653,125 @@ actor APPARITION 0
 			action APPARITION_WAIT
 		}
 	}
+	else ifaction APPARITION_TELEPORT_IN
+	{
+		sleeptime 0
+		getactor[THISACTOR].cstat TEMP
+		ifvarand TEMP 32768
+		{
+			xorvar TEMP 32768
+			setactor[THISACTOR].cstat TEMP
+		}
+
+		sizeto 40 40
+		sizeto 40 40
+		getactor[THISACTOR].xrepeat TEMP
+		ifvarg TEMP 39
+		{
+			resetcount
+			action APPARITION_PATROL
+		}
+	}
+	else ifaction APPARITION_PATROL
+	{
+		sleeptime 0
+		
+		ifvarn APPARITION_LOCATOR -1
+		{
+			dist TEMP THISACTOR APPARITION_LOCATOR
+			ifvarl TEMP 128
+			{
+				getactorvar[APPARITION_LOCATOR].EXTRA_MEMORY TEMP // Get next locator on path.
+				ifvare TEMP -1 // End of the path. Teleport out.
+				{
+					ifvarn apparition_debug 0
+					{
+						redefinequote 500 END OF PATH: %d
+						qsprintf 500 500 APPARITION_LOCATOR
+						userquote 500
+					}
+					
+					setvar APPARITION_LOCATOR -1 // Clear locator
+					
+					resetcount
+					action APPARITION_TELEPORT_OUT
+					
+					setvar STATE_PARAM1 16 // Intensity
+					setvar STATE_PARAM2 8192 // Radius
+					state start_shake
+					
+					state apparition_playspeech
+					break // Restart
+				}
+				else
+				{
+					setvarvar APPARITION_LOCATOR TEMP // Set our locator to this one.
+					
+					ifvarn apparition_debug 0
+					{
+						redefinequote 500 CHANGING TO LOCATOR: %d
+						qsprintf 500 500 APPARITION_LOCATOR
+						userquote 500
+					}
+					
+					ifrnd 16
+						state apparition_playspeech
+				}
+			}
+			
+			ifactioncount 4
+			{
+				hitradius 1024 9999 9999 9999 9999 // Instant fucking murder.
+			}
+			
+			getactor[APPARITION_LOCATOR].x DEST_X
+			getactor[APPARITION_LOCATOR].y DEST_Y
+			getactor[APPARITION_LOCATOR].z DEST_Z
+			
+			getactor[THISACTOR].x TEMP
+			getactor[THISACTOR].y TEMP2
+			getactor[THISACTOR].z TEMP3
+			subvarvar DEST_X TEMP
+			subvarvar DEST_Y TEMP2
+			subvarvar DEST_Z TEMP3
+			getangle SPAWN_ORIGANG DEST_X DEST_Y
+			setactor[THISACTOR].ang SPAWN_ORIGANG
+			
+			cos SPAWN_ORIGX SPAWN_ORIGANG
+			sin SPAWN_ORIGY SPAWN_ORIGANG
+			shiftvarr SPAWN_ORIGX 8
+			shiftvarr SPAWN_ORIGY 8
+			// To-Do: Right shift by 6 if we're chasing someone.
+			//movesprite THISACTOR SPAWN_ORIGX SPAWN_ORIGY 0 0 RETURN
+			
+			ldist TEMP THISACTOR APPARITION_LOCATOR
+			ifvarl TEMP 128 // We're on top of this node, don't move horizontally.
+			{
+				setvar SPAWN_ORIGX 0
+				setvar SPAWN_ORIGY 0
+			}
+			
+			shiftvarr TEMP 6 // Taper Z movement based on distance, need to right-shift a bit.
+			ifvarl TEMP 1
+				setvar TEMP 1
+			
+			setvarvar SPAWN_ORIGZ DEST_Z
+			
+			divvarvar SPAWN_ORIGZ TEMP
+			ifvarg SPAWN_ORIGZ 1024
+				setvar SPAWN_ORIGZ 1024
+			else ifvarl SPAWN_ORIGZ -1024
+				setvar SPAWN_ORIGZ -1024
+			
+			getactor[THISACTOR].x TEMP
+			getactor[THISACTOR].y TEMP2
+			getactor[THISACTOR].z TEMP3
+			addvarvar TEMP SPAWN_ORIGX
+			addvarvar TEMP2 SPAWN_ORIGY
+			addvarvar TEMP3 SPAWN_ORIGZ
+			setsprite THISACTOR TEMP TEMP2 TEMP3
+		}
+	}
 	
 	// Done here, because we don't want more than one of these guys anyway.
 	ifvarg APPARITION_QTIME 0
@@ -1583,6 +1779,20 @@ actor APPARITION 0
 		
 	ifaction APPARITION_WAIT
 	{
+		sleeptime 0
+		ifcount 300
+		{
+			state apparition_get_first_path_node
+			
+			resetcount
+			action APPARITION_TELEPORT_IN
+			
+			setvar STATE_PARAM1 16 // Intensity
+			setvar STATE_PARAM2 8192 // Radius
+			state start_shake
+			
+			state apparition_playspeech
+		}
 		break
 	}
 	

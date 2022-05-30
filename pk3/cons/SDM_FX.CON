@@ -107,9 +107,7 @@ enda
 action GIBBLOODFRAMES -1 4 1 1 15
 actor GIBBLOOD 0 GIBBLOODFRAMES	
 {
-	ifcount 1
-	{
-	}
+	ifcount 1 { }
 	else
 	{
 		ifinwater
@@ -129,11 +127,21 @@ actor GIBBLOOD 0 GIBBLOODFRAMES
 		}
 		
 		cstat 130
-	
-		ifrnd 128
-			sizeat 32 32
-		else ifrnd 128
-			sizeat 24 24
+		
+		randvar TEMP2 8
+		addvar TEMP2 24
+		setactor[THISACTOR].xrepeat TEMP2
+		setactor[THISACTOR].yrepeat TEMP2
+		
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_BLOODBRIGHT
+		orvar ANIMATE_FLAGS ANIMATE_FLAG_FADEOUT
+		orvar ANIMATE_FLAGS ANIMATE_FLAG_SCALE
+		setactor[THISACTOR].mdflags 16
+		
+		setvar LOTAG_MEMORY 0 // Timer
+		setvar HITAG_MEMORY 72 // End time
+		setvarvar XREPEAT_MEMORY TEMP2 // Start scale
+		setvar YREPEAT_MEMORY 72 // End scale
 	
 		ifrnd 128
 			cstator 4
@@ -141,10 +149,6 @@ actor GIBBLOOD 0 GIBBLOODFRAMES
 		ifrnd 128
 			cstator 8
 	}
-  
-	sizeto 72 72
-	sizeto 72 72
-	sizeto 72 72
 	
 	ifactioncount 4
 		killit
@@ -489,7 +493,7 @@ enda
 
 // SFLAG_NOEVENTCODE + SFLAG_NOCLIP + SFLAG_SMOOTHMOVE + SFLAG_NOTELEPORT
 spriteflags SNOWFLAKE 26752
-actor SNOWFLAKE
+actor SNOWFLAKE 0
 	ifaction 0
 	{
 		getactor[THISACTOR].sectnum TEMP
@@ -958,21 +962,22 @@ actor SPURTTRAIL 0
 	
 	ifaction 0
 	{
-		setactor[THISACTOR].shade -32
-		setactor[THISACTOR].mdflags 16
-		setvar ANIMATE_FLAGS ANIMATE_FLAG_BLOODBRIGHT
-		setvar ISADULT ADULT_LOCKOUTONLY
 		sizeat 24 24
 		cstat 128
 		
 		ifrnd 128
-		{
 			cstator 4
-		}
 		ifrnd 128
-		{
 			cstator 8
-		}
+		
+		setactor[THISACTOR].shade -32
+		setactor[THISACTOR].mdflags 16
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_BLOODBRIGHT
+		orvar ANIMATE_FLAGS ANIMATE_FLAG_FADEOUT
+		setvar ISADULT ADULT_LOCKOUTONLY
+
+		setvar LOTAG_MEMORY 0 // Timer
+		setvar HITAG_MEMORY 60 // End time
 		
 		action SPURTTRAIL_ANIM
 	}

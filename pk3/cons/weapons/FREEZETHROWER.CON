@@ -1,3 +1,7 @@
+// Defaults
+gamevar WEAPON9_FIRESOUND FREEZETHROWER_FIRE 1
+gamevar WEAPON9_INITIALSOUND FREEZETHROWER_FIRE 1
+
 state draw_freezer // FREEZE_WEAPON:
     state reset_hud_weapon_coordinates
     

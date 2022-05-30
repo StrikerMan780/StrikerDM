@@ -514,7 +514,7 @@ definesound PIG_ROAM      roam29.voc           -200 400   3   0   0
 definesound PIG_ROAM2     sounds/roam67.ogg           -200 400   3   0   0
 definesound PIG_ROAM3     sounds/pigrm.ogg            -200 400   3   0   0
 definesound PIG_RECOG     sounds/pigrg.ogg           -200 400   3   0   0
-definesound PIG_ATTACK    sounds/shotgun7.ogg        -256  256  4   0   0
+definesound PIG_ATTACK    sounds/shotgun7.wav        -256  256  4   0   0
 definesound PIG_PAIN      sounds/pigpn.ogg            100 800   3   0   0
 definesound PIG_DYING     sounds/pigdy.ogg           -800 100   3   0   0
 definesound PIG_CAPTURE_DUKE !pig.voc           0   0   255 8   0
@@ -611,7 +611,7 @@ definesound PISTOL_FIRE         sounds/pistol.wav      -64     0   254   0   0
 definesound EJECT_CLIP          sounds/clipout.ogg       0     0     3   0   0
 definesound INSERT_CLIP         sounds/clipin.ogg        512   512   3   0   0
 definesound CHAINGUN_FIRE       sounds/chaingun.ogg     -204 -204  254   0   512
-definesound SHOTGUN_FIRE        sounds/shotgun7.ogg      0    512    254 0   0
+definesound SHOTGUN_FIRE        sounds/shotgun7.wav      0    512    254 0   0
 definesound SHOTGUN_COCK        sounds/shotgnck.ogg      96    192   3   0   0
 definesound RPG_SHOOT           sounds/rpgfire.ogg       -32   0     4   0   0
 definesound FLY_BY              sounds/flyby.ogg         -256  256   3   0   0

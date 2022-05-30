@@ -1293,14 +1293,9 @@ actor EXPLOSION2 1 EXPLOSION_FRAMES
 	ifactioncount 20
 		killit
 	
-	ifcount 1 { }
-	else ifcount 0
+	ifcount 2 { }
+	else ifcount 1
 	{
-		ifspawnedby FLAMETHROWERFLAME
-			sizeat 16 16
-		
-		setactor[THISACTOR].mdflags 16
-		
 		setvar ANIMATE_FLAGS ANIMATE_FLAG_SCALE
 		setvar LOTAG_MEMORY 0 // Timer
 		setvar HITAG_MEMORY 256 // End time
@@ -1309,7 +1304,16 @@ actor EXPLOSION2 1 EXPLOSION_FRAMES
 		setvarvar XREPEAT_MEMORY TEMP // Start radius
 		mulvar TEMP 2
 		setvarvar YREPEAT_MEMORY TEMP // End radius
-	
+		
+		ifspawnedby DEVASTATORMISSILE
+		{
+			setvar HITAG_MEMORY 128 // Faster Speed
+			mulvar YREPEAT_MEMORY 2 // Double end scale
+		}
+	}
+	else ifcount 0
+	{
+		setactor[THISACTOR].mdflags 16
 		ifspawnedby RPG
 		{
 			spawn SHOCKWAVE
@@ -1375,12 +1379,9 @@ actor EXPLOSION2 1 EXPLOSION_FRAMES
 			setactorvar[RETURN].XREPEAT_MEMORY 0 // Start radius
 			setactorvar[RETURN].YREPEAT_MEMORY 24 // End radius
 			setactorvar[RETURN].SPAWN_ORIGANG 128 // Rotational Speed
-			setactor[RETURN].blend 253
 			setvar RETURN 0
 			
 			action EXPLOSION_FRAMES_FAST
-			setvar HITAG_MEMORY 128 // Faster Speed
-			mulvar YREPEAT_MEMORY 2 // Double end scale
 		
 			setvar STATE_PARAM1 16 // Intensity
 			setvar STATE_PARAM2 2048 // Radius
@@ -2626,22 +2627,9 @@ actor SHOTSPARK1 PISTOL_WEAPON_STRENGTH WEAP2FRAMES
 	ifcount 1 { }
 	else ifcount 0
 	{
-		ifrnd 128
-			cstator 4
-		
-		setactor[THISACTOR].mdflags 16
-		setvar ANIMATE_FLAGS ANIMATE_FLAG_ROTATE_SCALE_AND_FADE
-		setvar LOTAG_MEMORY 0 // Timer
-		setvar HITAG_MEMORY 32 // End time
-		getactor[THISACTOR].xrepeat TEMP
-		setvarvar XREPEAT_MEMORY TEMP // Start radius
-		mulvar TEMP 5
-		setvarvar YREPEAT_MEMORY TEMP // End radius
-		
 		setactor[THISACTOR].shade -127
 		getactor[THISACTOR].yvel TEMP
-		getactor[THISACTOR].htg_t 8 PICNUM_MEMORY // Sprite
-		
+		getactor[THISACTOR].htg_t 8 PICNUM_MEMORY // Sprite	
 		switch TEMP
 			case NEWPISTOLSHOT:
 			case CHAINGUN:
@@ -2650,9 +2638,7 @@ actor SHOTSPARK1 PISTOL_WEAPON_STRENGTH WEAP2FRAMES
 				ifrnd 8
 				{
 					ifvare PICNUM_MEMORY -1
-					{
 						spawn RICOCHET_SPARK
-					}
 				}
 				break
 			case SSGPELLET:
@@ -2662,18 +2648,14 @@ actor SHOTSPARK1 PISTOL_WEAPON_STRENGTH WEAP2FRAMES
 				ifrnd 4
 				{
 					ifvare PICNUM_MEMORY -1
-					{
 						spawn RICOCHET_SPARK
-					}
 				}
 				break
 			case SHOTSPARK1:
 				ifrnd 4
 				{
 					ifvare PICNUM_MEMORY -1
-					{
 						spawn RICOCHET_SPARK
-					}
 				}
 				break
 			case RAILGUNSHOT:
@@ -2694,6 +2676,18 @@ actor SHOTSPARK1 PISTOL_WEAPON_STRENGTH WEAP2FRAMES
 					break
 			endswitch
 		}
+		
+		ifrnd 128
+			cstator 4
+			
+		setactor[THISACTOR].mdflags 16
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_ROTATE_SCALE_AND_FADE
+		setvar LOTAG_MEMORY 0 // Timer
+		setvar HITAG_MEMORY 32 // End time
+		getactor[THISACTOR].xrepeat TEMP
+		setvarvar XREPEAT_MEMORY TEMP // Start radius
+		mulvar TEMP 5
+		setvarvar YREPEAT_MEMORY TEMP // End radius
 	}
 enda
 

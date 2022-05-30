@@ -6,6 +6,7 @@ state draw_shotgun // SHOTGUN_WEAPON:
 	guniqhudid W_SHOTGUN
 	
 	switch weaponcount
+		case 0
 		case 1
 		case 2
 			addvar hud_x 146
@@ -13,8 +14,9 @@ state draw_shotgun // SHOTGUN_WEAPON:
 			
 			ifvare weaponcount 2
 			{
-				addvar hud_x 2
+				addvar hud_x 4
 				addvar hud_y 2
+				addvar hud_angle 8
 			}
 			
 			setvar hud_tilenum SHOTGUN 
@@ -22,27 +24,41 @@ state draw_shotgun // SHOTGUN_WEAPON:
 			
 			// Flash
 			guniqhudid W_SHOTGUN_MUZZLE
-			setvar hud_shade -128
+			orvar hud_orientation RS_FORCELERP
+			
+			ifvare weaponcount 0 // Hack to prevent flash from going out of alignment due to bob interp.
+				setvar hud_alpha 255
+			else
+				setvar hud_shade -128
 			
 			ifvare weaponcount 1
 				setvar hud_tilenum SHOTGUN_FLASHEXTRA
 			else
-			{
-				orvar hud_orientation RS_FORCELERP
 				setvar hud_tilenum SHOTGUN_FLASH1
-			}
 			
 			state G_DrawWeaponTile 
 			setvarvar hud_shade gs
 			break
-		case 0
 		case 6
 		case 7
 		case 8
 			addvar hud_x 146
 			addvar hud_y 202
 			
-			setvar hud_tilenum SHOTGUN 
+			setvar hud_tilenum SHOTGUN
+
+			ifvare weaponcount 6
+			{
+				addvar hud_x -4
+				addvar hud_y 5
+				addvar hud_angle -16
+			}
+			else ifvare weaponcount 8
+			{
+				addvar hud_x 4
+				addvar hud_y -5
+				addvar hud_angle 16
+			}
 			
 			state G_DrawWeaponTile
 			break
@@ -53,33 +69,37 @@ state draw_shotgun // SHOTGUN_WEAPON:
 		case 10
 		case 11
 		case 12
-			ifvarg weaponcount 3
-			ifvarl weaponcount 5
-			{
-				addvar hud_y 40
-				addvar hud_x 20
-			}
-			else ifvare weaponcount 3
-			{
-				addvar hud_y 20
-				addvar hud_x 10
-			}
-			
 			addvar hud_x 158
 			addvar hud_y 220
 			
 			setvar hud_tilenum SHOTGUN
 			addvar hud_tilenum 3
 			
-			ifvare weaponcount 11
+			ifvare weaponcount 3
 			{
-				addvar hud_x 4
-				subvar hud_y 8
+				addvar hud_y 20
+				addvar hud_x 10
 			}
-			ifvare weaponcount 12
+			else ifvare weaponcount 4
 			{
-				addvar hud_x 8
-				subvar hud_y 16
+				addvar hud_y 40
+				addvar hud_x 20
+			}
+			else ifvare weaponcount 10
+			{
+				//addvar hud_angle 8
+			}
+			else ifvare weaponcount 11
+			{
+				addvar hud_x 6
+				addvar hud_y -8
+				addvar hud_angle 32
+			}
+			else ifvare weaponcount 12
+			{
+				addvar hud_x 12
+				addvar hud_y -16
+				addvar hud_angle 64
 			}
 			
 			state G_DrawWeaponTile
@@ -100,21 +120,31 @@ state draw_shotgun // SHOTGUN_WEAPON:
 		case 14
 		case 15
 		case 28
+		case 29
 			addvar hud_x 198 // 32 + 166
 			addvar hud_y 210
 			
 			setvar hud_tilenum SHOTGUN
 			addvar hud_tilenum 4
 			
-			state G_DrawWeaponTile
-			break
-		case 29
-		case 30
-			addvar hud_x 166
-			addvar hud_y 208
-			
-			setvar hud_tilenum SHOTGUN
-			addvar hud_tilenum 3
+			ifvare weaponcount 13
+			{
+				addvar hud_x -8
+				addvar hud_y 10
+				addvar hud_angle -32
+			}
+			else ifvare weaponcount 15
+			{
+				addvar hud_x 8
+				addvar hud_y -8
+				//addvar hud_angle 32
+			}
+			else ifvare weaponcount 29
+			{
+				addvar hud_x -8
+				addvar hud_y 10
+				addvar hud_angle -32
+			}
 			
 			state G_DrawWeaponTile
 			break
@@ -122,6 +152,7 @@ state draw_shotgun // SHOTGUN_WEAPON:
 		case 19
 		case 24
 		case 25
+			// Extra frame 1 (Mid-pump)
 			addvar hud_x 234 // 64 + 170
 			addvar hud_y 196
 			
@@ -136,6 +167,17 @@ state draw_shotgun // SHOTGUN_WEAPON:
 				addvar hud_tilenum 7
 			}
 			
+			ifvare weaponcount 19
+			{
+				addvar hud_x 1
+				addvar hud_y 2
+			}
+			else ifvare weaponcount 24
+			{
+				addvar hud_x 1
+				addvar hud_y 2
+			}
+			
 			state G_DrawWeaponTile
 			break
 		case 16
@@ -147,6 +189,20 @@ state draw_shotgun // SHOTGUN_WEAPON:
 			
 			setvar hud_tilenum SHOTGUN
 			addvar hud_tilenum 5
+			
+			ifvare weaponcount 16
+			{
+				addvar hud_x -8
+				addvar hud_y 16
+				addvar hud_angle -64
+			}
+			
+			ifvare weaponcount 27
+			{
+				addvar hud_x -8
+				addvar hud_y 16
+				addvar hud_angle -64
+			}
 			
 			state G_DrawWeaponTile
 			break
@@ -166,6 +222,22 @@ state draw_shotgun // SHOTGUN_WEAPON:
 			else // No shell
 			{
 				addvar hud_tilenum 6
+			}
+			
+			ifvare weaponcount 21
+			{
+				addvar hud_x 1
+				addvar hud_y 2
+			}
+			else ifvare weaponcount 22
+			{
+				addvar hud_x 2
+				addvar hud_y 4
+			}
+			else ifvare weaponcount 23
+			{
+				addvar hud_x 1
+				addvar hud_y 2
 			}
 			
 			state G_DrawWeaponTile

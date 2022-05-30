@@ -956,11 +956,14 @@ state player_updateweapons
 				{
 					sound SSG_OPEN
 					
-					setvar STATE_PARAM3 448
-					state spawn_ssg_shell
-					
-					setvar STATE_PARAM3 256
-					state spawn_ssg_shell
+					ifvare predicting 0
+					{
+						setvar STATE_PARAM3 448
+						state spawn_ssg_shell
+						
+						setvar STATE_PARAM3 256
+						state spawn_ssg_shell
+					}
 				}
 				else ifvare TEMP2 33
 					sound SSG_LOAD

@@ -23,6 +23,66 @@ state draw_rpg // RPG_WEAPON:
 	ifvarg weaponcount 0
 		orvar hud_orientation RS_FORCELERP
 	
+	// Rotations
+	switch weaponcount
+		case 1
+			addvar hud_x 4
+			addvar hud_scale 1024
+			setvar hud_angle 8
+			break
+		case 2
+			addvar hud_x 8
+			addvar hud_scale 2048
+			setvar hud_angle 16
+			break
+		case 3
+			addvar hud_x 16
+			addvar hud_scale 4096
+			setvar hud_angle 32
+			break
+		case 4
+			addvar hud_x 32
+			addvar hud_scale 8192
+			setvar hud_angle 64
+			break
+		case 5
+			addvar hud_x 24
+			addvar hud_scale 6144
+			setvar hud_angle 48
+			break
+		case 6
+			addvar hud_x 16
+			addvar hud_scale 4096
+			setvar hud_angle 32
+			break
+		case 7
+			addvar hud_x 8
+			addvar hud_scale 2048
+			setvar hud_angle 16
+			break
+		case 8
+			addvar hud_x 4
+			addvar hud_scale 1024
+			setvar hud_angle 8
+			break
+		case 10
+			addvar hud_x -4
+			setvar hud_angle -8
+			break
+		case 11
+			addvar hud_x -8
+			setvar hud_angle -16
+			break
+		case 12
+			addvar hud_x -4
+			setvar hud_angle -8
+			break
+		case 13
+			addvar hud_x -2
+			setvar hud_angle -4
+			break
+	endswitch
+	
 	state G_DrawWeaponTile
 
 	ifvarg weaponcount 0

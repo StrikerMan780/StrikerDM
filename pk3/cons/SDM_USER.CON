@@ -301,6 +301,7 @@ definelevelname 10 59 maps/MIDDLEOFNOWHERE.map 66:60 66:60 Middle of Nowhere: M.
 definelevelname 10 60 maps/DELUSIONAL-SDM.map 66:60 66:60 Delusional: St1llWanted
 definelevelname 10 61 maps/ROYALFUMBLE.map 66:60 66:60 Royal Fumble: Multiple Authors
 definelevelname 10 62 maps/ACROSSTHENETWORK.map 66:60 66:60 Across The Network: M. Authors
+definelevelname 10 63 maps/GE-LIBRARY.map 66:60 66:60 GE Library: Noldor Ranzou
 
 music 11 music/seppuku.ogg music/ancient.ogg music/fortress.ogg music/zerostreets.ogg music/zerotown.ogg
          music/eerie.ogg music/saturntoll.ogg music/echohare.ogg music/apes.mid music/mental.ogg music/breed.mid
@@ -311,4 +312,4 @@ music 11 music/seppuku.ogg music/ancient.ogg music/fortress.ogg music/zerostreet
          music/icefront.s3m music/episode_666.xm music/fire.xm music/godown.it music/heavystr.it music/memefever.ogg music/freeze.s3m
          music/coldwave.mid music/odyssey2.mid music/takeawil.mid music/alienconflict.ogg music/rcrstreet.it music/suprfist.it music/d-lux2.mod
          music/gringo.it music/idiot2_x.it music/denaris_remix.mod music/hyo-deid.it music/terrortech.xm music/ccity12.s3m music/intotheoutside.mod
-         music/warzone.mid music/arena1.s3m music/windmill.ogg music/corner.mid music/finalfall.ogg music/computerzone1.ogg
+         music/warzone.mid music/arena1.s3m music/windmill.ogg music/corner.mid music/finalfall.ogg music/computerzone1.ogg music/basement.ogg

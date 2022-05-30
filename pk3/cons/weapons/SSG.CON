@@ -26,12 +26,14 @@ state draw_ssg // SHOTGUN_WEAPON:
 			addvar hud_x 16
 			addvar hud_y 24
 			setvar hud_shade -128
+			addvar hud_angle 32
 			break
 		case 3:
 			setvar hud_tilenum SSG_FIRE3
 			addvar hud_x 28
 			addvar hud_y 40
 			setvar hud_shade -128
+			addvar hud_angle 64
 			break
 		case 4:
 			addvar hud_x 8
@@ -40,10 +42,12 @@ state draw_ssg // SHOTGUN_WEAPON:
 		case 5:
 			addvar hud_x 7
 			addvar hud_y 14
+			addvar hud_angle -16
 			break
 		case 6:
 			addvar hud_x 6
 			addvar hud_y 12
+			addvar hud_angle -8
 			break
 		case 7:
 			addvar hud_x 5
@@ -176,61 +180,75 @@ state draw_ssg // SHOTGUN_WEAPON:
 			break
 		case 39:
 		case 40:
+			setvar hud_tilenum SSG_RELOAD4
+			break
 		case 41:
+			setvar hud_tilenum SSG_RELOAD4
+			addvar hud_x 1
+			addvar hud_y -1
+			addvar hud_angle 8
+			break
 		case 42:
 			setvar hud_tilenum SSG_RELOAD4
+			addvar hud_x 2
+			addvar hud_y -2
+			addvar hud_angle 16
 			break
 		case 43:
 			setvar hud_tilenum SSG_RELOAD5
 			addvar hud_x -1
-			addvar hud_y 1
 			break
 		case 44:
 			setvar hud_tilenum SSG_RELOAD5
+			addvar hud_x 3
+			addvar hud_y -2
+			addvar hud_angle 16
 			break
 		case 45:
-			addvar hud_x -1
-			addvar hud_y 1
+			addvar hud_x 5
+			addvar hud_angle 8
 			break
 		case 46:
+			addvar hud_x 6
+			addvar hud_angle 24
 			break
 		case 47:
 			//setvar hud_tilenum SSG_RELOAD1
 			addvar hud_angle 32
+			addvar hud_x 4
 			break
 		case 48:
 			//setvar hud_tilenum SSG_RELOAD1
 			addvar hud_angle 64
-			addvar hud_x 1
+			addvar hud_x 8
 			break
 		case 49:
 			//setvar hud_tilenum SSG_RELOAD1
 			addvar hud_angle 48
-			addvar hud_x 2
+			addvar hud_x 6
 			break
 		case 50:
 			//setvar hud_tilenum SSG_RELOAD1
 			addvar hud_angle 32
-			addvar hud_y 1
+			addvar hud_x 4
 			break
 		case 51:
 			//setvar hud_tilenum SSG_RELOAD1
 			addvar hud_angle 16
-			addvar hud_x -2
-			addvar hud_y 2
+			addvar hud_x 2
 			break
 		case 52:
 			addvar hud_angle 8
-			addvar hud_x -3
-			addvar hud_y 3
+			addvar hud_x 1
 			break
 		case 53:
-			addvar hud_x -2
-			addvar hud_y 2
+			addvar hud_x -1
 			break
 	endswitch
 	
 	ifvarg weaponcount 0
+	ifvarn weaponcount 43 // Special tweak so the closing animation doesn't look like shit.
+	ifvarn weaponcount 45
 		orvar hud_orientation RS_FORCELERP
 	
 	state G_DrawWeaponTile
@@ -313,6 +331,12 @@ state draw_ssg // SHOTGUN_WEAPON:
 		state G_DrawWeaponTile
 		guniqhudid 0
 	}
+	
+	/*
+	redefinequote 500 weaponcount: %d
+	qsprintf 500 500 weaponcount
+	screentext STARTALPHANUM 160 64 65536 0 0 500 -127 8 16 33 6 7 0 1 8194 0 0 xdim ydim
+	*/
 ends
 
 actor SSGSPRITE
