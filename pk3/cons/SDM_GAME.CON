@@ -1154,6 +1154,14 @@ actor SMALLSMOKE 0 SMOKEFRAMES
 		setvarvar XREPEAT_MEMORY TEMP // Start radius
 		mulvar TEMP 2
 		setvarvar YREPEAT_MEMORY TEMP // End radius
+		
+		ifspawnedby SHOTSPARK1
+		{
+			getactor[THISACTOR].owner TEMP
+			getactor[TEMP].cstat TEMP // Sprite
+			ifvarand TEMP 32768
+				killit
+		}
 	}
 	
 	ifpdistl 1596
@@ -1479,7 +1487,7 @@ actor FLOORFLAME 0 FFLAME_FR
 	ifrnd 4
 	{
 		action FFLAME_FR
-		sound CAT_FIRE
+		sound FLAMETRAP
 		resetactioncount
 	}
 enda
@@ -2415,13 +2423,6 @@ state liz_body_jibs
     spawn BLOODPOOL
 ends
 
-action BLOODFRAMES 0 4 1 1 15
-actor BLOOD 0 BLOODFRAMES	
-  sizeto 72 72 sizeto 72 72 sizeto 72 72
-  ifpdistg 3144 killit
-  ifactioncount 4 killit
-enda
-
 action EGGOPEN1 1 1 1 1 4
 action EGGOPEN2 2 1 1 1 4
 action EGGOPEN3 2 1 1 1 4
@@ -2672,7 +2673,16 @@ actor SHOTSPARK1 PISTOL_WEAPON_STRENGTH WEAP2FRAMES
 			
 			switch PICNUM_MEMORY
 				case NEWBEAST:
-					spawn JIBS6
+					espawn JIBS6
+					setactor[RETURN].xrepeat 16
+					setactor[RETURN].yrepeat 16
+					setvar RETURN 0
+					break
+				case COMMANDER:
+					espawn JIBS6
+					setactor[RETURN].xrepeat 32
+					setactor[RETURN].yrepeat 32
+					setvar RETURN 0
 					break
 			endswitch
 		}
@@ -5952,7 +5962,10 @@ state checkcommhitstate
 
   ifhitweapon
   {
-    guts JIBS6 2
+	ifwasweapon RPG
+		guts JIBS6 2
+	else ifwasweapon DEVASTATORMISSILE
+		guts JIBS6 2
 
     ifdead
     {

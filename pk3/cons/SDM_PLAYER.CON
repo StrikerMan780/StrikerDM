@@ -368,21 +368,21 @@ state handle_shake_timer
       break
     }
 
-    ifp pshrunk
-    {
+	ifp pshrunk
+	{
 		state get_squisher
-	  setvar KILLTYPE KILL_SHRINKER
-	  
-      state standard_pjibs
-      spawn BLOODPOOL
+		setvar KILLTYPE KILL_SHRINKER
+		
+		state standard_pjibs
+		spawn BLOODPOOL
 
-      sound SQUISHED
-      sound DUKE_DEAD
+		sound SQUISHED
+		sound DUKE_DEAD
 
-      cstat 32768         // Hide the sprite
+		cstat 32768         // Hide the sprite
 
-      action PLYINGDEAD
-    }
+		action PLYINGDEAD
+	}
     else
     {
       ifinwater

@@ -111,6 +111,8 @@ voxel "voxels/props/0910_tree2.kvx" { tile 910 }
 voxel "voxels/props/0911_cactus.kvx" { tile 911 }
 voxel "voxels/props/0939_cactusstump.kvx" { tile 939 }
 
+voxel "voxels/props/0940_mine.kvx" { tile0 940 tile1 944 }
+
 voxel "voxels/props/0916_fireextinguisher.kvx" { tile 916 }
 
 voxel "voxels/props/0917_firealarm.kvx" { tile 917 }

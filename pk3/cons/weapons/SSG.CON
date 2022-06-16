@@ -23,26 +23,30 @@ state draw_ssg // SHOTGUN_WEAPON:
 			break
 		case 2:
 			setvar hud_tilenum SSG_FIRE2
-			addvar hud_x 16
-			addvar hud_y 24
+			addvar hud_x 26 // 16
+			addvar hud_y 34 // 24
 			setvar hud_shade -128
 			addvar hud_angle 32
+			addvar hud_scale 16384
 			break
 		case 3:
 			setvar hud_tilenum SSG_FIRE3
-			addvar hud_x 28
-			addvar hud_y 40
+			addvar hud_x 48 // 28
+			addvar hud_y 60 // 40
 			setvar hud_shade -128
 			addvar hud_angle 64
+			addvar hud_scale 32768
 			break
 		case 4:
-			addvar hud_x 8
-			addvar hud_y 16
+			addvar hud_x 48 // 8
+			addvar hud_y 60 // 16
+			addvar hud_scale 24576 // Absent from old
 			break
 		case 5:
-			addvar hud_x 7
-			addvar hud_y 14
+			addvar hud_x 26 // 7
+			addvar hud_y 34 // 14
 			addvar hud_angle -16
+			addvar hud_scale 16384 // Absent from old
 			break
 		case 6:
 			addvar hud_x 6

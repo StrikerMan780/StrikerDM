@@ -22,12 +22,41 @@ state draw_pistol // PISTOL_WEAPON:
         
         addvar hud_y 244
         
-        ifvarvare weaponcount hud_temp4
-            subvar hud_x 3
+        //ifvarvare weaponcount hud_temp4 // FIREDELAY
+            //subvar hud_x 3
         
-        ifvarl weaponcount 3
+        ifvarl weaponcount 4 // 3
 		{
-            addvarvar hud_tilenum weaponcount
+            //addvarvar hud_tilenum weaponcount
+			
+			switch fastweapcnt
+				case 1:
+				case 2:
+					setvar hud_tilenum PISTOL_EXTRA1
+					break
+				case 3:
+				case 4:
+					addvar hud_tilenum 1
+					break
+				case 5:
+				case 6:
+					setvar hud_tilenum PISTOL_EXTRA2
+					break
+				case 7:
+					addvar hud_tilenum 2
+					break
+				case 8:
+					setvar hud_tilenum PISTOL_EXTRA3
+					break
+				case 9:
+				case 10:
+					setvar hud_tilenum PISTOL_EXTRA4
+					break
+				case 11:
+				case 12:
+					setvar hud_tilenum FIRSTGUN
+					break
+			endswitch
 			
 			ifvarg weaponcount 0
 				orvar hud_orientation RS_FORCELERP
@@ -41,41 +70,36 @@ state draw_pistol // PISTOL_WEAPON:
     }
     else
     {
-        subvarvar hud_temp3 weaponcount
+        subvarvar hud_temp3 weaponcount // This DECREMENTS.
         
         ifvarg hud_temp3 17
         {
             guniqhudid W_PISTOL
 			setvar hud_tilenum 2528 // First reload frame
             
-            setvar hud_x 194
+            setvar hud_x 210
             subvarvar hud_x looking_angSR1
             
-            addvar hud_y 230
+            addvar hud_y 236
             
 			switch hud_temp3
 			{
 				case 18:
-					addvar hud_x 5
-					subvar hud_y 3
+					addvar hud_x 20
+					addvar hud_y -16
+					//addvar hud_angle 14
+					break
 				case 19:
-					addvar hud_x 4
-					subvar hud_y 3
+					addvar hud_x 10
+					addvar hud_y -8
+					break
 				case 20:
-					addvar hud_x 3
-					subvar hud_y 3
+					addvar hud_x 4
+					addvar hud_y -4
+					addvar hud_angle -8
+					break
 				case 21:
-					addvar hud_x 3
-					subvar hud_y 3
-				case 22:
-					addvar hud_x 3
-					subvar hud_y 3
-				case 23:
-					addvar hud_x 2
-					subvar hud_y 3
-				case 24:
-					addvar hud_x 2
-					subvar hud_y 3
+					addvar hud_angle -16
 					break
 			}
 			endswitch
@@ -84,7 +108,7 @@ state draw_pistol // PISTOL_WEAPON:
             
             guniqhudid 0
         }
-        else ifvarg hud_temp3 12
+        else ifvarg hud_temp3 12 // 17 to 13
         {
 			// Start magazine
 			guniqhudid W_PISTOL_CLIP
@@ -118,7 +142,7 @@ state draw_pistol // PISTOL_WEAPON:
             state G_DrawWeaponTile
             guniqhudid 0
         }
-        else ifvarg hud_temp3 7
+        else ifvarg hud_temp3 7 // 12 to 8
         {
 			// Magazine
 			guniqhudid W_PISTOL_CLIP
@@ -158,8 +182,17 @@ state draw_pistol // PISTOL_WEAPON:
             
             guniqhudid 0
         }
-        else ifvarg hud_temp3 4
+        else ifvarg hud_temp3 4 // 7 to 5
         {
+			switch hud_temp3
+				case 7:
+					addvar hud_angle 16
+					break
+				case 6:
+					addvar hud_angle 8
+					break
+			endswitch
+				
 			// Start Hand
 			guniqhudid W_PISTOL_HAND
 			setvar hud_tilenum 2532 // Second reload hand
@@ -184,7 +217,7 @@ state draw_pistol // PISTOL_WEAPON:
             
             guniqhudid 0
         }
-        else ifvarg hud_temp3 2
+        else ifvarg hud_temp3 2 // 4 to 3
         {
 			guniqhudid W_PISTOL_HAND
 			setvar hud_tilenum 2532 // Second reload hand
@@ -206,12 +239,12 @@ state draw_pistol // PISTOL_WEAPON:
 			
 			ifvare hud_temp3 4
 			{
-				subvar hud_x 10
+				addvar hud_x -10
 				addvar hud_y 5
 			}
 			else ifvare hud_temp3 3
 			{
-				subvar hud_x 20
+				addvar hud_x -20
 				addvar hud_y 10
 			}
             
@@ -219,18 +252,21 @@ state draw_pistol // PISTOL_WEAPON:
             
             guniqhudid 0
         }
-        else ifvarg hud_temp3 0
+        else ifvarg hud_temp3 0 // 2 to 1
         {
             guniqhudid W_PISTOL
 			setvar hud_tilenum 2529 // Second reload frame
             
-            setvar hud_x 194
+            setvar hud_x 196
             subvarvar hud_x looking_angSR1
             
-            addvar hud_y 235
+            addvar hud_y 237
+			addvar hud_angle -16
             
 			ifvare hud_temp3 1
 			{
+				setvar hud_tilenum 2528
+				addvar hud_x 16
 				addvar hud_y 10
 			}
 			
@@ -238,5 +274,9 @@ state draw_pistol // PISTOL_WEAPON:
             
             guniqhudid 0
         }
+		
+		//redefinequote 500 hud_temp3: %d
+		//qsprintf 500 500 hud_temp3
+		//screentext STARTALPHANUM 160 64 65536 0 0 500 -127 8 16 33 6 7 0 1 8194 0 0 xdim ydim
     }
 ends

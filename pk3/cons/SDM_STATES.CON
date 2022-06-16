@@ -181,6 +181,12 @@ state item_shared_code
 				state yeet_item_on_drop
 				sizeat 32 28
 				break
+			case CRYSTALSHARD:
+				state check_if_multiplayer_only
+				state yeet_item_on_drop
+				sizeat 40 32
+				setactor[THISACTOR].shade -127
+				break
 		endswitch
 	}
 	
@@ -1040,6 +1046,7 @@ state handle_shake_display
 	ifvarg SHAKE_INTENSITY 0
 	ifvarg SHAKE_TIME 0
 	{	
+	/*
 		// SHAKE_INTENSITY/2
 		setvarvar CL_TEMP1 SHAKE_INTENSITY
 		divvar CL_TEMP1 2
@@ -1053,6 +1060,25 @@ state handle_shake_display
 		displayrandvarvar CL_TEMP2 SHAKE_INTENSITY
 		subvarvar CL_TEMP2 CL_TEMP1
 		addvarvar cameray CL_TEMP2
+	*/
+		
+		setvarvar CL_TEMP1 totalclock
+		mulvar CL_TEMP1 150
+		
+		sin CL_TEMP2 CL_TEMP1
+		mulvarvar CL_TEMP2 SHAKE_INTENSITY
+		shiftvarr CL_TEMP2 16
+		addvarvar camerax CL_TEMP2
+		
+		cos CL_TEMP2 CL_TEMP1
+		mulvarvar CL_TEMP2 SHAKE_INTENSITY
+		shiftvarr CL_TEMP2 16
+		addvarvar cameray CL_TEMP2
+		
+		sin CL_TEMP2 CL_TEMP1
+		mulvarvar CL_TEMP2 SHAKE_INTENSITY
+		shiftvarr CL_TEMP2 12
+		addvarvar cameraz CL_TEMP2
 	}
 ends
 
@@ -1311,43 +1337,35 @@ state handle_special_attacks
 		setvar HITAG_MEMORY 0
 		
 		headspritestat CURSPRITE 10 // STAT_PLAYER
-		setvarvar LASTSPRITE CURSPRITE
 		whilevarn CURSPRITE -1
 		{
 			state zap_a_cunt
 			
-			nextspritestat CURSPRITE LASTSPRITE
-			setvarvar LASTSPRITE CURSPRITE
+			nextspritestat CURSPRITE CURSPRITE
 		}
 		
 		headspritestat CURSPRITE 1 // STAT_ACTOR
-		setvarvar LASTSPRITE CURSPRITE
 		whilevarn CURSPRITE -1
 		{
 			state zap_a_cunt
 			
-			nextspritestat CURSPRITE LASTSPRITE
-			setvarvar LASTSPRITE CURSPRITE
+			nextspritestat CURSPRITE CURSPRITE
 		}
 		
 		headspritestat CURSPRITE 2 // STAT_ZOMBIEACTOR
-		setvarvar LASTSPRITE CURSPRITE
 		whilevarn CURSPRITE -1
 		{
 			state zap_a_cunt
 			
-			nextspritestat CURSPRITE LASTSPRITE
-			setvarvar LASTSPRITE CURSPRITE
+			nextspritestat CURSPRITE CURSPRITE
 		}
 
 		headspritestat CURSPRITE 6 // STAT_STANDABLE
-		setvarvar LASTSPRITE CURSPRITE
 		whilevarn CURSPRITE -1
 		{
 			state zap_a_cunt
 			
-			nextspritestat CURSPRITE LASTSPRITE
-			setvarvar LASTSPRITE CURSPRITE
+			nextspritestat CURSPRITE CURSPRITE
 		}
 	}
 ends

@@ -92,7 +92,7 @@ define DEVASTATOR_FIRELEFT 504
 define PLASMARIFLE_FIRE 505
 define PLASMARIFLE_CHARGE 506
 define PLASMARIFLE_HIT 507
-define FREEZETHROWER_FIRE 508
+define FLAMETRAP 508
 define CASING1 509
 define CASING2 510
 define CASING3 511
@@ -420,7 +420,7 @@ definesound DEVASTATOR_FIRELEFT sounds/dsdevilf.ogg 0 128 4 0 0
 definesound PLASMARIFLE_FIRE sounds/plasfire.ogg 0 64 4 0 0
 definesound PLASMARIFLE_CHARGE sounds/plaschrg.ogg 0 0 4 0 0
 definesound PLASMARIFLE_HIT sounds/plashit.wav 0 64 4 0 8192
-definesound FREEZETHROWER_FIRE sounds/freezeth.wav 0 64 4 0 0
+definesound FLAMETRAP sounds/flametrap.wav 0 384 4 0 0
 definesound RAILGUN_FIRE1 sounds/dsrgfir1.wav 0 0 4 0 0
 definesound RAILGUN_FIRE2 sounds/dsrgfir2.wav 0 0 4 0 0
 definesound RAILGUN_FIRE3 sounds/dsrgfir3.wav 0 0 4 0 0

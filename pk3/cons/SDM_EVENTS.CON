@@ -601,6 +601,7 @@ onevent EVENT_EGS
 		ifspawnedby SHOTSPARK1
 		{
 			getactor[THISACTOR].owner TEMP // Shotspark
+			setactor[TEMP].cstat 32768 // Hide the spark
 			getactor[TEMP].htg_t 8 TEMP // Target hit
 			getactor[TEMP].picnum TEMP2 // Target picnum
 			
@@ -611,6 +612,9 @@ onevent EVENT_EGS
 					break
 				case NEWBEAST:
 					setactor[THISACTOR].pal 125
+					break
+				case EGG
+					setactor[THISACTOR].pal 8
 					break
 			endswitch
 			
@@ -640,21 +644,32 @@ onevent EVENT_EGS
 				getactor[THISACTOR].pal TEMP2
 				setactor[RETURN].pal TEMP2
 				
-				randvar TEMP 48
-				addvar TEMP 16
+				randvar TEMP 56
+				addvar TEMP 8
 				setactor[RETURN].xvel TEMP
 				
-				setvar TEMP -512
-				randvar TEMP2 1024
+				setvar TEMP -256
+				randvar TEMP2 1280
 				subvarvar TEMP TEMP2
 				setactor[RETURN].zvel TEMP
 				
 				randvar TEMP 2047
 				setactor[RETURN].ang TEMP
 				setvar RETURN 0
+				
+				espawn BLOOD // Spawn spray effect
+				getactor[THISACTOR].pal TEMP2
+				setactor[RETURN].pal TEMP2
+				setactorvar[RETURN].HITAG_MEMORY 30
+				setactorvar[RETURN].XREPEAT_MEMORY 4
+				randvar TEMP2 16
+				addvar TEMP2 32
+				setactorvar[RETURN].YREPEAT_MEMORY TEMP2
+				setvar RETURN 0
 			}
 		}
 		
+		setvar PICNUM_MEMORY JIBS6
 		break
 	}
 	
@@ -1172,8 +1187,8 @@ onevent EVENT_GAME
 			ifvare TEMP 0
 			ifvarl Numsprites 12288 // Prevent "Too Many Sprites Spawned"
 			{
+				espawn BLOOD
 				getactor[THISACTOR].pal TEMP2
-				espawn GIBBLOOD
 				setactor[RETURN].pal TEMP2
 				setvar RETURN 0
 			}
@@ -1191,42 +1206,29 @@ onevent EVENT_GAME
 		}
 		
 		// Check if actor was changed from one of these.
-		switch PICNUM_MEMORY
-			case JIBS1:
-			case JIBS2:
-			case JIBS3:
-			case JIBS4:
-			case JIBS5:
-			case HEADJIB1:
-			case LEGJIB1:
-			case ARMJIB1:
-			case LIZMANHEAD1:
-			case LIZMANARM1:
-			case LIZMANLEG1:
-			case DUKELEG:
-			case DUKEGUN:
-			case DUKETORSO:
-				state gibsound // Impact splat noise
-				
-				ifvarl Numsprites 12288 // Prevent "Too Many Sprites"
-				{
-					getactor[THISACTOR].pal TEMP2
-					ifvare PICNUM_MEMORY JIBS1 { espawn JIBS1_ONGROUND setactor[RETURN].pal TEMP2 }
-					else ifvare PICNUM_MEMORY JIBS2 { espawn JIBS2_ONGROUND setactor[RETURN].pal TEMP2 }
-					else ifvare PICNUM_MEMORY JIBS3 { espawn JIBS3_ONGROUND setactor[RETURN].pal TEMP2 }
-					else ifvare PICNUM_MEMORY JIBS4 { espawn JIBS4_ONGROUND setactor[RETURN].pal TEMP2 }
-					else ifvare PICNUM_MEMORY JIBS5 { espawn JIBS5_ONGROUND setactor[RETURN].pal TEMP2 }
-					else ifvare PICNUM_MEMORY HEADJIB1 { espawn HEADJIB1_ONGROUND setactor[RETURN].pal TEMP2 }
-					else ifvare PICNUM_MEMORY LEGJIB1 { espawn LEGJIB1_ONGROUND setactor[RETURN].pal TEMP2 }
-					else ifvare PICNUM_MEMORY ARMJIB1 { espawn ARMJIB1_ONGROUND setactor[RETURN].pal TEMP2 }
-					else ifvare PICNUM_MEMORY DUKETORSO { espawn DUKETORSO_ONGROUND setactor[RETURN].pal TEMP2 }
-					else ifvare PICNUM_MEMORY DUKEGUN { espawn DUKEGUN_ONGROUND setactor[RETURN].pal TEMP2 }
-					else ifvare PICNUM_MEMORY DUKELEG { espawn DUKELEG_ONGROUND setactor[RETURN].pal TEMP2 }
-				}
-				
-				setvar PICNUM_MEMORY 0 // Clear this so it doesn't repeat
-			break
-		endswitch
+		ifvarn PICNUM_MEMORY -1
+		ifvarn PICNUM_MEMORY JIBS6
+		{
+			state gibsound // Impact splat noise
+			ifvarl Numsprites 12288 // Prevent "Too Many Sprites"
+			{
+				getactor[THISACTOR].pal TEMP2
+				ifvare PICNUM_MEMORY JIBS1 { espawn JIBS1_ONGROUND setactor[RETURN].pal TEMP2 }
+				else ifvare PICNUM_MEMORY JIBS2 { espawn JIBS2_ONGROUND setactor[RETURN].pal TEMP2 }
+				else ifvare PICNUM_MEMORY JIBS3 { espawn JIBS3_ONGROUND setactor[RETURN].pal TEMP2 }
+				else ifvare PICNUM_MEMORY JIBS4 { espawn JIBS4_ONGROUND setactor[RETURN].pal TEMP2 }
+				else ifvare PICNUM_MEMORY JIBS5 { espawn JIBS5_ONGROUND setactor[RETURN].pal TEMP2 }
+				else ifvare PICNUM_MEMORY HEADJIB1 { espawn HEADJIB1_ONGROUND setactor[RETURN].pal TEMP2 }
+				else ifvare PICNUM_MEMORY LEGJIB1 { espawn LEGJIB1_ONGROUND setactor[RETURN].pal TEMP2 }
+				else ifvare PICNUM_MEMORY ARMJIB1 { espawn ARMJIB1_ONGROUND setactor[RETURN].pal TEMP2 }
+				else ifvare PICNUM_MEMORY DUKETORSO { espawn DUKETORSO_ONGROUND setactor[RETURN].pal TEMP2 }
+				else ifvare PICNUM_MEMORY DUKEGUN { espawn DUKEGUN_ONGROUND setactor[RETURN].pal TEMP2 }
+				else ifvare PICNUM_MEMORY DUKELEG { espawn DUKELEG_ONGROUND setactor[RETURN].pal TEMP2 }
+			}
+			
+			setvar PICNUM_MEMORY -1 // Clear this so it doesn't repeat
+		}
+		break
 	}
 endevent
 
@@ -1342,6 +1344,45 @@ onevent EVENT_SPAWN
 			getactor[TEMP].pal TEMP2
 			setactor[THISACTOR].pal TEMP2
 		}
+		break
+	}
+	
+	ifactor BLOOD
+	{
+		getactor[THISACTOR].htpicnum TEMP
+		gettiledata[TEMP].gameflags TEMP
+		ifvarand TEMP 262176 { } // (NULLOP) SFLAG_BADGUY | SFLAG_HARDCODED_BADGUY
+		else
+		{
+			// Cancel out annoying hardcoded behavior.
+			getactor[THISACTOR].z TEMP
+			addvar TEMP 6656
+			setactor[THISACTOR].z TEMP
+			setactor[THISACTOR].htbposz TEMP
+			
+			cstat 128
+		}
+		
+		randvar TEMP2 16
+		addvar TEMP2 16
+		setactor[THISACTOR].xrepeat TEMP2
+		setactor[THISACTOR].yrepeat TEMP2
+		
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_BLOODBRIGHT
+		orvar ANIMATE_FLAGS ANIMATE_FLAG_FADEOUT
+		orvar ANIMATE_FLAGS ANIMATE_FLAG_SCALE
+		setactor[THISACTOR].mdflags 16
+		
+		setvar LOTAG_MEMORY 0 // Timer
+		setvar HITAG_MEMORY 72 // End time
+		setvarvar XREPEAT_MEMORY TEMP2 // Start scale
+		setvar YREPEAT_MEMORY 72 // End scale
+		
+		ifrnd 128
+			cstator 4
+		ifrnd 128
+			cstator 8
+		
 		break
 	}
 	
@@ -1462,6 +1503,18 @@ onevent EVENT_SPAWN
 	{
 		cstator 2
 		setactor[THISACTOR].blend 255
+		break
+	}
+	
+	ifactor BOUNCEMINE
+	{
+		setactor[THISACTOR].mdflags 16
+		break
+	}
+	
+	ifactor FRAMEEFFECT1
+	{
+		setactor[THISACTOR].mdflags 16
 		break
 	}
 	
@@ -1811,6 +1864,10 @@ onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
 		ifvarand ANIMATE_FLAGS ANIMATE_FLAG_BLOODBRIGHT
 		{
 			gettspr[THISACTOR].tsprshade CL_TEMP1
+			gettspr[THISACTOR].tsprpal CL_TEMP2
+			ifvare CL_TEMP2 6
+				subvar CL_TEMP1 120
+				
 			subvar CL_TEMP1 6
 			settspr[THISACTOR].tsprshade CL_TEMP1
 		}
@@ -1897,6 +1954,37 @@ onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
 		break
 	}
 	// ----
+	
+	ifactor BOUNCEMINE
+	{
+		getactor[THISACTOR].ang CL_TEMP1
+		setvarvar CL_TEMP2 totalclock
+		shiftvarl CL_TEMP2 3
+		addvarvar CL_TEMP1 CL_TEMP2
+		settspr[THISACTOR].tsprang CL_TEMP1
+		break
+	}
+	
+	ifactor FRAMEEFFECT1
+	{
+		gettspr[THISACTOR].tsprpicnum CL_TEMP1
+		
+		switch CL_TEMP1
+			case 940: // BOUNCEMINE
+			case 941:
+			case 942:
+			case 943:
+			case 944:
+				getactor[THISACTOR].owner CL_TEMP1
+				getactor[CL_TEMP1].ang CL_TEMP1 // Inherit angle from owner.
+				setvarvar CL_TEMP2 totalclock
+				shiftvarl CL_TEMP2 3
+				addvarvar CL_TEMP1 CL_TEMP2
+				settspr[THISACTOR].tsprang CL_TEMP1
+				break
+		endswitch
+		break
+	}
 	
 	ifactor RESPAWNMARKERRED
 	{
@@ -2918,6 +3006,39 @@ onevent EVENT_DISPLAYROOMS // !UNSYNCHRONIZED!
 	state handle_shake_display
 endevent
 
+onevent EVENT_DOQUAKE
+	setvarvar CL_TEMP1 totalclock
+	mulvar CL_TEMP1 150
+	
+	setvar CL_TEMP3 10 // Intensity
+	mulvarvar CL_TEMP3 RETURN
+	
+	ifvarg CL_TEMP3 384 // Clamp
+		setvar CL_TEMP3 384
+		
+	sin CL_TEMP2 CL_TEMP1
+	mulvarvar CL_TEMP2 CL_TEMP3
+	shiftvarr CL_TEMP2 14
+	addvarvar cameraz CL_TEMP2
+	
+	cos CL_TEMP2 CL_TEMP1
+	mulvarvar CL_TEMP2 CL_TEMP3
+	shiftvarr CL_TEMP2 18
+	addvarvar camerax CL_TEMP2
+		
+	sin CL_TEMP2 CL_TEMP1
+	mulvarvar CL_TEMP2 CL_TEMP3
+	shiftvarr CL_TEMP2 5
+	addvarvar cameraq16ang CL_TEMP2
+
+	cos CL_TEMP2 CL_TEMP1
+	mulvarvar CL_TEMP2 CL_TEMP3
+	shiftvarr CL_TEMP2 5
+	addvarvar cameraq16horiz CL_TEMP2
+	
+	setvar RETURN 0
+endevent
+
 state do_active_maphacks
 	// **** ACTIVE MAPHACKS ***
 	// These are what I like to call active maphacks.
@@ -2970,6 +3091,7 @@ state do_active_maphacks
 		endswitch
 	}
 	
+	// Keep these at the bottom.
 	ifvare VOLUME 4 // Striker's Maps
 	ifvare LEVEL 7 // Burning Memory
 	{
@@ -2980,6 +3102,8 @@ state do_active_maphacks
 		break
 	}
 	
+	// Map Defaults
+	setvar DEMENTIA 0
 	inittimer 120 // Needed to reset the timer.
 ends
 
@@ -3075,6 +3199,16 @@ onevent EVENT_SOUND
 				setvar RETURN MENU_BACK
 				break
 		endswitch
+	}
+	
+	ifvare RETURN PISTOL_BODYHIT
+	{
+		getactor[THISACTOR].htpicnum CL_TEMP1
+		ifvare CL_TEMP1 FLAMETHROWERFLAME
+		{
+			setvar RETURN -1
+			break
+		}
 	}
 	
 	ifvare DEMENTIA 1
@@ -3251,13 +3385,7 @@ onevent EVENT_SOUND
 		}
 	}
 	
-	ifvare RETURN PISTOL_BODYHIT
-	{
-		getactor[THISACTOR].htpicnum CL_TEMP1
-		ifvare CL_TEMP1 FLAMETHROWERFLAME
-			setvar RETURN -1
-	}
-	else ifvare RETURN TELEPORTER
+	ifvare RETURN TELEPORTER
 	{
 		getsector[THISACTOR].floorpicnum CL_TEMP1
 		switch CL_TEMP1
@@ -3270,8 +3398,10 @@ onevent EVENT_SOUND
 				break
 		}
 		endswitch
+		break
 	}
-	else ifvare RETURN SOMETHING_DRIPPING
+	
+	ifvare RETURN SOMETHING_DRIPPING
 	{
 		displayrandvar CL_TEMP1 2
 		switch CL_TEMP1
@@ -3279,6 +3409,8 @@ onevent EVENT_SOUND
 			case 1: setvar RETURN NEW_DRIP2 break
 			case 2: setvar RETURN NEW_DRIP3 break
 		endswitch
+		
+		break
 	}
 	
 	ifactor APLAYER

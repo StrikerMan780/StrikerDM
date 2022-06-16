@@ -48,26 +48,29 @@ texture 4997 { pal 0 { file "highres/items/4997_armorhelmet.png" artquality } }
 texture 4998 { pal 0 { file "highres/items/4998_armorhelmet.png" artquality } }
 
 // Skinny Pistol
-//tilefromtexture 2524 { file "tiles/2524.png" xoffset -14 yoffset 3 }
-//tilefromtexture 2525 { file "tiles/2525.png" xoffset -7 yoffset 13 }
-//tilefromtexture 2526 { file "tiles/2526.png" xoffset -16 yoffset 12 }
-//tilefromtexture 2528 { file "tiles/2528.png" xoffset -38 yoffset -6 }
-//tilefromtexture 2529 { file "tiles/2529.png" xoffset -74 yoffset 5 }
+/*
+tilefromtexture 2524 { file "tiles/2524.png" xoffset -14 yoffset 3 }
+tilefromtexture 2525 { file "tiles/2525.png" xoffset -7 yoffset 13 }
+tilefromtexture 2526 { file "tiles/2526.png" xoffset -16 yoffset 12 }
+*/
 
-/* // Duke64 Pistol for later.
+/*
+// Duke64 Pistol for later.
 tilefromtexture 2524 { file "tiles/2524_dn64.png" xoff -32 yoff 10 }
 tilefromtexture 2525 { file "tiles/2525_dn64.png" xoff -24 yoff 17 }
 tilefromtexture 2526 { file "tiles/2526_dn64.png" xoff -29 yoff 12 }
-tilefromtexture 2528 { file "tiles/2528_dn64.png" xoff -48 yoff 4 }
-tilefromtexture 2529 { file "tiles/2529_dn64.png" xoff -76 yoff 2 }
+tilefromtexture 2528 { file "tiles/2528_dn64.png" xoff -29 yoff 2 }
+tilefromtexture 2529 { file "tiles/2529_dn64.png" xoff -66 yoff -12 }
 */
 
+/*
 // GodTC Pistol
 tilefromtexture 2524 { file "tiles/2524_godtc.png" xoffset -25 yoffset 8 }
 tilefromtexture 2525 { file "tiles/2525_godtc.png" xoffset -24 yoffset 12 }
 tilefromtexture 2526 { file "tiles/2526_godtc.png" xoffset -31 yoffset 8 }
-tilefromtexture 2528 { file "tiles/2528_2529_godtc.png" xoffset -70 yoffset -5 }
+tilefromtexture 2528 { file "tiles/2528_2529_godtc.png" xoffset -60 yoffset -5 }
 tilefromtexture 2529 { file "tiles/2528_2529_godtc.png" xoffset -70 yoffset 17 }
+*/
 
 // Becky Reference
 texture 3707 { pal 0 { file "tiles/3707.png" artquality } }

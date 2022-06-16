@@ -321,7 +321,11 @@ actor SHOTGUNSPRITE
 			// Store Param 2
 			setvarvar TEMP STATE_PARAM2
 			
-			ifspawnedby PIGCOP { randvar STATE_PARAM2 4 }
+			ifspawnedby PIGCOP
+			{
+				randvar STATE_PARAM2 3
+				addvar STATE_PARAM2 1
+			}
 			else { setvar STATE_PARAM2 SHOTGUNAMMOAMOUNT }
 			state addammo_nobreak
 			

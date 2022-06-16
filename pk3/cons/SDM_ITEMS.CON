@@ -44,7 +44,7 @@ state quikget_doomitem
 	killit
 ends
 
-useractor notenemy HEALTHBONER WEAK
+actor HEALTHBONER WEAK
 	state item_shared_code
 	
 	ifmove RESPAWN_ACTOR_FLAG
@@ -70,7 +70,7 @@ useractor notenemy HEALTHBONER WEAK
 	}
 enda
 
-useractor notenemy ARMORBONER WEAK
+actor ARMORBONER WEAK
 	state item_shared_code
 	
 	ifmove RESPAWN_ACTOR_FLAG
@@ -103,3 +103,171 @@ useractor notenemy ARMORBONER WEAK
 		}
 	}
 enda
+
+state getcode_doomitem
+	globalsound DSITEMUP
+	palfrom 16 32 32 8
+	ifvare RESPAWN_ITEMS 1
+	{
+		move RESPAWN_ACTOR_FLAG
+		state create_spawn_marker
+		cstat 32768
+	}
+	else
+		killit
+ends
+
+state quikget_doomitem
+	
+ends
+
+spritenoshade CRYSTALSHARD
+actor CRYSTALSHARD WEAK
+	state item_shared_code
+	
+	ifmove RESPAWN_ACTOR_FLAG
+		state respawnit
+	else
+		ifp pshrunk nullop
+	else
+	ifp palive
+	ifpdistl RETRIEVEDISTANCE
+	ifcount 6
+	ifcanseetarget
+	{
+		getplayer[THISACTOR].shield_amount TEMP
+		ifvarl TEMP 200
+		{
+			setplayer[THISACTOR].max_shield_amount 200
+			addinventory GET_SHIELD 2
+			setplayer[THISACTOR].max_shield_amount SHIELD_AMOUNT
+			quote 136
+			
+			ifvarg TEMP 200
+			{
+				setplayer[THISACTOR].shield_amount 200
+			}
+			
+			ifspawnedby CRYSTALSHARD
+			{
+				spawn SHARD_FX1
+				spawn SHARD_FX2
+				globalsound FP_SHARDGET
+				palfrom 16 0 64 64
+				ifvare RESPAWN_ITEMS 1
+				{
+					move RESPAWN_ACTOR_FLAG
+					//state create_spawn_marker
+					cstat 32768
+				}
+				else
+					killit
+			}
+			else
+			{
+				spawn SHARD_FX1
+				spawn SHARD_FX2
+				globalsound FP_SHARDGET
+				palfrom 16 0 64 64
+				killit
+			}
+		}
+	}
+enda
+
+spritenoshade SHARD_FX1
+actor SHARD_FX1 0
+	ifcount 1 { }
+	else
+	{
+		sizeat 40 32
+		cstat 128
+		setactor[THISACTOR].shade -127
+		// Set random lifetime
+		randvar EXTRA_MEMORY 5
+		addvar EXTRA_MEMORY 5
+	}
+	
+	ifrnd 128
+		spawn SHARD_FX3
+	
+	getactor[THISACTOR].htg_t 0 TEMP
+	ifvarvarg TEMP EXTRA_MEMORY
+	{
+		spawn SHARD_FX2
+		killit
+	}
+	
+	mulvar TEMP 320
+	sin TEMP2 TEMP
+	shiftvarr TEMP2 7
+	cos TEMP3 TEMP
+	shiftvarr TEMP3 7
+	getactor[THISACTOR].x SPAWN_ORIGX
+	getactor[THISACTOR].y SPAWN_ORIGY
+	getactor[THISACTOR].z SPAWN_ORIGZ
+	addvarvar SPAWN_ORIGX TEMP2
+	addvarvar SPAWN_ORIGY TEMP3
+	addvar SPAWN_ORIGZ -512
+	setsprite THISACTOR SPAWN_ORIGX SPAWN_ORIGY SPAWN_ORIGZ
+enda
+
+action SHARD_FX2_ANIM 0 7 1 1 4
+spritenoshade SHARD_FX2
+actor SHARD_FX2 0
+	ifaction 0
+	{
+		sizeat 40 32
+		cstat 130
+		setactor[THISACTOR].blend 255
+		setactor[THISACTOR].shade -127
+		ifspawnedby CRYSTALSHARD
+		{
+			getactor[THISACTOR].z TEMP
+			addvar TEMP -1280
+			setactor[THISACTOR].z TEMP
+			setactor[THISACTOR].htbposz TEMP
+		}
+		action SHARD_FX2_ANIM
+	}
+	
+	ifactioncount 7
+		killit
+enda
+
+action SHARD_FX3_ANIM1 0 6 1 1 4
+action SHARD_FX3_ANIM2 1 5 1 1 4
+action SHARD_FX3_ANIM3 2 4 1 1 4
+spritenoshade SHARD_FX3
+actor SHARD_FX3 0
+	ifaction 0
+	{
+		sizeat 40 32
+		cstat 130
+		setactor[THISACTOR].blend 255
+		setactor[THISACTOR].shade -127
+		randvar TEMP 2
+		switch TEMP
+			case 0: action SHARD_FX3_ANIM1 break
+			case 1: action SHARD_FX3_ANIM2 break
+			case 2: action SHARD_FX3_ANIM3 break
+		endswitch
+	}
+	
+	ifaction SHARD_FX3_ANIM1
+	{
+		ifactioncount 6
+			killit
+	}
+	else ifaction SHARD_FX3_ANIM2
+	{
+		ifactioncount 5
+			killit
+	}
+	else ifaction SHARD_FX3_ANIM3
+	{
+		ifactioncount 4
+			killit
+	}
+enda
+

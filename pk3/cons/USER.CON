@@ -484,8 +484,8 @@ The sound fx section follows this explanation.
 // BIT 4 (16) Glob. Heard (sndist = 0)
 
 // Predator Trooper
-definesound PRED_ROAM     roam06.voc          0   0   3  0   0
-definesound PRED_ROAM2    roam58.voc          0   0   3  0   0
+definesound PRED_ROAM     sounds/roam06.wav          0   0   3  0   0
+definesound PRED_ROAM2    sounds/roam58.wav          0   0   3  0   0
 definesound PRED_RECOG    sounds/predrg.wav          0   0   3  0   0
 definesound PRED_ATTACK   sounds/gblasr01.wav      256  256  3  0   7680
 definesound PRED_PAIN     sounds/predpn.ogg          200 500 3  0   0
@@ -510,7 +510,7 @@ definesound NEWBEAST_DYING    bldie3a.voc        1200  100 3   0   0
 definesound NEWBEAST_SPIT     blspit1a.voc      -128 128   0   0   0
 
 // Pig Cop
-definesound PIG_ROAM      roam29.voc           -200 400   3   0   0
+definesound PIG_ROAM      sounds/roam29.wav           -200 400   3   0   0
 definesound PIG_ROAM2     sounds/roam67.ogg           -200 400   3   0   0
 definesound PIG_ROAM3     sounds/pigrm.ogg            -200 400   3   0   0
 definesound PIG_RECOG     sounds/pigrg.ogg           -200 400   3   0   0
@@ -616,9 +616,9 @@ definesound SHOTGUN_COCK        sounds/shotgnck.ogg      96    192   3   0   0
 definesound RPG_SHOOT           sounds/rpgfire.ogg       -32   0     4   0   0
 definesound FLY_BY              sounds/flyby.ogg         -256  256   3   0   0
 definesound RPG_EXPLODE         sounds/bombexpl.ogg      -1024 1024  128 0   0
-definesound CAT_FIRE            sounds/flametrap.wav       0   384   4   0   0
-definesound SHRINKER_FIRE       sounds/shrinker.ogg      -512  0     5   0   0
-definesound ACTOR_SHRINKING     shrink.voc        0     0     2   0   0
+definesound CAT_FIRE            sounds/freezeth.wav       0   64   4   0   0
+definesound SHRINKER_FIRE       sounds/shrinker.wav      -128  128     5   0   0 // First params originally -512 and 0
+definesound ACTOR_SHRINKING     sounds/shrink.wav        0     0     2   0   0
 definesound ACTOR_GROWING       enlarge.voc    1024     0     2   0   0
 
 definesound PIPEBOMB_BOUNCE     sounds/pbombbnc.ogg      0     0     2   0 6144

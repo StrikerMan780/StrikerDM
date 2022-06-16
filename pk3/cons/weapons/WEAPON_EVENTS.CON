@@ -335,6 +335,21 @@ onevent EVENT_DISPLAYWEAPON // P_DisplayWeapon !UNSYNCHRONIZED!
 	getuserdef[THISACTOR].weaponscale weaponscale
 	getplayer[THISACTOR].i playerid
 	
+	ifvarg weaponcount 0
+	{
+		getuserdef[].pause_on hud_temp
+		
+		ifvarn hud_temp 1
+		ifvarg clock_diff 0
+		{
+			addvarvar fastweapcnt clock_diff
+		}
+	}
+	else
+	{
+		setvar fastweapcnt 0
+	}
+	
 	// WEAPON SWAY
 	setvar gun_pos 72
 	setvarvar hud_temp weapon_pos

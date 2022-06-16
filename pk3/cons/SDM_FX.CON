@@ -104,8 +104,9 @@ actor RAILGUNTRAIL 1 RAILGUN_TRAIL_FRAMES
 }
 enda
 
-action GIBBLOODFRAMES -1 4 1 1 15
-actor GIBBLOOD 0 GIBBLOODFRAMES	
+action BLOODFRAMES 0 4 1 1 15
+action BLOODFRAMES_FAST 0 4 1 1 8
+actor BLOOD 0 BLOODFRAMES
 {
 	ifcount 1 { }
 	else
@@ -126,28 +127,8 @@ actor GIBBLOOD 0 GIBBLOODFRAMES
 			killit
 		}
 		
-		cstat 130
-		
-		randvar TEMP2 8
-		addvar TEMP2 24
-		setactor[THISACTOR].xrepeat TEMP2
-		setactor[THISACTOR].yrepeat TEMP2
-		
-		setvar ANIMATE_FLAGS ANIMATE_FLAG_BLOODBRIGHT
-		orvar ANIMATE_FLAGS ANIMATE_FLAG_FADEOUT
-		orvar ANIMATE_FLAGS ANIMATE_FLAG_SCALE
-		setactor[THISACTOR].mdflags 16
-		
-		setvar LOTAG_MEMORY 0 // Timer
-		setvar HITAG_MEMORY 72 // End time
-		setvarvar XREPEAT_MEMORY TEMP2 // Start scale
-		setvar YREPEAT_MEMORY 72 // End scale
-	
-		ifrnd 128
-			cstator 4
-			
-		ifrnd 128
-			cstator 8
+		ifspawnedby JIBS6
+			action BLOODFRAMES_FAST
 	}
 	
 	ifactioncount 4
@@ -693,7 +674,6 @@ action PIGJIB1_LAND 175 6 1 1 6
 actor PIGJIB1 0
 	ifaction 0
 	{
-		setactor[THISACTOR].shade -32
 		setactor[THISACTOR].mdflags 16
 		setvar ANIMATE_FLAGS ANIMATE_FLAG_BLOODBRIGHT
 		setvar ISADULT ADULT_LOCKOUTONLY
@@ -713,8 +693,8 @@ actor PIGJIB1 0
 	{
 		state gore_movement
 		
+		espawn BLOOD
 		getactor[THISACTOR].pal TEMP2
-		espawn GIBBLOOD
 		setactor[RETURN].pal TEMP2
 		setvar RETURN 0
 		
@@ -905,7 +885,6 @@ action BLOODSPURT_LAND 188 6 1 1 6
 actor BLOODSPURT 0
 	ifaction 0
 	{
-		setactor[THISACTOR].shade -32
 		setactor[THISACTOR].mdflags 16
 		setvar ANIMATE_FLAGS ANIMATE_FLAG_BLOODBRIGHT
 		setvar ISADULT ADULT_LOCKOUTONLY
@@ -970,7 +949,6 @@ actor SPURTTRAIL 0
 		ifrnd 128
 			cstator 8
 		
-		setactor[THISACTOR].shade -32
 		setactor[THISACTOR].mdflags 16
 		setvar ANIMATE_FLAGS ANIMATE_FLAG_BLOODBRIGHT
 		orvar ANIMATE_FLAGS ANIMATE_FLAG_FADEOUT
@@ -994,8 +972,8 @@ actor SPURTTRAIL 0
 enda
 
 action EXPLOSIONSPARK_ANIM 0 6 1 1 12
-spritenoshade EXPLOSIONSPARK
-actor EXPLOSIONSPARK 0	
+spriteflags EXPLOSIONSPARK 16388 //SFLAG_NOSHADE + SFLAG_NOTELEPORT
+actor EXPLOSIONSPARK 1	
 	ifaction 0
 	{
 		setactor[THISACTOR].shade -127
@@ -1105,6 +1083,7 @@ actor BLOODINFLUID1 0
 		setactor[THISACTOR].mdflags 16
 		orvar ANIMATE_FLAGS ANIMATE_FLAG_SCALE
 		orvar ANIMATE_FLAGS ANIMATE_FLAG_FADEOUT
+		orvar ANIMATE_FLAGS ANIMATE_FLAG_BLOODBRIGHT
 		
 		setvar LOTAG_MEMORY 0 // Timer
 		setvar HITAG_MEMORY 256 // End time
@@ -1136,6 +1115,7 @@ actor BLOODINFLUID2 0
 		setactor[THISACTOR].mdflags 16
 		orvar ANIMATE_FLAGS ANIMATE_FLAG_SCALE
 		orvar ANIMATE_FLAGS ANIMATE_FLAG_FADEOUT
+		orvar ANIMATE_FLAGS ANIMATE_FLAG_BLOODBRIGHT
 		
 		setvar LOTAG_MEMORY 0 // Timer
 		setvar HITAG_MEMORY 256 // End time
