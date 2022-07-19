@@ -25,6 +25,7 @@ Shtovladya - BLOODINFLUID2 sprites (initial work).
 MaxiClouds - SSG Sprites from Re-PowerSlave. (Additional sprite modification done by Striker)
 ID Software - Doomguy sprites and health/armor bonus sprites.
 Monolith Productions - Blood trails.
+Dzierzan - Smooth Duke Sprites.
 Striker - The various custom effector sprites, the fully-open ejection port with shell for shotgun pump, menu sprites.
 
 Voxels
