@@ -26,6 +26,7 @@ MaxiClouds - SSG Sprites from Re-PowerSlave. (Additional sprite modification don
 ID Software - Doomguy sprites and health/armor bonus sprites.
 Monolith Productions - Blood trails.
 Dzierzan - Smooth Duke Sprites.
+GalaxyTrail - Freedom Planet Sprites.
 Striker - The various custom effector sprites, the fully-open ejection port with shell for shotgun pump, menu sprites.
 
 Voxels
@@ -37,6 +38,9 @@ Shodanbot - Sliding switch, cans of mace.
 mxrtxn - Desk lamp, bowling pin, red/black Barrel, SW voxels
 Borion - Toilet, urinal, stage lamp, lever switch, garbage can, rubber can, seenine, space suit, coffee machine, ooze filter.
 Reikall - Doom Voxels
+********************************************************************
+FOR ADDITIONAL VOXEL CREDITS, REFER TO THE DUKE3D VOXEL PACK CREDITS
+********************************************************************
 
 Textures
 --------
@@ -44,6 +48,7 @@ Textures
 Nerve Software - World Tour Textures.
 Fox - 3D Skyboxes.
 "The Chayed - KIIRA" - Sunny day skybox.
+GalaxyTrail - Freedom Planet Textures.
 
 Maps
 -----
@@ -54,6 +59,10 @@ Noldor Ranzou, Vandclash, Kneiiden, MarioJCH, Duke64, Fernando Marquez - Communi
 *****************************************************************
 For more detailed community map credits, see "mapcredits" folder.
 *****************************************************************
+
+Other
+-----
+ReaperAA - Reaper's DukePal (PALETTE.DAT)
 
 Special Thanks
 ---------------
