@@ -117,7 +117,7 @@ state draw_expander // GROW_WEAPON:
     }
 ends
 
-spritenoshade GROWSPARK
+spriteflags GROWSPARK 1048580 // SFLAG_NOSHADE(4) + SFLAG_NODAMAGEPUSH(1048576)
 defineprojectile GROWSPARK PROJ_WORKSLIKE 98314
 defineprojectile GROWSPARK PROJ_CSTAT 130
 defineprojectile GROWSPARK PROJ_VEL 768
@@ -138,8 +138,7 @@ defineprojectile GROWSPARK PROJ_TXREPEAT 24
 defineprojectile GROWSPARK PROJ_TYREPEAT 24
 
 state expander_radius
-	headspritestat CURSPRITE 10 // STAT_PLAYER
-	setvarvar LASTSPRITE CURSPRITE
+	headspritestat CURSPRITE STAT_PLAYER
 	whilevarn CURSPRITE -1
 	{
 		getactor[THISACTOR].owner TEMP
@@ -156,38 +155,23 @@ state expander_radius
 				{
 					getactor[CURSPRITE].cstat TEMP
 					ifvarand TEMP 256 // Shootable
-					{	
-						getactor[THISACTOR].owner TEMP
-						setactor[CURSPRITE].htowner TEMP
-						setactor[CURSPRITE].htpicnum GROWSPARK
-						
-						getactor[CURSPRITE].extra TEMP
-						subvar TEMP GROWSPARK_WEAPON_STRENGTH
-						ifvarl TEMP 1
-						{
-							getactor[CURSPRITE].htextra TEMP
-							addvar TEMP 999
-							setactor[CURSPRITE].htextra TEMP
-						}
-						else
-						{
-							setactor[CURSPRITE].extra TEMP
-							getactor[CURSPRITE].htextra TEMP
-							addvar TEMP 1
-							setactor[CURSPRITE].htextra TEMP
-						}
+					{
+						setvar STATE_PARAM1 GROWSPARK_WEAPON_STRENGTH
+						setvarvar STATE_PARAM2 CURSPRITE
+						setvar STATE_PARAM3 GROWSPARK
+						setvar STATE_PARAM4 0
+						state apply_damage
 					}
 				}
 			}
 		}
 			
-		nextspritestat CURSPRITE LASTSPRITE
-		setvarvar LASTSPRITE CURSPRITE
+		nextspritestat CURSPRITE CURSPRITE
 	}
 ends
 
 
-spriteflags EXPANDEREXPLOSION 4
+spriteflags EXPANDEREXPLOSION 4 // SFLAG_NOSHADE(4)
 action EXPANDERFRAMES 0 4 1 1 10
 actor EXPANDEREXPLOSION 0
 	ifaction 0
@@ -200,7 +184,7 @@ actor EXPANDEREXPLOSION 0
 		
 		espawn FIRESHELL
 		setactor[RETURN].pal 199
-		setactorvar[RETURN].HITAG_MEMORY 32 // End time
+		setactorvar[RETURN].ANIMATE_LIFETIME 32 // End time
 		setactorvar[RETURN].XREPEAT_MEMORY 0 // Start radius
 		setactorvar[RETURN].YREPEAT_MEMORY 48 // End radius
 		setvar RETURN 0

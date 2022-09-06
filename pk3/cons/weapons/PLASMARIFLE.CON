@@ -286,7 +286,7 @@ actor PLASMATRAIL 0
 		setactor[THISACTOR].mdflags 16
 		
 		setvar ANIMATE_FLAGS ANIMATE_FLAG_FADEOUT
-		setvar LOTAG_MEMORY 0 // Timer
-		setvar HITAG_MEMORY 8 // End time
+		setvarvar ANIMATE_STARTCLOCK ANIMATE_CLOCK // Timer
+		setvar ANIMATE_LIFETIME 8 // End time
 	}
 enda

@@ -222,3 +222,26 @@ texture 6760 { pal 0 { file "tiles/6760.png" artquality } }
 texture 6761 { pal 0 { file "tiles/6761.png" artquality } }
 texture 6762 { pal 0 { file "tiles/6762.png" artquality } }
 texture 6763 { pal 0 { file "tiles/6763.png" artquality } }
+
+texture 6764 { pal 0 { file "tiles/6764.png" artquality } }
+texture 6765 { pal 0 { file "tiles/6765.png" artquality } }
+texture 6766 { pal 0 { file "tiles/6766.png" artquality } }
+texture 6767 { pal 0 { file "tiles/6767.png" artquality } }
+texture 6768 { pal 0 { file "tiles/6768.png" artquality } }
+texture 6769 { pal 0 { file "tiles/6769.png" artquality } }
+texture 6770 { pal 0 { file "tiles/6770.png" artquality } }
+texture 6771 { pal 0 { file "tiles/6771.png" artquality } }
+texture 6772 { pal 0 { file "tiles/6772.png" artquality } }
+texture 6773 { pal 0 { file "tiles/6773.png" artquality } }
+texture 6774 { pal 0 { file "tiles/6774.png" artquality } }
+texture 6775 { pal 0 { file "tiles/6775.png" artquality } }
+texture 6776 { pal 0 { file "tiles/6776.png" artquality } }
+texture 6777 { pal 0 { file "tiles/6777.png" artquality } }
+texture 6778 { pal 0 { file "tiles/6778.png" artquality } }
+texture 6779 { pal 0 { file "tiles/6779.png" artquality } }
+texture 6780 { pal 0 { file "tiles/6780.png" artquality } }
+texture 6781 { pal 0 { file "tiles/6781.png" artquality } }
+texture 6782 { pal 0 { file "tiles/6782.png" artquality } }
+texture 6783 { pal 0 { file "tiles/6783.png" artquality } }
+texture 6784 { pal 0 { file "tiles/6784.png" artquality } }
+texture 6785 { pal 0 { file "tiles/6785.png" artquality } }

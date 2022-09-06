@@ -1,14 +1,22 @@
-state respawnit
+defstate respawnit
 	ifcount RESPAWNITEMTIME
 	{
-		spawn TRANSPORTERSTAR
+		ifactor CRYSTALSHARD
+			spawn SHARD_FX2
+		else ifactor LIFEPETAL
+			spawn PETAL_FX2
+		else
+		{
+			spawn TRANSPORTERSTAR
+			sound TELEPORTER
+		}
+
 		move 0
 		cstat 0
-		sound TELEPORTER
 	}
 ends
 
-state quikget
+defstate quikget
 	ifactor ATOMICHEALTH
 		globalsound GETATOMICHEALTH
 	else
@@ -17,7 +25,7 @@ state quikget
 	killit
 ends
 
-state quikweaponget
+defstate quikweaponget
 	state randgetweapsnds
 	palfrom 32 0 32
 	ifgotweaponce 1
@@ -25,7 +33,7 @@ state quikweaponget
 	killit
 ends
 
-state getcode_doomitem
+defstate getcode_doomitem
 	globalsound DSITEMUP
 	palfrom 16 32 32 8
 	ifvare RESPAWN_ITEMS 1
@@ -38,7 +46,7 @@ state getcode_doomitem
 		killit
 ends
 
-state quikget_doomitem
+defstate quikget_doomitem
 	globalsound DSITEMUP
 	palfrom 16 32 32 8
 	killit
@@ -104,72 +112,133 @@ actor ARMORBONER WEAK
 	}
 enda
 
-state getcode_doomitem
-	globalsound DSITEMUP
-	palfrom 16 32 32 8
-	ifvare RESPAWN_ITEMS 1
-	{
-		move RESPAWN_ACTOR_FLAG
-		state create_spawn_marker
-		cstat 32768
-	}
-	else
-		killit
-ends
-
-state quikget_doomitem
-	
-ends
-
+move SHARD_THROW_VEL 72 0
+move FPITEM_HOMING 0 0
 spritenoshade CRYSTALSHARD
 actor CRYSTALSHARD WEAK
 	state item_shared_code
 	
+	ifspawnedby SHARDFLOWER
+	ifvarn EXTRA_MEMORY 6969 // Hack magic number to make sure this doesn't get called again
+	{
+		move SHARD_THROW_VEL geth
+		setvar EXTRA_MEMORY 6969
+	}
+	
+	ifmove SHARD_THROW_VEL
+	iffloordistl 1
+		move 0
+	
 	ifmove RESPAWN_ACTOR_FLAG
 		state respawnit
+	else ifp pshrunk nullop
 	else
-		ifp pshrunk nullop
-	else
-	ifp palive
-	ifpdistl RETRIEVEDISTANCE
-	ifcount 6
-	ifcanseetarget
 	{
-		getplayer[THISACTOR].shield_amount TEMP
-		ifvarl TEMP 200
+		ifvarg TARGET -1
 		{
-			setplayer[THISACTOR].max_shield_amount 200
-			addinventory GET_SHIELD 2
-			setplayer[THISACTOR].max_shield_amount SHIELD_AMOUNT
-			quote 136
+			setvar TEMP2 0 // TEMP2 being 1 means cancel homing.
 			
-			ifvarg TEMP 200
+			getactor[TARGET].extra TEMP
+			ifvarl TEMP 1 // Dead
+				setvar TEMP2 1
+				
+			getactor[TARGET].yvel TEMP
+			getplayer[TEMP].shield_amount TEMP
+			ifvare TEMP 200 // Armor is full
+				setvar TEMP2 1
+				
+			ifvare TEMP2 1 // Something happened, reset.
 			{
-				setplayer[THISACTOR].shield_amount 200
+				move 0
+				spawn SHARD_FX2
+				
+				setactor[THISACTOR].x SPAWN_ORIGX
+				setactor[THISACTOR].y SPAWN_ORIGY
+				setactor[THISACTOR].z SPAWN_ORIGZ
+				setactor[THISACTOR].ang SPAWN_ORIGANG
+				changespritesect THISACTOR SECTNUM_MEMORY
+				setvar TARGET -1
+				
+				spawn SHARD_FX2
+				break
 			}
 			
-			ifspawnedby CRYSTALSHARD
+			// STATE_PARAM1 = Target Sprite
+			// STATE_PARAM2 = Z movement only distance (0 = None)
+			// STATE_PARAM3 = Maximum angle change per tic (0 = No Limit)
+			setvarvar STATE_PARAM1 TARGET
+			setactor[THISACTOR].xvel 256
+			setvar STATE_PARAM2 0
+			setvar STATE_PARAM3 256
+			state home_on_target
+		}
+	
+		ifp palive
+		ifcount 6
+		ifcanseetarget
+		{
+			ifvare TARGET -1
+			ifpdistl 4096
 			{
-				spawn SHARD_FX1
-				spawn SHARD_FX2
-				globalsound FP_SHARDGET
-				palfrom 16 0 64 64
-				ifvare RESPAWN_ITEMS 1
+				getplayer[THISACTOR].shield_amount TEMP
+				ifvarl TEMP 200
 				{
-					move RESPAWN_ACTOR_FLAG
-					//state create_spawn_marker
-					cstat 32768
+					getplayervar[THISACTOR].SHIELD_HEALTH TEMP
+					ifvarg TEMP 0
+					{
+						getplayervar[THISACTOR].SHIELD_TYPE TEMP
+						ifvare TEMP SHIELDTYPE_EARTH
+						{
+							getplayer[THISACTOR].i TARGET
+							randvar TEMP2 2047
+							setactor[THISACTOR].ang TEMP2
+							move FPITEM_HOMING noclip
+						}
+					}
 				}
-				else
-					killit
 			}
-			else
+			
+			ifpdistl RETRIEVEDISTANCE
 			{
-				spawn SHARD_FX1
-				spawn SHARD_FX2
-				globalsound FP_SHARDGET
-				palfrom 16 0 64 64
-				killit
+				getplayer[THISACTOR].shield_amount TEMP
+				ifvarl TEMP 200
+				{
+					setplayer[THISACTOR].max_shield_amount 200
+					addinventory GET_SHIELD 2
+					setplayer[THISACTOR].max_shield_amount SHIELD_AMOUNT
+					quote 136
+					
+					ifvarg TEMP 200
+						setplayer[THISACTOR].shield_amount 200
+						
+					spawn SHARD_FX1
+					spawn SHARD_FX2
+					globalsound FP_SHARDGET
+					palfrom 16 0 64 64
+					
+					ifspawnedby CRYSTALSHARD
+					{
+						ifvare RESPAWN_ITEMS 1
+						{
+							setactor[THISACTOR].x SPAWN_ORIGX
+							setactor[THISACTOR].y SPAWN_ORIGY
+							setactor[THISACTOR].z SPAWN_ORIGZ
+							setactor[THISACTOR].ang SPAWN_ORIGANG
+							changespritesect THISACTOR SECTNUM_MEMORY
+							setvar TARGET -1
+							
+							move RESPAWN_ACTOR_FLAG
+							//state create_spawn_marker
+							cstat 32768
+						}
+						else
+							killit
+					}
+					else
+					{
+						killit
+					}
+				}
 			}
 		}
 	}
@@ -180,9 +249,17 @@ actor SHARD_FX1 0
 	ifcount 1 { }
 	else
 	{
-		sizeat 40 32
+		sizeat 48 40
 		cstat 128
 		setactor[THISACTOR].shade -127
+		ifspawnedby CRYSTALSHARD
+		{
+			getactor[THISACTOR].z TEMP
+			addvar TEMP -2048
+			setactor[THISACTOR].z TEMP
+			setactor[THISACTOR].htbposz TEMP
+		}
+		
 		// Set random lifetime
 		randvar EXTRA_MEMORY 5
 		addvar EXTRA_MEMORY 5
@@ -212,23 +289,27 @@ actor SHARD_FX1 0
 	setsprite THISACTOR SPAWN_ORIGX SPAWN_ORIGY SPAWN_ORIGZ
 enda
 
+move SHARD_FX_VEL 8 -32
 action SHARD_FX2_ANIM 0 7 1 1 4
 spritenoshade SHARD_FX2
 actor SHARD_FX2 0
 	ifaction 0
 	{
-		sizeat 40 32
+		sizeat 48 40
 		cstat 130
 		setactor[THISACTOR].blend 255
 		setactor[THISACTOR].shade -127
 		ifspawnedby CRYSTALSHARD
 		{
 			getactor[THISACTOR].z TEMP
-			addvar TEMP -1280
+			addvar TEMP -2048
 			setactor[THISACTOR].z TEMP
 			setactor[THISACTOR].htbposz TEMP
 		}
 		action SHARD_FX2_ANIM
+		
+		ifspawnedby SHARDFLOWER
+			move SHARD_FX_VEL getv noclip
 	}
 	
 	ifactioncount 7
@@ -242,10 +323,62 @@ spritenoshade SHARD_FX3
 actor SHARD_FX3 0
 	ifaction 0
 	{
-		sizeat 40 32
+		sizeat 48 40
 		cstat 130
 		setactor[THISACTOR].blend 255
 		setactor[THISACTOR].shade -127
+		randvar TEMP 2
+		switch TEMP
+			case 0: action SHARD_FX3_ANIM1 break
+			case 1: action SHARD_FX3_ANIM2 break
+			case 2: action SHARD_FX3_ANIM3 break
+		endswitch
+		
+		ifspawnedby SHARDFLOWER
+			move SHARD_FX_VEL getv
+	}
+	
+	ifaction SHARD_FX3_ANIM1
+	{
+		ifactioncount 6
+			killit
+	}
+	else ifaction SHARD_FX3_ANIM2
+	{
+		ifactioncount 5
+			killit
+	}
+	else ifaction SHARD_FX3_ANIM3
+	{
+		ifactioncount 4
+			killit
+	}
+enda
+
+spritenoshade WOODSHIELD_FX1
+actor WOODSHIELD_FX1 0
+	ifaction 0
+	{
+		sizeat 48 40
+		cstat 130
+		setactor[THISACTOR].blend 255
+		setactor[THISACTOR].shade -127
+		action SHARD_FX2_ANIM
+	}
+	
+	ifactioncount 7
+		killit
+enda
+
+spritenoshade WOODSHIELD_FX2
+actor WOODSHIELD_FX2 0
+	ifaction 0
+	{
+		sizeat 48 40
+		cstat 130
+		setactor[THISACTOR].blend 255
+		setactor[THISACTOR].shade -127
+		
 		randvar TEMP 2
 		switch TEMP
 			case 0: action SHARD_FX3_ANIM1 break
@@ -271,3 +404,1286 @@ actor SHARD_FX3 0
 	}
 enda
 
+defstate spawn_shard_fx2
+	espawn SHARD_FX2
+	
+	randvar SPAWN_ORIGX 256
+	subvar SPAWN_ORIGX 128
+	getactor[RETURN].x TEMP
+	addvarvar SPAWN_ORIGX TEMP
+	setactor[RETURN].x SPAWN_ORIGX
+	
+	randvar SPAWN_ORIGY 256
+	subvar SPAWN_ORIGY 128
+	getactor[RETURN].y TEMP
+	addvarvar SPAWN_ORIGY TEMP
+	setactor[RETURN].y SPAWN_ORIGY
+	
+	randvar SPAWN_ORIGZ -2048
+	subvar SPAWN_ORIGZ 1280
+	getactor[RETURN].z TEMP
+	addvarvar SPAWN_ORIGZ TEMP
+	setactor[RETURN].z SPAWN_ORIGZ
+		
+	setvar RETURN 0
+ends
+
+defstate spawn_shard_fx3
+	espawn SHARD_FX2
+	
+	randvar SPAWN_ORIGX 256
+	subvar SPAWN_ORIGX 128
+	getactor[RETURN].x TEMP
+	addvarvar SPAWN_ORIGX TEMP
+	setactor[RETURN].x SPAWN_ORIGX
+	
+	randvar SPAWN_ORIGY 256
+	subvar SPAWN_ORIGY 128
+	getactor[RETURN].y TEMP
+	addvarvar SPAWN_ORIGY TEMP
+	setactor[RETURN].y SPAWN_ORIGY
+	
+	randvar SPAWN_ORIGZ -2048
+	subvar SPAWN_ORIGZ 1280
+	getactor[RETURN].z TEMP
+	addvarvar SPAWN_ORIGZ TEMP
+	setactor[RETURN].z SPAWN_ORIGZ
+		
+	setvar RETURN 0
+ends
+
+action SHARDFLOWER_IDLE 0 1 1 1 4
+action SHARDFLOWER_BROKEN 5 1 1 1 4
+spritenoshade SHARDFLOWER
+actor SHARDFLOWER WEAK
+	ifaction 0
+	{
+		sizeat 48 40
+		cstat 257
+		setactor[THISACTOR].shade -127
+		action SHARDFLOWER_IDLE
+	}
+	
+	ifaction SHARDFLOWER_IDLE
+	{
+		ifrnd 8
+			state spawn_shard_fx2
+	
+		ifrnd 16
+			state spawn_shard_fx3
+		
+		ifhitweapon
+		ifdead
+		{
+			action SHARDFLOWER_BROKEN
+			resetcount
+			cstat 0
+			sound FP_FLOWER_BREAK
+			sound FP_SHATTER
+			
+			setvar TEMP2 0
+			setvar TEMP3 0
+			whilevarn TEMP3 7
+			{
+				state spawn_shard_fx3
+				
+				espawn CRYSTALSHARD
+				getactor[RETURN].z TEMP
+				addvar TEMP -1024
+				setactor[RETURN].z TEMP
+				
+				randvar TEMP -1024
+				addvar TEMP -1024
+				setactor[RETURN].zvel TEMP
+				
+				addvar TEMP2 292
+				setactor[RETURN].ang TEMP2
+				setvar RETURN 0
+				
+				addvar TEMP3 1
+			}
+		}
+	}
+	else ifaction SHARDFLOWER_BROKEN
+	{
+		ifcount RESPAWNITEMTIME
+		{
+			strength WEAK
+			cstat 257
+			action SHARDFLOWER_IDLE
+			
+			setvar TEMP3 0
+			whilevarn TEMP3 6
+			{
+				state spawn_shard_fx3
+				addvar TEMP3 1
+			}
+		}
+	}
+enda
+
+spritenoshade LIFEPETAL
+actor LIFEPETAL WEAK
+	state item_shared_code
+	
+	ifspawnedby LIFEFLOWER
+	ifvarn EXTRA_MEMORY 6969 // Hack magic number to make sure this doesn't get called again
+	{
+		move SHARD_THROW_VEL geth
+		setvar EXTRA_MEMORY 6969
+	}
+	
+	ifmove SHARD_THROW_VEL
+	iffloordistl 1
+		move 0
+	
+	ifmove RESPAWN_ACTOR_FLAG
+		state respawnit
+	else
+		ifp pshrunk nullop
+	else
+	{
+		ifvarg TARGET -1
+		{
+			setvar TEMP2 0 // TEMP2 being 1 means cancel homing.
+			
+			getactor[TARGET].extra TEMP
+			ifvarl TEMP 1 // Dead
+				setvar TEMP2 1
+			
+			ifvare TEMP 200 // Health Full
+				setvar TEMP2 1
+				
+			ifvare TEMP2 1 // Something happened, reset.
+			{
+				move 0
+				spawn PETAL_FX2
+				
+				setactor[THISACTOR].x SPAWN_ORIGX
+				setactor[THISACTOR].y SPAWN_ORIGY
+				setactor[THISACTOR].z SPAWN_ORIGZ
+				setactor[THISACTOR].ang SPAWN_ORIGANG
+				changespritesect THISACTOR SECTNUM_MEMORY
+				setvar TARGET -1
+				
+				spawn PETAL_FX2
+				break
+			}
+			
+			// STATE_PARAM1 = Target Sprite
+			// STATE_PARAM2 = Z movement only distance (0 = None)
+			// STATE_PARAM3 = Maximum angle change per tic (0 = No Limit)
+			setvarvar STATE_PARAM1 TARGET
+			setactor[THISACTOR].xvel 256
+			setvar STATE_PARAM2 0
+			setvar STATE_PARAM3 256
+			state home_on_target
+		}
+		
+		ifp palive
+		ifcount 6
+		ifcanseetarget
+		{
+			ifvare TARGET -1
+			ifpdistl 4096
+			{
+				getplayer[THISACTOR].i TEMP
+				getactor[TEMP].extra TEMP
+				ifvarl TEMP 200
+				{
+					getplayervar[THISACTOR].SHIELD_HEALTH TEMP
+					ifvarg TEMP 0
+					{
+						getplayervar[THISACTOR].SHIELD_TYPE TEMP
+						ifvare TEMP SHIELDTYPE_WOOD
+						{
+							getplayer[THISACTOR].i TARGET
+							randvar TEMP2 2047
+							setactor[THISACTOR].ang TEMP2
+							move FPITEM_HOMING noclip
+						}
+					}
+				}
+			}
+			
+			ifpdistl RETRIEVEDISTANCE
+			{
+				setvar TEMP 0
+				ifvarg TARGET -1
+				{
+					ifphealthl 200
+						setvar TEMP 1
+				}
+				else
+				{
+					ifphealthl 100
+						setvar TEMP 1
+				}
+				
+				ifvare TEMP 1
+				{
+					state stop_player_burn
+					quote 135
+					
+					ifvarg TARGET -1 // We're using a shield, increase capacity.
+						setplayer[THISACTOR].max_player_health 200
+					
+					addphealth 7
+					
+					ifvarg TARGET -1
+						setplayer[THISACTOR].max_player_health MAXPLAYERHEALTH
+					
+					spawn PETAL_FX1
+					globalsound FP_PETALGET
+					palfrom 16 64 32 0
+					
+					ifspawnedby LIFEPETAL
+					{
+						ifvare RESPAWN_ITEMS 1
+						{
+							setactor[THISACTOR].x SPAWN_ORIGX
+							setactor[THISACTOR].y SPAWN_ORIGY
+							setactor[THISACTOR].z SPAWN_ORIGZ
+							setactor[THISACTOR].ang SPAWN_ORIGANG
+							changespritesect THISACTOR SECTNUM_MEMORY
+							setvar TARGET -1
+							
+							move RESPAWN_ACTOR_FLAG
+							//state create_spawn_marker
+							cstat 32768
+						}
+						else
+							killit
+					}
+					else
+					{
+						killit
+					}
+				}
+			}
+		}
+	}
+enda
+
+move HEART_MOVE       -32 -36
+move HEART_MOVE_FAST     -32 -52
+action PETAL_FX1_ANIM 0 1 1 1 4
+spritenoshade PETAL_FX1
+actor PETAL_FX1 0
+	ifaction 0
+	{
+		sizeat 48 40
+		cstat 130
+		setactor[THISACTOR].blend 255
+		setactor[THISACTOR].shade -127
+		
+		ifspawnedby LIFEPETAL
+		{
+			getactor[THISACTOR].z TEMP
+			addvar TEMP -2048
+			setactor[THISACTOR].z TEMP
+			setactor[THISACTOR].htbposz TEMP
+		}
+		
+		action PETAL_FX1_ANIM
+	}
+	
+	ifrnd 192
+		move HEART_MOVE getv geth noclip randomangle
+	else
+		move HEART_MOVE_FAST getv geth noclip randomangle
+		
+	addvar EXTRA_MEMORY 1
+	ifvare EXTRA_MEMORY 15
+	{
+		spawn PETAL_FX2
+		killit
+	}
+enda
+
+action PETAL_FX2_ANIM 0 4 1 1 2
+actor PETAL_FX2 0
+	ifaction 0
+	{
+		sizeat 48 40
+		cstat 130
+		setactor[THISACTOR].blend 255
+		setactor[THISACTOR].shade -127
+		ifspawnedby LIFEPETAL
+		{
+			sizeat 80 64
+			getactor[THISACTOR].z TEMP
+			addvar TEMP -2048
+			setactor[THISACTOR].z TEMP
+			setactor[THISACTOR].htbposz TEMP
+		}
+		action PETAL_FX2_ANIM
+	}
+		
+	ifactioncount 4
+	{
+		killit
+	}
+enda
+
+action LIFEFLOWER_IDLE 0 1 1 1 4
+action LIFEFLOWER_BREAK 0 7 1 1 2
+action LIFEFLOWER_BROKEN 7 1 1 1 4
+action LIFEFLOWER_REGEN 7 7 1 -1 4
+spritenoshade LIFEFLOWER
+actor LIFEFLOWER WEAK
+	ifaction 0
+	{
+		sizeat 48 40
+		cstat 257
+		setactor[THISACTOR].shade -127
+		action LIFEFLOWER_IDLE
+	}
+	
+	ifaction LIFEFLOWER_IDLE
+	{
+		ifhitweapon
+		ifdead
+		{
+			action LIFEFLOWER_BREAK
+			resetcount
+			cstat 0
+			sound FP_FLOWER_BREAK
+			sound FP_PETALFLY
+			
+			setvar TEMP2 0
+			setvar TEMP3 0
+			whilevarn TEMP3 6
+			{
+				espawn LIFEPETAL
+				getactor[RETURN].z TEMP
+				addvar TEMP -1024
+				setactor[RETURN].z TEMP
+				
+				randvar TEMP -1024
+				addvar TEMP -1024
+				setactor[RETURN].zvel TEMP
+				
+				addvar TEMP2 341
+				setactor[RETURN].ang TEMP2
+				setvar RETURN 0
+				
+				addvar TEMP3 1
+			}
+		}
+	}
+	else ifaction LIFEFLOWER_BREAK
+	{
+		ifactioncount 7
+		{
+			action LIFEFLOWER_BROKEN
+			resetcount
+			resetactioncount
+		}
+	}
+	else ifaction LIFEFLOWER_BROKEN
+	{
+		ifcount RESPAWNITEMTIME
+		{
+			action LIFEFLOWER_REGEN
+			resetcount
+			resetactioncount
+		}
+	}
+	else ifaction LIFEFLOWER_REGEN
+	{
+		ifactioncount 7
+		{
+			strength WEAK
+			cstat 257
+			action LIFEFLOWER_IDLE
+		}
+	}
+enda
+
+action BOMBFLOWER_IDLE 0 1 1 1 4
+action BOMBFLOWER_EXPLODE 1 1 1 1 2
+action BOMBFLOWER_BROKEN -1 1 1 1 4
+action BOMBFLOWER_COUNTDOWN1 0 3 1 1 8
+action BOMBFLOWER_COUNTDOWN2 0 3 1 1 4
+action BOMBFLOWER_COUNTDOWN3 0 3 1 1 2
+actor BOMBFLOWER WEAK
+	ifaction 0
+	{
+		sizeat 48 40
+		cstat 257
+		action BOMBFLOWER_IDLE
+		setvar LOTAG_MEMORY 0
+		setvar XREPEAT_MEMORY 0
+		setvar EXTRA_MEMORY 0
+	}
+	
+	ifaction BOMBFLOWER_IDLE
+	{
+		ifvare EXTRA_MEMORY 6969
+		{
+			setvar XREPEAT_MEMORY 0
+			setvar EXTRA_MEMORY 0
+			setvar LOTAG_MEMORY 1
+			sound FP_BOMBARMING
+			action BOMBFLOWER_COUNTDOWN1
+			break
+		}
+	}
+	else ifaction BOMBFLOWER_EXPLODE 
+	{ 
+		ifactioncount 1
+		{
+			cstat 0
+			hitradius -2048 25 50 75 100
+			spawn BOMBFLOWER_EXPLOSION
+			sound FP_BOMBBEEP
+			sound FP_BOMBEXPLODE
+			resetcount
+			
+			espawn BOMBFLOWER_EXPSPAWNER
+			setactor[RETURN].zvel -4096
+			setactor[RETURN].owner OWNER
+			setactorvar[RETURN].OWNER OWNER
+			setvar RETURN 0
+			
+			setvar TEMP 0
+			whilevarn TEMP 4
+			{
+				addvar TEMP2 512
+				
+				espawn BOMBFLOWER_EXPSPAWNER
+				setactor[RETURN].xvel 644
+				setactor[RETURN].ang TEMP2
+				setactor[RETURN].owner OWNER
+				setactorvar[RETURN].OWNER OWNER
+				setvar RETURN 0
+				
+				//redefinequote 500 Flower shot by %d
+				//qsprintf 500 500 OWNER
+				//userquote 500
+				
+				addvar TEMP 1
+			}
+			
+			setvar STATE_PARAM1 256 // Intensity
+			setvar STATE_PARAM2 6144 // Radius
+			state start_shake
+			
+			action BOMBFLOWER_BROKEN
+		}
+		
+		break
+	}
+	else ifaction BOMBFLOWER_BROKEN
+	{
+		ifcount RESPAWNITEMTIME
+		{
+			setvar XREPEAT_MEMORY 0
+			setvar LOTAG_MEMORY 0
+			setvar EXTRA_MEMORY 0
+			// Clear damage just in case...
+			setactor[THISACTOR].htextra -1
+			setactor[THISACTOR].htpicnum 0
+			setactor[THISACTOR].htowner THISACTOR
+			
+			strength WEAK
+			cstat 257
+			action BOMBFLOWER_IDLE
+		}
+		
+		break
+	}
+	else
+	{
+		ifvarg LOTAG_MEMORY 0
+		{
+			ifactioncount 3
+			{
+				ifvarg LOTAG_MEMORY 17
+					action BOMBFLOWER_EXPLODE
+				else ifvarg LOTAG_MEMORY 4
+					action BOMBFLOWER_COUNTDOWN3
+				else ifvarg LOTAG_MEMORY 1
+					action BOMBFLOWER_COUNTDOWN2
+				
+				setvar XREPEAT_MEMORY 0
+				resetactioncount
+			}
+			else ifactioncount 2 { }
+			else ifactioncount 1
+			{
+				ifvare XREPEAT_MEMORY 0
+				{
+					stopsound FP_BOMBBEEP
+					sound FP_BOMBBEEP
+					addvar LOTAG_MEMORY 1
+					setvar XREPEAT_MEMORY 1 // Latch to prevent beeping or counting more than once in this frame of animation.
+				}
+			}
+		}
+	}
+	
+	ifhitweapon
+	ifdead
+	{
+		setvarvar OWNER LASTHITBY
+		action BOMBFLOWER_EXPLODE
+	}
+enda
+
+spritenoshade BOMBFLOWER_EXPLOSION
+action BOMBFLOWER_EXPLOSIONANIM 0 7 1 1 6
+actor BOMBFLOWER_EXPLOSION 0
+	ifaction 0
+	{
+		cstat 128
+		sizeat 48 40
+		setactor[THISACTOR].shade -127
+		
+		ifspawnedby BOMBFLOWER
+		{
+			sizeat 80 72
+			getactor[THISACTOR].z TEMP
+			addvar TEMP -4096
+			setactor[THISACTOR].z TEMP
+			setactor[THISACTOR].htbposz TEMP
+		}
+		
+		action BOMBFLOWER_EXPLOSIONANIM
+	}
+	
+	ifactioncount 7
+		killit
+enda
+
+// Spawns 8 explosions, stops traveling after 3 explosions
+action BOMBFLOWER_SPAWNERDELAY 0 2 1 1 2
+actor BOMBFLOWER_EXPSPAWNER 0
+	ifaction 0
+	{
+		setvar EXTRA_MEMORY 0
+		cstat 32768
+		
+		ifspawnedby BOMBFLOWER
+		{
+			getactor[THISACTOR].z TEMP
+			addvar TEMP -4096
+			setactor[THISACTOR].z TEMP
+		}
+		
+		action BOMBFLOWER_SPAWNERDELAY
+	}
+	
+	ifactioncount 2
+	{
+		spawn BOMBFLOWER_EXPLOSION
+		
+		setactor[THISACTOR].owner OWNER // Have to use this var to prevent clobbering by multiple explosions
+		//redefinequote 500 Spawning explosion with owner %d
+		//qsprintf 500 500 OWNER
+		//userquote 500
+		
+		hitradius -1024 6 12 24 36
+		
+		ifvarl EXTRA_MEMORY 3
+		{
+			getactor[THISACTOR].zvel TEMP
+			ifvarn TEMP 0
+			{
+				getactor[THISACTOR].z TEMP2
+				randvar TEMP3 -2048
+				addvarvar TEMP2 TEMP3 // Add random Z
+				setactor[THISACTOR].z TEMP2
+			}
+			else
+			{
+				getactor[THISACTOR].z TEMP2
+				randvar TEMP3 1024
+				addvar TEMP3 -512
+				addvarvar TEMP2 TEMP3 // Add random Z
+				setactor[THISACTOR].z TEMP2
+			}
+			
+			getactor[THISACTOR].x TEMP2
+			randvar TEMP3 128
+			addvar TEMP3 -64
+			addvarvar TEMP2 TEMP3
+			setactor[THISACTOR].x TEMP2
+			
+			getactor[THISACTOR].y TEMP2
+			randvar TEMP3 128
+			addvar TEMP3 -64
+			addvarvar TEMP2 TEMP3
+			setactor[THISACTOR].y TEMP2
+			
+			ssp THISACTOR CLIPMASK0
+		}
+		else
+		{
+			getactor[THISACTOR].x TEMP2
+			randvar TEMP3 192
+			addvar TEMP3 -96
+			addvarvar TEMP2 TEMP3 // Add random X
+			setactor[THISACTOR].x TEMP2
+			
+			getactor[THISACTOR].y TEMP2
+			randvar TEMP3 192
+			addvar TEMP3 -96
+			addvarvar TEMP2 TEMP3 // Add random Y
+			setactor[THISACTOR].y TEMP2
+			
+			getactor[THISACTOR].z TEMP2
+			randvar TEMP3 3072
+			addvar TEMP3 -1536
+			addvarvar TEMP2 TEMP3 // Add random Z 
+			setactor[THISACTOR].z TEMP2
+		}
+		
+		addvar EXTRA_MEMORY 1
+		resetactioncount
+	}
+	
+	ifvarg EXTRA_MEMORY 7
+		killit
+enda
+
+// Note for later: Shield Size should be 78 64
+action FIRECRYSTAL_BROKEN 5 1 1 1 4
+spritenoshade SHIELDCRYSTAL_FIRE
+actor SHIELDCRYSTAL_FIRE WEAK
+	ifaction 0
+	{
+		sizeat 48 40
+		cstat 257
+		setactor[THISACTOR].shade -127
+			
+		spawn FIRESHIELD
+		
+		action ANULLACTION
+	}
+	
+	ifaction FIRECRYSTAL_BROKEN
+	{
+		ifcount RESPAWNITEMTIME
+		{
+			strength WEAK
+			cstat 257
+			
+			spawn FIRESHIELD
+			
+			action ANULLACTION
+		}
+	}
+	else
+	{
+		ifhitweapon
+		ifdead
+		{
+			sound FP_SHIELDSHATTER
+			cstat 0
+			resetcount
+			spawn SHIELD_DOWN
+			
+			ifvarn LASTHITBY -1
+			{
+				getactor[LASTHITBY].picnum TEMP
+				ifvare TEMP APLAYER
+				{
+					espawn SHIELD_GIVER
+					setactor[RETURN].pal SHIELDTYPE_FIRE
+					setactorvar[RETURN].OWNER LASTHITBY
+					setvar RETURN 0
+				}
+			}
+			
+			action FIRECRYSTAL_BROKEN
+		}
+	}
+enda
+
+action WATERCRYSTAL_BROKEN 6 1 1 1 4
+spritenoshade SHIELDCRYSTAL_WATER
+actor SHIELDCRYSTAL_WATER WEAK
+	ifaction 0
+	{
+		sizeat 48 40
+		cstat 257
+		setactor[THISACTOR].shade -127
+			
+		spawn WATERSHIELD
+		
+		action ANULLACTION
+	}
+	
+	ifaction WATERCRYSTAL_BROKEN
+	{
+		ifcount RESPAWNITEMTIME
+		{
+			strength WEAK
+			cstat 257
+			
+			spawn WATERSHIELD
+			
+			action ANULLACTION
+		}
+	}
+	else
+	{
+		ifhitweapon
+		ifdead
+		{
+			sound FP_SHIELDSHATTER
+			cstat 0
+			resetcount
+			spawn SHIELD_DOWN
+			
+			ifvarn LASTHITBY -1
+			{
+				getactor[LASTHITBY].picnum TEMP
+				ifvare TEMP APLAYER
+				{
+					espawn SHIELD_GIVER
+					setactor[RETURN].pal SHIELDTYPE_WATER
+					setactorvar[RETURN].OWNER LASTHITBY
+					setvar RETURN 0
+				}
+			}
+			
+			action WATERCRYSTAL_BROKEN
+		}
+	}
+enda
+
+action EARTHCRYSTAL_BROKEN 4 1 1 1 4
+spritenoshade SHIELDCRYSTAL_EARTH
+actor SHIELDCRYSTAL_EARTH WEAK
+	ifaction 0
+	{
+		sizeat 48 40
+		cstat 257
+		setactor[THISACTOR].shade -127
+			
+		spawn EARTHSHIELD
+		
+		action ANULLACTION
+	}
+	
+	ifaction EARTHCRYSTAL_BROKEN
+	{
+		ifcount RESPAWNITEMTIME
+		{
+			strength WEAK
+			cstat 257
+			
+			spawn EARTHSHIELD
+			
+			action ANULLACTION
+		}
+	}
+	else
+	{
+		ifhitweapon
+		ifdead
+		{
+			sound FP_SHIELDSHATTER
+			cstat 0
+			resetcount
+			spawn SHIELD_DOWN
+			
+			ifvarn LASTHITBY -1
+			{
+				getactor[LASTHITBY].picnum TEMP
+				ifvare TEMP APLAYER
+				{
+					espawn SHIELD_GIVER
+					setactor[RETURN].pal SHIELDTYPE_EARTH
+					setactorvar[RETURN].OWNER LASTHITBY
+					setvar RETURN 0
+				}
+			}
+			
+			action EARTHCRYSTAL_BROKEN
+		}
+	}
+enda
+
+action WOODCRYSTAL_BROKEN 3 1 1 1 4
+spritenoshade SHIELDCRYSTAL_WOOD
+actor SHIELDCRYSTAL_WOOD WEAK
+	ifaction 0
+	{
+		sizeat 48 40
+		cstat 257
+		setactor[THISACTOR].shade -127
+		
+		spawn WOODSHIELD
+		
+		action ANULLACTION
+	}
+	
+	ifaction WOODCRYSTAL_BROKEN
+	{
+		ifcount RESPAWNITEMTIME
+		{
+			strength WEAK
+			cstat 257
+			
+			spawn WOODSHIELD
+			
+			action ANULLACTION
+		}
+	}
+	else
+	{
+		ifhitweapon
+		ifdead
+		{
+			sound FP_SHIELDSHATTER
+			cstat 0
+			resetcount
+			spawn SHIELD_DOWN
+			
+			ifvarn LASTHITBY -1
+			{
+				getactor[LASTHITBY].picnum TEMP
+				ifvare TEMP APLAYER
+				{
+					espawn SHIELD_GIVER
+					setactor[RETURN].pal SHIELDTYPE_WOOD
+					setactorvar[RETURN].OWNER LASTHITBY
+					setvar RETURN 0
+				}
+			}
+			
+			action WOODCRYSTAL_BROKEN
+		}
+	}
+enda
+
+// Convoluted fuckshit
+defstate shield_shared
+	ifaction 0
+	{
+		setvarvar HITAG_MEMORY OWNER // Store current owner, because it can get overwritten.
+		sizeat 78 64
+		
+		getactor[THISACTOR].htpicnum TEMP
+		switch TEMP
+			case SHIELDCRYSTAL_WATER
+			case SHIELDCRYSTAL_FIRE
+			case SHIELDCRYSTAL_EARTH
+			case SHIELDCRYSTAL_WOOD
+			case SHIELDCRYSTAL_METAL
+			case SHIELDCRYSTAL_INVUL
+			case SHIELDCRYSTAL_BROKEN
+				sizeat 48 40
+				break
+		endswitch
+		
+		ifspawnedby SHIELD_GIVER
+		{
+			getactorvar[OWNER].OWNER OWNER
+			getactor[OWNER].yvel TEMP
+			setplayervar[TEMP].SHIELD_ACTOR THISACTOR
+		}
+			
+		ifvare STATNUM_MEMORY 69 // Magic number to signify this is an inner shield.
+		{
+			getactor[HITAG_MEMORY].xrepeat XREPEAT_MEMORY
+			getactor[HITAG_MEMORY].yrepeat YREPEAT_MEMORY
+			setactor[THISACTOR].xrepeat XREPEAT_MEMORY
+			setactor[THISACTOR].yrepeat YREPEAT_MEMORY
+			getactorvar[OWNER].OWNER OWNER // Replace this owner with the spawner's (so follow logic can work)
+		}
+		else
+		{
+			ifactor FIRESHIELD
+				spawn FIRESHIELD_INNER
+			else ifactor WATERSHIELD
+				spawn WATERSHIELD_INNER
+			else ifactor WOODSHIELD
+			{
+				ifspawnedby SHIELD_GIVER
+				{
+					spawn WOODSHIELD_PETAL
+					spawn WOODSHIELD_PETAL
+					spawn WOODSHIELD_PETAL
+					spawn WOODSHIELD_PETAL
+					spawn WOODSHIELD_PETAL
+				}
+			}
+		}
+		
+		cstat 130
+		setactor[THISACTOR].shade -127
+		setactor[THISACTOR].mdflags 16
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_SHIELDMOVE
+		
+		ifactor WOODSHIELD_PETAL { }
+		else setactor[THISACTOR].blend 255
+		
+		// Values for shield effect offsets from player
+		setvar DEST_X 0
+		setvar DEST_Y 0
+		setvar DEST_Z SHIELD_BASEOFFSET // DEST_Z = New Offset
+		
+		action ANULLACTION
+		
+		ifactor WOODSHIELD_PETAL
+		{
+			randvar DEST_X 512
+			randvar DEST_Y 512
+			addvar DEST_X -256
+			addvar DEST_Y -256
+			randvar DEST_Z 9216
+			subvar DEST_Z 2048
+			
+			randvar TEMP 2048
+			setactor[THISACTOR].htg_t 0 TEMP
+			
+			//ifrnd 128
+				//cstator 4
+		}
+	}
+	
+	// Record old offsets
+	setvarvar SPAWN_ORIGX DEST_X
+	setvarvar SPAWN_ORIGY DEST_Y
+	setvarvar SPAWN_ORIGZ DEST_Z
+	
+	ifvarg OWNER -1
+	{
+		getactor[OWNER].extra EXTRA_MEMORY
+		getactor[OWNER].picnum PICNUM_MEMORY
+		
+		getactor[OWNER].x TEMP
+		getactor[OWNER].y TEMP2
+		getactor[OWNER].z TEMP3
+			
+		ifvare PICNUM_MEMORY APLAYER
+			addvar TEMP3 -2880
+				
+		addvar TEMP3 -4096
+		setsprite THISACTOR TEMP TEMP2 TEMP3
+			
+		ifactor SHIELD_UP
+			break
+			
+		ifactor SHIELD_DOWN
+			break
+			
+		ifvarl EXTRA_MEMORY 1
+			killit
+			
+		ifvare PICNUM_MEMORY APLAYER
+		{
+			// DO NOT OVERWRITE THESE VALUES
+			getactor[OWNER].yvel TEMP
+			getplayervar[TEMP].SHIELD_HEALTH TEMP2
+			getplayervar[TEMP].SHIELD_ACTOR TEMP3
+				
+			// If the owning player's shield actor changes, let's kill this one.
+			ifvare STATNUM_MEMORY 69 // Secondary shield actor
+			{
+				ifvarvarn TEMP3 HITAG_MEMORY
+					killit // Actor doesn't match, kill.
+					
+				ifactor WOODSHIELD_PETAL
+				{
+					getactor[THISACTOR].htg_t 0 TEMP4
+					shiftvarl TEMP4 6
+					sin TEMP4 TEMP4
+					shiftvarr TEMP4 9
+					addvarvar DEST_X TEMP4
+					
+					getactor[THISACTOR].htg_t 0 TEMP4
+					shiftvarl TEMP4 6
+					cos TEMP4 TEMP4
+					shiftvarr TEMP4 9
+					addvarvar DEST_Y TEMP4
+					
+					addvar DEST_Z 256
+					ifvarg DEST_Z 9216
+					{
+						randvar DEST_X 512
+						randvar DEST_Y 512
+						addvar DEST_X -256
+						addvar DEST_Y -256
+						randvar DEST_Z -1280
+						addvar DEST_Z -2816
+						setvarvar SPAWN_ORIGX DEST_X
+						setvarvar SPAWN_ORIGY DEST_Y
+						setvarvar SPAWN_ORIGZ DEST_Z
+						setactor[THISACTOR].alpha 255
+					}
+					else ifvarg DEST_Z 4096
+					{
+						getactor[THISACTOR].alpha TEMP4
+						addvar TEMP4 16
+						ifvarg TEMP4 255
+							setactor[THISACTOR].alpha 255
+						else
+							setactor[THISACTOR].alpha TEMP4
+					}
+					else
+					{
+						getactor[THISACTOR].alpha TEMP4
+						ifvarg TEMP4 0
+						{
+							subvar TEMP4 32
+							ifvarl TEMP4 0
+								setactor[THISACTOR].alpha 0
+							else
+								setactor[THISACTOR].alpha TEMP4
+						}
+					}
+				}
+			}
+			else
+			{
+				ifvarvarn TEMP3 THISACTOR 
+					killit // Actor doesn't match, kill.
+			}
+			
+			ifvarl TEMP2 1
+			{
+				ifvarn STATNUM_MEMORY 69
+				{
+					actorsound OWNER FP_SHIELDDOWN
+					espawn SHIELD_DOWN
+					setactorvar[RETURN].OWNER OWNER
+					getactor[THISACTOR].xrepeat TEMP3
+					setactor[RETURN].xrepeat TEMP3
+					getactor[THISACTOR].yrepeat TEMP3
+					setactor[RETURN].yrepeat TEMP3
+					setvar RETURN 0
+					
+					setvarvar STATE_PARAM1 TEMP // Player
+					
+					// Type
+					ifactor FIRESHIELD
+						setvar STATE_PARAM2 SHIELDTYPE_FIRE
+					else ifactor WATERSHIELD
+						setvar STATE_PARAM2 SHIELDTYPE_WATER
+					else ifactor EARTHSHIELD
+						setvar STATE_PARAM2 SHIELDTYPE_EARTH
+					else ifactor WOODSHIELD
+						setvar STATE_PARAM2 SHIELDTYPE_WOOD
+						
+					setvar STATE_PARAM3 32 // Intensity
+					state do_shield_flash
+					
+					setplayervar[TEMP].SHIELD_TYPE SHIELDTYPE_NONE
+				}
+				killit
+			}
+		}
+	}
+ends
+
+defstate innershield_shared
+	ifaction 0
+	{
+		setvar STATNUM_MEMORY 69
+	}
+ends
+
+spritenoshade FIRESHIELD
+actor FIRESHIELD 1
+	state shield_shared
+enda
+
+spritenoshade FIRESHIELD_INNER
+actor FIRESHIELD_INNER 1
+	state innershield_shared
+	state shield_shared
+enda
+
+spritenoshade WATERSHIELD
+actor WATERSHIELD 1
+	state shield_shared
+enda
+
+spritenoshade WATERSHIELD_INNER
+actor WATERSHIELD_INNER 1
+	state innershield_shared
+	state shield_shared
+enda
+
+spritenoshade EARTHSHIELD
+actor EARTHSHIELD 1
+	state shield_shared
+enda
+
+spritenoshade FIRESHIELD
+actor WOODSHIELD 1
+	state shield_shared
+enda
+
+spritenoshade WOODSHIELD_PETAL
+action SHIELDPETAL_ANIM 0 30 1 1 1
+actor WOODSHIELD_PETAL 1
+	state innershield_shared
+	state shield_shared
+	ifaction ANULLACTION
+	{
+		action SHIELDPETAL_ANIM
+		// Randomize animation frame
+		randvar TEMP 30
+		setactor[THISACTOR].htg_t 3 TEMP
+	}
+enda
+
+spritenoshade SHIELD_UP
+action SHIELD_UPANIM 0 13 1 1 1
+actor SHIELD_UP 0
+	state shield_shared
+	ifaction ANULLACTION
+	{
+		action SHIELD_UPANIM
+		resetactioncount
+	}
+	
+	ifaction SHIELD_UPANIM
+	ifactioncount 13
+		killit
+enda
+
+spritenoshade SHIELD_DOWN
+action SHIELD_DOWNANIM 0 13 1 -1 1
+actor SHIELD_DOWN 0
+	state shield_shared
+	ifaction ANULLACTION
+	{
+		action SHIELD_DOWNANIM
+		resetactioncount
+	}
+	
+	ifaction SHIELD_DOWNANIM
+	ifactioncount 13
+		killit
+enda
+
+// STATE_PARAM1 = Type
+// STATE_PARAM2 = Pal
+defstate spawn_giver_spark
+	ifvare STATE_PARAM1 SHIELDTYPE_WOOD
+		espawn WOODSHIELD_FX2
+	else
+		espawn SHARD_FX3
+		
+	setactor[RETURN].pal STATE_PARAM2
+			
+	getactor[RETURN].x STATE_TEMP1
+	randvar STATE_TEMP2 256
+	addvarvar STATE_TEMP1 STATE_TEMP2
+	addvar STATE_TEMP1 -128
+	setactor[RETURN].x STATE_TEMP1
+	
+	getactor[RETURN].y STATE_TEMP1
+	randvar STATE_TEMP2 256
+	addvarvar STATE_TEMP1 STATE_TEMP2
+	addvar STATE_TEMP1 -128
+	setactor[RETURN].y STATE_TEMP1
+			
+	getactor[RETURN].z STATE_TEMP1
+	randvar STATE_TEMP2 2048
+	addvarvar STATE_TEMP1 STATE_TEMP2
+	addvar STATE_TEMP1 -1024
+	setactor[RETURN].z STATE_TEMP1
+	setvar RETURN 0
+	
+	ifvare STATE_PARAM1 SHIELDTYPE_WOOD
+		espawn WOODSHIELD_FX1
+	else
+		espawn SHARD_FX2
+	setactor[RETURN].pal STATE_PARAM2
+	setvar RETURN 0
+ends
+
+action GIVER_KILL 0 1 1 1 1
+actor SHIELD_GIVER 1
+	ifaction 0
+	{
+		sizeat 32 32
+		cstat 32768
+		
+		getactor[THISACTOR].z TEMP
+		addvar TEMP -2048
+		setactor[THISACTOR].z TEMP
+		
+		setactor[THISACTOR].xvel 256
+		action ANULLACTION
+	}
+	else ifaction GIVER_KILL // Give child sprites sufficient time to fetch information from this one before killing.
+	{
+		ifcount 2
+			killit
+	}
+	else
+	{
+		// STATE_PARAM1 = Target Sprite
+		// STATE_PARAM2 = Z movement only distance (0 = None)
+		// STATE_PARAM3 = Maximum angle change per tic (0 = No Limit)
+		setvarvar STATE_PARAM1 OWNER
+		setvar STATE_PARAM2 0
+		setvar STATE_PARAM3 128
+		state home_on_target
+		
+		getactor[THISACTOR].pal STATE_PARAM1
+		state get_shield_particle_pal
+		setvarvar STATE_PARAM2 STATE_RETURN
+		state spawn_giver_spark
+		
+		getactor[OWNER].extra TEMP
+		ifvarl TEMP 1
+		{
+			action GIVER_KILL
+			break
+		}
+		
+		dist TEMP THISACTOR OWNER
+		ifvarl TEMP 768
+		{
+			getactor[OWNER].yvel TEMP
+			getactor[THISACTOR].pal TEMP2
+			setplayervar[TEMP].SHIELD_TYPE TEMP2
+			setplayervar[TEMP].SHIELD_HEALTH 100
+			
+			ifvare TEMP2 SHIELDTYPE_FIRE
+			{
+				actorsound OWNER FP_FIRESHIELDGET
+				spawn FIRESHIELD
+				quote 140
+			}
+			else ifvare TEMP2 SHIELDTYPE_WATER
+			{
+				actorsound OWNER FP_WATERSHIELDGET
+				spawn WATERSHIELD
+				quote 139
+			}
+			else ifvare TEMP2 SHIELDTYPE_EARTH
+			{
+				actorsound OWNER FP_EARTHSHIELDGET
+				spawn EARTHSHIELD
+				quote 141
+			}
+			else ifvare TEMP2 SHIELDTYPE_WOOD
+			{
+				actorsound OWNER FP_WOODSHIELDGET
+				spawn WOODSHIELD
+				quote 142
+			}
+			
+			setvarvar STATE_PARAM1 TEMP // Player ID
+			setvarvar STATE_PARAM2 TEMP2 // Shield Type
+			setvarvar STATE_PARAM3 32 // Intensity
+			state do_shield_flash
+			
+			spawn SHIELD_UP
+			action GIVER_KILL
+			resetcount
+		}
+	}
+enda

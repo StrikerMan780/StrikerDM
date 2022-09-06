@@ -11,35 +11,35 @@ define DRAWEAP_CENTER 262144
 define DRAWEAP_CENTER_YFLIP 262148 // o|4|262144
 define DRAWEAP_NOLERP 524288
 
-define W_CHAINGUN_BOTTOM 1
-define W_CHAINGUN_TOP 3
-define W_DEVASTATOR_LEFT 4
-define W_DEVASTATOR_RIGHT 5
-define W_FREEZE_BASE 9
-define W_FREEZE_TOP 10
-define W_KNEE 13
-define W_KNEE2 14
-define W_PISTOL 80
-define W_PISTOL_CLIP 81
-define W_PISTOL_HAND 82
-define W_RPG 84
-define W_RPG_MUZZLE 85
-define W_SHOTGUN 86
-define W_SHOTGUN_MUZZLE 87
-define W_SHRINKER 88
-define W_SHRINKER_CRYSTAL 89
+define W_CHAINGUN_BOTTOM 2
+define W_CHAINGUN_TOP 4
+define W_DEVASTATOR_LEFT 5
+define W_DEVASTATOR_RIGHT 6
+define W_FREEZE_BASE 10
+define W_FREEZE_TOP 11
+define W_KNEE 14
+define W_KNEE2 15
+define W_PISTOL 81
+define W_PISTOL_CLIP 82
+define W_PISTOL_HAND 83
+define W_RPG 85
+define W_RPG_MUZZLE 86
+define W_SHOTGUN 87
+define W_SHOTGUN_MUZZLE 88
+define W_SHRINKER 89
+define W_SHRINKER_CRYSTAL 90
 
-define W_SSG 96
-define W_SSG_HAND 97
-define W_PLASMARIFLE 98
-define W_RAILGUN 99
-define W_FLAME 100
-define W_FLAME_PILOT 101
-define W_FLAME_BASE 102
-define W_FLAME_TOP 103
-define W_DFG 104
-define W_DFG_PIPES 105
-define W_DFG_MUZZLE 106
+define W_SSG 97
+define W_SSG_HAND 98
+define W_PLASMARIFLE 99
+define W_RAILGUN 100
+define W_FLAME 101
+define W_FLAME_PILOT 102
+define W_FLAME_BASE 103
+define W_FLAME_TOP 104
+define W_DFG 105
+define W_DFG_PIPES 106
+define W_DFG_MUZZLE 107
 
 /*
 gamevar currentweapon 0 0 //  (system) (pointer)

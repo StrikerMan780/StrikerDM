@@ -1440,21 +1440,42 @@ spriteflags BOSS5STAYPUT SF_ENEMYSTAYPUT_NOPUSH_DAMAGEEVENT
 actor BOSS5 BOSS5STRENGTH fall state BOSS5code enda
 actor BOSS5STAYPUT BOSS5STRENGTH cactor BOSS5 enda
 
-definequote 666 ... so, you've found me...
-definequote 667 I admire your detective skills...
+definequote 666 ... ... hello? who goes there#?....
+definequote 667 How did you find me?...
 definequote 668 ...I've been so lonely, trapped here...
-definequote 669 .. festering in the decaying recesses of this damaged mind...
-definequote 670 . but, you already knew that, didn't you?#
-definequote 671 .. otherwise, you wouldn't have freed me, right?..#
-definequote 672 ... This long isolation has left me with a gnawing hunger...
-definequote 673 I must go..#. I'll be seeing you.
+definequote 669 ..  my mind has been festering, rotting away...
+definequote 670 . I'm so confused, I can barely remember a thing...
+definequote 671 .. Do you know me? That's how you knew I was here, no?..#
+definequote 672 ... I'm so hungry, so isolated, so alone...
+definequote 673 ... so.... scared.... 
 
 definequote 674 ... You can't hide forever.#.!.
 
-definequote 675 .. I will spare the one who freed me from this hunger... for now...
+definequote 675 .. # I see you! ...
+definequote 676 ! Leave Me Alone!##...
+definequote 677 .@ Get out of my head#@!...
+definequote 678 .. Go away!!1#..
+
+definequote 679 ####rrrrrrrraaaaaaaaaaaaaaaaaaaaaaaaaaaa###########!!!!!!....
+definequote 680 ... I said to l@ave this place! ###..
+definequote 681 .. NO! GET AWAY!111...
+definequote 682 I ..... DO .... NOT... KNOW!.... YOU!....
+
+definequote 687 ... Where did they go?!...
+definequote 688 .. They're.... dead?.
 definequote 689 You are filled with an incredible sense of dread...
 
-state apparition_playspeech
+action APPARITION_CHASE 0 4 1 1 2
+action APPARITION_PATROL 0 4 1 1 4
+action APPARITION_SPEAK 0 4 1 1 4
+action APPARITION_IDLE 0 2 1 1 4
+action APPARITION_WAIT 0 1 1 1 4
+action APPARITION_RELOCATE 0 2 1 1 4
+action APPARITION_TELEPORT_OUT 0 2 1 1 4
+action APPARITION_TELEPORT_IN 0 2 1 1 4
+action APPARITION_FINDTARGET 0 1 1 1 4
+
+defstate apparition_playspeech
 	randvar TEMP 5
 	switch TEMP
 		case 0: sound APPARITION_01 break
@@ -1467,7 +1488,7 @@ state apparition_playspeech
 ends
 
 gamevar apparition_debug 0 0
-state apparition_get_first_path_node
+defstate apparition_get_first_path_node
 	ifvare NUM_PATHS 0 // No paths, bail.
 		break
 	
@@ -1481,7 +1502,7 @@ state apparition_get_first_path_node
 	ifvarg apparition_debug 0
 		setvarvar APPARITION_PATHNUM apparition_debug
 	
-	headspritestat CURSPRITE 7 // STAT_LOCATOR
+	headspritestat CURSPRITE STAT_LOCATOR
 	whilevarn CURSPRITE -1
 	{
 		getactor[CURSPRITE].hitag TEMP
@@ -1493,13 +1514,15 @@ state apparition_get_first_path_node
 			getactor[APPARITION_LOCATOR].x DEST_X
 			getactor[APPARITION_LOCATOR].y DEST_Y
 			getactor[APPARITION_LOCATOR].z DEST_Z
+			getactor[APPARITION_LOCATOR].sectnum TEMP
+			changespritesect THISACTOR TEMP
 			setsprite THISACTOR DEST_X DEST_Y DEST_Z
 			setvar CURSPRITE -1
 			
 			ifvarn apparition_debug 0
 			{
-				redefinequote 500 FOUND LOCATOR %d ON PATH %d
-				qsprintf 500 500 APPARITION_LOCATOR APPARITION_PATHNUM
+				redefinequote 500 FOUND LOCATOR %d ON PATH %d - IMPATIENCE: %d
+				qsprintf 500 500 APPARITION_LOCATOR APPARITION_PATHNUM APPARITION_IMPATIENCE
 				userquote 500
 			}
 					
@@ -1511,22 +1534,110 @@ state apparition_get_first_path_node
 	}
 ends
 
-action APPARITION_CHASE 0 4 1 1 2
-action APPARITION_PATROL 0 4 1 1 4
-action APPARITION_SPEAK 0 4 1 1 4
-action APPARITION_IDLE 0 2 1 1 4
-action APPARITION_WAIT 0 1 1 1 4
-action APPARITION_TELEPORT_OUT 0 2 1 1 4
-action APPARITION_TELEPORT_IN 0 2 1 1 4
-action APPARITION_FINDTARGET 0 1 1 1 4
+defstate apparition_picktarget
+	ifvarn APPARITION_STATE APPRSTATE_NEEDTARGET
+		break
+		
+	// Pick a target
+	setvar TEMP2 0
+	whilevarn TEMP2 1
+	{
+		randvarvar TEMP MULTIMODE
+		modvarvar TEMP MULTIMODE
+		ifvarvarn TEMP APPARITION_SUMMONER
+		ifvarvarn TEMP APPARITION_TARGET
+		{
+			setvar TEMP2 1
+		}
+	}
+		
+	setvarvar APPARITION_TARGET TEMP
+	setvar APPARITION_SUMMONER -1
+	setvar APPARITION_STATE APPRSTATE_NONE
+	
+	ifvarn apparition_debug 0
+	{
+		redefinequote 500 Changing Target to %d
+		qsprintf 500 500 APPARITION_TARGET
+		userquote 500
+	}
+ends
+
+defstate apparition_teleport
+	setvar STATE_PARAM1 16 // Intensity
+	setvar STATE_PARAM2 8192 // Radius
+	state start_shake
+	
+	ifvare APPARITION_STATE APPRSTATE_RELOCATE
+		action APPARITION_RELOCATE
+	else
+		action APPARITION_TELEPORT_OUT
+ends
+
+defstate apparition_dotext
+	setvar APPARITION_QTIME 120
+	
+	randvar TEMP 48
+	subvar TEMP 24
+	setvarvar APPARITION_QANGLE TEMP
+	
+	randvar APPARITION_QYOFF 100
+	addvar APPARITION_QYOFF 60
+	
+	state apparition_playspeech
+ends
+
+defstate apparition_dodamage
+	getactor[THISACTOR].htg_t 0 STATE_TEMP1
+	modvar STATE_TEMP1 5
+	ifvare STATE_TEMP1 0
+	{
+		hitradius 1024 9999 9999 9999 9999 // Instant fucking murder.
+		
+		// Anti-cheese, since hitradius eats shit on TROR.
+		headspritestat CURSPRITE STAT_PLAYER
+		whilevarn CURSPRITE -1
+		{
+			dist STATE_TEMP1 THISACTOR CURSPRITE
+			ifvarl STATE_TEMP1 384
+			{
+				setvar STATE_PARAM1 9999
+				setvarvar STATE_PARAM2 CURSPRITE
+				setvar STATE_PARAM3 RADIUSEXPLOSION
+				setvar STATE_PARAM4 0
+				state apply_damage
+			}
+			
+			nextspritestat CURSPRITE CURSPRITE
+		}
+	}
+ends
+
+defstate apparition_beginpath
+	resetcount
+	action APPARITION_TELEPORT_IN
+	
+	state apparition_get_first_path_node
+	state apparition_playspeech
+	
+	setvar STATE_PARAM1 16 // Intensity
+	setvar STATE_PARAM2 8192 // Radius
+	state start_shake
+ends
 
 //SFLAG_SHADOW(1) + SFLAG_NOSHADE(4) + SFLAG_NOPAL(64) + SFLAG_NOCLIP(2048) = 2117
 spriteflags APPARITION 2117
 actor APPARITION 0
 	ifaction 0
 	{
+		ifvare APPARITION_SPRITEID -1
+			setvarvar APPARITION_SPRITEID THISACTOR
+		else
+			killit // Can't have more than one of these guys.
+		
 		fall
 		sizeat 44 40
+		setvar APPARITION_STATE APPRSTATE_NONE
 		action APPARITION_IDLE
 	}
 	
@@ -1545,6 +1656,8 @@ actor APPARITION 0
 			getactor[TEMP].yvel TEMP
 			setvarvar APPARITION_SUMMONER TEMP
 			setvarvar APPARITION_TARGET TEMP
+			setvar APPARITION_LAIRSPRITEID -2 // Clear the apparition's lair teleport.
+			setvar APPARITION_STATE APPRSTATE_NEEDTARGET // Tell the apparition we need a new target.
 			
 			setvar APPARITION_QUOTE 666
 			setvar APPARITION_QTIME 60
@@ -1556,6 +1669,10 @@ actor APPARITION 0
 			setvar APPARITION_QYOFF 120
 		}
 	}
+	else
+	{
+		sleeptime 0
+	}
 	
 	ifaction APPARITION_SPEAK
 	{
@@ -1566,85 +1683,38 @@ actor APPARITION 0
 		switch TEMP
 			case 60:
 				setvar APPARITION_QUOTE 667
-				setvar TEMP2 1
+				state apparition_dotext
 				break
 			case 120:
 				setvar APPARITION_QUOTE 668
-				setvar TEMP2 1
+				state apparition_dotext
 				break
 			case 180:
 				setvar APPARITION_QUOTE 669
-				setvar TEMP2 1
+				state apparition_dotext
 				break
 			case 240:
 				setvar APPARITION_QUOTE 670
-				setvar TEMP2 1
+				state apparition_dotext
 				break
 			case 300:
 				setvar APPARITION_QUOTE 671
-				setvar TEMP2 1
+				state apparition_dotext
 				break
 			case 420:
 				setvar APPARITION_QUOTE 672
-				setvar TEMP2 1
+				state apparition_dotext
 				break
 			case 540:
 				setvar APPARITION_QUOTE 673
-				setvar TEMP2 1
-				action APPARITION_FINDTARGET
+				state apparition_dotext
+				state apparition_teleport
 				break
 		endswitch
-		
-		ifvare TEMP2 1 // Refresh string time & angle
-		{
-			setvar APPARITION_QTIME 120
-			
-			randvar TEMP 48
-			subvar TEMP 24
-			setvarvar APPARITION_QANGLE TEMP
-			
-			randvar APPARITION_QYOFF 100
-			addvar APPARITION_QYOFF 60
-			
-			state apparition_playspeech
-		}
-	}
-	
-	ifaction APPARITION_FINDTARGET
-	{
-		sleeptime 0
-		// Pick a target
-		setvar TEMP2 0
-		whilevarn TEMP2 1
-		{
-			randvarvar TEMP MULTIMODE
-			modvarvar TEMP MULTIMODE
-			ifvarvarn TEMP APPARITION_SUMMONER
-			ifvarvarn TEMP APPARITION_TARGET
-			{
-				setvar TEMP2 1
-			}
-		}
-		
-		setvarvar APPARITION_TARGET TEMP
-		
-		ifvarn apparition_debug 0
-		{
-			redefinequote 500 Changing Target to %d
-			qsprintf 500 500 APPARITION_TARGET
-			userquote 500
-		}
-		
-		setvar STATE_PARAM1 16 // Intensity
-		setvar STATE_PARAM2 8192 // Radius
-		state start_shake
-		
-		action APPARITION_TELEPORT_OUT
 	}
 	
 	ifaction APPARITION_TELEPORT_OUT
 	{
-		sleeptime 0
 		sizeto 1 40
 		sizeto 1 40
 		getactor[THISACTOR].xrepeat TEMP
@@ -1652,12 +1722,27 @@ actor APPARITION 0
 		{
 			resetcount
 			cstat 32768
+			state apparition_picktarget
 			action APPARITION_WAIT
+			setvar APPARITION_STATE APPRSTATE_WAIT
+			stopsound APPARITION_LOOP
+		}
+	}
+	else ifaction APPARITION_RELOCATE
+	{
+		sizeto 1 40
+		sizeto 1 40
+		getactor[THISACTOR].xrepeat TEMP
+		ifvare TEMP 1
+		{
+			cstat 32768
+			stopsound APPARITION_LOOP
+			
+			state apparition_beginpath
 		}
 	}
 	else ifaction APPARITION_TELEPORT_IN
 	{
-		sleeptime 0
 		getactor[THISACTOR].cstat TEMP
 		ifvarand TEMP 32768
 		{
@@ -1672,19 +1757,23 @@ actor APPARITION 0
 		{
 			resetcount
 			action APPARITION_PATROL
+			setvar APPARITION_STATE APPRSTATE_PATROL
+			soundonce APPARITION_LOOP
 		}
 	}
 	else ifaction APPARITION_PATROL
 	{
-		sleeptime 0
-		
 		ifvarn APPARITION_LOCATOR -1
 		{
 			dist TEMP THISACTOR APPARITION_LOCATOR
 			ifvarl TEMP 128
 			{
+				getactor[APPARITION_LOCATOR].zvel TEMP
+				ifvare TEMP 1 // Should we open a door?
+					operate
+					
 				getactorvar[APPARITION_LOCATOR].EXTRA_MEMORY TEMP // Get next locator on path.
-				ifvare TEMP -1 // End of the path. Teleport out.
+				ifvare TEMP -1 // End of the path, didn't find anyone. Teleport out.
 				{
 					ifvarn apparition_debug 0
 					{
@@ -1695,13 +1784,11 @@ actor APPARITION 0
 					
 					setvar APPARITION_LOCATOR -1 // Clear locator
 					
-					resetcount
-					action APPARITION_TELEPORT_OUT
+					addvar APPARITION_IMPATIENCE 8 // Become more impatient.
+					ifvarg APPARITION_IMPATIENCE 64
+						setvar APPARITION_IMPATIENCE 64
 					
-					setvar STATE_PARAM1 16 // Intensity
-					setvar STATE_PARAM2 8192 // Radius
-					state start_shake
-					
+					state apparition_teleport
 					state apparition_playspeech
 					break // Restart
 				}
@@ -1716,62 +1803,195 @@ actor APPARITION 0
 						userquote 500
 					}
 					
+					soundonce APPARITION_LOOP
+					
 					ifrnd 16
 						state apparition_playspeech
 				}
 			}
 			
-			ifactioncount 4
+			// Insert seek code here
+			ifvarg APPARITION_TARGET -1
 			{
-				hitradius 1024 9999 9999 9999 9999 // Instant fucking murder.
+				getplayer[APPARITION_TARGET].i TEMP // Get player sprite index.
+				getactor[TEMP].extra TEMP2
+				ifvarg TEMP2 0 // Alive?
+				{
+					getactor[TEMP].xvel TEMP2 // Our speed influences how easily we're detected
+					
+					getinput[APPARITION_TARGET].bits TEMP3 // Check inputs
+					ifvarand TEMP3 2 // 2 = SK_CROUCH. If we're crouching, we stand out less.
+						addvar TEMP2 8
+					else
+						addvar TEMP2 32
+						
+					getplayer[APPARITION_TARGET].kickback_pic TEMP3
+					ifvarg TEMP3 0
+						addvar TEMP2 255 // Shooting makes you a prime target!
+						
+					getplayer[APPARITION_TARGET].jumping_counter TEMP3 // Don't jump you fucker, he'll see you.
+					ifvarg TEMP3 180
+						addvar TEMP2 64
+						
+					getplayer[APPARITION_TARGET].heat_on TEMP3
+					ifvare TEMP3 1
+						addvar TEMP2 255 // He'll hate you for using nightvision.
+					
+					// Get distance.
+					dist TEMP3 THISACTOR TEMP
+					ifvarl TEMP3 2048
+						addvar TEMP2 128 // You're too close, he'll more likely be able to see you.
+					else ifvarl TEMP3 4096
+						addvar TEMP2 64
+					else ifvarl TEMP3 6144
+						addvar TEMP2 16
+					else ifvarg TEMP3 8192 // You're far away, he'll be less likely to see you.
+						subvar TEMP2 8 
+					else ifvarg TEMP3 10240 
+						subvar TEMP2 16
+						
+					ifvarl TEMP2 0
+						setvar TEMP2 0
+						
+					randvar TEMP3 1536
+					ifvarvarg TEMP2 TEMP3
+					{
+						canseespr THISACTOR TEMP TEMP4
+						ifvare TEMP4 0
+						{
+							getactor[THISACTOR].z TEMP3
+							subvar TEMP3 6144
+							setactor[THISACTOR].z TEMP3
+							
+							getactor[TEMP].z TEMP3
+							subvar TEMP3 6144
+							setactor[TEMP].z TEMP3
+							
+							canseespr THISACTOR TEMP TEMP4
+							
+							getactor[THISACTOR].z TEMP3
+							addvar TEMP3 6144
+							setactor[THISACTOR].z TEMP3
+							
+							getactor[TEMP].z TEMP3
+							addvar TEMP3 6144
+							setactor[TEMP].z TEMP3
+						}
+						
+						ifvare TEMP4 1
+						{
+							setplayer[APPARITION_TARGET].fta 100
+							setplayer[APPARITION_TARGET].ftq 197
+							action APPARITION_CHASE
+							setvar APPARITION_STATE APPRSTATE_CHASE
+							setvar APPARITION_IMPATIENCE 0
+							
+							randvar TEMP 3
+							switch TEMP
+								case 0:
+									setvar APPARITION_QUOTE 675
+									break
+								case 1:
+									setvar APPARITION_QUOTE 676
+									break
+								case 2:
+									setvar APPARITION_QUOTE 677
+									break
+								case 3:
+									setvar APPARITION_QUOTE 678
+									break
+							endswitch
+							
+							state apparition_dotext
+							state apparition_playspeech
+							
+							setplayervar[APPARITION_TARGET].SHAKE_INTENSITY 64
+							setplayervar[APPARITION_TARGET].SHAKE_TIME 20
+							
+							randvar TEMP 4
+							addvar TEMP 12
+							setplayervar[APPARITION_TARGET].SCAREPIC IMSUFFERING
+							setplayervar[APPARITION_TARGET].SCARETIME TEMP
+							setplayervar[APPARITION_TARGET].SCAREPAL 0
+							
+							getplayer[APPARITION_TARGET].i STATE_PARAM1
+							state random_stinger
+						}
+					}
+				}
 			}
 			
-			getactor[APPARITION_LOCATOR].x DEST_X
-			getactor[APPARITION_LOCATOR].y DEST_Y
-			getactor[APPARITION_LOCATOR].z DEST_Z
+			state apparition_dodamage
 			
-			getactor[THISACTOR].x TEMP
-			getactor[THISACTOR].y TEMP2
-			getactor[THISACTOR].z TEMP3
-			subvarvar DEST_X TEMP
-			subvarvar DEST_Y TEMP2
-			subvarvar DEST_Z TEMP3
-			getangle SPAWN_ORIGANG DEST_X DEST_Y
-			setactor[THISACTOR].ang SPAWN_ORIGANG
+			// Set speed. The more impatient the apparition is, the faster it goes.
+			setvar TEMP 64
+			addvarvar TEMP APPARITION_IMPATIENCE
+			setactor[THISACTOR].xvel TEMP
 			
-			cos SPAWN_ORIGX SPAWN_ORIGANG
-			sin SPAWN_ORIGY SPAWN_ORIGANG
-			shiftvarr SPAWN_ORIGX 8
-			shiftvarr SPAWN_ORIGY 8
-			// To-Do: Right shift by 6 if we're chasing someone.
-			//movesprite THISACTOR SPAWN_ORIGX SPAWN_ORIGY 0 0 RETURN
+			// Move
+			setvarvar STATE_PARAM1 APPARITION_LOCATOR
+			setvarvar STATE_PARAM2 128
+			setvarvar STATE_PARAM3 0
+			state home_on_target
+		}
+	}
+	else ifaction APPARITION_CHASE
+	{
+		state apparition_dodamage
+		
+		ifvare APPARITION_STATE APPRSTATE_NEEDTARGET
+		{
+			state apparition_teleport
+			break
+		}
+		
+		ifvare APPARITION_STATE APPRSTATE_RELOCATE
+		{
+			randvar TEMP 1
+			switch TEMP
+				case 0:
+					setvar APPARITION_QUOTE 687
+					break
+				case 1:
+					setvar APPARITION_QUOTE 688
+					break
+			endswitch
 			
-			ldist TEMP THISACTOR APPARITION_LOCATOR
-			ifvarl TEMP 128 // We're on top of this node, don't move horizontally.
-			{
-				setvar SPAWN_ORIGX 0
-				setvar SPAWN_ORIGY 0
-			}
+			state apparition_dotext
+			state apparition_teleport
+			break
+		}
+		
+		getplayer[APPARITION_TARGET].i TEMP // Get player sprite.
+		setvarvar STATE_PARAM1 TEMP // Target
+		setvarvar STATE_PARAM2 128
+		setvarvar STATE_PARAM3 0
+		setactor[THISACTOR].xvel 150
+		state home_on_target
+		
+		ifrnd 16
+		{
+			randvar TEMP 3
+			switch TEMP
+				case 0:
+					setvar APPARITION_QUOTE 679
+					break
+				case 1:
+					setvar APPARITION_QUOTE 680
+					break
+				case 2:
+					setvar APPARITION_QUOTE 681
+					break
+				case 3:
+					setvar APPARITION_QUOTE 682
+					break
+			endswitch
 			
-			shiftvarr TEMP 6 // Taper Z movement based on distance, need to right-shift a bit.
-			ifvarl TEMP 1
-				setvar TEMP 1
+			state apparition_dotext
+			state apparition_playspeech
 			
-			setvarvar SPAWN_ORIGZ DEST_Z
-			
-			divvarvar SPAWN_ORIGZ TEMP
-			ifvarg SPAWN_ORIGZ 1024
-				setvar SPAWN_ORIGZ 1024
-			else ifvarl SPAWN_ORIGZ -1024
-				setvar SPAWN_ORIGZ -1024
-			
-			getactor[THISACTOR].x TEMP
-			getactor[THISACTOR].y TEMP2
-			getactor[THISACTOR].z TEMP3
-			addvarvar TEMP SPAWN_ORIGX
-			addvarvar TEMP2 SPAWN_ORIGY
-			addvarvar TEMP3 SPAWN_ORIGZ
-			setsprite THISACTOR TEMP TEMP2 TEMP3
+			setplayervar[APPARITION_TARGET].SHAKE_INTENSITY 64
+			setplayervar[APPARITION_TARGET].SHAKE_TIME 20
 		}
 	}
 	
@@ -1781,19 +2001,20 @@ actor APPARITION 0
 		
 	ifaction APPARITION_WAIT
 	{
-		sleeptime 0
-		ifcount 300
+		ifvarg APPARITION_IMPATIENCE 63
 		{
-			state apparition_get_first_path_node
-			
-			resetcount
-			action APPARITION_TELEPORT_IN
-			
-			setvar STATE_PARAM1 16 // Intensity
-			setvar STATE_PARAM2 8192 // Radius
-			state start_shake
-			
-			state apparition_playspeech
+			ifcount 60
+				state apparition_beginpath
+		}
+		else ifvarg APPARITION_IMPATIENCE 31
+		{
+			ifcount 150
+				state apparition_beginpath
+		}
+		else
+		{
+			ifcount 300
+				state apparition_beginpath
 		}
 		break
 	}

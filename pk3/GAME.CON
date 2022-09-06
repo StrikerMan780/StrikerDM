@@ -6,6 +6,7 @@ move RESPAWN_ACTOR_FLAG
 
 include VERSION.CON
 include DEFS.CON
+include sound_ids.h
 include cons/USER.CON
 include cons/SDM_VARS.CON
 include cons/SDM_DEFS.CON
@@ -17,6 +18,7 @@ include cons/weapons/WEAPON_STATES.CON
 
 include cons/SDM_STATES.CON
 include cons/SDM_EVENTS.CON
+include cons/SDM_HUD.CON
 
 include cons/SDM_ITEMS.CON
 include cons/SDM_GAME.CON

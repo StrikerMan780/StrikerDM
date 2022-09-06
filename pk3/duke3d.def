@@ -15,6 +15,8 @@ include defs.con
 include cons/SDM_DEFS.CON
 include defs/palswaps.def
 
+include defs/sounds.def
+
 // Textures
 artfile { file "artfiles/strikerdm.art" tile 0 }
 artfile { file "artfiles/community1.art" tile 3840 }
@@ -53,6 +55,8 @@ tint { pal 8 red 199 green 226 blue 113 flags 1 }
 
 tint { pal 26 red 216 green 184 blue 172 flags 1 } // Greyscale (Brownish)
 tint { pal 27 red 255 green 244 blue 246 flags 1 } // Greyscale
+
+tint { pal 51 red 220 green 184 blue 148 flags 0 } // Orange Tint
 
 tint { pal 61 red 164 green 196 blue 228 flags 0 } // Blue Tint
 

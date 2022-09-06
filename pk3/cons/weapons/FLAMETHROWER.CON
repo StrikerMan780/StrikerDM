@@ -284,8 +284,8 @@ actor FIREBALLTRAIL 0
 		setactor[THISACTOR].mdflags 16
 		setvar ANIMATE_FLAGS ANIMATE_FLAG_ROTATE_SCALE_AND_FADE
 		
-		setvar LOTAG_MEMORY 0 // Timer
-		setvar HITAG_MEMORY 32 // End time
+		setvarvar ANIMATE_STARTCLOCK ANIMATE_CLOCK // Timer
+		setvar ANIMATE_LIFETIME 32 // End time
 		setvar SPAWN_ORIGANG 0 // Rotational Speed
 		
 		getactor[THISACTOR].xrepeat TEMP
@@ -306,7 +306,7 @@ actor FIREBALLTRAIL 0
 } 
 enda
 
-spritenoshade FIREBALL
+spriteflags FIREBALL 1048580 // SFLAG_NOSHADE(4) + SFLAG_NODAMAGEPUSH(1048576)
 defineprojectile FIREBALL PROJ_WORKSLIKE 32770
 defineprojectile FIREBALL PROJ_XREPEAT 24
 defineprojectile FIREBALL PROJ_YREPEAT 24

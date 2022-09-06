@@ -22,15 +22,15 @@ actor LDEXPLOSION 0
 			case PLASMABALL:
 				espawn FIRESHELL
 				setactor[RETURN].pal 198
-				setactorvar[RETURN].HITAG_MEMORY 32 // End time
+				setactorvar[RETURN].ANIMATE_LIFETIME 32 // End time
 				setactorvar[RETURN].XREPEAT_MEMORY 0 // Start radius
 				setactorvar[RETURN].YREPEAT_MEMORY 48 // End radius
 				setactorvar[RETURN].SPAWN_ORIGANG 72 // Rotational Speed
 				setvar RETURN 0
 				
 				setvar ANIMATE_FLAGS ANIMATE_FLAG_SCALE
-				setvar LOTAG_MEMORY 0 // Timer
-				setvar HITAG_MEMORY 96 // End time
+				setvarvar ANIMATE_STARTCLOCK ANIMATE_CLOCK // Timer
+				setvar ANIMATE_LIFETIME 96 // End time
 				getactor[THISACTOR].xrepeat TEMP
 				setvarvar XREPEAT_MEMORY TEMP // Start radius
 				mulvar TEMP 3
@@ -57,8 +57,8 @@ actor SHOCKWAVE 0
 		setactor[THISACTOR].mdflags 16
 		setvar ANIMATE_FLAGS ANIMATE_FLAG_ROTATE_SCALE_AND_FADE
 		
-		setvar LOTAG_MEMORY 0 // Timer
-		setvar HITAG_MEMORY 24 // End time
+		setvarvar ANIMATE_STARTCLOCK ANIMATE_CLOCK // Timer
+		setvar ANIMATE_LIFETIME 24 // End time
 		setvar SPAWN_ORIGANG 8 // Rotational Speed
 		
 		setvar XREPEAT_MEMORY 0 // Start radius
@@ -202,7 +202,7 @@ actor FAUCET_RUNNING2
 enda
 
 state trigger_actors
-	headspritestat CURSPRITE 1 // STAT_ACTOR
+	headspritestat CURSPRITE STAT_ACTOR
 	setvarvar LASTSPRITE CURSPRITE
 	whilevarn CURSPRITE -1
 	{
@@ -251,8 +251,7 @@ actor CUSTOMTOUCHPLATE
 		action ANULLACTION
 	}
 	
-	headspritestat CURSPRITE 10 // STAT_PLAYER
-	setvarvar LASTSPRITE CURSPRITE
+	headspritestat CURSPRITE STAT_PLAYER
 	whilevarn CURSPRITE -1
 	{
 		getactor[CURSPRITE].sectnum TEMP
@@ -262,8 +261,7 @@ actor CUSTOMTOUCHPLATE
 			break
 		}
 				
-		nextspritestat CURSPRITE LASTSPRITE
-		setvarvar LASTSPRITE CURSPRITE
+		nextspritestat CURSPRITE CURSPRITE
 	}
 enda
 
@@ -570,7 +568,7 @@ enda
 state zteleporter_moveactor
 	setvarvar TEMP CURSPRITE // Don't overwrite this until after teleporting!
 	
-	headspritestat CURSPRITE 1 // STAT_ACTOR
+	headspritestat CURSPRITE STAT_ACTOR
 	setvarvar LASTSPRITE CURSPRITE
 	whilevarn CURSPRITE -1
 	{
@@ -654,10 +652,10 @@ actor ZTELEPORTER
 		action ANULLACTION
 	}
 	
-	headspritestat CURSPRITE 10 // STAT_PLAYER
+	headspritestat CURSPRITE STAT_PLAYER
 	state zteleporter_search
 	
-	headspritestat CURSPRITE 4 // STAT_PROJECTILE
+	headspritestat CURSPRITE STAT_PROJECTILE
 	state zteleporter_search
 enda
 
@@ -954,8 +952,8 @@ actor SPURTTRAIL 0
 		orvar ANIMATE_FLAGS ANIMATE_FLAG_FADEOUT
 		setvar ISADULT ADULT_LOCKOUTONLY
 
-		setvar LOTAG_MEMORY 0 // Timer
-		setvar HITAG_MEMORY 60 // End time
+		setvarvar ANIMATE_STARTCLOCK ANIMATE_CLOCK // Timer
+		setvar ANIMATE_LIFETIME 60 // End time
 		
 		action SPURTTRAIL_ANIM
 	}
@@ -1085,8 +1083,8 @@ actor BLOODINFLUID1 0
 		orvar ANIMATE_FLAGS ANIMATE_FLAG_FADEOUT
 		orvar ANIMATE_FLAGS ANIMATE_FLAG_BLOODBRIGHT
 		
-		setvar LOTAG_MEMORY 0 // Timer
-		setvar HITAG_MEMORY 256 // End time
+		setvarvar ANIMATE_STARTCLOCK ANIMATE_CLOCK // Timer
+		setvar ANIMATE_LIFETIME 256 // End time
 		setvar SPAWN_ORIGANG 0 // Rotational Speed
 		
 		getactor[THISACTOR].xrepeat TEMP
@@ -1117,8 +1115,8 @@ actor BLOODINFLUID2 0
 		orvar ANIMATE_FLAGS ANIMATE_FLAG_FADEOUT
 		orvar ANIMATE_FLAGS ANIMATE_FLAG_BLOODBRIGHT
 		
-		setvar LOTAG_MEMORY 0 // Timer
-		setvar HITAG_MEMORY 256 // End time
+		setvarvar ANIMATE_STARTCLOCK ANIMATE_CLOCK // Timer
+		setvar ANIMATE_LIFETIME 256 // End time
 		setvar SPAWN_ORIGANG 0 // Rotational Speed
 		
 		getactor[THISACTOR].xrepeat TEMP
@@ -1200,19 +1198,6 @@ state random_creepy_sound
 	endswitch
 ends
 
-state random_stinger
-	randvar TEMP 6
-	switch TEMP
-		case 0: sound CREEPYAMB_02 break
-		case 1: sound CREEPYAMB_03 break
-		case 2: sound CREEPYAMB_09 break
-		case 3: sound CREEPYAMB_10 break
-		case 4: sound CREEPYAMB_11 break
-		case 5: sound CREEPYAMB_17 break
-		case 6: sound CREEPYAMB_18 break
-	endswitch
-ends
-
 action TROLLGE_ANIM1 0 1 1 1 4
 action TROLLGE_ANIM2 1 1 1 1 4
 action TROLLGE_ANIM3 2 1 1 1 4
@@ -1222,11 +1207,14 @@ action TROLLGE_ANIM6 5 1 1 1 4
 action TROLLGE_ANIM7 6 1 1 1 4
 action TROLLGE_WAIT 0 1 1 1 40
 
+spritenoshade TROLLGE
 actor TROLLGE 0
+	sleeptime 0
 	ifaction 0
 	{
 		sizeat 64 64
 		cstat 32768
+		setactor[THISACTOR].shade -8
 		setvar EXTRA_MEMORY 900
 		state random_creepy_sound
 		action TROLLGE_WAIT
@@ -1306,13 +1294,13 @@ actor SUS 0
 	ifaction 0
 	{
 		cstator 32768
-		randvar EXTRA_MEMORY 600
+		randvar EXTRA_MEMORY 300
 		addvar EXTRA_MEMORY 100
 		action SUS_WAIT
 	}
 	else ifaction SUS_WAIT
 	{
-		ifpdistl 2500
+		ifpdistl 3072
 		{
 			ifp pfacing
 			ifcansee
@@ -1338,17 +1326,43 @@ actor SUS 0
 				setactor[THISACTOR].cstat TEMP
 			}
 			
+			
 			randvar TEMP 6
 			switch TEMP
-				case 0: action SUS_ANIM1 break
-				case 1: action SUS_ANIM2 break
-				case 2: action SUS_ANIM3 break
-				case 3: action SUS_ANIM4 break
-				case 4: action SUS_ANIM5 break
-				case 5: action SUS_ANIM6 break
-				case 6: action SUS_ANIM7 break
+				case 0:
+					action SUS_ANIM1
+					break
+				case 1:
+					action SUS_ANIM2
+					break
+				case 2:
+					action SUS_ANIM3
+					break
+				case 3:
+					action SUS_ANIM4
+					break
+				case 4:
+					action SUS_ANIM5
+					break
+				case 5:
+					action SUS_ANIM6
+					break
+				case 6:
+					action SUS_ANIM7
+					break
 			endswitch
 			
+			getactor[THISACTOR].picnum TEMP2
+			subvarvar TEMP2 TEMP
+			
+			randvar TEMP 5
+			addvar TEMP 12
+			setplayervar[THISACTOR].SCARETIME TEMP
+			setplayervar[THISACTOR].SCAREPIC TEMP2
+			getactor[THISACTOR].pal TEMP3
+			setplayervar[THISACTOR].SCAREPAL TEMP3
+			
+			setvarvar STATE_PARAM1 THISACTOR
 			state random_stinger
 			
 			getplayer[THISACTOR].heat_on TEMP
@@ -1409,6 +1423,549 @@ actor SHADOWPLAYER 0
 	}
 enda
 
+actor IMSUFFERING 0
+	ifaction 0
+	{
+		setvarvar APPARITION_LAIRSPRITEID THISACTOR
+		cstat 32768
+		action ANULLACTION
+		userquote 199
+	}
+enda
+
+defstate syntax_look_for_player
+	setvar STATE_RETURN 0
+	setvar STATE_TEMP1 0
+	
+	headspritestat CURSPRITE STAT_PLAYER
+	whilevarn CURSPRITE -1
+	{
+		getactor[CURSPRITE].extra STATE_TEMP2
+		
+		ifvarg STATE_TEMP2 0
+		{
+			canseespr THISACTOR CURSPRITE STATE_TEMP1
+			
+			ifvarn STATE_TEMP1 1
+			{
+				getactor[THISACTOR].z TEMP3
+				subvar TEMP3 4096
+				setactor[THISACTOR].z TEMP3
+				
+				getactor[CURSPRITE].z TEMP3
+				subvar TEMP3 4096
+				setactor[CURSPRITE].z TEMP3
+				
+				canseespr THISACTOR CURSPRITE STATE_TEMP1
+				
+				getactor[THISACTOR].z TEMP3
+				addvar TEMP3 4096
+				setactor[THISACTOR].z TEMP3
+				
+				getactor[CURSPRITE].z TEMP3
+				addvar TEMP3 4096
+				setactor[CURSPRITE].z TEMP3
+			}
+		}
+		
+		nextspritestat CURSPRITE CURSPRITE
+		
+		ifvare STATE_TEMP1 1
+		{
+			setvar STATE_RETURN 1
+			setvar CURSPRITE -1
+			break
+		}
+	}
+ends
+
+spritenoshade SYNTAXEYE
+action EYE_ACTIVATE1 2 5 1 1 1
+action EYE_ACTIVATE2 4 1 1 1 1
+action EYE_ACTIVATE3 7 1 1 1 1
+action EYE_ACTIVATE4 2 5 1 1 1
+action EYE_ACTIVATE5 4 1 1 1 1
+action EYE_ACTIVATE6 7 3 1 1 1
+action EYE_IDLE_ON 0 1 1 1 1
+action EYE_IDLE_OFF 0 1 1 1 1
+action EYE_OFF 9 8 1 -1 1
+actor SYNTAXEYE 0
+	sleeptime 0
+	ifaction 0
+	{
+		cstator 32768
+		setactor[THISACTOR].shade -127
+		action EYE_IDLE_OFF
+	}
+	
+	ifaction EYE_IDLE_OFF
+	{
+		state syntax_look_for_player
+		
+		ifvare STATE_RETURN 1
+		{
+			getactor[THISACTOR].cstat TEMP
+			ifvarand TEMP 32768
+				xorvar TEMP 32768
+			setactor[THISACTOR].cstat TEMP
+			
+			sound FP_SYNTAX
+			action EYE_ACTIVATE1
+		}
+	}
+	
+	ifaction EYE_IDLE_ON
+	{
+		state syntax_look_for_player
+		ifvare STATE_RETURN 1
+		{
+			setvar EXTRA_MEMORY 0
+		}
+		else
+		{
+			addvar EXTRA_MEMORY 1
+			ifvarg EXTRA_MEMORY 180
+			{
+				setvar EXTRA_MEMORY 0
+				action EYE_OFF
+			}
+		}
+	}
+	
+	ifaction EYE_OFF
+	ifactioncount 8
+	{
+		cstator 32768
+		action EYE_IDLE_OFF
+	}
+	
+	ifaction EYE_ACTIVATE1
+	ifactioncount 5
+		action EYE_ACTIVATE2
+		
+	ifaction EYE_ACTIVATE2
+	ifactioncount 1
+		action EYE_ACTIVATE3
+		
+	ifaction EYE_ACTIVATE3
+	ifactioncount 1
+		action EYE_ACTIVATE4
+		
+	ifaction EYE_ACTIVATE4
+	ifactioncount 5
+		action EYE_ACTIVATE5
+		
+	ifaction EYE_ACTIVATE5
+	ifactioncount 1
+		action EYE_ACTIVATE6
+		
+	ifaction EYE_ACTIVATE6
+	ifactioncount 3
+		action EYE_IDLE_ON
+enda
+
+actor ARCTRAP 0
+	ifaction 0
+	{
+		ifvare LOTAG_MEMORY 0 // LOTAG_MEMORY is a timer.
+			setvar LOTAG_MEMORY 150
+			
+		setvarvar EXTRA_MEMORY HITAG_MEMORY // HITAG_MEMORY is an initial timer offset.
+		
+		//redefinequote 500 Arc HITAG_MEMORY: %d
+		//qsprintf 500 500 HITAG_MEMORY
+		//userquote 500
+		
+		action ANULLACTION
+	}
+	
+	sleeptime 0
+	addvar EXTRA_MEMORY 1
+	ifvarvarg EXTRA_MEMORY LOTAG_MEMORY
+	{
+		sound FP_ELECTRICARC
+		espawn ARCTRAPZAP
+		getactor[THISACTOR].cstat TEMP
+		setactor[RETURN].cstat TEMP
+		getactor[THISACTOR].xrepeat TEMP
+		setactor[RETURN].xrepeat TEMP
+		getactor[THISACTOR].yrepeat TEMP
+		setactor[RETURN].yrepeat TEMP
+		getactor[THISACTOR].ang TEMP
+		setactor[RETURN].ang TEMP
+		setvar RETURN 0
+		
+		setvar EXTRA_MEMORY 0
+	}
+enda
+
+defstate weird_hitscan_bullshit
+	getactor[THISACTOR].x SPAWN_ORIGX
+	getactor[THISACTOR].y SPAWN_ORIGY
+	getactor[THISACTOR].z SPAWN_ORIGZ
+	getactor[THISACTOR].sectnum SECTNUM_MEMORY
+	getactor[THISACTOR].ang SPAWN_ORIGANG
+	
+	setvar PICNUM_MEMORY -1
+	addvar SPAWN_ORIGANG 512
+	
+	cos TEMP SPAWN_ORIGANG
+	sin TEMP2 SPAWN_ORIGANG
+	hitscan SPAWN_ORIGX SPAWN_ORIGY SPAWN_ORIGZ SECTNUM_MEMORY TEMP TEMP2 0 TEMP3 TEMP4 PICNUM_MEMORY DEST_X DEST_Y DEST_Z CLIPMASK1
+	
+	ifvare PICNUM_MEMORY -1
+	{
+		addvar SPAWN_ORIGANG -1024
+		cos TEMP SPAWN_ORIGANG
+		sin TEMP2 SPAWN_ORIGANG
+		hitscan SPAWN_ORIGX SPAWN_ORIGY SPAWN_ORIGZ SECTNUM_MEMORY TEMP TEMP2 0 TEMP3 TEMP4 PICNUM_MEMORY DEST_X DEST_Y DEST_Z CLIPMASK1
+	}
+	
+	ifvarg PICNUM_MEMORY -1
+	{
+		getactor[THISACTOR].xrepeat TEMP
+		mulvar TEMP 12
+		ldist TEMP2 THISACTOR PICNUM_MEMORY
+		ifvarvarl TEMP2 TEMP
+		{
+			setvar STATE_PARAM1 25
+			setvarvar STATE_PARAM2 PICNUM_MEMORY
+			setvar STATE_PARAM3 PLASMABALL
+			setvar STATE_PARAM4 0
+			state apply_damage
+		}
+	}
+ends
+
+action ARC_ANIM1 0 6 1 1 1
+actor ARCTRAPZAP 0
+	ifaction 0
+	{
+		cstator 2
+		setactor[THISACTOR].blend 255
+		action ARC_ANIM1
+	}
+	
+	ifcount 30
+	{
+		getactor[THISACTOR].yrepeat TEMP
+		subvar TEMP 8
+		setactor[THISACTOR].yrepeat TEMP
+		ifvarl TEMP 1
+			killit
+	}
+	else
+	{
+		state weird_hitscan_bullshit
+	}
+enda
+
+// STATE_PARAM1 = Angle Offset
+// STATE_PARAM2 = Axis (0 = xrepeat, 1 = yrepeat)
+defstate magma_spew
+	espawn MAGMASPEW
+	setactor[RETURN].cstat 144
+			
+	// Spew scale should be xrepeat - xrepeat>>2
+	ifvare STATE_PARAM2 0
+	{
+		getactor[THISACTOR].xrepeat TEMP
+		getactor[THISACTOR].xrepeat TEMP2
+	}
+	else
+	{
+		getactor[THISACTOR].yrepeat TEMP
+		getactor[THISACTOR].yrepeat TEMP2
+	}
+	
+	shiftvarr TEMP2 2
+	subvarvar TEMP TEMP2
+	setactor[RETURN].xrepeat TEMP
+	setactor[RETURN].yrepeat 52
+
+	// Spew offset should be x/yrepeat * 6
+	ifvare STATE_PARAM2 0
+		getactor[THISACTOR].yrepeat TEMP
+	else
+		getactor[THISACTOR].xrepeat TEMP
+	mulvar TEMP 6
+	
+	// x = offset * cos(ang) >> 14
+	getactor[THISACTOR].ang TEMP3
+	addvarvar TEMP3 STATE_PARAM1
+	cos TEMP3 TEMP3
+	mulvarvar TEMP TEMP3
+	shiftvarr TEMP 14
+	getactor[RETURN].x TEMP4
+	addvarvar TEMP4 TEMP
+	setactor[RETURN].x TEMP4
+	setactor[RETURN].htbposx TEMP4
+	
+	// Spew offset should be yrepeat * 6
+	ifvare STATE_PARAM2 0
+		getactor[THISACTOR].yrepeat TEMP
+	else
+		getactor[THISACTOR].xrepeat TEMP
+	mulvar TEMP 6
+	
+	// y = offset * sin(ang) >> 14
+	getactor[THISACTOR].ang TEMP3
+	addvarvar TEMP3 STATE_PARAM1
+	sin TEMP3 TEMP3
+	mulvarvar TEMP TEMP3
+	shiftvarr TEMP 14
+	getactor[RETURN].y TEMP4
+	addvarvar TEMP4 TEMP
+	setactor[RETURN].y TEMP4
+	setactor[RETURN].htbposy TEMP4
+	
+	getactor[THISACTOR].ang TEMP
+	addvarvar TEMP STATE_PARAM1
+	setactor[RETURN].ang TEMP
+	
+	getactor[THISACTOR].z TEMP
+	subvar TEMP 9216
+	setactor[RETURN].z TEMP
+	setactor[RETURN].htbposz TEMP
+	
+	setvar RETURN 0
+ends
+
+action VALVE_OPEN 0 7 1 1 1
+action VALVE_CLOSE 7 7 1 -1 1
+action VALVE_SPEW 7 1 1 1 1
+actor MAGMAVALVE 0
+	sleeptime 0
+	ifaction 0
+	{
+		cstator 257 // Make sure it is solid.
+		
+		ifvare LOTAG_MEMORY 0 // LOTAG_MEMORY is a timer.
+			setvar LOTAG_MEMORY 150
+			
+		setvarvar EXTRA_MEMORY HITAG_MEMORY // HITAG_MEMORY is an initial timer offset.
+		
+		action ANULLACTION
+	}
+	
+	ifaction VALVE_OPEN
+	{
+		ifactioncount 7
+		{
+			action VALVE_SPEW
+			resetcount
+		}
+	}
+	else ifaction VALVE_SPEW
+	{
+		getactor[THISACTOR].htg_t 0 TEMP
+		modvar TEMP 3
+		ifvare TEMP 0
+		{
+			/* // Only use this on one axis...
+			getactor[THISACTOR].yrepeat TEMP
+			shiftvarr TEMP 2
+			getactor[THISACTOR].xrepeat TEMP3
+			subvarvar TEMP3 TEMP
+			*/
+			sound FP_MAGMASPEW
+
+			setvar STATE_PARAM1 0
+			setvar STATE_PARAM2 0
+			state magma_spew
+			setvar STATE_PARAM2 0
+			setvar STATE_PARAM1 1024
+			state magma_spew
+			
+			setvar STATE_PARAM2 1
+			setvar STATE_PARAM1 512
+			state magma_spew
+			
+			setvar STATE_PARAM2 1
+			setvar STATE_PARAM1 1536
+			state magma_spew
+			
+			espawn MAGMASPEWCAP
+			getactor[THISACTOR].ang TEMP
+			setactor[RETURN].ang TEMP
+			setactor[RETURN].cstat 33
+			
+			// Spew scale should be xrepeat - xrepeat>>2
+			getactor[THISACTOR].xrepeat TEMP
+			getactor[THISACTOR].xrepeat TEMP2
+			shiftvarr TEMP2 2
+			subvarvar TEMP TEMP2
+			setactor[RETURN].xrepeat TEMP
+			
+			getactor[THISACTOR].yrepeat TEMP
+			getactor[THISACTOR].yrepeat TEMP2
+			shiftvarr TEMP2 2
+			subvarvar TEMP TEMP2
+			setactor[RETURN].yrepeat TEMP
+
+			setvar RETURN 0
+		}
+		
+		setvar STATE_PARAM1 2 // Intensity
+		setvar STATE_PARAM2 6144 // Radius
+		state start_shake
+		
+		ifcount 90
+		{
+			action VALVE_CLOSE
+		}
+	}
+	else ifaction VALVE_CLOSE
+	{
+		ifactioncount 7
+			action ANULLACTION
+	}
+	else ifaction ANULLACTION
+	{
+		addvar EXTRA_MEMORY 1
+		ifvarvarg EXTRA_MEMORY LOTAG_MEMORY
+		{
+			action VALVE_OPEN
+			setvar EXTRA_MEMORY 0
+		}
+	}
+enda
+
+action MAGMAKILL 0 1 1 1 1
+move magmafall 0 1024
+defstate magma_spew_shared
+	// ASS
+	sleeptime 0
+	ifmove 0
+	{
+		move magmafall getv noclip
+		setactor[THISACTOR].shade -127
+	}
+	
+	getactor[THISACTOR].x TEMP
+	getactor[THISACTOR].y TEMP2
+	getactor[THISACTOR].z TEMP3
+	getactor[THISACTOR].sectnum TEMP4
+	getflorzofslope TEMP4 TEMP TEMP2 DEST_Z
+	
+	ifaction MAGMAKILL
+	{
+		subvar TEMP3 9216
+		ifvarvarg TEMP3 DEST_Z
+			killit
+	}
+	else
+	{
+		addvar TEMP3 12288
+		ifvarvarg TEMP3 DEST_Z
+		{
+			ifactor MAGMASPEW
+			{
+				espawn MAGMASPLASH
+				getactor[THISACTOR].xrepeat TEMP
+				shiftvarr TEMP 1
+				setactor[RETURN].xrepeat TEMP
+				setactor[RETURN].yrepeat 64
+				setactor[RETURN].cstat 48
+				setactor[RETURN].yoffset 16
+				setactor[RETURN].shade -127
+				setactor[RETURN].z DEST_Z
+				setactor[RETURN].htbposz DEST_Z
+				setvar RETURN 0
+				
+				espawn MAGMASPLASH
+				getactor[THISACTOR].xrepeat TEMP
+				shiftvarr TEMP 1
+				setactor[RETURN].xrepeat TEMP
+				setactor[RETURN].yrepeat 64
+				setactor[RETURN].cstat 32
+				setactor[RETURN].shade -127
+				setactor[RETURN].z DEST_Z
+				setactor[RETURN].htbposz DEST_Z
+				setvar RETURN 0
+			}
+			
+			action MAGMAKILL
+			move magmafall getv noclip
+		}
+	}
+ends
+
+spriteflags MAGMASPEW 1048580 // SFLAG_NOSHADE(4) + SFLAG_NODAMAGEPUSH(1048576)
+actor MAGMASPEW 0
+	state magma_spew_shared
+enda
+
+spriteflags MAGMASPEW 1048580 // SFLAG_NOSHADE(4) + SFLAG_NODAMAGEPUSH(1048576)
+actor MAGMASPEWCAP 0
+	state magma_spew_shared
+enda
+
+spritenoshade MAGMASPLASH
+actor MAGMASPLASH 0
+	ifaction 0
+	{
+		action ANULLACTION
+	}
+	
+	ifcount 6 { killit }
+	else ifcount 4 { }
+	else ifcount 3
+	{
+		setactor[THISACTOR].mdflags 16
+		orvar ANIMATE_FLAGS ANIMATE_FLAG_FADEOUT
+		setvarvar ANIMATE_STARTCLOCK ANIMATE_CLOCK // Timer
+		setvar ANIMATE_LIFETIME 12 // End time
+	}
+enda
+
+action ALARM_START 0 5 1 1 1
+action ALARM_LOOP 0 5 1 1 1
+actor ALARMSIGN 0
+	sleeptime 0
+	
+	ifaction 0
+	{
+		cstator 257 // Make sure it is solid.
+		
+		ifvare LOTAG_MEMORY 0 // LOTAG_MEMORY is a timer.
+			setvar LOTAG_MEMORY 150
+			
+		setvarvar EXTRA_MEMORY HITAG_MEMORY // HITAG_MEMORY is an initial timer offset.
+		
+		action ANULLACTION
+	}
+	
+	ifaction ALARM_LOOP
+	{
+		ifcount 104
+			action ANULLACTION
+	}
+	else ifaction ALARM_START
+	{
+		addvar EXTRA_MEMORY 1
+		ifvarvarg EXTRA_MEMORY LOTAG_MEMORY
+		{
+			setvar EXTRA_MEMORY 0
+			action ALARM_LOOP
+			resetcount
+		}
+	}
+	else ifaction ANULLACTION
+	{
+		addvar EXTRA_MEMORY 1
+		setvarvar TEMP LOTAG_MEMORY
+		subvar TEMP 30
+		ifvarvarg EXTRA_MEMORY TEMP
+		{
+			action ALARM_START
+			sound FP_HAZARDALARM
+			resetcount
+		}
+	}
+enda
+
+
 define SCRAP_WORKSLIKE 4226
 defineprojectile COLORSCRAP1 PROJ_WORKSLIKE SCRAP_WORKSLIKE
 defineprojectile COLORSCRAP1 PROJ_XREPEAT 32
@@ -1465,3 +2022,6 @@ defineprojectile COLORSCRAP4 PROJ_EXTRA 0
 defineprojectile COLORSCRAP4 PROJ_CLIPDIST 1
 defineprojectile COLORSCRAP4 PROJ_BSOUND -1
 defineprojectile COLORSCRAP4 PROJ_ISOUND -1
+
+// Tile NoPal entries (no actor defs)
+spritenopal TBPIPE01

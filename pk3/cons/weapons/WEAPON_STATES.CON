@@ -816,6 +816,7 @@ ends
 state spawn_ssg_shell
 	espawn SHOTGUNSHELL
 	
+	// Random angle.
 	getactor[RETURN].zvel TEMP2
 	addvar TEMP2 -384
 	setactor[RETURN].zvel TEMP2
@@ -826,8 +827,7 @@ state spawn_ssg_shell
 	// Get an X/Y offset
 	getactor[THISACTOR].ang TEMP3
 	addvar TEMP3 348 // ?
-	addvar TEMP3 512 // 45 degree angle
-	sin TEMP3 TEMP3
+	cos TEMP3 TEMP3
 	divvarvar TEMP3 STATE_PARAM3 // Offset
 	getactor[RETURN].x TEMP2
 	addvarvar TEMP2 TEMP3

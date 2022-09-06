@@ -237,12 +237,12 @@ actor DFGSPARK 0
 		setactor[THISACTOR].mdflags 16
 		
 		setvar ANIMATE_FLAGS ANIMATE_FLAG_FADEOUT
-		setvar LOTAG_MEMORY 0 // Timer
+		setvarvar ANIMATE_STARTCLOCK ANIMATE_CLOCK // Timer
 		
 		ifspawnedby DFGTRAIL
-			setvar HITAG_MEMORY 60 // End time
+			setvar ANIMATE_LIFETIME 60 // End time
 		else
-			setvar HITAG_MEMORY 120 // End time
+			setvar ANIMATE_LIFETIME 120 // End time
 		
 		ifspawnedby DFGEXPLOSION
 			sizeat 12 12
@@ -343,8 +343,8 @@ actor DFGTRACER 0
 			action DFGTRACER_FRAMES
 			setactor[THISACTOR].mdflags 16
 			setvar ANIMATE_FLAGS ANIMATE_FLAG_FADEOUT
-			setvar LOTAG_MEMORY 0 // Timer
-			setvar HITAG_MEMORY 64 // End time
+			setvarvar ANIMATE_STARTCLOCK ANIMATE_CLOCK // Timer
+			setvar ANIMATE_LIFETIME 64 // End time
 		}
 		break
 	}
@@ -364,8 +364,8 @@ actor DFGTRAIL 0
 		setactor[THISACTOR].mdflags 16
 		setvar ANIMATE_FLAGS ANIMATE_FLAG_FADEOUT
 		
-		setvar LOTAG_MEMORY 0 // Timer
-		setvar HITAG_MEMORY 16 // End time
+		setvarvar ANIMATE_STARTCLOCK ANIMATE_CLOCK // Timer
+		setvar ANIMATE_LIFETIME 16 // End time
 		
 		ifrnd 128
 			state spawn_dfg_spark
@@ -408,15 +408,15 @@ actor DFGEXPLOSION 0
 			setactor[THISACTOR].mdflags 16
 			setvar ANIMATE_FLAGS ANIMATE_FLAG_ROTATE_SCALE_AND_FADE
 		
-			setvar LOTAG_MEMORY 0 // Timer
-			setvar HITAG_MEMORY 64 // End time
+			setvarvar ANIMATE_STARTCLOCK ANIMATE_CLOCK // Timer
+			setvar ANIMATE_LIFETIME 64 // End time
 		
 			setvar XREPEAT_MEMORY 64 // Start radius
 			setvar YREPEAT_MEMORY 128 // End radius
 			
 			espawn FIRESHELL
 			setactor[RETURN].pal 197
-			setactorvar[RETURN].HITAG_MEMORY 48 // End time
+			setactorvar[RETURN].ANIMATE_LIFETIME 48 // End time
 			setactorvar[RETURN].XREPEAT_MEMORY 0 // Start radius
 			setactorvar[RETURN].YREPEAT_MEMORY 164 // End radius
 			setactorvar[RETURN].SPAWN_ORIGANG 72 // Rotational Speed

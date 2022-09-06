@@ -512,8 +512,7 @@ state babe_check_all_rescued
 		globalsound ALL_BABES_SAVED
 		setvar BABES_ALLSAVED 1
 		
-		headspritestat CURSPRITE 10 // STAT_PLAYER
-		setvarvar LASTSPRITE CURSPRITE
+		headspritestat CURSPRITE STAT_PLAYER
 		whilevarn CURSPRITE -1
 		{
 			getactor[CURSPRITE].extra TEMP
@@ -523,8 +522,7 @@ state babe_check_all_rescued
 				setactor[CURSPRITE].extra MAXPLAYERHEALTH
 			}
 				
-			nextspritestat CURSPRITE LASTSPRITE
-			setvarvar LASTSPRITE CURSPRITE
+			nextspritestat CURSPRITE CURSPRITE
 		}
 	}
 ends

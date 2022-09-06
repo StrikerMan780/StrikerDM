@@ -65,7 +65,8 @@ tilefromtexture 8060 { file "tiles/8060.png" texture truenpot }
 tilefromtexture 8061 { file "tiles/8061.png" texture truenpot }
 tilefromtexture 8062 { file "tiles/8062.png" texture truenpot }
 
-animtilerange 8063 8066 4 ANIM_FORWARD
+// Magma pipe
+animtilerange 8063 8066 2 ANIM_FORWARD
 tilefromtexture 8063 { file "tiles/8063.png" texture truenpot }
 tilefromtexture 8064 { file "tiles/8064.png" texture truenpot }
 tilefromtexture 8065 { file "tiles/8065.png" texture truenpot }
@@ -190,6 +191,12 @@ tilefromtexture 8173 { file "tiles/8173.png" texture truenpot }
 tilefromtexture 8174 { file "tiles/8174.png" texture truenpot }
 tilefromtexture 8175 { file "tiles/8175.png" texture truenpot }
 
+animtilerange 8176 8179 4 ANIM_FORWARD
+tilefromtexture 8176 { file "tiles/8176.png" texture truenpot }
+tilefromtexture 8177 { file "tiles/8177.png" texture truenpot }
+tilefromtexture 8178 { file "tiles/8178.png" texture truenpot }
+tilefromtexture 8179 { file "tiles/8179.png" texture truenpot }
+
 tilefromtexture 8185 { file "tiles/8185.png" texture truenpot }
 tilefromtexture 8186 { file "tiles/8186.png" texture truenpot }
 
@@ -266,6 +273,10 @@ tilefromtexture 8242 { file "tiles/8242.png" texture truenpot }
 tilefromtexture 8243 { file "tiles/8243.png" texture truenpot }
 tilefromtexture 8244 { file "tiles/8244.png" texture truenpot }
 
+tilefromtexture 8245 { file "tiles/8245.png" texture truenpot }
+tilefromtexture 8246 { file "tiles/8246.png" texture truenpot }
+tilefromtexture 8247 { file "tiles/8247.png" texture truenpot }
+
 animtilerange 8250 8255 3 ANIM_FORWARD
 tilefromtexture 8250 { file "tiles/8250.png" texture }
 tilefromtexture 8251 { file "tiles/8251.png" texture }
@@ -284,6 +295,7 @@ tilefromtexture 8261 { file "tiles/8261.png" texture }
 tilefromtexture 8262 { file "tiles/8262.png" texture }
 tilefromtexture 8263 { file "tiles/8263.png" texture }
 
+// Shard Flower
 animtilerange 8264 8268 4 ANIM_FORWARD
 tilefromtexture 8264 { file "tiles/8264.png" texture }
 tilefromtexture 8265 { file "tiles/8265.png" texture }
@@ -291,4 +303,379 @@ tilefromtexture 8266 { file "tiles/8266.png" texture }
 tilefromtexture 8267 { file "tiles/8267.png" texture }
 tilefromtexture 8268 { file "tiles/8268.png" texture }
 
+// Broken Shard Flower
 tilefromtexture 8269 { file "tiles/8269.png" texture }
+
+// Life Petal
+animtilerange 8270 8281 4 ANIM_FORWARD
+tilefromtexture 8270 { file "tiles/8270.png" texture }
+tilefromtexture 8271 { file "tiles/8271.png" texture }
+tilefromtexture 8272 { file "tiles/8272.png" texture }
+tilefromtexture 8273 { file "tiles/8273.png" texture }
+tilefromtexture 8274 { file "tiles/8274.png" texture }
+tilefromtexture 8275 { file "tiles/8275.png" texture }
+tilefromtexture 8276 { file "tiles/8276.png" texture }
+tilefromtexture 8277 { file "tiles/8277.png" texture }
+tilefromtexture 8278 { file "tiles/8278.png" texture }
+tilefromtexture 8279 { file "tiles/8279.png" texture }
+tilefromtexture 8280 { file "tiles/8280.png" texture }
+tilefromtexture 8281 { file "tiles/8281.png" texture }
+
+// Life Petal FX 1
+tilefromtexture 8282 { file "tiles/8282.png" texture }
+
+// Life Petal FX 2
+tilefromtexture 8283 { file "tiles/8283.png" texture }
+tilefromtexture 8284 { file "tiles/8284.png" texture }
+tilefromtexture 8285 { file "tiles/8285.png" texture }
+tilefromtexture 8286 { file "tiles/8286.png" texture }
+
+// Life Flower
+tilefromtexture 8287 { file "tiles/8287.png" texture }
+tilefromtexture 8288 { file "tiles/8288.png" texture }
+tilefromtexture 8289 { file "tiles/8289.png" texture }
+tilefromtexture 8290 { file "tiles/8290.png" texture }
+tilefromtexture 8291 { file "tiles/8291.png" texture }
+tilefromtexture 8292 { file "tiles/8292.png" texture }
+tilefromtexture 8293 { file "tiles/8293.png" texture }
+tilefromtexture 8294 { file "tiles/8294.png" texture }
+
+// Shield up/down anim
+tilefromtexture 8295 { file "tiles/8295.png" texture }
+tilefromtexture 8296 { file "tiles/8296.png" texture }
+tilefromtexture 8297 { file "tiles/8297.png" texture }
+tilefromtexture 8298 { file "tiles/8298.png" texture }
+tilefromtexture 8299 { file "tiles/8299.png" texture }
+tilefromtexture 8300 { file "tiles/8300.png" texture }
+tilefromtexture 8301 { file "tiles/8301.png" texture }
+tilefromtexture 8302 { file "tiles/8302.png" texture }
+tilefromtexture 8303 { file "tiles/8303.png" texture }
+tilefromtexture 8304 { file "tiles/8304.png" texture }
+tilefromtexture 8305 { file "tiles/8305.png" texture }
+tilefromtexture 8306 { file "tiles/8306.png" texture }
+tilefromtexture 8307 { file "tiles/8307.png" texture }
+
+// Crystals
+tilefromtexture 8308 { file "tiles/8308.png" texture }
+tilefromtexture 8309 { file "tiles/8309.png" texture }
+tilefromtexture 8310 { file "tiles/8310.png" texture }
+tilefromtexture 8311 { file "tiles/8311.png" texture }
+tilefromtexture 8312 { file "tiles/8312.png" texture }
+tilefromtexture 8313 { file "tiles/8313.png" texture }
+tilefromtexture 8314 { file "tiles/8314.png" texture }
+
+// Bomb
+tilefromtexture 8315 { file "tiles/8315.png" texture }
+tilefromtexture 8316 { file "tiles/8316.png" texture }
+tilefromtexture 8317 { file "tiles/8317.png" texture }
+
+// Explosion
+tilefromtexture 8318 { file "tiles/8318.png" texture }
+tilefromtexture 8319 { file "tiles/8319.png" texture }
+tilefromtexture 8320 { file "tiles/8320.png" texture }
+tilefromtexture 8321 { file "tiles/8321.png" texture }
+tilefromtexture 8322 { file "tiles/8322.png" texture }
+tilefromtexture 8323 { file "tiles/8323.png" texture }
+tilefromtexture 8324 { file "tiles/8324.png" texture }
+
+// Fire Shield
+animtilerange 8325 8328 4 ANIM_OSCILLATING
+tilefromtexture 8325 { file "tiles/8325.png" texture }
+tilefromtexture 8326 { file "tiles/8326.png" texture }
+tilefromtexture 8327 { file "tiles/8327.png" texture }
+tilefromtexture 8328 { file "tiles/8328.png" texture }
+
+// Fire shield inner layer
+animtilerange 8329 8337 2 ANIM_FORWARD
+tilefromtexture 8329 { file "tiles/8329.png" texture }
+tilefromtexture 8330 { file "tiles/8330.png" texture }
+tilefromtexture 8331 { file "tiles/8331.png" texture }
+tilefromtexture 8332 { file "tiles/8332.png" texture }
+tilefromtexture 8333 { file "tiles/8333.png" texture }
+tilefromtexture 8334 { file "tiles/8334.png" texture }
+tilefromtexture 8335 { file "tiles/8335.png" texture }
+tilefromtexture 8336 { file "tiles/8336.png" texture }
+tilefromtexture 8337 { file "tiles/8337.png" texture }
+
+// Water Shield
+animtilerange 8338 8361 4 ANIM_FORWARD
+tilefromtexture 8338 { file "tiles/8338.png" texture }
+tilefromtexture 8339 { file "tiles/8339.png" texture }
+tilefromtexture 8340 { file "tiles/8340.png" texture }
+tilefromtexture 8341 { file "tiles/8341.png" texture }
+tilefromtexture 8342 { file "tiles/8342.png" texture }
+tilefromtexture 8343 { file "tiles/8343.png" texture }
+tilefromtexture 8344 { file "tiles/8344.png" texture }
+tilefromtexture 8345 { file "tiles/8345.png" texture }
+tilefromtexture 8346 { file "tiles/8346.png" texture }
+tilefromtexture 8347 { file "tiles/8347.png" texture }
+tilefromtexture 8348 { file "tiles/8348.png" texture }
+tilefromtexture 8349 { file "tiles/8349.png" texture }
+tilefromtexture 8350 { file "tiles/8350.png" texture }
+tilefromtexture 8351 { file "tiles/8351.png" texture }
+tilefromtexture 8352 { file "tiles/8352.png" texture }
+tilefromtexture 8353 { file "tiles/8353.png" texture }
+tilefromtexture 8354 { file "tiles/8354.png" texture }
+tilefromtexture 8355 { file "tiles/8355.png" texture }
+tilefromtexture 8356 { file "tiles/8356.png" texture }
+tilefromtexture 8357 { file "tiles/8357.png" texture }
+tilefromtexture 8358 { file "tiles/8358.png" texture }
+tilefromtexture 8359 { file "tiles/8359.png" texture }
+tilefromtexture 8360 { file "tiles/8360.png" texture }
+tilefromtexture 8361 { file "tiles/8361.png" texture }
+
+// Water Shield Inner
+animtilerange 8362 8474 1 ANIM_FORWARD
+tilefromtexture 8362 { file "tiles/8362.png" texture }
+tilefromtexture 8363 { file "tiles/8363.png" texture }
+tilefromtexture 8364 { file "tiles/8364.png" texture }
+tilefromtexture 8365 { file "tiles/8365.png" texture }
+tilefromtexture 8366 { file "tiles/8366.png" texture }
+tilefromtexture 8367 { file "tiles/8367.png" texture }
+tilefromtexture 8368 { file "tiles/8368.png" texture }
+tilefromtexture 8369 { file "tiles/8369.png" texture }
+tilefromtexture 8370 { file "tiles/8370.png" texture }
+tilefromtexture 8371 { file "tiles/8371.png" texture }
+tilefromtexture 8372 { file "tiles/8372.png" texture }
+tilefromtexture 8373 { file "tiles/8373.png" texture }
+tilefromtexture 8374 { file "tiles/8374.png" texture }
+tilefromtexture 8375 { file "tiles/8375.png" texture }
+tilefromtexture 8376 { file "tiles/8376.png" texture }
+tilefromtexture 8377 { file "tiles/8377.png" texture }
+tilefromtexture 8378 { file "tiles/8378.png" texture }
+tilefromtexture 8379 { file "tiles/8379.png" texture }
+tilefromtexture 8380 { file "tiles/8380.png" texture }
+tilefromtexture 8381 { file "tiles/8381.png" texture }
+tilefromtexture 8382 { file "tiles/8382.png" texture }
+tilefromtexture 8383 { file "tiles/8383.png" texture }
+tilefromtexture 8384 { file "tiles/8384.png" texture }
+tilefromtexture 8385 { file "tiles/8385.png" texture }
+tilefromtexture 8386 { file "tiles/8386.png" texture }
+tilefromtexture 8387 { file "tiles/8387.png" texture }
+tilefromtexture 8388 { file "tiles/8388.png" texture }
+tilefromtexture 8389 { file "tiles/8389.png" texture }
+tilefromtexture 8390 { file "tiles/8390.png" texture }
+tilefromtexture 8391 { file "tiles/8391.png" texture }
+tilefromtexture 8392 { file "tiles/8392.png" texture }
+tilefromtexture 8393 { file "tiles/8393.png" texture }
+tilefromtexture 8394 { file "tiles/8394.png" texture }
+tilefromtexture 8395 { file "tiles/8395.png" texture }
+tilefromtexture 8396 { file "tiles/8396.png" texture }
+tilefromtexture 8397 { file "tiles/8397.png" texture }
+tilefromtexture 8398 { file "tiles/8398.png" texture }
+tilefromtexture 8399 { file "tiles/8399.png" texture }
+tilefromtexture 8400 { file "tiles/8400.png" texture }
+tilefromtexture 8401 { file "tiles/8401.png" texture }
+tilefromtexture 8402 { file "tiles/8402.png" texture }
+tilefromtexture 8403 { file "tiles/8403.png" texture }
+tilefromtexture 8404 { file "tiles/8404.png" texture }
+tilefromtexture 8405 { file "tiles/8405.png" texture }
+tilefromtexture 8406 { file "tiles/8406.png" texture }
+tilefromtexture 8407 { file "tiles/8407.png" texture }
+tilefromtexture 8408 { file "tiles/8408.png" texture }
+tilefromtexture 8409 { file "tiles/8409.png" texture }
+tilefromtexture 8410 { file "tiles/8410.png" texture }
+tilefromtexture 8411 { file "tiles/8411.png" texture }
+tilefromtexture 8412 { file "tiles/8412.png" texture }
+tilefromtexture 8413 { file "tiles/8413.png" texture }
+tilefromtexture 8414 { file "tiles/8414.png" texture }
+tilefromtexture 8415 { file "tiles/8415.png" texture }
+tilefromtexture 8416 { file "tiles/8416.png" texture }
+tilefromtexture 8417 { file "tiles/8417.png" texture }
+tilefromtexture 8418 { file "tiles/8418.png" texture }
+tilefromtexture 8419 { file "tiles/8419.png" texture }
+tilefromtexture 8420 { file "tiles/8420.png" texture }
+tilefromtexture 8421 { file "tiles/8421.png" texture }
+tilefromtexture 8422 { file "tiles/8422.png" texture }
+tilefromtexture 8423 { file "tiles/8423.png" texture }
+tilefromtexture 8424 { file "tiles/8424.png" texture }
+tilefromtexture 8425 { file "tiles/8425.png" texture }
+tilefromtexture 8426 { file "tiles/8426.png" texture }
+tilefromtexture 8427 { file "tiles/8427.png" texture }
+tilefromtexture 8428 { file "tiles/8428.png" texture }
+tilefromtexture 8429 { file "tiles/8429.png" texture }
+tilefromtexture 8430 { file "tiles/8430.png" texture }
+tilefromtexture 8431 { file "tiles/8431.png" texture }
+tilefromtexture 8432 { file "tiles/8432.png" texture }
+tilefromtexture 8433 { file "tiles/8433.png" texture }
+tilefromtexture 8434 { file "tiles/8434.png" texture }
+tilefromtexture 8435 { file "tiles/8435.png" texture }
+tilefromtexture 8436 { file "tiles/8436.png" texture }
+tilefromtexture 8437 { file "tiles/8437.png" texture }
+tilefromtexture 8438 { file "tiles/8438.png" texture }
+tilefromtexture 8439 { file "tiles/8439.png" texture }
+tilefromtexture 8440 { file "tiles/8440.png" texture }
+tilefromtexture 8441 { file "tiles/8441.png" texture }
+tilefromtexture 8442 { file "tiles/8442.png" texture }
+tilefromtexture 8443 { file "tiles/8443.png" texture }
+tilefromtexture 8444 { file "tiles/8444.png" texture }
+tilefromtexture 8445 { file "tiles/8445.png" texture }
+tilefromtexture 8446 { file "tiles/8446.png" texture }
+tilefromtexture 8447 { file "tiles/8447.png" texture }
+tilefromtexture 8448 { file "tiles/8448.png" texture }
+tilefromtexture 8449 { file "tiles/8449.png" texture }
+tilefromtexture 8450 { file "tiles/8450.png" texture }
+tilefromtexture 8451 { file "tiles/8451.png" texture }
+tilefromtexture 8452 { file "tiles/8452.png" texture }
+tilefromtexture 8453 { file "tiles/8453.png" texture }
+tilefromtexture 8454 { file "tiles/8454.png" texture }
+tilefromtexture 8455 { file "tiles/8455.png" texture }
+tilefromtexture 8456 { file "tiles/8456.png" texture }
+tilefromtexture 8457 { file "tiles/8457.png" texture }
+tilefromtexture 8458 { file "tiles/8458.png" texture }
+tilefromtexture 8459 { file "tiles/8459.png" texture }
+tilefromtexture 8460 { file "tiles/8460.png" texture }
+tilefromtexture 8461 { file "tiles/8461.png" texture }
+tilefromtexture 8462 { file "tiles/8462.png" texture }
+tilefromtexture 8463 { file "tiles/8463.png" texture }
+tilefromtexture 8464 { file "tiles/8464.png" texture }
+tilefromtexture 8465 { file "tiles/8465.png" texture }
+tilefromtexture 8466 { file "tiles/8466.png" texture }
+tilefromtexture 8467 { file "tiles/8467.png" texture }
+tilefromtexture 8468 { file "tiles/8468.png" texture }
+tilefromtexture 8469 { file "tiles/8469.png" texture }
+tilefromtexture 8470 { file "tiles/8470.png" texture }
+tilefromtexture 8471 { file "tiles/8471.png" texture }
+tilefromtexture 8472 { file "tiles/8472.png" texture }
+tilefromtexture 8473 { file "tiles/8473.png" texture }
+tilefromtexture 8474 { file "tiles/8474.png" texture }
+
+// Earth Shield
+animtilerange 8475 8483 4 ANIM_FORWARD
+tilefromtexture 8475 { file "tiles/8475.png" texture }
+tilefromtexture 8476 { file "tiles/8476.png" texture }
+tilefromtexture 8477 { file "tiles/8477.png" texture }
+tilefromtexture 8478 { file "tiles/8478.png" texture }
+tilefromtexture 8479 { file "tiles/8479.png" texture }
+tilefromtexture 8480 { file "tiles/8480.png" texture }
+tilefromtexture 8481 { file "tiles/8481.png" texture }
+tilefromtexture 8482 { file "tiles/8482.png" texture }
+tilefromtexture 8483 { file "tiles/8483.png" texture }
+
+// Wood Shield
+animtilerange 8484 8494 3 ANIM_FORWARD
+tilefromtexture 8484 { file "tiles/8484.png" texture }
+tilefromtexture 8485 { file "tiles/8485.png" texture }
+tilefromtexture 8486 { file "tiles/8486.png" texture }
+tilefromtexture 8487 { file "tiles/8487.png" texture }
+tilefromtexture 8488 { file "tiles/8488.png" texture }
+tilefromtexture 8489 { file "tiles/8489.png" texture }
+tilefromtexture 8490 { file "tiles/8490.png" texture }
+tilefromtexture 8491 { file "tiles/8491.png" texture }
+tilefromtexture 8492 { file "tiles/8492.png" texture }
+tilefromtexture 8493 { file "tiles/8493.png" texture }
+tilefromtexture 8494 { file "tiles/8494.png" texture }
+
+// Arc Trap
+tilefromtexture 8500 { file "tiles/8500.png" texture }
+tilefromtexture 8501 { file "tiles/8501.png" texture }
+tilefromtexture 8502 { file "tiles/8502.png" texture }
+tilefromtexture 8503 { file "tiles/8503.png" texture }
+tilefromtexture 8504 { file "tiles/8504.png" texture }
+tilefromtexture 8505 { file "tiles/8505.png" texture }
+tilefromtexture 8506 { file "tiles/8506.png" texture }
+
+tilefromtexture 8507 { file "tiles/8507.png" texture truenpot }
+tilefromtexture 8508 { file "tiles/8508.png" texture truenpot }
+
+tilefromtexture 8509 { file "tiles/8509.png" texture }
+tilefromtexture 8510 { file "tiles/8510.png" texture }
+tilefromtexture 8511 { file "tiles/8511.png" texture }
+tilefromtexture 8512 { file "tiles/8512.png" texture }
+tilefromtexture 8513 { file "tiles/8513.png" texture }
+tilefromtexture 8514 { file "tiles/8514.png" texture }
+tilefromtexture 8515 { file "tiles/8515.png" texture }
+tilefromtexture 8516 { file "tiles/8516.png" texture }
+
+tilefromtexture 8517 { file "tiles/8517.png" texture }
+tilefromtexture 8518 { file "tiles/8518.png" texture }
+
+tilefromtexture 8519 { file "tiles/8519.png" texture }
+tilefromtexture 8520 { file "tiles/8520.png" texture }
+tilefromtexture 8521 { file "tiles/8521.png" texture }
+tilefromtexture 8522 { file "tiles/8522.png" texture }
+tilefromtexture 8523 { file "tiles/8523.png" texture }
+
+animtilerange 8524 8543 2 ANIM_FORWARD
+tilefromtexture 8524 { file "tiles/8524.png" texture }
+tilefromtexture 8525 { file "tiles/8525.png" texture }
+tilefromtexture 8526 { file "tiles/8526.png" texture }
+tilefromtexture 8527 { file "tiles/8527.png" texture }
+tilefromtexture 8528 { file "tiles/8528.png" texture }
+tilefromtexture 8529 { file "tiles/8529.png" texture }
+tilefromtexture 8530 { file "tiles/8530.png" texture }
+tilefromtexture 8531 { file "tiles/8531.png" texture }
+tilefromtexture 8532 { file "tiles/8532.png" texture }
+tilefromtexture 8533 { file "tiles/8533.png" texture }
+tilefromtexture 8534 { file "tiles/8534.png" texture }
+tilefromtexture 8535 { file "tiles/8535.png" texture }
+tilefromtexture 8536 { file "tiles/8536.png" texture }
+tilefromtexture 8537 { file "tiles/8537.png" texture }
+tilefromtexture 8538 { file "tiles/8538.png" texture }
+tilefromtexture 8539 { file "tiles/8539.png" texture }
+tilefromtexture 8540 { file "tiles/8540.png" texture }
+tilefromtexture 8541 { file "tiles/8541.png" texture }
+tilefromtexture 8542 { file "tiles/8542.png" texture }
+tilefromtexture 8543 { file "tiles/8543.png" texture }
+
+animtilerange 8544 8563 2 ANIM_FORWARD
+tilefromtexture 8544 { file "tiles/8544.png" texture }
+tilefromtexture 8545 { file "tiles/8545.png" texture }
+tilefromtexture 8546 { file "tiles/8546.png" texture }
+tilefromtexture 8547 { file "tiles/8547.png" texture }
+tilefromtexture 8548 { file "tiles/8548.png" texture }
+tilefromtexture 8549 { file "tiles/8549.png" texture }
+tilefromtexture 8550 { file "tiles/8550.png" texture }
+tilefromtexture 8551 { file "tiles/8551.png" texture }
+tilefromtexture 8552 { file "tiles/8552.png" texture }
+tilefromtexture 8553 { file "tiles/8553.png" texture }
+tilefromtexture 8554 { file "tiles/8554.png" texture }
+tilefromtexture 8555 { file "tiles/8555.png" texture }
+tilefromtexture 8556 { file "tiles/8556.png" texture }
+tilefromtexture 8557 { file "tiles/8557.png" texture }
+tilefromtexture 8558 { file "tiles/8558.png" texture }
+tilefromtexture 8559 { file "tiles/8559.png" texture }
+tilefromtexture 8560 { file "tiles/8560.png" texture }
+tilefromtexture 8561 { file "tiles/8561.png" texture }
+tilefromtexture 8562 { file "tiles/8562.png" texture }
+tilefromtexture 8563 { file "tiles/8563.png" texture }
+
+// Wood Shield Petal 1
+tilefromtexture 8564 { file "tiles/8564.png" texture }
+tilefromtexture 8565 { file "tiles/8565.png" texture }
+tilefromtexture 8566 { file "tiles/8566.png" texture }
+tilefromtexture 8567 { file "tiles/8567.png" texture }
+tilefromtexture 8568 { file "tiles/8568.png" texture }
+tilefromtexture 8569 { file "tiles/8569.png" texture }
+tilefromtexture 8570 { file "tiles/8570.png" texture }
+tilefromtexture 8571 { file "tiles/8571.png" texture }
+tilefromtexture 8572 { file "tiles/8572.png" texture }
+tilefromtexture 8573 { file "tiles/8573.png" texture }
+tilefromtexture 8574 { file "tiles/8574.png" texture }
+tilefromtexture 8575 { file "tiles/8575.png" texture }
+tilefromtexture 8576 { file "tiles/8576.png" texture }
+tilefromtexture 8577 { file "tiles/8577.png" texture }
+tilefromtexture 8578 { file "tiles/8578.png" texture }
+tilefromtexture 8579 { file "tiles/8579.png" texture }
+tilefromtexture 8580 { file "tiles/8580.png" texture }
+tilefromtexture 8581 { file "tiles/8581.png" texture }
+tilefromtexture 8582 { file "tiles/8582.png" texture }
+tilefromtexture 8583 { file "tiles/8583.png" texture }
+tilefromtexture 8584 { file "tiles/8584.png" texture }
+tilefromtexture 8585 { file "tiles/8585.png" texture }
+tilefromtexture 8586 { file "tiles/8586.png" texture }
+tilefromtexture 8587 { file "tiles/8587.png" texture }
+tilefromtexture 8588 { file "tiles/8588.png" texture }
+tilefromtexture 8589 { file "tiles/8589.png" texture }
+tilefromtexture 8590 { file "tiles/8590.png" texture }
+tilefromtexture 8591 { file "tiles/8591.png" texture }
+tilefromtexture 8592 { file "tiles/8592.png" texture }
+tilefromtexture 8593 { file "tiles/8593.png" texture }
+
+tilefromtexture 8594 { file "tiles/8594.png" texture }
+tilefromtexture 8595 { file "tiles/8595.png" texture }
+tilefromtexture 8596 { file "tiles/8596.png" texture }
+tilefromtexture 8597 { file "tiles/8597.png" texture }
+tilefromtexture 8598 { file "tiles/8598.png" texture }
+tilefromtexture 8599 { file "tiles/8599.png" texture }
+tilefromtexture 8600 { file "tiles/8600.png" texture }

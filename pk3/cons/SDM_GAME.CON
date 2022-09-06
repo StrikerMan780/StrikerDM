@@ -1146,8 +1146,8 @@ actor SMALLSMOKE 0 SMOKEFRAMES
 
 		setactor[THISACTOR].mdflags 16
 		setvar ANIMATE_FLAGS ANIMATE_FLAG_ROTATE_SCALE_AND_FADE
-		setvar LOTAG_MEMORY 0 // Timer
-		setvar HITAG_MEMORY 45 // End time
+		setvarvar ANIMATE_STARTCLOCK ANIMATE_CLOCK // Timer
+		setvar ANIMATE_LIFETIME 45 // End time
 		setvar SPAWN_ORIGANG 0 // Rotational Speed
 		
 		getactor[THISACTOR].xrepeat TEMP
@@ -1305,8 +1305,8 @@ actor EXPLOSION2 1 EXPLOSION_FRAMES
 	else ifcount 1
 	{
 		setvar ANIMATE_FLAGS ANIMATE_FLAG_SCALE
-		setvar LOTAG_MEMORY 0 // Timer
-		setvar HITAG_MEMORY 256 // End time
+		setvarvar ANIMATE_STARTCLOCK ANIMATE_CLOCK // Timer
+		setvar ANIMATE_LIFETIME 256 // End time
 		
 		getactor[THISACTOR].xrepeat TEMP
 		setvarvar XREPEAT_MEMORY TEMP // Start radius
@@ -1315,7 +1315,7 @@ actor EXPLOSION2 1 EXPLOSION_FRAMES
 		
 		ifspawnedby DEVASTATORMISSILE
 		{
-			setvar HITAG_MEMORY 128 // Faster Speed
+			setvar ANIMATE_LIFETIME 128 // Faster Speed
 			mulvar YREPEAT_MEMORY 2 // Double end scale
 		}
 	}
@@ -1383,7 +1383,7 @@ actor EXPLOSION2 1 EXPLOSION_FRAMES
 				state spawn_explosion_spark
 			
 			espawn FIRESHELL
-			setactorvar[RETURN].HITAG_MEMORY 24 // End time
+			setactorvar[RETURN].ANIMATE_LIFETIME 24 // End time
 			setactorvar[RETURN].XREPEAT_MEMORY 0 // Start radius
 			setactorvar[RETURN].YREPEAT_MEMORY 24 // End radius
 			setactorvar[RETURN].SPAWN_ORIGANG 128 // Rotational Speed
@@ -2692,8 +2692,8 @@ actor SHOTSPARK1 PISTOL_WEAPON_STRENGTH WEAP2FRAMES
 			
 		setactor[THISACTOR].mdflags 16
 		setvar ANIMATE_FLAGS ANIMATE_FLAG_ROTATE_SCALE_AND_FADE
-		setvar LOTAG_MEMORY 0 // Timer
-		setvar HITAG_MEMORY 32 // End time
+		setvarvar ANIMATE_STARTCLOCK ANIMATE_CLOCK // Timer
+		setvar ANIMATE_LIFETIME 32 // End time
 		getactor[THISACTOR].xrepeat TEMP
 		setvarvar XREPEAT_MEMORY TEMP // Start radius
 		mulvar TEMP 5
