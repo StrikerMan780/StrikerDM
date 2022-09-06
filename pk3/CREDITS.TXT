@@ -75,4 +75,4 @@ Trooper Dan - CON coding help.
 
 Tools used:
 ------------
-Mapster32, SLADE, BAFed, Audacity, SynthFont, GIMP, SLAB6, MagicaVoxel, VoxelShop.
+Mapster32, SLADE, BAFed, Audacity, SynthFont, GIMP, SLAB6, Adobe Photoshop CS3, File Blender, MagicaVoxel, VoxelShop.
