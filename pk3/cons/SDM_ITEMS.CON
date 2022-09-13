@@ -323,7 +323,11 @@ spritenoshade SHARD_FX3
 actor SHARD_FX3 0
 	ifaction 0
 	{
-		sizeat 48 40
+		ifspawnedby JIBS6
+			sizeat 78 64
+		else
+			sizeat 48 40
+
 		cstat 130
 		setactor[THISACTOR].blend 255
 		setactor[THISACTOR].shade -127
@@ -374,7 +378,11 @@ spritenoshade WOODSHIELD_FX2
 actor WOODSHIELD_FX2 0
 	ifaction 0
 	{
-		sizeat 48 40
+		ifspawnedby JIBS6
+			sizeat 78 64
+		else
+			sizeat 48 40
+			
 		cstat 130
 		setactor[THISACTOR].blend 255
 		setactor[THISACTOR].shade -127

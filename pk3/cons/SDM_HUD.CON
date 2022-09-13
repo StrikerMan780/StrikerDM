@@ -88,6 +88,42 @@ onevent EVENT_DISPLAYSBAR // !UNSYNCHRONIZED!
 			ifvarg clock_diff 0
 				subvarvar SCARETIME clock_diff
 		}
+		
+		ifvarvare APPARITION_TARGET screenpeek
+		ifvare APPARITION_STATE APPRSTATE_CHASE
+		{
+			findotherplayer CL_TEMP1
+			ifvarl CL_TEMP1 16384
+			{
+				getplayer[RETURN].posx CL_TEMP2
+				getplayer[THISACTOR].posx CL_TEMP3
+				subvarvar CL_TEMP2 CL_TEMP3
+				
+				getplayer[RETURN].posy CL_TEMP3
+				getplayer[THISACTOR].posy CL_TEMP4
+				subvarvar CL_TEMP3 CL_TEMP4
+				getangle CL_TEMP4 CL_TEMP2 CL_TEMP3
+				
+				getplayer[THISACTOR].ang CL_TEMP5
+				getincangle CL_TEMP6 CL_TEMP5 CL_TEMP4
+				
+				shiftvarr CL_TEMP1 8
+				addvar CL_TEMP1 191
+				
+				getplayer[THISACTOR].heat_on CL_TEMP7
+				ifvare CL_TEMP7 1
+					setvar CL_TEMP7 6
+				else
+					setvar CL_TEMP7 26
+					
+				setuserdef[].draw_yxaspect 54613
+				guniqhudid 166
+				//rotatespritea <x> <y> <zoom> <ang> <tilenum> <shade> <pal> <orientation> <alpha> <x1> <y1> <x2> <y2> 
+				rotatespritea 160 100 65536 CL_TEMP6 DIRINDICATOR -127 CL_TEMP7 4106 CL_TEMP1 windowx1 windowy1 windowx2 windowy2
+				setuserdef[].draw_yxaspect 65536
+				guniqhudid 0
+			}
+		}
 	
 		setvar RETURN 1
 		break

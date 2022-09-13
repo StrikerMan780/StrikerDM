@@ -1786,7 +1786,11 @@ actor APPARITION 0
 					
 					addvar APPARITION_IMPATIENCE 8 // Become more impatient.
 					ifvarg APPARITION_IMPATIENCE 64
+					{
 						setvar APPARITION_IMPATIENCE 64
+						ifrnd 4
+							setvar APPARITION_STATE APPRSTATE_NEEDTARGET
+					}
 					
 					state apparition_teleport
 					state apparition_playspeech
@@ -2003,10 +2007,15 @@ actor APPARITION 0
 	{
 		ifvarg APPARITION_IMPATIENCE 63
 		{
-			ifcount 60
+			ifcount 30
 				state apparition_beginpath
 		}
 		else ifvarg APPARITION_IMPATIENCE 31
+		{
+			ifcount 75
+				state apparition_beginpath
+		}
+		else ifvarg APPARITION_IMPATIENCE 15
 		{
 			ifcount 150
 				state apparition_beginpath
