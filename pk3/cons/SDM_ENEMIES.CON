@@ -1544,15 +1544,15 @@ defstate apparition_picktarget
 	{
 		randvarvar TEMP MULTIMODE
 		modvarvar TEMP MULTIMODE
-		ifvarvarn TEMP APPARITION_SUMMONER
 		ifvarvarn TEMP APPARITION_TARGET
 		{
-			setvar TEMP2 1
+			getplayer[TEMP].dead_flag TEMP
+			ifvare TEMP 0
+				setvar TEMP2 1
 		}
 	}
 		
 	setvarvar APPARITION_TARGET TEMP
-	setvar APPARITION_SUMMONER -1
 	setvar APPARITION_STATE APPRSTATE_NONE
 	
 	ifvarn apparition_debug 0
@@ -1654,7 +1654,6 @@ actor APPARITION 0
 			
 			getplayer[THISACTOR].i TEMP
 			getactor[TEMP].yvel TEMP
-			setvarvar APPARITION_SUMMONER TEMP
 			setvarvar APPARITION_TARGET TEMP
 			setvar APPARITION_LAIRSPRITEID -2 // Clear the apparition's lair teleport.
 			setvar APPARITION_STATE APPRSTATE_NEEDTARGET // Tell the apparition we need a new target.
@@ -1784,13 +1783,15 @@ actor APPARITION 0
 					
 					setvar APPARITION_LOCATOR -1 // Clear locator
 					
-					addvar APPARITION_IMPATIENCE 8 // Become more impatient.
+					addvar APPARITION_IMPATIENCE 16 // Become more impatient.
 					ifvarg APPARITION_IMPATIENCE 64
 					{
-						setvar APPARITION_IMPATIENCE 64
-						ifrnd 4
+						ifrnd 32
 							setvar APPARITION_STATE APPRSTATE_NEEDTARGET
 					}
+					
+					ifvarg APPARITION_IMPATIENCE 96
+						setvar APPARITION_IMPATIENCE 96
 					
 					state apparition_teleport
 					state apparition_playspeech
@@ -2005,7 +2006,17 @@ actor APPARITION 0
 		
 	ifaction APPARITION_WAIT
 	{
-		ifvarg APPARITION_IMPATIENCE 63
+		ifvarg APPARITION_IMPATIENCE 95
+		{
+			ifcount 7
+				state apparition_beginpath
+		}
+		else ifvarg APPARITION_IMPATIENCE 80
+		{
+			ifcount 15
+				state apparition_beginpath
+		}
+		else ifvarg APPARITION_IMPATIENCE 63
 		{
 			ifcount 30
 				state apparition_beginpath

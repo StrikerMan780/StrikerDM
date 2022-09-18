@@ -657,6 +657,13 @@ sound {
 	volume 0.25
 }
 
+sound {
+	id DUKE_QUIETHEARTBEAT
+	file "sounds/hartbeat.ogg"
+	distance 4096
+	volume 0.1
+}
+
 // Freedom Planet
 sound {
 	id FP_LIFTSTOP

@@ -2467,23 +2467,6 @@ onevent EVENT_RESETPLAYER
 	setplayer[THISACTOR].sound_pitch 0
 endevent
 
-onevent EVENT_PRELEVEL
-	setvar START_WEAPON -1
-	setvar BABES_RESCUED 0
-	setvar BABES_TOTAL 0
-	setvar BABES_ALLSAVED 0
-	
-	setvar TEMP 0
-	whilevarn TEMP MAXSECTORS
-	{
-		setarray SECTOR_TYPES[TEMP] 0
-		setarray SECTOR_JUMPX[TEMP] 0
-		setarray SECTOR_JUMPY[TEMP] 0
-		setarray SECTOR_JUMPZ[TEMP] 0
-		addvar TEMP 1
-	}
-endevent
-
 onevent EVENT_USEMEDKIT
 	ifvarn predicting 0 // Desync prevention
 		break
@@ -2688,8 +2671,6 @@ endevent
 defstate apparition_screenfx
 	ifvarg APPARITION_SPRITEID -1
 	{
-		setvar CL_TEMP9 256
-			
 		dist CL_TEMP1 APPARITION_SPRITEID THISACTOR
 		getactor[APPARITION_SPRITEID].cstat CL_TEMP2
 			
@@ -2898,22 +2879,50 @@ state find_next_locator
 		setactorvar[CURSPRITE].EXTRA_MEMORY -1
 ends
 
-onevent EVENT_ENTERLEVEL
-	readgamevar CL_XXXCONTENT
-	readgamevar CL_LASERCOLOR
+onevent EVENT_PRELEVEL
+	setvar START_WEAPON -1
+	setvar BABES_RESCUED 0
+	setvar BABES_TOTAL 0
+	setvar BABES_ALLSAVED 0
+	setvar LEVEL_LOADED 0
 	
-	state do_active_maphacks
+	setvar TEMP 0
+	whilevarn TEMP MAXSECTORS
+	{
+		setarray SECTOR_TYPES[TEMP] 0
+		setarray SECTOR_JUMPX[TEMP] 0
+		setarray SECTOR_JUMPY[TEMP] 0
+		setarray SECTOR_JUMPZ[TEMP] 0
+		addvar TEMP 1
+	}
+endevent
+
+onevent EVENT_ENTERLEVEL
+	ifvare LEVEL_LOADED 0
+	{
+		setvar LEVEL_LOADED 1
+		readgamevar CL_XXXCONTENT
+		readgamevar CL_LASERCOLOR
+		state do_active_maphacks
+		
+		ifvare DEMENTIA 1
+		{
+			headspritestat CURSPRITE STAT_LOCATOR
+			whilevarn CURSPRITE -1
+			{
+				state find_next_locator
+				
+				nextspritestat CURSPRITE CURSPRITE
+			}
+		}
+	}
 	
 	ifvare DEMENTIA 1
 	{
-		headspritestat CURSPRITE STAT_LOCATOR
-		whilevarn CURSPRITE -1
-		{
-			state find_next_locator
-			
-			nextspritestat CURSPRITE CURSPRITE
-		}
+		randvar HEARTBEAT_COUNTER 60
 	}
+	
+	setvar RETURN 1
 endevent
 
 onevent EVENT_INIT
@@ -3021,6 +3030,8 @@ onevent EVENT_SOUND
 			ifvare RETURN SQUISHED
 				break
 			ifvare RETURN DUKE_HARTBEAT
+				break
+			ifvare RETURN DUKE_QUIETHEARTBEAT
 				break
 			ifvare RETURN DUKE_ONWATER
 				break
@@ -3247,18 +3258,52 @@ onevent EVENT_PROCESSINPUT
 	state player_updateweapons
 	
 	ifvare DEMENTIA 1
-	ifrnd 1
-	ifrnd 25
 	{
 		ifp palive
-			sound DUKE_HARTBEAT
-			
-		ifvare predicting 0
 		{
-			ifp prunning
-				state spawn_shadow_player
-			else ifp pwalking
-				state spawn_shadow_player
+			setvar TEMP3 64
+			ifvarg APPARITION_SPRITEID -1
+			{
+				dist TEMP APPARITION_SPRITEID THISACTOR
+				getactor[APPARITION_SPRITEID].cstat TEMP2
+					
+				ifvarand TEMP2 32768
+					setvar TEMP 9999999
+						
+				ifvarl TEMP 8192
+				{
+					shiftvarr TEMP 7
+					setvar TEMP3 0
+					addvarvar TEMP3 TEMP
+				}
+			}
+			
+			getactor[THISACTOR].xvel TEMP
+			shiftvarr TEMP 2
+			subvarvar TEMP3 TEMP
+			
+			ifvarl TEMP3 15
+				setvar TEMP3 15
+						
+			addvar HEARTBEAT_COUNTER 1
+			setvarvar TEMP HEARTBEAT_COUNTER
+			modvarvar TEMP TEMP3
+			
+			ifvare TEMP 0
+			{
+				sound DUKE_QUIETHEARTBEAT
+				
+				ifrnd 1
+				{
+					ifvare predicting 0
+					{
+						ifp prunning
+							state spawn_shadow_player
+						else ifp pwalking
+							state spawn_shadow_player
+					}
+				}
+			}
 		}
 	}
 	
