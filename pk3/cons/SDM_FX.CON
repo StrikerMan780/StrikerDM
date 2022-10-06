@@ -23,18 +23,18 @@ actor LDEXPLOSION 0
 				espawn FIRESHELL
 				setactor[RETURN].pal 198
 				setactorvar[RETURN].ANIMATE_LIFETIME 32 // End time
-				setactorvar[RETURN].XREPEAT_MEMORY 0 // Start radius
-				setactorvar[RETURN].YREPEAT_MEMORY 48 // End radius
-				setactorvar[RETURN].SPAWN_ORIGANG 72 // Rotational Speed
+				setactorvar[RETURN].ANIMATE_STARTSIZE 0 // Start radius
+				setactorvar[RETURN].ANIMATE_ENDSIZE 48 // End radius
+				setactorvar[RETURN].ANIMATE_ROTSPEED 72 // Rotational Speed
 				setvar RETURN 0
 				
 				setvar ANIMATE_FLAGS ANIMATE_FLAG_SCALE
 				setvarvar ANIMATE_STARTCLOCK ANIMATE_CLOCK // Timer
 				setvar ANIMATE_LIFETIME 96 // End time
 				getactor[THISACTOR].xrepeat TEMP
-				setvarvar XREPEAT_MEMORY TEMP // Start radius
+				setvarvar ANIMATE_STARTSIZE TEMP // Start radius
 				mulvar TEMP 3
-				setvarvar YREPEAT_MEMORY TEMP // End radius
+				setvarvar ANIMATE_ENDSIZE TEMP // End radius
 				
 				// fallthrough
 			case PLASMABALL2:
@@ -46,6 +46,20 @@ actor LDEXPLOSION 0
 }
 enda
 
+spritenoshade FIREEXPLOSION
+actor FIREEXPLOSION 0
+	ifactioncount 20
+		killit
+		
+	ifaction 0
+	{
+		setactor[THISACTOR].shade -127
+		setactor[THISACTOR].blend 255
+		cstat 2
+		action LAMEDUKE_EXPLOSION_FRAMES
+	}
+enda
+
 spritenoshade SHOCKWAVE
 actor SHOCKWAVE 0
 {
@@ -55,19 +69,17 @@ actor SHOCKWAVE 0
 		setactor[THISACTOR].shade -127
 		setactor[THISACTOR].blend 255
 		setactor[THISACTOR].mdflags 16
-		setvar ANIMATE_FLAGS ANIMATE_FLAG_ROTATE_SCALE_AND_FADE
 		
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_ROTATE_SCALE_AND_FADE
 		setvarvar ANIMATE_STARTCLOCK ANIMATE_CLOCK // Timer
 		setvar ANIMATE_LIFETIME 24 // End time
-		setvar SPAWN_ORIGANG 8 // Rotational Speed
+		setvar ANIMATE_ROTSPEED 8 // Rotational Speed
 		
-		setvar XREPEAT_MEMORY 0 // Start radius
-		setvar YREPEAT_MEMORY 128 // End radius
+		setvar ANIMATE_STARTSIZE 0 // Start radius
+		setvar ANIMATE_ENDSIZE 128 // End radius
 		
 		ifspawnedby TANK
-		{
-			setvar YREPEAT_MEMORY 255
-		}
+			setvar ANIMATE_ENDSIZE 255
 		
 		action ANULLACTION
 	}
@@ -939,22 +951,6 @@ actor SPURTTRAIL 0
 	
 	ifaction 0
 	{
-		sizeat 24 24
-		cstat 128
-		
-		ifrnd 128
-			cstator 4
-		ifrnd 128
-			cstator 8
-		
-		setactor[THISACTOR].mdflags 16
-		setvar ANIMATE_FLAGS ANIMATE_FLAG_BLOODBRIGHT
-		orvar ANIMATE_FLAGS ANIMATE_FLAG_FADEOUT
-		setvar ISADULT ADULT_LOCKOUTONLY
-
-		setvarvar ANIMATE_STARTCLOCK ANIMATE_CLOCK // Timer
-		setvar ANIMATE_LIFETIME 60 // End time
-		
 		action SPURTTRAIL_ANIM
 	}
 	
@@ -1085,12 +1081,12 @@ actor BLOODINFLUID1 0
 		
 		setvarvar ANIMATE_STARTCLOCK ANIMATE_CLOCK // Timer
 		setvar ANIMATE_LIFETIME 256 // End time
-		setvar SPAWN_ORIGANG 0 // Rotational Speed
+		setvar ANIMATE_ROTSPEED 0 // Rotational Speed
 		
 		getactor[THISACTOR].xrepeat TEMP
-		setvarvar XREPEAT_MEMORY TEMP // Start radius
+		setvarvar ANIMATE_STARTSIZE TEMP // Start radius
 		mulvar TEMP 3
-		setvarvar YREPEAT_MEMORY TEMP // End radius
+		setvarvar ANIMATE_ENDSIZE TEMP // End radius
 		
 		action BLOODINFLUID1_ANIM
 	}
@@ -1117,12 +1113,12 @@ actor BLOODINFLUID2 0
 		
 		setvarvar ANIMATE_STARTCLOCK ANIMATE_CLOCK // Timer
 		setvar ANIMATE_LIFETIME 256 // End time
-		setvar SPAWN_ORIGANG 0 // Rotational Speed
+		setvar ANIMATE_ROTSPEED 0 // Rotational Speed
 		
 		getactor[THISACTOR].xrepeat TEMP
-		setvarvar XREPEAT_MEMORY TEMP // Start radius
+		setvarvar ANIMATE_STARTSIZE TEMP // Start radius
 		mulvar TEMP 4
-		setvarvar YREPEAT_MEMORY TEMP // End radius
+		setvarvar ANIMATE_ENDSIZE TEMP // End radius
 		
 		action BLOODINFLUID2_ANIM
 	}
@@ -1172,6 +1168,159 @@ actor RICOCHET_SPARK 0
 enda
 
 //actor JIBS6 0 enda
+
+action ASH_ANIM 0 9 1 1 4
+actor ASHCLOUD 0
+	ifaction 0
+	{
+		spritepal 27
+		cstat 130
+		
+		ifrnd 128
+			cstator 4
+		ifrnd 128
+			cstator 8
+			
+		action ASH_ANIM
+	}
+	
+	ssp THISACTOR CLIPMASK0
+	
+	ifaction ASH_ANIM
+	ifactioncount 9
+		killit
+enda
+
+action BURNEDCORPSETHINK 0 1 1 1 1
+actor BURNEDCORPSE 0
+    fall
+    ifaction 0
+	{
+		ifspawnedby BURNTENEMY
+		{
+			setactor[THISACTOR].mdflags 16
+			setvar ANIMATE_FLAGS ANIMATE_FLAG_INTERPXYREPEAT
+			ifrnd 128
+				cstator 4
+		}
+		else
+		{
+			sizeat 20 20
+		}
+        //cstator 128
+        action BURNEDCORPSETHINK
+    }
+	
+	getactor[THISACTOR].xrepeat ANIMATE_OLDXREPEAT
+	getactor[THISACTOR].yrepeat ANIMATE_OLDYREPEAT
+	
+    ifcount 350 { }
+    else
+	{
+        ifrnd 6
+			state spawn_random_whispysmoke
+		
+		ifspawnedby BURNTENEMY
+		{
+			getactor[THISACTOR].xrepeat TEMP
+			shiftvarr TEMP 1
+			getactor[THISACTOR].yrepeat TEMP2
+			ifvarvare TEMP TEMP2
+				break
+				
+			addvar TEMP2 3
+			ifvarvarg TEMP2 TEMP
+				setvarvar TEMP2 TEMP
+				
+			setactor[THISACTOR].yrepeat TEMP2
+		}
+    }
+enda
+
+action BURNTENEMYCOLLAPSE 0 1 1 1 1
+actor BURNTENEMY 0
+	fall
+	
+	ifaction 0
+	{
+		spritepal 4
+		cstat 0
+		sound FLAMEBURST
+		setactor[THISACTOR].mdflags 16
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_INTERPXYREPEAT
+		
+		espawn FIREEXPLOSION
+		gettiledata[PICNUM_MEMORY].xsize TEMP
+		getactor[THISACTOR].xrepeat TEMP2
+		mulvarvar TEMP TEMP2
+		shiftvarr TEMP 6
+		setactor[RETURN].xrepeat TEMP
+		gettiledata[PICNUM_MEMORY].ysize TEMP
+		getactor[THISACTOR].yrepeat TEMP2
+		mulvarvar TEMP TEMP2
+		shiftvarr TEMP 6
+		setactor[RETURN].yrepeat TEMP
+		setvar RETURN 0
+		
+		action ANULLACTION
+	}
+	
+	getactor[THISACTOR].xrepeat ANIMATE_OLDXREPEAT
+	getactor[THISACTOR].yrepeat ANIMATE_OLDYREPEAT
+	
+	ifaction ANULLACTION
+	{
+		ifrnd 64
+			state spawn_random_whispysmoke
+			
+		ifcount 30
+		{
+			espawn BURNEDCORPSE
+			// Adapt ash pile size to size of sprite.
+			gettiledata[PICNUM_MEMORY].xsize TEMP
+			getactor[THISACTOR].xrepeat TEMP2
+			mulvarvar TEMP TEMP2
+			shiftvarr TEMP 7
+			setactor[RETURN].xrepeat TEMP
+			setactor[RETURN].yrepeat 1
+			setvar RETURN 0
+			
+			sound ASH_FALL
+			action BURNTENEMYCOLLAPSE
+		}
+	}
+	else ifaction BURNTENEMYCOLLAPSE
+	{
+		state spawn_random_whispysmoke
+		
+		espawn ASHCLOUD
+		randvar TEMP 2047
+		setactor[RETURN].pal 27
+		setactor[RETURN].ang TEMP
+		
+		gettiledata[PICNUM_MEMORY].xsize TEMP
+		getactor[THISACTOR].xrepeat TEMP2
+		setactor[RETURN].xvel TEMP
+		mulvarvar TEMP TEMP2
+		shiftvarr TEMP 6
+		setactor[RETURN].xrepeat TEMP
+		shiftvarr TEMP 1
+		setactor[RETURN].yrepeat TEMP
+		setvar RETURN 0
+		
+		getactor[THISACTOR].alpha TEMP
+		addvar TEMP 8
+		ifvarg TEMP 255
+			setvar TEMP 255
+		setactor[THISACTOR].alpha TEMP
+		
+		getactor[THISACTOR].yrepeat TEMP
+		subvar TEMP 3
+		setactor[THISACTOR].yrepeat TEMP
+		ifvarl TEMP 3
+			killit
+	}
+enda
 
 state random_creepy_sound
 	randvar TEMP 18
@@ -1962,6 +2111,138 @@ actor ALARMSIGN 0
 			sound FP_HAZARDALARM
 			resetcount
 		}
+	}
+enda
+
+defstate looptrain_setdestination
+	getactor[EXTRA_MEMORY].x DEST_X
+	getactor[EXTRA_MEMORY].y DEST_Y
+	getactor[THISACTOR].x SPAWN_ORIGX
+	getactor[THISACTOR].y SPAWN_ORIGY
+	subvarvar DEST_X SPAWN_ORIGX
+	subvarvar DEST_Y SPAWN_ORIGY
+	
+	ifvarg DEST_X 128
+		setvar DEST_X 128
+	ifvarl DEST_X -128
+		setvar DEST_X -128
+	ifvarg DEST_Y 128
+		setvar DEST_Y 128
+	ifvarl DEST_Y -128
+		setvar DEST_Y -128
+ends
+
+defstate looptrain_getpath
+	headspritestat CURSPRITE STAT_LOCATOR
+	whilevarn CURSPRITE -1
+	{
+		getactor[CURSPRITE].hitag TEMP
+		getactor[CURSPRITE].lotag TEMP2
+		ifvarvare HITAG_MEMORY TEMP
+		ifvare TEMP2 0
+		{
+			setvarvar EXTRA_MEMORY CURSPRITE
+			state looptrain_setdestination
+			setvar CURSPRITE -1
+			break
+		}
+		
+		ifvarn CURSPRITE -1
+			nextspritestat CURSPRITE CURSPRITE
+	}
+ends
+
+actor LOOPTRAIN 0
+	ifaction 0
+	{
+		cstat 32768
+		setvar EXTRA_MEMORY -1
+		getactor[THISACTOR].sectnum TEMP
+		sectsetinterpolation TEMP
+		action ANULLACTION
+	}
+	
+	ifvarn EXTRA_MEMORY -1
+	{
+		getactor[THISACTOR].sectnum TEMP
+		getsector[TEMP].wallptr TEMP2
+		getsector[TEMP].wallnum TEMP3
+		addvarvar TEMP3 TEMP2
+		whilevarvarn TEMP2 TEMP3
+		{
+			getwall[TEMP2].x SPAWN_ORIGX
+			getwall[TEMP2].y SPAWN_ORIGY
+			addvarvar SPAWN_ORIGX DEST_X
+			addvarvar SPAWN_ORIGY DEST_Y
+			dragpoint TEMP2 SPAWN_ORIGX SPAWN_ORIGY
+			addvar TEMP2 1
+		}
+		
+		getactor[THISACTOR].sectnum TEMP
+		headspritesect CURSPRITE TEMP
+		whilevarn CURSPRITE -1
+		{
+			getactor[CURSPRITE].statnum TEMP2
+			ifvare TEMP2 STAT_PLAYER
+			{
+				getactor[CURSPRITE].yvel TEMP2
+				getplayer[TEMP2].on_ground TEMP3
+				ifvare TEMP3 1
+				{
+					getplayer[TEMP2].posx SPAWN_ORIGX
+					getplayer[TEMP2].posy SPAWN_ORIGY
+					addvarvar SPAWN_ORIGX DEST_X
+					addvarvar SPAWN_ORIGY DEST_Y
+					setplayer[TEMP2].posx SPAWN_ORIGX
+					setplayer[TEMP2].posy SPAWN_ORIGY
+					
+					getplayer[TEMP2].bobposx SPAWN_ORIGX
+					getplayer[TEMP2].bobposy SPAWN_ORIGY
+					addvarvar SPAWN_ORIGX DEST_X
+					addvarvar SPAWN_ORIGY DEST_Y
+					setplayer[TEMP2].bobposx SPAWN_ORIGX
+					setplayer[TEMP2].bobposy SPAWN_ORIGY
+					
+					getactor[CURSPRITE].x TEMP
+					getactor[CURSPRITE].y TEMP2
+					addvarvar TEMP DEST_X
+					addvarvar TEMP2 DEST_Y
+					setactor[CURSPRITE].x TEMP
+					setactor[CURSPRITE].y TEMP2
+				}
+			}
+			else
+			{
+				getactor[CURSPRITE].picnum TEMP
+				ifvarn TEMP LOCATORS
+				{
+					getactor[CURSPRITE].x TEMP
+					getactor[CURSPRITE].y TEMP2
+					addvarvar TEMP DEST_X
+					addvarvar TEMP2 DEST_Y
+					setactor[CURSPRITE].x TEMP
+					setactor[CURSPRITE].y TEMP2
+				}
+			}
+			
+			nextspritesect CURSPRITE CURSPRITE
+		}
+		
+		
+		ldist TEMP THISACTOR EXTRA_MEMORY
+		ifvarl TEMP 2
+		{
+			getactorvar[EXTRA_MEMORY].EXTRA_MEMORY EXTRA_MEMORY
+			ifvarn EXTRA_MEMORY -1
+			{
+				state looptrain_setdestination
+			}
+		}
+	}
+	
+	ifvare EXTRA_MEMORY -1
+	{
+		state looptrain_getpath
 	}
 enda
 

@@ -619,26 +619,19 @@ state handle_sectortypes
 			}
 		}
 		
-		getplayer[THISACTOR].cursectnum TEMP
-		ifvarg TEMP -1
+		getplayer[THISACTOR].cursectnum TEMP4
+		ifvarg TEMP4 -1
 		{
-			getsector[TEMP].lotag TEMP
+			getsector[TEMP4].lotag TEMP
 			ifvare TEMP 256
 			{
-				// TEMP = X
-				// TEMP2 = Y
-				// TEMP3 = Sector Number
-				getactor[THISACTOR].x TEMP
-				getactor[THISACTOR].y TEMP2
-				updatesector TEMP TEMP2 TEMP3
+				getplayer[THISACTOR].posx TEMP
+				getplayer[THISACTOR].posy TEMP2
+				getplayer[THISACTOR].posz TEMP3
+				getflorzofslope TEMP4 TEMP TEMP2 TEMP
+				subvar TEMP 10240 // Subtract height
 				
-				// Set TEMP to florz
-				getflorzofslope TEMP3 TEMP TEMP2 TEMP
-				subvar TEMP 512 // Subtract height
-				
-				getactor[THISACTOR].z TEMP2
-				
-				ifvarvarg TEMP2 TEMP // Touching floor?
+				ifvarvarg TEMP3 TEMP // Touching floor?
 				{
 					setactor[THISACTOR].htextra 1000
 					setactor[THISACTOR].htpicnum RADIUSEXPLOSION
@@ -755,10 +748,15 @@ state spawn_random_whispysmoke
 	addvarvar TEMP TEMP2
 	setactor[RETURN].y TEMP
 		
-	getactor[THISACTOR].z TEMP
-	randvar TEMP2 8192
-	subvarvar TEMP TEMP2
-	setactor[RETURN].z TEMP
+	ifactor BURNEDCORPSE { }
+	else
+	{
+		getactor[THISACTOR].z TEMP
+		randvar TEMP2 8192
+		subvarvar TEMP TEMP2
+		setactor[RETURN].z TEMP
+	}
+	
 	setvar RETURN 0
 ends
 
@@ -809,8 +807,27 @@ state generic_burn_death
 	state spawn_random_whispysmoke
 	state spawn_random_whispysmoke
 	state spawn_random_whispysmoke
+	
 	setvar KILLTYPE KILL_FLAME
 	state jib_sounds
+	
+	espawn BURNTENEMY
+	getactor[THISACTOR].xrepeat TEMP
+	setactor[RETURN].xrepeat TEMP
+	getactor[THISACTOR].yrepeat TEMP
+	setactor[RETURN].yrepeat TEMP
+	
+	getactor[THISACTOR].picnum TEMP
+	ifactor NEWBEAST // Special case for NEWBEAST.
+		setvar TEMP 4620
+	setactorvar[RETURN].PICNUM_MEMORY TEMP
+	setvar RETURN 0
+	
+	espawn BURNING2_ALT
+	setactor[RETURN].owner LASTHITBY
+	setvar RETURN 0
+	
+	killit
 ends
 
 state gore_movement
@@ -1334,6 +1351,12 @@ defstate do_shield_flash
 			setplayer[STATE_PARAM1].pals 1 22 // g
 			setplayer[STATE_PARAM1].pals 2 28 // b
 		}
+		else ifvare STATE_PARAM2 SHIELDTYPE_METAL
+		{
+			setplayer[STATE_PARAM1].pals 0 63 // r
+			setplayer[STATE_PARAM1].pals 1 63 // g
+			setplayer[STATE_PARAM1].pals 2 63 // b
+		}
 		
 		
 		setplayer[STATE_PARAM1].pals_time STATE_PARAM3
@@ -1391,38 +1414,16 @@ defstate process_shield_damage
 			else ifvare STATE_TEMP3 SHIELDTYPE_EARTH
 			{
 				ifvare STATE_PARAM3 RAILGUNSHOT
-				{
 					shiftvarr STATE_PARAM1 2 // Quarter damage from rails
-				}
 				else
-				{
 					addvar STATE_PARAM1 2 // Worn out slightly quicker by other damage types.
-				}
 				
 				ifvarg STATE_PARAM4 0 // Radius Damage is nullified
-				{
 					setvar STATE_PARAM1 0
-				}
 				
 				setvar STATE_RETURN -1
 			}
 			else ifvare STATE_TEMP3 SHIELDTYPE_WOOD
-			{
-				
-				setvar STATE_RETURN -1
-			}
-			
-			ifvarg STATE_PARAM1 0 // If any damage left, process.
-			{
-				subvarvar STATE_TEMP2 STATE_PARAM1
-				setplayervar[STATE_TEMP1].SHIELD_HEALTH STATE_TEMP2
-				
-				setvarvar STATE_PARAM1 STATE_TEMP1 // Player ID
-				setvarvar STATE_PARAM2 STATE_TEMP3 // Shield Type
-				setvarvar STATE_PARAM3 8 // Intensity
-				state do_shield_flash
-			}
-			else
 			{
 				switch STATE_PARAM3
 					case FIREBALL:
@@ -1439,6 +1440,37 @@ defstate process_shield_damage
 						break
 				endswitch
 				
+				setvar STATE_RETURN -1
+			}
+			else ifvare STATE_TEMP3 SHIELDTYPE_METAL
+			{
+				switch STATE_PARAM3
+					case PLASMABALL:
+					case PLASMABALL2:
+					case PLASMABALL3:
+					case SPIKE:
+						setvar STATE_PARAM1 0
+						break
+					case GROWSPARK:
+						shiftvarl STATE_PARAM1 1
+						break
+				endswitch
+				
+				setvar STATE_RETURN -1
+			}
+			
+			ifvarg STATE_PARAM1 0 // If any damage left, process.
+			{
+				subvarvar STATE_TEMP2 STATE_PARAM1
+				setplayervar[STATE_TEMP1].SHIELD_HEALTH STATE_TEMP2
+				
+				setvarvar STATE_PARAM1 STATE_TEMP1 // Player ID
+				setvarvar STATE_PARAM2 STATE_TEMP3 // Shield Type
+				setvarvar STATE_PARAM3 8 // Intensity
+				state do_shield_flash
+			}
+			else
+			{
 				setvar STATE_RETURN -1 // If we're doing no damage, don't let any pass either.
 			}
 		}
@@ -1490,6 +1522,12 @@ defstate get_shield_particle_pal
 	ifvare STATE_PARAM1 SHIELDTYPE_WOOD
 	{
 		setvar STATE_RETURN 0
+		break
+	}
+	
+	ifvare STATE_PARAM1 SHIELDTYPE_METAL
+	{
+		setvar STATE_RETURN 27
 		break
 	}
 ends

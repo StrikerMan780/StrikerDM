@@ -679,3 +679,23 @@ tilefromtexture 8597 { file "tiles/8597.png" texture }
 tilefromtexture 8598 { file "tiles/8598.png" texture }
 tilefromtexture 8599 { file "tiles/8599.png" texture }
 tilefromtexture 8600 { file "tiles/8600.png" texture }
+
+animtilerange 8601 8618 1 ANIM_FORWARD
+tilefromtexture 8601 { file "tiles/8601.png" texture }
+tilefromtexture 8602 { file "tiles/8602.png" texture }
+tilefromtexture 8603 { file "tiles/8603.png" texture }
+tilefromtexture 8604 { file "tiles/8604.png" texture }
+tilefromtexture 8605 { file "tiles/8605.png" texture }
+tilefromtexture 8606 { file "tiles/8606.png" texture }
+tilefromtexture 8607 { file "tiles/8607.png" texture }
+tilefromtexture 8608 { file "tiles/8608.png" texture }
+tilefromtexture 8609 { file "tiles/8609.png" texture }
+tilefromtexture 8610 { file "tiles/8610.png" texture }
+tilefromtexture 8611 { file "tiles/8611.png" texture }
+tilefromtexture 8612 { file "tiles/8612.png" texture }
+tilefromtexture 8613 { file "tiles/8613.png" texture }
+tilefromtexture 8614 { file "tiles/8614.png" texture }
+tilefromtexture 8615 { file "tiles/8615.png" texture }
+tilefromtexture 8616 { file "tiles/8616.png" texture }
+tilefromtexture 8617 { file "tiles/8617.png" texture }
+tilefromtexture 8618 { file "tiles/8618.png" texture }

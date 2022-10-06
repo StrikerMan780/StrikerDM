@@ -411,15 +411,15 @@ actor DFGEXPLOSION 0
 			setvarvar ANIMATE_STARTCLOCK ANIMATE_CLOCK // Timer
 			setvar ANIMATE_LIFETIME 64 // End time
 		
-			setvar XREPEAT_MEMORY 64 // Start radius
-			setvar YREPEAT_MEMORY 128 // End radius
+			setvar ANIMATE_STARTSIZE 64 // Start radius
+			setvar ANIMATE_ENDSIZE 128 // End radius
 			
 			espawn FIRESHELL
 			setactor[RETURN].pal 197
 			setactorvar[RETURN].ANIMATE_LIFETIME 48 // End time
-			setactorvar[RETURN].XREPEAT_MEMORY 0 // Start radius
-			setactorvar[RETURN].YREPEAT_MEMORY 164 // End radius
-			setactorvar[RETURN].SPAWN_ORIGANG 72 // Rotational Speed
+			setactorvar[RETURN].ANIMATE_STARTSIZE 0 // Start radius
+			setactorvar[RETURN].ANIMATE_ENDSIZE 164 // End radius
+			setactorvar[RETURN].ANIMATE_ROTSPEED 72 // Rotational Speed
 			setvar RETURN 0
 			
 			setvar EXTRA_MEMORY 0

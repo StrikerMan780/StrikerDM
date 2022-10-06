@@ -684,7 +684,7 @@ definesound DUKE_STEPONFECES    sounds/duke/happen01.ogg       0   0   0   4  0
 definesound DUKE_ONWATER        sounds/wetfeet.ogg        0   0    4   0   0
 definesound DUKE_LAND           sounds/land02.wav         0   0    2   0   0
 definesound DUKE_LAND_HURT      sounds/duke/pain/pain39.ogg         0   0    255 4   0
-definesound DUKE_WALKINDUCTS    sounds/ductwlk.wav      -64   128  2   0   0 // Auto-remapped to DUKE_WALKINDUCTS# in SDM_SOUNDS.CON
+definesound DUKE_WALKINDUCTS    sounds/ductwlk.wav      -64   128  2   0   0 // Auto-remapped to DUKE_WALKINDUCTS# in sounds.def
 definesound DUKE_LOOKINTOMIRROR   sounds/duke/lookin01.ogg     0   0    255 4   0
 
 definesound DUKE_TIP1           sounds/duke/dance01.ogg        0   0   255  4   0

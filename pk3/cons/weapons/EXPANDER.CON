@@ -185,8 +185,8 @@ actor EXPANDEREXPLOSION 0
 		espawn FIRESHELL
 		setactor[RETURN].pal 199
 		setactorvar[RETURN].ANIMATE_LIFETIME 32 // End time
-		setactorvar[RETURN].XREPEAT_MEMORY 0 // Start radius
-		setactorvar[RETURN].YREPEAT_MEMORY 48 // End radius
+		setactorvar[RETURN].ANIMATE_STARTSIZE 0 // Start radius
+		setactorvar[RETURN].ANIMATE_ENDSIZE 48 // End radius
 		setvar RETURN 0
 		
 		action EXPANDERFRAMES

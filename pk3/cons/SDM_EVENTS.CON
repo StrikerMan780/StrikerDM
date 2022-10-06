@@ -89,11 +89,13 @@ defstate set_on_fire
 		getactor[RETURN].cstat TEMP
 		ifvarand TEMP 256 // Can be shot?
 		{
-			getactorvar[RETURN].BURNING_OLDPAL TEMP
-			ifvare TEMP -1 // Palette not memorized yet?
+			getactorvar[RETURN].BURNING_RESETFLAGS TEMP
+			ifvare TEMP -1 // Haven't checked RESETFLAGS yet?
 			{
-				getactor[RETURN].pal TEMP // Get current palette
-				setactorvar[RETURN].BURNING_OLDPAL TEMP // Store it for later restoration
+				getactor[RETURN].mdflags TEMP
+				setactorvar[RETURN].BURNING_RESETFLAGS TEMP // Store the flags to restore later.
+				orvar TEMP 16
+				setactor[RETURN].mdflags TEMP
 			}
 			
 			getactor[THISACTOR].owner TEMP // Get owner of projectile
@@ -948,12 +950,12 @@ state reset_burn
 		getactor[THISACTOR].extra TEMP
 		ifvarg TEMP 0
 		{
-			setactor[THISACTOR].pal BURNING_OLDPAL
+			setactor[THISACTOR].mdflags BURNING_RESETFLAGS
 		}
 	}
 	else
 	{
-		setactor[THISACTOR].pal BURNING_OLDPAL
+		setactor[THISACTOR].mdflags BURNING_RESETFLAGS
 	}
 	
 	ifactor APLAYER
@@ -961,7 +963,7 @@ state reset_burn
 		setvar STOP_BURNING 0
 	}
 	
-	setvar BURNING_OLDPAL -1
+	setvar BURNING_RESETFLAGS -1
 	setvar BURNING_TICS 0
 	setvar BURNING_INFLICTOR -1
 ends
@@ -1019,24 +1021,18 @@ defstate burning_logic
 			state spawn_random_fire
 		}
 		
-		// Damage every 4 tics
+		// Damage every 6 tics
 		setvarvar TEMP BURNING_TICS
-		modvar TEMP 4
+		modvar TEMP 6
 		ifvare TEMP 0
 		{
-			ifactor APLAYER // Half damage for player
-				setvar STATE_PARAM1 2
-			else
-				setvar STATE_PARAM1 4
-
+			setvar STATE_PARAM1 3
 			setvarvar STATE_PARAM2 THISACTOR
 			setvar STATE_PARAM3 FIREBALL
 			setvar STATE_PARAM4 0
 			state apply_damage
 			setactor[THISACTOR].htowner BURNING_INFLICTOR // Override attack owner, since we're technically doing this to ourselves.
 		}
-		
-		setactor[THISACTOR].pal 2
 		
 		subvar BURNING_TICS 1
 		
@@ -1192,55 +1188,50 @@ onevent EVENT_GAME
 		break
 	}
 	
-	ifactor SHRINKSPARK
-	{
-		cstator 2
-		setactor[THISACTOR].blend 255
-		
-		espawn SHRINKERTRAIL
-		getactor[THISACTOR].x TEMP
-		randvar TEMP2 128
-		subvar TEMP2 64
-		addvarvar TEMP TEMP2
-		setactor[RETURN].x TEMP
-		
-		getactor[THISACTOR].y TEMP
-		randvar TEMP2 128
-		subvar TEMP2 64
-		addvarvar TEMP TEMP2
-		setactor[RETURN].y TEMP
-		
-		getactor[THISACTOR].z TEMP
-		randvar TEMP2 2048
-		subvar TEMP2 1024
-		addvarvar TEMP TEMP2
-		setactor[RETURN].z TEMP
-		
-		getactor[THISACTOR].htbposx TEMP
-		setactor[RETURN].htbposx TEMP
-		
-		getactor[THISACTOR].htbposy TEMP
-		setactor[RETURN].htbposy TEMP
-		
-		getactor[THISACTOR].htbposz TEMP
-		setactor[RETURN].htbposz TEMP
-		setvar RETURN 0
-		break
-	}
-
-	ifactor TRIPBOMB
-	{
-		getactor[THISACTOR].cstat TEMP	
-		ifvare TEMP 16
-		{
-			cstator 256
-			setactor[THISACTOR].htflags 136
-		}
-		break
-	}
-	
 	getactor[THISACTOR].picnum TEMP	
 	switch TEMP
+		case TRIPBOMB:
+			getactor[THISACTOR].cstat TEMP2
+			ifvare TEMP2 16
+			{
+				cstator 256
+				setactor[THISACTOR].htflags 136
+			}
+			break
+		case SHRINKSPARK:
+			cstator 2
+			setactor[THISACTOR].blend 255
+			
+			espawn SHRINKERTRAIL
+			getactor[THISACTOR].x TEMP
+			randvar TEMP2 128
+			subvar TEMP2 64
+			addvarvar TEMP TEMP2
+			setactor[RETURN].x TEMP
+			
+			getactor[THISACTOR].y TEMP
+			randvar TEMP2 128
+			subvar TEMP2 64
+			addvarvar TEMP TEMP2
+			setactor[RETURN].y TEMP
+			
+			getactor[THISACTOR].z TEMP
+			randvar TEMP2 2048
+			subvar TEMP2 1024
+			addvarvar TEMP TEMP2
+			setactor[RETURN].z TEMP
+			
+			getactor[THISACTOR].htbposx TEMP
+			setactor[RETURN].htbposx TEMP
+			
+			getactor[THISACTOR].htbposy TEMP
+			setactor[RETURN].htbposy TEMP
+			
+			getactor[THISACTOR].htbposz TEMP
+			setactor[RETURN].htbposz TEMP
+			setvar RETURN 0
+			break
+		
 		case PLASMABALL:
 		case PLASMABALL2:
 			state plasma_spread
@@ -1285,6 +1276,26 @@ onevent EVENT_GAME
 				espawn BLOOD
 				getactor[THISACTOR].pal TEMP2
 				setactor[RETURN].pal TEMP2
+				setvar RETURN 0
+			}
+			break
+		case SCRAP3:
+		case 2409:
+		case 2410:
+		case 2411:
+			ifspritepal 6
+			{
+				cstator 128
+				espawn SPURTTRAIL
+				setactor[RETURN].pal 8
+				getactor[THISACTOR].htbposx TEMP
+				setactor[RETURN].htbposx TEMP
+				getactor[THISACTOR].htbposy TEMP
+				setactor[RETURN].htbposy TEMP
+				getactor[THISACTOR].htbposz TEMP
+				setactor[RETURN].htbposz TEMP
+				setactor[RETURN].xrepeat 40
+				setactor[RETURN].yrepeat 40
 				setvar RETURN 0
 			}
 			break
@@ -1391,6 +1402,7 @@ onevent EVENT_LOADACTOR
 	case ARCTRAP:
 	case MAGMAVALVE:
 	case ALARMSIGN:
+	case LOOPTRAIN:
 		setactor[THISACTOR].lotag 0
 		setactor[THISACTOR].hitag 0
 		break
@@ -1448,6 +1460,26 @@ onevent EVENT_SPAWN
 		break
 	}
 	
+	ifactor SPURTTRAIL
+	{
+		sizeat 24 24
+		cstat 128
+		
+		ifrnd 128
+			cstator 4
+		ifrnd 128
+			cstator 8
+		
+		setactor[THISACTOR].mdflags 16
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_BLOODBRIGHT
+		orvar ANIMATE_FLAGS ANIMATE_FLAG_FADEOUT
+		setvar ISADULT ADULT_LOCKOUTONLY
+
+		setvarvar ANIMATE_STARTCLOCK ANIMATE_CLOCK // Timer
+		setvar ANIMATE_LIFETIME 60 // End time
+		break
+	}
+	
 	ifactor BLOOD
 	{
 		getactor[THISACTOR].htpicnum TEMP
@@ -1474,10 +1506,10 @@ onevent EVENT_SPAWN
 		orvar ANIMATE_FLAGS ANIMATE_FLAG_SCALE
 		setactor[THISACTOR].mdflags 16
 		
-		setvarvar ANIMATE_STARTCLOCK ANIMATE_CLOCK // Timer
-		setvar ANIMATE_LIFETIME 72 // End time
-		setvarvar XREPEAT_MEMORY TEMP2 // Start scale
-		setvar YREPEAT_MEMORY 72 // End scale
+		setvarvar ANIMATE_STARTCLOCK ANIMATE_CLOCK // Start starting frame
+		setvar ANIMATE_LIFETIME 72
+		setvarvar ANIMATE_STARTSIZE TEMP2
+		setvar ANIMATE_ENDSIZE 72
 		
 		ifrnd 128
 			cstator 4
@@ -1523,15 +1555,15 @@ onevent EVENT_SPAWN
 		
 		// Defaults
 		setvar ANIMATE_LIFETIME 64 // End time
-		setvar SPAWN_ORIGANG 64 // Rotational Speed
-		setvar XREPEAT_MEMORY 0 // Start radius
-		setvar YREPEAT_MEMORY 80 // End radius
+		setvar ANIMATE_ROTSPEED 64 // Rotational Speed
+		setvar ANIMATE_STARTSIZE 0 // Start radius
+		setvar ANIMATE_ENDSIZE 80 // End radius
 		
 		ifspawnedby TANK
 		{
 			setvar ANIMATE_LIFETIME 56 // End time
-			setvar XREPEAT_MEMORY 0 // Start radius
-			setvar YREPEAT_MEMORY 255 // End radius
+			setvar ANIMATE_STARTSIZE 0 // Start radius
+			setvar ANIMATE_ENDSIZE 255 // End radius
 		}
 		break
 	}
@@ -1546,18 +1578,18 @@ onevent EVENT_SPAWN
 		
 		setvarvar ANIMATE_STARTCLOCK ANIMATE_CLOCK // Timer
 		setvar ANIMATE_LIFETIME 16 // End time
-		setvar SPAWN_ORIGANG 0 // Rotational Speed
+		setvar ANIMATE_ROTSPEED 0 // Rotational Speed
 		
 		ifspawnedby EXPANDEREXPLOSION
 		{
 			cstator 32
-			setvar XREPEAT_MEMORY 16 // Start radius
-			setvar YREPEAT_MEMORY 128 // End radius
+			setvar ANIMATE_STARTSIZE 16 // Start radius
+			setvar ANIMATE_ENDSIZE 128 // End radius
 		}
 		else
 		{
-			setvar XREPEAT_MEMORY 4 // Start radius
-			setvar YREPEAT_MEMORY 16 // End radius
+			setvar ANIMATE_STARTSIZE 4 // Start radius
+			setvar ANIMATE_ENDSIZE 16 // End radius
 		}
 		break
 	}
@@ -1572,10 +1604,10 @@ onevent EVENT_SPAWN
 		
 		setvarvar ANIMATE_STARTCLOCK ANIMATE_CLOCK // Timer
 		setvar ANIMATE_LIFETIME 32 // End time
-		setvar SPAWN_ORIGANG 0 // Rotational Speed
+		setvar ANIMATE_ROTSPEED 0 // Rotational Speed
 		
-		setvar XREPEAT_MEMORY 16 // Start radius
-		setvar YREPEAT_MEMORY 0 // End radius
+		setvar ANIMATE_STARTSIZE 16 // Start radius
+		setvar ANIMATE_ENDSIZE 0 // End radius
 		
 		break
 	}
@@ -1873,6 +1905,16 @@ onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
 		setvarvar ANIMATE_ELAPSEDTIME ANIMATE_CLOCK
 		subvarvar ANIMATE_ELAPSEDTIME ANIMATE_STARTCLOCK
 		
+		ifvarand ANIMATE_FLAGS ANIMATE_FLAG_INTERPXYREPEAT
+		{
+			getactor[THISACTOR].xrepeat CL_TEMP1
+			getactor[THISACTOR].yrepeat CL_TEMP2
+			interpolate CL_TEMP1 ANIMATE_OLDXREPEAT CL_TEMP3
+			interpolate CL_TEMP2 ANIMATE_OLDYREPEAT CL_TEMP4
+			settspr[THISACTOR].tsprxrepeat CL_TEMP3
+			settspr[THISACTOR].tspryrepeat CL_TEMP4
+		}
+		
 		ifvarand ANIMATE_FLAGS ANIMATE_FLAG_SHIELDMOVE
 		{
 			getactor[OWNER].picnum CL_TEMP1
@@ -1885,15 +1927,21 @@ onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
 				getplayer[CL_TEMP1].oposx CL_TEMP5
 				getplayer[CL_TEMP1].oposy CL_TEMP6
 				getplayer[CL_TEMP1].oposz CL_TEMP7
-					
-				getinterpolatedpos CL_TEMP2 CL_TEMP3 CL_TEMP4 CL_TEMP5 CL_TEMP6 CL_TEMP7 TSPRX TSPRY TSPRZ // Make shield TSPR inherit base player's interp
-					
+				
+				 // Make shield TSPR inherit base player's interp
+				interpolate CL_TEMP2 CL_TEMP5 TSPRX // X
+				interpolate CL_TEMP3 CL_TEMP6 TSPRY // Y
+				interpolate CL_TEMP4 CL_TEMP7 TSPRZ // Z
+				
 				ldistvar TSPRX TSPRY camerax cameray CL_TEMP2
 				ifvarl CL_TEMP2 128
 				ifvare display_mirror 0 // This should only happen if we're not drawing a mirror.
 					settspr[THISACTOR].tsprxrepeat 0
 
-				getinterpolatedpos DEST_X DEST_Y DEST_Z SPAWN_ORIGX SPAWN_ORIGY SPAWN_ORIGZ CL_TEMP2 CL_TEMP3 CL_TEMP4 // Get interpolated offsets for shield effects
+				// Get interpolated offsets for shield effects
+				interpolate DEST_X SPAWN_ORIGX CL_TEMP2 // X
+				interpolate DEST_Y SPAWN_ORIGY CL_TEMP3 // Y
+				interpolate DEST_Z SPAWN_ORIGZ CL_TEMP4 // Z
 				
 				addvarvar TSPRX CL_TEMP2
 				addvarvar TSPRY CL_TEMP3
@@ -1908,7 +1956,7 @@ onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
 		{
 			// Apply rotation
 			gettspr[THISACTOR].tsprang CL_TEMP1
-			setvarvar CL_TEMP2 SPAWN_ORIGANG
+			setvarvar CL_TEMP2 ANIMATE_ROTSPEED
 			mulvarvar CL_TEMP2 ANIMATE_ELAPSEDTIME
 			addvarvar CL_TEMP1 CL_TEMP2
 			settspr[THISACTOR].tsprang CL_TEMP1
@@ -1916,9 +1964,9 @@ onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
 		
 		// ANIMATE_ELAPSEDTIME = timer
 		// ANIMATE_LIFETIME = lifetime
-		// SPAWN_ORIGANG = rotational speed
-		// XREPEAT_MEMORY = start radius
-		// YREPEAT_MEMORY = end radius
+		// ANIMATE_ROTSPEED = rotational speed
+		// ANIMATE_STARTSIZE = start radius
+		// ANIMATE_ENDSIZE = end radius
 		ifvarand ANIMATE_FLAGS ANIMATE_FLAG_SCALE
 		{
 			ifvarl ANIMATE_LIFETIME 1 // lifetime < 1 is invalid.
@@ -1926,14 +1974,14 @@ onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
 				
 			// xrepeat = ((timer * (endradius - startradius)) / lifetime) + startradius;
 			// Radius range
-			setvarvar CL_TEMP1 YREPEAT_MEMORY
-			subvarvar CL_TEMP1 XREPEAT_MEMORY
+			setvarvar CL_TEMP1 ANIMATE_ENDSIZE
+			subvarvar CL_TEMP1 ANIMATE_STARTSIZE
 			
 			// Resulting radius
 			setvarvar CL_TEMP2 ANIMATE_ELAPSEDTIME
 			mulvarvar CL_TEMP2 CL_TEMP1
 			divvarvar CL_TEMP2 ANIMATE_LIFETIME
-			addvarvar CL_TEMP2 XREPEAT_MEMORY
+			addvarvar CL_TEMP2 ANIMATE_STARTSIZE
 			
 			ifvarg CL_TEMP2 255
 				setvar CL_TEMP2 255
@@ -1986,6 +2034,54 @@ onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
 			subvar CL_TEMP1 6
 			settspr[THISACTOR].tsprshade CL_TEMP1
 		}
+	}
+	
+	ifvarg BURNING_TICS 0
+	{
+		gettspr[THISACTOR].tsprpal CL_TEMP1
+		ifvarn CL_TEMP1 4 // Avoid coloring the shadow.
+		{
+			setvarvar CL_TEMP1 totalclock
+			shiftvarr CL_TEMP1 3
+			modvar CL_TEMP1 4
+			switch CL_TEMP1
+				case 0:
+					settspr[THISACTOR].tsprpal 111
+					break
+				
+				case 1:
+					settspr[THISACTOR].tsprpal 110
+					break
+					
+				case 2:
+					settspr[THISACTOR].tsprpal 2
+					break
+					
+				case 3:
+					settspr[THISACTOR].tsprpal 110
+					break
+			endswitch
+			settspr[THISACTOR].tsprshade -127
+		}
+	}
+	
+	ifactor BURNTENEMY
+	{
+		settspr[THISACTOR].tsprpicnum PICNUM_MEMORY
+		settspr[THISACTOR].tsprpal 4
+		break
+	}
+	
+	ifactor BURNEDCORPSE
+	{
+		gettspr[THISACTOR].tsprshade CL_TEMP1
+		
+		ifvarl CL_TEMP1 0
+			setvar CL_TEMP1 0
+			
+		addvar CL_TEMP1 12
+		settspr[THISACTOR].tsprshade CL_TEMP1
+		break
 	}
 	
 	ifactor APLAYER
@@ -2421,7 +2517,7 @@ onevent EVENT_RESETPLAYER
 	{
 		setvar TEMP4 0
 		
-		ifrnd 2
+		ifrnd 4
 		ifrnd 128
 		{
 			setvar TEMP4 1
@@ -2905,15 +3001,12 @@ onevent EVENT_ENTERLEVEL
 		readgamevar CL_LASERCOLOR
 		state do_active_maphacks
 		
-		ifvare DEMENTIA 1
+		headspritestat CURSPRITE STAT_LOCATOR
+		whilevarn CURSPRITE -1
 		{
-			headspritestat CURSPRITE STAT_LOCATOR
-			whilevarn CURSPRITE -1
-			{
-				state find_next_locator
+			state find_next_locator
 				
-				nextspritestat CURSPRITE CURSPRITE
-			}
+			nextspritestat CURSPRITE CURSPRITE
 		}
 	}
 	

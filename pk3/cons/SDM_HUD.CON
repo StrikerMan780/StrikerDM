@@ -274,6 +274,10 @@ onevent EVENT_DISPLAYSBAR // !UNSYNCHRONIZED!
 			{
 				rotatespritea TEMP TEMP2 24576 0 WOODSHIELD -127 0 10 -255 windowx1 windowy1 windowx2 windowy2
 			}
+			else ifvare SHIELD_TYPE SHIELDTYPE_METAL
+			{
+				rotatespritea TEMP TEMP2 24576 0 METALSHIELD -127 0 10 -255 windowx1 windowy1 windowx2 windowy2
+			}
 			
 			setvarvar CL_TEMP1 SHIELD_HEALTH
 			state health_color

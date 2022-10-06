@@ -1269,6 +1269,59 @@ actor SHIELDCRYSTAL_WOOD WEAK
 	}
 enda
 
+action METALCRYSTAL_BROKEN 2 1 1 1 4
+spritenoshade SHIELDCRYSTAL_METAL
+actor SHIELDCRYSTAL_METAL WEAK
+	ifaction 0
+	{
+		sizeat 48 40
+		cstat 257
+		setactor[THISACTOR].shade -127
+		
+		spawn METALSHIELD
+		
+		action ANULLACTION
+	}
+	
+	ifaction METALCRYSTAL_BROKEN
+	{
+		ifcount RESPAWNITEMTIME
+		{
+			strength WEAK
+			cstat 257
+			
+			spawn METALSHIELD
+			
+			action ANULLACTION
+		}
+	}
+	else
+	{
+		ifhitweapon
+		ifdead
+		{
+			sound FP_SHIELDSHATTER
+			cstat 0
+			resetcount
+			spawn SHIELD_DOWN
+			
+			ifvarn LASTHITBY -1
+			{
+				getactor[LASTHITBY].picnum TEMP
+				ifvare TEMP APLAYER
+				{
+					espawn SHIELD_GIVER
+					setactor[RETURN].pal SHIELDTYPE_METAL
+					setactorvar[RETURN].OWNER LASTHITBY
+					setvar RETURN 0
+				}
+			}
+			
+			action METALCRYSTAL_BROKEN
+		}
+	}
+enda
+
 // Convoluted fuckshit
 defstate shield_shared
 	ifaction 0
@@ -1478,6 +1531,8 @@ defstate shield_shared
 						setvar STATE_PARAM2 SHIELDTYPE_EARTH
 					else ifactor WOODSHIELD
 						setvar STATE_PARAM2 SHIELDTYPE_WOOD
+					else ifactor METALSHIELD
+						setvar STATE_PARAM2 SHIELDTYPE_METAL
 						
 					setvar STATE_PARAM3 32 // Intensity
 					state do_shield_flash
@@ -1524,7 +1579,7 @@ actor EARTHSHIELD 1
 	state shield_shared
 enda
 
-spritenoshade FIRESHIELD
+spritenoshade WOODSHIELD
 actor WOODSHIELD 1
 	state shield_shared
 enda
@@ -1541,6 +1596,11 @@ actor WOODSHIELD_PETAL 1
 		randvar TEMP 30
 		setactor[THISACTOR].htg_t 3 TEMP
 	}
+enda
+
+spritenoshade METALSHIELD
+actor METALSHIELD 1
+	state shield_shared
 enda
 
 spritenoshade SHIELD_UP
@@ -1682,6 +1742,12 @@ actor SHIELD_GIVER 1
 				actorsound OWNER FP_WOODSHIELDGET
 				spawn WOODSHIELD
 				quote 142
+			}
+			else ifvare TEMP2 SHIELDTYPE_METAL
+			{
+				actorsound OWNER FP_METALSHIELDGET
+				spawn METALSHIELD
+				quote 143
 			}
 			
 			setvarvar STATE_PARAM1 TEMP // Player ID

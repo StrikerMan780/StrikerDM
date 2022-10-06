@@ -9,790 +9,446 @@ define SFX_DUKETALK 4
 define SFX_LOCKOUT 8
 define SFX_LOCKOUT_DUKETALK 12
 define SFX_GLOBAL 16
+define SFX_DTAG 128
+define SFX_EXPLOSION 144
 
 /*
 // Example Sound:
 sound {
-	id MYSOUND // (defined in sound_ids.h)
-	file "sounds/mysound.ogg"
-	minpitch -128
-	maxpitch 64
-	priority 255
-	type SFX_NORMAL
-	distance -2048
-	volume 1.0
+    id MYSOUND // (defined in sound_ids.h)
+    file "sounds/mysound.ogg"
+    minpitch -128
+    maxpitch 64
+    priority 255
+    type SFX_NORMAL
+    distance -2048
+    volume 1.0
 }
 */
 
-// World Tour
-sound {
-	id E5L7_DUKE_QUIT_YOU
-	file "sounds/duke/worldtour/VO_E5L7_Duke_QuitYou.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
+// World Tour Sounds
+sound { id E5L7_DUKE_QUIT_YOU           file "sounds/duke/worldtour/VO_E5L7_Duke_QuitYou.ogg"           priority 255 type SFX_DUKETALK }
+sound { id E5L4_DUKE_WHY_SERIOUS        file "sounds/duke/worldtour/VO_E5L4_Duke_SeriousSam.ogg"        priority 255 type SFX_DUKETALK }
+sound { id E5L1_DUKE_CREAMANDSUGAR      file "sounds/duke/worldtour/VO_E5L1_Duke_CreamAndSugar.ogg"     priority 255 type SFX_DUKETALK }
+sound { id E5L1_DUKE_CURIOUSER          file "sounds/duke/worldtour/VO_E5L1_Duke_Curiouser.ogg"         priority 255 type SFX_DUKETALK }
+sound { id E5L1_DUKE_DEJAVU             file "sounds/duke/worldtour/VO_E5L1_Duke_DejaVu.ogg"            priority 255 type SFX_DUKETALK }
+sound { id E5L1_DUKE_GETTINGOLD         file "sounds/duke/worldtour/VO_E5L1_Duke_GettingOld.ogg"        priority 255 type SFX_DUKETALK }
+sound { id E5L1_DUKE_GOODCOFFEE         file "sounds/duke/worldtour/VO_E5L1_Duke_GoodCoffee.ogg"        priority 255 type SFX_DUKETALK }
+sound { id E5L1_DUKE_NOTPOSSIBLE        file "sounds/duke/worldtour/VO_E5L1_Duke_NotPossible.ogg"       priority 255 type SFX_DUKETALK }
+sound { id E5L2_DUKE_BEHERE             file "sounds/duke/worldtour/VO_E5L2_Duke_BeHere.ogg"            priority 255 type SFX_DUKETALK }
+sound { id E5L2_DUKE_MEATCANDY          file "sounds/duke/worldtour/VO_E5L2_Duke_MeatCandy.ogg"         priority 255 type SFX_DUKETALK }
+sound { id E5L2_DUKE_SISKOVA            file "sounds/duke/worldtour/VO_E5L2_Duke_Siskova.ogg"           priority 255 type SFX_DUKETALK }
+sound { id E5L2_DUKE_USSR               file "sounds/duke/worldtour/VO_E5L2_Duke_USSR.ogg"              priority 255 type SFX_DUKETALK }
+sound { id E5L4_DUKE_CRYINGMUMMY        file "sounds/duke/worldtour/VO_E5L4_Duke_CryingMummy.ogg"       priority 255 type SFX_DUKETALK }
+sound { id E5L4_DUKE_CRYSTALSKULL       file "sounds/duke/worldtour/VO_E5L4_Duke_CrystalSkull.ogg"      priority 255 type SFX_DUKETALK }
+sound { id E5L4_DUKE_FIFTHELEMENT       file "sounds/duke/worldtour/VO_E5L4_Duke_FifthElement.ogg"      priority 255 type SFX_DUKETALK }
+sound { id E5L4_DUKE_HASSANCHOP         file "sounds/duke/worldtour/VO_E5L4_Duke_HassanChop.ogg"        priority 255 type SFX_DUKETALK }
+sound { id E5L4_DUKE_HELLOMUMMY         file "sounds/duke/worldtour/VO_E5L4_Duke_HelloMummy.ogg"        priority 255 type SFX_DUKETALK }
+sound { id E5L5_DUKE_FROMAGE            file "sounds/duke/worldtour/VO_E5L5_Duke_Fromage.ogg"           priority 255 type SFX_DUKETALK }
+sound { id E5L5_DUKE_ICU                file "sounds/duke/worldtour/VO_E5L5_Duke_ICU.ogg"               priority 255 type SFX_DUKETALK }
+sound { id E5L5_DUKE_SOUFFLE            file "sounds/duke/worldtour/VO_E5L5_Duke_Souffle.ogg"           priority 255 type SFX_DUKETALK }
+sound { id E5L6_DUKE_ALCATRAZ           file "sounds/duke/worldtour/VO_E5L6_Duke_Alcatraz.ogg"          priority 255 type SFX_DUKETALK }
+sound { id E5L6_DUKE_ILLEGALALIENS      file "sounds/duke/worldtour/VO_E5L6_Duke_IllegalAliens.ogg"     priority 255 type SFX_DUKETALK }
+sound { id E5L7_DUKE_DREAMS             file "sounds/duke/worldtour/VO_E5L7_Duke_Dreams.ogg"            priority 255 type SFX_DUKETALK }
+sound { id E5L7_DUKE_FLAMINGALIENBITCH  file "sounds/duke/worldtour/VO_E5L7_Duke_FlamingAlienBitch.ogg" priority 255 type SFX_DUKETALK }
+sound { id E5L7_DUKE_ROSEBUD            file "sounds/duke/worldtour/VO_E5L7_Duke_Rosebud.ogg"           priority 255 type SFX_DUKETALK }
+sound { id E5L8_DUKE_ETERNITY           file "sounds/duke/worldtour/VO_E5L8_Duke_Eternity.ogg"          priority 255 type SFX_DUKETALK }
+//sound { id MQ_DUKE_BIGBANG              file "sounds/duke/worldtour/VO_MQ_Duke_BigBang.ogg"             priority 255 type SFX_DUKETALK }
+sound { id MQ_DUKE_COBRA                file "sounds/duke/worldtour/VO_MQ_Duke_Cobra.ogg"               priority 255 type SFX_DUKETALK }
+sound { id MQ_DUKE_GRANTORINO           file "sounds/duke/worldtour/VO_MQ_Duke_GranTorino.ogg"          priority 255 type SFX_DUKETALK }
+sound { id MQ_DUKE_JOSEYWALES           file "sounds/duke/worldtour/VO_MQ_Duke_JoseyWales.ogg"          priority 255 type SFX_DUKETALK }
+sound { id MQ_DUKE_LITTLECHINA          file "sounds/duke/worldtour/VO_MQ_Duke_LittleChina.ogg"         priority 255 type SFX_DUKETALK }
+sound { id MQ_DUKE_ONDEADLYGROUND       file "sounds/duke/worldtour/VO_MQ_Duke_OnDeadlyGround.ogg"      priority 255 type SFX_DUKETALK }
+sound { id MQ_DUKE_PREDATOR             file "sounds/duke/worldtour/VO_MQ_Duke_Predator.ogg"            priority 255 type SFX_DUKETALK }
+sound { id MQ_DUKE_RAMBO                file "sounds/duke/worldtour/VO_MQ_Duke_Rambo.ogg"               priority 255 type SFX_DUKETALK }
+sound { id MQ_DUKE_REDHEAT              file "sounds/duke/worldtour/VO_MQ_Duke_RedHeat.ogg"             priority 255 type SFX_DUKETALK }
+sound { id MQ_DUKE_RIDDICK              file "sounds/duke/worldtour/VO_MQ_Duke_Riddick.ogg"             priority 255 type SFX_DUKETALK }
+sound { id MQ_DUKE_THEGOODTHEBAD        file "sounds/duke/worldtour/VO_MQ_Duke_TheGoodTheBad.ogg"       priority 255 type SFX_DUKETALK }
+sound { id MQ_DUKE_TOMBSTONE            file "sounds/duke/worldtour/VO_MQ_Duke_Tombstone.ogg"           priority 255 type SFX_DUKETALK }
+sound { id MQ_DUKE_TRUEGRIT             file "sounds/duke/worldtour/VO_MQ_Duke_TrueGrit.ogg"            priority 255 type SFX_DUKETALK }
+//sound { id MQ_DUKE_WALKINGDEAD          file "sounds/duke/worldtour/VO_MQ_Duke_WalkingDead.ogg"         priority 255 type SFX_DUKETALK }
+sound { id MQ_DUKE_YOUNGGUNS            file "sounds/duke/worldtour/VO_MQ_Duke_YoungGuns.ogg"           priority 255 type SFX_DUKETALK }
 
-sound {
-	id E5L4_DUKE_WHY_SERIOUS
-	file "sounds/duke/worldtour/VO_E5L4_Duke_SeriousSam.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-sound {
-	id E5L1_DUKE_CREAMANDSUGAR
-	file "sounds/duke/worldtour/VO_E5L1_Duke_CreamAndSugar.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-sound {
-	id E5L1_DUKE_CURIOUSER
-	file "sounds/duke/worldtour/VO_E5L1_Duke_Curiouser.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-sound {
-	id E5L1_DUKE_DEJAVU
-	file "sounds/duke/worldtour/VO_E5L1_Duke_DejaVu.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-sound {
-	id E5L1_DUKE_GETTINGOLD
-	file "sounds/duke/worldtour/VO_E5L1_Duke_GettingOld.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-sound {
-	id E5L1_DUKE_GOODCOFFEE
-	file "sounds/duke/worldtour/VO_E5L1_Duke_GoodCoffee.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-sound {
-	id E5L1_DUKE_NOTPOSSIBLE
-	file "sounds/duke/worldtour/VO_E5L1_Duke_NotPossible.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-sound { 
-	id E5L2_DUKE_BEHERE
-	file "sounds/duke/worldtour/VO_E5L2_Duke_BeHere.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-sound {
-	id E5L2_DUKE_MEATCANDY
-	file "sounds/duke/worldtour/VO_E5L2_Duke_MeatCandy.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-sound {
-	id E5L2_DUKE_SISKOVA
-	file "sounds/duke/worldtour/VO_E5L2_Duke_Siskova.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-sound {
-	id E5L2_DUKE_USSR
-	file "sounds/duke/worldtour/VO_E5L2_Duke_USSR.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-sound {
-	id E5L4_DUKE_CRYINGMUMMY
-	file "sounds/duke/worldtour/VO_E5L4_Duke_CryingMummy.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-sound {
-	id E5L4_DUKE_CRYSTALSKULL
-	file "sounds/duke/worldtour/VO_E5L4_Duke_CrystalSkull.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-sound {
-	id E5L4_DUKE_FIFTHELEMENT
-	file "sounds/duke/worldtour/VO_E5L4_Duke_FifthElement.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-sound {
-	id E5L4_DUKE_HASSANCHOP
-	file "sounds/duke/worldtour/VO_E5L4_Duke_HassanChop.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-sound {
-	id E5L4_DUKE_HELLOMUMMY
-	file "sounds/duke/worldtour/VO_E5L4_Duke_HelloMummy.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-sound {
-	id E5L5_DUKE_FROMAGE
-	file "sounds/duke/worldtour/VO_E5L5_Duke_Fromage.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-sound {
-	id E5L5_DUKE_ICU
-	file "sounds/duke/worldtour/VO_E5L5_Duke_ICU.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-sound {
-	id E5L5_DUKE_SOUFFLE
-	file "sounds/duke/worldtour/VO_E5L5_Duke_Souffle.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-sound {
-	id E5L6_DUKE_ALCATRAZ
-	file "sounds/duke/worldtour/VO_E5L6_Duke_Alcatraz.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-sound {
-	id E5L6_DUKE_ILLEGALALIENS
-	file "sounds/duke/worldtour/VO_E5L6_Duke_IllegalAliens.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-sound {
-	id E5L7_DUKE_DREAMS
-	file "sounds/duke/worldtour/VO_E5L7_Duke_Dreams.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-sound {
-	id E5L7_DUKE_FLAMINGALIENBITCH
-	file "sounds/duke/worldtour/VO_E5L7_Duke_FlamingAlienBitch.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-sound {
-	id E5L7_DUKE_ROSEBUD
-	file "sounds/duke/worldtour/VO_E5L7_Duke_Rosebud.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-sound {
-	id E5L8_DUKE_ETERNITY
-	file "sounds/duke/worldtour/VO_E5L8_Duke_Eternity.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-/*
-sound {
-	id MQ_DUKE_BIGBANG
-	file "sounds/duke/worldtour/VO_MQ_Duke_BigBang.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-*/
-
-sound {
-	id MQ_DUKE_COBRA
-	file "sounds/duke/worldtour/VO_MQ_Duke_Cobra.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-sound {
-	id MQ_DUKE_GRANTORINO
-	file "sounds/duke/worldtour/VO_MQ_Duke_GranTorino.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-sound {
-	id MQ_DUKE_JOSEYWALES
-	file "sounds/duke/worldtour/VO_MQ_Duke_JoseyWales.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-sound {
-	id MQ_DUKE_LITTLECHINA
-	file "sounds/duke/worldtour/VO_MQ_Duke_LittleChina.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-sound {
-	id MQ_DUKE_ONDEADLYGROUND
-	file "sounds/duke/worldtour/VO_MQ_Duke_OnDeadlyGround.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-sound {
-	id MQ_DUKE_PREDATOR
-	file "sounds/duke/worldtour/VO_MQ_Duke_Predator.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-sound {
-	id MQ_DUKE_RAMBO
-	file "sounds/duke/worldtour/VO_MQ_Duke_Rambo.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-sound {
-	id MQ_DUKE_REDHEAT
-	file "sounds/duke/worldtour/VO_MQ_Duke_RedHeat.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-sound {
-	id MQ_DUKE_RIDDICK
-	file "sounds/duke/worldtour/VO_MQ_Duke_Riddick.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-sound {
-	id MQ_DUKE_THEGOODTHEBAD
-	file "sounds/duke/worldtour/VO_MQ_Duke_TheGoodTheBad.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-sound {
-	id MQ_DUKE_TOMBSTONE
-	file "sounds/duke/worldtour/VO_MQ_Duke_Tombstone.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-sound {
-	id MQ_DUKE_TRUEGRIT
-	file "sounds/duke/worldtour/VO_MQ_Duke_TrueGrit.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-/*
-sound {
-	id MQ_DUKE_WALKINGDEAD
-	file "sounds/duke/worldtour/VO_MQ_Duke_WalkingDead.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-*/
-
-sound {
-	id MQ_DUKE_YOUNGGUNS
-	file "sounds/duke/worldtour/VO_MQ_Duke_YoungGuns.ogg"
-	priority 255
-	type SFX_DUKETALK
-}
-
-sound {
-	id CHESHIREALIEN_01
-	file "sounds/ambience/Pagoda_CheshireAlien_01.ogg"
-	minpitch -128
-	maxpitch 128
-	priority 3
-}
-
-sound {
-	id CHESHIREALIEN_02
-	file "sounds/ambience/Pagoda_CheshireAlien_02.ogg"
-	minpitch -128
-	maxpitch 128
-	priority 3
-}
-
-sound {
-	id CHESHIREALIEN_03
-	file "sounds/ambience/Pagoda_CheshireAlien_03.ogg"
-	minpitch -128
-	maxpitch 128
-	priority 3
-}
-
-sound {
-	id CHESHIREALIEN_04
-	file "sounds/ambience/Pagoda_CheshireAlien_04.ogg"
-	minpitch -128
-	maxpitch 128
-	priority 3
-}
-// End World Tour
+sound { id CHESHIREALIEN_01 file "sounds/ambience/Pagoda_CheshireAlien_01.ogg" minpitch -128 maxpitch 128 priority 3 }
+sound { id CHESHIREALIEN_02 file "sounds/ambience/Pagoda_CheshireAlien_02.ogg" minpitch -128 maxpitch 128 priority 3 }
+sound { id CHESHIREALIEN_03 file "sounds/ambience/Pagoda_CheshireAlien_03.ogg" minpitch -128 maxpitch 128 priority 3 }
+sound { id CHESHIREALIEN_04 file "sounds/ambience/Pagoda_CheshireAlien_04.ogg" minpitch -128 maxpitch 128 priority 3 }
 
 // Menu Sounds
-sound {
-	id MENU_CONFIRM
-	file "sounds/menu/menu_confirm.wav"
-}
+sound { id MENU_CONFIRM file "sounds/menu/menu_confirm.wav" }
+sound { id MENU_MOVE    file "sounds/menu/menu_move.wav" }
+sound { id MENU_BACK    file "sounds/menu/menu_back.wav" }
 
-sound {
-	id MENU_MOVE
-	file "sounds/menu/menu_move.wav"
-}
-
-sound {
-	id MENU_BACK 
-	file "sounds/menu/menu_back.wav"
-}
+// Doom Sounds
+sound { id DSTELEPT file "sounds/ambience/dstelept.wav" priority 255 }
+sound { id DSITEMUP file "sounds/items/dsitemup.wav"    priority 255 }
+sound { id DSPSTART file "sounds/ambience/dspstart.wav" }
+sound { id DSPSTOP file "sounds/ambience/dspstop.wav" }
 
 // Misc Sounds
-sound {
-	id DSTELEPT
-	file "sounds/ambience/dstelept.wav"
-	priority 255
-}
-
-sound {
-	id DSITEMUP
-	file "sounds/items/dsitemup.wav"
-	priority 255
-}
-
-sound {
-	id TOASTY
-	file "sounds/toasty.wav"
-	priority 255
-}
+sound { id TOASTY file "sounds/toasty.wav" priority 255 }
 
 // Weapon Sounds
-sound {
-	id FLAMETHROWER_START
-	file "sounds/flamestr.ogg"
-	priority 255
-}
+sound { id FLAMETHROWER_START file "sounds/flamestr.ogg" priority 255 }
+sound { id FLAMETHROWER_FIRE  file "sounds/flamethr.ogg" priority 255 }
 
-sound {
-	id FLAMETHROWER_FIRE 
-	file "sounds/flamethr.ogg"
-	priority 255
-}
+sound { id DEVASTATOR_FIRERIGHT file "sounds/dsdevirg.ogg" minpitch 0 maxpitch 128 priority 4 }
+sound { id DEVASTATOR_FIRELEFT  file "sounds/dsdevilf.ogg" minpitch 0 maxpitch 128 priority 4 }
 
-sound {
-	id DEVASTATOR_FIRERIGHT 
-	file "sounds/dsdevirg.ogg"
-	minpitch 0
-	maxpitch 128
-	priority 4
-}
+sound { id PLASMARIFLE_FIRE   file "sounds/plasfire.ogg" minpitch 0 maxpitch 64 priority 4 }
+sound { id PLASMARIFLE_CHARGE file "sounds/plaschrg.ogg" priority 4 }
+sound { id PLASMARIFLE_HIT    file "sounds/plashit.wav"  minpitch 0 maxpitch 64 priority 4 distance 8192 }
 
-sound {
-	id DEVASTATOR_FIRELEFT 
-	file "sounds/dsdevilf.ogg"
-	minpitch 0
-	maxpitch 128
-	priority 4
-}
+sound { id FLAMETRAP  file "sounds/flametrap.wav" minpitch 0 maxpitch 384 priority 4 }
 
-sound {
-	id PLASMARIFLE_FIRE 
-	file "sounds/plasfire.ogg"
-	minpitch 0
-	maxpitch 64
-	priority 4
-}
+sound { id RAILGUN_FIRE1 file "sounds/dsrgfir1.wav" priority 4 }
+sound { id RAILGUN_FIRE2 file "sounds/dsrgfir2.wav" priority 4 }
+sound { id RAILGUN_FIRE3 file "sounds/dsrgfir3.wav" priority 4 }
 
-sound {
-	id PLASMARIFLE_CHARGE 
-	file "sounds/plaschrg.ogg"
-	priority 4
-}
+sound { id SSG_FIRE  file "sounds/dsdshtgn.wav" minpitch -16 maxpitch 64 priority 4 }
+sound { id SSG_OPEN  file "sounds/dsdbopn.wav"  minpitch -16 maxpitch 16 priority 4 }
+sound { id SSG_LOAD  file "sounds/dsdbload.wav" minpitch -16 maxpitch 16 priority 4 }
+sound { id SSG_CLOSE file "sounds/dsdbcls.wav"  minpitch -16 maxpitch 16 priority 4 }
 
-sound {
-	id PLASMARIFLE_HIT 
-	file "sounds/plashit.wav"
-	minpitch 0
-	maxpitch 64
-	priority 4
-	distance 8192
-}
+sound { id DFG_CHARGE  file "sounds/dfgcharge.ogg"  priority 4 distance -1024 }
+sound { id DFG_EXPLODE file "sounds/dfgexplode.ogg" priority 4 distance -2048 }
+sound { id DFG_FIRE    file "sounds/dfgfire.ogg"    priority 4 distance -2048 }
 
-sound {
-	id FLAMETRAP 
-	file "sounds/flametrap.wav"
-	minpitch 0
-	maxpitch 384
-	priority 4
-}
+sound { id DFG_TRACER1 file "sounds/dfgtracer1.ogg" priority 4 distance 2048 }
+sound { id DFG_TRACER2 file "sounds/dfgtracer2.ogg" priority 4 distance 2048 }
+sound { id DFG_TRACER3 file "sounds/dfgtracer3.ogg" priority 4 distance 2048 }
 
-sound {
-	id RAILGUN_FIRE1 
-	file "sounds/dsrgfir1.wav"
-	priority 4
-}
+sound { id CASING1 file "sounds/casings/dscasin1.ogg" distance 8192 volume 0.25 }
+sound { id CASING2 file "sounds/casings/dscasin2.ogg" distance 8192 volume 0.25 }
+sound { id CASING3 file "sounds/casings/dscasin3.ogg" distance 8192 volume 0.25 }
+sound { id CASING4 file "sounds/casings/dscasin4.ogg" distance 8192 volume 0.25 }
+sound { id CASING5 file "sounds/casings/dscasin5.ogg" distance 8192 volume 0.25 }
+sound { id CASING6 file "sounds/casings/dscasin6.ogg" distance 8192 volume 0.25 }
 
-sound {
-	id RAILGUN_FIRE2 
-	file "sounds/dsrgfir2.wav"
-	priority 4
-}
+sound { id SHELL_BOUNCE1 file "sounds/casings/shellbounce1.ogg" distance 8192 volume 0.25 }
+sound { id SHELL_BOUNCE2 file "sounds/casings/shellbounce2.ogg" distance 8192 volume 0.25 }
+sound { id SHELL_BOUNCE3 file "sounds/casings/shellbounce3.ogg" distance 8192 volume 0.25 }
+sound { id SHELL_BOUNCE4 file "sounds/casings/shellbounce4.ogg" distance 8192 volume 0.25 }
+sound { id SHELL_BOUNCE5 file "sounds/casings/shellbounce5.ogg" distance 8192 volume 0.25 }
+sound { id SHELL_BOUNCE6 file "sounds/casings/shellbounce6.ogg" distance 8192 volume 0.25 }
 
-sound {
-	id RAILGUN_FIRE3 
-	file "sounds/dsrgfir3.wav"
-	priority 4
-}
+sound { id SHELL_EJECT1 file "sounds/casings/shelleject1.ogg" distance 8192 volume 0.5 }
+sound { id SHELL_EJECT2 file "sounds/casings/shelleject2.ogg" distance 8192 volume 0.5 }
+sound { id SHELL_EJECT3 file "sounds/casings/shelleject3.ogg" distance 8192 volume 0.5 }
+sound { id SHELL_EJECT4 file "sounds/casings/shelleject4.ogg" distance 8192 volume 0.5 }
 
-sound {
-	id SSG_FIRE 
-	file "sounds/dsdshtgn.wav"
-	minpitch -16
-	maxpitch 64
-	priority 4
-}
+// Gore Sounds
+sound { id GIB_SPLAT1 file "sounds/gore/dsflesh1.ogg" minpitch -32 maxpitch 64 distance 9000 }
+sound { id GIB_SPLAT2 file "sounds/gore/dsflesh2.ogg" minpitch -32 maxpitch 64 distance 9000 }
+sound { id GIB_SPLAT3 file "sounds/gore/dsflesh3.ogg" minpitch -32 maxpitch 64 distance 9000 }
+sound { id GIB_SPLAT4 file "sounds/gore/dsflesh4.ogg" minpitch -32 maxpitch 64 distance 9000 }
+sound { id GIB_SPLAT5 file "sounds/gore/dsflesh5.ogg" minpitch -32 maxpitch 64 distance 9000 }
+sound { id GIB_SPLAT6 file "sounds/gore/dsflesh6.ogg" minpitch -32 maxpitch 64 distance 9000 }
+sound { id GIB_SPLAT7 file "sounds/gore/dsflesh7.ogg" minpitch -32 maxpitch 64 distance 9000 }
 
-sound {
-	id SSG_OPEN 
-	file "sounds/dsdbopn.wav"
-	minpitch -16
-	maxpitch 16
-	priority 4
-}
+sound { id BULLET_HIT1 file "sounds/gore/bulithit.ogg" minpitch -32 maxpitch 64 distance 8192 }
+sound { id BULLET_HIT2 file "sounds/gore/bulithit2.ogg" minpitch -32 maxpitch 64 distance 8192 }
+sound { id BULLET_HIT3 file "sounds/gore/bulithit3.ogg" minpitch -32 maxpitch 64 distance 8192 }
+sound { id BULLET_HIT4 file "sounds/gore/bulithit4.ogg" minpitch -32 maxpitch 64 distance 8192 }
+sound { id BULLET_HIT5 file "sounds/gore/bulithit5.ogg" minpitch -32 maxpitch 64 distance 8192 }
 
-sound {
-	id SSG_LOAD 
-	file "sounds/dsdbload.wav"
-	minpitch -16
-	maxpitch 16
-	priority 4
-}
+sound { id BLOOD_SPLAT1 file "sounds/gore/dsblud.ogg" minpitch -32 maxpitch 64 distance 9000 }
+sound { id BLOOD_SPLAT2 file "sounds/gore/dsblud2.ogg" minpitch -32 maxpitch 64 distance 9000 }
+sound { id BLOOD_SPLAT3 file "sounds/gore/dsblud3.ogg" minpitch -32 maxpitch 64 distance 9000 }
+sound { id BLOOD_SPLAT4 file "sounds/gore/dsblud4.ogg" minpitch -32 maxpitch 64 distance 9000 }
 
-sound {
-	id SSG_CLOSE 
-	file "sounds/dsdbcls.wav"
-	minpitch -16
-	maxpitch 16
-	priority 4
-}
+// Movement Sounds
+sound { id DUKE_WALKINDUCTS1 file "sounds/ductwlk.wav"  minpitch -64 maxpitch 128 priority 2 }
+sound { id DUKE_WALKINDUCTS2 file "sounds/ductwlk2.wav" minpitch -64 maxpitch 128 priority 2 }
+sound { id DUKE_WALKINDUCTS3 file "sounds/ductwlk3.wav" minpitch -64 maxpitch 128 priority 2 }
 
-sound {
-	id DFG_CHARGE 
-	file "sounds/dfgcharge.ogg"
-	priority 4
-	distance -1024
-}
+// Duke Talk
+sound { id DUKE_USEMEDKIT2 file "sounds/duke/medkit/timetobleed.wav" priority 255 type SFX_DUKETALK }
 
-sound {
-	id DFG_EXPLODE 
-	file "sounds/dfgexplode.ogg"
-	priority 4
-	distance -2048
-}
+sound { id STOMP01 file "sounds/duke/stomp/DUKE_StompLine_01.ogg" priority 255 type SFX_DUKETALK }
+sound { id STOMP02 file "sounds/duke/stomp/DUKE_StompLine_02.ogg" priority 255 type SFX_DUKETALK }
+sound { id STOMP03 file "sounds/duke/stomp/DUKE_StompLine_03.ogg" priority 255 type SFX_DUKETALK }
+sound { id STOMP04 file "sounds/duke/stomp/DUKE_StompLine_04.ogg" priority 255 type SFX_DUKETALK }
+sound { id STOMP05 file "sounds/duke/stomp/DUKE_StompLine_05.ogg" priority 255 type SFX_DUKETALK }
+sound { id STOMP06 file "sounds/duke/stomp/DUKE_StompLine_06.ogg" priority 255 type SFX_DUKETALK }
+sound { id STOMP07 file "sounds/duke/stomp/DUKE_StompLine_07.ogg" priority 255 type SFX_DUKETALK }
+sound { id STOMP08 file "sounds/duke/stomp/DUKE_StompLine_08.ogg" priority 255 type SFX_DUKETALK }
+sound { id STOMP09 file "sounds/duke/stomp/DUKE_StompLine_09.ogg" priority 255 type SFX_DUKETALK }
+sound { id STOMP10 file "sounds/duke/stomp/DUKE_StompLine_10.ogg" priority 255 type SFX_DUKETALK }
+sound { id STOMP11 file "sounds/duke/stomp/DUKE_StompLine_11.ogg" priority 255 type SFX_DUKETALK }
+sound { id STOMP12 file "sounds/duke/stomp/DUKE_StompLine_12.ogg" priority 255 type SFX_DUKETALK }
+sound { id STOMP13 file "sounds/duke/stomp/DUKE_StompLine_13.ogg" priority 255 type SFX_DUKETALK }
+sound { id STOMP14 file "sounds/duke/stomp/DUKE_StompLine_14.ogg" priority 255 type SFX_DUKETALK }
+sound { id STOMP15 file "sounds/duke/stomp/DUKE_StompLine_15.ogg" priority 255 type SFX_DUKETALK }
+sound { id STOMP16 file "sounds/duke/stomp/DUKE_StompLine_16.ogg" priority 255 type SFX_DUKETALK }
+sound { id STOMP17 file "sounds/duke/stomp/DUKE_StompLine_17.ogg" priority 255 type SFX_DUKETALK }
+sound { id STOMP18 file "sounds/duke/stomp/DUKE_StompLine_18.ogg" priority 255 type SFX_DUKETALK }
+sound { id STOMP19 file "sounds/duke/stomp/DUKE_StompLine_19.ogg" priority 255 type SFX_DUKETALK }
+sound { id STOMP20 file "sounds/duke/stomp/DUKE_EatSize14_01.ogg" priority 255 type SFX_DUKETALK }
 
-sound { 
-	id DFG_FIRE 
-	file "sounds/dfgfire.ogg"
-	priority 4
-	distance -2048
-}
+sound { id FREEZE01 file "sounds/duke/freeze/dsdnfr01.wav" priority 255 type SFX_DUKETALK }
+sound { id FREEZE02 file "sounds/duke/freeze/dsdnfr02.wav" priority 255 type SFX_DUKETALK }
+sound { id FREEZE03 file "sounds/duke/freeze/dsdnfr03.wav" priority 255 type SFX_DUKETALK }
+sound { id FREEZE04 file "sounds/duke/freeze/dsdnfr04.wav" priority 255 type SFX_DUKETALK }
+sound { id FREEZE05 file "sounds/duke/freeze/dsdnfr05.wav" priority 255 type SFX_DUKETALK }
+sound { id FREEZE06 file "sounds/duke/freeze/Duke_MP_Execute_02.ogg" priority 255 type SFX_DUKETALK }
+sound { id FREEZE07 file "sounds/duke/freeze/Duke_MP_Execute_03.ogg" priority 255 type SFX_DUKETALK }
 
-sound { 
-	id DFG_TRACER1 
-	file "sounds/dfgtracer1.ogg"
-	priority 4
-	distance 2048
-}
+sound { id DUKE_ROIDS01 file "sounds/duke/roids/DUKE_UseRoids_01.ogg" priority 255 type SFX_DUKETALK }
+sound { id DUKE_ROIDS02 file "sounds/duke/roids/DUKE_UseRoids_02.ogg" priority 255 type SFX_DUKETALK }
+sound { id DUKE_ROIDS03 file "sounds/duke/roids/DUKE_UseRoids_03.ogg" priority 255 type SFX_DUKETALK }
+sound { id DUKE_ROIDS04 file "sounds/duke/roids/DUKE_UseRoids_04.ogg" priority 255 type SFX_DUKETALK }
 
-sound { 
-	id DFG_TRACER2 
-	file "sounds/dfgtracer2.ogg"
-	priority 4
-	distance 2048
-}
+sound { id DUKE_GETWEAPON5 file "sounds/duke/weaponpickup/DUKE_WeaponPickup_01.ogg" priority 255 type SFX_DUKETALK }
+sound { id DUKE_GETWEAPON7 file "sounds/duke/weaponpickup/DUKE_WeaponPickup_02.ogg" priority 255 type SFX_DUKETALK }
+sound { id DUKE_GETWEAPON8 file "sounds/duke/weaponpickup/DUKE_WeaponPickup_03.ogg" priority 255 type SFX_DUKETALK }
+sound { id DUKE_GETWEAPON9 file "sounds/duke/weaponpickup/DUKE_WeaponPickup_04.ogg" priority 255 type SFX_DUKETALK }
+sound { id DUKE_GETWEAPON10 file "sounds/duke/weaponpickup/DUKE_WeaponPickup_05.ogg" priority 255 type SFX_DUKETALK }
+sound { id DUKE_GETWEAPON11 file "sounds/duke/weaponpickup/DUKE_WeaponPickup_06.ogg" priority 255 type SFX_DUKETALK }
+sound { id DUKE_GETWEAPON12 file "sounds/duke/weaponpickup/DUKE_WeaponPickup_07.ogg" priority 255 type SFX_DUKETALK }
+sound { id DUKE_GETWEAPON13 file "sounds/duke/weaponpickup/DUKE_WeaponPickup_08.ogg" priority 255 type SFX_DUKETALK }
+sound { id DUKE_GETWEAPON14 file "sounds/duke/weaponpickup/DUKE_WeaponPickup_09.wav" priority 255 type SFX_DUKETALK }
+sound { id DUKE_GETWEAPON15 file "sounds/duke/weaponpickup/DUKE_WeaponPickup_10.wav" priority 255 type SFX_DUKETALK }
 
-sound { 
-	id DFG_TRACER3
-	file "sounds/dfgtracer3.ogg"
-	priority 4
-	distance 2048
-}
+sound { id NEWDUKEGIB01 file "sounds/duke/gib/DUKE_GotKill_03.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB02 file "sounds/duke/gib/DUKE_GotKill_04.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB03 file "sounds/duke/gib/DUKE_GotKill_07.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB04 file "sounds/duke/gib/DUKE_GotKill_08.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB05 file "sounds/duke/gib/DUKE_GotKill_11.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB06 file "sounds/duke/gib/DUKE_GotKill_12.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB07 file "sounds/duke/gib/DUKE_GotKill_13.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB08 file "sounds/duke/gib/DUKE_GotKill_15.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB09 file "sounds/duke/gib/DUKE_GotKill_17.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB10 file "sounds/duke/gib/DUKE_GotKill_19.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB11 file "sounds/duke/gib/DUKE_GotKill_21.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB12 file "sounds/duke/gib/DUKE_GotMessKill_02.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB13 file "sounds/duke/gib/DUKE_GotMessKill_05.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB14 file "sounds/duke/gib/DUKE_GotMessKill_06.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB15 file "sounds/duke/gib/DUKE_GotMessKill_07.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB16 file "sounds/duke/gib/DUKE_GotMessKill_08.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB17 file "sounds/duke/gib/DUKE_GotMessKill_09.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB18 file "sounds/duke/gib/Duke_MP_GibComment_01.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB19 file "sounds/duke/gib/Duke_MP_GibComment_03.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB20 file "sounds/duke/gib/Duke_MP_GibComment_04.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB21 file "sounds/duke/gib/Duke_MP_GibComment_05.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB22 file "sounds/duke/gib/Duke_MP_GibComment_06.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB23 file "sounds/duke/gib/Duke_MP_GibComment_07.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB24 file "sounds/duke/gib/Duke_MP_GibComment_08.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB25 file "sounds/duke/gib/Duke_MP_GibComment_09.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB26 file "sounds/duke/gib/Duke_MP_GibComment_10.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB27 file "sounds/duke/gib/Duke_MP_GibComment_11.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB28 file "sounds/duke/gib/Duke_MP_KillLine_03.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB29 file "sounds/duke/gib/Duke_MP_KillLine_05.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB30 file "sounds/duke/gib/Duke_MP_KillLine_06.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB31 file "sounds/duke/gib/Duke_MP_KillLine_09.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB32 file "sounds/duke/gib/Duke_MP_KillLine_19.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB33 file "sounds/duke/gib/Duke_MP_KillLine_21.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB34 file "sounds/duke/gib/Duke_MP_KillLine_26.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB35 file "sounds/duke/gib/Duke_MP_KillLine_27.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB36 file "sounds/duke/gib/Duke_MP_KillLine_28.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB37 file "sounds/duke/gib/Duke_MP_KillLine_30.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB38 file "sounds/duke/gib/Duke_MP_KillLine_36.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB39 file "sounds/duke/gib/Duke_MP_KillLine_37.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB40 file "sounds/duke/gib/Duke_MP_KillLine_38.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB41 file "sounds/duke/gib/Duke_MP_KillLine_40.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB42 file "sounds/duke/gib/Duke_MP_KillLine_45.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB43 file "sounds/duke/gib/Duke_MP_KillLine_47.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB44 file "sounds/duke/gib/Duke_MP_KillLine_49.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB45 file "sounds/duke/gib/Duke_MP_KillLine_51.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB46 file "sounds/duke/gib/Duke_MP_KillLine_52.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB47 file "sounds/duke/gib/Duke_MP_KillLine_71.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB48 file "sounds/duke/gib/Duke_MP_KillLine_73.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB49 file "sounds/duke/gib/Duke_MP_KillLine_74.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB50 file "sounds/duke/gib/DUKE_RestINPieces_01.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB51 file "sounds/duke/gib/Duke_UltraRareGib_01.ogg" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB52 file "sounds/duke/gib/Duke64_DidntFeelSoLucky.wav" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB53 file "sounds/duke/gib/Duke64_InAPerfectWorld.wav" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB54 file "sounds/duke/gib/Duke_ShutYouUp.wav" priority 255 type SFX_DUKETALK }
 
+sound { id DUKE_FLAME01 file "sounds/duke/flame/duke_flame01.wav" priority 255 type SFX_DUKETALK }
+sound { id DUKE_FLAME02 file "sounds/duke/flame/duke_flame02.wav" priority 255 type SFX_DUKETALK }
+sound { id DUKE_FLAME03 file "sounds/duke/flame/duke_flame03.wav" priority 255 type SFX_DUKETALK }
+sound { id DUKE_FLAME04 file "sounds/duke/flame/duke_flame04.wav" priority 255 type SFX_DUKETALK }
+sound { id DUKE_FLAME05 file "sounds/duke/flame/duke_flame05.wav" priority 255 type SFX_DUKETALK }
+sound { id DUKE_FLAME06 file "sounds/duke/flame/duke_flame06.wav" priority 255 type SFX_DUKETALK }
+sound { id DUKE_FLAME07 file "sounds/duke/flame/duke_flame07.wav" priority 255 type SFX_DUKETALK }
+sound { id DUKE_FLAME08 file "sounds/duke/flame/duke_flame08.wav" priority 255 type SFX_DUKETALK }
+sound { id DUKE_FLAME09 file "sounds/duke/flame/duke_flame09.wav" priority 255 type SFX_DUKETALK }
 
-sound { 
-	id CASING1 
-	file "sounds/casings/dscasin1.ogg"
-	distance 8192
-	volume 0.25
-}
+// Babes
+sound { id FEM10_SAVED file "sounds/babes/fem10save01.wav" }
+sound { id BABE_SAVED01 file "sounds/babes/gfemsave01.wav" }
+sound { id BABE_SAVED02 file "sounds/babes/gfemsave02.wav" }
+sound { id ALL_BABES_SAVED file "sounds/babes/allsaved.ogg" }
 
-sound { 
-	id CASING2 
-	file "sounds/casings/dscasin2.ogg"
-	distance 8192
-	volume 0.25
-}
+// Ambient Sounds
+sound { id JUMPPADSOUND file "sounds/ambience/jumppad.wav" }
 
-sound { 
-	id CASING3 
-	file "sounds/casings/dscasin3.ogg"
-	distance 8192
-	volume 0.25
-}
+sound { id ENTER_RIFT file "sounds/ambience/enter_rift.wav" }
+sound { id EXIT_RIFT file "sounds/ambience/exit_rift.wav" }
 
-sound { 
-	id CASING4 
-	file "sounds/casings/dscasin4.ogg"
-	distance 8192
-	volume 0.25
-}
+sound { id FAUCET_RUN file "sounds/ambience/faucetrun.wav" type SFX_LOOP distance 12240 }
+sound { id FAUCET_ON file "sounds/ambience/fauceton.wav" }
+sound { id FAUCET_OFF file "sounds/ambience/faucetoff.wav" }
 
-sound { 
-	id CASING5 
-	file "sounds/casings/dscasin5.ogg"
-	distance 8192
-	volume 0.25
-}
+sound { id NEW_DRIP1 file "sounds/drip1.wav" minpitch -32 maxpitch 32 distance 9000 }
+sound { id NEW_DRIP2 file "sounds/drip2.wav" minpitch -32 maxpitch 32 distance 9000 }
+sound { id NEW_DRIP3 file "sounds/drip3.wav" minpitch -32 maxpitch 32 distance 9000 }
 
-sound { 
-	id CASING6 
-	file "sounds/casings/dscasin6.ogg"
-	distance 8192
-	volume 0.25
-}
+sound { id WATERPIPE1 file "sounds/ambience/waterpipe1.ogg" type SFX_AMBIENT_LOOP }
+sound { id WATERPIPE2 file "sounds/ambience/waterpipe2.ogg" type SFX_AMBIENT_LOOP }
+sound { id WATERPIPE3 file "sounds/ambience/waterpipe1.ogg" minpitch -1024 maxpitch -1024 type SFX_AMBIENT_LOOP }
+sound { id WATERPIPE4 file "sounds/ambience/waterpipe2.ogg" minpitch -512 maxpitch -512 type SFX_AMBIENT_LOOP }
+sound { id BUBBLEDRONE file "sounds/ambience/bubble_drone.ogg" type SFX_AMBIENT_LOOP }
+sound { id SPACEODDITY file "sounds/ambience/spaceoddity.ogg" type SFX_AMBIENT_LOOP }
 
-sound { 
-	id SHELL_BOUNCE1 
-	file "sounds/casings/shellbounce1.ogg"
-	distance 8192
-	volume 0.25
-}
+// HATEOT Sounds
+sound { id CREEPYAMB_01 file "sounds/hateot/creep1.ogg" minpitch -1024 maxpitch 512 priority 255 distance -32768 }
+sound { id CREEPYAMB_02 file "sounds/hateot/creep2.ogg" minpitch -1024 maxpitch 512 priority 255 distance -32768 }
+sound { id CREEPYAMB_03 file "sounds/hateot/creep3.ogg" minpitch -1024 maxpitch 512 priority 255 distance -32768 }
+sound { id CREEPYAMB_04 file "sounds/hateot/creep4.ogg" minpitch -1024 maxpitch 512 priority 255 distance -32768 }
+sound { id CREEPYAMB_05 file "sounds/hateot/creep5.ogg" minpitch -1024 maxpitch 512 priority 255 distance -32768 }
+sound { id CREEPYAMB_06 file "sounds/hateot/creep6.ogg" minpitch -1024 maxpitch 512 priority 255 distance -32768 }
+sound { id CREEPYAMB_07 file "sounds/hateot/creep7.ogg" minpitch -1024 maxpitch 512 priority 255 distance -32768 }
+sound { id CREEPYAMB_08 file "sounds/hateot/creep8.ogg" minpitch -1024 maxpitch 512 priority 255 distance -32768 }
+sound { id CREEPYAMB_09 file "sounds/hateot/creep9.ogg" minpitch -1024 maxpitch 512 priority 255 distance -32768 }
+sound { id CREEPYAMB_10 file "sounds/hateot/creep10.ogg" minpitch -1024 maxpitch 512 priority 255 distance -32768 }
+sound { id CREEPYAMB_11 file "sounds/hateot/creep11.ogg" minpitch -1024 maxpitch 512 priority 255 distance -32768 }
+sound { id CREEPYAMB_12 file "sounds/hateot/creep12.ogg" minpitch -1024 maxpitch 512 priority 255 distance -32768 }
+sound { id CREEPYAMB_13 file "sounds/hateot/creep13.ogg" minpitch -1024 maxpitch 512 priority 255 distance -32768 }
+sound { id CREEPYAMB_14 file "sounds/hateot/creep14.ogg" minpitch -1024 maxpitch 512 priority 255 distance -32768 }
+sound { id CREEPYAMB_15 file "sounds/hateot/creep15.ogg" minpitch -1024 maxpitch 512 priority 255 distance -32768 }
+sound { id CREEPYAMB_16 file "sounds/hateot/creep16.ogg" minpitch -1024 maxpitch 512 priority 255 distance -32768 }
+sound { id CREEPYAMB_17 file "sounds/hateot/creep17.ogg" minpitch -1024 maxpitch 512 priority 255 distance -32768 }
+sound { id CREEPYAMB_18 file "sounds/hateot/creep18.ogg" minpitch -1024 maxpitch 512 priority 255 distance -32768 }
+sound { id CREEPYAMB_19 file "sounds/hateot/creep19.ogg" minpitch -1024 maxpitch 512 priority 255 distance -32768 }
 
-sound { 
-	id SHELL_BOUNCE2 
-	file "sounds/casings/shellbounce2.ogg"
-	distance 8192
-	volume 0.25
-}
+sound { id APPARITION_01 file "sounds/hateot/appr_speak1.ogg" minpitch -512 maxpitch 512 priority 255 }
+sound { id APPARITION_02 file "sounds/hateot/appr_speak2.ogg" minpitch -512 maxpitch 512 priority 255 }
+sound { id APPARITION_03 file "sounds/hateot/appr_speak3.ogg" minpitch -512 maxpitch 512 priority 255 }
+sound { id APPARITION_04 file "sounds/hateot/appr_speak4.ogg" minpitch -512 maxpitch 512 priority 255 }
+sound { id APPARITION_05 file "sounds/hateot/appr_speak5.ogg" minpitch -512 maxpitch 512 priority 255 }
+sound { id APPARITION_06 file "sounds/hateot/appr_speak6.ogg" minpitch -512 maxpitch 512 priority 255 }
+sound { id APPARITION_LOOP file "sounds/hateot/appr_loop.wav" type SFX_LOOP volume 0.25 }
 
-sound { 
-	id SHELL_BOUNCE3 
-	file "sounds/casings/shellbounce3.ogg"
-	distance 8192
-	volume 0.25
-}
+sound { id THALASIN_AMB file "sounds/ambience/thalasin1.wav" type SFX_AMBIENT_LOOP distance 8192 }
+sound { id BURNINGMEMORY_AMB file "sounds/hateot/burningmemory.ogg" priority 255 type SFX_AMBIENT_LOOP }
 
-sound { 
-	id SHELL_BOUNCE4 
-	file "sounds/casings/shellbounce4.ogg"
-	distance 8192
-	volume 0.25
-}
+sound { id DISTORTED_DFGCHARGE file "sounds/hateot/dfgcharge.wav" priority 4 distance -1024 }
+sound { id DISTORTED_ONWATER file "sounds/hateot/wetfeet.wav" priority 4 }
+sound { id DISTORTED_DOOR file "sounds/hateot/opendoor.wav" minpitch -256 maxpitch 0 }
+sound { id DISTORTED_PIPEBOMB file "sounds/hateot/dist_pipe.ogg" priority 2 distance 6144 }
+sound { id DISTORTED_TRIPMINE file "sounds/hateot/dist_trip.ogg" minpitch -128 maxpitch 128 priority 3 }
+sound { id DISTORTED_EXPLOSION file "sounds/hateot/dist_expl.ogg" minpitch -1024 maxpitch 512 priority 128 type SFX_EXPLOSION }
 
-sound {
-	id SHELL_BOUNCE5
-	file "sounds/casings/shellbounce5.ogg"
-	distance 8192
-	volume 0.25
-}
+sound { id DUKE_QUIETHEARTBEAT file "sounds/hartbeat.ogg" distance 4096 volume 0.15 }
 
-sound {
-	id SHELL_BOUNCE6 
-	file "sounds/casings/shellbounce6.ogg"
-	distance 8192
-	volume 0.25
-}
+sound { id FLAMEBURST file "sounds/flameburst.wav" }
+sound { id ASH_FALL file "sounds/ashes.wav" distance 4096 }
 
+// Vinemeat Sounds
+sound { id VMEAT1 file "sounds/meat/MEAT1.wav" minpitch -32 maxpitch 32 distance -32768 }
+sound { id VMEAT2 file "sounds/meat/MEAT2.wav" minpitch -32 maxpitch 32 distance -32768 }
+sound { id VMEAT3 file "sounds/meat/MEAT3.wav" minpitch -32 maxpitch 32 distance -32768 }
+sound { id VMEAT4 file "sounds/meat/MEAT4.wav" minpitch -32 maxpitch 32 distance -32768 }
+sound { id VMEAT5 file "sounds/meat/MEAT5.wav" minpitch -32 maxpitch 32 distance -32768 }
+sound { id VMEAT6 file "sounds/meat/MEAT6.wav" minpitch -32 maxpitch 32 distance -32768 }
 
-sound {
-	id SHELL_EJECT1
-	file "sounds/casings/shelleject1.ogg"
-	distance 8192
-	volume 0.5
-}
+// Freedom Planet Sounds
+sound { id FP_LIFTSTOP file "sounds/fplanet/lift_stop.ogg" }
+sound { id FP_SYNTAX file "sounds/fplanet/syntax_on.ogg" distance -2048 }
+sound { id FP_SHARDGET file "sounds/fplanet/crystal_shard_get.ogg" }
+sound { id FP_FLOWER_BREAK file "sounds/fplanet/flower_break.ogg" distance -2048 }
+sound { id FP_SHATTER file "sounds/fplanet/shatter.ogg" }
 
-sound {
-	id SHELL_EJECT2
-	file "sounds/casings/shelleject2.ogg"
-	distance 8192
-	volume 0.5
-}
+sound { id FP_PETALGET file "sounds/fplanet/life_petal_get.ogg" }
+sound { id FP_PETALFLY file "sounds/fplanet/life_petal_fly.ogg" }
 
-sound {
-	id SHELL_EJECT3
-	file "sounds/casings/shelleject3.ogg"
-	distance 8192
-	volume 0.5
-}
+sound { id FP_HAZARDALARM         file "sounds/fplanet/hazard_alarm.ogg"         distance 0 }
+sound { id FP_HAZARDALARM_MUFFLED file "sounds/fplanet/hazard_alarm_muffled.wav" distance 512 }
 
-sound {
-	id SHELL_EJECT4
-	file "sounds/casings/shelleject4.ogg"
-	distance 8192
-	volume 0.5
-}
+sound { id FP_CRUSHER file "sounds/fplanet/crusher.ogg" distance -8192 }
 
-sound {
-	id APPARITION_LOOP
-	file "sounds/hateot/appr_loop.wav"
-	type SFX_LOOP
-	volume 0.25
-}
+sound { id FP_BOMBEXPLODE file "sounds/fplanet/bomb_explode.ogg" distance -6144 }
+sound { id FP_BOMBARMING  file "sounds/fplanet/bomb_arming.ogg"  distance -1024 }
+sound { id FP_BOMBBEEP    file "sounds/fplanet/bomb_beep.ogg" }
 
-sound {
-	id DUKE_QUIETHEARTBEAT
-	file "sounds/hartbeat.ogg"
-	distance 4096
-	volume 0.1
-}
+sound { id FP_SHIELDSHATTER file "sounds/fplanet/shield_crystal_shatter.ogg" }
+sound { id FP_SHIELDHIT     file "sounds/fplanet/shield_hit.ogg" }
+sound { id FP_SHIELDDOWN    file "sounds/fplanet/shield_down.ogg" }
 
-// Freedom Planet
-sound {
-	id FP_LIFTSTOP
-	file "sounds/fplanet/lift_stop.ogg"
-}
+sound { id FP_EARTHSHIELDGET file "sounds/fplanet/earth_shield_get.ogg" }
+sound { id FP_WATERSHIELDGET file "sounds/fplanet/water_shield_get.ogg" }
+sound { id FP_FIRESHIELDGET  file "sounds/fplanet/fire_shield_get.ogg" }
+sound { id FP_WOODSHIELDGET  file "sounds/fplanet/wood_shield_get.ogg" }
+sound { id FP_METALSHIELDGET  file "sounds/fplanet/metal_shield_get.ogg" }
 
-sound {
-	id FP_SYNTAX
-	file "sounds/fplanet/syntax_on.ogg"
-	distance -2048
-}
-sound {
-	id FP_SHARDGET
-	file "sounds/fplanet/crystal_shard_get.ogg"
-}
+sound { id FP_COMPAMB1 file "sounds/fplanet/comp_amb1.ogg" type SFX_AMBIENT_LOOP volume 0.25 }
 
-sound {
-	id FP_FLOWER_BREAK
-	file "sounds/fplanet/flower_break.ogg"
-	distance -2048
-}
+sound { id FP_ELECTRICARC         file "sounds/fplanet/electric_beam.ogg"         distance 4096 }
+sound { id FP_ELECTRICARC_MUFFLED file "sounds/fplanet/electric_beam_muffled.wav" distance 4096 }
 
-sound {
-	id FP_SHATTER
-	file "sounds/fplanet/shatter.ogg"
-}
+sound { id FP_MAGMASPEW file "sounds/fplanet/magma_spew.ogg" distance 4096 volume 0.5 }
 
-sound {
-	id FP_PETALGET
-	file "sounds/fplanet/life_petal_get.ogg"
-}
+// Community Sounds
+sound { id CHANTING          file "sounds/ambience/chanting.ogg"     type SFX_AMBIENT_LOOP }
+sound { id DESERTWND         file "sounds/ambience/desertwnd.ogg"    type SFX_AMBIENT_LOOP }
+sound { id CIRCUSMUSIC       file "sounds/ambience/circusmusic.voc"  type SFX_AMBIENT_LOOP }
+sound { id SHTRANGE          file "sounds/ambience/shtrange.voc"     type SFX_AMBIENT_LOOP }
+sound { id CRICKETS          file "sounds/ambience/crickets.voc"     type SFX_AMBIENT_LOOP }
+sound { id MACHINERY         file "sounds/ambience/machinery.voc"    type SFX_AMBIENT_LOOP }
+sound { id SPENGINE          file "sounds/ambience/spengine.voc"     type SFX_AMBIENT_LOOP }
+sound { id SYNTHETIC         file "sounds/ambience/synthetic.voc"    type SFX_AMBIENT_LOOP }
+sound { id WORKSTATION       file "sounds/ambience/workstation.voc"  type SFX_AMBIENT_LOOP }
+sound { id BEACHAMB          file "sounds/ambience/beachamb.ogg"     type SFX_AMBIENT_LOOP }
+sound { id DISCOAMB          file "sounds/ambience/discoamb.ogg"     type SFX_AMBIENT_LOOP }
+sound { id ARCADEAMB         file "sounds/ambience/arcadeamb.ogg"    type SFX_AMBIENT_LOOP }
+sound { id HQMAPFINISH       file "sounds/ambience/hqmapfinish.ogg"  type SFX_AMBIENT_LOOP }
+sound { id SWENDLEV          file "sounds/ambience/swendlev.wav"     type SFX_AMBIENT_LOOP }
+sound { id BIRDS             file "sounds/ambience/birds.wav"        type SFX_AMBIENT_LOOP }
+sound { id BATHTUBS          file "sounds/ambience/bathtubs.wav"     type SFX_AMBIENT_LOOP }
+sound { id LASTNINJA         file "sounds/ambience/lastninja.ogg"    type SFX_AMBIENT_LOOP }
+sound { id HOKUTO            file "sounds/ambience/hokuto.ogg"       type SFX_AMBIENT_LOOP }
+sound { id COLDWIND          file "sounds/ambience/coldwind.ogg"     type SFX_AMBIENT_LOOP }
+sound { id ELECTROSHOCK      file "sounds/ambience/electroshock.ogg" type SFX_AMBIENT_LOOP }
+sound { id ERASERHEAD        file "sounds/ambience/eraserhead.ogg"   type SFX_AMBIENT_LOOP }
+sound { id OLDCLOCK          file "sounds/ambience/oldclock.ogg"     type SFX_AMBIENT_LOOP }
+sound { id MARTINCITO        file "sounds/ambience/martincito.ogg"   type SFX_AMBIENT_LOOP }
+sound { id CALLATE           file "sounds/ambience/callate.ogg"      type SFX_AMBIENT_LOOP }
+sound { id NAVIDAD           file "sounds/ambience/navidad.ogg"      type SFX_AMBIENT_LOOP }
+sound { id AUTIN             file "sounds/ambience/autin.ogg"        type SFX_AMBIENT_LOOP }
+sound { id UFO               file "sounds/ambience/ufo.wav"          type SFX_AMBIENT_LOOP }
+sound { id CORAJE            file "sounds/ambience/coraje.wav"       type SFX_AMBIENT_LOOP }
 
-sound {
-	id FP_PETALFLY
-	file "sounds/fplanet/life_petal_fly.ogg"
-}
-
-sound {
-	id FP_HAZARDALARM
-	file "sounds/fplanet/hazard_alarm.ogg"
-	distance 0
-}
-
-sound {
-	id FP_HAZARDALARM_MUFFLED
-	file "sounds/fplanet/hazard_alarm_muffled.wav"
-	distance 512
-}
-
-sound {
-	id FP_CRUSHER
-	file "sounds/fplanet/crusher.ogg"
-	distance -8192
-}
-
-sound {
-	id FP_BOMBEXPLODE
-	file "sounds/fplanet/bomb_explode.ogg"
-	distance -6144
-}
-
-sound {
-	id FP_BOMBBEEP
-	file "sounds/fplanet/bomb_beep.ogg"
-}
-
-sound {
-	id FP_BOMBARMING
-	file "sounds/fplanet/bomb_arming.ogg"
-	distance -1024
-}
-
-sound {
-	id FP_SHIELDSHATTER
-	file "sounds/fplanet/shield_crystal_shatter.ogg"
-}
-
-sound {
-	id FP_SHIELDHIT
-	file "sounds/fplanet/shield_hit.ogg"
-}
-
-sound {
-	id FP_SHIELDDOWN
-	file "sounds/fplanet/shield_down.ogg"
-}
-
-sound {
-	id FP_EARTHSHIELDGET
-	file "sounds/fplanet/earth_shield_get.ogg"
-}
-
-sound {
-	id FP_WATERSHIELDGET
-	file "sounds/fplanet/water_shield_get.ogg"
-}
-
-sound {
-	id FP_FIRESHIELDGET
-	file "sounds/fplanet/fire_shield_get.ogg"
-}
-
-sound {
-	id FP_WOODSHIELDGET
-	file "sounds/fplanet/wood_shield_get.ogg"
-}
-
-sound {
-	id FP_COMPAMB1
-	file "sounds/fplanet/comp_amb1.ogg"
-	type SFX_AMBIENT_LOOP
-	volume 0.25
-}
-
-sound {
-	id FP_ELECTRICARC
-	file "sounds/fplanet/electric_beam.ogg"
-	distance 4096
-}
-
-sound {
-	id FP_ELECTRICARC_MUFFLED
-	file "sounds/fplanet/electric_beam_muffled.wav"
-	distance 4096
-}
-
-sound {
-	id FP_MAGMASPEW
-	file "sounds/fplanet/magma_spew.ogg"
-	distance 4096
-	volume 0.5
-}
+sound { id TORCHMOVE         file "sounds/ambience/torchmove.voc"         distance 8192 }
+sound { id DFELEV01          file "sounds/ambience/dfelev01.voc"          distance 8192 }
+sound { id DFELEV02          file "sounds/ambience/dfelev02.voc"          distance 8192 }
+sound { id ELECSWITCH        file "sounds/ambience/elecswitch.voc"        distance 8192 }
+sound { id DOOMDOOR          file "sounds/ambience/dsdoropn.wav"          distance 8192 }
+sound { id DOOMDOOR_CLOSE    file "sounds/ambience/dsdorcls.wav"          distance 8192 }
+sound { id PDDOOR1           file "sounds/ambience/pddoor1.voc"           distance 8192 }
+sound { id PDDOOR2           file "sounds/ambience/pddoor2.voc"           distance 8192 }
+sound { id GEDOOR1O          file "sounds/ambience/gedoor1o.wav"          distance 8192 }
+sound { id GEDOOR1C          file "sounds/ambience/gedoor1c.wav"          distance 8192 }
+sound { id GEDOOR2           file "sounds/ambience/gedoor2.wav"           distance 8192 }
+sound { id SWDOOR01O         file "sounds/ambience/swdoor01o.wav"         distance 8192 }
+sound { id SWDOOR01C         file "sounds/ambience/swdoor01c.wav"         distance 8192 }
+sound { id SWDOOR02          file "sounds/ambience/swdoor02.wav"          distance 8192 }
+sound { id GONGHIT           file "sounds/ambience/gonghit.wav"           distance 8192 }
+sound { id CREAKYOPEN        file "sounds/ambience/creakyopen.wav"        distance 8192 }
+sound { id CREAKYCLOSE       file "sounds/ambience/creakyclose.wav"       distance 8192 }
+sound { id HERETICDOOR       file "sounds/ambience/hereticdoor.wav"       distance 8192 }
+sound { id HERETICDOORCLOSE  file "sounds/ambience/hereticdoorclose.wav"  distance 8192 }
+sound { id HEXENHEAVYDOOR    file "sounds/ambience/hexenheavydoor.wav"    distance 8192 }
+sound { id HEXENELEVATOR     file "sounds/ambience/hexenelevator.wav"     distance 8192 }
+sound { id HEXENELEVATORSTOP file "sounds/ambience/hexenelevatorstop.wav" distance 8192 }
+sound { id CANELITA          file "sounds/ambience/canelita.ogg"          distance -8192 }
+sound { id PALOMA            file "sounds/ambience/paloma.ogg"            distance -8192 }
+sound { id HIPOCRESIA        file "sounds/ambience/hipocresia.ogg"        distance -8192 }
+sound { id RISAPIJA          file "sounds/ambience/risapija.ogg"          distance -8192 }
+sound { id YOURSUCKS         file "sounds/ambience/yoursucks.ogg"         distance -8192 }
+sound { id VALEVERGA         file "sounds/ambience/valeverga.ogg"         distance -8192 }
+sound { id VANCHOJACKS       file "sounds/ambience/vanchojacks.ogg"       distance -8192 }
+sound { id PIJA              file "sounds/ambience/pija.ogg"              distance -8192 }
+sound { id MOMOSEUMWELCOME   file "sounds/ambience/momoseumwelcome.ogg"   distance -8192 }
+sound { id PERFECTO          file "sounds/ambience/perfecto.ogg"          distance -8192 }

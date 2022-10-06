@@ -399,7 +399,7 @@ state set_weapontype
 ends
 
 // STATE_PARAM1 = Weapon Index
-state check_using_secondary
+defstate check_using_secondary
 	setvar STATE_RETURN 0
 	
 	setvar STATE_TEMP4 1
@@ -412,7 +412,7 @@ ends
 // STATE_PARAM1 = Weapon
 // STATE_PARAM2 = 0 is primary, 1 is secondary
 // STATE_RETURN = 1 if successful switch
-state switch_weapon
+defstate switch_weapon
 	setvar STATE_RETURN 0
 	
 	state check_have_weapon

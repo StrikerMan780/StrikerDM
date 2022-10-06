@@ -44,13 +44,13 @@ include defs/models.def
 
 include maphacks/maphacks.def
 
-music { id "loading" file "music/intrmisn.mid" }
+//music { id "loading" file "music/intrmisn.mid" }
 
 tint { pal 1 red 100 green 120 blue 148 flags 1 }
 tint { pal 2 red 255 green  48 blue   0 flags 1 }
 tint { pal 4 red   0 green   0 blue   0 flags 0 }
 tint { pal 6 red 224 green 255 blue 112 flags 3 }
-tint { pal 7 red 227 green 198 blue 20 flags 1 }
+tint { pal 7 red 227 green 198 blue  20 flags 1 }
 tint { pal 8 red 199 green 226 blue 113 flags 1 }
 
 tint { pal 26 red 216 green 184 blue 172 flags 1 } // Greyscale (Brownish)
@@ -60,11 +60,11 @@ tint { pal 51 red 220 green 184 blue 148 flags 0 } // Orange Tint
 
 tint { pal 61 red 164 green 196 blue 228 flags 0 } // Blue Tint
 
-tint { pal 122 red 128 green 128 blue 0 flags 5 } // Yellow
-tint { pal 123 red 128 green 0 blue 128 flags 5 } // Purple
-tint { pal 124 red 128 green 0 blue 0 flags 5 } // Red
-tint { pal 125 red 0 green 128 blue 0 flags 5 } // Green
-tint { pal 126 red 0 green 0 blue 128 flags 5 } // Blue
+tint { pal 122 red 128 green 128 blue   0 flags 5 } // Yellow
+tint { pal 123 red 128 green   0 blue 128 flags 5 } // Purple
+tint { pal 124 red 128 green   0 blue   0 flags 5 } // Red
+tint { pal 125 red   0 green 128 blue   0 flags 5 } // Green
+tint { pal 126 red   0 green   0 blue 128 flags 5 } // Blue
 
 blendtable 253 // Screen-ish
 {

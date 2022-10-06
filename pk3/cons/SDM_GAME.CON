@@ -1148,12 +1148,12 @@ actor SMALLSMOKE 0 SMOKEFRAMES
 		setvar ANIMATE_FLAGS ANIMATE_FLAG_ROTATE_SCALE_AND_FADE
 		setvarvar ANIMATE_STARTCLOCK ANIMATE_CLOCK // Timer
 		setvar ANIMATE_LIFETIME 45 // End time
-		setvar SPAWN_ORIGANG 0 // Rotational Speed
+		setvar ANIMATE_ROTSPEED 0 // Rotational Speed
 		
 		getactor[THISACTOR].xrepeat TEMP
-		setvarvar XREPEAT_MEMORY TEMP // Start radius
+		setvarvar ANIMATE_STARTSIZE TEMP // Start radius
 		mulvar TEMP 2
-		setvarvar YREPEAT_MEMORY TEMP // End radius
+		setvarvar ANIMATE_ENDSIZE TEMP // End radius
 		
 		ifspawnedby SHOTSPARK1
 		{
@@ -1288,9 +1288,9 @@ actor SHRINKEREXPLOSION 0 SHRINKERFRAMES
 		
 		espawn FIRESHELL
 		setactor[RETURN].pal 200
-		setactorvar[RETURN].XREPEAT_MEMORY 48 // Start radius
-		setactorvar[RETURN].YREPEAT_MEMORY 0 // End radius
-		setactorvar[RETURN].SPAWN_ORIGANG 32 // Rotational Speed
+		setactorvar[RETURN].ANIMATE_STARTSIZE 48 // Start radius
+		setactorvar[RETURN].ANIMATE_ENDSIZE 0 // End radius
+		setactorvar[RETURN].ANIMATE_ROTSPEED 32 // Rotational Speed
 		setvar RETURN 0
 	}
 enda
@@ -1309,14 +1309,14 @@ actor EXPLOSION2 1 EXPLOSION_FRAMES
 		setvar ANIMATE_LIFETIME 256 // End time
 		
 		getactor[THISACTOR].xrepeat TEMP
-		setvarvar XREPEAT_MEMORY TEMP // Start radius
+		setvarvar ANIMATE_STARTSIZE TEMP // Start radius
 		mulvar TEMP 2
-		setvarvar YREPEAT_MEMORY TEMP // End radius
+		setvarvar ANIMATE_ENDSIZE TEMP // End radius
 		
 		ifspawnedby DEVASTATORMISSILE
 		{
 			setvar ANIMATE_LIFETIME 128 // Faster Speed
-			mulvar YREPEAT_MEMORY 2 // Double end scale
+			mulvar ANIMATE_ENDSIZE 2 // Double end scale
 		}
 	}
 	else ifcount 0
@@ -1384,9 +1384,9 @@ actor EXPLOSION2 1 EXPLOSION_FRAMES
 			
 			espawn FIRESHELL
 			setactorvar[RETURN].ANIMATE_LIFETIME 24 // End time
-			setactorvar[RETURN].XREPEAT_MEMORY 0 // Start radius
-			setactorvar[RETURN].YREPEAT_MEMORY 24 // End radius
-			setactorvar[RETURN].SPAWN_ORIGANG 128 // Rotational Speed
+			setactorvar[RETURN].ANIMATE_STARTSIZE 0 // Start radius
+			setactorvar[RETURN].ANIMATE_ENDSIZE 24 // End radius
+			setactorvar[RETURN].ANIMATE_ROTSPEED 128 // Rotational Speed
 			setvar RETURN 0
 			
 			action EXPLOSION_FRAMES_FAST
@@ -2695,9 +2695,9 @@ actor SHOTSPARK1 PISTOL_WEAPON_STRENGTH WEAP2FRAMES
 		setvarvar ANIMATE_STARTCLOCK ANIMATE_CLOCK // Timer
 		setvar ANIMATE_LIFETIME 32 // End time
 		getactor[THISACTOR].xrepeat TEMP
-		setvarvar XREPEAT_MEMORY TEMP // Start radius
+		setvarvar ANIMATE_STARTSIZE TEMP // Start radius
 		mulvar TEMP 5
-		setvarvar YREPEAT_MEMORY TEMP // End radius
+		setvarvar ANIMATE_ENDSIZE TEMP // End radius
 	}
 enda
 
@@ -3166,7 +3166,6 @@ state checktroophit
 	else ifwasweapon FIREBALL
 	{
 		sound PRED_DYING
-		action ATROOPDYING
 		state generic_burn_death
 		break
 	}
@@ -3812,14 +3811,19 @@ state checklizhit
       state standard_jibs
       killit
     }
-    else
-      ifwasweapon RADIUSEXPLOSION
+    else ifwasweapon RADIUSEXPLOSION
     {
       sound SQUISHED
       state liz_body_jibs
       state standard_jibs
       killit
     }
+	else ifwasweapon FIREBALL
+	{
+		sound CAPT_DYING
+		state generic_burn_death
+		break
+	}
     else
     {
       state rf
@@ -4281,87 +4285,90 @@ state octashootenemystate
 ends
 
 state checkoctahitstate
-  ifwasweapon SHRINKSPARK
-  {
-    sound ACTOR_SHRINKING
-    ai AIOCTASHRUNK
-  }
-  else
-  {
-    ifdead
-    {
-      ifwasweapon FREEZEBLAST
-      {
-        sound SOMETHINGFROZE
-        spritepal 1
-        move 0
-        action AOCTAFROZEN
-        strength 0
-        break
-      }
+	ifwasweapon SHRINKSPARK
+	{
+		sound ACTOR_SHRINKING
+		ai AIOCTASHRUNK
+	}
+	else
+	{
+		ifdead
+		{
+			ifwasweapon FREEZEBLAST
+			{
+				sound SOMETHINGFROZE
+				spritepal 1
+				move 0
+				action AOCTAFROZEN
+				strength 0
+				break
+			}
 
-      addkills 1
-      ifwasweapon RPG
-      {
-        sound SQUISHED
-        state standard_jibs
-        killit
-      }
-	  else ifwasweapon DEVASTATORMISSILE
-      {
-        sound SQUISHED
-        state standard_jibs
-        killit
-      }
-      else
-        ifwasweapon RADIUSEXPLOSION
-      {
-        sound SQUISHED
-        state standard_jibs
-        killit
-      }
-      else
-        ifwasweapon GROWSPARK
-      {
-        cstat 0
-        sound ACTOR_GROWING
-        ai AIOCTAGROW
-        break
-      }
-      else
-      {
-        state rf
-        ai AIOCTADYING
-      }
-      sound OCTA_DYING
-    }
-    else
-    {
-      ifwasweapon RPG
-      {
-        sound OCTA_DYING
-        addkills 1
-        state standard_jibs
-        killit
-      }
-	  else ifwasweapon DEVASTATORMISSILE
-      {
-        sound OCTA_DYING
-        addkills 1
-        state standard_jibs
-        killit
-      }
-      else
-        ifwasweapon GROWSPARK
-          sound EXPANDERHIT
+			addkills 1
+			ifwasweapon RPG
+			{
+				sound SQUISHED
+				state standard_jibs
+				killit
+			}
+			else ifwasweapon DEVASTATORMISSILE
+			{
+				sound SQUISHED
+				state standard_jibs
+				killit
+			}
+			else ifwasweapon RADIUSEXPLOSION
+			{
+				sound SQUISHED
+				state standard_jibs
+				killit
+			}
+			else ifwasweapon GROWSPARK
+			{
+				cstat 0
+				sound ACTOR_GROWING
+				ai AIOCTAGROW
+				break
+			}
+			else ifwasweapon FIREBALL
+			{
+				sound OCTA_DYING
+				state generic_burn_death
+				break
+			}
+			else
+			{
+				state rf
+				ai AIOCTADYING
+			}
+			sound OCTA_DYING
+		}
+		else
+		{
+			ifwasweapon RPG
+			{
+				sound OCTA_DYING
+				addkills 1
+				state standard_jibs
+				killit
+			}
+			else ifwasweapon DEVASTATORMISSILE
+			{
+				sound OCTA_DYING
+				addkills 1
+				state standard_jibs
+				killit
+			}
+			else ifwasweapon GROWSPARK
+				sound EXPANDERHIT
 
-      sound OCTA_PAIN
-      spawn BLOOD
-      ifrnd 64
-        ai AIOCTAHIT
-    }
-  }
-  state random_wall_jibs
+			sound OCTA_PAIN
+			spawn BLOOD
+			ifrnd 64
+				ai AIOCTAHIT
+		}
+	}
+	state random_wall_jibs
 ends
 
 state octashrunkstate
@@ -4812,8 +4819,8 @@ state checkpighitstate
 	else ifwasweapon FIREBALL
 	{
 		sound PIG_DYING
-		ai AIPIGDYING
 		state generic_burn_death
+		break
 	}
     else
       ai AIPIGDYING
@@ -5176,55 +5183,65 @@ state boss1shootenemy
 ends
 
 state checkboss1hitstate
-  ifrnd 2
-    spawn BLOODPOOL
-  ifdead
-  {
-    ifspritepal 0
-      globalsound DUKE_TALKTOBOSSFALL
-    else
-    {
-      ifrnd 64
-        globalsound DUKE_TALKTOBOSSFALL
-      ifwasweapon FREEZEBLAST
-      {
-        sound SOMETHINGFROZE
-        spritepal 1
-        move 0
-        action ABOSS1FROZEN
-        strength 0
-        break
-      }
-    }
+	ifrnd 2
+		spawn BLOODPOOL
+		
+	ifdead
+	{
+		addkills 1
+		
+		ifspritepal 0
+		{
+			globalsound DUKE_TALKTOBOSSFALL
+		}
+		else
+		{
+			ifwasweapon FIREBALL
+			{
+				sound BOS1_DYING
+				state generic_burn_death
+				break
+			}
+			
+			ifrnd 64
+				globalsound DUKE_TALKTOBOSSFALL
+				
+			ifwasweapon FREEZEBLAST
+			{
+				sound SOMETHINGFROZE
+				spritepal 1
+				move 0
+				action ABOSS1FROZEN
+				strength 0
+				break
+			}
+		}
 
-    sound BOS1_DYING
+		sound BOS1_DYING
+		ai AIBOSS1DYING
+	}
+	else
+	{
+		ifrnd 32
+		{
+			action BOSS1FLINTCH
+			move 0
+		}
 
-    addkills 1
-    ai AIBOSS1DYING
-  }
-  else
-  {
-    ifrnd 32
-    {
-      action BOSS1FLINTCH
-      move 0
-    }
+		ifspritepal 0 { } // Do fuck all
+		else ifwasweapon SHRINKSPARK
+		{
+			sound ACTOR_SHRINKING
+			ai AIBOSS1PALSHRINK
+			cstat 0
+			break
+		}
 
-    ifspritepal 0 nullop
-    else
-      ifwasweapon SHRINKSPARK
-    {
-      sound ACTOR_SHRINKING
-      ai AIBOSS1PALSHRINK
-      cstat 0
-      break
-    }
+		soundonce BOS1_PAIN
 
-    soundonce BOS1_PAIN
-
-    debris SCRAP1 1
-    guts JIBS6 1
-  }
+		debris SCRAP1 1
+		guts JIBS6 1
+	}
 ends
 
 state boss1code
@@ -6010,6 +6027,12 @@ state checkcommhitstate
         state standard_jibs
         killit
       }
+	  else ifwasweapon FIREBALL
+	  {
+		sound COMM_DYING
+		state generic_burn_death
+		break
+	  }
 
       sound COMM_DYING
       ai AICOMMDYING
@@ -7152,6 +7175,12 @@ state checknewbeasthit
       state standard_jibs
       killit
     }
+	else ifwasweapon FIREBALL
+	{
+		sound NEWBEAST_DYING
+		state generic_burn_death
+		break
+	}
     else
     {
       state rf

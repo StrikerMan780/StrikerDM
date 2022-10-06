@@ -185,7 +185,7 @@ actor ONFIRE 0
 			ifrnd 128
 				espawn BURNING_ALT
 			else
-				espawn BURNING2_ALT	
+				espawn BURNING2_ALT
 			getactor[THISACTOR].owner TEMP
 			setactor[RETURN].owner TEMP
 			setvar RETURN 0
@@ -217,23 +217,6 @@ actor ONFIRESMOKE 0 ONFIRESMOKEFRAMES
         killit
     ifactioncount 1 {
         sizeat 30 30
-    }
-enda
-
-action BURNEDCORPSETHINK 0 1 1 1 1
-actor BURNEDCORPSE 0
-    fall
-    ifaction 0 {
-        sizeat 20 20
-        cstator 128
-        action BURNEDCORPSETHINK
-    }
-    ifcount 350 {
-    }
-    else {
-        ifrnd 6 {
-            spawn WHISPYSMOKE
-        }
     }
 enda
 
@@ -286,11 +269,11 @@ actor FIREBALLTRAIL 0
 		
 		setvarvar ANIMATE_STARTCLOCK ANIMATE_CLOCK // Timer
 		setvar ANIMATE_LIFETIME 32 // End time
-		setvar SPAWN_ORIGANG 0 // Rotational Speed
+		setvar ANIMATE_ROTSPEED 0 // Rotational Speed
 		
 		getactor[THISACTOR].xrepeat TEMP
-		setvarvar XREPEAT_MEMORY TEMP // Start radius
-		setvar YREPEAT_MEMORY 0 // End radius
+		setvarvar ANIMATE_STARTSIZE TEMP // Start radius
+		setvar ANIMATE_ENDSIZE 0 // End radius
 		
 		ifinwater
 		ifrnd 32

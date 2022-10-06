@@ -210,7 +210,7 @@ state ffshootstate
 			ifpdistl 6144
 			{
 				shoot FLAMETHROWERFLAME
-				//sound FLAMETHROWER_FIRE // NOT NEEDED, FLAMETHROWERFLAME PLAYS THIS ANYWAY
+				sound FLAMETHROWER_FIRE
 				ifactioncount 10
 				{
 					resetactioncount
@@ -1160,7 +1160,7 @@ state BOSS5breathefire
 			shoot FLAMETHROWERFLAME
 			shoot FLAMETHROWERFLAME
 			shoot FLAMETHROWERFLAME
-			//sound FLAMETHROWER_FIRE // Played by FLAMETHROWERFLAME
+			sound FLAMETHROWER_FIRE
 		}
 	}
 ends
@@ -1525,7 +1525,7 @@ defstate apparition_get_first_path_node
 				qsprintf 500 500 APPARITION_LOCATOR APPARITION_PATHNUM APPARITION_IMPATIENCE
 				userquote 500
 			}
-					
+			
 			break
 		}
 		
@@ -1540,14 +1540,24 @@ defstate apparition_picktarget
 		
 	// Pick a target
 	setvar TEMP2 0
-	whilevarn TEMP2 1
+	setvar TEMP4 0 // Number of dead players
+	ifvare MULTIMODE 1
+	{
+		setvar TEMP2 1
+	}
+	else whilevarn TEMP2 1
 	{
 		randvarvar TEMP MULTIMODE
 		modvarvar TEMP MULTIMODE
 		ifvarvarn TEMP APPARITION_TARGET
 		{
-			getplayer[TEMP].dead_flag TEMP
-			ifvare TEMP 0
+			getplayer[TEMP].dead_flag TEMP3
+			ifvarn TEMP3 0
+				addvar TEMP4 1
+			
+			ifvarg TEMP4 2 // More than 2 dead players
+				setvar TEMP2 1 // Set target anyway
+			else ifvare TEMP3 0 // Not dead, let's target this guy.
 				setvar TEMP2 1
 		}
 	}
@@ -1818,6 +1828,31 @@ actor APPARITION 0
 			// Insert seek code here
 			ifvarg APPARITION_TARGET -1
 			{
+				ifpdistl 6144
+				ifcanseetarget
+				ifrnd 4
+				{
+					getplayer[THISACTOR].heat_on TEMP // Nightvision pisses it off, making it change targets.
+					
+					ifvare TEMP 0
+					{
+						getplayer[THISACTOR].curr_weapon TEMP
+						ifvare TEMP DEVISTATOR_WEAPON // Devastator and DFG piss it off as well.
+						{
+							getplayer[THISACTOR].kickback_pic TEMP
+							ifvarg TEMP 0
+								setvar TEMP 1
+						}
+					}
+					
+					ifvare TEMP 1
+					{
+						getplayer[THISACTOR].i TEMP
+						getactor[TEMP].yvel TEMP
+						setvarvar APPARITION_TARGET TEMP
+					}
+				}
+				
 				getplayer[APPARITION_TARGET].i TEMP // Get player sprite index.
 				getactor[TEMP].extra TEMP2
 				ifvarg TEMP2 0 // Alive?
