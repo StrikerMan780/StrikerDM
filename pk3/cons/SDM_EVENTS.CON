@@ -3134,6 +3134,8 @@ onevent EVENT_SOUND
 				break
 			ifvare RETURN NITEVISION_ONOFF
 				break
+			ifvare RETURN FIRE_CRACKLE
+				break
 			
 			getactor[THISACTOR].yvel CL_TEMP1
 			ifvarvarn CL_TEMP1 myconnectindex
