@@ -942,15 +942,17 @@ actor BLOODSPURT 0
 	setactor[RETURN].htbposy TEMP
 	getactor[THISACTOR].htbposz TEMP
 	setactor[RETURN].htbposz TEMP
+	getactor[THISACTOR].htflags TEMP
+	setactor[RETURN].htflags TEMP
 	setvar RETURN 0
 enda
 
 action SPURTTRAIL_ANIM 0 5 1 1 8
+move SPURT_FALL 0 40
 actor SPURTTRAIL 0
-	fall
-	
 	ifaction 0
 	{
+		move SPURT_FALL getv noclip
 		action SPURTTRAIL_ANIM
 	}
 	
@@ -959,7 +961,12 @@ actor SPURTTRAIL 0
 		killit
 	}
 	
-	iffloordistl 4
+	getactor[THISACTOR].sectnum TEMP
+	getactor[THISACTOR].x TEMP2
+	getactor[THISACTOR].y TEMP3
+	getflorzofslope TEMP TEMP2 TEMP3 TEMP2
+	getactor[THISACTOR].z TEMP
+	ifvarvarg TEMP TEMP2
 	{
 		killit
 	}
@@ -1008,17 +1015,10 @@ actor TRACER 0
 	{
 		setactor[THISACTOR].shade -127
 		setactor[THISACTOR].blend 255
+		setactor[THISACTOR].mdflags 16
 		sizeat 10 10
-		cstat 32768
+		cstat 2178
 		action ANULLACTION
-	}
-	else
-	{
-		ifcount 2 { }
-		else ifcount 1
-		{
-			cstat 2178
-		}
 	}
 	
 	state tracer_movement
@@ -1028,17 +1028,10 @@ spriteflags PELLET 8192
 actor PELLET 0
 	ifaction 0
 	{
+		setactor[THISACTOR].mdflags 16
 		sizeat 10 10
-		cstat 32768
+		cstat 128
 		action ANULLACTION
-	}
-	else
-	{
-		ifcount 2 { }
-		else ifcount 1
-		{
-			cstat 128
-		}
 	}
 	
 	state tracer_movement
@@ -1244,8 +1237,11 @@ actor BURNTENEMY 0
 	ifaction 0
 	{
 		spritepal 4
-		cstat 0
 		sound FLAMEBURST
+		cstat 0
+		ifrnd 128
+			cstator 4
+		
 		setactor[THISACTOR].mdflags 16
 		setvar ANIMATE_FLAGS ANIMATE_FLAG_INTERPXYREPEAT
 		
@@ -2164,9 +2160,8 @@ actor LOOPTRAIN 0
 	
 	ifvarn EXTRA_MEMORY -1
 	{
-		getactor[THISACTOR].sectnum TEMP
-		getsector[TEMP].wallptr TEMP2
-		getsector[TEMP].wallnum TEMP3
+		getsector[THISACTOR].wallptr TEMP2
+		getsector[THISACTOR].wallnum TEMP3
 		addvarvar TEMP3 TEMP2
 		whilevarvarn TEMP2 TEMP3
 		{

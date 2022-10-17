@@ -713,6 +713,7 @@ onevent EVENT_EGS
 			switch TEMP2
 				case NEWBEAST:
 					setactor[THISACTOR].pal 125
+					setactor[THISACTOR].htflags 68 // (SFLAG_NOSHADE|SFLAG_NOPAL)
 					break
 				case EGG
 					setactor[THISACTOR].pal 8
@@ -744,6 +745,8 @@ onevent EVENT_EGS
 				espawn BLOODSPURT
 				getactor[THISACTOR].pal TEMP2
 				setactor[RETURN].pal TEMP2
+				getactor[THISACTOR].htflags TEMP2
+				setactor[RETURN].htflags TEMP2
 				
 				randvar TEMP 56
 				addvar TEMP 8
@@ -761,11 +764,13 @@ onevent EVENT_EGS
 				espawn BLOOD // Spawn spray effect
 				getactor[THISACTOR].pal TEMP2
 				setactor[RETURN].pal TEMP2
+				getactor[THISACTOR].htflags TEMP2
+				setactor[RETURN].htflags TEMP2
 				setactorvar[RETURN].ANIMATE_LIFETIME 30
-				setactorvar[RETURN].XREPEAT_MEMORY 4
+				setactorvar[RETURN].ANIMATE_STARTSIZE 4
 				randvar TEMP2 16
 				addvar TEMP2 32
-				setactorvar[RETURN].YREPEAT_MEMORY TEMP2
+				setactorvar[RETURN].ANIMATE_ENDSIZE TEMP2
 				setvar RETURN 0
 			}
 		}
@@ -777,7 +782,14 @@ onevent EVENT_EGS
 	// Freezeblast speed buff
 	ifactor FREEZEBLAST
 	{
-		setactor[THISACTOR].xvel 768
+		getactor[THISACTOR].xvel TEMP
+		mulvar TEMP 5
+		divvar TEMP 4
+		setactor[THISACTOR].xvel TEMP
+		getactor[THISACTOR].zvel TEMP
+		mulvar TEMP 5
+		divvar TEMP 4
+		setactor[THISACTOR].zvel TEMP
 	}
 	
 	ifactor FLAMETHROWERFLAME
@@ -2036,6 +2048,27 @@ onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
 		}
 	}
 	
+	ifactor TRACER
+	{
+		gettspr[THISACTOR].tsprx TSPRX
+		gettspr[THISACTOR].tspry TSPRY
+		gettspr[THISACTOR].tsprz TSPRZ
+		distvar TSPRX TSPRY TSPRZ camerax cameray cameraz CL_TEMP1
+		ifvarl CL_TEMP1 512
+			settspr[THISACTOR].tsprxrepeat 0
+		break
+	}
+	else ifactor PELLET
+	{
+		gettspr[THISACTOR].tsprx TSPRX
+		gettspr[THISACTOR].tspry TSPRY
+		gettspr[THISACTOR].tsprz TSPRZ
+		distvar TSPRX TSPRY TSPRZ camerax cameray cameraz CL_TEMP1
+		ifvarl CL_TEMP1 512
+			settspr[THISACTOR].tsprxrepeat 0
+		break
+	}
+	
 	ifvarg BURNING_TICS 0
 	{
 		gettspr[THISACTOR].tsprpal CL_TEMP1
@@ -3220,9 +3253,8 @@ onevent EVENT_SOUND
 	ifvare RETURN FP_ELECTRICARC // Electric arc should be muffled if we're on a floor above or below.
 	{
 		getplayer[screenpeek].posz CL_TEMP1
-		getactor[THISACTOR].sectnum CL_TEMP2
-		getsector[CL_TEMP2].ceilingz CL_TEMP3
-		getsector[CL_TEMP2].floorz CL_TEMP4
+		getsector[THISACTOR].ceilingz CL_TEMP3
+		getsector[THISACTOR].floorz CL_TEMP4
 		
 		ifvarvarl CL_TEMP1 CL_TEMP3
 			setvar RETURN FP_ELECTRICARC_MUFFLED

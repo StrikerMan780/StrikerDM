@@ -762,28 +762,56 @@ ends
 
 state spawn_random_fire
 	// Fire Sprites
-	espawn ONFIRE
-			
-	// Note: Change to clipdist later.
-	getactor[THISACTOR].x TEMP
-	randvar TEMP2 256
-	subvar TEMP2 128
-	addvarvar TEMP TEMP2
-	setactor[RETURN].x TEMP
-			
-	getactor[THISACTOR].y TEMP
-	randvar TEMP2 256
-	subvar TEMP2 128
-	addvarvar TEMP TEMP2
-	setactor[RETURN].y TEMP
-			
-	// Note: Set this to use tilesizy*yrepeat later.
-	getactor[THISACTOR].z TEMP
-	randvar TEMP2 8192
-	subvarvar TEMP TEMP2
-	setactor[RETURN].z TEMP
-			
-	setvar RETURN 0
+	
+	getactor[THISACTOR].picnum STATE_TEMP1
+	gettiledata[STATE_TEMP1].xsize STATE_TEMP2
+	gettiledata[STATE_TEMP1].ysize STATE_TEMP3
+	getactor[THISACTOR].xrepeat TEMP
+	getactor[THISACTOR].yrepeat TEMP2
+	mulvarvar STATE_TEMP2 TEMP
+	mulvarvar STATE_TEMP3 TEMP2
+	
+	setvarvar TEMP2 STATE_TEMP2
+	addvarvar TEMP2 STATE_TEMP3
+	shiftvarr TEMP2 11
+	ifvarl TEMP2 1
+		setvar TEMP2 1
+	
+	setvar STATE_TEMP1 0
+	whilevarvarn STATE_TEMP1 TEMP2
+	{
+		espawn ONFIRE
+
+		setvarvar TEMP3 STATE_TEMP2
+		shiftvarr TEMP3 3
+		randvarvar TEMP4 TEMP3
+		shiftvarr TEMP3 1
+		subvarvar TEMP4 TEMP3
+		getactor[THISACTOR].x TEMP3
+		addvarvar TEMP3 TEMP4
+		setactor[RETURN].x TEMP3
+		
+		setvarvar TEMP3 STATE_TEMP2
+		shiftvarr TEMP3 3
+		randvarvar TEMP4 TEMP3
+		shiftvarr TEMP3 1
+		subvarvar TEMP4 TEMP3
+		getactor[THISACTOR].y TEMP3
+		addvarvar TEMP3 TEMP4
+		setactor[RETURN].y TEMP3
+		
+		setvarvar TEMP3 STATE_TEMP3
+		shiftvarl TEMP3 2
+		randvarvar TEMP4 TEMP3
+		getactor[THISACTOR].z TEMP3
+		subvarvar TEMP3 TEMP4
+		setactor[RETURN].z TEMP3
+		
+		addvar STATE_TEMP1 1
+		
+		setvar RETURN 0
+	}
+	
 ends
 
 state stop_player_burn
@@ -927,17 +955,30 @@ state spawn_tracer
 	shiftvarl TEMP2 4
 	
 	// Get coords of shooter.
-	getactor[TEMP].x SPAWN_ORIGX
-	getactor[TEMP].y SPAWN_ORIGY
-	getactor[TEMP].z SPAWN_ORIGZ
-	subvar SPAWN_ORIGZ 8192 // Move z coord up a bit so we're not shooting from our feet.
+	getactor[TEMP].picnum TEMP4
+	ifvare TEMP4 APLAYER
+	{
+		getactor[TEMP].yvel TEMP4
+		getplayer[TEMP4].oposx SPAWN_ORIGX
+		getplayer[TEMP4].oposy SPAWN_ORIGY
+		getplayer[TEMP4].oposz SPAWN_ORIGZ
+		getplayer[TEMP4].opyoff TEMP4
+		addvar SPAWN_ORIGZ 1024
+		addvarvar SPAWN_ORIGZ TEMP4
+	}
+	else
+	{
+		getactor[TEMP].x SPAWN_ORIGX
+		getactor[TEMP].y SPAWN_ORIGY
+		getactor[TEMP].z SPAWN_ORIGZ
+		subvar SPAWN_ORIGZ 8192 // Move z coord up a bit so we're not shooting from our feet.
+	}
 	
 	// Get an X/Y offset
 	getactor[THISACTOR].ang SPAWN_ORIGANG
 	setvarvar TEMP3 SPAWN_ORIGANG
 	addvar TEMP3 348 // ?
-	addvar TEMP3 512 // 45 degree angle
-	sin TEMP3 TEMP3
+	cos TEMP3 TEMP3
 	divvar TEMP3 512 // Offset?
 	addvarvar SPAWN_ORIGX TEMP3
 	
@@ -974,7 +1015,10 @@ state spawn_tracer
 	espawnvar STATE_PARAM1
 	setactor[RETURN].x SPAWN_ORIGX
 	setactor[RETURN].y SPAWN_ORIGY
-	setactor[RETURN].z SPAWN_ORIGZ	
+	setactor[RETURN].z SPAWN_ORIGZ
+	setactor[RETURN].htbposx SPAWN_ORIGX
+	setactor[RETURN].htbposy SPAWN_ORIGY
+	setactor[RETURN].htbposz SPAWN_ORIGZ
 	setactor[RETURN].pitch TEMP3 // Set model pitch
 	setactorvar[RETURN].DEST_X DEST_X
 	setactorvar[RETURN].DEST_Y DEST_Y

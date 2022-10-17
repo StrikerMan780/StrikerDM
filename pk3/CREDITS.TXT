@@ -38,6 +38,7 @@ Shodanbot - Sliding switch, cans of mace.
 mxrtxn - Desk lamp, bowling pin, red/black Barrel, SW voxels
 Borion - Toilet, urinal, stage lamp, lever switch, garbage can, rubber can, seenine, space suit, coffee machine, ooze filter.
 Reikall - Doom Voxels
+MarioJCH - Flamethrower Voxel
 ********************************************************************
 FOR ADDITIONAL VOXEL CREDITS, REFER TO THE DUKE3D VOXEL PACK CREDITS
 ********************************************************************

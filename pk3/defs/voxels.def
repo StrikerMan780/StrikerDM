@@ -529,6 +529,8 @@ voxel "voxels/pickups/1349_holoduke2.kvx" { tile 1349 }
 voxel "voxels/pickups/1350_holoduke3.kvx" { tile 1350 }
 voxel "voxels/pickups/1351_holoduke4.kvx" { tile 1351 }
 
+voxel "voxels/pickups/5134_flamethrower.kvx" { tile 5134 }
+
 // ***** TRUE-COLOR PICKUP VOXELS *****
 
 model "voxels/pickups/4991_bon1a.kv6" { scale 1.0 frame { name "" tile 4991 } }

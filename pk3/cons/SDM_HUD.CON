@@ -37,19 +37,6 @@ defstate jumblefuck
 	showview CL_TEMP1 CL_TEMP2 CL_TEMP3 CL_TEMP4 CL_TEMP5 CL_TEMP6 0 CL_TEMP7 319 CL_TEMP8
 ends
 
-defstate draw_babe_counter
-	getuserdef[].levelstats CL_TEMP1
-	ifvare CL_TEMP1 1
-	{
-		ifvarn BABES_TOTAL 0
-		{
-			redefinequote 500 ^12Babes Saved:^8 %d ^12/^8 %d
-			qsprintf 500 500 BABES_RESCUED BABES_TOTAL
-			screentext 3072 2 130 65536 0 0 500 -127 0 280 0 3 5 1 1 8196 0 0 xdim ydim
-		}
-	}
-ends
-
 onevent EVENT_DISPLAYSBAR // !UNSYNCHRONIZED!
 	ifvare DEMENTIA 1
 	{
@@ -501,25 +488,6 @@ onevent EVENT_DISPLAYREST // !UNSYNCHRONIZED!
 	//qsprintf 500 500 gametype_flags
 	//minitext 48 48 500 -127 1
 	
-	getuserdef[].screen_size CL_TEMP1
-	ifmultiplayer
-	{
-		ifvarg CL_TEMP1 0
-		{
-			ifvare COOP GM_COOPERATIVE
-			{
-				state draw_babe_counter
-			}
-		}
-	}
-	else
-	{
-		ifvarg CL_TEMP1 0
-		{
-			state draw_babe_counter
-		}
-	}
-	
 	ifvarl WEAPONQUOTEALPHA 255
 	{
 		//gametext STARTALPHANUM 320 30 WEAPONQUOTE 0 7 16 0 0 xdim ydim
@@ -597,4 +565,118 @@ onevent EVENT_DISPLAYCROSSHAIR
 	{
 		setvar RETURN 1
 	}
+endevent
+
+
+onevent EVENT_DISPLAYLEVELSTATS
+	setvar CL_TEMP9 164
+	setvar CL_TEMP2 0
+	ifmultiplayer
+	{
+		ifvare COOP GM_COOPERATIVE
+			setvar CL_TEMP2 1
+	}
+	else
+	{
+		setvar CL_TEMP2 1
+	}
+	
+	ifvare CL_TEMP2 1
+	{
+		ifvarn BABES_TOTAL 0
+		{
+			redefinequote 500 ^12Babes:^8 %d ^12/^8 %d
+			qsprintf 500 500 BABES_RESCUED BABES_TOTAL
+			screentext 3072 2 CL_TEMP9 65536 0 0 500 -127 0 280 0 3 5 1 1 8196 0 0 xdim ydim
+			subvar CL_TEMP9 6
+		}
+	}
+	
+	getplayer[screenpeek].secret_rooms CL_TEMP1
+	getplayer[screenpeek].max_secret_rooms CL_TEMP2
+	ifvarg CL_TEMP2 0
+	{
+		redefinequote 500 ^12Secrets:^8 %d ^12/^8 %d
+		qsprintf 500 500 CL_TEMP1 CL_TEMP2
+		screentext 3072 2 CL_TEMP9 65536 0 0 500 -127 0 280 0 3 5 1 1 8196 0 0 xdim ydim
+		subvar CL_TEMP9 6
+	}
+	
+	setvar CL_TEMP2 0
+	ifvare MULTIMODE 1
+	{
+		getplayer[screenpeek].max_actors_killed CL_TEMP1
+		ifvarg CL_TEMP1 0
+		{
+			ifvarand DMFLAGS 4 // DMFLAG_RESPAWNMONSTERS
+				setvar CL_TEMP2 3
+			else
+				setvar CL_TEMP2 1
+		}
+	}
+	
+	ifvarand gametype_flags 4096
+	{
+		getplayer[screenpeek].max_actors_killed CL_TEMP1
+		ifvarg CL_TEMP1 0
+		{
+			ifvarand DMFLAGS 4 // DMFLAG_RESPAWNMONSTERS
+				setvar CL_TEMP2 3
+			else
+				setvar CL_TEMP2 1
+		}
+	}
+	else
+	{
+		setvar CL_TEMP2 2
+	}
+	
+	ifvare CL_TEMP2 1
+	{
+		getuserdef[].monsters_killed CL_TEMP1
+		getplayer[screenpeek].max_actors_killed CL_TEMP2
+		
+		redefinequote 500 ^12Kills:^8 %d ^12/^8 %d
+		qsprintf 500 500 CL_TEMP1 CL_TEMP2
+		screentext 3072 2 CL_TEMP9 65536 0 0 500 -127 0 280 0 3 5 1 1 8196 0 0 xdim ydim
+		subvar CL_TEMP9 6
+	}
+	else ifvare CL_TEMP2 2
+	{
+		getplayer[screenpeek].frag CL_TEMP1
+		getplayer[screenpeek].fraggedself CL_TEMP2
+		subvarvar CL_TEMP1 CL_TEMP2
+		
+		redefinequote 500 ^12Frags:^8 %d
+		qsprintf 500 500 CL_TEMP1
+		screentext 3072 2 CL_TEMP9 65536 0 0 500 -127 0 280 0 3 5 1 1 8196 0 0 xdim ydim
+		subvar CL_TEMP9 6
+	}
+	else ifvare CL_TEMP2 3
+	{
+		getuserdef[].monsters_killed CL_TEMP1
+		
+		redefinequote 500 ^12Kills:^8 %d
+		qsprintf 500 500 CL_TEMP1
+		screentext 3072 2 CL_TEMP9 65536 0 0 500 -127 0 280 0 3 5 1 1 8196 0 0 xdim ydim
+		subvar CL_TEMP9 6
+	}
+	
+	
+	getplayer[screenpeek].player_par CL_TEMP1
+	setvarvar CL_TEMP2 CL_TEMP1 // Minutes
+	divvar CL_TEMP2 1800 // REALGAMETICSPERSEC*60
+	setvarvar CL_TEMP3 CL_TEMP1 // Seconds
+	divvar CL_TEMP3 30 // REALGAMETICSPERSEC
+	modvar CL_TEMP3 60
+	setvarvar CL_TEMP4 CL_TEMP1 // Centiseconds
+	modvar CL_TEMP4 30 // REALGAMETICSPERSEC
+	mulvar CL_TEMP4 33
+	divvar CL_TEMP4 10
+	
+	redefinequote 500 ^12Time:^8 %d:%02d.%02d
+	qsprintf 500 500 CL_TEMP2 CL_TEMP3 CL_TEMP4
+	screentext 3072 2 CL_TEMP9 65536 0 0 500 -127 0 280 0 3 5 1 1 8196 0 0 xdim ydim
+	
+	setvar RETURN 1
 endevent

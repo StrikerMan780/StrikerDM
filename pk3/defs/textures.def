@@ -44,6 +44,9 @@ texture 5060 { pal 0 { file "highres/posters/5060_startrek.png" } }
 texture 5061 { pal 0 { file "highres/posters/5061_startrek2.png" } }
 texture 5062 { pal 0 { file "highres/posters/5062_lustinspace.png" } }
 
+// Shadow Mavericks Logo
+texture 5028 { pal 0 { file "highres/posters/5028_shadowmavericks.png" nodownsize } }
+
 // Zero Hour Stuff
 // ----------------------------
 texture 4825 { pal 0 { file "tiles/4825.png" artquality } }

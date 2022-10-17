@@ -80,7 +80,15 @@ texture 3907 { pal 0 { file "tiles/3907.png" artquality } }
 texture 3908 { pal 0 { file "tiles/3908.png" artquality } }
 texture 3909 { pal 0 { file "tiles/3909.png" artquality } }
 texture 3910 { pal 0 { file "tiles/3910.png" artquality } }
-texture 3911 { pal 0 { file "tiles/3911.png" artquality } }
+
+multipsky 3911
+{
+	lognumtiles 1
+	horizfrac 65536
+	panel 0 0
+	panel 1 0
+}
+
 texture 3914 { pal 0 { file "tiles/3914.png" artquality } }
 texture 3916 { pal 0 { file "tiles/3916.png" artquality } }
 texture 3917 { pal 0 { file "tiles/3917.png" artquality } }
