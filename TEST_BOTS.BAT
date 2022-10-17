@@ -1,5 +1,6 @@
 set GRP_PATH=%~dp0pk3
-set MAP=maps/thermalbase.map
+REM set MAP=maps/burningmemory.map
+set MAP=maps/THERMALBASE.map
 D:
 cd "D:\sourcecode\eduke32-cs"
 @echo off
@@ -21,8 +22,12 @@ IF ERRORLEVEL 5 SET NUMBOTS=6
 IF ERRORLEVEL 6 SET NUMBOTS=7
 IF ERRORLEVEL 7 SET NUMBOTS=8
 start netduke32 -nosetup -tx -c1 -m -j%GRP_PATH% /q%NUMBOTS% /a -map %MAP%
-exit
+goto END
 
 :NOAI
 start netduke32 -nosetup -tx -c1 -m -j%GRP_PATH% /q16 -map %MAP%
-exit
+goto END
+
+REM gdb --args netduke32.exe -nosetup -tx -c1 -m -q16 -jD:/Modding/GitHub/StrikerDM/pk3 -map maps/THERMALBASE.MAP
+
+:END

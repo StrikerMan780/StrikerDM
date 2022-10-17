@@ -1,4 +1,6 @@
 set GRP_PATH=%~dp0Builds
+set ARGS=-c2
+set MAP=e1l1.map
 D:
 cd "D:\sourcecode\eduke32-cs"
 @echo off
@@ -10,8 +12,8 @@ IF ERRORLEVEL 1 GOTO WITHAI
 
 :WITHAI
 cls
-echo How Many Bots? (1-7)
-CHOICE /N /C:1234567
+echo How Many Bots? (1-7) (A for 15)
+CHOICE /N /C:1234567A
 IF ERRORLEVEL 1 SET NUMBOTS=2
 IF ERRORLEVEL 2 SET NUMBOTS=3
 IF ERRORLEVEL 3 SET NUMBOTS=4
@@ -19,9 +21,12 @@ IF ERRORLEVEL 4 SET NUMBOTS=5
 IF ERRORLEVEL 5 SET NUMBOTS=6
 IF ERRORLEVEL 6 SET NUMBOTS=7
 IF ERRORLEVEL 7 SET NUMBOTS=8
-start netduke32 -nosetup -tx -c1 -m /q%NUMBOTS% /a -map e3l9.map
-exit
+IF ERRORLEVEL 8 SET NUMBOTS=16
+start netduke32 -nosetup -q16 -t23 %ARGS% /q%NUMBOTS% /a -map %MAP%
+goto END
 
 :NOAI
-start netduke32 -nosetup -tx -c1 -m /q8 -map e3l9.map
-exit
+start netduke32 -nosetup -q16 -t23 %ARGS% -map %MAP%
+goto END
+
+:END
