@@ -12,7 +12,7 @@ actor SATELLITE TOUGH
   //  ifcount 120 move SHUTTLEVELS getv geth randomangle
 enda
 
-state standard_jibs
+defstate standard_jibs
 	guts JIBS2 1
 	guts JIBS3 2
 	guts JIBS4 3
@@ -28,7 +28,7 @@ state standard_jibs
 	state jib_sounds
 ends
 
-state genericshrunkcode
+defstate genericshrunkcode
 	ifcount 32
 	{
 		ifpdistl SQUISHABLEDISTANCE
@@ -42,29 +42,28 @@ state genericshrunkcode
 ends
 
 state genericgrowcode
-  ifcount 32
-  {
-    guts JIBS4 24
-    guts JIBS6 28
-    addkills 1
-    sound SQUISHED
-    sound PIPEBOMB_EXPLODE
-    hitradius 2048 60 70 80 90
-    spawn BLOODPOOL
-    spawn EXPLOSION2
-    killit
-  }
-  else
-  {
-    ifactor COMMANDER
-      sizeto 100 100
-    else
-      ifactor SHARK
-        sizeto 84 84
-    else
-      sizeto MAXXSTRETCH MAXYSTRETCH
-    break
-  }
+	ifcount 32
+	{
+		guts JIBS4 24
+		guts JIBS6 28
+		addkills 1
+		sound SQUISHED
+		sound PIPEBOMB_EXPLODE
+		hitradius 2048 60 70 80 90
+		spawn BLOODPOOL
+		spawn EXPLOSION2
+		killit
+	}
+	else
+	{
+		ifactor COMMANDER
+			sizeto 100 100
+		else ifactor SHARK
+			sizeto 84 84
+		else
+			sizeto MAXXSTRETCH MAXYSTRETCH
+		break
+	}
 ends
 
 
@@ -362,29 +361,6 @@ actor RUBBERCAN WEAK
 	}
   }
 enda
-
-state toughgalspeech
-  ifrnd 64
-  {
-    ifnosounds
-      soundonce TOUGHGALSND1
-  }
-  else
-    ifrnd 64
-  {
-    ifnosounds
-      soundonce TOUGHGALSND2
-  }
-  else
-    ifrnd 64
-  {
-    ifnosounds
-      soundonce TOUGHGALSND3
-  }
-  else
-    ifnosounds
-      soundonce TOUGHGALSND4
-ends
 
 state jibfood
   sound SQUISHED
@@ -848,16 +824,6 @@ useractor notenemy SHOPPINGCART WEAK state breakobject enda
 useractor notenemy COFFEEMUG WEAK state breakobject enda
 
 
-
-state headhitstate
-
-// Unrem the following line to invoke screen tilting during
-// low player hitpoint damage.
-
-// wackplayer
-
-ends
-
 action EXPBARRELFRAME     0   2   1   1   15
 actor EXPLODINGBARREL 26
 	fall
@@ -865,8 +831,9 @@ actor EXPLODINGBARREL 26
 	{
 		ifactioncount 2
 		{
-			hitradius 1024 WEAKEST WEAK MEDIUMSTRENGTH TOUGH
+			hitradius 1780 25 50 75 100
 			spawn EXPLOSION2
+			spawn SHOCKWAVE
 			debris SCRAP2 2
 			sound PIPEBOMB_EXPLODE
 			killit
@@ -957,39 +924,35 @@ enda
 
 action TOILETWATERFRAMES 0 4 1 1 1
 actor TOILETWATER 0 TOILETWATERFRAMES
-  ifpdistl 8192
-  {
-	ifvare HITAG_MEMORY 0
+	ifpdistl 8192
 	{
-		soundonce WATER_GURGLE
-	}
+		ifvare HITAG_MEMORY 0
+			soundonce WATER_GURGLE
 	
-    ifspawnedby TOILET
-      sizeto 34 34
-    else
-    {
-      ifspawnedby WATERFOUNTAINBROKE
-        sizeto 6 15
-      else
-        ifspawnedby TOILETWATER
-          nullop
-      else
-        sizeto 24 32
-    }
+		ifspawnedby TOILET
+			sizeto 34 34
+		else
+		{
+			ifspawnedby WATERFOUNTAINBROKE
+				sizeto 6 15
+			else ifspawnedby TOILETWATER { } // Nullop
+			else
+				sizeto 24 32
+		}
 
-    ifp palive
-      ifpdistl RETRIEVEDISTANCE
-        ifp pfacing
-          ifactioncount 32
-            ifphealthl MAXPLAYERHEALTH
-              ifhitspace
-                ifcansee
-    {
-      addphealth 2
-      globalsound DUKE_DRINKING
-      resetactioncount
-    }
-  }
+		ifp palive
+		ifpdistl RETRIEVEDISTANCE
+		ifp pfacing
+		ifactioncount 32
+		ifphealthl MAXPLAYERHEALTH
+		ifhitspace
+		ifcansee
+		{
+			addphealth 2
+			globalsound DUKE_DRINKING
+			resetactioncount
+		}
+	}
 enda
 
 action WOODENHORSEFRAME  0   1   4
@@ -1000,18 +963,18 @@ actor HORSEONSIDE WEAKEST
   action WOODENFALLFRAME
 enda
 actor WOODENHORSE WEAK WOODENHORSEFRAME
-  fall
-  ifhitweapon
-  {
-    ifdead
-    {
-      debris SCRAP1 4
-      debris SCRAP2 3
-      killit
-    }
-    else
-      action WOODENFALLFRAME
-  }
+	fall
+	ifhitweapon
+	{
+		ifdead
+		{
+			debris SCRAP1 4
+			debris SCRAP2 3
+			killit
+		}
+		else
+			action WOODENFALLFRAME
+	}
 enda
 
 state steamcode
@@ -5023,163 +4986,164 @@ ai AIBOSS1DYING ABOSS1DYING BOSS1STOPPED faceplayer
 ai AIBOSS1PALSHRINK ABOSS1WALK PALBOSS1SHRUNKRUNVELS furthestdir
 
 state boss1palshrunkstate
-  ifcount SHRUNKDONECOUNT
-    ai AITROOPSEEKENEMY
-  else
-    ifcount SHRUNKCOUNT
-      sizeto 40 40
-  else
-    state genericshrunkcode
+	ifcount SHRUNKDONECOUNT
+		ai AIBOSS1SEEKENEMY // Was AITROOPSEEKENEMY for some dumbfuck reason.
+	else ifcount SHRUNKCOUNT
+		sizeto 40 40
+	else
+		state genericshrunkcode
 ends
 
 state checkboss1seekstate
-  ai AIBOSS1SEEKENEMY
-  ifspritepal 0 nullop
-    else   // a fake way of doing a ifspritepal NOT.
-      move PALBOSS1RUNVELS seekplayer
+	ai AIBOSS1SEEKENEMY
+	ifspritepal 0 { } // a fake way of doing a ifspritepal NOT.
+	else
+		move PALBOSS1RUNVELS seekplayer
 ends
 
 state boss1runenemystate
-  ifpdistl 2048
-  {
-    ifp palive
-      ai AIBOSS1SHOOTENEMY
-    break
-  }
-  else
-    ifcansee
-  {
-    ifactioncount 6
-    {
-      ifcanshoottarget
-      {
-        resetactioncount
-        sound BOS1_WALK
-      }
-      else
-        ai AIBOSS1SEEKENEMY
-    }
-  }
-  else
-    ai AIBOSS1SEEKENEMY
+	ifpdistl 2048
+	{
+		ifp palive
+			ai AIBOSS1SHOOTENEMY
+			
+		break
+	}
+	else ifcansee
+	{
+		ifactioncount 6
+		{
+			ifcanshoottarget
+			{
+				resetactioncount
+				sound BOS1_WALK
+			}
+			else
+				ai AIBOSS1SEEKENEMY
+		}
+	}
+	else
+		ai AIBOSS1SEEKENEMY
 ends
 
 state boss1seekenemystate
-  ifrnd 2
-    soundonce BOS1_ROAM
-  else
-    ifactioncount 6
-  {
-    resetactioncount
-    sound BOS1_WALK
-  }
+	ifrnd 2
+		soundonce BOS1_ROAM
+	else ifactioncount 6
+	{
+		resetactioncount
+		sound BOS1_WALK
+	}
 
-  ifpdistl 2548
-    ifp palive
-  {
-    ai AIBOSS1SHOOTENEMY
-    break
-  }
+	ifpdistl 2548
+	ifp palive
+	{
+		ai AIBOSS1SHOOTENEMY
+		break
+	}
 
-  ifcansee
-    ifcount 32
-  {
-    ifrnd 32
-    {
-      ifp palive
-        ifcanshoottarget
-          ai AIBOSS1SHOOTENEMY
-    }
-    else
-      ifpdistg 2548
-        ifrnd 192
-          ifcanshoottarget
-    {
-      ifrnd 64
-      {
-        ai AIBOSS1RUNENEMY
-        ifspritepal 0 nullop
-        else
-          move PALBOSS1RUNVELS seekplayer
-      }
-      else
-        ai AIBOSS1LOBBED
-    }
-  }
+	ifcansee
+	ifcount 32
+	{
+		ifrnd 32
+		{
+			ifp palive
+			ifcanshoottarget
+				ai AIBOSS1SHOOTENEMY
+		}
+		else ifpdistg 2548
+		ifrnd 192
+		ifcanshoottarget
+		{
+			ifrnd 64
+			{
+				ai AIBOSS1RUNENEMY
+				ifspritepal 0 nullop
+				else
+				  move PALBOSS1RUNVELS seekplayer
+			}
+			else
+				ai AIBOSS1LOBBED
+		}
+	}
 
 ends
 
 state boss1dyingstate
-  ifaction ABOSS1DEAD
-  {
-    ifspritepal 0
-      break
-    ifrespawn
-      ifcount RESPAWNACTORTIME
-    {
-      spawn TRANSPORTERSTAR
-      cstat 257
-      strength PIGCOPSTRENGTH
-      state checkboss1seekstate
-    }
-    else
-    {
-      strength 0
-      ifhitweapon
-        ifwasweapon RADIUSEXPLOSION
-      {
-        sound SQUISHED
-        state standard_jibs
-        killit
-      }
-      break
-    }
-  }
-  ifactioncount 5
-  {
-    iffloordistl 8
-      sound THUD
-    action ABOSS1DEAD
-    cstat 0
-    ifspritepal 0
-    endofgame 52
-  }
+	ifaction ABOSS1DEAD
+	{
+		ifspritepal 0
+			break
+			
+		ifrespawn
+		ifcount RESPAWNACTORTIME
+		{
+			spawn TRANSPORTERSTAR
+			cstat 257
+			strength PIGCOPSTRENGTH
+			state checkboss1seekstate
+		}
+		else
+		{
+			strength 0
+			ifhitweapon
+			ifwasweapon RADIUSEXPLOSION
+			{
+				sound SQUISHED
+				state standard_jibs
+				killit
+			}
+			break
+		}
+	}
+	
+	ifactioncount 5
+	{
+		iffloordistl 8
+			sound THUD
+			
+		action ABOSS1DEAD
+		cstat 0
+		
+		ifspritepal 0
+			endofgame 52
+	}
 ends
 
 state boss1lobbedstate
-  ifcansee
-  {
-    ifactioncount 2
-    {
-      resetactioncount
-      sound BOS1_ATTACK2
-      shoot MORTER
-    }
-    else
-      ifcount 64
-        ifrnd 16
-          state checkboss1seekstate
-  }
-  else
-    state checkboss1seekstate
+	ifcansee
+	{
+		ifactioncount 2
+		{
+			resetactioncount
+			sound BOS1_ATTACK2
+			shoot MORTER
+		}
+		else ifcount 64
+		{
+			ifrnd 16
+				state checkboss1seekstate
+		}
+	}
+	else
+		state checkboss1seekstate
 ends
 
 state boss1shootenemy
-  ifcount 72
-    state checkboss1seekstate
-  else
-    ifaction ABOSS1SHOOT
-      ifactioncount 2
-  {
-    sound BOS1_ATTACK1
-    shoot SHOTSPARK1
-    shoot SHOTSPARK1
-    shoot SHOTSPARK1
-    shoot SHOTSPARK1
-    shoot SHOTSPARK1
-    shoot SHOTSPARK1
-    resetactioncount
-  }
+	ifcount 72
+		state checkboss1seekstate
+	else ifaction ABOSS1SHOOT
+	ifactioncount 2
+	{
+		sound BOS1_ATTACK1
+		shoot SHOTSPARK1
+		shoot SHOTSPARK1
+		shoot SHOTSPARK1
+		shoot SHOTSPARK1
+		shoot SHOTSPARK1
+		shoot SHOTSPARK1
+		resetactioncount
+	}
 ends
 
 state checkboss1hitstate
@@ -5222,7 +5186,8 @@ state checkboss1hitstate
 	}
 	else
 	{
-		ifrnd 32
+		ifai AIBOSS1PALSHRINK { } // Prevent flinching when shrinking.
+		else ifrnd 32
 		{
 			action BOSS1FLINTCH
 			move 0
@@ -5245,91 +5210,84 @@ state checkboss1hitstate
 ends
 
 state boss1code
+	ifaction ABOSS1FROZEN
+	{
+		ifcount THAWTIME
+		{
+			ai AIBOSS1SEEKENEMY
+			spritepal 21
+		}
+		else ifcount FROZENDRIPTIME
+		{
+			ifactioncount 26
+			{
+				spawn WATERDRIP
+				resetactioncount
+			}
+		}
 
-  ifaction ABOSS1FROZEN
-  {
-    ifcount THAWTIME
-    {
-      ai AIBOSS1SEEKENEMY
-      spritepal 21
-    }
-    else
-      ifcount FROZENDRIPTIME
-    {
-      ifactioncount 26
-      {
-        spawn WATERDRIP
-        resetactioncount
-      }
-    }
+		ifhitweapon
+		{
+			ifwasweapon FREEZEBLAST
+			{
+				strength 0
+				break
+			}
+			addkills 1
+			lotsofglass 30
 
-    ifhitweapon
-    {
-      ifwasweapon FREEZEBLAST
-      {
-        strength 0
-        break
-      }
-      addkills 1
-      lotsofglass 30
+			ifrnd 84
+				spawn BLOODPOOL
+				
+			sound GLASS_BREAKING
+			killit
+		}
+		
+		ifp pfacing
+		ifpdistl FROZENQUICKKICKDIST
+			pkick
+		break
+	}
+	ifai 0
+	{
+		ifspritepal 0
+			ai AIBOSS1RUNENEMY
+		else
+		{
+			strength BOSS1PALSTRENGTH
+			ai AIBOSS1SHOOTENEMY
+		}
+	}
+	else ifaction BOSS1FLINTCH
+	{
+		ifactioncount 3
+			ai AIBOSS1SHOOTENEMY
+	}
+	else ifai AIBOSS1SEEKENEMY
+		state boss1seekenemystate
+	else ifai AIBOSS1RUNENEMY
+		state boss1runenemystate
+	else ifai AIBOSS1SHOOTENEMY
+		state boss1shootenemy
+	else ifai AIBOSS1LOBBED
+		state boss1lobbedstate
+	else ifai AIBOSS1PALSHRINK
+		state boss1palshrunkstate
 
-      ifrnd 84
-        spawn BLOODPOOL
-      sound GLASS_BREAKING
-      killit
-    }
-    ifp pfacing
-      ifpdistl FROZENQUICKKICKDIST
-        pkick
-    break
-  }
-  ifai 0
-  {
-    ifspritepal 0
-      ai AIBOSS1RUNENEMY
-    else
-    {
-      strength BOSS1PALSTRENGTH
-      ai AIBOSS1SHOOTENEMY
-    }
-  }
-  else
-    ifaction BOSS1FLINTCH
-  {
-    ifactioncount 3
-    ai AIBOSS1SHOOTENEMY
-  }
-  else
-    ifai AIBOSS1SEEKENEMY
-      state boss1seekenemystate
-  else
-    ifai AIBOSS1RUNENEMY
-      state boss1runenemystate
-  else
-    ifai AIBOSS1SHOOTENEMY
-      state boss1shootenemy
-  else
-    ifai AIBOSS1LOBBED
-      state boss1lobbedstate
-  else
-    ifai AIBOSS1PALSHRINK
-      state boss1palshrunkstate
-
-  ifai AIBOSS1DYING
-    state boss1dyingstate
-  else
-  {
-    ifhitweapon
-      state checkboss1hitstate
-    else
-      ifp palive
-        ifspritepal 0
-          ifpdistl 1280
-    {
-      addphealth -1000
-      palfrom 63 63
-    }
-  }
+	ifai AIBOSS1DYING
+		state boss1dyingstate
+	else
+	{
+		ifhitweapon
+			state checkboss1hitstate
+		else ifp palive
+		ifspritepal 0
+		ifpdistl 1280
+		{
+			addphealth -1000
+			palfrom 63 63
+		}
+	}
 ends
 
 actor BOSS1STAYPUT BOSS1STRENGTH cactor BOSS1 enda

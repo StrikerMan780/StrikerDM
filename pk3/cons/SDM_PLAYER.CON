@@ -513,7 +513,7 @@ actor APLAYER MAXPLAYERHEALTH PSTAND 0 0
 		
 		ifstrength TOUGH
 		{
-			state headhitstate
+			//state headhitstate
 			sound DUKE_GRUNT
 			ifp pstanding
 				action PFLINTCHING

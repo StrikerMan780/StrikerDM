@@ -5,6 +5,13 @@ define ANIM_OSCILLATING 1
 define ANIM_FORWARD 2
 define ANIM_BACKWARD 3
 
+define TINT_NORMAL 0
+define TINT_GREYSCALE 1
+define TINT_INVERT 2
+define TINT_INVERTGSCALE 3
+define TINT_COLORIZE 4
+define TINT_COLORIZEGSCALE 5
+
 //loadgrp DukeItOut_SDM.pk3
 loadgrp WorldTour_SDM.pk3
 
@@ -46,25 +53,25 @@ include maphacks/maphacks.def
 
 //music { id "loading" file "music/intrmisn.mid" }
 
-tint { pal 1 red 100 green 120 blue 148 flags 1 }
-tint { pal 2 red 255 green  48 blue   0 flags 1 }
-tint { pal 4 red   0 green   0 blue   0 flags 0 }
-tint { pal 6 red 224 green 255 blue 112 flags 3 }
-tint { pal 7 red 227 green 198 blue  20 flags 1 }
-tint { pal 8 red 199 green 226 blue 113 flags 1 }
+tint { pal 1 red 100 green 120 blue 148 flags TINT_GREYSCALE }
+tint { pal 2 red 255 green  48 blue   0 flags TINT_GREYSCALE }
+tint { pal 4 red   0 green   0 blue   0 flags TINT_NORMAL }
+tint { pal 6 red 224 green 255 blue 112 flags TINT_INVERTGSCALE }
+tint { pal 7 red 227 green 198 blue  20 flags TINT_GREYSCALE }
+tint { pal 8 red 199 green 226 blue 113 flags TINT_GREYSCALE }
 
-tint { pal 26 red 216 green 184 blue 172 flags 1 } // Greyscale (Brownish)
-tint { pal 27 red 255 green 244 blue 246 flags 1 } // Greyscale
+tint { pal 26 red 216 green 184 blue 172 flags TINT_GREYSCALE } // Greyscale (Brownish)
+tint { pal 27 red 255 green 244 blue 246 flags TINT_GREYSCALE } // Greyscale
 
-tint { pal 51 red 220 green 184 blue 148 flags 0 } // Orange Tint
+tint { pal 51 red 220 green 184 blue 148 flags TINT_NORMAL } // Orange Tint
 
-tint { pal 61 red 164 green 196 blue 228 flags 0 } // Blue Tint
+tint { pal 61 red 164 green 196 blue 228 flags TINT_NORMAL } // Blue Tint
 
-tint { pal 122 red 128 green 128 blue   0 flags 5 } // Yellow
-tint { pal 123 red 128 green   0 blue 128 flags 5 } // Purple
-tint { pal 124 red 128 green   0 blue   0 flags 5 } // Red
-tint { pal 125 red   0 green 128 blue   0 flags 5 } // Green
-tint { pal 126 red   0 green   0 blue 128 flags 5 } // Blue
+tint { pal 122 red 128 green 128 blue   0 flags TINT_COLORIZEGSCALE } // Yellow
+tint { pal 123 red 128 green   0 blue 128 flags TINT_COLORIZEGSCALE } // Purple
+tint { pal 124 red 128 green   0 blue   0 flags TINT_COLORIZEGSCALE } // Red
+tint { pal 125 red   0 green 128 blue   0 flags TINT_COLORIZEGSCALE } // Green
+tint { pal 126 red   0 green   0 blue 128 flags TINT_COLORIZEGSCALE } // Blue
 
 blendtable 253 // Screen-ish
 {

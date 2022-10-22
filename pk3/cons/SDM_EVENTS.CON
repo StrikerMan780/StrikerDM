@@ -2105,6 +2105,13 @@ onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
 		break
 	}
 	
+	ifactor BABE_BEAM
+	{
+		settspr[THISACTOR].tsprpicnum PICNUM_MEMORY
+		settspr[THISACTOR].tsprpal 33
+		break
+	}
+	
 	ifactor BURNEDCORPSE
 	{
 		gettspr[THISACTOR].tsprshade CL_TEMP1

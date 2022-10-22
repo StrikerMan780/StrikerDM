@@ -2241,6 +2241,47 @@ actor LOOPTRAIN 0
 	}
 enda
 
+action BABETELEPORT_ANIM 0 10 1 1 4
+spritenoshade BABETELEPORT
+actor BABETELEPORT 0
+	ifaction 0
+	{
+		sound BABE_TELEPORT
+		action BABETELEPORT_ANIM
+	}
+	
+	ifactioncount 10
+		killit
+enda
+
+move BEAMOUT 0 -32
+spritenoshade BABE_BEAM
+actor BABE_BEAM 0
+	ifaction 0
+	{
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_INTERPXYREPEAT
+		
+		move BEAMOUT getv noclip
+		
+		action ANULLACTION
+	}
+	
+	getactor[THISACTOR].xrepeat ANIMATE_OLDXREPEAT
+	getactor[THISACTOR].yrepeat ANIMATE_OLDYREPEAT
+	
+	setvarvar TEMP ANIMATE_OLDXREPEAT
+	subvar TEMP 4
+	setactor[THISACTOR].xrepeat TEMP
+	
+	ifvarl TEMP 1
+		killit
+	
+	getactor[THISACTOR].alpha TEMP
+	addvar TEMP 16
+	ifvarg TEMP 255
+		setvar TEMP 255
+	setactor[THISACTOR].alpha TEMP
+enda
 
 define SCRAP_WORKSLIKE 4226
 defineprojectile COLORSCRAP1 PROJ_WORKSLIKE SCRAP_WORKSLIKE

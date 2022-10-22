@@ -1,3 +1,4 @@
+spritenoshade DFGBALL
 defineprojectile DFGBALL PROJ_WORKSLIKE 32770
 defineprojectile DFGBALL PROJ_EXTRA DFG_WEAPON_STRENGTH
 defineprojectile DFGBALL PROJ_EXTRA_RAND 200 // RNJesus Christ
@@ -16,7 +17,6 @@ defineprojectile DFGBALL PROJ_TXREPEAT 56
 defineprojectile DFGBALL PROJ_TYREPEAT 48
 defineprojectile DFGBALL PROJ_SOUND DFG_FIRE
 defineprojectile DFGBALL PROJ_ISOUND DFG_EXPLODE
-spritenoshade DFGBALL
 actor DFGBALL 0 enda
 
 state draw_dfg // DFG_WEAPON:

@@ -21,13 +21,27 @@ state babe_wait_respawn
 	{
 		ifcount BABERESPAWNTIME
 		{
+			setvar TARGET -1
+			
 			setactor[THISACTOR].picnum PICNUM_MEMORY
 			setactor[THISACTOR].cstat CSTAT_MEMORY
 			setactor[THISACTOR].extra TOUGH
 			setactor[THISACTOR].xrepeat XREPEAT_MEMORY
 			setactor[THISACTOR].yrepeat YREPEAT_MEMORY
 			setactor[THISACTOR].pal PAL_MEMORY
-			spawn TRANSPORTERSTAR
+			
+			espawn TRANSPORTERSTAR
+			gettiledata[PICNUM_MEMORY].ysize TEMP
+			getactor[THISACTOR].z TEMP2
+			mulvarvar TEMP YREPEAT_MEMORY
+			shiftvarl TEMP 1
+			subvarvar TEMP2 TEMP
+			setactor[RETURN].z TEMP2
+			setactor[RETURN].pal 1
+			setactor[RETURN].shade -127
+			setactor[RETURN].blend 255
+			setvar RETURN 0
+			
 			resetcount
 			move 0
 			
@@ -61,6 +75,33 @@ state babe_hide_or_destroy
 	}
 ends
 
+defstate toughgalspeech
+	ifrnd 64
+	{
+		ifnosounds
+			soundonce TOUGHGALSND1
+	}
+	else ifrnd 64
+	{
+		ifnosounds
+			soundonce TOUGHGALSND2
+	}
+	else ifrnd 64
+	{
+		ifnosounds
+			soundonce TOUGHGALSND3
+	}
+	else ifnosounds
+		soundonce TOUGHGALSND4
+ends
+
+defstate toughgaltalk
+	ifp pfacing
+	ifpdistl 1280
+	ifhitspace
+		state toughgalspeech
+ends
+
 state femcode
 	state babe_wait_respawn
 	
@@ -69,10 +110,10 @@ state femcode
 	
 	ifactor NAKED1 { }
 	else ifactor FEM6 { }
-    else
-    {
-		fall		
-    }
+	else
+	{
+		fall
+	}
 
 	ifaction FEMSHRUNK
 	{
@@ -228,10 +269,10 @@ state femcode
 
 	ifhitweapon
 	{
-		// [SM] Immortal Babes
+		// Immortal Babes
 		ifactor NAKED1
 		{
-			ifinwater { }
+			ifinwater { } // Drowned
 			else ifvarg IMMORTAL_BABES 0
 			{
 				break
@@ -244,7 +285,7 @@ state femcode
 		}
 	
 		ifdead
-		{ 
+		{
 			ifwasweapon GROWSPARK
 			{
 				cstat 0
@@ -300,8 +341,8 @@ state femcode
 			else ifactor FEM2
 			{
 				money 7
-				cactor BARBROKE
 				cstat 0
+				cactor BARBROKE
 			}
 			else ifactor FEM3
 			{
@@ -396,25 +437,26 @@ state killme
 	else
 	{
 		ifp pfacing
+		ifpdistl 1280
+		ifhitspace
 		{
-			ifpdistl 1280
+			ifactor NAKED1
 			{
-				ifhitspace
-				{
-					ifactor NAKED1
-					{
-						ifinwater break
-					}
-					
-					soundonce KILLME
-				}
+				ifinwater break
 			}
+			
+			soundonce KILLME
 		}
 	}
 ends
 
 state tipsounds
 	getplayer[THISACTOR].i TEMP
+	
+	// Cancel oof sounds
+	stopactorsound TEMP DUKE_SEARCH
+	stopactorsound TEMP DUKE_SEARCH2
+	
 	randvar RANDOM_SOUND 1
 	switch RANDOM_SOUND
 		case 0: actorsound TEMP DUKE_TIP1 break
@@ -424,20 +466,16 @@ ends
 
 state tipme
 	ifp pfacing
+	ifpdistl 1280
+	ifhitspace
 	{
-		ifpdistl 1280
-		{
-			ifhitspace
-			{
-				tip
-				state tipsounds
-					
-				ifactor FEM1
-					action FEMDANCE1
-				else ifactor FEM3
-					action FEMFLASH
-			}
-		}
+		tip
+		state tipsounds
+			
+		ifactor FEM1
+			action FEMDANCE1
+		else ifactor FEM3
+			action FEMFLASH
 	}
 ends
 
@@ -454,11 +492,13 @@ state babe_give_items
 	ifvare BABES_ALLSAVED 1
 	{
 		randvar TEMP 4
-		ifvare TEMP 0 espawn PLASMASPRITE else
-		ifvare TEMP 1 espawn FLAMETHROWERSPRITE else
-		ifvare TEMP 2 espawn RAILGUNSPRITE else
-		ifvare TEMP 3 espawn SSGSPRITE else
-		ifvare TEMP 4 espawn GROWAMMO
+		switch TEMP
+			case 0: espawn PLASMASPRITE break
+			case 1: espawn FLAMETHROWERSPRITE break
+			case 2: espawn RAILGUNSPRITE break
+			case 3: espawn SSGSPRITE break
+			case 4: espawn GROWAMMO break
+		endswitch
 	}
 	else
 	{
@@ -568,10 +608,63 @@ state babe_rescue_sounds
 	endswitch
 ends
 
-state rescueme	
+defstate duke_dead_babe_response
+	ifp pfacing
+	ifpdistl 1280
+	ifhitspace
+	{
+		getplayer[THISACTOR].i TEMP
+		randvar RANDOM_SOUND 2
+		switch RANDOM_SOUND
+			case 0: actorsound TEMP DUKE_BABEDEAD01 break
+			case 1: actorsound TEMP DUKE_BABEDEAD02 break
+			case 2: actorsound TEMP DUKE_HIT_STRIPPER2 break
+		endswitch
+	}
+ends
+
+defstate duke_rescued_babe_response
+	ifvare TARGET -1
+		break
+	
+	ifactor FEM10 break
+	ifactor NAKED1 break
+	ifactor PODFEM1 break
+	ifactor FEM5 break
+	ifactor FEM6 break
+	ifactor TOUGHGAL break
+	
+	dist TEMP TARGET THISACTOR
+	ifvarl TEMP 1280
+	{
+		randvar RANDOM_SOUND 8
+		switch RANDOM_SOUND
+			case 0: actorsound TARGET DUKE_BABEREPLY01 break
+			case 1: actorsound TARGET DUKE_BABEREPLY02 break
+			case 2: actorsound TARGET DUKE_BABEREPLY03 break
+			case 3: actorsound TARGET DUKE_BABEREPLY04 break
+			case 4: actorsound TARGET DUKE_BABEREPLY05 break
+			case 5: actorsound TARGET DUKE_BABEREPLY06 break
+			case 6: actorsound TARGET DUKE_BABEREPLY07 break
+			case 7: actorsound TARGET DUKE_BABEREPLY08 break
+			case 8: actorsound TARGET DUKE_BABEREPLY09 break
+		endswitch
+	}
+ends
+
+state rescueme
 	ifactor NAKED1
 	{
-		ifinwater break // Drowned, can't be saved.
+		ifinwater
+		{
+			state duke_dead_babe_response
+			break // Drowned, can't be saved.
+		}
+	}
+	else ifactor FEM8
+	{
+		state duke_dead_babe_response
+		break // Impaled, can't be saved.
 	}
 	
 	ifaction FEMSHRUNK break
@@ -580,9 +673,7 @@ state rescueme
 	ifaction FEMFROZEN2 break
 	
 	ifmove FEMWAITRESPAWN
-	{
 		break
-	}
 	
 	ifmove FEMRESCUED
 	{
@@ -592,10 +683,70 @@ state rescueme
 			state babe_rescue_sounds
 		}
 		
+		ifcount 69 { }
+		ifcount 68
+		{
+			ifrnd 16
+				state duke_rescued_babe_response
+		}
+		
 		ifcount 75
 		{
-			spawn TRANSPORTERSTAR
-			sound TELEPORTER
+			// Telepor Sparkles
+			espawn BABETELEPORT
+			gettiledata[PICNUM_MEMORY].xsize TEMP2
+			mulvarvar TEMP2 XREPEAT_MEMORY
+			shiftvarr TEMP2 6
+			
+			gettiledata[PICNUM_MEMORY].ysize TEMP3
+			mulvarvar TEMP3 YREPEAT_MEMORY
+			shiftvarr TEMP3 6
+			
+			ifvarvarg TEMP2 TEMP3
+			{
+				setactor[RETURN].xrepeat TEMP2
+				setactor[RETURN].yrepeat TEMP2
+			}
+			else
+			{
+				setactor[RETURN].xrepeat TEMP3
+				setactor[RETURN].yrepeat TEMP3
+			}
+			
+			setactor[RETURN].blend 255
+			setactor[RETURN].shade -127
+			setactor[RETURN].cstat 2
+			setvar RETURN 0
+			
+			ifactor PODFEM1 { }
+			else
+			{
+				// Beam Out Effect
+				espawn BABE_BEAM
+				setactor[RETURN].shade -127
+				setactor[RETURN].mdflags 16
+				setactor[RETURN].pal 33 // White
+				setactor[RETURN].xrepeat XREPEAT_MEMORY
+				setactor[RETURN].yrepeat YREPEAT_MEMORY
+				setactorvar[RETURN].PICNUM_MEMORY PICNUM_MEMORY
+				
+				ifactor FEM2
+					setactorvar[RETURN].PICNUM_MEMORY FEM2NOPOLE
+				else ifactor FEM5
+					setactorvar[RETURN].PICNUM_MEMORY FEM5NOPOLE
+				else ifactor FEM6
+					setactorvar[RETURN].PICNUM_MEMORY FEM6NOPAD
+				else ifactor NAKED1
+					setactorvar[RETURN].PICNUM_MEMORY NAKED1NOVINE
+				
+				getactor[THISACTOR].cstat TEMP
+				ifvarand TEMP 1
+					xorvar TEMP 1
+				ifvarand TEMP 256
+					xorvar TEMP 256
+				setactor[RETURN].cstat TEMP
+				setvar RETURN 0
+			}
 			
 			state babe_check_all_rescued
 			
@@ -607,32 +758,58 @@ state rescueme
 			
 			ifactor FEM5
 			{
-				strength TOUGH
-				changespritestat THISACTOR 1
-				cstator 256
-				cactor CLEANPOLE
+				espawn CLEANPOLE
+				setactor[RETURN].xrepeat XREPEAT_MEMORY
+				setactor[RETURN].yrepeat YREPEAT_MEMORY
+				setactor[RETURN].cstat CSTAT_MEMORY
+				setactorvar[RETURN].DESPAWN_TYPE 2
+				setvar RETURN 0
+				state babe_hide_or_destroy
 			}
 			else ifactor FEM6
 			{
-				strength TOUGH
-				changespritestat THISACTOR 1
-				cstator 256
-				cactor EMPTYPAD
+				espawn EMPTYPAD
+				setactor[RETURN].xrepeat XREPEAT_MEMORY
+				setactor[RETURN].yrepeat YREPEAT_MEMORY
+				setactor[RETURN].cstat CSTAT_MEMORY
+				setactorvar[RETURN].DESPAWN_TYPE 2
+				setvar RETURN 0
+				state babe_hide_or_destroy
 			}
 			else ifactor PODFEM1
 			{
-				strength TOUGH
-				changespritestat THISACTOR 1
-				cstator 256
-				cactor EMPTYPOD
+				espawn EMPTYPOD
+				setactor[RETURN].xrepeat XREPEAT_MEMORY
+				setactor[RETURN].yrepeat YREPEAT_MEMORY
+				setactor[RETURN].cstat CSTAT_MEMORY
+				setactorvar[RETURN].DESPAWN_TYPE 2
+				setvar RETURN 0
+				state babe_hide_or_destroy
 			}
 			else ifactor NAKED1
 			{
+				espawn VINES
+				setactor[RETURN].xrepeat XREPEAT_MEMORY
+				setactor[RETURN].yrepeat YREPEAT_MEMORY
+				
 				getactor[THISACTOR].cstat TEMP
 				ifvarand TEMP 1 { subvar TEMP 1 }
 				ifvarand TEMP 256 { subvar TEMP 256 }
-				setactor[THISACTOR].cstat TEMP
-				cactor VINES
+				setactor[RETURN].cstat TEMP
+				
+				setactorvar[RETURN].DESPAWN_TYPE 2
+				setvar RETURN 0
+				state babe_hide_or_destroy
+			}
+			else ifactor FEM2
+			{
+				espawn FEM2POLE
+				setactor[RETURN].xrepeat XREPEAT_MEMORY
+				setactor[RETURN].yrepeat YREPEAT_MEMORY
+				setactor[RETURN].cstat CSTAT_MEMORY
+				setactorvar[RETURN].DESPAWN_TYPE 2
+				setvar RETURN 0
+				state babe_hide_or_destroy
 			}
 			else
 			{
@@ -644,24 +821,16 @@ state rescueme
 	}
 	
 	ifp pfacing
+	ifpdistl 1280
+	ifhitspace
 	{
-		ifpdistl 1280
-		{
-			ifhitspace
-			{
-				resetcount
-				state babe_add_rescued
-				move FEMRESCUED
-			}
-		}
+		ifvare TARGET -1
+			getplayer[THISACTOR].i TARGET
+			
+		resetcount
+		state babe_add_rescued
+		move FEMRESCUED
 	}
-ends
-
-state toughgaltalk
-  ifp pfacing
-    ifpdistl 1280
-      ifhitspace
-        state toughgalspeech
 ends
 
 actor FEM1 TOUGH FEMANIMATE // Stripper
@@ -730,6 +899,7 @@ enda
 
 actor FEM8 TOUGH FEMANIMATE // Impaled Babe
 	state femcode
+	state rescueme
 enda
 
 actor FEM9 TOUGH FEMANIMATE
@@ -808,19 +978,43 @@ state alienslime_damage
 ends
 
 actor VINES 0
+	state item_despawn_timer
 enda
 
 actor EMPTYPAD TOUGH
-	state babe_wait_respawn
 	state alienslime_damage
+	state item_despawn_timer
 enda
 
 actor EMPTYPOD TOUGH
-	state babe_wait_respawn
 	state alienslime_damage
+	state item_despawn_timer
 enda
 
 actor CLEANPOLE TOUGH
-	state babe_wait_respawn
 	state alienslime_damage
+	state item_despawn_timer
+enda
+
+actor FEM2POLE REALLYTOUGH
+	state item_despawn_timer
+	ifhitweapon
+	ifdead
+	{
+		getactor[THISACTOR].cstat TEMP
+		ifvarand TEMP 1
+		{
+			xorvar TEMP 1
+			setactor[THISACTOR].cstat TEMP
+		}
+		
+		debris SCRAP2 3
+		debris SCRAP6 3
+		sound VENT_BUST
+		cactor BARBROKE
+	}
+enda
+
+actor BARBROKE 0
+	state item_despawn_timer
 enda

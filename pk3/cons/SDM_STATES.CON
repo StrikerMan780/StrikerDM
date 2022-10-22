@@ -777,6 +777,8 @@ state spawn_random_fire
 	ifvarl TEMP2 1
 		setvar TEMP2 1
 	
+	// STATE_TEMP2 = X/Y
+	// STATE_TEMP3 = Z
 	setvar STATE_TEMP1 0
 	whilevarvarn STATE_TEMP1 TEMP2
 	{
@@ -828,7 +830,7 @@ state stop_player_burn
 	}
 ends
 
-state generic_burn_death
+defstate generic_burn_death
 	setactor[THISACTOR].pal 4
 	state spawn_random_whispysmoke
 	state spawn_random_whispysmoke
@@ -1724,8 +1726,8 @@ defstate zap_a_cunt
 			// Get Y size + offset
 			gettiledata[TEMP].yoffset TEMP2 // Get Y Offset
 			setvarvar TEMP STATE_TEMP2 // Copy Y size
-			mulvarvar TEMP STATE_TEMP3
-			mulvarvar TEMP2 STATE_TEMP3
+			mulvarvar TEMP STATE_TEMP3 // Multiply by YREPEAT
+			mulvarvar TEMP2 STATE_TEMP3 // Multiply by YREPEAT
 			shiftvarl TEMP 1	// Half of sprite size to map units
 			shiftvarl TEMP2 2	// Full sprite offset to map units
 			addvarvar TEMP TEMP2
