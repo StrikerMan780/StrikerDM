@@ -573,7 +573,7 @@ onevent EVENT_DISPLAYLEVELSTATS
 	setvar CL_TEMP2 0
 	ifmultiplayer
 	{
-		ifvare COOP GM_COOPERATIVE
+		ifvarand gametype_flags 1 // GAMETYPE_COOP
 			setvar CL_TEMP2 1
 	}
 	else

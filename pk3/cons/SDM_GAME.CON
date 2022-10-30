@@ -1625,7 +1625,7 @@ state getweaponcode
 		state create_spawn_marker
 		cstat 32768
 	}
-	else ifvare COOP GM_COOPERATIVE
+	else ifvarand gametype_flags 1 // GAMETYPE_COOP
 	{
 		ifactor HBOMBAMMO
 		{
@@ -5249,6 +5249,7 @@ state boss1code
 		break
 	}
 	
+	ifspritepal 0
 	ifvare TARGET -1
 	ifcansee
 	ifp pfacing // Delay the playback of Duke's line until he sees the battlelord, for better comedic timing.

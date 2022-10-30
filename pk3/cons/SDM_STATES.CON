@@ -16,7 +16,7 @@ state pass_on_respawn_vars
 ends
 
 state prepare_respawn_hardcoded
-	ifvare COOP GM_COOPERATIVE
+	ifvarand gametype_flags 1 // GAMETYPE_COOP
 	{
 		break // Do not respawn stuff in COOP.
 	}
@@ -77,7 +77,7 @@ state item_despawn_timer
 		else ifspawnedby LIFEFLOWER setvar DESPAWN_TYPE 1
 	}
 	
-	ifvare COOP GM_COOPERATIVE
+	ifvarand gametype_flags 1 { } // GAMETYPE_COOP
 	{
 		break // Do not despawn stuff in COOP.
 	}
