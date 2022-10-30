@@ -5,6 +5,7 @@ action ANULLACTION 0
 move RESPAWN_ACTOR_FLAG
 
 include VERSION.CON
+include STREAMER.CON
 include DEFS.CON
 include sound_ids.h
 include cons/USER.CON

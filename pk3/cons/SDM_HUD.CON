@@ -192,10 +192,10 @@ onevent EVENT_DISPLAYSBAR // !UNSYNCHRONIZED!
 			setvar TEMP 295
 			setvar TEMP2 186
 			
-			rotatespritea TEMP TEMP2 CL_TEMP2 0 CL_TEMP1 -127 4 10 128 windowx1 windowy1 windowx2 windowy2
+			rotatespritea TEMP TEMP2 CL_TEMP2 0 CL_TEMP1 -127 4 522 128 windowx1 windowy1 windowx2 windowy2
 			subvar TEMP 1
 			subvar TEMP2 1
-			rotatesprite TEMP TEMP2 CL_TEMP2 0 CL_TEMP1 -127 0 10 windowx1 windowy1 windowx2 windowy2
+			rotatesprite TEMP TEMP2 CL_TEMP2 0 CL_TEMP1 -127 0 522 windowx1 windowy1 windowx2 windowy2
 			
 			// Ammo Number
 			getplayer[THISACTOR].ammo_amount STATE_PARAM1 CL_TEMP1
@@ -205,10 +205,10 @@ onevent EVENT_DISPLAYSBAR // !UNSYNCHRONIZED!
 			
 			setvar TEMP 262
 			setvar TEMP2 182
-			screentext DIGITALNUM TEMP TEMP2 65536 0 0 500 -127 4 16 128 6 7 1 1 532482 0 0 xdim ydim
+			screentext DIGITALNUM TEMP TEMP2 65536 0 0 500 -127 4 528 128 6 7 1 1 532482 0 0 xdim ydim
 			subvar TEMP 1
 			subvar TEMP2 1
-			screentext DIGITALNUM TEMP TEMP2 65536 0 0 500 -127 125 16 0 6 7 1 1 532482 0 0 xdim ydim
+			screentext DIGITALNUM TEMP TEMP2 65536 0 0 500 -127 125 528 0 6 7 1 1 532482 0 0 xdim ydim
 		}
 		
 		// Duke Head
@@ -234,10 +234,10 @@ onevent EVENT_DISPLAYSBAR // !UNSYNCHRONIZED!
 		getactor[THISACTOR].pal CL_TEMP2
 		setvar TEMP 14
 		setvar TEMP2 187
-		rotatespritea TEMP TEMP2 24576 0 CL_TEMP1 -127 4 10 128 windowx1 windowy1 windowx2 windowy2
+		rotatespritea TEMP TEMP2 24576 0 CL_TEMP1 -127 4 266 128 windowx1 windowy1 windowx2 windowy2
 		subvar TEMP 1
 		subvar TEMP2 1
-		rotatesprite TEMP TEMP2 24576 0 CL_TEMP1 -127 CL_TEMP2 10 windowx1 windowy1 windowx2 windowy2
+		rotatesprite TEMP TEMP2 24576 0 CL_TEMP1 -127 CL_TEMP2 266 windowx1 windowy1 windowx2 windowy2
 		
 		// SHIELDS
 		ifvarg SHIELD_HEALTH 0
@@ -245,25 +245,25 @@ onevent EVENT_DISPLAYSBAR // !UNSYNCHRONIZED!
 		{
 			ifvare SHIELD_TYPE SHIELDTYPE_FIRE
 			{
-				rotatespritea TEMP TEMP2 24576 0 FIRESHIELD -127 0 10 -255 windowx1 windowy1 windowx2 windowy2
-				rotatespritea TEMP TEMP2 24576 0 FIRESHIELD_INNER -127 0 10 -255 windowx1 windowy1 windowx2 windowy2
+				rotatespritea TEMP TEMP2 24576 0 FIRESHIELD -127 0 266 -255 windowx1 windowy1 windowx2 windowy2
+				rotatespritea TEMP TEMP2 24576 0 FIRESHIELD_INNER -127 0 266 -255 windowx1 windowy1 windowx2 windowy2
 			}
 			else ifvare SHIELD_TYPE SHIELDTYPE_WATER
 			{
-				rotatespritea TEMP TEMP2 24576 0 WATERSHIELD -127 0 10 -255 windowx1 windowy1 windowx2 windowy2
-				rotatespritea TEMP TEMP2 24576 0 WATERSHIELD_INNER -127 0 10 -255 windowx1 windowy1 windowx2 windowy2
+				rotatespritea TEMP TEMP2 24576 0 WATERSHIELD -127 0 266 -255 windowx1 windowy1 windowx2 windowy2
+				rotatespritea TEMP TEMP2 24576 0 WATERSHIELD_INNER -127 0 266 -255 windowx1 windowy1 windowx2 windowy2
 			}
 			else ifvare SHIELD_TYPE SHIELDTYPE_EARTH
 			{
-				rotatespritea TEMP TEMP2 24576 0 EARTHSHIELD -127 0 10 -255 windowx1 windowy1 windowx2 windowy2
+				rotatespritea TEMP TEMP2 24576 0 EARTHSHIELD -127 0 266 -255 windowx1 windowy1 windowx2 windowy2
 			}
 			else ifvare SHIELD_TYPE SHIELDTYPE_WOOD
 			{
-				rotatespritea TEMP TEMP2 24576 0 WOODSHIELD -127 0 10 -255 windowx1 windowy1 windowx2 windowy2
+				rotatespritea TEMP TEMP2 24576 0 WOODSHIELD -127 0 266 -255 windowx1 windowy1 windowx2 windowy2
 			}
 			else ifvare SHIELD_TYPE SHIELDTYPE_METAL
 			{
-				rotatespritea TEMP TEMP2 24576 0 METALSHIELD -127 0 10 -255 windowx1 windowy1 windowx2 windowy2
+				rotatespritea TEMP TEMP2 24576 0 METALSHIELD -127 0 266 -255 windowx1 windowy1 windowx2 windowy2
 			}
 			
 			setvarvar CL_TEMP1 SHIELD_HEALTH
@@ -272,10 +272,10 @@ onevent EVENT_DISPLAYSBAR // !UNSYNCHRONIZED!
 			qsprintf 500 500 CL_TEMP1
 			
 			subvar TEMP2 17
-			screentext MINIFONT TEMP TEMP2 65536 0 0 500 -127 4 16 128 6 7 1 1 8194 0 0 xdim ydim
+			screentext MINIFONT TEMP TEMP2 65536 0 0 500 -127 4 272 128 6 7 1 1 8194 0 0 xdim ydim
 			subvar TEMP 1
 			subvar TEMP2 1
-			screentext MINIFONT TEMP TEMP2 65536 0 0 500 -127 CL_TEMP2 16 0 6 7 1 1 8194 0 0 xdim ydim
+			screentext MINIFONT TEMP TEMP2 65536 0 0 500 -127 CL_TEMP2 272 0 6 7 1 1 8194 0 0 xdim ydim
 		}
 		
 		// Health
@@ -287,18 +287,18 @@ onevent EVENT_DISPLAYSBAR // !UNSYNCHRONIZED!
 		
 		setvar TEMP 37
 		setvar TEMP2 182
-		screentext DIGITALNUM TEMP TEMP2 65536 0 0 500 -127 4 16 128 6 7 1 1 532482 0 0 xdim ydim
+		screentext DIGITALNUM TEMP TEMP2 65536 0 0 500 -127 4 272 128 6 7 1 1 532482 0 0 xdim ydim
 		subvar TEMP 1
 		subvar TEMP2 1
-		screentext DIGITALNUM TEMP TEMP2 65536 0 0 500 -127 CL_TEMP2 16 0 6 7 1 1 532482 0 0 xdim ydim
+		screentext DIGITALNUM TEMP TEMP2 65536 0 0 500 -127 CL_TEMP2 272 0 6 7 1 1 532482 0 0 xdim ydim
 		
 		// Armor Icon
 		setvar TEMP 56
 		setvar TEMP2 181
-		rotatespritea TEMP TEMP2 32768 0 SHIELD -127 4 16 128 windowx1 windowy1 windowx2 windowy2
+		rotatespritea TEMP TEMP2 32768 0 SHIELD -127 4 272 128 windowx1 windowy1 windowx2 windowy2
 		subvar TEMP 1
 		subvar TEMP2 1
-		rotatesprite TEMP TEMP2 32768 0 SHIELD -127 0 16 windowx1 windowy1 windowx2 windowy2
+		rotatesprite TEMP TEMP2 32768 0 SHIELD -127 0 272 windowx1 windowy1 windowx2 windowy2
 		
 		// Armor Value
 		getplayer[THISACTOR].shield_amount CL_TEMP1
@@ -309,10 +309,10 @@ onevent EVENT_DISPLAYSBAR // !UNSYNCHRONIZED!
 		
 		setvar TEMP 86
 		setvar TEMP2 182
-		screentext DIGITALNUM TEMP TEMP2 65536 0 0 500 -127 4 16 128 6 7 1 1 532482 0 0 xdim ydim
+		screentext DIGITALNUM TEMP TEMP2 65536 0 0 500 -127 4 272 128 6 7 1 1 532482 0 0 xdim ydim
 		subvar TEMP 1
 		subvar TEMP2 1
-		screentext DIGITALNUM TEMP TEMP2 65536 0 0 500 -127 CL_TEMP2 16 0 6 7 1 1 532482 0 0 xdim ydim
+		screentext DIGITALNUM TEMP TEMP2 65536 0 0 500 -127 CL_TEMP2 272 0 6 7 1 1 532482 0 0 xdim ydim
 		
 		// Inventory Icon
 		getplayer[THISACTOR].inven_icon CL_TEMP1
@@ -377,10 +377,10 @@ onevent EVENT_DISPLAYSBAR // !UNSYNCHRONIZED!
 		{
 			setvar TEMP 113
 			setvar TEMP2 188
-			rotatespritea TEMP TEMP2 65536 0 CL_TEMP1 -127 4 10 128 windowx1 windowy1 windowx2 windowy2
+			rotatespritea TEMP TEMP2 65536 0 CL_TEMP1 -127 4 266 128 windowx1 windowy1 windowx2 windowy2
 			subvar TEMP 1
 			subvar TEMP2 1
-			rotatesprite TEMP TEMP2 65536 0 CL_TEMP1 -127 0 10 windowx1 windowy1 windowx2 windowy2
+			rotatesprite TEMP TEMP2 65536 0 CL_TEMP1 -127 0 266 windowx1 windowy1 windowx2 windowy2
 			
 			ifvarg CL_TEMP2 0
 			{
@@ -389,7 +389,7 @@ onevent EVENT_DISPLAYSBAR // !UNSYNCHRONIZED!
 				divvar CL_TEMP2 2
 				modvar CL_TEMP2 8
 				addvarvar CL_TEMP1 CL_TEMP2
-				rotatesprite 115 190 16384 0 CL_TEMP1 -127 0 10 windowx1 windowy1 windowx2 windowy2
+				rotatesprite 115 190 16384 0 CL_TEMP1 -127 0 266 windowx1 windowy1 windowx2 windowy2
 			}
 			
 			setvarvar CL_TEMP1 TEMP3
@@ -400,10 +400,10 @@ onevent EVENT_DISPLAYSBAR // !UNSYNCHRONIZED!
 			
 			setvar TEMP 131
 			setvar TEMP2 187
-			screentext MINIFONT TEMP TEMP2 65536 0 0 500 -127 4 16 128 6 7 1 1 8194 0 0 xdim ydim
+			screentext MINIFONT TEMP TEMP2 65536 0 0 500 -127 4 272 128 6 7 1 1 8194 0 0 xdim ydim
 			subvar TEMP 1
 			subvar TEMP2 1
-			screentext MINIFONT TEMP TEMP2 65536 0 0 500 -127 CL_TEMP2 16 0 6 7 1 1 8194 0 0 xdim ydim
+			screentext MINIFONT TEMP TEMP2 65536 0 0 500 -127 CL_TEMP2 272 0 6 7 1 1 8194 0 0 xdim ydim
 		}
 		
 		setvar CL_TEMP1 1
@@ -445,10 +445,10 @@ onevent EVENT_DISPLAYSBAR // !UNSYNCHRONIZED!
 			{
 				addvar TEMP 1
 				addvar TEMP2 1 
-				rotatespritea TEMP TEMP2 24576 0 ACCESSCARD -127 4 10 128 windowx1 windowy1 windowx2 windowy2
+				rotatespritea TEMP TEMP2 24576 0 ACCESSCARD -127 4 522 128 windowx1 windowy1 windowx2 windowy2
 				subvar TEMP 1
 				subvar TEMP2 1
-				rotatesprite TEMP TEMP2 24576 0 ACCESSCARD -127 23 10 windowx1 windowy1 windowx2 windowy2
+				rotatesprite TEMP TEMP2 24576 0 ACCESSCARD -127 23 522 windowx1 windowy1 windowx2 windowy2
 				addvar TEMP 3
 				addvar TEMP2 3
 			}
@@ -457,10 +457,10 @@ onevent EVENT_DISPLAYSBAR // !UNSYNCHRONIZED!
 			{
 				addvar TEMP 1
 				addvar TEMP2 1 
-				rotatespritea TEMP TEMP2 24576 0 ACCESSCARD -127 4 10 128 windowx1 windowy1 windowx2 windowy2
+				rotatespritea TEMP TEMP2 24576 0 ACCESSCARD -127 4 522 128 windowx1 windowy1 windowx2 windowy2
 				subvar TEMP 1
 				subvar TEMP2 1
-				rotatesprite TEMP TEMP2 24576 0 ACCESSCARD -127 21 10 windowx1 windowy1 windowx2 windowy2
+				rotatesprite TEMP TEMP2 24576 0 ACCESSCARD -127 21 522 windowx1 windowy1 windowx2 windowy2
 				addvar TEMP 3
 				addvar TEMP2 3
 			}
@@ -469,10 +469,10 @@ onevent EVENT_DISPLAYSBAR // !UNSYNCHRONIZED!
 			{
 				addvar TEMP 1
 				addvar TEMP2 1 
-				rotatespritea TEMP TEMP2 24576 0 ACCESSCARD -127 4 10 128 windowx1 windowy1 windowx2 windowy2
+				rotatespritea TEMP TEMP2 24576 0 ACCESSCARD -127 4 522 128 windowx1 windowy1 windowx2 windowy2
 				subvar TEMP 1
 				subvar TEMP2 1
-				rotatesprite TEMP TEMP2 24576 0 ACCESSCARD -127 0 10 windowx1 windowy1 windowx2 windowy2
+				rotatesprite TEMP TEMP2 24576 0 ACCESSCARD -127 0 522 windowx1 windowy1 windowx2 windowy2
 				addvar TEMP 3
 				addvar TEMP2 3
 			}

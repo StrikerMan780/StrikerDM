@@ -56,6 +56,10 @@ actor FIREEXPLOSION 0
 		setactor[THISACTOR].shade -127
 		setactor[THISACTOR].blend 255
 		cstat 2
+		
+		ifrnd 128
+			cstator 4
+			
 		action LAMEDUKE_EXPLOSION_FRAMES
 	}
 enda
@@ -110,6 +114,12 @@ actor RAILGUNTRAIL 1 RAILGUN_TRAIL_FRAMES
 	else ifcount 0
 	{
 		setactor[THISACTOR].shade -127
+		setactor[THISACTOR].mdflags 16
+		setvarvar ANIMATE_STARTCLOCK ANIMATE_CLOCK // Timer
+		setvar ANIMATE_LIFETIME 32 // End time
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_SCALE
+		setvar ANIMATE_STARTSIZE 6 // Start scale
+		setvar ANIMATE_ENDSIZE 12 // End scale
 		//setactor[THISACTOR].xoffset -32
 		cstat 130
 	}
@@ -211,49 +221,6 @@ actor FAUCET_RUNNING2
 	sound FAUCET_RUN
 	action FAUCET_ANIM
 	cactor FAUCET_RUNNING
-enda
-
-state trigger_actors
-	headspritestat CURSPRITE STAT_ACTOR
-	setvarvar LASTSPRITE CURSPRITE
-	whilevarn CURSPRITE -1
-	{
-		getactorvar[CURSPRITE].LOTAG_MEMORY TEMP
-		ifvarvare LOTAG_MEMORY TEMP // Check if lotag matches
-		{
-			setactorvar[CURSPRITE].PAL_MEMORY 1 // PAL_MEMORY = Activating state for timed platforms
-		}
-				
-		nextspritestat CURSPRITE LASTSPRITE
-		setvarvar LASTSPRITE CURSPRITE
-	}
-ends
-
-actor CUSTOMACTIVATOR
-	ifspawnedby RESPAWN
-	{
-		getactor[THISACTOR].htowner TEMP
-		getactor[TEMP].lotag LOTAG_MEMORY
-			
-		/*
-		redefinequote 400 CUSTOMACTIVATOR OWNER: %d | LOTAG: %d
-		qsprintf 400 400 TEMP LOTAG_MEMORY
-		userquote 400
-		*/
-			
-		state trigger_actors
-			
-		espawn RESPAWN
-		setactor[RETURN].lotag LOTAG_MEMORY
-		setactor[RETURN].hitag 9998
-		setvar RETURN 0
-		
-		killit
-	}
-	else
-	{
-		killit
-	}
 enda
 
 actor CUSTOMTOUCHPLATE
@@ -1016,6 +983,8 @@ actor TRACER 0
 		setactor[THISACTOR].shade -127
 		setactor[THISACTOR].blend 255
 		setactor[THISACTOR].mdflags 16
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_CAMERACLIP
+		setvar ANIMATE_CAMCLIPDIST 512
 		sizeat 10 10
 		cstat 2178
 		action ANULLACTION
@@ -1029,6 +998,8 @@ actor PELLET 0
 	ifaction 0
 	{
 		setactor[THISACTOR].mdflags 16
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_CAMERACLIP
+		setvar ANIMATE_CAMCLIPDIST 512
 		sizeat 10 10
 		cstat 128
 		action ANULLACTION
@@ -2191,6 +2162,10 @@ actor LOOPTRAIN 0
 					setplayer[TEMP2].posx SPAWN_ORIGX
 					setplayer[TEMP2].posy SPAWN_ORIGY
 					
+					getplayer[TEMP2].cursectnum TEMP
+					updatesector SPAWN_ORIGX SPAWN_ORIGY TEMP
+					setplayer[TEMP2].cursectnum TEMP
+					
 					getplayer[TEMP2].bobposx SPAWN_ORIGX
 					getplayer[TEMP2].bobposy SPAWN_ORIGY
 					addvarvar SPAWN_ORIGX DEST_X
@@ -2200,10 +2175,10 @@ actor LOOPTRAIN 0
 					
 					getactor[CURSPRITE].x TEMP
 					getactor[CURSPRITE].y TEMP2
+					getactor[CURSPRITE].z TEMP3
 					addvarvar TEMP DEST_X
 					addvarvar TEMP2 DEST_Y
-					setactor[CURSPRITE].x TEMP
-					setactor[CURSPRITE].y TEMP2
+					setsprite CURSPRITE TEMP TEMP2 TEMP3
 				}
 			}
 			else
@@ -2213,10 +2188,10 @@ actor LOOPTRAIN 0
 				{
 					getactor[CURSPRITE].x TEMP
 					getactor[CURSPRITE].y TEMP2
+					getactor[CURSPRITE].z TEMP3
 					addvarvar TEMP DEST_X
 					addvarvar TEMP2 DEST_Y
-					setactor[CURSPRITE].x TEMP
-					setactor[CURSPRITE].y TEMP2
+					setsprite CURSPRITE TEMP TEMP2 TEMP3
 				}
 			}
 			

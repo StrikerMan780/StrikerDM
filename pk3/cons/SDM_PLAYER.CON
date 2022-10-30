@@ -524,6 +524,13 @@ actor APLAYER MAXPLAYERHEALTH PSTAND 0 0
 			ifdead
 			{
 				setvar KILLTYPE KILL_FLAME
+				
+				sound FLAMEBURST
+				espawn FIREEXPLOSION
+				setactor[RETURN].xrepeat 40
+				setactor[RETURN].yrepeat 48
+				setvar RETURN 0
+				
 				ifrnd 32
 				{
 					sound TOASTY
@@ -531,8 +538,8 @@ actor APLAYER MAXPLAYERHEALTH PSTAND 0 0
 				}
 				else
 				{
-					action PBURNT
 					sound DUKE_KILLED4
+					action PBURNT
 					state jib_sounds
 					break
 				}

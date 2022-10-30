@@ -5248,10 +5248,22 @@ state boss1code
 			pkick
 		break
 	}
+	
+	ifvare TARGET -1
+	ifcansee
+	ifp pfacing // Delay the playback of Duke's line until he sees the battlelord, for better comedic timing.
+	{
+		getplayer[THISACTOR].i TEMP
+		actorsound TEMP DUKE_BOSS1SEE
+		setvar TARGET 0
+	}
+	
 	ifai 0
 	{
 		ifspritepal 0
+		{
 			ai AIBOSS1RUNENEMY
+		}
 		else
 		{
 			strength BOSS1PALSTRENGTH

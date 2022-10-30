@@ -51,6 +51,8 @@ include defs/models.def
 
 include maphacks/maphacks.def
 
+include sfriendly.def
+
 //music { id "loading" file "music/intrmisn.mid" }
 
 tint { pal 1 red 100 green 120 blue 148 flags TINT_GREYSCALE }

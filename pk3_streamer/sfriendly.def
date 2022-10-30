@@ -1,0 +1,17 @@
+// Censored (Streamer Friendly Version)
+echo "Streamer-Friendly Version, undefining anything questionable."
+
+undefinetile 3699
+undefinetile 3704
+undefinetile 3706
+undefinetile 3707
+undefinetile 3710
+undefinetile 4974
+undefinetile 4975
+undefinetilerange 4857 4863
+undefinetilerange 4976 4978
+undefinetilerange 6000 6112
+undefinetilerange 6155 6265
+
+tilefromtexture 3699 { file "tiles/3699.png" }
+tilefromtexture 4974 { file "tiles/4974.png" }

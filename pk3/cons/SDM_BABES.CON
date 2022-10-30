@@ -437,13 +437,30 @@ state killme
 	else
 	{
 		ifp pfacing
-		ifpdistl 1280
 		ifhitspace
 		{
-			ifactor NAKED1
+			setvar TEMP 0
+			ifactor NAKED1 // Extend the use range for the hanging babe sprites
 			{
-				ifinwater break
+				ifinwater
+					break
+					
+				getplayer[THISACTOR].i TEMP2
+				ldist TEMP3 THISACTOR TEMP2
+				ifvarl TEMP3 1280
+				{
+					ifpdistl 2048
+						setvar TEMP 1
+				}
 			}
+			else
+			{
+				ifpdistl 1280
+					setvar TEMP 1
+			}
+		
+			ifvarn TEMP 1
+				break
 			
 			soundonce KILLME
 		}
@@ -821,9 +838,28 @@ state rescueme
 	}
 	
 	ifp pfacing
-	ifpdistl 1280
 	ifhitspace
 	{
+		setvar TEMP 0
+		ifactor NAKED1 // Extend the use range for the hanging babe sprites
+		{
+			getplayer[THISACTOR].i TEMP2
+			ldist TEMP3 THISACTOR TEMP2
+			ifvarl TEMP3 1280
+			{
+				ifpdistl 2048
+					setvar TEMP 1
+			}
+		}
+		else
+		{
+			ifpdistl 1280
+				setvar TEMP 1
+		}
+		
+		ifvarn TEMP 1
+			break
+			
 		ifvare TARGET -1
 			getplayer[THISACTOR].i TARGET
 			

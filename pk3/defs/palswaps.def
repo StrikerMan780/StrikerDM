@@ -1,3 +1,5 @@
+palookup 2 { raw { file "/palswaps/pal2_fixed.raw" } }
+
 palookup 129 { raw { file "/palswaps/orange.raw" } }
 palookup 130 { raw { file "/palswaps/purple.raw" } }
 palookup 131 { raw { file "/palswaps/black.raw" } }

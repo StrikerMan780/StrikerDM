@@ -617,6 +617,7 @@ onevent EVENT_EGS
 	{
 		setactor[THISACTOR].blend 255 // Additive Blend
 		setactor[THISACTOR].mdflags 16
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_CAMERACLIP
 		
 		// Calculate horizontal spread
 		getactor[THISACTOR].ang TEMP
@@ -672,6 +673,16 @@ onevent EVENT_EGS
 	ifactor GROWSPARK
 	{
 		setactor[THISACTOR].blend 255
+		setactor[THISACTOR].mdflags 16
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_CAMERACLIP
+		break
+	}
+	
+	ifactor SHRINKSPARK
+	{
+		setactor[THISACTOR].blend 255
+		setactor[THISACTOR].mdflags 16
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_CAMERACLIP
 		break
 	}
 	
@@ -1212,7 +1223,6 @@ onevent EVENT_GAME
 			break
 		case SHRINKSPARK:
 			cstator 2
-			setactor[THISACTOR].blend 255
 			
 			espawn SHRINKERTRAIL
 			getactor[THISACTOR].x TEMP
@@ -1586,8 +1596,9 @@ onevent EVENT_SPAWN
 		setactor[THISACTOR].shade -127
 		setactor[THISACTOR].blend 255
 		setactor[THISACTOR].mdflags 16
-		setvar ANIMATE_FLAGS ANIMATE_FLAG_ROTATE_SCALE_AND_FADE
 		
+		setvar ANIMATE_FLAGS ANIMATE_FLAG_ROTATE_SCALE_AND_FADE
+		orvar ANIMATE_FLAGS ANIMATE_FLAG_CAMERACLIP
 		setvarvar ANIMATE_STARTCLOCK ANIMATE_CLOCK // Timer
 		setvar ANIMATE_LIFETIME 16 // End time
 		setvar ANIMATE_ROTSPEED 0 // Rotational Speed
@@ -1613,6 +1624,7 @@ onevent EVENT_SPAWN
 		setactor[THISACTOR].blend 255
 		setactor[THISACTOR].mdflags 16
 		setvar ANIMATE_FLAGS ANIMATE_FLAG_ROTATE_SCALE_AND_FADE
+		orvar ANIMATE_FLAGS ANIMATE_FLAG_CAMERACLIP
 		
 		setvarvar ANIMATE_STARTCLOCK ANIMATE_CLOCK // Timer
 		setvar ANIMATE_LIFETIME 32 // End time
@@ -1917,6 +1929,21 @@ onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
 		setvarvar ANIMATE_ELAPSEDTIME ANIMATE_CLOCK
 		subvarvar ANIMATE_ELAPSEDTIME ANIMATE_STARTCLOCK
 		
+		// Hack to keep your own projectiles from blinding you.
+		ifvarand ANIMATE_FLAGS ANIMATE_FLAG_CAMERACLIP
+		{
+			gettspr[THISACTOR].tsprx TSPRX
+			gettspr[THISACTOR].tspry TSPRY
+			gettspr[THISACTOR].tsprz TSPRZ
+			distvar TSPRX TSPRY TSPRZ camerax cameray cameraz CL_TEMP1
+			ifvarvarl CL_TEMP1 ANIMATE_CAMCLIPDIST
+			{
+				settspr[THISACTOR].tsprxrepeat 0
+				break
+			}
+		}
+		// ----
+		
 		ifvarand ANIMATE_FLAGS ANIMATE_FLAG_INTERPXYREPEAT
 		{
 			getactor[THISACTOR].xrepeat CL_TEMP1
@@ -2048,27 +2075,6 @@ onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
 		}
 	}
 	
-	ifactor TRACER
-	{
-		gettspr[THISACTOR].tsprx TSPRX
-		gettspr[THISACTOR].tspry TSPRY
-		gettspr[THISACTOR].tsprz TSPRZ
-		distvar TSPRX TSPRY TSPRZ camerax cameray cameraz CL_TEMP1
-		ifvarl CL_TEMP1 512
-			settspr[THISACTOR].tsprxrepeat 0
-		break
-	}
-	else ifactor PELLET
-	{
-		gettspr[THISACTOR].tsprx TSPRX
-		gettspr[THISACTOR].tspry TSPRY
-		gettspr[THISACTOR].tsprz TSPRZ
-		distvar TSPRX TSPRY TSPRZ camerax cameray cameraz CL_TEMP1
-		ifvarl CL_TEMP1 512
-			settspr[THISACTOR].tsprxrepeat 0
-		break
-	}
-	
 	ifvarg BURNING_TICS 0
 	{
 		gettspr[THISACTOR].tsprpal CL_TEMP1
@@ -2165,46 +2171,6 @@ onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
 			
 		break
 	}
-	
-	// Hack to keep your own projectiles from blinding you.
-	ifactor FIREBALL
-	{
-		getactor[THISACTOR].owner CL_TEMP1
-		ldist CL_TEMP2 THISACTOR CL_TEMP1
-		ifvarl CL_TEMP2 512
-		{
-			settspr[THISACTOR].tsprxrepeat 0
-			settspr[THISACTOR].tspryrepeat 0
-		}
-		break
-	}
-	
-	ifactor FIREBALLTRAIL
-	{
-		getactor[THISACTOR].htowner CL_TEMP1
-		getactor[CL_TEMP1].owner CL_TEMP1
-		ldist CL_TEMP2 THISACTOR CL_TEMP1
-		ifvarl CL_TEMP2 512
-		{
-			settspr[THISACTOR].tsprxrepeat 0
-			settspr[THISACTOR].tspryrepeat 0
-		}
-		break
-	}
-	
-	ifactor PLASMATRAIL
-	{
-		getactor[THISACTOR].htowner CL_TEMP1
-		getactor[CL_TEMP1].owner CL_TEMP1
-		ldist CL_TEMP2 THISACTOR CL_TEMP1
-		ifvarl CL_TEMP2 512
-		{
-			settspr[THISACTOR].tsprxrepeat 0
-			settspr[THISACTOR].tspryrepeat 0
-		}
-		break
-	}
-	// ----
 	
 	ifactor BOUNCEMINE
 	{
@@ -2738,19 +2704,28 @@ defstate client_keys
 		ifvarand CL_OLDKEYS 64 { }
 		else
 		{
-			ifvare CL_XXXCONTENT 0
+			ifvare STREAMERFRIENDLY 1
 			{
-				redefinequote 500 ^12XXX Content: ^08ON
+				redefinequote 500 ^02XXX Content Inaccessible in Streamer-Friendly Mode!
 				userquote 500
-				setvar CL_XXXCONTENT 1
-				savegamevar CL_XXXCONTENT
+				setvar CL_XXXCONTENT 0
 			}
 			else
 			{
-				redefinequote 500 ^12XXX Content: ^02OFF
-				userquote 500
-				setvar CL_XXXCONTENT 0
-				savegamevar CL_XXXCONTENT
+				ifvare CL_XXXCONTENT 0
+				{
+					redefinequote 500 ^12XXX Content: ^08ON
+					userquote 500
+					setvar CL_XXXCONTENT 1
+					savegamevar CL_XXXCONTENT
+				}
+				else
+				{
+					redefinequote 500 ^12XXX Content: ^02OFF
+					userquote 500
+					setvar CL_XXXCONTENT 0
+					savegamevar CL_XXXCONTENT
+				}
 			}
 		}
 	}
@@ -2804,37 +2779,6 @@ onevent EVENT_DISPLAYSTART // !UNSYNCHRONIZED!
 	state client_keys
 endevent
 
-defstate apparition_screenfx
-	ifvarg APPARITION_SPRITEID -1
-	{
-		dist CL_TEMP1 APPARITION_SPRITEID THISACTOR
-		getactor[APPARITION_SPRITEID].cstat CL_TEMP2
-			
-		ifvarand CL_TEMP2 32768
-			setvar CL_TEMP1 9999999
-				
-		ifvarl CL_TEMP1 4096
-		{
-			shiftvarr CL_TEMP1 4
-			setvar CL_TEMP9 0
-			addvarvar CL_TEMP9 CL_TEMP1
-				
-			ifvarl CL_TEMP9 256
-				rotatespritea 0 0 65536 0 6764 0 0 1042 CL_TEMP9 0 0 xdim ydim
-					
-			ifvarl CL_TEMP9 1
-				setvar CL_TEMP9 1
-			
-			setvarvar CL_TEMP8 totalclock
-			shiftvarl CL_TEMP8 3
-			sin CL_TEMP8 CL_TEMP8
-			shiftvarr CL_TEMP8 3
-			divvarvar CL_TEMP8 CL_TEMP9
-			setplayer[THISACTOR].rotscrnang CL_TEMP8
-		}
-	}
-ends
-
 onevent EVENT_DISPLAYMENUREST // Version display. !UNSYNCHRONIZED!
 	screentext 3072 316 180 65536 0 0 499 -127 6 536 0 3 5 1 1 8193 0 0 xdim ydim 
 	
@@ -2855,12 +2799,15 @@ onevent EVENT_DISPLAYMENUREST // Version display. !UNSYNCHRONIZED!
 	
 	screentext 3072 8 180 65536 0 0 500 -127 6 280 0 3 5 1 1 8192 0 0 xdim ydim
 	
-	ifvare CL_XXXCONTENT 1
-		redefinequote 500 ^12XXX Content: ^08ON
-	else
-		redefinequote 500 ^12XXX Content: ^02OFF
-	
-	screentext 3072 8 174 65536 0 0 500 -127 6 280 0 3 5 1 1 8192 0 0 xdim ydim
+	ifvare STREAMERFRIENDLY 0
+	{
+		ifvare CL_XXXCONTENT 1
+			redefinequote 500 ^12XXX Content: ^08ON
+		else
+			redefinequote 500 ^12XXX Content: ^02OFF
+		
+		screentext 3072 8 174 65536 0 0 500 -127 6 280 0 3 5 1 1 8192 0 0 xdim ydim
+	}
 endevent
 
 onevent EVENT_DISPLAYROOMS // !UNSYNCHRONIZED!
@@ -2905,7 +2852,161 @@ state do_active_maphacks
 	// **** ACTIVE MAPHACKS ***
 	// These are what I like to call active maphacks.
 	// These use heuristics to detect unmodified stock maps, and add new monsters and items.
-	ifvare VOLUME 3 // Episode 4
+	ifvare VOLUME 1 // Episode 2
+	{
+		switch LEVEL
+			case 5: // Tiberius Station
+				setvar CL_TEMP1 576
+				getactor[CL_TEMP1].picnum CL_TEMP2
+				getactor[CL_TEMP1].sectnum CL_TEMP3
+				getactor[CL_TEMP1].ang CL_TEMP4
+				getactor[CL_TEMP1].hitag CL_TEMP5
+				ifvare CL_TEMP2 MUSICANDSFX
+				ifvare CL_TEMP3 258
+				ifvare CL_TEMP4 1536
+				ifvare CL_TEMP5 1500
+				{
+					userquote 200
+					
+					espawn PLASMASPRITE
+					setactor[RETURN].htpicnum PLASMASPRITE
+					setactor[RETURN].x -2816
+					setactor[RETURN].y -1536
+					setactor[RETURN].z 20480
+					setactor[RETURN].ang 512
+					setactor[RETURN].cstat 0
+					setactor[RETURN].pal 0
+					setactor[RETURN].xrepeat 32
+					setactor[RETURN].yrepeat 32
+					setactor[RETURN].owner RETURN
+					setactor[RETURN].htowner RETURN
+					changespritesect RETURN 258
+					setvar RETURN 0
+					
+					espawn PLASMAAMMO
+					setactor[RETURN].htpicnum PLASMAAMMO
+					setactor[RETURN].x -2304
+					setactor[RETURN].y -1792
+					setactor[RETURN].z 20480
+					setactor[RETURN].ang 512
+					setactor[RETURN].cstat 0
+					setactor[RETURN].pal 0
+					setactor[RETURN].xrepeat 32
+					setactor[RETURN].yrepeat 32
+					setactor[RETURN].owner RETURN
+					setactor[RETURN].htowner RETURN
+					changespritesect RETURN 257
+					setvar RETURN 0
+					
+					espawn PLASMAAMMO
+					setactor[RETURN].htpicnum PLASMAAMMO
+					setactor[RETURN].x -3328
+					setactor[RETURN].y -1792
+					setactor[RETURN].z 20480
+					setactor[RETURN].ang 512
+					setactor[RETURN].cstat 0
+					setactor[RETURN].pal 0
+					setactor[RETURN].xrepeat 32
+					setactor[RETURN].yrepeat 32
+					setactor[RETURN].owner RETURN
+					setactor[RETURN].htowner RETURN
+					changespritesect RETURN 259
+					setvar RETURN 0
+				}
+			case 9: // Spin Cycle
+				setvar CL_TEMP1 245
+				getactor[CL_TEMP1].picnum CL_TEMP2
+				getactor[CL_TEMP1].sectnum CL_TEMP3
+				getactor[CL_TEMP1].ang CL_TEMP4
+				ifvare CL_TEMP2 RESPAWN
+				ifvare CL_TEMP3 76
+				ifvare CL_TEMP4 1280
+				{
+					userquote 200
+					
+					espawn SSGSPRITE
+					setactor[RETURN].htpicnum SSGSPRITE
+					setactor[RETURN].x 1280
+					setactor[RETURN].y 6400
+					setactor[RETURN].z -13126
+					setactor[RETURN].ang 1280
+					setactor[RETURN].cstat 0
+					setactor[RETURN].pal 0
+					setactor[RETURN].xrepeat 32
+					setactor[RETURN].yrepeat 32
+					setactor[RETURN].owner RETURN
+					setactor[RETURN].htowner RETURN
+					changespritesect RETURN 80
+					setvar RETURN 0
+				}
+				break
+		endswitch
+	}
+	else ifvare VOLUME 2 // Episode 3
+	{
+		switch LEVEL
+			case 10: // Freeway
+				setvar CL_TEMP1 493
+				getactor[CL_TEMP1].picnum CL_TEMP2
+				getactor[CL_TEMP1].sectnum CL_TEMP3
+				getactor[CL_TEMP1].ang CL_TEMP4
+				getactor[CL_TEMP1].hitag CL_TEMP5
+				ifvare CL_TEMP2 CAMERA1
+				ifvare CL_TEMP3 82
+				ifvare CL_TEMP4 1024
+				ifvare CL_TEMP5 384
+				{
+					userquote 200
+					
+					espawn RAILGUNSPRITE
+					setactor[RETURN].htpicnum RAILGUNSPRITE
+					setactor[RETURN].x -32128
+					setactor[RETURN].y 17408
+					setactor[RETURN].z -49152
+					setactor[RETURN].ang 1024
+					setactor[RETURN].cstat 0
+					setactor[RETURN].pal 0
+					setactor[RETURN].xrepeat 32
+					setactor[RETURN].yrepeat 32
+					setactor[RETURN].owner RETURN
+					setactor[RETURN].htowner RETURN
+					changespritesect RETURN 82
+					setvar RETURN 0
+					
+					espawn RAILGUNAMMO
+					setactor[RETURN].htpicnum RAILGUNAMMO
+					setactor[RETURN].x -35840
+					setactor[RETURN].y 9344
+					setactor[RETURN].z 0
+					setactor[RETURN].ang 1536
+					setactor[RETURN].cstat 0
+					setactor[RETURN].pal 0
+					setactor[RETURN].xrepeat 32
+					setactor[RETURN].yrepeat 32
+					setactor[RETURN].owner RETURN
+					setactor[RETURN].htowner RETURN
+					changespritesect RETURN 34
+					setvar RETURN 0
+					
+					espawn RAILGUNAMMO
+					setactor[RETURN].htpicnum RAILGUNAMMO
+					setactor[RETURN].x -35840
+					setactor[RETURN].y 26496
+					setactor[RETURN].z 0
+					setactor[RETURN].ang 1536
+					setactor[RETURN].cstat 0
+					setactor[RETURN].pal 0
+					setactor[RETURN].xrepeat 32
+					setactor[RETURN].yrepeat 32
+					setactor[RETURN].owner RETURN
+					setactor[RETURN].htowner RETURN
+					changespritesect RETURN 34
+					setvar RETURN 0
+				}
+				break
+		endswitch
+	}
+	else ifvare VOLUME 3 // Episode 4
 	{
 		switch LEVEL
 			case 1: // Duke Burger
@@ -2949,7 +3050,66 @@ state do_active_maphacks
 					changespritesect RETURN 159
 					setvar RETURN 0
 				}
-			break
+				break
+			case 10: // Area 51
+				setvar CL_TEMP1 1254
+				getactor[CL_TEMP1].picnum CL_TEMP2
+				getactor[CL_TEMP1].sectnum CL_TEMP3
+				getactor[CL_TEMP1].ang CL_TEMP4
+				getactor[CL_TEMP1].hitag CL_TEMP5
+				ifvare CL_TEMP2 SEENINE
+				ifvare CL_TEMP3 659
+				ifvare CL_TEMP4 1536
+				ifvare CL_TEMP5 130
+				{
+					userquote 200
+					
+					espawn DFGSPRITE
+					setactor[RETURN].htpicnum DFGSPRITE
+					setactor[RETURN].x -6912
+					setactor[RETURN].y -13824
+					setactor[RETURN].z 94208
+					setactor[RETURN].ang 1024
+					setactor[RETURN].cstat 0
+					setactor[RETURN].pal 0
+					setactor[RETURN].xrepeat 32
+					setactor[RETURN].yrepeat 32
+					setactor[RETURN].owner RETURN
+					setactor[RETURN].htowner RETURN
+					changespritesect RETURN 576
+					setvar RETURN 0
+					
+					espawn DFGAMMO
+					setactor[RETURN].htpicnum DFGAMMO
+					setactor[RETURN].x -8704
+					setactor[RETURN].y -12800
+					setactor[RETURN].z 94208
+					setactor[RETURN].ang 1536
+					setactor[RETURN].cstat 0
+					setactor[RETURN].pal 0
+					setactor[RETURN].xrepeat 32
+					setactor[RETURN].yrepeat 32
+					setactor[RETURN].owner RETURN
+					setactor[RETURN].htowner RETURN
+					changespritesect RETURN 574
+					setvar RETURN 0
+					
+					espawn DFGAMMO
+					setactor[RETURN].htpicnum DFGAMMO
+					setactor[RETURN].x -8704
+					setactor[RETURN].y -14848
+					setactor[RETURN].z 94208
+					setactor[RETURN].ang 1536
+					setactor[RETURN].cstat 0
+					setactor[RETURN].pal 0
+					setactor[RETURN].xrepeat 32
+					setactor[RETURN].yrepeat 32
+					setactor[RETURN].owner RETURN
+					setactor[RETURN].htowner RETURN
+					changespritesect RETURN 575
+					setvar RETURN 0
+				}
+				break
 		endswitch
 	}
 	
@@ -3037,7 +3197,11 @@ onevent EVENT_ENTERLEVEL
 	ifvare LEVEL_LOADED 0
 	{
 		setvar LEVEL_LOADED 1
-		readgamevar CL_XXXCONTENT
+		ifvare STREAMERFRIENDLY 1
+			setvar CL_XXXCONTENT 0
+		else
+			readgamevar CL_XXXCONTENT
+			
 		readgamevar CL_LASERCOLOR
 		state do_active_maphacks
 		
@@ -3420,11 +3584,9 @@ onevent EVENT_PROCESSINPUT
 				setvar TEMP3 15
 						
 			addvar HEARTBEAT_COUNTER 1
-			setvarvar TEMP HEARTBEAT_COUNTER
-			modvarvar TEMP TEMP3
-			
-			ifvare TEMP 0
+			ifvarvarg HEARTBEAT_COUNTER TEMP3
 			{
+				setvar HEARTBEAT_COUNTER 0
 				sound DUKE_QUIETHEARTBEAT
 				
 				ifrnd 1
@@ -3533,6 +3695,44 @@ onevent EVENT_PROCESSINPUT
 	
 	// Keep this at the bottom!
 	state handle_special_attacks
+endevent
+
+state trigger_actors
+	headspritestat CURSPRITE STAT_ACTOR
+	setvarvar LASTSPRITE CURSPRITE
+	whilevarn CURSPRITE -1
+	{
+		setvar TEMP 0
+		getactor[CURSPRITE].picnum TEMP2
+		switch TEMP2
+			case TIMEDPLATFORM:
+				setvar TEMP 1
+				break
+		endswitch
+		
+		ifvare TEMP 1
+		{
+			getactorvar[CURSPRITE].LOTAG_MEMORY TEMP
+			ifvarvare LOTAG_MEMORY TEMP // Check if lotag matches
+			{
+				setactorvar[CURSPRITE].PAL_MEMORY 1 // PAL_MEMORY = Activating state for timed platforms
+			}
+		}
+				
+		nextspritestat CURSPRITE LASTSPRITE
+		setvarvar LASTSPRITE CURSPRITE
+	}
+ends
+
+// THISACTOR = ID of Sprite or Wall
+// RETURN = Switch Type. 0 = Wall, 1 = Sprite. Setting to -1 stops the switch from doing anything.
+// getplayer[THISACTOR] = ID of the player whom activated the switch.
+onevent EVENT_ACTIVATESWITCH
+	ifvare predicting 0
+	ifvare RETURN 1
+	{
+		state trigger_actors
+	}
 endevent
 
 // THISACTOR = Sprite index of fragged player

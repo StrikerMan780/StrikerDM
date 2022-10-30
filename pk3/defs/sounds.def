@@ -275,6 +275,8 @@ sound { id DUKE_FLAME07 file "sounds/duke/flame/duke_flame07.wav" priority 255 t
 sound { id DUKE_FLAME08 file "sounds/duke/flame/duke_flame08.wav" priority 255 type SFX_DUKETALK }
 sound { id DUKE_FLAME09 file "sounds/duke/flame/duke_flame09.wav" priority 255 type SFX_DUKETALK }
 
+sound { id DUKE_BOSS1SEE file "sounds/duke/enemysee/Duke64_WhosYourPlasticSurgeon.wav" priority 255 type SFX_DUKETALK }
+
 // Babes
 sound { id FEM10_SAVED file "sounds/babes/fem10save01.wav" }
 sound { id BABE_SAVED01 file "sounds/babes/gfemsave01.wav" }
@@ -282,18 +284,18 @@ sound { id BABE_SAVED02 file "sounds/babes/gfemsave02.wav" }
 sound { id BABE_TELEPORT file "sounds/babes/savebabe.wav" }
 sound { id ALL_BABES_SAVED file "sounds/babes/allsaved.ogg" }
 
-sound { id DUKE_BABEREPLY01 file "sounds/babes/DUKE_AfterSave_01.wav" priority 255 type SFX_DUKETALK }
-sound { id DUKE_BABEREPLY02 file "sounds/babes/DUKE_AfterSave_02.wav" priority 255 type SFX_DUKETALK }
-sound { id DUKE_BABEREPLY03 file "sounds/babes/DUKE_AfterSave_03.wav" priority 255 type SFX_DUKETALK }
-sound { id DUKE_BABEREPLY04 file "sounds/babes/DUKE_AfterSave_04.ogg" priority 255 type SFX_DUKETALK }
-sound { id DUKE_BABEREPLY05 file "sounds/babes/DUKE_AfterSave_05.ogg" priority 255 type SFX_DUKETALK }
-sound { id DUKE_BABEREPLY06 file "sounds/babes/DUKE_AfterSave_06.ogg" priority 255 type SFX_DUKETALK }
-sound { id DUKE_BABEREPLY07 file "sounds/babes/DUKE_AfterSave_07.wav" priority 255 type SFX_DUKETALK }
-sound { id DUKE_BABEREPLY08 file "sounds/babes/DUKE_AfterSave_08.wav" priority 255 type SFX_DUKETALK }
-sound { id DUKE_BABEREPLY09 file "sounds/babes/DUKE_AfterSave_09.wav" priority 255 type SFX_DUKETALK }
+sound { id DUKE_BABEREPLY01 file "sounds/duke/baberescue/DUKE_AfterSave_01.wav" priority 255 type SFX_DUKETALK }
+sound { id DUKE_BABEREPLY02 file "sounds/duke/baberescue/DUKE_AfterSave_02.wav" priority 255 type SFX_DUKETALK }
+sound { id DUKE_BABEREPLY03 file "sounds/duke/baberescue/DUKE_AfterSave_03.wav" priority 255 type SFX_DUKETALK }
+sound { id DUKE_BABEREPLY04 file "sounds/duke/baberescue/DUKE_AfterSave_04.ogg" priority 255 type SFX_DUKETALK }
+sound { id DUKE_BABEREPLY05 file "sounds/duke/baberescue/DUKE_AfterSave_05.ogg" priority 255 type SFX_DUKETALK }
+sound { id DUKE_BABEREPLY06 file "sounds/duke/baberescue/DUKE_AfterSave_06.ogg" priority 255 type SFX_DUKETALK }
+sound { id DUKE_BABEREPLY07 file "sounds/duke/baberescue/DUKE_AfterSave_07.wav" priority 255 type SFX_DUKETALK }
+sound { id DUKE_BABEREPLY08 file "sounds/duke/baberescue/DUKE_AfterSave_08.wav" priority 255 type SFX_DUKETALK }
+sound { id DUKE_BABEREPLY09 file "sounds/duke/baberescue/DUKE_AfterSave_09.wav" priority 255 type SFX_DUKETALK }
 
-sound { id DUKE_BABEDEAD01 file "sounds/babes/DUKE_Unsaveable_01.wav" priority 255 type SFX_DUKETALK }
-sound { id DUKE_BABEDEAD02 file "sounds/babes/DUKE_Unsaveable_02.wav" priority 255 type SFX_DUKETALK }
+sound { id DUKE_BABEDEAD01 file "sounds/duke/baberescue/DUKE_Unsaveable_01.wav" priority 255 type SFX_DUKETALK }
+sound { id DUKE_BABEDEAD02 file "sounds/duke/baberescue/DUKE_Unsaveable_02.wav" priority 255 type SFX_DUKETALK }
 
 // Ambient Sounds
 sound { id JUMPPADSOUND file "sounds/ambience/jumppad.wav" }
@@ -355,7 +357,7 @@ sound { id DISTORTED_PIPEBOMB file "sounds/hateot/dist_pipe.ogg" priority 2 dist
 sound { id DISTORTED_TRIPMINE file "sounds/hateot/dist_trip.ogg" minpitch -128 maxpitch 128 priority 3 }
 sound { id DISTORTED_EXPLOSION file "sounds/hateot/dist_expl.ogg" minpitch -1024 maxpitch 512 priority 128 type SFX_EXPLOSION }
 
-sound { id DUKE_QUIETHEARTBEAT file "sounds/hartbeat.ogg" distance 4096 volume 0.15 }
+sound { id DUKE_QUIETHEARTBEAT file "sounds/hartbeat.ogg" distance 4096 volume 0.25 }
 
 sound { id FLAMEBURST file "sounds/flameburst.wav" }
 sound { id ASH_FALL file "sounds/ashes.wav" distance 4096 }

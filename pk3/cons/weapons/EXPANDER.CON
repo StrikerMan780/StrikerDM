@@ -168,6 +168,29 @@ state expander_radius
 			
 		nextspritestat CURSPRITE CURSPRITE
 	}
+	
+	// This might be too slow...
+	headspritestat CURSPRITE STAT_ACTOR
+	whilevarn CURSPRITE -1
+	{
+		getactor[CURSPRITE].cstat STATE_TEMP2
+		getactor[CURSPRITE].extra STATE_TEMP3
+		ifvarand STATE_TEMP2 256
+		ifvarg STATE_TEMP3 0
+		{
+			dist STATE_TEMP2 THISACTOR CURSPRITE
+			ifvarl STATE_TEMP2 1280
+			{
+				setvar STATE_PARAM1 GROWSPARK_WEAPON_STRENGTH
+				setvarvar STATE_PARAM2 CURSPRITE
+				setvar STATE_PARAM3 GROWSPARK
+				setvar STATE_PARAM4 0
+				state apply_damage
+			}
+		}
+		
+		nextspritestat CURSPRITE CURSPRITE
+	}
 ends
 
 
@@ -207,12 +230,6 @@ actor EXPANDERTRAIL 0
 {
 	ifaction 0
 	{
-		ifpdistl 1024
-		{
-			killit
-			break
-		}
-		
 		action ANULLACTION
 	}
 	

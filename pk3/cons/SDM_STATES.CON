@@ -1777,6 +1777,43 @@ defstate zap_a_cunt
 	}
 ends
 
+defstate apparition_screenfx
+	ifvarg APPARITION_SPRITEID -1
+	{
+		getactor[APPARITION_SPRITEID].x CL_TEMP1
+		getactor[APPARITION_SPRITEID].y CL_TEMP2
+		getactor[APPARITION_SPRITEID].z CL_TEMP3
+		
+		distvar camerax cameray cameraz CL_TEMP1 CL_TEMP2 CL_TEMP3 CL_TEMP1
+		getactor[APPARITION_SPRITEID].cstat CL_TEMP2
+			
+		ifvarand CL_TEMP2 32768
+			setvar CL_TEMP1 9999999
+				
+		ifvarl CL_TEMP1 4097
+		{
+			// Linear range conversion from 0-4096 to 0-255
+			setvarvar CL_TEMP9 CL_TEMP1
+			mulvar CL_TEMP9 255
+			divvar CL_TEMP9 4096
+			rotatespritea 0 0 65536 0 6764 0 0 1042 CL_TEMP9 0 0 xdim ydim
+			
+			setvar CL_TEMP9 4096
+			subvarvar CL_TEMP9 CL_TEMP1
+			ifvarg CL_TEMP9 0
+			{
+				setvarvar CL_TEMP8 totalclock
+				shiftvarl CL_TEMP8 3
+				sin CL_TEMP8 CL_TEMP8
+				mulvarvar CL_TEMP8 CL_TEMP9
+				shiftvarr CL_TEMP8 18
+				setplayer[THISACTOR].rotscrnang CL_TEMP8
+				setplayer[THISACTOR].orotscrnang CL_TEMP8
+			}
+		}
+	}
+ends
+
 defstate handle_special_attacks
 	ifvarg predicting 0  // Safeguard
 		break
