@@ -85,6 +85,7 @@ state draw_shrinker // SHRINKER_WEAPON:
             setvar hud_temp2 1
         }
     }
+
     ifvare hud_temp2 0
     {
         addvar hud_x 184

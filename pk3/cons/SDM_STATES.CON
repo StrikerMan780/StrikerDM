@@ -77,7 +77,7 @@ state item_despawn_timer
 		else ifspawnedby LIFEFLOWER setvar DESPAWN_TYPE 1
 	}
 	
-	ifvarand gametype_flags 1 { } // GAMETYPE_COOP
+	ifvarand gametype_flags 1 // GAMETYPE_COOP
 	{
 		break // Do not despawn stuff in COOP.
 	}
@@ -1593,6 +1593,7 @@ defstate apply_damage
 		getactor[THISACTOR].owner STATE_TEMP1
 		setactor[STATE_PARAM2].htowner STATE_TEMP1
 		setactor[STATE_PARAM2].htpicnum STATE_PARAM3
+		setactorvar[STATE_PARAM2].LASTHITBY STATE_TEMP1
 		
 		getactor[THISACTOR].ang STATE_TEMP1
 		setactor[STATE_PARAM2].htang STATE_TEMP1
@@ -1798,17 +1799,20 @@ defstate apparition_screenfx
 			divvar CL_TEMP9 4096
 			rotatespritea 0 0 65536 0 6764 0 0 1042 CL_TEMP9 0 0 xdim ydim
 			
-			setvar CL_TEMP9 4096
-			subvarvar CL_TEMP9 CL_TEMP1
-			ifvarg CL_TEMP9 0
+			ifvarn APPARITION_STATE APPRSTATE_NONE
 			{
-				setvarvar CL_TEMP8 totalclock
-				shiftvarl CL_TEMP8 3
-				sin CL_TEMP8 CL_TEMP8
-				mulvarvar CL_TEMP8 CL_TEMP9
-				shiftvarr CL_TEMP8 18
-				setplayer[THISACTOR].rotscrnang CL_TEMP8
-				setplayer[THISACTOR].orotscrnang CL_TEMP8
+				setvar CL_TEMP9 4096
+				subvarvar CL_TEMP9 CL_TEMP1
+				ifvarg CL_TEMP9 0
+				{
+					setvarvar CL_TEMP8 totalclock
+					shiftvarl CL_TEMP8 3
+					sin CL_TEMP8 CL_TEMP8
+					mulvarvar CL_TEMP8 CL_TEMP9
+					shiftvarr CL_TEMP8 18
+					setplayer[THISACTOR].rotscrnang CL_TEMP8
+					setplayer[THISACTOR].orotscrnang CL_TEMP8
+				}
 			}
 		}
 	}

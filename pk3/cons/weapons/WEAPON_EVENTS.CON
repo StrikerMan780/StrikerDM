@@ -332,7 +332,7 @@ onevent EVENT_DISPLAYWEAPON // P_DisplayWeapon !UNSYNCHRONIZED!
 	
 	getplayer[THISACTOR].weapon_pos weapon_pos
 	getplayer[THISACTOR].weapon_sway weapon_sway
-	getuserdef[THISACTOR].weaponscale weaponscale
+	getuserdef[].weaponscale weaponscale
 	getplayer[THISACTOR].i playerid
 	
 	ifvarg weaponcount 0

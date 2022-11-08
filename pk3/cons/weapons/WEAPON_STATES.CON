@@ -169,21 +169,21 @@ ends
 
 // helper states
 
-state reset_hud_weapon_x_coordinate
+defstate reset_hud_weapon_x_coordinate
 	setvarvar hud_x weapon_xoffset
 	subvarvar hud_x looking_angSR1
 ends
-state reset_hud_weapon_y_coordinate
+defstate reset_hud_weapon_y_coordinate
 	setvarvar hud_y looking_arc
 	subvarvar hud_y gun_pos
 ends
-state reset_hud_weapon_coordinates
+defstate reset_hud_weapon_coordinates
 	state reset_hud_weapon_x_coordinate
 	state reset_hud_weapon_y_coordinate
 ends
 
-state determine_animation
-	getuserdef[THISACTOR].pause_on hud_temp
+defstate determine_animation
+	getuserdef[].pause_on hud_temp
 	ifvarn hud_temp 0
 		setvar hud_temp 1
 	
@@ -1040,12 +1040,14 @@ state player_updateweapons
 	}
 ends
 
-state player_tossweapon
+defstate player_tossweapon
 	getplayer[THISACTOR].curr_weapon STATE_PARAM1
 	state check_using_secondary
 	
 	switch STATE_PARAM1
-		case PISTOL_WEAPON: spawn FIRSTGUNSPRITE break
+		case PISTOL_WEAPON:
+			spawn FIRSTGUNSPRITE
+			break
 		case SHOTGUN_WEAPON:
 			ifvare STATE_RETURN 1
 				spawn SSGSPRITE
@@ -1064,26 +1066,34 @@ state player_tossweapon
 			else
 				spawn RPGSPRITE
 			break
-		case HANDBOMB_WEAPON: spawn HBOMBAMMO break
-		case SHRINKER_WEAPON: spawn SHRINKERSPRITE break
+		case HANDBOMB_WEAPON:
+			spawn HBOMBAMMO
+			break
+		case SHRINKER_WEAPON:
+			spawn SHRINKERSPRITE
+			break
 		case DEVISTATOR_WEAPON: 
 			ifvare STATE_RETURN 1
 				spawn DFGSPRITE
 			else
 				spawn DEVISTATORSPRITE
 			break
-		case TRIPBOMB_WEAPON: spawn TRIPBOMBSPRITE break
+		case TRIPBOMB_WEAPON:
+			spawn TRIPBOMBSPRITE
+			break
 		case FREEZE_WEAPON:
 			ifvare STATE_RETURN 1
 				spawn FLAMETHROWERSPRITE
 			else
 				spawn FREEZESPRITE
 			break
-		case GROW_WEAPON: spawn GROWSPRITEICON break
+		case GROW_WEAPON:
+			spawn GROWSPRITEICON
+			break
 	endswitch
 ends
 
-state checkweaponstay
+defstate checkweaponstay
 	getactor[THISACTOR].picnum STATE_TEMP1
 	getactor[THISACTOR].htpicnum STATE_TEMP2
 	ifvarvare STATE_TEMP1 STATE_TEMP2

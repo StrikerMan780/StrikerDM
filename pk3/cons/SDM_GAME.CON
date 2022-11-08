@@ -2206,8 +2206,7 @@ enda
 action FIRE_FRAMES   -1 14 1 1 1
 move FIREVELS
 
-state firestate
-
+defstate firestate
 	ifaction 0
 	{
 		action FIRE_FRAMES
@@ -2217,63 +2216,61 @@ state firestate
 		cstator 130
 		setactor[THISACTOR].blend 255
 	}
+	sleeptime 300         // Never let it fall to sleep
 
-  sleeptime 300         // Never let it fall to sleep
+	ifspawnedby FIRE
+	{
+		ifgapzl 16
+			break
+	}
+	else ifspawnedby FIRE2
+	{
+		ifgapzl 16
+			break
+	}
 
-  ifspawnedby FIRE
-  {
-    ifgapzl 16
-      break
-  }
-  else
-    ifspawnedby FIRE2
-  {
-    ifgapzl 16
-      break
-  }
+	ifinwater
+		killit
 
-  ifinwater
-    killit
+	ifp palive
+	ifpdistl 844
+	ifrnd 32
+	ifcansee
+	{
+		soundonce DUKE_LONGTERM_PAIN
+		addphealth -1
+		palfrom 32 32
+	}
 
-  ifp palive
-    ifpdistl 844
-      ifrnd 32
-        ifcansee
-  {
-    soundonce DUKE_LONGTERM_PAIN
-    addphealth -1
-    palfrom 32 32
-  }
+	ifactor FIRE
+	{
+		ifspawnedby FIRE
+			break
+	}
+	else ifactor FIRE2
+	{
+		ifspawnedby FIRE2
+			break
+	}
 
-  ifactor FIRE
-  {
-    ifspawnedby FIRE
-      break
-  }
-  else
-    ifactor FIRE2
-      ifspawnedby FIRE2
-        break
-
-  iffloordistl 128
-  {
-    ifrnd 128
-    {
-      ifcount 84
-        killit
-                // This line(and the else below)
-                // is not necessary, since actors
-                // with zero x-size are automatically
-                // deleted anyway!
-      else
-        ifcount 42
-          sizeto 0 0
-      else
-        sizeto 32 32
-    }
-  }
-  else
-    killit
+	iffloordistl 128
+	{
+		ifrnd 128
+		{
+			ifcount 84
+				killit
+				// This line(and the else below)
+				// is not necessary, since actors
+				// with zero x-size are automatically
+				// deleted anyway!
+			else ifcount 42
+				sizeto 0 0
+			else
+				sizeto 32 32
+		}
+	}
+	else
+		killit
 
 ends
 
@@ -2281,21 +2278,21 @@ useractor notenemy FIRE WEAK 0 FIREVELS state firestate enda
 useractor notenemy FIRE2 WEAK 0 FIREVELS state firestate enda
 
 actor FECES
-  ifcount 24
-  {
-    ifpdistl RETRIEVEDISTANCE
-    {
-      ifrnd SWEARFREQUENCY
-        soundonce DUKE_STEPONFECES
+	ifcount 24
+	{
+		ifpdistl RETRIEVEDISTANCE
+		{
+			ifrnd SWEARFREQUENCY
+				soundonce DUKE_STEPONFECES
 
-      sound STEPNIT
+			sound STEPNIT // Shit happens...
 
-      spawn BLOODPOOL   // Will be brown
-      killit
-    }
-  }
-  else
-    sizeto 32 32
+			spawn BLOODPOOL   // Will be brown
+			killit
+		}
+	}
+	else
+		sizeto 32 32
 enda
 
 state drop_ammo
