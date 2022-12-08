@@ -57,8 +57,6 @@ gamevar windowx2 0 0 //  (system) (pointer) (read only)
 gamevar windowy1 0 0 //  (system) (pointer) (read only)
 gamevar windowy2 0 0 //  (system) (pointer) (read only)
 */
-gamevar OLDMP_TEMP 0 CLIENTONLY_PERPLAYER 
-
 gamevar fastweapcnt 0 CLIENTONLY_PERPLAYER
 
 gamevar hud_tilenum 0 CLIENTONLY_PERPLAYER 

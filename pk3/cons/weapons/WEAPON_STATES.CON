@@ -187,8 +187,7 @@ defstate determine_animation
 	ifvarn hud_temp 0
 		setvar hud_temp 1
 	
-	getplayer[THISACTOR].gm OLDMP_TEMP
-	ifvarand OLDMP_TEMP 1 // MODE_MENU
+	ifvarand player[].gm 1 // MODE_MENU
 		orvar hud_temp 1
 
 	getactor[playerid].pal hud_G_Draw_temp

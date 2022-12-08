@@ -158,8 +158,9 @@ state expander_radius
 					{
 						setvar STATE_PARAM1 GROWSPARK_WEAPON_STRENGTH
 						setvarvar STATE_PARAM2 CURSPRITE
-						setvar STATE_PARAM3 GROWSPARK
-						setvar STATE_PARAM4 0
+						getactor[THISACTOR].owner STATE_PARAM3
+						setvar STATE_PARAM4 GROWSPARK
+						setvar STATE_PARAM5 0
 						state apply_damage
 					}
 				}
@@ -183,8 +184,9 @@ state expander_radius
 			{
 				setvar STATE_PARAM1 GROWSPARK_WEAPON_STRENGTH
 				setvarvar STATE_PARAM2 CURSPRITE
-				setvar STATE_PARAM3 GROWSPARK
-				setvar STATE_PARAM4 0
+				getactor[THISACTOR].owner STATE_PARAM3
+				setvar STATE_PARAM4 GROWSPARK
+				setvar STATE_PARAM5 0
 				state apply_damage
 			}
 		}

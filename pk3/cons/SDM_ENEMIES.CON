@@ -897,13 +897,12 @@ action GROW_FRAMES 0 7 1 -1 4
 actor FIREFLYGROWEFFECT 0 GROW_FRAMES
 	ifactioncount 7 {
 		killit
-	}
-	
+	}	
 	else ifcount 1 { }
 	ifcount 0
 	{
 		sizeat 32 32
-		cstator 2 
+		cstator 2
 		setactor[THISACTOR].blend 255
 		setactor[THISACTOR].shade -127
 	}
@@ -1613,8 +1612,9 @@ defstate apparition_dodamage
 			{
 				setvar STATE_PARAM1 9999
 				setvarvar STATE_PARAM2 CURSPRITE
-				setvar STATE_PARAM3 RADIUSEXPLOSION
-				setvar STATE_PARAM4 0
+				setvarvar STATE_PARAM3 THISACTOR
+				setvar STATE_PARAM4 RADIUSEXPLOSION
+				setvar STATE_PARAM5 0
 				state apply_damage
 			}
 			
@@ -1836,11 +1836,19 @@ actor APPARITION 0
 					
 					ifvare TEMP 0
 					{
-						getplayer[THISACTOR].curr_weapon TEMP
-						ifvare TEMP DEVISTATOR_WEAPON // Devastator and DFG piss it off as well.
+						getplayer[THISACTOR].curr_weapon TEMP2
+						ifvare TEMP2 DEVISTATOR_WEAPON // Devastator and DFG piss it off as well.
 						{
-							getplayer[THISACTOR].kickback_pic TEMP
-							ifvarg TEMP 0
+							getplayer[THISACTOR].kickback_pic TEMP2
+							ifvarg TEMP2 0
+								setvar TEMP 1
+						}
+						
+						ifvare TEMP 0
+						ifp pfacing
+						{
+							getplayer[THISACTOR].kickback_pic TEMP2
+							ifvarg TEMP2 0 // Shooting directly at him pisses him off
 								setvar TEMP 1
 						}
 					}

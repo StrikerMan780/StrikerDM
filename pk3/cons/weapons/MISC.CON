@@ -4,8 +4,7 @@ state draw_shrunk_fists // Shrunk Running Fists
     
     setvarvar hud_temp3 looking_arc
 	
-	getplayer[THISACTOR].jetpack_on OLDMP_TEMP
-    ifvare OLDMP_TEMP 0
+    ifvare player[].jetpack_on 0
     {
         getactor[playerid].xvel hud_temp2
         shiftvarr hud_temp2 3

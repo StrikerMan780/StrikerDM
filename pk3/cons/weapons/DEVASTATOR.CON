@@ -67,8 +67,7 @@ state draw_devastator // DEVISTATOR_WEAPON:
 					break
 			endswitch
 			
-			getplayer[THISACTOR].hbomb_hold_delay OLDMP_TEMP
-			ifvarn OLDMP_TEMP 0
+			ifvarn player[].hbomb_hold_delay 0
 			{
 				// Right Firing
 				guniqhudid W_DEVASTATOR_RIGHT

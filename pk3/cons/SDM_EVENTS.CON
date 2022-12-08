@@ -1,8 +1,7 @@
 damageeventtilerange 0 9999
 
 defstate set_on_fire
-	getactor[RETURN].extra TEMP
-	ifvarl TEMP 1
+	ifvarl sprite[RETURN].extra 1
 		break
 	
 	// Team DM?
@@ -10,26 +9,12 @@ defstate set_on_fire
 	{
 		ifvare FFIRE 0 // Friendly fire is off.
 		{
-			getactor[RETURN].picnum TEMP
-			getactor[THISACTOR].owner TEMP2
-			getactor[TEMP2].picnum TEMP3
-			
-			ifvare TEMP APLAYER // Are both attackers players?
-			ifvare TEMP3 APLAYER
+			ifvare sprite[RETURN].picnum APLAYER // Are both attackers players?
+			ifvare sprite[sprite.owner].picnum APLAYER
 			{
-				ifvarvarn TEMP2 RETURN
-				{
-					getactor[RETURN].yvel TEMP
-					getplayer[TEMP].team TEMP	
-					
-					getactor[TEMP2].yvel TEMP2
-					getplayer[TEMP2].team TEMP2
-					
-					ifvarvare TEMP TEMP2 // Team matches?
-					{
-						break // Bail.
-					}
-				}
+				ifvarvarn sprite[].owner RETURN // If not hitting ourself
+				ifvarvare player[sprite[RETURN].yvel].team player[sprite[sprite.owner].yvel].team // Team matches?
+					break // Bail.
 			}
 		}
 	}
@@ -37,17 +22,11 @@ defstate set_on_fire
 	{
 		ifvare FFIRE 0 // Friendly fire is off.
 		{
-			getactor[RETURN].picnum TEMP
-			getactor[THISACTOR].owner TEMP2
-			getactor[TEMP2].picnum TEMP3
-			
-			ifvare TEMP APLAYER // Are both attackers players?
-			ifvare TEMP3 APLAYER
+			ifvare sprite[RETURN].picnum APLAYER // Are both attackers players?
+			ifvare sprite[sprite.owner].picnum APLAYER
 			{
-				ifvarvarn TEMP2 RETURN
-				{
+				ifvarvarn sprite[].owner RETURN // If not hitting ourself
 					break // Bail.
-				}
 			}
 		}
 	}
@@ -56,9 +35,7 @@ defstate set_on_fire
 	ifvarn TEMP APLAYER
 	{
 		ifvare TEMP BOSS5 // BOSS5 can't be set on fire.
-		{
 			break
-		}
 		
 		// Check if owner picnum is the same as victim picnum. (So fireflies can't burn eachother)
 		getactor[THISACTOR].owner TEMP2
@@ -129,10 +106,9 @@ defstate set_on_fire
 ends
 
 onevent EVENT_DAMAGESPRITE
-	getactor[THISACTOR].owner TEMP // DON'T OVERWRITE
-	setactorvar[RETURN].LASTHITBY TEMP
+	setactorvar[RETURN].LASTHITBY sprite.owner // Remember who hit us, useful in a number of places.
 	
-	ifvarvare TEMP RETURN // If owner is the same as victim
+	ifvarvare sprite.owner RETURN // If owner is the same as victim
 	{
 		getactor[RETURN].picnum TEMP2 // Make bosses unable to hurt themselves
 		ifvare TEMP2 BOSS2
@@ -154,8 +130,7 @@ onevent EVENT_DAMAGESPRITE
 	
 	ifactor FREEZEBLAST
 	{
-		getactorvar[RETURN].BURNING_TICS TEMP2
-		ifvarg TEMP2 0
+		ifvarg actorvar[RETURN].BURNING_TICS 0
 		{
 			setactor[THISACTOR].extra 1
 		}
@@ -182,9 +157,7 @@ onevent EVENT_DAMAGESPRITE
 	}
 	else ifactor DEVASTATORMISSILE
 	{
-		getactor[RETURN].picnum TEMP2
-		
-		switch TEMP2
+		switch sprite[RETURN].picnum
 			case APLAYER:
 				getuserdef[].return 1 TEMP2 
 				ifvare TEMP2 -1 // Direct hit, not radius.
@@ -192,8 +165,9 @@ onevent EVENT_DAMAGESPRITE
 					// Reduced player damage for balance.
 					setvar STATE_PARAM1 3
 					setvarvar STATE_PARAM2 RETURN
-					setvar STATE_PARAM3 DEVASTATORMISSILE
-					setvarvar STATE_PARAM4 TEMP2
+					getactor[THISACTOR].owner STATE_PARAM3
+					setvar STATE_PARAM4 DEVASTATORMISSILE
+					setvarvar STATE_PARAM5 TEMP2
 					state apply_damage
 					
 					setvar RETURN -1 // Break out of this crap.
@@ -206,14 +180,14 @@ onevent EVENT_DAMAGESPRITE
 				setactor[RETURN].htpicnum RADIUSEXPLOSION // Make sure cracks can get destroyed by the devastator
 				break
 			default:
-				getactor[RETURN].statnum TEMP2
 				getuserdef[].return 1 TEMP3
-				ifvare TEMP2 STAT_FALLER
+				ifvare sprite[RETURN].statnum STAT_FALLER
 				{
 					setvar STATE_PARAM1 GENERICIMPACTDAMAGE // Same with STAT_FALLERs.
 					setvarvar STATE_PARAM2 RETURN
-					setvar STATE_PARAM3 RADIUSEXPLOSION
-					getuserdef[].return 1 STATE_PARAM4
+					getactor[THISACTOR].owner STATE_PARAM3
+					setvar STATE_PARAM4 RADIUSEXPLOSION
+					getuserdef[].return 1 STATE_PARAM5
 					state apply_damage
 					
 					setvar RETURN -1
@@ -223,8 +197,7 @@ onevent EVENT_DAMAGESPRITE
 	}
 	else ifactor GROWSPARK
 	{
-		getactor[RETURN].picnum TEMP
-		switch TEMP
+		switch sprite[RETURN].picnum
 			case CRACK1:
 			case CRACK2:
 			case CRACK3:
@@ -240,15 +213,15 @@ onevent EVENT_DAMAGESPRITE
 endevent
 
 state check_penetration
-	getactor[RETURN].extra TEMP
-	getactor[RETURN].htextra TEMP2
-	ifvarvarl TEMP TEMP2 // Has total incoming damage exceeded target's health? (Ie. Guaranteed to die)
+	// Has total incoming damage exceeded target's health? (Ie. Guaranteed to die)
+	//getactor[RETURN].htextra TEMP
+	ifvarvarl sprite[RETURN].extra sprite[RETURN].htextra
 	{
 		// Make non-shootable, allowing the rest of the shotgun blast to pass through like DOOM.
 		getactor[RETURN].cstat TEMP
 		ifvarand TEMP 256
 		{
-			subvar TEMP 256
+			xorvar TEMP 256
 			setactor[RETURN].cstat TEMP
 			setactorvar[RETURN].PENETRATED 1
 		}
@@ -258,11 +231,9 @@ ends
 onevent EVENT_POSTDAMAGESPRITE
 	ifactor SHOTSPARK1
 	{
-		getactor[THISACTOR].yvel TEMP
-		ifvare TEMP RAILGUNSHOT
+		ifvare sprite.yvel RAILGUNSHOT
 		{
-			getactor[RETURN].picnum TEMP
-			ifvarn TEMP APLAYER
+			ifvarn sprite[RETURN].picnum APLAYER
 			{
 				setactor[RETURN].htpicnum RADIUSEXPLOSION
 				getactor[RETURN].htextra TEMP
@@ -274,26 +245,23 @@ onevent EVENT_POSTDAMAGESPRITE
 				setactor[RETURN].htpicnum RAILGUNSHOT
 			}
 		}
-		else ifvare TEMP SSGPELLET
+		else ifvare sprite.yvel SSGPELLET
 		{
 			getactor[RETURN].picnum TEMP
-			gettiledata[TEMP].gameflags TEMP2
-			
 			ifvare TEMP APLAYER
 			{
 				state check_penetration
 			}
-			else ifvarand TEMP2 32 // SFLAG_BADGUY
+			else ifvarand tiledata[TEMP].gameflags 32 // SFLAG_BADGUY
 			{
 				state check_penetration
 			}
-			else ifvarand TEMP2 262144 // SFLAG_HARDCODED_BADGUY
+			else ifvarand tiledata[TEMP].gameflags 262144 // SFLAG_HARDCODED_BADGUY
 			{
 				state check_penetration
 			}
-				
-			getactor[THISACTOR].htowner TEMP
-			dist TEMP2 TEMP RETURN
+
+			dist TEMP2 sprite[THISACTOR].htowner RETURN
 			ifvarl TEMP2 SSG_GIB_DISTANCE // SSG gibs at point-blank
 			{
 				setactor[RETURN].htpicnum RADIUSEXPLOSION
@@ -307,15 +275,13 @@ onevent EVENT_POSTDAMAGESPRITE
 	}
 	else ifactor DFGBALL
 	{
-		getactor[RETURN].picnum TEMP2
-		ifvarn TEMP2 APLAYER
+		ifvarn sprite[RETURN].picnum APLAYER
 		{
 			setactor[RETURN].htpicnum RADIUSEXPLOSION
 		}
 	}
 	
-	getactor[RETURN].picnum TEMP
-	ifvare TEMP APLAYER
+	ifvare sprite[RETURN].picnum APLAYER
 	{
 		// STATE_PARAM1 = amount
 		// STATE_PARAM2 = victim
@@ -400,9 +366,7 @@ onevent EVENT_KILLIT
 		break
 	}
 	
-	// Use a quick-access var here later.
-	getactor[THISACTOR].picnum TEMP
-	switch TEMP
+	switch sprite.picnum
 		case BOTTLE1:
 		case BOTTLE2:
 		case BOTTLE3:
@@ -872,11 +836,9 @@ onevent EVENT_EGS
 		{
 			// Get angle and barrel
 			getplayer[THISACTOR].hbomb_hold_delay TEMP3
-			getplayer[THISACTOR].ang SPAWN_ORIGANG
 			
 			// Calculate X position
-			setvarvar TEMP SPAWN_ORIGANG
-			sin TEMP2 TEMP
+			sin TEMP2 player[].ang
 			divvar TEMP2 512
 			
 			// Set X position
@@ -892,7 +854,7 @@ onevent EVENT_EGS
 			setactor[THISACTOR].x TEMP
 			
 			// Calculate Y position
-			setvarvar TEMP SPAWN_ORIGANG
+			setvarvar TEMP player[].ang
 			addvar TEMP 1024
 			cos TEMP2 TEMP
 			divvar TEMP2 512
@@ -970,8 +932,7 @@ state reset_burn
 	
 	ifwasweapon FREEZEBLAST
 	{
-		getactor[THISACTOR].extra TEMP
-		ifvarg TEMP 0
+		ifvarg sprite.extra 0
 		{
 			setactor[THISACTOR].mdflags BURNING_RESETFLAGS
 		}
@@ -1051,10 +1012,10 @@ defstate burning_logic
 		{
 			setvar STATE_PARAM1 3
 			setvarvar STATE_PARAM2 THISACTOR
-			setvar STATE_PARAM3 FIREBALL
-			setvar STATE_PARAM4 0
+			setvarvar STATE_PARAM3 BURNING_INFLICTOR
+			setvar STATE_PARAM4 FIREBALL
+			setvar STATE_PARAM5 0
 			state apply_damage
-			setactor[THISACTOR].htowner BURNING_INFLICTOR // Override attack owner, since we're technically doing this to ourselves.
 		}
 		
 		subvar BURNING_TICS 1
@@ -1166,6 +1127,10 @@ state plasma_spread
 	}
 ends
 
+onevent EVENT_WORLD
+	addvar GAME_CLOCK 1
+endevent
+
 onevent EVENT_PREGAME
 	ifvare PENETRATED 1
 	{
@@ -1243,14 +1208,9 @@ onevent EVENT_GAME
 			addvarvar TEMP TEMP2
 			setactor[RETURN].z TEMP
 			
-			getactor[THISACTOR].htbposx TEMP
-			setactor[RETURN].htbposx TEMP
-			
-			getactor[THISACTOR].htbposy TEMP
-			setactor[RETURN].htbposy TEMP
-			
-			getactor[THISACTOR].htbposz TEMP
-			setactor[RETURN].htbposz TEMP
+			setactor[RETURN].htbposx sprite[].htbposx
+			setactor[RETURN].htbposy sprite[].htbposy
+			setactor[RETURN].htbposz sprite[].htbposz
 			setvar RETURN 0
 			break
 		
@@ -1262,9 +1222,7 @@ onevent EVENT_GAME
 		case RESPAWNMARKERRED:
 		case RESPAWNMARKERYELLOW:
 		case RESPAWNMARKERGREEN:
-			getactor[THISACTOR].owner TEMP
-			getactor[TEMP].z TEMP2
-			setactor[THISACTOR].z TEMP2
+			setactor[THISACTOR].z sprite[sprite.owner].z
 			break
 			
 		case WATERBUBBLEMAKER:
@@ -1296,8 +1254,7 @@ onevent EVENT_GAME
 			ifvarl Numsprites 12288 // Prevent "Too Many Sprites Spawned"
 			{
 				espawn BLOOD
-				getactor[THISACTOR].pal TEMP2
-				setactor[RETURN].pal TEMP2
+				setactor[RETURN].pal sprite[].pal
 				setvar RETURN 0
 			}
 			break
@@ -1310,12 +1267,9 @@ onevent EVENT_GAME
 				cstator 128
 				espawn SPURTTRAIL
 				setactor[RETURN].pal 8
-				getactor[THISACTOR].htbposx TEMP
-				setactor[RETURN].htbposx TEMP
-				getactor[THISACTOR].htbposy TEMP
-				setactor[RETURN].htbposy TEMP
-				getactor[THISACTOR].htbposz TEMP
-				setactor[RETURN].htbposz TEMP
+				setactor[RETURN].htbposx sprite[].htbposx
+				setactor[RETURN].htbposy sprite[].htbposy
+				setactor[RETURN].htbposz sprite[].htbposz
 				setactor[RETURN].xrepeat 40
 				setactor[RETURN].yrepeat 40
 				setvar RETURN 0
@@ -1361,20 +1315,17 @@ onevent EVENT_GAME
 endevent
 
 state set_norespawn
-		ifactor SECTOREFFECTOR
-		{
-			setvarvar TEMP3 HITAG_MEMORY
-		}
-		else // MASTERSWITCH
-		{
-			setvarvar TEMP3 LOTAG_MEMORY
-		}
-		
-		getactor[CURSPRITE].hitag TEMP2
-		ifvarvare TEMP3 TEMP2
-		{
-			setactorvar[CURSPRITE].NORESPAWN 1
-		}
+	ifactor SECTOREFFECTOR
+	{
+		setvarvar TEMP3 HITAG_MEMORY
+	}
+	else // MASTERSWITCH
+	{
+		setvarvar TEMP3 LOTAG_MEMORY
+	}
+	
+	ifvarvare TEMP3 sprite[CURSPRITE].hitag
+		setactorvar[CURSPRITE].NORESPAWN 1
 ends
 
 state explosive_search_iterator
@@ -1448,6 +1399,7 @@ onevent EVENT_SPAWN
 	ifvarg predicting 0
 	{
 		redefinequote 500 EVENT_SPAWN: Something attempting to spawn during prediction!
+		userquote 500
 	}
 	
 	ifactor MASTERSWITCH
@@ -1475,9 +1427,7 @@ onevent EVENT_SPAWN
 		ifspawnedby APLAYER
 		{
 			setactor[THISACTOR].mdflags 16
-			getactor[THISACTOR].owner TEMP
-			getactor[TEMP].pal TEMP2
-			setactor[THISACTOR].pal TEMP2
+			setactor[THISACTOR].pal sprite[sprite.owner].pal
 		}
 		break
 	}
@@ -1554,8 +1504,7 @@ onevent EVENT_SPAWN
 	
 	ifactor SHELL
 	{
-		getactor[THISACTOR].owner TEMP
-		getactor[TEMP].yvel TEMP2
+		getactor[sprite.owner].yvel TEMP2
 		getplayer[TEMP2].curr_weapon TEMP3
 		ifvare TEMP3 CHAINGUN_WEAPON
 		{
@@ -2281,8 +2230,7 @@ onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
 		{
 			ifvare ISADULT ADULT_SWAP
 			{
-				gettspr[THISACTOR].tsprpicnum CL_TEMP1
-				switch CL_TEMP1
+				switch tspr[].tsprpicnum
 					// Clean tiles with XXX versions
 					case EXOTICA: settspr[THISACTOR].tsprpicnum 5950 break // 766
 					case FEMPIC5: settspr[THISACTOR].tsprpicnum 5951 break // 963
@@ -2324,8 +2272,7 @@ onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
 			
 			ifvare ISADULT ADULT_SWAP
 			{
-				gettspr[THISACTOR].tsprpicnum CL_TEMP1
-				switch CL_TEMP1
+				switch tspr[].tsprpicnum
 					// XXX tiles with clean versions
 					case DILDO: settspr[THISACTOR].tsprpicnum 3702 break
 					case SHARONM: settspr[THISACTOR].tsprpicnum 4980 break
@@ -2347,38 +2294,26 @@ onevent EVENT_ANIMATESPRITES // !UNSYNCHRONIZED!
 		break
 	}
 	
-	getactor[THISACTOR].picnum CL_TEMP1
-	switch CL_TEMP1
+	switch sprite[].picnum
 		case BLOODPOOL:
 			settspr[THISACTOR].tsprpicnum BLOODPOOL_PLAYER
 			break
 		case FOOTPRINTS:
-			getactor[THISACTOR].pal CL_TEMP1
-			ifvarn CL_TEMP1 0
-			{
+			ifvarn sprite[].pal 0
 				settspr[THISACTOR].tsprpicnum BLOODY_FOOTPRINT
-			}
 			break
 		case FOOTPRINTS2:
 			getactor[THISACTOR].pal CL_TEMP1
-			ifvarn CL_TEMP1 0
-			{
+			ifvarn sprite[].pal 0
 				settspr[THISACTOR].tsprpicnum BLOODY_FOOTPRINT2
-			}
 			break
 		case FOOTPRINTS3:
-			getactor[THISACTOR].pal CL_TEMP1
-			ifvarn CL_TEMP1 0
-			{
+			ifvarn sprite[].pal 0
 				settspr[THISACTOR].tsprpicnum BLOODY_FOOTPRINT3
-			}
 			break
 		case FOOTPRINTS4:
-			getactor[THISACTOR].pal CL_TEMP1
-			ifvarn CL_TEMP1 0
-			{
+			ifvarn sprite[].pal 0
 				settspr[THISACTOR].tsprpicnum BLOODY_FOOTPRINT4
-			}
 			break
 	endswitch
 endevent
@@ -2537,25 +2472,20 @@ onevent EVENT_RESETPLAYER
 			ifvarg APPARITION_LAIRSPRITEID -1
 			{
 				setvar HITAG_MEMORY 0
-				getactor[APPARITION_LAIRSPRITEID].x TEMP
-				setplayer[THISACTOR].posx TEMP
-				setactor[THISACTOR].x TEMP
+				setplayer[].posx sprite[APPARITION_LAIRSPRITEID].x
+				setactor[].x player[].posx
 				
-				getactor[APPARITION_LAIRSPRITEID].y TEMP
-				setplayer[THISACTOR].posy TEMP
-				setactor[THISACTOR].y TEMP
+				setplayer[].posy sprite[APPARITION_LAIRSPRITEID].y
+				setactor[].y player[].posy
 				
-				getactor[APPARITION_LAIRSPRITEID].z TEMP
-				setplayer[THISACTOR].posz TEMP
-				setactor[THISACTOR].z TEMP
+				setplayer[].posz sprite[APPARITION_LAIRSPRITEID].z
+				setactor[].z player[].posz
 				
-				getactor[APPARITION_LAIRSPRITEID].ang TEMP
-				setplayer[THISACTOR].ang TEMP
-				setactor[THISACTOR].ang TEMP
+				setplayer[].ang sprite[APPARITION_LAIRSPRITEID].ang
+				setactor[].ang player[].ang
 				
-				getactor[APPARITION_LAIRSPRITEID].sectnum TEMP
-				setplayer[THISACTOR].cursectnum TEMP
-				changespritesect THISACTOR TEMP
+				setplayer[].cursectnum sprite[APPARITION_LAIRSPRITEID].sectnum
+				changespritesect THISACTOR player[].cursectnum
 				
 				quote 198
 			}
@@ -2602,7 +2532,7 @@ ifp pjetpack
 	{
 		setvar TEMP 45
 	}
-	setplayer[THISACTOR].rotscrnang TEMP 
+	setplayer[THISACTOR].rotscrnang TEMP
 }
 endevent
 
@@ -2625,22 +2555,17 @@ ifp pjetpack
 endevent
 
 state jetpack_turn
-	getplayer[THISACTOR].rotscrnang TEMP	
-	getinput[THISACTOR].avel TEMP2
-	mulvar TEMP2 -1
-	divvar TEMP2 4
-	addvarvar TEMP TEMP2
+	getinput[].avel TEMP
+	inv TEMP
+	shiftvarr TEMP 2
 	
-	ifvarl TEMP -45
-	{
-		setvar TEMP -45
-	}
-	else ifvarg TEMP 45
-	{
-		setvar TEMP 45
-	}
+	addvarvar TEMP player[].rotscrnang
+	setplayer[].rotscrnang TEMP
 	
-	setplayer[THISACTOR].rotscrnang TEMP 
+	ifvarl player[].rotscrnang -45
+		setplayer[].rotscrnang -45
+	else ifvarg player[].rotscrnang 45
+		setplayer[].rotscrnang 45
 ends
 
 onevent EVENT_TURNLEFT
@@ -2675,7 +2600,9 @@ onevent EVENT_GETLOADTILE // !UNSYNCHRONIZED!
 	ifvare VOLUME 4 // Striker's Maps
 	ifvare LEVEL 7 // Burning Memory
 	{
-		setvar RETURN 6656
+		displayrandvar CL_TEMP1 23
+		setvar RETURN 6650
+		addvarvar RETURN CL_TEMP1
 		break
 	}
 endevent
@@ -3254,8 +3181,7 @@ onevent EVENT_SOUND
 	
 	ifvare RETURN PISTOL_BODYHIT
 	{
-		getactor[THISACTOR].htpicnum CL_TEMP1
-		ifvare CL_TEMP1 FLAMETHROWERFLAME
+		ifvare sprite[].htpicnum FLAMETHROWERFLAME
 		{
 			setvar RETURN -1
 			break
@@ -3275,34 +3201,30 @@ onevent EVENT_SOUND
 			case DUKE_ONWATER:
 			case DFG_CHARGE:
 				// I fucking hate how many temp vars this needs.
-				// I NEED TO HURRY MY CUNT ASS UP ON GETTING QUICK-ACCESS VARS IMPLEMENTED
 				getplayer[screenpeek].posx CL_TEMP1
 				getplayer[screenpeek].posy CL_TEMP2
 				getplayer[screenpeek].posz CL_TEMP3
-				getplayer[screenpeek].cursectnum CL_TEMP4
-				getactor[THISACTOR].x CL_TEMP5
-				getactor[THISACTOR].y CL_TEMP6
-				getactor[THISACTOR].z CL_TEMP7
-				getactor[THISACTOR].sectnum CL_TEMP8
+				getactor[THISACTOR].x CL_TEMP4
+				getactor[THISACTOR].y CL_TEMP5
+				getactor[THISACTOR].z CL_TEMP6
 				
-				cansee CL_TEMP1 CL_TEMP2 CL_TEMP3 CL_TEMP4 CL_TEMP5 CL_TEMP6 CL_TEMP7 CL_TEMP8 CL_TEMP9
+				cansee CL_TEMP1 CL_TEMP2 CL_TEMP3 player[screenpeek].cursectnum CL_TEMP4 CL_TEMP5 CL_TEMP6 sprite[].sectnum CL_TEMP7
 				
-				ifvare CL_TEMP9 0 // Can't see, let's check again, but slightly raised.
+				ifvare CL_TEMP7 0 // Can't see, let's check again, but slightly raised.
 				{
 					subvar CL_TEMP3 4096
-					subvar CL_TEMP7 4096
-					cansee CL_TEMP1 CL_TEMP2 CL_TEMP3 CL_TEMP4 CL_TEMP5 CL_TEMP6 CL_TEMP7 CL_TEMP8 CL_TEMP9
+					subvar CL_TEMP6 4096
+					cansee CL_TEMP1 CL_TEMP2 CL_TEMP3 player[screenpeek].cursectnum CL_TEMP4 CL_TEMP5 CL_TEMP6 sprite[].sectnum CL_TEMP7
 				}
 				
-				ifvare CL_TEMP9 0
+				ifvare CL_TEMP7 0
 				{
-					getplayer[screenpeek].i CL_TEMP1
-					dist CL_TEMP3 THISACTOR CL_TEMP1
-					ifvarl CL_TEMP3 2048
-						setvar CL_TEMP9 1
+					dist CL_TEMP1 THISACTOR player[screenpeek].i
+					ifvarl CL_TEMP1 2048
+						setvar CL_TEMP7 1
 				}
 				
-				ifvare CL_TEMP9 0
+				ifvare CL_TEMP7 0
 				{
 					ifvare RETURN PIPEBOMB_BOUNCE
 						setvar RETURN DISTORTED_PIPEBOMB
@@ -3438,21 +3360,17 @@ onevent EVENT_SOUND
 	
 	ifvare RETURN FP_HAZARDALARM
 	{
-		getplayer[screenpeek].posz CL_TEMP1
-		getactor[THISACTOR].sectnum CL_TEMP2
-		getactor[THISACTOR].x CL_TEMP3
-		getactor[THISACTOR].y CL_TEMP4
-		getceilzofslope CL_TEMP2 CL_TEMP3 CL_TEMP4 CL_TEMP5
+		getceilzofslope sprite[].sectnum sprite[].x sprite[].y CL_TEMP1
 		
-		ifvarvarl CL_TEMP1 CL_TEMP5
+		ifvarvarl player[screenpeek].posz CL_TEMP1
 		{
 			setvar RETURN FP_HAZARDALARM_MUFFLED
 			break
 		}
 		
-		getflorzofslope CL_TEMP2 CL_TEMP3 CL_TEMP4 CL_TEMP5
+		getflorzofslope sprite[].sectnum sprite[].x sprite[].y CL_TEMP1
 		
-		ifvarvarg CL_TEMP1 CL_TEMP5
+		ifvarvarg player[screenpeek].posz CL_TEMP1
 		{
 			setvar RETURN FP_HAZARDALARM_MUFFLED
 			break
@@ -3539,12 +3457,9 @@ endevent
 
 state spawn_shadow_player
 	espawn SHADOWPLAYER
-	getactor[THISACTOR].yvel TEMP
-	setactor[RETURN].yvel TEMP
-	getactor[THISACTOR].xrepeat TEMP
-	setactor[RETURN].xrepeat TEMP
-	getactor[THISACTOR].yrepeat TEMP
-	setactor[RETURN].yrepeat TEMP
+	setactor[RETURN].yvel sprite[].yvel
+	setactor[RETURN].xrepeat sprite[].xrepeat
+	setactor[RETURN].yrepeat sprite[].yrepeat
 	setvar RETURN 0
 ends
 
@@ -3570,6 +3485,22 @@ onevent EVENT_PROCESSINPUT
 						
 				ifvarl TEMP 8192
 				{
+					ifvarl TEMP 4096
+					ifvarn APPARITION_STATE APPRSTATE_NONE
+					{
+						setvar TEMP4 4096
+						subvarvar TEMP4 TEMP
+						ifvarg TEMP4 0
+						{
+							setvarvar TEMP2 GAME_CLOCK
+							shiftvarl TEMP2 5
+							sin TEMP2 TEMP2
+							mulvarvar TEMP2 TEMP4
+							shiftvarr TEMP2 18
+							setplayer[THISACTOR].rotscrnang TEMP2
+						}
+					}
+					
 					shiftvarr TEMP 7
 					setvar TEMP3 0
 					addvarvar TEMP3 TEMP
@@ -3697,7 +3628,8 @@ onevent EVENT_PROCESSINPUT
 	state handle_special_attacks
 endevent
 
-state trigger_actors
+// STATE_PARAM1 = 0 wall, 1 sprite.
+defstate trigger_actors
 	headspritestat CURSPRITE STAT_ACTOR
 	setvarvar LASTSPRITE CURSPRITE
 	whilevarn CURSPRITE -1
@@ -3713,10 +3645,13 @@ state trigger_actors
 		ifvare TEMP 1
 		{
 			getactorvar[CURSPRITE].LOTAG_MEMORY TEMP
-			ifvarvare LOTAG_MEMORY TEMP // Check if lotag matches
-			{
+			ifvare STATE_PARAM1 1
+				setvarvar TEMP2 LOTAG_MEMORY
+			else
+				getwall[THISACTOR].lotag TEMP2
+				
+			ifvarvare TEMP TEMP2
 				setactorvar[CURSPRITE].PAL_MEMORY 1 // PAL_MEMORY = Activating state for timed platforms
-			}
 		}
 				
 		nextspritestat CURSPRITE LASTSPRITE
@@ -3729,8 +3664,8 @@ ends
 // getplayer[THISACTOR] = ID of the player whom activated the switch.
 onevent EVENT_ACTIVATESWITCH
 	ifvare predicting 0
-	ifvare RETURN 1
 	{
+		setvarvar STATE_PARAM1 RETURN
 		state trigger_actors
 	}
 endevent

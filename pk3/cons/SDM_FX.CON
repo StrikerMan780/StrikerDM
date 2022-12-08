@@ -138,8 +138,7 @@ actor BLOOD 0 BLOODFRAMES
 			ifrnd 30
 			{
 				espawn BLOODINFLUID2
-				getactor[THISACTOR].pal TEMP2
-				setactor[RETURN].pal TEMP2
+				setactor[RETURN].pal sprite[].pal
 				randvar TEMP2 8
 				addvar TEMP2 8
 				setactor[RETURN].xrepeat TEMP2
@@ -165,14 +164,9 @@ actor JUMPPAD 0
 	orvar TEMP2 SECTORTYPE_JUMPPAD
 	setarray SECTOR_TYPES[TEMP] TEMP2	
 	
-	getactor[THISACTOR].xvel TEMP2
-	setarray SECTOR_JUMPX[TEMP] TEMP2
-	
-	getactor[THISACTOR].yvel TEMP2
-	setarray SECTOR_JUMPY[TEMP] TEMP2
-	
-	getactor[THISACTOR].hitag TEMP2
-	setarray SECTOR_JUMPZ[TEMP] TEMP2
+	setarray SECTOR_JUMPX[TEMP] sprite[].xvel
+	setarray SECTOR_JUMPY[TEMP] sprite[].yvel
+	setarray SECTOR_JUMPZ[TEMP] sprite[].hitag
 	
 	killit
 }
@@ -196,10 +190,10 @@ actor FAUCET 0 ANULLACTION
 enda
 
 actor FAUCET_RUNNING 0 FAUCET_ANIM
-	ifactioncount 60
+	ifcount 90
 	{
 		sound FAUCET_RUN
-		resetactioncount
+		resetcount
 	}
 	
 	ifhitspace
@@ -236,6 +230,7 @@ actor CUSTOMTOUCHPLATE
 		getactor[CURSPRITE].sectnum TEMP
 		ifvarvare SECTNUM_MEMORY TEMP // Check if sector matches
 		{
+			setvar STATE_PARAM1 1
 			state trigger_actors
 			break
 		}
@@ -557,42 +552,34 @@ state zteleporter_moveactor
 			getactorvar[CURSPRITE].HITAG_MEMORY TEMP2
 			ifvarvare HITAG_MEMORY TEMP2
 			{
-				getactor[CURSPRITE].x SPAWN_ORIGX
-				getactor[CURSPRITE].y SPAWN_ORIGY
-				getactor[CURSPRITE].z SPAWN_ORIGZ
-				getactor[CURSPRITE].ang SPAWN_ORIGANG
-				
 				getactor[TEMP].picnum TEMP2
 				ifvare TEMP2 APLAYER
 				{
 					getactor[TEMP].yvel TEMP
-					setplayer[TEMP].posx SPAWN_ORIGX
-					setplayer[TEMP].posy SPAWN_ORIGY
-					setplayer[TEMP].posz SPAWN_ORIGZ
-					setplayer[TEMP].ang SPAWN_ORIGANG
+					setplayer[TEMP].posx sprite[CURSPRITE].x
+					setplayer[TEMP].posy sprite[CURSPRITE].y
+					setplayer[TEMP].posz sprite[CURSPRITE].z
+					setplayer[TEMP].ang sprite[CURSPRITE].ang
 				}
 				else
 				{
-					setactor[TEMP].x SPAWN_ORIGX
-					setactor[TEMP].y SPAWN_ORIGY
-					setactor[TEMP].z SPAWN_ORIGZ
-					setactor[TEMP].ang SPAWN_ORIGANG
+					setactor[TEMP].x sprite[CURSPRITE].x
+					setactor[TEMP].y sprite[CURSPRITE].y
+					setactor[TEMP].z sprite[CURSPRITE].z
+					setactor[TEMP].ang sprite[CURSPRITE].ang
 				}
 				
 				espawn TRANSPORTERBEAM
-				getactor[THISACTOR].x TEMP
-				getactor[THISACTOR].y TEMP2
-				getactor[THISACTOR].z TEMP3
-				setactor[RETURN].x TEMP
-				setactor[RETURN].y TEMP2
-				setactor[RETURN].z TEMP3
+				setactor[RETURN].x sprite[].x
+				setactor[RETURN].y sprite[].y
+				setactor[RETURN].z sprite[].z
 				sound TELEPORTER
 				setvar RETURN 0
 				
 				espawn TRANSPORTERBEAM
-				setactor[RETURN].x SPAWN_ORIGX
-				setactor[RETURN].y SPAWN_ORIGY
-				setactor[RETURN].z SPAWN_ORIGZ
+				setactor[RETURN].x sprite[CURSPRITE].x
+				setactor[RETURN].y sprite[CURSPRITE].y
+				setactor[RETURN].z sprite[CURSPRITE].z
 				actorsound RETURN TELEPORTER
 				setvar RETURN 0
 				
@@ -671,8 +658,7 @@ actor PIGJIB1 0
 		state gore_movement
 		
 		espawn BLOOD
-		getactor[THISACTOR].pal TEMP2
-		setactor[RETURN].pal TEMP2
+		setactor[RETURN].pal sprite[].pal
 		setvar RETURN 0
 		
 		iffloordistl 4
@@ -680,7 +666,7 @@ actor PIGJIB1 0
 			state gibsound
 			
 			espawn PIGJIB1_ONGROUND
-			setactor[RETURN].pal TEMP2
+			setactor[RETURN].pal sprite[].pal
 			setvar RETURN 0
 			
 			resetactioncount
@@ -706,13 +692,12 @@ state onground_gib_code
 	else ifcount 0
 	{
 		sizeat 32 32
-		getactor[THISACTOR].pal TEMP3
 			
 		ifrnd 128 { eqspawn WALLBLOOD2 }
 		ifrnd 64 { eqspawn 1622 }
 		else { eqspawn WALLBLOOD5 }
 			
-		setactor[RETURN].pal TEMP3
+		setactor[RETURN].pal sprite[].pal
 		
 		randvar TEMP3 2048
 		setactor[RETURN].ang TEMP3
@@ -901,16 +886,11 @@ actor BLOODSPURT 0
 	}
 	
 	espawn SPURTTRAIL
-	getactor[THISACTOR].pal TEMP
-	setactor[RETURN].pal TEMP
-	getactor[THISACTOR].htbposx TEMP
-	setactor[RETURN].htbposx TEMP
-	getactor[THISACTOR].htbposy TEMP
-	setactor[RETURN].htbposy TEMP
-	getactor[THISACTOR].htbposz TEMP
-	setactor[RETURN].htbposz TEMP
-	getactor[THISACTOR].htflags TEMP
-	setactor[RETURN].htflags TEMP
+	setactor[RETURN].pal sprite[].pal
+	setactor[RETURN].htbposx sprite[].htbposx
+	setactor[RETURN].htbposy sprite[].htbposy
+	setactor[RETURN].htbposz sprite[].htbposz
+	setactor[RETURN].htflags sprite[].htflags
 	setvar RETURN 0
 enda
 
@@ -928,12 +908,8 @@ actor SPURTTRAIL 0
 		killit
 	}
 	
-	getactor[THISACTOR].sectnum TEMP
-	getactor[THISACTOR].x TEMP2
-	getactor[THISACTOR].y TEMP3
-	getflorzofslope TEMP TEMP2 TEMP3 TEMP2
-	getactor[THISACTOR].z TEMP
-	ifvarvarg TEMP TEMP2
+	getflorzofslope sprite[].sectnum sprite[].x sprite[].y TEMP2
+	ifvarvarg sprite[].z TEMP2
 	{
 		killit
 	}
@@ -1218,13 +1194,11 @@ actor BURNTENEMY 0
 		
 		espawn FIREEXPLOSION
 		gettiledata[PICNUM_MEMORY].xsize TEMP
-		getactor[THISACTOR].xrepeat TEMP2
-		mulvarvar TEMP TEMP2
+		mulvarvar TEMP sprite[].xrepeat
 		shiftvarr TEMP 6
 		setactor[RETURN].xrepeat TEMP
 		gettiledata[PICNUM_MEMORY].ysize TEMP
-		getactor[THISACTOR].yrepeat TEMP2
-		mulvarvar TEMP TEMP2
+		mulvarvar TEMP sprite[].yrepeat
 		shiftvarr TEMP 6
 		setactor[RETURN].yrepeat TEMP
 		setvar RETURN 0
@@ -1346,8 +1320,7 @@ actor TROLLGE 0
 			getplayer[TEMP].posx SPAWN_ORIGX
 			getplayer[TEMP].posy SPAWN_ORIGY
 			getplayer[TEMP].posz SPAWN_ORIGZ
-			getplayer[TEMP].cursectnum SECTNUM_MEMORY
-			changespritesect THISACTOR SECTNUM_MEMORY
+			changespritesect THISACTOR player[TEMP].cursectnum
 			
 			randvar TEMP 8192
 			subvar TEMP 4096
@@ -1701,14 +1674,10 @@ actor ARCTRAP 0
 	{
 		sound FP_ELECTRICARC
 		espawn ARCTRAPZAP
-		getactor[THISACTOR].cstat TEMP
-		setactor[RETURN].cstat TEMP
-		getactor[THISACTOR].xrepeat TEMP
-		setactor[RETURN].xrepeat TEMP
-		getactor[THISACTOR].yrepeat TEMP
-		setactor[RETURN].yrepeat TEMP
-		getactor[THISACTOR].ang TEMP
-		setactor[RETURN].ang TEMP
+		setactor[RETURN].cstat sprite[].cstat
+		setactor[RETURN].xrepeat sprite[].xrepeat
+		setactor[RETURN].yrepeat sprite[].yrepeat
+		setactor[RETURN].ang sprite[].ang
 		setvar RETURN 0
 		
 		setvar EXTRA_MEMORY 0
@@ -1746,8 +1715,9 @@ defstate weird_hitscan_bullshit
 		{
 			setvar STATE_PARAM1 25
 			setvarvar STATE_PARAM2 PICNUM_MEMORY
-			setvar STATE_PARAM3 PLASMABALL
-			setvar STATE_PARAM4 0
+			setvarvar STATE_PARAM3 THISACTOR
+			setvar STATE_PARAM4 PLASMABALL
+			setvar STATE_PARAM5 0
 			state apply_damage
 		}
 	}
@@ -1902,8 +1872,7 @@ actor MAGMAVALVE 0
 			state magma_spew
 			
 			espawn MAGMASPEWCAP
-			getactor[THISACTOR].ang TEMP
-			setactor[RETURN].ang TEMP
+			setactor[RETURN].ang sprite[].ang
 			setactor[RETURN].cstat 33
 			
 			// Spew scale should be xrepeat - xrepeat>>2
@@ -2144,16 +2113,13 @@ actor LOOPTRAIN 0
 			addvar TEMP2 1
 		}
 		
-		getactor[THISACTOR].sectnum TEMP
-		headspritesect CURSPRITE TEMP
+		headspritesect CURSPRITE sprite[].sectnum
 		whilevarn CURSPRITE -1
 		{
-			getactor[CURSPRITE].statnum TEMP2
-			ifvare TEMP2 STAT_PLAYER
+			ifvare sprite[CURSPRITE].statnum STAT_PLAYER
 			{
 				getactor[CURSPRITE].yvel TEMP2
-				getplayer[TEMP2].on_ground TEMP3
-				ifvare TEMP3 1
+				ifvare player[TEMP2].on_ground 1
 				{
 					getplayer[TEMP2].posx SPAWN_ORIGX
 					getplayer[TEMP2].posy SPAWN_ORIGY

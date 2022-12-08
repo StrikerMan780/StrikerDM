@@ -278,7 +278,7 @@ state jib_sounds
 			}
 			else
 			{
-				randvar RANDOM_SOUND 69
+				randvar RANDOM_SOUND 70
 				switch RANDOM_SOUND
 					case 0: actorsound LASTHITBY JIBBED_ACTOR1 break
 					case 1: actorsound LASTHITBY JIBBED_ACTOR2 break
@@ -546,14 +546,10 @@ state handle_jumppad_movement
 		setplayer[THISACTOR].falling_counter 0 // No falling damage on jump pads.
 		
 		ifvarn JUMPPAD_XVEL 0
-		{
 			setplayer[THISACTOR].posxv JUMPPAD_XVEL
-		}
 		
 		ifvarn JUMPPAD_YVEL 0
-		{
 			setplayer[THISACTOR].posyv JUMPPAD_YVEL
-		}
 		
 		ifp pdead
 		{
@@ -1411,8 +1407,9 @@ ends
 
 // STATE_PARAM1 = amount
 // STATE_PARAM2 = victim
-// STATE_PARAM3 = htpicnum
-// STATE_PARAM4 = radius damage (greater than 0 = yes)
+// STATE_PARAM3 = attacker
+// STATE_PARAM4 = htpicnum
+// STATE_PARAM5 = radius damage (greater than 0 = yes)
 // STATE_RETURN = Amount of damage that bled through.
 defstate process_shield_damage
 	setvarvar STATE_RETURN STATE_PARAM1 // Store un-multiplied damage
@@ -1431,18 +1428,18 @@ defstate process_shield_damage
 			
 			ifvare STATE_TEMP3 SHIELDTYPE_FIRE
 			{
-				ifvare STATE_PARAM3 FREEZEBLAST
+				ifvare STATE_PARAM4 FREEZEBLAST
 					mulvar STATE_PARAM1 4
-				else ifvare STATE_PARAM3 FIREBALL
+				else ifvare STATE_PARAM4 FIREBALL
 					setvar STATE_PARAM1 0
-				else ifvare STATE_PARAM3 MAGMASPEW
+				else ifvare STATE_PARAM4 MAGMASPEW
 					setvar STATE_PARAM1 10
 				
 				setvar STATE_RETURN -1 // No Bleedthrough
 			}
 			else ifvare STATE_TEMP3 SHIELDTYPE_WATER
 			{
-				switch STATE_PARAM3
+				switch STATE_PARAM4
 					case PLASMABALL:
 					case PLASMABALL2:
 					case PLASMABALL3:
@@ -1459,19 +1456,19 @@ defstate process_shield_damage
 			}
 			else ifvare STATE_TEMP3 SHIELDTYPE_EARTH
 			{
-				ifvare STATE_PARAM3 RAILGUNSHOT
+				ifvare STATE_PARAM4 RAILGUNSHOT
 					shiftvarr STATE_PARAM1 2 // Quarter damage from rails
 				else
 					addvar STATE_PARAM1 2 // Worn out slightly quicker by other damage types.
 				
-				ifvarg STATE_PARAM4 0 // Radius Damage is nullified
+				ifvarg STATE_PARAM5 0 // Radius Damage is nullified
 					setvar STATE_PARAM1 0
 				
 				setvar STATE_RETURN -1
 			}
 			else ifvare STATE_TEMP3 SHIELDTYPE_WOOD
 			{
-				switch STATE_PARAM3
+				switch STATE_PARAM4
 					case FIREBALL:
 						shiftvarl STATE_PARAM1 2
 						break
@@ -1490,7 +1487,7 @@ defstate process_shield_damage
 			}
 			else ifvare STATE_TEMP3 SHIELDTYPE_METAL
 			{
-				switch STATE_PARAM3
+				switch STATE_PARAM4
 					case PLASMABALL:
 					case PLASMABALL2:
 					case PLASMABALL3:
@@ -1580,8 +1577,9 @@ ends
 
 // STATE_PARAM1 = amount
 // STATE_PARAM2 = victim
-// STATE_PARAM3 = htpicnum
-// STATE_PARAM4 = radius damage (passes through this state to process_shield_damage)
+// STATE_PARAM3 = attacker
+// STATE_PARAM4 = htpicnum
+// STATE_PARAM5 = radius damage (passes through this state to process_shield_damage)
 defstate apply_damage
 	state process_shield_damage // Do shield damage first.
 	ifvarg STATE_RETURN -1
@@ -1590,16 +1588,16 @@ defstate apply_damage
 		addvarvar STATE_TEMP1 STATE_RETURN
 		setactor[STATE_PARAM2].htextra STATE_TEMP1
 		
-		getactor[THISACTOR].owner STATE_TEMP1
-		setactor[STATE_PARAM2].htowner STATE_TEMP1
-		setactor[STATE_PARAM2].htpicnum STATE_PARAM3
-		setactorvar[STATE_PARAM2].LASTHITBY STATE_TEMP1
+		setactorvar[STATE_PARAM2].LASTHITBY STATE_PARAM3
+		setactor[STATE_PARAM2].htowner STATE_PARAM3
+		setactor[STATE_PARAM2].htpicnum STATE_PARAM4
 		
 		getactor[THISACTOR].ang STATE_TEMP1
 		setactor[STATE_PARAM2].htang STATE_TEMP1
 	}
 ends
 
+// STATE_PARAM1 = Object we're touching
 defstate check_object_touch
 	getactor[STATE_PARAM1].picnum STATE_TEMP1
 	ifvare STATE_TEMP1 BOMBFLOWER
@@ -1616,10 +1614,12 @@ defstate check_object_touch
 	}
 	else ifvare STATE_TEMP1 MAGMASPEWCAP
 	{
+		setvarvar STATE_PARAM3 STATE_PARAM1 // Set before overwrite
+		
 		setvar STATE_PARAM1 999
 		setvarvar STATE_PARAM2 THISACTOR
-		setvar STATE_PARAM3 MAGMASPEW
-		setvar STATE_PARAM4 0
+		setvar STATE_PARAM4 MAGMASPEW
+		setvar STATE_PARAM5 0
 		state apply_damage
 	}
 ends
@@ -1749,18 +1749,19 @@ defstate zap_a_cunt
 				
 				setvar STATE_PARAM1 DFG_TRACER_STRENGTH
 				setvarvar STATE_PARAM2 CURSPRITE
+				getactor[THISACTOR].owner STATE_PARAM3
 				
 				ifvare TEMP APLAYER
 				{
-					setvar STATE_PARAM3 DFGTRACER
+					setvar STATE_PARAM4 DFGTRACER
 				}
 				else
 				{
-					setvar STATE_PARAM3 RADIUSEXPLOSION
+					setvar STATE_PARAM4 RADIUSEXPLOSION
 					mulvar STATE_PARAM1 3 // Triple damage to monsters
 				}
 
-				setvarvar STATE_PARAM4 0
+				setvarvar STATE_PARAM5 0
 				state apply_damage
 				
 				espawn DFGTRACER
@@ -1798,22 +1799,6 @@ defstate apparition_screenfx
 			mulvar CL_TEMP9 255
 			divvar CL_TEMP9 4096
 			rotatespritea 0 0 65536 0 6764 0 0 1042 CL_TEMP9 0 0 xdim ydim
-			
-			ifvarn APPARITION_STATE APPRSTATE_NONE
-			{
-				setvar CL_TEMP9 4096
-				subvarvar CL_TEMP9 CL_TEMP1
-				ifvarg CL_TEMP9 0
-				{
-					setvarvar CL_TEMP8 totalclock
-					shiftvarl CL_TEMP8 3
-					sin CL_TEMP8 CL_TEMP8
-					mulvarvar CL_TEMP8 CL_TEMP9
-					shiftvarr CL_TEMP8 18
-					setplayer[THISACTOR].rotscrnang CL_TEMP8
-					setplayer[THISACTOR].orotscrnang CL_TEMP8
-				}
-			}
 		}
 	}
 ends

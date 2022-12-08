@@ -198,10 +198,8 @@ onevent EVENT_DISPLAYSBAR // !UNSYNCHRONIZED!
 			rotatesprite TEMP TEMP2 CL_TEMP2 0 CL_TEMP1 -127 0 522 windowx1 windowy1 windowx2 windowy2
 			
 			// Ammo Number
-			getplayer[THISACTOR].ammo_amount STATE_PARAM1 CL_TEMP1
-			
 			redefinequote 500 %d
-			qsprintf 500 500 CL_TEMP1
+			qsprintf 500 500 player[].ammo_amount STATE_PARAM1
 			
 			setvar TEMP 262
 			setvar TEMP2 182
@@ -231,13 +229,12 @@ onevent EVENT_DISPLAYSBAR // !UNSYNCHRONIZED!
 				setvar CL_TEMP1 DUKEHUDFACE
 		}
 		
-		getactor[THISACTOR].pal CL_TEMP2
 		setvar TEMP 14
 		setvar TEMP2 187
 		rotatespritea TEMP TEMP2 24576 0 CL_TEMP1 -127 4 266 128 windowx1 windowy1 windowx2 windowy2
 		subvar TEMP 1
 		subvar TEMP2 1
-		rotatesprite TEMP TEMP2 24576 0 CL_TEMP1 -127 CL_TEMP2 266 windowx1 windowy1 windowx2 windowy2
+		rotatesprite TEMP TEMP2 24576 0 CL_TEMP1 -127 sprite[].pal 266 windowx1 windowy1 windowx2 windowy2
 		
 		// SHIELDS
 		ifvarg SHIELD_HEALTH 0
@@ -321,52 +318,52 @@ onevent EVENT_DISPLAYSBAR // !UNSYNCHRONIZED!
 		switch CL_TEMP1
 			case 1:
 				setvar CL_TEMP1 FIRSTAID_ICON
-				getplayer[THISACTOR].firstaid_amount TEMP3
+				getplayer[THISACTOR].firstaid_amount CL_TEMP3
 				break
 			case 2:
 				setvar CL_TEMP1 STEROIDS_ICON
-				getplayer[THISACTOR].steroids_amount TEMP3
+				getplayer[THISACTOR].steroids_amount CL_TEMP3
 				
-				ifvarl TEMP3 400
-				ifvarg TEMP3 0
+				ifvarl CL_TEMP3 400
+				ifvarg CL_TEMP3 0
 				{
 					setvar CL_TEMP2 1
 				}
 				
-				addvar TEMP3 3
-				shiftvarr TEMP3 2
+				addvar CL_TEMP3 3
+				shiftvarr CL_TEMP3 2
 				break
 			case 3:
 				setvar CL_TEMP1 HOLODUKE_ICON
 				getplayer[THISACTOR].holoduke_on CL_TEMP2
-				getplayer[THISACTOR].holoduke_amount TEMP3
-				addvar TEMP3 15
-				divvar TEMP3 24
+				getplayer[THISACTOR].holoduke_amount CL_TEMP3
+				addvar CL_TEMP3 15
+				divvar CL_TEMP3 24
 				break
 			case 4:
 				setvar CL_TEMP1 JETPACK_ICON
 				getplayer[THISACTOR].jetpack_on CL_TEMP2
-				getplayer[THISACTOR].jetpack_amount TEMP3
-				addvar TEMP3 15
-				shiftvarr TEMP3 4
+				getplayer[THISACTOR].jetpack_amount CL_TEMP3
+				addvar CL_TEMP3 15
+				shiftvarr CL_TEMP3 4
 				break
 			case 5:
 				setvar CL_TEMP1 HEAT_ICON
 				getplayer[THISACTOR].heat_on CL_TEMP2
-				getplayer[THISACTOR].heat_amount TEMP3
-				divvar TEMP3 12
+				getplayer[THISACTOR].heat_amount CL_TEMP3
+				divvar CL_TEMP3 12
 				break
 			case 6:
 				setvar CL_TEMP1 AIRTANK_ICON
 				getplayer[THISACTOR].scuba_on CL_TEMP2
-				getplayer[THISACTOR].scuba_amount TEMP3
-				addvar TEMP3 63
-				shiftvarr TEMP3 6
+				getplayer[THISACTOR].scuba_amount CL_TEMP3
+				addvar CL_TEMP3 63
+				shiftvarr CL_TEMP3 6
 				break
 			case 7:
 				setvar CL_TEMP1 BOOT_ICON
-				getplayer[THISACTOR].boot_amount TEMP3
-				shiftvarr TEMP3 1
+				getplayer[THISACTOR].boot_amount CL_TEMP3
+				shiftvarr CL_TEMP3 1
 				break
 			default:
 				setvar CL_TEMP1 -1
@@ -392,7 +389,7 @@ onevent EVENT_DISPLAYSBAR // !UNSYNCHRONIZED!
 				rotatesprite 115 190 16384 0 CL_TEMP1 -127 0 266 windowx1 windowy1 windowx2 windowy2
 			}
 			
-			setvarvar CL_TEMP1 TEMP3
+			setvarvar CL_TEMP1 CL_TEMP3
 			redefinequote 500 %d%%
 			qsprintf 500 500 CL_TEMP1
 			
