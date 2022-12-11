@@ -326,8 +326,7 @@ onevent EVENT_BOTGETSPRITESCORE
 	
 	ifactor LIFEPETAL
 	{
-		getplayer[THISACTOR].i TEMP
-		getactor[TEMP].extra TEMP
+		getactor[player.i].extra TEMP
 		ifvarl TEMP 25
 			setvar RETURN 28
 		else ifvarl TEMP 50
@@ -707,8 +706,7 @@ onevent EVENT_EGS
 			ifinwater
 			{
 				espawn BLOODINFLUID1
-				getactor[THISACTOR].pal TEMP2
-				setactor[RETURN].pal TEMP2
+				setactor[RETURN].pal sprite[].pal
 				randvar TEMP 8
 				addvar TEMP 8
 				setactor[RETURN].xrepeat TEMP
@@ -718,10 +716,8 @@ onevent EVENT_EGS
 			else
 			{
 				espawn BLOODSPURT
-				getactor[THISACTOR].pal TEMP2
-				setactor[RETURN].pal TEMP2
-				getactor[THISACTOR].htflags TEMP2
-				setactor[RETURN].htflags TEMP2
+				setactor[RETURN].pal sprite[].pal
+				setactor[RETURN].htflags sprite[].htflags
 				
 				randvar TEMP 56
 				addvar TEMP 8
@@ -737,10 +733,8 @@ onevent EVENT_EGS
 				setvar RETURN 0
 				
 				espawn BLOOD // Spawn spray effect
-				getactor[THISACTOR].pal TEMP2
-				setactor[RETURN].pal TEMP2
-				getactor[THISACTOR].htflags TEMP2
-				setactor[RETURN].htflags TEMP2
+				setactor[RETURN].pal sprite[].pal
+				setactor[RETURN].htflags sprite[].htflags
 				setactorvar[RETURN].ANIMATE_LIFETIME 30
 				setactorvar[RETURN].ANIMATE_STARTSIZE 4
 				randvar TEMP2 16
@@ -834,16 +828,13 @@ onevent EVENT_EGS
 		
 		ifspawnedby APLAYER
 		{
-			// Get angle and barrel
-			getplayer[THISACTOR].hbomb_hold_delay TEMP3
-			
 			// Calculate X position
 			sin TEMP2 player[].ang
 			divvar TEMP2 512
 			
 			// Set X position
 			getactor[THISACTOR].x TEMP
-			ifvare TEMP3 1 // Check barrel
+			ifvare player[].hbomb_hold_delay 1 // Check barrel
 			{
 				subvarvar TEMP TEMP2
 			}
@@ -861,7 +852,7 @@ onevent EVENT_EGS
 			
 			// Set Y position
 			getactor[THISACTOR].y TEMP
-			ifvare TEMP3 1 // Check barrel
+			ifvare player[].hbomb_hold_delay 1 // Check barrel
 			{
 				subvarvar TEMP TEMP2
 			}

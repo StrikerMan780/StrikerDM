@@ -171,13 +171,10 @@ state expander_radius
 	}
 	
 	// This might be too slow...
-	headspritestat CURSPRITE STAT_ACTOR
-	whilevarn CURSPRITE -1
+	for CURSPRITE spritesofstatus STAT_ACTOR
 	{
-		getactor[CURSPRITE].cstat STATE_TEMP2
-		getactor[CURSPRITE].extra STATE_TEMP3
-		ifvarand STATE_TEMP2 256
-		ifvarg STATE_TEMP3 0
+		ifvarand sprite[CURSPRITE].cstat 256
+		ifvarg sprite[CURSPRITE].extra 0
 		{
 			dist STATE_TEMP2 THISACTOR CURSPRITE
 			ifvarl STATE_TEMP2 1280
@@ -190,8 +187,6 @@ state expander_radius
 				state apply_damage
 			}
 		}
-		
-		nextspritestat CURSPRITE CURSPRITE
 	}
 ends
 

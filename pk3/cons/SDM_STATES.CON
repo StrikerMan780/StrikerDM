@@ -109,8 +109,7 @@ state check_if_multiplayer_only
 	}
 	else
 	{
-		getactor[THISACTOR].pal TEMP
-		ifvarn TEMP 0
+		ifvarn sprite[].pal 0
 		{
 			killit
 		}
@@ -214,10 +213,8 @@ state jib_sounds
 	ifvare DEMENTIA 1
 		break
 		
-	getactor[LASTHITBY].picnum TEMP
-	getactor[LASTHITBY].extra TEMP2
-	ifvare TEMP APLAYER
-	ifvarg TEMP2 0
+	ifvare sprite[LASTHITBY].picnum APLAYER
+	ifvarg sprite[LASTHITBY].extra 0
 	ifvarvarn THISACTOR LASTHITBY
 	{
 		ifrnd SWEARFREQUENCY
@@ -482,18 +479,11 @@ state handle_jumppad
 	{
 		ifp ponground
 		{
-			// TEMP = X
-			// TEMP2 = Y
-			// TEMP3 = Sector Number
-			getplayer[THISACTOR].posx TEMP
-			getplayer[THISACTOR].posy TEMP2
-			getplayer[THISACTOR].cursectnum TEMP3
-			
 			// Set TEMP to florz
-			getflorzofslope TEMP3 TEMP TEMP2 TEMP
+			getflorzofslope player[].cursectnum player[].posx player[].posy TEMP
 			subvar TEMP 16384 // Subtract height
 			
-			getplayer[THISACTOR].posz TEMP2			
+			getplayer[THISACTOR].posz TEMP2
 			ifvarvarg TEMP2 TEMP // Touching floor?
 			{
 				sound JUMPPADSOUND
@@ -1171,35 +1161,30 @@ defstate underwater_blood
 	ifinwater
 	{
 		espawn BLOODINFLUID2
-		getactor[THISACTOR].pal TEMP
-		setactor[RETURN].pal TEMP
-		
-		getactor[THISACTOR].picnum TEMP
-		gettiledata[TEMP].xsize STATE_TEMP1
-		gettiledata[TEMP].ysize STATE_TEMP2
-		getactor[THISACTOR].xrepeat STATE_TEMP3
-		getactor[THISACTOR].yrepeat STATE_TEMP4
+		setactor[RETURN].pal sprite[].pal
 		
 		// Get Y size + offset
-		gettiledata[TEMP].yoffset TEMP2 // Get Y Offset
-		setvarvar TEMP STATE_TEMP2 // Copy Y size
-		mulvarvar TEMP STATE_TEMP4
-		mulvarvar TEMP2 STATE_TEMP4
-		shiftvarl TEMP 1	// Half of sprite size to map units
-		shiftvarl TEMP2 2	// Full sprite offset to map units
+		gettiledata[sprite.picnum].yoffset TEMP2 // Get Y Offset
+		setvarvar TEMP tiledata[sprite.picnum].ysize // Copy Y size
+		mulvarvar TEMP sprite[].yrepeat
+		mulvarvar TEMP2 sprite[].yrepeat
+		shiftvarl TEMP 1 // Half of sprite size to map units
+		shiftvarl TEMP2 2 // Full sprite offset to map units
 		addvarvar TEMP TEMP2
 		
 		getactor[THISACTOR].z TEMP2
 		subvarvar TEMP2 TEMP
 		setactor[RETURN].z TEMP2
 		
-		setvarvar TEMP STATE_TEMP1
-		mulvarvar TEMP STATE_TEMP3
-		setvarvar TEMP2 STATE_TEMP2
-		mulvarvar TEMP2 STATE_TEMP4
-		addvarvar TEMP TEMP2
-		divvar TEMP 2
-		shiftvarr TEMP 6
+		setvarvar TEMP tiledata[sprite.picnum].xsize
+		mulvarvar TEMP sprite[].xrepeat
+		divvar TEMP 50
+		setvarvar TEMP2 tiledata[sprite.picnum].ysize
+		mulvarvar TEMP2 sprite[].yrepeat
+		divvar TEMP2 50
+		
+		ifg TEMP2 TEMP
+			setvarvar TEMP TEMP2
 		
 		setactor[RETURN].xrepeat TEMP
 		setactor[RETURN].yrepeat TEMP
@@ -1655,19 +1640,14 @@ defstate zap_a_cunt
 	// Friendly fire check
 	ifvarvarn CURSPRITE THISACTOR
 	{
-		getactor[CURSPRITE].picnum TEMP
-		ifvare TEMP APLAYER
+		ifvare sprite[CURSPRITE].picnum APLAYER
 		{
 			ifvarand gametype_flags 4096 // All players friendly
 				break
 			
 			ifvarand gametype_flags 65536 // Team DM
 			{
-				getactor[CURSPRITE].yvel TEMP
-				getplayer[TEMP].team TEMP	
-				getplayer[THISACTOR].team TEMP2
-						
-				ifvarvare TEMP TEMP2 // Team matches?
+				ifvarvare player[sprite[CURSPRITE].yvel].team player[].team // Team matches?
 				{
 					break // Bail.
 				}
@@ -1679,11 +1659,9 @@ defstate zap_a_cunt
 	ifvare HITAG_MEMORY 40
 		break
 	
-	getactor[CURSPRITE].cstat TEMP
-	ifvarand TEMP 256
+	ifvarand sprite[CURSPRITE].cstat 256
 	{
-		getactor[CURSPRITE].extra TEMP
-		ifvarl TEMP 1 // Already dead?
+		ifvarl sprite[CURSPRITE].extra 1 // Already dead?
 			break
 			
 		dist TEMP CURSPRITE THISACTOR
@@ -1716,7 +1694,6 @@ defstate zap_a_cunt
 			getactor[CURSPRITE].x SPAWN_ORIGX
 			getactor[CURSPRITE].y SPAWN_ORIGY
 			getactor[CURSPRITE].z SPAWN_ORIGZ
-			getactor[CURSPRITE].sectnum SECTNUM_MEMORY
 			
 			// Get picnum and dimensions
 			getactor[CURSPRITE].picnum TEMP
@@ -1736,11 +1713,7 @@ defstate zap_a_cunt
 			// Sub yzize/offset from z coord
 			subvarvar SPAWN_ORIGZ TEMP
 			
-			getplayer[THISACTOR].posx TEMP
-			getplayer[THISACTOR].posy TEMP2
-			getplayer[THISACTOR].posz TEMP3
-			getplayer[THISACTOR].cursectnum SPAWN_ORIGANG
-			cansee SPAWN_ORIGX SPAWN_ORIGY SPAWN_ORIGZ SECTNUM_MEMORY TEMP TEMP2 TEMP3 SPAWN_ORIGANG EXTRA_MEMORY
+			cansee SPAWN_ORIGX SPAWN_ORIGY SPAWN_ORIGZ sprite[CURSPRITE].sectnum player[].posx player[].posy player[].posz player[].cursectnum EXTRA_MEMORY
 			ifvare EXTRA_MEMORY 1
 			{
 				// Zap the cunt
@@ -1782,14 +1755,8 @@ ends
 defstate apparition_screenfx
 	ifvarg APPARITION_SPRITEID -1
 	{
-		getactor[APPARITION_SPRITEID].x CL_TEMP1
-		getactor[APPARITION_SPRITEID].y CL_TEMP2
-		getactor[APPARITION_SPRITEID].z CL_TEMP3
-		
-		distvar camerax cameray cameraz CL_TEMP1 CL_TEMP2 CL_TEMP3 CL_TEMP1
-		getactor[APPARITION_SPRITEID].cstat CL_TEMP2
-			
-		ifvarand CL_TEMP2 32768
+		distvar camerax cameray cameraz sprite[APPARITION_SPRITEID].x sprite[APPARITION_SPRITEID].y sprite[APPARITION_SPRITEID].z CL_TEMP1
+		ifvarand sprite[APPARITION_SPRITEID].cstat 32768
 			setvar CL_TEMP1 9999999
 				
 		ifvarl CL_TEMP1 4097
@@ -1812,36 +1779,16 @@ defstate handle_special_attacks
 		setvar SPECIAL_ATTACK 0
 		setvar HITAG_MEMORY 0
 		
-		headspritestat CURSPRITE STAT_PLAYER
-		whilevarn CURSPRITE -1
-		{
+		for CURSPRITE spritesofstatus STAT_PLAYER
 			state zap_a_cunt
-			
-			nextspritestat CURSPRITE CURSPRITE
-		}
 		
-		headspritestat CURSPRITE STAT_ACTOR
-		whilevarn CURSPRITE -1
-		{
+		for CURSPRITE spritesofstatus STAT_ACTOR
 			state zap_a_cunt
-			
-			nextspritestat CURSPRITE CURSPRITE
-		}
 		
-		headspritestat CURSPRITE STAT_ZOMBIEACTOR
-		whilevarn CURSPRITE -1
-		{
+		for CURSPRITE spritesofstatus STAT_ZOMBIEACTOR
 			state zap_a_cunt
-			
-			nextspritestat CURSPRITE CURSPRITE
-		}
 
-		headspritestat CURSPRITE STAT_STANDABLE
-		whilevarn CURSPRITE -1
-		{
+		for CURSPRITE spritesofstatus STAT_STANDABLE
 			state zap_a_cunt
-			
-			nextspritestat CURSPRITE CURSPRITE
-		}
 	}
 ends

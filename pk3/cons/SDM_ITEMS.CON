@@ -138,13 +138,10 @@ actor CRYSTALSHARD WEAK
 		{
 			setvar TEMP2 0 // TEMP2 being 1 means cancel homing.
 			
-			getactor[TARGET].extra TEMP
-			ifvarl TEMP 1 // Dead
+			ifvarl sprite[TARGET].extra 1 // Dead
 				setvar TEMP2 1
 				
-			getactor[TARGET].yvel TEMP
-			getplayer[TEMP].shield_amount TEMP
-			ifvare TEMP 200 // Armor is full
+			ifvarge player[sprite[TARGET].yvel].shield_amount 200 // Armor is full
 				setvar TEMP2 1
 				
 			ifvare TEMP2 1 // Something happened, reset.
@@ -180,36 +177,28 @@ actor CRYSTALSHARD WEAK
 			ifvare TARGET -1
 			ifpdistl 4096
 			{
-				getplayer[THISACTOR].shield_amount TEMP
-				ifvarl TEMP 200
+				ifvarl player[].shield_amount 200
+				ifvarg playervar[].SHIELD_HEALTH 0
+				ifvare playervar[].SHIELD_TYPE SHIELDTYPE_EARTH
 				{
-					getplayervar[THISACTOR].SHIELD_HEALTH TEMP
-					ifvarg TEMP 0
-					{
-						getplayervar[THISACTOR].SHIELD_TYPE TEMP
-						ifvare TEMP SHIELDTYPE_EARTH
-						{
-							getplayer[THISACTOR].i TARGET
-							randvar TEMP2 2047
-							setactor[THISACTOR].ang TEMP2
-							move FPITEM_HOMING noclip
-						}
-					}
+					getplayer[THISACTOR].i TARGET
+					randvar TEMP2 2047
+					setactor[THISACTOR].ang TEMP2
+					move FPITEM_HOMING noclip
 				}
 			}
 			
 			ifpdistl RETRIEVEDISTANCE
 			{
-				getplayer[THISACTOR].shield_amount TEMP
-				ifvarl TEMP 200
+				ifvarl player[].shield_amount 200
 				{
-					setplayer[THISACTOR].max_shield_amount 200
+					setplayer[].max_shield_amount 200
 					addinventory GET_SHIELD 2
-					setplayer[THISACTOR].max_shield_amount SHIELD_AMOUNT
+					setplayer[].max_shield_amount SHIELD_AMOUNT
 					quote 136
 					
-					ifvarg TEMP 200
-						setplayer[THISACTOR].shield_amount 200
+					ifvarg player[].shield_amount 200
+						setplayer[].shield_amount 200
 						
 					spawn SHARD_FX1
 					spawn SHARD_FX2
@@ -555,11 +544,10 @@ actor LIFEPETAL WEAK
 		{
 			setvar TEMP2 0 // TEMP2 being 1 means cancel homing.
 			
-			getactor[TARGET].extra TEMP
-			ifvarl TEMP 1 // Dead
+			ifvarl sprite[TARGET].extra 1 // Dead
 				setvar TEMP2 1
 			
-			ifvare TEMP 200 // Health Full
+			ifvarge sprite[TARGET].extra 200 // Health Full
 				setvar TEMP2 1
 				
 			ifvare TEMP2 1 // Something happened, reset.
@@ -595,22 +583,14 @@ actor LIFEPETAL WEAK
 			ifvare TARGET -1
 			ifpdistl 4096
 			{
-				getplayer[THISACTOR].i TEMP
-				getactor[TEMP].extra TEMP
-				ifvarl TEMP 200
+				ifvarl sprite[player.i].extra 200
+				ifvarg playervar[].SHIELD_HEALTH 0
+				ifvare playervar[].SHIELD_TYPE SHIELDTYPE_WOOD
 				{
-					getplayervar[THISACTOR].SHIELD_HEALTH TEMP
-					ifvarg TEMP 0
-					{
-						getplayervar[THISACTOR].SHIELD_TYPE TEMP
-						ifvare TEMP SHIELDTYPE_WOOD
-						{
-							getplayer[THISACTOR].i TARGET
-							randvar TEMP2 2047
-							setactor[THISACTOR].ang TEMP2
-							move FPITEM_HOMING noclip
-						}
-					}
+					getplayer[THISACTOR].i TARGET
+					randvar TEMP2 2047
+					setactor[THISACTOR].ang TEMP2
+					move FPITEM_HOMING noclip
 				}
 			}
 			
@@ -996,8 +976,7 @@ actor BOMBFLOWER_EXPSPAWNER 0
 		
 		ifvarl EXTRA_MEMORY 3
 		{
-			getactor[THISACTOR].zvel TEMP
-			ifvarn TEMP 0
+			ifvarn sprite[].zvel 0
 			{
 				getactor[THISACTOR].z TEMP2
 				randvar TEMP3 -2048
@@ -1095,8 +1074,7 @@ actor SHIELDCRYSTAL_FIRE WEAK
 			
 			ifvarn LASTHITBY -1
 			{
-				getactor[LASTHITBY].picnum TEMP
-				ifvare TEMP APLAYER
+				ifvare sprite[LASTHITBY].picnum APLAYER
 				{
 					espawn SHIELD_GIVER
 					setactor[RETURN].pal SHIELDTYPE_FIRE
@@ -1148,8 +1126,7 @@ actor SHIELDCRYSTAL_WATER WEAK
 			
 			ifvarn LASTHITBY -1
 			{
-				getactor[LASTHITBY].picnum TEMP
-				ifvare TEMP APLAYER
+				ifvare sprite[LASTHITBY].picnum APLAYER
 				{
 					espawn SHIELD_GIVER
 					setactor[RETURN].pal SHIELDTYPE_WATER
@@ -1201,8 +1178,7 @@ actor SHIELDCRYSTAL_EARTH WEAK
 			
 			ifvarn LASTHITBY -1
 			{
-				getactor[LASTHITBY].picnum TEMP
-				ifvare TEMP APLAYER
+				ifvare sprite[LASTHITBY].picnum  APLAYER
 				{
 					espawn SHIELD_GIVER
 					setactor[RETURN].pal SHIELDTYPE_EARTH
@@ -1254,8 +1230,7 @@ actor SHIELDCRYSTAL_WOOD WEAK
 			
 			ifvarn LASTHITBY -1
 			{
-				getactor[LASTHITBY].picnum TEMP
-				ifvare TEMP APLAYER
+				ifvare sprite[LASTHITBY].picnum APLAYER
 				{
 					espawn SHIELD_GIVER
 					setactor[RETURN].pal SHIELDTYPE_WOOD
@@ -1307,8 +1282,7 @@ actor SHIELDCRYSTAL_METAL WEAK
 			
 			ifvarn LASTHITBY -1
 			{
-				getactor[LASTHITBY].picnum TEMP
-				ifvare TEMP APLAYER
+				ifvare sprite[LASTHITBY].picnum APLAYER
 				{
 					espawn SHIELD_GIVER
 					setactor[RETURN].pal SHIELDTYPE_METAL
@@ -1345,16 +1319,13 @@ defstate shield_shared
 		ifspawnedby SHIELD_GIVER
 		{
 			getactorvar[OWNER].OWNER OWNER
-			getactor[OWNER].yvel TEMP
-			setplayervar[TEMP].SHIELD_ACTOR THISACTOR
+			setplayervar[sprite[OWNER].yvel].SHIELD_ACTOR THISACTOR
 		}
 			
 		ifvare STATNUM_MEMORY 69 // Magic number to signify this is an inner shield.
 		{
-			getactor[HITAG_MEMORY].xrepeat XREPEAT_MEMORY
-			getactor[HITAG_MEMORY].yrepeat YREPEAT_MEMORY
-			setactor[THISACTOR].xrepeat XREPEAT_MEMORY
-			setactor[THISACTOR].yrepeat YREPEAT_MEMORY
+			setactor[THISACTOR].xrepeat sprite[HITAG_MEMORY].xrepeat
+			setactor[THISACTOR].yrepeat sprite[HITAG_MEMORY].yrepeat
 			getactorvar[OWNER].OWNER OWNER // Replace this owner with the spawner's (so follow logic can work)
 		}
 		else
@@ -1415,18 +1386,12 @@ defstate shield_shared
 	
 	ifvarg OWNER -1
 	{
-		getactor[OWNER].extra EXTRA_MEMORY
-		getactor[OWNER].picnum PICNUM_MEMORY
-		
-		getactor[OWNER].x TEMP
-		getactor[OWNER].y TEMP2
 		getactor[OWNER].z TEMP3
-			
-		ifvare PICNUM_MEMORY APLAYER
+		ifvare sprite[OWNER].picnum APLAYER
 			addvar TEMP3 -2880
 				
 		addvar TEMP3 -4096
-		setsprite THISACTOR TEMP TEMP2 TEMP3
+		setsprite THISACTOR sprite[OWNER].x sprite[OWNER].y TEMP3
 			
 		ifactor SHIELD_UP
 			break
@@ -1434,20 +1399,15 @@ defstate shield_shared
 		ifactor SHIELD_DOWN
 			break
 			
-		ifvarl EXTRA_MEMORY 1
+		ifvarl sprite[OWNER].extra 1
 			killit
 			
-		ifvare PICNUM_MEMORY APLAYER
+		ifvare sprite[OWNER].picnum APLAYER
 		{
-			// DO NOT OVERWRITE THESE VALUES
-			getactor[OWNER].yvel TEMP
-			getplayervar[TEMP].SHIELD_HEALTH TEMP2
-			getplayervar[TEMP].SHIELD_ACTOR TEMP3
-				
 			// If the owning player's shield actor changes, let's kill this one.
 			ifvare STATNUM_MEMORY 69 // Secondary shield actor
 			{
-				ifvarvarn TEMP3 HITAG_MEMORY
+				ifvarvarn playervar[sprite[OWNER].yvel].SHIELD_ACTOR HITAG_MEMORY
 					killit // Actor doesn't match, kill.
 					
 				ifactor WOODSHIELD_PETAL
@@ -1503,21 +1463,19 @@ defstate shield_shared
 			}
 			else
 			{
-				ifvarvarn TEMP3 THISACTOR 
+				ifvarvarn playervar[sprite[OWNER].yvel].SHIELD_ACTOR THISACTOR 
 					killit // Actor doesn't match, kill.
 			}
 			
-			ifvarl TEMP2 1
+			ifvarl playervar[sprite[OWNER].yvel].SHIELD_HEALTH 1
 			{
 				ifvarn STATNUM_MEMORY 69
 				{
 					actorsound OWNER FP_SHIELDDOWN
 					espawn SHIELD_DOWN
 					setactorvar[RETURN].OWNER OWNER
-					getactor[THISACTOR].xrepeat TEMP3
-					setactor[RETURN].xrepeat TEMP3
-					getactor[THISACTOR].yrepeat TEMP3
-					setactor[RETURN].yrepeat TEMP3
+					setactor[RETURN].xrepeat sprite[].xrepeat
+					setactor[RETURN].yrepeat sprite[].yrepeat
 					setvar RETURN 0
 					
 					setvarvar STATE_PARAM1 TEMP // Player
