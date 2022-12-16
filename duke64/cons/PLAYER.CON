@@ -307,7 +307,7 @@ state tilt
   }
 ends
 
-state pcode
+defstate pcode
   ifvarn player[THISACTOR].timebeforeexit 0
   {
     setvar ATEMP 0 getuserdef .noexits ATEMP

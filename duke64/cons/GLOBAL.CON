@@ -114,298 +114,333 @@ state screenorder
 ends
 
 state displayscreen
-  ifvarand player[myconnectindex].gm MODE_DEMO
-    setvar SCREENMODE 0
-  ifvare SCREENMODE 0
-  {
-    setvar DISPLAYSCREEN -1
-    break
-  }
-  setvar DISPLAYSCREEN 1
-  setvar SCREENCOUNT 0
-  setvar ENDSCREEN -1
-  state screenorder
+	ifvarand player[myconnectindex].gm MODE_DEMO
+		setvar SCREENMODE 0
+	ifvare SCREENMODE 0
+	{
+		setvar DISPLAYSCREEN -1
+		break
+	}
+	setvar DISPLAYSCREEN 1
+	setvar SCREENCOUNT 0
+	setvar ENDSCREEN -1
+	state screenorder
 ends
 
 useractor notenemy MAPCODE
-  ifvare DISPLAYSCREEN 0
-    addvar GAMETIME 1
-  setvarvar SMOOTHCLOCK totalclock
-  setvar STARTLEVELTEMP 0
+	ifvare DISPLAYSCREEN 0
+		addvar GAMETIME 1
+		
+	setvarvar SMOOTHCLOCK totalclock
+	setvar STARTLEVELTEMP 0
 
-  ifvare DISPLAYSCREEN -1
-    setvar DISPLAYSCREEN 0
-  ifvare DISPLAYSCREEN 0
-  ifvare ENDLEVEL -2
-  {
-    ifvare NEXTLEVEL -1
-    {
-      startlevel 0 0
-      setuserdef .eog 1
-    }
-    else
-      startlevel NEXTVOLUME NEXTLEVEL
-    setvar ENDLEVEL -1
-    break
-  }
-  ifvare DISPLAYSCREEN 1
-  {
-    ifvarg CURRSCREEN 0
-    {
-      ifvare SCREENCOUNT 0
-      {
-        getuserdef .volume_number ATEMP
-        setuserdef .volume_number MAXVOLUMES
-        starttrack 0
-        setuserdef .volume_number ATEMP
-        stopallsounds
-      }
-      addvar SCREENCOUNT 1
-      ifvarg ENDSCREEN -1
-      {
-        setvar ATEMP FADE_TIME
-        shiftvarr ATEMP 2
-        ifvarvare ENDSCREEN ATEMP
-          xorvarvar SCREENMODE CURRSCREEN
-        else
-          addvar ENDSCREEN 1
-      }
-      else
-      {
-        setvar ATEMP 1
-        ifvarn CURRSCREEN SCREEN_BONUS
-        ifvarn CURRSCREEN SCREEN_DMBONUS
-        ifvare ENDLEVEL -2
-        ifvare NEXTLEVEL -1
-          setvar ATEMP 0
-        ifvare ATEMP 1
-        {
-          setvar ATEMP2 0
-          setvar AWHILE 0
-          whilevarvarn AWHILE numplayers // MULTIMODE
-          {
-            getinput[AWHILE].bits ATEMP3
-            ifvarand ATEMP3 INPUT_RUNNING
-              xorvar ATEMP3 INPUT_RUNNING
-            ifvarand ATEMP3 INPUT_AIM_MODE
-              xorvar ATEMP3 INPUT_AIM_MODE
-            ifvarg ATEMP3 0
-            {
-              setvar ATEMP2 1
-              setvarvar AWHILE numplayers // MULTIMODE
-            }
-            else
-              addvar AWHILE 1
-          }
-          ifvare ATEMP2 1
-          {
-            ifvare CURRSCREEN SCREEN_BRIEFING
-              xorvarvar SCREENMODE CURRSCREEN
-            else
-            {
-              setvar ENDSCREEN FADE_TIME
-              shiftvarr ENDSCREEN 2
-              subvarvar ENDSCREEN SCREENCOUNT
-              ifvarl ENDSCREEN 0
-                setvar ENDSCREEN 0
-            }
-          }
-        }
-      }
-      ifvarvarand SCREENMODE CURRSCREEN
-      ifvare ENDSCREEN -1
-      {
-        switch CURRSCREEN
-        case SCREEN_BRIEFING
-          setvar ATEMP BRIEFING_FADE_TIME
-          addvar ATEMP BRIEFING_TEXT_TIME
-          addvar ATEMP BRIEFING_TEXT_TIME
-          addvar ATEMP BRIEFING_TEXT_TIME
-          addvar ATEMP BRIEFING_DUKE_TIME
-          addvar ATEMP BRIEFING_MONITOR_TIME
-          addvar ATEMP BRIEFING_PLANET_TIME
-          addvar ATEMP BRIEFING_WARNING_TIME
-          addvar ATEMP BRIEFING_ANIM_TIME
-          addvar ATEMP BRIEFING_ANIM_TIME
-          shiftvarr ATEMP 2
-          ifvarvare SCREENCOUNT ATEMP
-            xorvarvar SCREENMODE CURRSCREEN
-        break
-        case SCREEN_VICTORY1
-        case SCREEN_VICTORY2
-          setvar ATEMP FADE_TIME
-          setvar ATEMP2 VICTORY_TEXT_TIME
-          mulvar ATEMP2 5
-          addvarvar ATEMP ATEMP2
-          shiftvarr ATEMP 2
-          ifvarvare SCREENCOUNT ATEMP
-            setvar ENDSCREEN 0
-        break
-        case SCREEN_VICTORY3
-          setvar ATEMP VICTORY_ANIM_TIME
-          mulvar ATEMP 6
-          subvar ATEMP FADE_TIME
-          shiftvarr ATEMP 2
-          ifvarvare SCREENCOUNT ATEMP
-            setvar ENDSCREEN 0
-        break
-        case SCREEN_CREDITS
-          setvar ATEMP FADE_TIME
-          addvar ATEMP CREDITS_TIME
-          setvar ATEMP2 200
-          subvar ATEMP2 CREDITS_TEXT_LENGTH
-          setvar ATEMP3 CREDITS_BIGLINE_HEIGHT
-          mulvar ATEMP3 33
-          addvarvar ATEMP2 ATEMP3
-          setvar ATEMP3 CREDITS_NEWLINE_HEIGHT
-          mulvar ATEMP3 84
-          addvarvar ATEMP2 ATEMP3
-          shiftvarl ATEMP2 8
-          divvar ATEMP2 CREDITS_ROLL_SPEED
-          addvarvar ATEMP ATEMP2
-          addvar ATEMP CREDITS_TIME
-          shiftvarr ATEMP 2
-          ifvarvare SCREENCOUNT ATEMP
-            xorvarvar SCREENMODE CURRSCREEN
-        break
-        endswitch
-      }
-      ifvarvarand SCREENMODE CURRSCREEN
-        nullop
-      else
-        setvar CURRSCREEN 0
-    }
-    ifvare CURRSCREEN 0
-    {
-      ifvarg SCREENMODE 0
-      {
-        setvar SCREENCOUNT 0
-        setvar ENDSCREEN -1
-        state screenorder
-      }
-      else
-      {
-        setvar DISPLAYSCREEN -1
-        ifvare ENDLEVEL -1
-        {
-          stopallsounds
-          starttrackvar LEVEL
-        }
-      }
-    }
-  }
+	ifvare DISPLAYSCREEN -1
+		setvar DISPLAYSCREEN 0
+		
+	ifvare DISPLAYSCREEN 0
+	ifvare ENDLEVEL -2
+	{
+		ifvare NEXTLEVEL -1
+		{
+			startlevel 0 0
+			setuserdef .eog 1
+		}
+		else
+		startlevel NEXTVOLUME NEXTLEVEL
+		setvar ENDLEVEL -1
+		break
+	}
+	
+	ifvare DISPLAYSCREEN 1
+	{
+		ifvarg CURRSCREEN 0
+		{
+			ifvare SCREENCOUNT 0
+			{
+				getuserdef .volume_number ATEMP
+				setuserdef .volume_number MAXVOLUMES
+				starttrack 0
+				setuserdef .volume_number ATEMP
+				
+				getuserdef[].vm_player ATEMP
+				setuserdef[].vm_player screenpeek // Need to set it to screenpeek or else it'll only work on the closest player.
+				stopallsounds
+				setuserdef[].vm_player ATEMP
+			}
+			
+			addvar SCREENCOUNT 1
+			ifvarg ENDSCREEN -1
+			{
+				setvar ATEMP FADE_TIME
+				shiftvarr ATEMP 2
+				ifvarvare ENDSCREEN ATEMP
+					xorvarvar SCREENMODE CURRSCREEN
+				else
+					addvar ENDSCREEN 1
+			}
+			else
+			{
+				setvar ATEMP 1
+				ifvarn CURRSCREEN SCREEN_BONUS
+				ifvarn CURRSCREEN SCREEN_DMBONUS
+				ifvare ENDLEVEL -2
+				ifvare NEXTLEVEL -1
+					setvar ATEMP 0
+					
+				ifvare ATEMP 1
+				{
+					setvar ATEMP2 0
+					setvar AWHILE 0
+					whilevarvarn AWHILE numplayers // MULTIMODE
+					{
+						getinput[AWHILE].bits ATEMP3
+						ifvarand ATEMP3 INPUT_RUNNING
+							xorvar ATEMP3 INPUT_RUNNING
+							
+						ifvarand ATEMP3 INPUT_AIM_MODE
+							xorvar ATEMP3 INPUT_AIM_MODE
+							
+						ifvarg ATEMP3 0
+						{
+							setvar ATEMP2 1
+							setvarvar AWHILE numplayers // MULTIMODE
+						}
+						else
+							addvar AWHILE 1
+					}
+					
+					ifvare ATEMP2 1
+					{
+						ifvare CURRSCREEN SCREEN_BRIEFING
+							xorvarvar SCREENMODE CURRSCREEN
+						else
+						{
+							setvar ENDSCREEN FADE_TIME
+							shiftvarr ENDSCREEN 2
+							subvarvar ENDSCREEN SCREENCOUNT
+							ifvarl ENDSCREEN 0
+								setvar ENDSCREEN 0
+						}
+					}
+				}
+			}
+	
+			ifvarvarand SCREENMODE CURRSCREEN
+			ifvare ENDSCREEN -1
+			{
+				switch CURRSCREEN
+					case SCREEN_BRIEFING
+						setvar ATEMP BRIEFING_FADE_TIME
+						addvar ATEMP BRIEFING_TEXT_TIME
+						addvar ATEMP BRIEFING_TEXT_TIME
+						addvar ATEMP BRIEFING_TEXT_TIME
+						addvar ATEMP BRIEFING_DUKE_TIME
+						addvar ATEMP BRIEFING_MONITOR_TIME
+						addvar ATEMP BRIEFING_PLANET_TIME
+						addvar ATEMP BRIEFING_WARNING_TIME
+						addvar ATEMP BRIEFING_ANIM_TIME
+						addvar ATEMP BRIEFING_ANIM_TIME
+						shiftvarr ATEMP 2
+						
+						ifvarvare SCREENCOUNT ATEMP
+							xorvarvar SCREENMODE CURRSCREEN
+							
+						break
+					case SCREEN_VICTORY1
+					case SCREEN_VICTORY2
+						setvar ATEMP FADE_TIME
+						setvar ATEMP2 VICTORY_TEXT_TIME
+						mulvar ATEMP2 5
+						addvarvar ATEMP ATEMP2
+						shiftvarr ATEMP 2
+						
+						ifvarvare SCREENCOUNT ATEMP
+							setvar ENDSCREEN 0
+							
+						break
+					case SCREEN_VICTORY3
+						setvar ATEMP VICTORY_ANIM_TIME
+						mulvar ATEMP 6
+						subvar ATEMP FADE_TIME
+						shiftvarr ATEMP 2
+						
+						ifvarvare SCREENCOUNT ATEMP
+							setvar ENDSCREEN 0
+							
+						break
+					case SCREEN_CREDITS
+						setvar ATEMP FADE_TIME
+						addvar ATEMP CREDITS_TIME
+						setvar ATEMP2 200
+						subvar ATEMP2 CREDITS_TEXT_LENGTH
+						setvar ATEMP3 CREDITS_BIGLINE_HEIGHT
+						mulvar ATEMP3 33
+						addvarvar ATEMP2 ATEMP3
+						setvar ATEMP3 CREDITS_NEWLINE_HEIGHT
+						mulvar ATEMP3 84
+						addvarvar ATEMP2 ATEMP3
+						shiftvarl ATEMP2 8
+						divvar ATEMP2 CREDITS_ROLL_SPEED
+						addvarvar ATEMP ATEMP2
+						addvar ATEMP CREDITS_TIME
+						shiftvarr ATEMP 2
+						
+						ifvarvare SCREENCOUNT ATEMP
+							xorvarvar SCREENMODE CURRSCREEN
+							
+						break
+				endswitch
+			}
+			
+			ifvarvarand SCREENMODE CURRSCREEN
+				nullop
+			else
+				setvar CURRSCREEN 0
+		}
+		ifvare CURRSCREEN 0
+		{
+			ifvarg SCREENMODE 0
+			{
+				setvar SCREENCOUNT 0
+				setvar ENDSCREEN -1
+				state screenorder
+			}
+			else
+			{
+				setvar DISPLAYSCREEN -1
+				ifvare ENDLEVEL -1
+				{
+					getuserdef[].vm_player ATEMP
+					setuserdef[].vm_player screenpeek // Need to set it to screenpeek or else it'll only work on the closest player.
+					stopallsounds
+					setuserdef[].vm_player ATEMP
+					starttrackvar LEVEL
+				}
+			}
+		}
+	}
 
-  ifmultiplayer
-    nullop
-  else
-  ifvarg ENDLEVEL -1
-  ifvarl player[THISACTOR].last_extra 0
-    setvar ENDLEVEL -1
-  ifvarg ENDLEVEL -1
-  {
-    setvar ATEMP 0 getuserdef .noexits ATEMP
-    ifvare ATEMP 1
-      setvar ENDLEVEL -1
-  }
-  ifvarg ENDLEVEL -1
-  {
-    ifvare ENDLEVEL END_TIME
-    {
-      state displayscreen
-      setvar ENDLEVEL -2
-      ifvarg SCREENMODE 0
-      {
-        setplayer[THISACTOR].pals_time 0
-        ifmultiplayer
-        ifvarn COOP 1
-        {
-          setvar ATEMP2 0
-          ifvarg MULTIMODE 1
-          {
-            setvar AWHILE 1
-            ifvarvarg MULTIMODE AWHILE
-            whilevarvarn AWHILE MULTIMODE
-            {
-              setvarvar ATEMP3 ATEMP2
-              ifvarl ATEMP3 0
-                mulvar ATEMP3 -1
-              getplayer[ATEMP3].frag ATEMP4
-              subvarvar ATEMP4 player[ATEMP3].fraggedself
-              getplayer[AWHILE].frag ATEMP5
-              subvarvar ATEMP5 player[AWHILE].fraggedself
-              ifvarvarg ATEMP5 ATEMP4
-                setvarvar ATEMP2 AWHILE
-              else
-              ifvarvare ATEMP5 ATEMP4
-              {
-                setvarvar ATEMP2 AWHILE
-                mulvar ATEMP2 -1
-              }
-              addvar AWHILE 1
-            }
-          }
-          ifvarg ATEMP2 -1
-          {
-            getplayervar[ATEMP2].WINS ATEMP3
-            addvar ATEMP3 1
-            setplayervar[ATEMP2].WINS ATEMP3
-          }
-        }
-      }
-    }
-    else
-      addvar ENDLEVEL 1
-  }
+	ifmultiplayer
+		nullop
+	else ifvarg ENDLEVEL -1
+	{
+		ifvarl player[THISACTOR].last_extra 0
+			setvar ENDLEVEL -1
+	}
 
-  setvar ATEMP 0 getuserdef .eog ATEMP
-  ifvare ATEMP 1
-    setuserdef .eog 0
-  setvar ATEMP 0
-  setvar AWHILE 0
-  whilevarvarn AWHILE MULTIMODE
-  {
-    ifvarand player[AWHILE].gm MODE_EOL
-    {
-      getplayer[AWHILE].gm ATEMP2
-      xorvar ATEMP2 MODE_EOL
-      setvar ATEMP3 0 getuserdef .recstat ATEMP3
-      ifvare ATEMP3 2
-        orvar ATEMP2 MODE_DEMO
-      else
-        orvar ATEMP2 MODE_GAME
-      setplayer[AWHILE].gm ATEMP2
-      getplayer[AWHILE].buttonpalette ASET
-      setvar ATEMP 1
-    }
-    addvar AWHILE 1
-  }
-  ifvare ATEMP 1
-  {
-    setuserdef .volume_number LASTVOLUME
-    setuserdef .level_number LASTLEVEL
-  }
-  else
-  {
-    setvarvar LASTVOLUME VOLUME
-    setvarvar LASTLEVEL LEVEL
-  }
+	ifvarg ENDLEVEL -1
+	{
+		setvar ATEMP 0 getuserdef .noexits ATEMP
+		ifvare ATEMP 1
+			setvar ENDLEVEL -1
+	}
+	
+	ifvarg ENDLEVEL -1
+	{
+		ifvare ENDLEVEL END_TIME
+		{
+			state displayscreen
+			setvar ENDLEVEL -2
+			ifvarg SCREENMODE 0
+			{
+				setplayer[THISACTOR].pals_time 0
+				ifmultiplayer
+				ifvarn COOP 1
+				{
+					setvar ATEMP2 0
+					ifvarg MULTIMODE 1
+					{
+						setvar AWHILE 1
+						ifvarvarg MULTIMODE AWHILE
+						whilevarvarn AWHILE MULTIMODE
+						{
+							setvarvar ATEMP3 ATEMP2
+							ifvarl ATEMP3 0
+								mulvar ATEMP3 -1
+								
+							getplayer[ATEMP3].frag ATEMP4
+							subvarvar ATEMP4 player[ATEMP3].fraggedself
+							getplayer[AWHILE].frag ATEMP5
+							subvarvar ATEMP5 player[AWHILE].fraggedself
+							ifvarvarg ATEMP5 ATEMP4
+								setvarvar ATEMP2 AWHILE
+							else ifvarvare ATEMP5 ATEMP4
+							{
+								setvarvar ATEMP2 AWHILE
+								mulvar ATEMP2 -1
+							}
+							addvar AWHILE 1
+						}
+					}
+					ifvarg ATEMP2 -1
+					{
+						getplayervar[ATEMP2].WINS ATEMP3
+						addvar ATEMP3 1
+						setplayervar[ATEMP2].WINS ATEMP3
+					}
+				}
+			}
+		}
+		else
+			addvar ENDLEVEL 1
+	}
 
-  ifvare ATEMP 1
-  ifvare ENDLEVEL -1
-  {
-    setvarvar NEXTVOLUME VOLUME
-    setvarvar NEXTLEVEL LEVEL
-    addvar NEXTLEVEL 1
-    state levelsettings
-    ifvare NEXTLEVEL -1
-      orvar SCREENMODE SCREEN_CREDITS
-    else
-      orvar SCREENMODE SCREEN_BONUS
-    ifmultiplayer
-    ifvarn COOP 1
-      setvar SCREENMODE SCREEN_DMBONUS
-    setvar ENDLEVEL 0
-  }
+	setvar ATEMP 0 
+	getuserdef .eog ATEMP
+	ifvare ATEMP 1
+		setuserdef .eog 0
+		
+	setvar ATEMP 0
+	setvar AWHILE 0
+	whilevarvarn AWHILE MULTIMODE
+	{
+		ifvarand player[AWHILE].gm MODE_EOL
+		{
+			getplayer[AWHILE].gm ATEMP2
+			xorvar ATEMP2 MODE_EOL
+			setvar ATEMP3 0 getuserdef .recstat ATEMP3
+			ifvare ATEMP3 2
+				orvar ATEMP2 MODE_DEMO
+			else
+				orvar ATEMP2 MODE_GAME
+				
+			setplayer[AWHILE].gm ATEMP2
+			getplayer[AWHILE].buttonpalette ASET
+			setvar ATEMP 1
+		}
+		addvar AWHILE 1
+	}
+	
+	ifvare ATEMP 1
+	{
+		setuserdef .volume_number LASTVOLUME
+		setuserdef .level_number LASTLEVEL
+	}
+	else
+	{
+		setvarvar LASTVOLUME VOLUME
+		setvarvar LASTLEVEL LEVEL
+	}
+
+	ifvare ATEMP 1
+	ifvare ENDLEVEL -1
+	{
+		setvarvar NEXTVOLUME VOLUME
+		setvarvar NEXTLEVEL LEVEL
+		addvar NEXTLEVEL 1
+		state levelsettings
+		
+		ifvare NEXTLEVEL -1
+			orvar SCREENMODE SCREEN_CREDITS
+		else
+			orvar SCREENMODE SCREEN_BONUS
+			
+		ifmultiplayer
+		ifvarn COOP 1
+			setvar SCREENMODE SCREEN_DMBONUS
+			
+		setvar ENDLEVEL 0
+	}
 enda
 
 state event_game_0x1

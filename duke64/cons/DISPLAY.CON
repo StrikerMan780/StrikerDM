@@ -279,19 +279,17 @@ defstate draw_gamehud_scale
 ends
 
 defstate draw_gamehud
-  state draw_gamehud_scale
-  ifvare screenorientation -1
-    break
-  state aspectset
-  rotatespritea screenx screeny screenz ang
-                tilenum shade pal screenorientation screenalpha
-                x1 y1 x2 y2
-  state aspectreset
+	state draw_gamehud_scale
+	ifvare screenorientation -1
+		break
+	state aspectset
+	rotatespritea screenx screeny screenz ang tilenum shade pal screenorientation screenalpha x1 y1 x2 y2
+	state aspectreset
 ends
 
 onevent EVENT_DISPLAYCROSSHAIR
-  setvar RETURN -1
-  setvar CROSSHAIR 0 getuserdef .crosshair CROSSHAIR
+	setvar RETURN -1
+	setvar CROSSHAIR 0 getuserdef .crosshair CROSSHAIR
 endevent
 
 state event_displaysbar_1
