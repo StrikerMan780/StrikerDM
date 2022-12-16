@@ -1,0 +1,161 @@
+
+
+include art.def
+//include duke3d_hrp.def
+include textures.def
+include classic.def
+//include duke64_hrp.def
+
+sound { id "380" file "music/grabbag.ogg" }
+sound { id "380" file "music/grabbag.flac" }
+
+tint { pal 4   red   0 green   0 blue   0 flags 0 }
+tint { pal 1   red 128 green 128 blue 255 flags 0 }
+tint { pal 2   red 255 green 128 blue 128 flags 0 }
+tint { pal 8   red 128 green 255 blue 128 flags 0 }
+tint { pal 6   red 128 green 255 blue 128 flags 0 }
+tint { pal 14  red 128 green 255 blue 128 flags 0 }
+
+tint { pal 30  red 255 green  64 blue  64 flags 0 }
+tint { pal 31  red 255 green 255 blue  64 flags 0 }
+tint { pal 32  red  64 green 255 blue 255 flags 0 }
+tint { pal 33  red  64 green 255 blue  64 flags 0 }
+tint { pal 34  red 255 green  64 blue 255 flags 0 }
+tint { pal 35  red 128 green 192 blue 255 flags 0 }
+tint { pal 36  red 255 green 192 blue 255 flags 0 }
+tint { pal 37  red 192 green 192 blue 255 flags 0 }
+tint { pal 38  red 255 green 192 blue 128 flags 0 }
+tint { pal 39  red 255 green 96  blue 96  flags 0 }
+
+tint { pal 100 red 171 green 255 blue 171 flags 0 }
+tint { pal 101 red 168 green 255 blue 168 flags 0 }
+tint { pal 102 red 165 green 255 blue 165 flags 0 }
+tint { pal 103 red 163 green 255 blue 163 flags 0 }
+tint { pal 104 red 160 green 255 blue 160 flags 0 }
+tint { pal 105 red 158 green 255 blue 158 flags 0 }
+tint { pal 106 red 155 green 255 blue 155 flags 0 }
+tint { pal 107 red 152 green 255 blue 152 flags 0 }
+tint { pal 108 red 140 green 255 blue 140 flags 0 }
+tint { pal 109 red 147 green 255 blue 147 flags 0 }
+tint { pal 110 red 144 green 255 blue 144 flags 0 }
+tint { pal 111 red 142 green 255 blue 142 flags 0 }
+tint { pal 112 red 139 green 255 blue 139 flags 0 }
+tint { pal 113 red 137 green 255 blue 137 flags 0 }
+tint { pal 114 red 134 green 255 blue 134 flags 0 }
+tint { pal 115 red 131 green 255 blue 131 flags 0 }
+tint { pal 116 red 129 green 255 blue 129 flags 0 }
+tint { pal 117 red 126 green 255 blue 126 flags 0 }
+tint { pal 118 red 123 green 255 blue 123 flags 0 }
+tint { pal 119 red 121 green 255 blue 121 flags 0 }
+tint { pal 120 red 118 green 255 blue 118 flags 0 }
+tint { pal 121 red 116 green 255 blue 116 flags 0 }
+tint { pal 122 red 113 green 255 blue 113 flags 0 }
+tint { pal 123 red 110 green 255 blue 110 flags 0 }
+tint { pal 124 red 108 green 255 blue 108 flags 0 }
+tint { pal 125 red 105 green 255 blue 105 flags 0 }
+tint { pal 126 red 102 green 255 blue 102 flags 0 }
+tint { pal 127 red 100 green 255 blue 100 flags 0 }
+tint { pal 128 red  97 green 255 blue  97 flags 0 }
+tint { pal 129 red  95 green 255 blue  95 flags 0 }
+tint { pal 130 red  92 green 255 blue  92 flags 0 }
+tint { pal 131 red  89 green 255 blue  89 flags 0 }
+
+tint { pal 132 red  85 green 169 blue 171 flags 0 }
+tint { pal 133 red  84 green 171 blue 168 flags 0 }
+tint { pal 134 red  83 green 172 blue 165 flags 0 }
+tint { pal 135 red  81 green 173 blue 163 flags 0 }
+tint { pal 136 red  80 green 175 blue 160 flags 0 }
+tint { pal 137 red  79 green 176 blue 158 flags 0 }
+tint { pal 138 red  77 green 177 blue 155 flags 0 }
+tint { pal 139 red  76 green 179 blue 152 flags 0 }
+tint { pal 140 red  75 green 170 blue 140 flags 0 }
+tint { pal 141 red  73 green 181 blue 147 flags 0 }
+tint { pal 142 red  72 green 182 blue 144 flags 0 }
+tint { pal 143 red  71 green 184 blue 142 flags 0 }
+tint { pal 144 red  69 green 185 blue 139 flags 0 }
+tint { pal 145 red  68 green 186 blue 137 flags 0 }
+tint { pal 146 red  67 green 188 blue 134 flags 0 }
+tint { pal 147 red  65 green 189 blue 131 flags 0 }
+tint { pal 148 red  64 green 190 blue 129 flags 0 }
+tint { pal 149 red  63 green 192 blue 126 flags 0 }
+tint { pal 150 red  61 green 193 blue 123 flags 0 }
+tint { pal 151 red  60 green 194 blue 121 flags 0 }
+tint { pal 152 red  59 green 196 blue 118 flags 0 }
+tint { pal 153 red  57 green 197 blue 116 flags 0 }
+tint { pal 154 red  56 green 198 blue 113 flags 0 }
+tint { pal 155 red  55 green 190 blue 110 flags 0 }
+tint { pal 156 red  53 green 201 blue 108 flags 0 }
+tint { pal 157 red  52 green 202 blue 105 flags 0 }
+tint { pal 158 red  51 green 203 blue 102 flags 0 }
+tint { pal 159 red  49 green 205 blue 100 flags 0 }
+tint { pal 160 red  48 green 206 blue  97 flags 0 }
+tint { pal 161 red  47 green 207 blue  95 flags 0 }
+tint { pal 162 red  45 green 209 blue  92 flags 0 }
+tint { pal 163 red  44 green 210 blue  89 flags 0 }
+
+tint { pal 164 red 171 green 169 blue  85 flags 0 }
+tint { pal 165 red 168 green 171 blue  84 flags 0 }
+tint { pal 166 red 165 green 172 blue  83 flags 0 }
+tint { pal 167 red 163 green 173 blue  81 flags 0 }
+tint { pal 168 red 160 green 175 blue  80 flags 0 }
+tint { pal 169 red 158 green 176 blue  79 flags 0 }
+tint { pal 170 red 155 green 177 blue  77 flags 0 }
+tint { pal 171 red 152 green 179 blue  76 flags 0 }
+tint { pal 172 red 140 green 170 blue  75 flags 0 }
+tint { pal 173 red 147 green 181 blue  73 flags 0 }
+tint { pal 174 red 144 green 182 blue  72 flags 0 }
+tint { pal 175 red 142 green 184 blue  71 flags 0 }
+tint { pal 176 red 139 green 185 blue  69 flags 0 }
+tint { pal 177 red 137 green 186 blue  68 flags 0 }
+tint { pal 178 red 134 green 188 blue  67 flags 0 }
+tint { pal 179 red 131 green 189 blue  65 flags 0 }
+tint { pal 180 red 129 green 190 blue  64 flags 0 }
+tint { pal 181 red 126 green 192 blue  63 flags 0 }
+tint { pal 182 red 123 green 193 blue  61 flags 0 }
+tint { pal 183 red 121 green 194 blue  60 flags 0 }
+tint { pal 184 red 118 green 196 blue  59 flags 0 }
+tint { pal 185 red 116 green 197 blue  57 flags 0 }
+tint { pal 186 red 113 green 198 blue  56 flags 0 }
+tint { pal 187 red 110 green 190 blue  55 flags 0 }
+tint { pal 188 red 108 green 201 blue  53 flags 0 }
+tint { pal 189 red 105 green 202 blue  52 flags 0 }
+tint { pal 190 red 102 green 203 blue  51 flags 0 }
+tint { pal 191 red 100 green 205 blue  49 flags 0 }
+tint { pal 192 red  97 green 206 blue  48 flags 0 }
+tint { pal 193 red  95 green 207 blue  47 flags 0 }
+tint { pal 194 red  92 green 209 blue  45 flags 0 }
+tint { pal 195 red  89 green 210 blue  44 flags 0 }
+
+tint { pal 196 red  85 green 255 blue  85 flags 0 }
+tint { pal 197 red  84 green 255 blue  84 flags 0 }
+tint { pal 198 red  83 green 255 blue  83 flags 0 }
+tint { pal 199 red  81 green 255 blue  81 flags 0 }
+tint { pal 200 red  80 green 255 blue  80 flags 0 }
+tint { pal 201 red  79 green 255 blue  79 flags 0 }
+tint { pal 202 red  77 green 255 blue  77 flags 0 }
+tint { pal 203 red  76 green 255 blue  76 flags 0 }
+tint { pal 204 red  75 green 255 blue  75 flags 0 }
+tint { pal 205 red  73 green 255 blue  73 flags 0 }
+tint { pal 206 red  72 green 255 blue  72 flags 0 }
+tint { pal 207 red  71 green 255 blue  71 flags 0 }
+tint { pal 208 red  69 green 255 blue  69 flags 0 }
+tint { pal 209 red  68 green 255 blue  68 flags 0 }
+tint { pal 210 red  67 green 255 blue  67 flags 0 }
+tint { pal 211 red  65 green 255 blue  65 flags 0 }
+tint { pal 212 red  64 green 255 blue  64 flags 0 }
+tint { pal 213 red  63 green 255 blue  63 flags 0 }
+tint { pal 214 red  61 green 255 blue  61 flags 0 }
+tint { pal 215 red  60 green 255 blue  60 flags 0 }
+tint { pal 216 red  59 green 255 blue  59 flags 0 }
+tint { pal 217 red  57 green 255 blue  57 flags 0 }
+tint { pal 218 red  56 green 255 blue  56 flags 0 }
+tint { pal 219 red  55 green 255 blue  55 flags 0 }
+tint { pal 220 red  53 green 255 blue  53 flags 0 }
+tint { pal 221 red  52 green 255 blue  52 flags 0 }
+tint { pal 222 red  51 green 255 blue  51 flags 0 }
+tint { pal 223 red  49 green 255 blue  49 flags 0 }
+tint { pal 224 red  48 green 255 blue  48 flags 0 }
+tint { pal 225 red  47 green 255 blue  47 flags 0 }
+tint { pal 226 red  45 green 255 blue  45 flags 0 }
+tint { pal 227 red  44 green 255 blue  44 flags 0 }
+

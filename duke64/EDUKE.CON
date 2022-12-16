@@ -1,0 +1,15 @@
+
+
+include cons/DEFS.CON
+include cons/DEFS2.CON
+include cons/USER.CON
+include cons/USER2.CON
+include cons/DISPLAY.CON
+include cons/SCREENS.CON
+include cons/HUD.CON
+include cons/WEAPONS.CON
+include cons/GLOBAL.CON
+include cons/PLAYER.CON
+include cons/GAME.CON
+include cons/GAME2.CON
+

@@ -1,0 +1,27 @@
+
+
+// ******************
+// USER-MODIFIABLE
+// ******************
+
+// Misc game settings
+
+define KEEP_WEAPONS             YES
+define HUMANS_KILLABLE          NO
+define FEM_RESPAWN              NO
+
+define CENSORSHIP               YES
+define NEW_SHADING              YES
+
+define WEAPON_SWITCH_MODE       0
+define WEAPON_SWITCH_TIME       16
+define SWITCH_FIRING_WEAPON     YES
+
+define RECOIL_AMOUNT            12
+define MAX_PIPEBOMBS            HANDBOMBBOX
+
+define PLASMA_CHARGE_TIME       96
+define PLASMA_CHARGE_AMOUNT     FREEZEAMMOAMOUNT
+define PLASMA_FLASH_AMOUNT      30
+define PLASMAHURTOWNER          NO
+

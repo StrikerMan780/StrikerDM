@@ -1,0 +1,1967 @@
+
+
+state deathscreen
+  ifspritepal 1
+    nullop
+  else
+  ifp pdead
+  {
+    getplayer[THISACTOR].pals 0 PALS0
+    getplayer[THISACTOR].pals 1 PALS1
+    getplayer[THISACTOR].pals 2 PALS2
+    getplayer[THISACTOR].pals_time PALSTIME
+    ifvare PALSTIME -1
+      setvar PALSTIME 0
+    break
+  }
+  ifvarg PALSTIME -1
+  {
+    ifvarl PALSTIME 64
+    {
+      mulvarvar PALS0 PALSTIME
+      shiftvarr PALS0 6
+      mulvarvar PALS1 PALSTIME
+      shiftvarr PALS1 6
+      mulvarvar PALS2 PALSTIME
+      shiftvarr PALS2 6
+    }
+    setplayer[THISACTOR].pals 0 PALS0
+    setplayer[THISACTOR].pals 1 PALS1
+    setplayer[THISACTOR].pals 2 PALS2
+    setplayer[THISACTOR].pals_time 63
+    setvar PALSTIME -1
+  }
+ends
+
+state refreshinventory
+  ifvarg player[THISACTOR].firstaid_amount 0
+  {
+    setplayer[THISACTOR].inven_icon 1
+    break
+  }
+  ifvarg player[THISACTOR].steroids_amount 0
+  {
+    setplayer[THISACTOR].inven_icon 2
+    break
+  }
+  ifvarg player[THISACTOR].holoduke_amount 0
+  {
+    setplayer[THISACTOR].inven_icon 3
+    break
+  }
+  ifvarg player[THISACTOR].jetpack_amount 0
+  {
+    setplayer[THISACTOR].inven_icon 4
+    break
+  }
+  ifvarg player[THISACTOR].heat_amount 0
+  {
+    setplayer[THISACTOR].inven_icon 5
+    break
+  }
+  ifvarg player[THISACTOR].scuba_amount 0
+  {
+    setplayer[THISACTOR].inven_icon 6
+    break
+  }
+  ifvarg player[THISACTOR].boot_amount 0
+  {
+    setplayer[THISACTOR].inven_icon 7
+    break
+  }
+  ifvarg player[THISACTOR].shield_amount 0
+  {
+    setplayer[THISACTOR].inven_icon 8
+    break
+  }
+  setplayer[THISACTOR].inven_icon 0
+ends
+
+state wpswitch
+  setplayer[THISACTOR].random_club_frame 0
+  ifvare player[THISACTOR].weapon_pos 0
+    setplayer[THISACTOR].weapon_pos -1
+  else
+  {
+    setplayer[THISACTOR].weapon_pos 10
+    setplayer[THISACTOR].holster_weapon 0
+  }
+  setplayer[THISACTOR].kickback_pic 0
+  setplayer[THISACTOR].reloading 0
+
+  setplayer[THISACTOR].last_full_weapon player[THISACTOR].last_weapon
+  setplayer[THISACTOR].show_empty_weapon 0
+
+  setplayer[THISACTOR].show_empty_weapon 0
+  ifvarn player[THISACTOR].curr_weapon KNEE_WEAPON
+  ifvarn player[THISACTOR].curr_weapon HANDREMOTE_WEAPON
+  ifvarvare player[THISACTOR].ammo_amount player[THISACTOR].curr_weapon 0
+    setplayer[THISACTOR].show_empty_weapon 32
+
+  ifvare player[THISACTOR].curr_weapon KNEE_WEAPON
+  ifvarg WEAPON0_SELECTSOUND 0
+    soundvar WEAPON0_SELECTSOUND
+  ifvare player[THISACTOR].curr_weapon PISTOL_WEAPON
+  ifvarg WEAPON1_SELECTSOUND 0
+    soundvar WEAPON1_SELECTSOUND
+  ifvare player[THISACTOR].curr_weapon SHOTGUN_WEAPON
+  ifvarg WEAPON2_SELECTSOUND 0
+    soundvar WEAPON2_SELECTSOUND
+  ifvare player[THISACTOR].curr_weapon CHAINGUN_WEAPON
+  ifvarg WEAPON3_SELECTSOUND 0
+    soundvar WEAPON3_SELECTSOUND
+  ifvare player[THISACTOR].curr_weapon RPG_WEAPON
+  ifvarg WEAPON4_SELECTSOUND 0
+    soundvar WEAPON4_SELECTSOUND
+  ifvare player[THISACTOR].curr_weapon HANDBOMB_WEAPON
+  ifvarg WEAPON5_SELECTSOUND 0
+    soundvar WEAPON5_SELECTSOUND
+  ifvare player[THISACTOR].curr_weapon SHRINKER_WEAPON
+  ifvarg WEAPON6_SELECTSOUND 0
+    soundvar WEAPON6_SELECTSOUND
+  ifvare player[THISACTOR].curr_weapon DEVISTATOR_WEAPON
+  ifvarg WEAPON7_SELECTSOUND 0
+    soundvar WEAPON7_SELECTSOUND
+  ifvare player[THISACTOR].curr_weapon TRIPBOMB_WEAPON
+  ifvarg WEAPON8_SELECTSOUND 0
+    soundvar WEAPON8_SELECTSOUND
+  ifvare player[THISACTOR].curr_weapon FREEZE_WEAPON
+  ifvarg WEAPON9_SELECTSOUND 0
+    soundvar WEAPON9_SELECTSOUND
+  ifvare player[THISACTOR].curr_weapon HANDREMOTE_WEAPON
+  ifvarg WEAPON10_SELECTSOUND 0
+    soundvar WEAPON10_SELECTSOUND
+  ifvare player[THISACTOR].curr_weapon GROW_WEAPON
+  ifvarg WEAPON11_SELECTSOUND 0
+    soundvar WEAPON11_SELECTSOUND
+ends
+
+state wpsub1switch
+  setvarvar ATEMP WPSUB1AMMO
+  getplayer[THISACTOR].ammo_amount PISTOL_WEAPON WPSUB1AMMO
+  setplayer[THISACTOR].ammo_amount PISTOL_WEAPON ATEMP
+  ifvare WPSUB1 1
+  {
+    smaxammo PISTOL_WEAPON MAXPISTOLAMMO
+    setvar WPSUB1 0
+  }
+  else
+  {
+    smaxammo PISTOL_WEAPON MAXDUMDUMAMMO
+    setvar WPSUB1 1
+  }
+ends
+
+state wpsub2switch
+  setvarvar ATEMP WPSUB2AMMO
+  getplayer[THISACTOR].ammo_amount SHOTGUN_WEAPON WPSUB2AMMO
+  setplayer[THISACTOR].ammo_amount SHOTGUN_WEAPON ATEMP
+  ifvare WPSUB2 1
+  {
+    smaxammo SHOTGUN_WEAPON MAXSHOTGUNAMMO
+    setvar WPSUB2 0
+  }
+  else
+  {
+    smaxammo SHOTGUN_WEAPON MAXEXPSHOTGUNAMMO
+    setvar WPSUB2 1
+  }
+ends
+
+state wpsub7switch
+  setvarvar ATEMP WPSUB7AMMO
+  getplayer[THISACTOR].ammo_amount DEVISTATOR_WEAPON WPSUB7AMMO
+  setplayer[THISACTOR].ammo_amount DEVISTATOR_WEAPON ATEMP
+  ifvare WPSUB7 1
+  {
+    smaxammo DEVISTATOR_WEAPON MAXDEVISTATORAMMO
+    setvar WPSUB7 0
+  }
+  else
+  {
+    smaxammo DEVISTATOR_WEAPON MAXHEATSEEKAMMO
+    setvar WPSUB7 1
+  }
+ends
+
+state wpselect
+  ifvare SWITCH_FIRING_WEAPON 0
+  {
+    ifvarn player[THISACTOR].kickback_pic 0
+      break
+    ifvarn player[THISACTOR].quick_kick 0
+      break
+  }
+  ifvare player[THISACTOR].quick_kick 0
+  ifvare player[THISACTOR].weapon_pos 0
+  {
+    ifvare WPSELECTSUB1 1
+    {
+      state wpsub1switch
+      ifvare WPSELECT -1
+      ifvare player[THISACTOR].curr_weapon PISTOL_WEAPON
+        state wpswitch
+      setvar WPSELECTSUB1 0
+    }
+    ifvare WPSELECTSUB2 1
+    {
+      state wpsub2switch
+      ifvare WPSELECT -1
+      ifvare player[THISACTOR].curr_weapon SHOTGUN_WEAPON
+        state wpswitch
+      setvar WPSELECTSUB2 0
+    }
+    ifvare WPSELECTSUB7 1
+    {
+      state wpsub7switch
+      ifvare WPSELECT -1
+      ifvare player[THISACTOR].curr_weapon DEVISTATOR_WEAPON
+        state wpswitch
+      setvar WPSELECTSUB7 0
+    }
+    ifvarn WPSELECT -1
+    {
+      setplayer[THISACTOR].last_weapon player[THISACTOR].curr_weapon
+      setplayer[THISACTOR].curr_weapon WPSELECT
+      state wpswitch
+      setvar WPSELECT -1
+    }
+    setvar WPSWITCH -1
+  }
+ends
+
+state tiltamount
+  setvar TILT RECOIL_AMOUNT
+  switch player[THISACTOR].curr_weapon
+  case PISTOL_WEAPON
+  case CHAINGUN_WEAPON
+    shiftvarr TILT 2
+  break
+  case SHOTGUN_WEAPON
+  case SHRINKER_WEAPON
+  case GROW_WEAPON
+    shiftvarr TILT 1
+  break
+  endswitch
+ends
+
+state tilt
+  ifvare player[THISACTOR].holster_weapon 1
+    break
+  ifvare player[THISACTOR].curr_weapon PISTOL_WEAPON
+  ifvarvare player[THISACTOR].kickback_pic WEAPON1_FIREDELAY
+    state tiltamount
+  ifvare player[THISACTOR].curr_weapon SHOTGUN_WEAPON
+  ifvarvare player[THISACTOR].kickback_pic WEAPON2_FIREDELAY
+    state tiltamount
+  ifvare player[THISACTOR].curr_weapon CHAINGUN_WEAPON
+  ifvarvare player[THISACTOR].kickback_pic WEAPON3_FIREDELAY
+  {
+    ifvare WEAPON3_SHOTSPERBURST 1
+    ifrnd 64
+      state tiltamount
+    ifvarg WEAPON3_SHOTSPERBURST 1
+    ifrnd 128
+      state tiltamount
+  }
+  ifvare player[THISACTOR].curr_weapon RPG_WEAPON
+  ifvarvare player[THISACTOR].kickback_pic WEAPON4_FIREDELAY
+  {
+    setvar TILT RECOIL_AMOUNT
+    state tiltamount
+  }
+  ifvare player[THISACTOR].curr_weapon SHRINKER_WEAPON
+  ifvarg player[THISACTOR].kickback_pic 0
+  {
+    state tiltamount
+    shiftvarr TILT 1
+    ifrnd 128
+      mulvar TILT -1
+    randvarvar TILT TILT
+  }
+  ifvare player[THISACTOR].curr_weapon DEVISTATOR_WEAPON
+  ifvarvare player[THISACTOR].kickback_pic WEAPON7_FIREDELAY
+  {
+    setvar TILT RECOIL_AMOUNT
+    state tiltamount
+  }
+  ifvare player[THISACTOR].curr_weapon FREEZE_WEAPON
+  ifvarg WPCHARGE 1
+  {
+    state tiltamount
+    shiftvarr TILT 1
+    ifrnd 128
+      mulvar TILT -1
+    mulvarvar TILT WPCHARGE
+    divvar TILT PLASMA_CHARGE_TIME
+    randvarvar TILT TILT
+  }
+  ifvare player[THISACTOR].curr_weapon GROW_WEAPON
+  ifvarvare player[THISACTOR].kickback_pic WEAPON11_FIREDELAY
+  {
+    state tiltamount
+    shiftvarr TILT 1
+    ifrnd 128
+      mulvar TILT -1
+    randvarvar TILT TILT
+  }
+ends
+
+state pcode
+  ifvarn player[THISACTOR].timebeforeexit 0
+  {
+    setvar ATEMP 0 getuserdef .noexits ATEMP
+    ifvare ATEMP 0
+      getplayer[THISACTOR].timebeforeexit TIMEBEFOREEXITTEMP
+    setplayer[THISACTOR].timebeforeexit 0
+  }
+  ifvarg TIMEBEFOREEXITTEMP 1
+  ifvarg player[THISACTOR].last_extra 0
+  {
+    subvar TIMEBEFOREEXITTEMP 1
+    ifvare TIMEBEFOREEXITTEMP 130
+    ifvarg player[THISACTOR].customexitsound 0
+    {
+      quote 102
+      sound PIG_CAPTURE_DUKE
+    }
+    ifvare TIMEBEFOREEXITTEMP 1
+    {
+      setvar AWHILE 0
+      whilevarvarn AWHILE MULTIMODE
+      {
+        setplayer[AWHILE].gm MODE_EOL
+        addvar AWHILE 1
+      }
+    }
+  }
+
+  state deathscreen
+  setplayer[THISACTOR].invdisptime 0
+
+  ifvarg INVICON 0
+    subvar INVICON 1
+
+  ifvare player[THISACTOR].shield_amount 0
+  {
+    ifvare player[THISACTOR].inven_icon 8
+      state refreshinventory
+  }
+  else
+  {
+    switch LASTINVICON
+    case 1
+      ifvare player[THISACTOR].firstaid_amount 0
+        state refreshinventory
+    break
+    case 2
+      ifvare player[THISACTOR].steroids_amount 0
+        state refreshinventory
+    break
+    case 3
+      ifvare player[THISACTOR].holoduke_amount 0
+        state refreshinventory
+    break
+    case 4
+      ifvare player[THISACTOR].jetpack_amount 0
+        state refreshinventory
+    break
+    case 5
+      ifvare player[THISACTOR].heat_amount 0
+        state refreshinventory
+    break
+    case 6
+      ifvare player[THISACTOR].scuba_amount 0
+        state refreshinventory
+    break
+    case 7
+      ifvare player[THISACTOR].boot_amount 0
+        state refreshinventory
+    break
+    endswitch
+  }
+  getplayer[THISACTOR].inven_icon LASTINVICON
+
+  ifvare player[THISACTOR].curr_weapon KNEE_WEAPON
+  {
+    ifvarand player[THISACTOR].weaponswitch 1
+      nullop
+    else
+    {
+      getplayer[THISACTOR].weaponswitch ATEMP
+      orvar ATEMP 129
+      setplayer[THISACTOR].weaponswitch ATEMP
+    }
+  }
+  else
+  ifvarand player[THISACTOR].weaponswitch 128
+  {
+    getplayer[THISACTOR].weaponswitch ATEMP
+    xorvar ATEMP 129
+    setplayer[THISACTOR].weaponswitch ATEMP
+  }
+
+  ifvare WPSELECTSUB1 1
+  ifvare WPSUB1AMMO 0
+    setvar WPSELECTSUB1 0
+  ifvare WPSELECTSUB2 1
+  ifvare WPSUB2AMMO 0
+    setvar WPSELECTSUB2 0
+  ifvare WPSELECTSUB7 1
+  ifvare WPSUB7AMMO 0
+    setvar WPSELECTSUB7 0
+  ifvarvare WPSELECT player[THISACTOR].curr_weapon
+    setvar WPSELECT -1
+  ifvare WPSWITCH WEAPON_SWITCH_TIME
+    state wpselect
+  else
+  ifvarg WPSWITCH -1
+    addvar WPSWITCH 1
+
+  ifvarg STWPCOUNT -1
+  {
+    setvar ATEMP WEAPON_SWITCH_TIME
+    addvar ATEMP WPBAR_DROP_TIME
+    ifvarvare STWPCOUNT ATEMP
+      setvar STWPCOUNT -1
+    else
+      addvar STWPCOUNT 1
+  }
+  ifvarg STWPCOUNT2 -1
+  {
+    ifvare STWPCOUNT2 WPBAR_MOVE_TIME
+      setvar STWPCOUNT2 -1
+    else
+      addvar STWPCOUNT2 1
+  }
+
+  state tilt
+  ifvarg TILT 0
+  {
+    ifvarvarg TILT player[THISACTOR].horizoff
+      setplayer[THISACTOR].horizoff TILT
+    subvar TILT 1
+  }
+  ifvarl TILT 0
+  {
+    ifvarvarl TILT player[THISACTOR].horizoff
+      setplayer[THISACTOR].horizoff TILT
+    addvar TILT 1
+  }
+
+  ifvare sprite[THISACTOR].htpicnum SHRINKSPARK
+  {
+    setvar ATEMP 0 getuserdef .god ATEMP
+    ifvare ATEMP 1
+      setactor[THISACTOR].htpicnum -1
+  }
+  ifvarg sprite[THISACTOR].htextra -1
+  ifvare PLASMAHURTOWNER 0
+  ifvare sprite[THISACTOR].htpicnum PLASMASHOT
+  ifvarvare sprite[THISACTOR].htowner THISACTOR
+    setactor[THISACTOR].htextra -1
+  ifmultiplayer
+  ifvare COOP 1
+  {
+    getactor[THISACTOR].htowner ATEMP
+    ifvarn sprite[ATEMP].statnum MAXSTATUS
+    ifvare sprite[ATEMP].picnum APLAYER
+    {
+      getactor[THISACTOR].htextra ATEMP2
+      shiftvarr ATEMP2 1
+      setactor[THISACTOR].htextra ATEMP2
+    }
+  }
+
+  ifvare player[THISACTOR].curr_weapon SHRINKER_WEAPON
+  {
+    setvarvar ATEMP WEAPON9_FIREDELAY
+    divvar ATEMP 2
+    ifvarvare player[THISACTOR].kickback_pic ATEMP
+      setactor[THISACTOR].shade -96
+  }
+  ifvare player[THISACTOR].curr_weapon GROW_WEAPON
+  ifvarvare player[THISACTOR].kickback_pic WEAPON11_FIREDELAY
+    setactor[THISACTOR].shade -96
+
+  ifvare player[THISACTOR].curr_weapon DEVISTATOR_WEAPON
+    setvar WEAPON7_WORKSLIKE DEVISTATOR_WEAPON
+
+  ifvare player[THISACTOR].curr_weapon FREEZE_WEAPON
+  {
+    getinput[THISACTOR].bits ATEMP
+    ifvarand ATEMP INPUT_FIRE
+    {
+      ifvarg WPCHARGE 0
+      {
+        ifvarn WPCHARGE PLASMA_CHARGE_TIME
+        {
+          setvarvar ATEMP3 PLASMA_CHARGE_AMOUNT
+          subvar ATEMP3 1
+          setvarvar ATEMP2 WPCHARGE
+          mulvarvar ATEMP2 ATEMP3
+          divvar ATEMP2 PLASMA_CHARGE_TIME
+          addvar ATEMP2 1
+          ifvarvarl ATEMP2 player[THISACTOR].ammo_amount FREEZE_WEAPON
+            addvar WPCHARGE 1
+        }
+        ifactorsound THISACTOR PLASMA_CHARGE
+          nullop
+        else
+          soundonce PLASMA_HOLD
+        ifrnd 64
+          setactor[THISACTOR].shade -96
+      }
+      else
+      ifvarvare player[THISACTOR].kickback_pic WEAPON9_FIREDELAY
+      ifvarg player[THISACTOR].ammo_amount FREEZE_WEAPON 1
+      {
+        setvar WPCHARGE 1
+        sound PLASMA_CHARGE
+      }
+      ifvarg WPCHARGE 0
+      ifvarvare player[THISACTOR].kickback_pic WEAPON9_FIREDELAY
+        setplayer[THISACTOR].kickback_pic 1
+    }
+    ifvare player[THISACTOR].kickback_pic 0
+      setvar WPCHARGE 0
+  }
+  else
+    setvar WPCHARGE 0
+  ifactorsound THISACTOR PLASMA_CHARGE
+  {
+    ifvare WPCHARGE 0
+      stopactorsound THISACTOR PLASMA_CHARGE
+    ifactorsound THISACTOR PLASMA_HOLD
+      stopactorsound THISACTOR PLASMA_CHARGE
+    ifp pdead
+      stopactorsound THISACTOR PLASMA_HOLD
+  }
+
+  ifvarg player[THISACTOR].weapon_pos -1
+  {
+    ifvare player[THISACTOR].curr_weapon PISTOL_WEAPON
+      setvarvar WPSUBTEMP WPSUB1
+    ifvare player[THISACTOR].curr_weapon SHOTGUN_WEAPON
+      setvarvar WPSUBTEMP WPSUB2
+    ifvare player[THISACTOR].curr_weapon DEVISTATOR_WEAPON
+      setvarvar WPSUBTEMP WPSUB7
+  }
+
+  ifvare WPSUB1 1
+    setvar WPSUB1GOT 1
+  ifvarn player[THISACTOR].curr_weapon PISTOL_WEAPON
+  {
+    ifvarg WPSUB1AMMO 0
+    {
+      ifvare WPSUB1GOT 0
+        state wpsub1switch
+      ifvare player[THISACTOR].ammo_amount PISTOL_WEAPON 0
+        state wpsub1switch
+    }
+    else
+    {
+      ifvare WPSUB1 1
+      ifvare player[THISACTOR].ammo_amount PISTOL_WEAPON 0
+        state wpsub1switch
+      ifvare WPSUB1 0
+        setvar WPSUB1GOT 0
+    }
+  }
+  ifvare WPSUB2 1
+    setvar WPSUB2GOT 1
+  ifvarn player[THISACTOR].curr_weapon SHOTGUN_WEAPON
+  {
+    ifvarg WPSUB2AMMO 0
+    {
+      ifvare WPSUB2GOT 0
+        state wpsub2switch
+      ifvare player[THISACTOR].ammo_amount SHOTGUN_WEAPON 0
+        state wpsub2switch
+    }
+    else
+    {
+      ifvare WPSUB2 1
+      ifvare player[THISACTOR].ammo_amount SHOTGUN_WEAPON 0
+        state wpsub2switch
+      ifvare WPSUB2 0
+        setvar WPSUB2GOT 0
+    }
+  }
+  ifvare WPSUB7 1
+    setvar WPSUB7GOT 1
+  ifvarn player[THISACTOR].curr_weapon DEVISTATOR_WEAPON
+  {
+    ifvarg WPSUB7AMMO 0
+    {
+      ifvare WPSUB7GOT 0
+        state wpsub7switch
+      ifvare player[THISACTOR].ammo_amount DEVISTATOR_WEAPON 0
+        state wpsub7switch
+    }
+    else
+    {
+      ifvare WPSUB7 1
+      ifvare player[THISACTOR].ammo_amount DEVISTATOR_WEAPON 0
+        state wpsub7switch
+      ifvare WPSUB7 0
+        setvar WPSUB7GOT 0
+    }
+  }
+ends
+
+state event_dofire_1
+  ifvare player[THISACTOR].curr_weapon DEVISTATOR_WEAPON
+    setvar WEAPON7_WORKSLIKE RPG_WEAPON
+
+  ifvare player[THISACTOR].curr_weapon FREEZE_WEAPON
+  {
+    ifvarg player[THISACTOR].ammo_amount FREEZE_WEAPON 1
+    {
+      getinput[THISACTOR].bits ATEMP
+      ifvarand ATEMP INPUT_FIRE
+        setvar RETURN -1
+    }
+    ifvarn RETURN -1
+    {
+      setvar ATEMP PLASMA_CHARGE_AMOUNT
+      subvar ATEMP 1
+      mulvarvar ATEMP WPCHARGE
+      divvar ATEMP PLASMA_CHARGE_TIME
+      ifactor APLAYER
+      ifvarg ATEMP 0
+      {
+        getplayer[THISACTOR].ammo_amount FREEZE_WEAPON ATEMP2
+        subvarvar ATEMP2 ATEMP
+        ifvarl ATEMP2 0
+          setvar ATEMP2 0
+        setplayer[THISACTOR].ammo_amount FREEZE_WEAPON ATEMP2
+      }
+      ifvarg ATEMP PLASMA_FLASH_AMOUNT
+        setvar WEAPON9_FIRESOUND PLASMA_RELEASE
+      else
+        setvar WEAPON9_FIRESOUND PLASMA_FIRE
+
+      ifactorsound THISACTOR PLASMA_CHARGE
+        stopactorsound THISACTOR PLASMA_CHARGE
+      ifactorsound THISACTOR PLASMA_HOLD
+        stopactorsound THISACTOR PLASMA_HOLD
+    }
+  }
+
+  ifvare player[THISACTOR].curr_weapon PISTOL_WEAPON
+  {
+    ifvare WPSUB1 1
+      setvar WEAPON1_SHOOTS DUMDUM
+    else
+      setvar WEAPON1_SHOOTS SHOTSPARK1
+  }
+  ifvare player[THISACTOR].curr_weapon SHOTGUN_WEAPON
+  {
+    ifvare WPSUB2 1
+    {
+      setvar WEAPON2_SHOOTS EXPSHOTGUN
+      setvar WEAPON2_SHOTSPERBURST 1
+    }
+    else
+    {
+      setvar WEAPON2_SHOOTS SHOTGUN
+      setvar WEAPON2_SHOTSPERBURST 7
+    }
+  }
+ends
+
+onevent EVENT_GETSHOTRANGE
+  ifvare player[THISACTOR].curr_weapon SHOTGUN_WEAPON
+  ifvare WPSUB2 1
+  {
+    setvar ANGRANGE 1
+    setvar ZRANGE 1
+  }
+endevent
+
+define SMG_SHOT_OFFSET          32
+
+state event_dofire_2
+	ifvare player[THISACTOR].curr_weapon CHAINGUN_WEAPON
+	{
+		ifvarvarg WEAPON3_SHOTSPERBURST 1
+		{
+			setvar ATEMP 1
+			ifvare player[THISACTOR].auto_aim 0
+			{
+				getplayer[THISACTOR].ang ATEMP4
+				sin ATEMP2 ATEMP4
+				cos ATEMP3 ATEMP4
+				setvar ATEMP4 100
+				subvarvar ATEMP4 player[THISACTOR].horiz
+				subvarvar ATEMP4 player[THISACTOR].horizoff
+				shiftvarl ATEMP4 11
+				hitscan player[THISACTOR].posx player[THISACTOR].posy player[THISACTOR].posz
+						player[THISACTOR].cursectnum ATEMP3 ATEMP2 ATEMP4
+						ATEMP3 ATEMP3 ATEMP2
+						ATEMP3 ATEMP3 ATEMP3 CLIPMASK1
+				ifvarg ATEMP2 -1
+				{
+					switch sprite[ATEMP2].statnum
+						case STAT_ACTOR
+						case STAT_ZOMBIEACTOR
+						case STAT_PLAYER
+						case STAT_DUMMYPLAYER
+							setvar ATEMP 0
+							break
+					endswitch
+				}
+			}
+	}
+	else
+		setvar ATEMP 0
+		
+	ifvare ATEMP 1
+	{
+		setvarvar SHOTCOUNT WEAPON3_SHOTSPERBURST
+		getplayer[THISACTOR].ang SHOTANG
+		setvarvar ATEMP2 SHOTANG
+		addvar ATEMP2 SMG_SHOT_OFFSET
+		andvar ATEMP2 2047
+		setplayer[THISACTOR].ang ATEMP2
+	}
+	else
+		setvar SHOTCOUNT 0
+
+	setvar WEAPON3_SPAWN -1
+	ifvare predicting 0 // NetDuke32 safeguard
+	{
+		setvar AWHILE 0
+		whilevarvarn AWHILE WEAPON3_SHOTSPERBURST
+		{
+			espawnvar SHELL
+
+			getactor[RETURN].x X
+			getactor[RETURN].y Y
+			getplayer[THISACTOR].ang ANG
+
+			mulvar ANG -1
+			addvar ANG 512
+			ifvare AWHILE 1
+				addvar ANG 320
+			else
+				addvar ANG -320
+
+			sin ATEMP2 ANG
+			shiftvarl ATEMP2 7
+			shiftvarr ATEMP2 14
+			addvarvar X ATEMP2
+
+			cos ATEMP2 ANG
+			shiftvarl ATEMP2 7
+			shiftvarr ATEMP2 14
+			addvarvar Y ATEMP2
+
+			setactor[RETURN].x X
+			setactor[RETURN].y Y
+			setactor[RETURN].htbposx X
+			setactor[RETURN].htbposy Y
+			updatesectorz X Y sprite[RETURN].z SECT
+			ifvarg SECT -1
+				changespritesect RETURN SECT
+
+			getactor[RETURN].ang ANG
+			addvar ANG 512
+			ifvare AWHILE 1
+				addvar ANG -512
+			else
+				addvar ANG 512
+			andvar ANG 2047
+			setactor[RETURN].ang ANG
+
+			getactor[RETURN].zvel ZVEL
+			shiftvarl ZVEL 2
+			setactor[RETURN].zvel ZVEL
+
+			setvar RETURN 0
+			addvar AWHILE 1
+		}
+	}
+}
+ends
+
+onevent EVENT_EGS
+	ifactor SHOTSPARK1
+	ifspawnedby APLAYER
+	{
+		getactor[OWNER].yvel ATEMP
+		ifvare player[ATEMP].curr_weapon CHAINGUN_WEAPON
+		{
+			getplayervar[ATEMP].SHOTCOUNT ATEMP2
+			ifvarg ATEMP2 0
+			{
+				getplayervar[ATEMP].SHOTANG ATEMP3
+				ifvare ATEMP2 2
+				{
+					subvar ATEMP3 SMG_SHOT_OFFSET
+					andvar ATEMP3 2047
+				}
+				setplayer[ATEMP].ang ATEMP3
+				subvar ATEMP2 1
+				setplayervar[ATEMP].SHOTCOUNT ATEMP2
+			}
+		}
+	}
+endevent
+
+state event_resetplayer_1
+	setvar TIMEBEFOREEXITTEMP 0
+	setvar PALSTIME -1
+ends
+
+onevent EVENT_RESETWEAPONS
+  setvar WPSUB1AMMO 0
+  setvar WPSUB2AMMO 0
+  setvar WPSUB7AMMO 0
+  setvar WPSUB1 0
+  setvar WPSUB2 0
+  setvar WPSUB7 0
+  smaxammo PISTOL_WEAPON MAXPISTOLAMMO
+  ifvare player[THISACTOR].gotweapon PISTOL_WEAPON 1
+    setplayer[THISACTOR].ammo_amount PISTOL_WEAPON 48
+  smaxammo SHOTGUN_WEAPON MAXSHOTGUNAMMO
+  smaxammo DEVISTATOR_WEAPON MAXDEVISTATORAMMO
+  setvar WPSUB1GOT 0
+  setvar WPSUB2GOT 0
+  setvar WPSUB7GOT 0
+endevent
+
+state cheatsubammo
+  ifvare WPSUB1 1
+    setvar WPSUB1AMMO MAXPISTOLAMMO
+  else
+    setvar WPSUB1AMMO MAXDUMDUMAMMO
+  ifvare WPSUB2 1
+    setvar WPSUB2AMMO MAXSHOTGUNAMMO
+  else
+    setvar WPSUB2AMMO MAXEXPSHOTGUNAMMO
+  ifvare WPSUB7 1
+    setvar WPSUB7AMMO MAXDEVISTATORAMMO
+  else
+    setvar WPSUB7AMMO MAXHEATSEEKAMMO
+ends
+
+onevent EVENT_CHEATGETJETPACK
+  state cheatsubammo
+endevent
+
+state storeplayer
+  getactor[THISACTOR].extra                          STORE_EXTRA
+  getplayer[THISACTOR].gotweapon PISTOL_WEAPON       STORE_GOTWEAPON_1
+  getplayer[THISACTOR].gotweapon SHOTGUN_WEAPON      STORE_GOTWEAPON_2
+  getplayer[THISACTOR].gotweapon CHAINGUN_WEAPON     STORE_GOTWEAPON_3
+  getplayer[THISACTOR].gotweapon RPG_WEAPON          STORE_GOTWEAPON_4
+  getplayer[THISACTOR].gotweapon HANDBOMB_WEAPON     STORE_GOTWEAPON_5
+  getplayer[THISACTOR].gotweapon SHRINKER_WEAPON     STORE_GOTWEAPON_6
+  getplayer[THISACTOR].gotweapon GROW_WEAPON         STORE_GOTWEAPON_11
+  getplayer[THISACTOR].gotweapon DEVISTATOR_WEAPON   STORE_GOTWEAPON_7
+  getplayer[THISACTOR].gotweapon TRIPBOMB_WEAPON     STORE_GOTWEAPON_8
+  getplayer[THISACTOR].gotweapon FREEZE_WEAPON       STORE_GOTWEAPON_9
+  getplayer[THISACTOR].ammo_amount PISTOL_WEAPON     STORE_AMMO_AMOUNT_1
+  getplayer[THISACTOR].ammo_amount SHOTGUN_WEAPON    STORE_AMMO_AMOUNT_2
+  getplayer[THISACTOR].ammo_amount CHAINGUN_WEAPON   STORE_AMMO_AMOUNT_3
+  getplayer[THISACTOR].ammo_amount RPG_WEAPON        STORE_AMMO_AMOUNT_4
+  getplayer[THISACTOR].ammo_amount HANDBOMB_WEAPON   STORE_AMMO_AMOUNT_5
+  getplayer[THISACTOR].ammo_amount SHRINKER_WEAPON   STORE_AMMO_AMOUNT_6
+  getplayer[THISACTOR].ammo_amount GROW_WEAPON       STORE_AMMO_AMOUNT_11
+  getplayer[THISACTOR].ammo_amount DEVISTATOR_WEAPON STORE_AMMO_AMOUNT_7
+  getplayer[THISACTOR].ammo_amount TRIPBOMB_WEAPON   STORE_AMMO_AMOUNT_8
+  getplayer[THISACTOR].ammo_amount FREEZE_WEAPON     STORE_AMMO_AMOUNT_9
+  setvarvar STORE_WPSUB1AMMO WPSUB1AMMO
+  setvarvar STORE_WPSUB2AMMO WPSUB2AMMO
+  setvarvar STORE_WPSUB7AMMO WPSUB7AMMO
+  getplayer[THISACTOR].shield_amount                 STORE_SHIELD_AMOUNT
+  getplayer[THISACTOR].firstaid_amount               STORE_FIRSTAID_AMOUNT
+  getplayer[THISACTOR].steroids_amount               STORE_STEROIDS_AMOUNT
+  getplayer[THISACTOR].holoduke_amount               STORE_HOLODUKE_AMOUNT
+  getplayer[THISACTOR].jetpack_amount                STORE_JETPACK_AMOUNT
+  getplayer[THISACTOR].heat_amount                   STORE_HEAT_AMOUNT
+  getplayer[THISACTOR].scuba_amount                  STORE_SCUBA_AMOUNT
+  getplayer[THISACTOR].boot_amount                   STORE_BOOT_AMOUNT
+
+  getplayer[THISACTOR].curr_weapon STORE_CURR_WEAPON
+  getplayer[THISACTOR].subweapon STORE_SUBWEAPON
+  setvarvar STORE_WPSUB1 WPSUB1
+  setvarvar STORE_WPSUB2 WPSUB2
+  setvarvar STORE_WPSUB7 WPSUB7
+  setvarvar STORE_WPSUB1GOT WPSUB1GOT
+  setvarvar STORE_WPSUB2GOT WPSUB2GOT
+  setvarvar STORE_WPSUB7GOT WPSUB7GOT
+
+  getplayer[THISACTOR].inven_icon STORE_INVEN_ICON
+ends
+
+state resetstoreplayer
+  setactor[THISACTOR].extra                          STORE_EXTRA
+  setplayer[THISACTOR].gotweapon PISTOL_WEAPON       STORE_GOTWEAPON_1
+  setplayer[THISACTOR].gotweapon SHOTGUN_WEAPON      STORE_GOTWEAPON_2
+  setplayer[THISACTOR].gotweapon CHAINGUN_WEAPON     STORE_GOTWEAPON_3
+  setplayer[THISACTOR].gotweapon RPG_WEAPON          STORE_GOTWEAPON_4
+  setplayer[THISACTOR].gotweapon HANDBOMB_WEAPON     STORE_GOTWEAPON_5
+  setplayer[THISACTOR].gotweapon SHRINKER_WEAPON     STORE_GOTWEAPON_6
+  setplayer[THISACTOR].gotweapon GROW_WEAPON         STORE_GOTWEAPON_11
+  setplayer[THISACTOR].gotweapon DEVISTATOR_WEAPON   STORE_GOTWEAPON_7
+  setplayer[THISACTOR].gotweapon TRIPBOMB_WEAPON     STORE_GOTWEAPON_8
+  setplayer[THISACTOR].gotweapon FREEZE_WEAPON       STORE_GOTWEAPON_9
+  setplayer[THISACTOR].ammo_amount PISTOL_WEAPON     STORE_AMMO_AMOUNT_1
+  setplayer[THISACTOR].ammo_amount SHOTGUN_WEAPON    STORE_AMMO_AMOUNT_2
+  setplayer[THISACTOR].ammo_amount CHAINGUN_WEAPON   STORE_AMMO_AMOUNT_3
+  setplayer[THISACTOR].ammo_amount RPG_WEAPON        STORE_AMMO_AMOUNT_4
+  setplayer[THISACTOR].ammo_amount HANDBOMB_WEAPON   STORE_AMMO_AMOUNT_5
+  setplayer[THISACTOR].ammo_amount SHRINKER_WEAPON   STORE_AMMO_AMOUNT_6
+  setplayer[THISACTOR].ammo_amount GROW_WEAPON       STORE_AMMO_AMOUNT_11
+  setplayer[THISACTOR].ammo_amount DEVISTATOR_WEAPON STORE_AMMO_AMOUNT_7
+  setplayer[THISACTOR].ammo_amount TRIPBOMB_WEAPON   STORE_AMMO_AMOUNT_8
+  setplayer[THISACTOR].ammo_amount FREEZE_WEAPON     STORE_AMMO_AMOUNT_9
+  setvarvar WPSUB1AMMO STORE_WPSUB1AMMO
+  setvarvar WPSUB2AMMO STORE_WPSUB2AMMO
+  setvarvar WPSUB7AMMO STORE_WPSUB7AMMO
+  setplayer[THISACTOR].shield_amount                 STORE_SHIELD_AMOUNT
+  setplayer[THISACTOR].firstaid_amount               STORE_FIRSTAID_AMOUNT
+  setplayer[THISACTOR].holoduke_amount               STORE_HOLODUKE_AMOUNT
+  setplayer[THISACTOR].jetpack_amount                STORE_JETPACK_AMOUNT
+  setplayer[THISACTOR].heat_amount                   STORE_HEAT_AMOUNT
+  setplayer[THISACTOR].scuba_amount                  STORE_SCUBA_AMOUNT
+  setplayer[THISACTOR].boot_amount                   STORE_BOOT_AMOUNT
+
+  setplayer[THISACTOR].last_extra STORE_EXTRA
+  setplayer[THISACTOR].curr_weapon STORE_CURR_WEAPON
+  ifvarn player[THISACTOR].curr_weapon 0
+    setplayer[THISACTOR].kickback_pic 0
+  setplayer[THISACTOR].subweapon STORE_SUBWEAPON
+  setvarvar WPSUB1 STORE_WPSUB1
+  setvarvar WPSUB2 STORE_WPSUB2
+  setvarvar WPSUB7 STORE_WPSUB7
+  setvarvar WPSUB1GOT STORE_WPSUB1GOT
+  setvarvar WPSUB2GOT STORE_WPSUB2GOT
+  setvarvar WPSUB7GOT STORE_WPSUB7GOT
+  ifvare WPSUB1 1
+    smaxammo PISTOL_WEAPON MAXDUMDUMAMMO
+  else
+    smaxammo PISTOL_WEAPON MAXPISTOLAMMO
+  ifvare WPSUB2 1
+    smaxammo SHOTGUN_WEAPON MAXEXPSHOTGUNAMMO
+  else
+    smaxammo SHOTGUN_WEAPON MAXSHOTGUNAMMO
+  ifvare WPSUB7 1
+    smaxammo DEVISTATOR_WEAPON MAXHEATSEEKAMMO
+  else
+    smaxammo DEVISTATOR_WEAPON MAXDEVISTATORAMMO
+
+  setplayer[THISACTOR].inven_icon STORE_INVEN_ICON
+  ifvare STORE_STEROIDS_AMOUNT STEROID_AMOUNT
+    setplayer[THISACTOR].steroids_amount STEROID_AMOUNT
+  else
+    setplayer[THISACTOR].steroids_amount 0
+ends
+
+state event_egs_2
+  ifactor APLAYER
+  ifvarn sprite[THISACTOR].owner -1
+  ifvarvarl sprite[THISACTOR].yvel MULTIMODE
+  {
+    ifvarvare VOLUME LASTVOLUME
+    ifvarvare LEVEL LASTLEVEL
+    {
+      setvar STORE_PLAYER 0
+      break
+    }
+    setvar STORE_PLAYER 1
+  }
+ends
+
+state event_game_3
+  ifactor APLAYER
+  ifvarn sprite[THISACTOR].owner -1
+  ifvarvarl sprite[THISACTOR].yvel MULTIMODE
+  ifvare LOAD 0
+  {
+    ifmultiplayer
+      nullop
+    else
+    ifvare KEEP_WEAPONS 1
+    {
+      ifvare STORE_PLAYER 1
+        state storeplayer
+      else
+      ifvarn STORE_EXTRA 0
+        state resetstoreplayer
+    }
+  }
+ends
+state event_resetplayer_2
+  setvar WPSWITCH -1
+  setvar STWPCOUNT2 -1
+ends
+
+state selectweapon
+  ifvare WPSELECT -1
+    getplayer[THISACTOR].curr_weapon STWPSELECT
+  else
+    setvarvar STWPSELECT WPSELECT
+
+  ifvare WPSELECT PISTOL_WEAPON
+  ifvare WPSUB1GOT 0
+  ifvarg WPSUB1AMMO 0
+  {
+    setvar WPSELECTSUB1 1
+    setvar WPSUB1GOT 1
+  }
+  ifvare WPSELECT SHOTGUN_WEAPON
+  ifvare WPSUB2GOT 0
+  ifvarg WPSUB2AMMO 0
+  {
+    setvar WPSELECTSUB2 1
+    setvar WPSUB2GOT 1
+  }
+  ifvare WPSELECT SHRINKER_WEAPON
+  {
+    setvar ATEMP 1
+    shiftvarl ATEMP GROW_WEAPON
+    ifvarvarand player[THISACTOR].subweapon ATEMP
+    {
+      getplayer[THISACTOR].subweapon ATEMP2
+      xorvarvar ATEMP2 ATEMP
+      setplayer[THISACTOR].subweapon ATEMP2
+    }
+  }
+  ifvare WPSELECT GROW_WEAPON
+  {
+    getplayer[THISACTOR].subweapon ATEMP
+    setvar ATEMP2 1
+    shiftvarl ATEMP2 GROW_WEAPON
+    orvarvar ATEMP ATEMP2
+    setplayer[THISACTOR].subweapon ATEMP
+  }
+  ifvare WPSELECT DEVISTATOR_WEAPON
+  ifvare WPSUB7GOT 0
+  ifvarg WPSUB7AMMO 0
+  {
+    setvar WPSELECTSUB7 1
+    setvar WPSUB7GOT 1
+  }
+
+  ifvare WEAPON_SWITCH_MODE 2
+  ifvare WPSWITCH 0
+    setvar WPSWITCH WEAPON_SWITCH_TIME
+  ifvare WPSWITCH WEAPON_SWITCH_TIME
+    break
+
+  ifvarg STWPCOUNT WEAPON_SWITCH_TIME
+  {
+    subvar STWPCOUNT WEAPON_SWITCH_TIME
+    mulvar STWPCOUNT WPBAR_RISE_TIME
+    divvar STWPCOUNT WPBAR_DROP_TIME
+    mulvar STWPCOUNT -1
+    addvar STWPCOUNT WPBAR_RISE_TIME
+  }
+  else
+  ifvarg STWPCOUNT WPBAR_RISE_TIME
+    setvar STWPCOUNT WPBAR_RISE_TIME
+  else
+  ifvare STWPCOUNT -1
+    setvar STWPCOUNT 0
+  setvar STWPCOUNT2 0
+ends
+
+state nextweapon
+  ifvare WPSELECT -1
+    getplayer[THISACTOR].curr_weapon ATEMP
+  else
+    setvarvar ATEMP WPSELECT
+  ifvarn ATEMP KNEE_WEAPON
+  ifvare player[THISACTOR].gotweapon KNEE_WEAPON 1
+  {
+    setvar WPSWITCH 0
+    setvar WPSELECT KNEE_WEAPON
+  }
+  ifvare ATEMP FREEZE_WEAPON
+    break
+  ifvare player[THISACTOR].gotweapon FREEZE_WEAPON 1
+  ifvarg player[THISACTOR].ammo_amount FREEZE_WEAPON 0
+  {
+    setvar WPSWITCH 0
+    setvar WPSELECT FREEZE_WEAPON
+  }
+  ifvare ATEMP TRIPBOMB_WEAPON
+    break
+  ifvare player[THISACTOR].gotweapon TRIPBOMB_WEAPON 1
+  ifvarg player[THISACTOR].ammo_amount TRIPBOMB_WEAPON 0
+  {
+    setvar WPSWITCH 0
+    setvar WPSELECT TRIPBOMB_WEAPON
+  }
+  ifvare ATEMP DEVISTATOR_WEAPON
+    break
+  ifvare player[THISACTOR].gotweapon DEVISTATOR_WEAPON 1
+  ifvarg player[THISACTOR].ammo_amount DEVISTATOR_WEAPON 0
+  {
+    setvar WPSWITCH 0
+    setvar WPSELECT DEVISTATOR_WEAPON
+  }
+  ifvare ATEMP GROW_WEAPON
+    break
+  ifvare player[THISACTOR].gotweapon GROW_WEAPON 1
+  ifvarg player[THISACTOR].ammo_amount GROW_WEAPON 0
+  {
+    setvar WPSWITCH 0
+    setvar WPSELECT GROW_WEAPON
+  }
+  ifvare ATEMP SHRINKER_WEAPON
+    break
+  ifvare player[THISACTOR].gotweapon SHRINKER_WEAPON 1
+  ifvarg player[THISACTOR].ammo_amount SHRINKER_WEAPON 0
+  {
+    setvar WPSWITCH 0
+    setvar WPSELECT SHRINKER_WEAPON
+  }
+
+  ifvare ATEMP HANDBOMB_WEAPON
+    break
+  ifvare ATEMP HANDREMOTE_WEAPON
+    break
+  ifvare player[THISACTOR].gotweapon HANDBOMB_WEAPON 1
+  {
+    setvar ATEMP2 0
+    setvar ATEMPSECTORS 0
+    whilevarvarn ATEMPSECTORS NUMSECTORS
+    {
+      headspritesect ATEMPSPRITES ATEMPSECTORS
+      setvarvar AHEAD ATEMPSPRITES
+      whilevarn ATEMPSPRITES -1
+      {
+        ifvare sprite[ATEMPSPRITES].picnum HEAVYHBOMB
+        ifvarvare sprite[ATEMPSPRITES].owner THISACTOR
+        ifvare sprite[ATEMPSPRITES].htg_t 6 2
+        {
+          addvar ATEMP2 1
+          ifvare MAX_PIPEBOMBS 0
+          {
+            setvar ATEMPSPRITES -1
+            setvarvar ATEMPSECTORS NUMSECTORS
+          }
+          else
+          ifvare ATEMP2 MAX_PIPEBOMBS
+          {
+            setvar ATEMPSPRITES -1
+            setvarvar ATEMPSECTORS NUMSECTORS
+          }
+        }
+        ifvarn ATEMPSPRITES -1
+        {
+          nextspritesect ATEMPSPRITES ATEMPSPRITES
+          ifvarvare ATEMPSPRITES AHEAD
+            setvar ATEMPSPRITES -1
+        }
+      }
+      ifvarvarn ATEMPSECTORS NUMSECTORS
+        addvar ATEMPSECTORS 1
+    }
+    ifvarg player[THISACTOR].ammo_amount HANDBOMB_WEAPON 0
+    {
+      setvar WPSWITCH 0
+      setvar WPSELECT HANDBOMB_WEAPON
+    }
+    ifvarg MAX_PIPEBOMBS 0
+    ifvare ATEMP2 MAX_PIPEBOMBS
+    {
+      setvar WPSWITCH 0
+      setvar WPSELECT HANDREMOTE_WEAPON
+    }
+    ifvarg ATEMP2 0
+    ifvare player[THISACTOR].ammo_amount HANDBOMB_WEAPON 0
+    {
+      setvar WPSWITCH 0
+      setvar WPSELECT HANDREMOTE_WEAPON
+    }
+  }
+
+  ifvare ATEMP RPG_WEAPON
+    break
+  ifvare player[THISACTOR].gotweapon RPG_WEAPON 1
+  ifvarg player[THISACTOR].ammo_amount RPG_WEAPON 0
+  {
+    setvar WPSWITCH 0
+    setvar WPSELECT RPG_WEAPON
+  }
+  ifvare ATEMP CHAINGUN_WEAPON
+    break
+  ifvare player[THISACTOR].gotweapon CHAINGUN_WEAPON 1
+  ifvarg player[THISACTOR].ammo_amount CHAINGUN_WEAPON 0
+  {
+    setvar WPSWITCH 0
+    setvar WPSELECT CHAINGUN_WEAPON
+  }
+  ifvare ATEMP SHOTGUN_WEAPON
+    break
+  ifvare player[THISACTOR].gotweapon SHOTGUN_WEAPON 1
+  ifvarg player[THISACTOR].ammo_amount SHOTGUN_WEAPON 0
+  {
+    setvar WPSWITCH 0
+    setvar WPSELECT SHOTGUN_WEAPON
+  }
+  ifvare ATEMP PISTOL_WEAPON
+    break
+  ifvare player[THISACTOR].gotweapon PISTOL_WEAPON 1
+  ifvarg player[THISACTOR].ammo_amount PISTOL_WEAPON 0
+  {
+    setvar WPSWITCH 0
+    setvar WPSELECT PISTOL_WEAPON
+  }
+ends
+
+state previousweapon
+  ifvare WPSELECT -1
+    getplayer[THISACTOR].curr_weapon ATEMP
+  else
+    setvarvar ATEMP WPSELECT
+  ifvarn ATEMP KNEE_WEAPON
+  ifvare player[THISACTOR].gotweapon KNEE_WEAPON 1
+  {
+    setvar WPSWITCH 0
+    setvar WPSELECT KNEE_WEAPON
+  }
+  ifvare ATEMP PISTOL_WEAPON
+    break
+  ifvare player[THISACTOR].gotweapon PISTOL_WEAPON 1
+  ifvarg player[THISACTOR].ammo_amount PISTOL_WEAPON 0
+  {
+    setvar WPSWITCH 0
+    setvar WPSELECT PISTOL_WEAPON
+  }
+  ifvare ATEMP SHOTGUN_WEAPON
+    break
+  ifvare player[THISACTOR].gotweapon SHOTGUN_WEAPON 1
+  ifvarg player[THISACTOR].ammo_amount SHOTGUN_WEAPON 0
+  {
+    setvar WPSWITCH 0
+    setvar WPSELECT SHOTGUN_WEAPON
+  }
+  ifvare ATEMP CHAINGUN_WEAPON
+    break
+  ifvare player[THISACTOR].gotweapon CHAINGUN_WEAPON 1
+  ifvarg player[THISACTOR].ammo_amount CHAINGUN_WEAPON 0
+  {
+    setvar WPSWITCH 0
+    setvar WPSELECT CHAINGUN_WEAPON
+  }
+  ifvare ATEMP RPG_WEAPON
+    break
+  ifvare player[THISACTOR].gotweapon RPG_WEAPON 1
+  ifvarg player[THISACTOR].ammo_amount RPG_WEAPON 0
+  {
+    setvar WPSWITCH 0
+    setvar WPSELECT RPG_WEAPON
+  }
+
+  ifvare ATEMP HANDBOMB_WEAPON
+    break
+  ifvare player[THISACTOR].gotweapon HANDBOMB_WEAPON 1
+  {
+    setvar ATEMP2 0
+    setvar ATEMPSECTORS 0
+    whilevarvarn ATEMPSECTORS NUMSECTORS
+    {
+      headspritesect ATEMPSPRITES ATEMPSECTORS
+      setvarvar AHEAD ATEMPSPRITES
+      whilevarn ATEMPSPRITES -1
+      {
+        ifvare sprite[ATEMPSPRITES].picnum HEAVYHBOMB
+        ifvarvare sprite[ATEMPSPRITES].owner THISACTOR
+        ifvare sprite[ATEMPSPRITES].htg_t 6 2
+        {
+          addvar ATEMP2 1
+          ifvare MAX_PIPEBOMBS 0
+          {
+            setvar ATEMPSPRITES -1
+            setvarvar ATEMPSECTORS NUMSECTORS
+          }
+          else
+          ifvare ATEMP2 MAX_PIPEBOMBS
+          {
+            setvar ATEMPSPRITES -1
+            setvarvar ATEMPSECTORS NUMSECTORS
+          }
+        }
+        ifvarn ATEMPSPRITES -1
+        {
+          nextspritesect ATEMPSPRITES ATEMPSPRITES
+          ifvarvare ATEMPSPRITES AHEAD
+            setvar ATEMPSPRITES -1
+        }
+      }
+      ifvarvarn ATEMPSECTORS NUMSECTORS
+        addvar ATEMPSECTORS 1
+    }
+    ifvarg player[THISACTOR].ammo_amount HANDBOMB_WEAPON 0
+    {
+      ifvarg MAX_PIPEBOMBS 0
+      {
+        ifvarl ATEMP2 MAX_PIPEBOMBS
+        {
+          setvar WPSWITCH 0
+          setvar WPSELECT HANDBOMB_WEAPON
+        }
+      }
+      else
+      {
+        setvar WPSWITCH 0
+        setvar WPSELECT HANDBOMB_WEAPON
+      }
+    }
+  }
+  ifvare ATEMP HANDREMOTE_WEAPON
+    break
+  ifvare player[THISACTOR].gotweapon HANDBOMB_WEAPON 1
+  {
+    ifvarg MAX_PIPEBOMBS 0
+    ifvare ATEMP2 MAX_PIPEBOMBS
+    {
+      setvar WPSWITCH 0
+      setvar WPSELECT HANDREMOTE_WEAPON
+    }
+    ifvarg ATEMP2 0
+    ifvare player[THISACTOR].ammo_amount HANDBOMB_WEAPON 0
+    {
+      setvar WPSWITCH 0
+      setvar WPSELECT HANDREMOTE_WEAPON
+    }
+  }
+
+  ifvare ATEMP SHRINKER_WEAPON
+    break
+  ifvare player[THISACTOR].gotweapon SHRINKER_WEAPON 1
+  ifvarg player[THISACTOR].ammo_amount SHRINKER_WEAPON 0
+  {
+    setvar WPSWITCH 0
+    setvar WPSELECT SHRINKER_WEAPON
+  }
+  ifvare ATEMP GROW_WEAPON
+    break
+  ifvare player[THISACTOR].gotweapon GROW_WEAPON 1
+  ifvarg player[THISACTOR].ammo_amount GROW_WEAPON 0
+  {
+    setvar WPSWITCH 0
+    setvar WPSELECT GROW_WEAPON
+  }
+  ifvare ATEMP DEVISTATOR_WEAPON
+    break
+  ifvare player[THISACTOR].gotweapon DEVISTATOR_WEAPON 1
+  ifvarg player[THISACTOR].ammo_amount DEVISTATOR_WEAPON 0
+  {
+    setvar WPSWITCH 0
+    setvar WPSELECT DEVISTATOR_WEAPON
+  }
+  ifvare ATEMP TRIPBOMB_WEAPON
+    break
+  ifvare player[THISACTOR].gotweapon TRIPBOMB_WEAPON 1
+  ifvarg player[THISACTOR].ammo_amount TRIPBOMB_WEAPON 0
+  {
+    setvar WPSWITCH 0
+    setvar WPSELECT TRIPBOMB_WEAPON
+  }
+  ifvare ATEMP FREEZE_WEAPON 
+    break
+  ifvare player[THISACTOR].gotweapon FREEZE_WEAPON 1
+  ifvarg player[THISACTOR].ammo_amount FREEZE_WEAPON 0
+  {
+    setvar WPSWITCH 0
+    setvar WPSELECT FREEZE_WEAPON
+  }
+ends
+
+onevent EVENT_NEXTWEAPON
+  setvar RETURN -1
+  ifvarg WPSWITCH -1
+  ifvarl WPSWITCH WPBAR_MOVE_TIME
+    break
+  ifp pshrunk
+  {
+    setvar STWPPOS 0
+    setvar WPSWITCH 0
+  }
+  else
+  {
+    setvar STWPPOS 1
+    state nextweapon
+  }
+  ifvare WPSWITCH 0
+    state selectweapon
+endevent
+
+onevent EVENT_PREVIOUSWEAPON
+  setvar RETURN -1
+  ifvarg WPSWITCH -1
+  ifvarl WPSWITCH WPBAR_MOVE_TIME
+    break
+  ifp pshrunk
+  {
+    setvar STWPPOS 0
+    setvar WPSWITCH 0
+  }
+  else
+  {
+    setvar STWPPOS 2
+    state previousweapon
+  }
+  ifvare WPSWITCH 0
+    state selectweapon
+endevent
+
+state weaponorder
+  switch ATEMP
+  case KNEE_WEAPON
+    setvar ATEMP 0
+  break
+  case PISTOL_WEAPON
+    setvar ATEMP 1
+  break
+  case SHOTGUN_WEAPON
+    setvar ATEMP 2
+  break
+  case CHAINGUN_WEAPON
+    setvar ATEMP 3
+  break
+  case RPG_WEAPON
+    setvar ATEMP 4
+  break
+  case HANDBOMB_WEAPON
+  case HANDREMOTE_WEAPON
+    setvar ATEMP 5
+  break
+  case SHRINKER_WEAPON
+    setvar ATEMP 6
+  break
+  case GROW_WEAPON
+    setvar ATEMP 7
+  break
+  case DEVISTATOR_WEAPON
+    setvar ATEMP 8
+  break
+  case TRIPBOMB_WEAPON
+    setvar ATEMP 9
+  break
+  case FREEZE_WEAPON
+    setvar ATEMP 10
+  break
+  default
+    setvar ATEMP -1
+  break
+  endswitch
+ends
+
+state switchweapon
+  setvarvar ATEMP ASET
+  state weaponorder
+  setvarvar ATEMP2 ATEMP
+  ifvare WPSELECT -1
+    getplayer[THISACTOR].curr_weapon ATEMP
+  else
+    setvarvar ATEMP WPSELECT
+  state weaponorder
+  ifvarvarl ATEMP2 ATEMP
+    setvar STWPPOS 2
+  else
+  ifvarvarg ATEMP2 ATEMP
+    setvar STWPPOS 1
+  else
+    setvar STWPPOS 0
+ends
+
+state selectweaponnumber
+  ifvare WEAPON_SWITCH_MODE 1
+  ifvare WPSWITCH 0
+    setvar WPSWITCH WEAPON_SWITCH_TIME
+  state selectweapon
+ends
+
+state weaponkey
+  ifvarg WPSWITCH -1
+  ifvarl WPSWITCH WPBAR_MOVE_TIME
+    break
+  ifvarvarn WPSELECT ASET
+  {
+    ifp pshrunk
+    {
+      setvar STWPPOS 0
+      setvar WPSWITCH 0
+    }
+    else
+    {
+      state switchweapon
+      setvar WPSWITCH 0
+      setvarvar WPSELECT ASET
+    }
+    state selectweaponnumber
+  }
+ends
+
+onevent EVENT_WEAPKEY1
+  setvar RETURN -1
+  ifvare player[THISACTOR].gotweapon KNEE_WEAPON 1
+  {
+    setvar ASET KNEE_WEAPON
+    state weaponkey
+  }
+endevent
+
+onevent EVENT_WEAPKEY2
+  setvar RETURN -1
+  ifvare player[THISACTOR].gotweapon PISTOL_WEAPON 1
+  {
+    ifvarg WPSWITCH -1
+    ifvarl WPSWITCH WPBAR_MOVE_TIME
+      break
+    ifvare WPSELECT PISTOL_WEAPON
+    ifvare WPSUB1AMMO 0
+      break
+    ifp pshrunk
+    {
+      setvar STWPPOS 0
+      setvar WPSWITCH 0
+    }
+    else
+    {
+      setvar ASET PISTOL_WEAPON
+      state switchweapon
+      ifvarg WPSUB1AMMO 0
+      {
+        setvar ATEMP 0
+        ifvare player[THISACTOR].curr_weapon PISTOL_WEAPON
+        {
+          ifvare WPSELECT -1
+            setvar ATEMP 1
+        }
+        else
+        ifvare WPSELECT PISTOL_WEAPON
+          setvar ATEMP 1
+        ifvare ATEMP 1
+          xorvar WPSELECTSUB1 1
+      }
+      ifvarn WPSELECT PISTOL_WEAPON
+        setvar WPSWITCH 0
+      setvar WPSELECT PISTOL_WEAPON
+    }
+    state selectweaponnumber
+  }
+endevent
+
+onevent EVENT_WEAPKEY3
+  setvar RETURN -1
+  ifvare player[THISACTOR].gotweapon SHOTGUN_WEAPON 1
+  {
+    ifvarg WPSWITCH -1
+    ifvarl WPSWITCH WPBAR_MOVE_TIME
+      break
+    ifvare WPSELECT SHOTGUN_WEAPON
+    ifvare WPSUB2AMMO 0
+      break
+    ifp pshrunk
+    {
+      setvar STWPPOS 0
+      setvar WPSWITCH 0
+    }
+    else
+    {
+      setvar ASET SHOTGUN_WEAPON
+      state switchweapon
+      ifvarg WPSUB2AMMO 0
+      {
+        setvar ATEMP 0
+        ifvare player[THISACTOR].curr_weapon SHOTGUN_WEAPON
+        {
+          ifvare WPSELECT -1
+            setvar ATEMP 1
+        }
+        else
+        ifvare WPSELECT SHOTGUN_WEAPON
+          setvar ATEMP 1
+        ifvare ATEMP 1
+          xorvar WPSELECTSUB2 1
+      }
+      ifvarn WPSELECT SHOTGUN_WEAPON
+        setvar WPSWITCH 0
+      setvar WPSELECT SHOTGUN_WEAPON
+    }
+    state selectweaponnumber
+  }
+endevent
+
+onevent EVENT_WEAPKEY4
+  setvar RETURN -1
+  ifvare player[THISACTOR].gotweapon CHAINGUN_WEAPON 1
+  {
+    setvar ASET CHAINGUN_WEAPON
+    state weaponkey
+  }
+endevent
+
+onevent EVENT_WEAPKEY5
+  setvar RETURN -1
+  ifvare player[THISACTOR].gotweapon RPG_WEAPON 1
+  {
+    setvar ASET RPG_WEAPON
+    state weaponkey
+  }
+endevent
+
+onevent EVENT_WEAPKEY6
+  setvar RETURN -1
+  ifvare player[THISACTOR].gotweapon HANDBOMB_WEAPON 1
+  {
+    ifvarg WPSWITCH -1
+    ifvarl WPSWITCH WPBAR_MOVE_TIME
+      break
+    setvar ATEMP2 0
+    setvar ATEMPSECTORS 0
+    whilevarvarn ATEMPSECTORS NUMSECTORS
+    {
+      headspritesect ATEMPSPRITES ATEMPSECTORS
+      setvarvar AHEAD ATEMPSPRITES
+      whilevarn ATEMPSPRITES -1
+      {
+        ifvare sprite[ATEMPSPRITES].picnum HEAVYHBOMB
+        ifvarvare sprite[ATEMPSPRITES].owner THISACTOR
+        ifvare sprite[ATEMPSPRITES].htg_t 6 2
+        {
+          addvar ATEMP2 1
+          ifvare MAX_PIPEBOMBS 0
+          {
+            setvar ATEMPSPRITES -1
+            setvarvar ATEMPSECTORS NUMSECTORS
+          }
+          else
+          ifvare ATEMP2 MAX_PIPEBOMBS
+          {
+            setvar ATEMPSPRITES -1
+            setvarvar ATEMPSECTORS NUMSECTORS
+          }
+        }
+        ifvarn ATEMPSPRITES -1
+        {
+          nextspritesect ATEMPSPRITES ATEMPSPRITES
+          ifvarvare ATEMPSPRITES AHEAD
+            setvar ATEMPSPRITES -1
+        }
+      }
+      ifvarvarn ATEMPSECTORS NUMSECTORS
+        addvar ATEMPSECTORS 1
+    }
+
+    setvar ATEMP 0
+    ifvarg player[THISACTOR].ammo_amount HANDBOMB_WEAPON 0
+    {
+      ifvarg MAX_PIPEBOMBS 0
+      ifvare ATEMP2 MAX_PIPEBOMBS
+        setvar ATEMP 1
+    }
+    else
+    ifvarg ATEMP2 0
+      setvar ATEMP 1
+
+    ifvare ATEMP 0
+    ifvarg player[THISACTOR].ammo_amount HANDBOMB_WEAPON 0
+    {
+      setvar ASET HANDBOMB_WEAPON
+      state weaponkey
+    }
+    ifvare ATEMP 1
+    {
+      setvar ASET HANDREMOTE_WEAPON
+      state weaponkey
+    }
+  }
+endevent
+
+onevent EVENT_WEAPKEY7
+  setvar RETURN -1
+  ifvare WPSELECT -1
+    getplayer[THISACTOR].curr_weapon ATEMP2
+  else
+    setvarvar ATEMP2 WPSELECT
+  ifvare ATEMP2 SHRINKER_WEAPON
+    setvar ATEMP 1
+  else
+  ifvare ATEMP2 GROW_WEAPON
+    setvar ATEMP 0
+  else
+  {
+    setvar ATEMP3 1
+    shiftvarl ATEMP3 GROW_WEAPON
+    ifvarvarand player[THISACTOR].subweapon ATEMP3
+    {
+      setvar ATEMP 1
+      ifvare player[THISACTOR].ammo_amount GROW_WEAPON 0
+      ifvare player[THISACTOR].gotweapon SHRINKER_WEAPON 1
+      ifvarg player[THISACTOR].ammo_amount SHRINKER_WEAPON 0
+        setvar ATEMP 0
+    }
+    else
+    {
+      setvar ATEMP 0
+      ifvare player[THISACTOR].ammo_amount SHRINKER_WEAPON 0
+      ifvare player[THISACTOR].gotweapon GROW_WEAPON 1
+      ifvarg player[THISACTOR].ammo_amount GROW_WEAPON 0
+        setvar ATEMP 1
+    }
+  }
+  ifvare ATEMP 0
+  ifvare player[THISACTOR].gotweapon SHRINKER_WEAPON 1
+  {
+    setvar ASET SHRINKER_WEAPON
+    state weaponkey
+  }
+  ifvare ATEMP 1
+  ifvare player[THISACTOR].gotweapon GROW_WEAPON 1
+  {
+    setvar ASET GROW_WEAPON
+    state weaponkey
+  }
+endevent
+
+onevent EVENT_WEAPKEY8
+  setvar RETURN -1
+  ifvare player[THISACTOR].gotweapon DEVISTATOR_WEAPON 1
+  {
+    ifvarg WPSWITCH -1
+    ifvarl WPSWITCH WPBAR_MOVE_TIME
+      break
+    ifvare WPSELECT DEVISTATOR_WEAPON
+    ifvare WPSUB7AMMO 0
+      break
+    ifp pshrunk
+    {
+      setvar STWPPOS 0
+      setvar WPSWITCH 0
+    }
+    else
+    {
+      setvar ASET DEVISTATOR_WEAPON
+      state switchweapon
+      ifvarg WPSUB7AMMO 0
+      {
+        setvar ATEMP 0
+        ifvare player[THISACTOR].curr_weapon DEVISTATOR_WEAPON
+        {
+          ifvare WPSELECT -1
+            setvar ATEMP 1
+        }
+        else
+        ifvare WPSELECT DEVISTATOR_WEAPON
+          setvar ATEMP 1
+        ifvare ATEMP 1
+          xorvar WPSELECTSUB7 1
+      }
+      ifvarn WPSELECT DEVISTATOR_WEAPON
+        setvar WPSWITCH 0
+      setvar WPSELECT DEVISTATOR_WEAPON
+    }
+    state selectweaponnumber
+  }
+endevent
+
+onevent EVENT_WEAPKEY9
+  setvar RETURN -1
+  ifvare player[THISACTOR].gotweapon TRIPBOMB_WEAPON 1
+  ifvarg player[THISACTOR].ammo_amount TRIPBOMB_WEAPON 0
+  {
+    setvar ASET TRIPBOMB_WEAPON
+    state weaponkey
+  }
+endevent
+
+onevent EVENT_WEAPKEY10
+  setvar RETURN -1
+  ifvare player[THISACTOR].gotweapon FREEZE_WEAPON 1
+  {
+    setvar ASET FREEZE_WEAPON
+    state weaponkey
+  }
+endevent
+
+onevent EVENT_INVENTORYRIGHT
+  setvar INVICON 100
+  ifvarg player[THISACTOR].shield_amount 0
+  {
+    ifvare player[THISACTOR].inven_icon 8
+    {
+      ifvarg player[THISACTOR].firstaid_amount 0
+      {
+        setvar RETURN 1
+        break
+      }
+      ifvarg player[THISACTOR].steroids_amount 0
+      {
+        setvar RETURN 2
+        break
+      }
+      ifvarg player[THISACTOR].holoduke_amount 0
+      {
+        setvar RETURN 3
+        break
+      }
+      ifvarg player[THISACTOR].jetpack_amount 0
+      {
+        setvar RETURN 4
+        break
+      }
+      ifvarg player[THISACTOR].heat_amount 0
+      {
+        setvar RETURN 5
+        break
+      }
+      ifvarg player[THISACTOR].scuba_amount 0
+      {
+        setvar RETURN 6
+        break
+      }
+      ifvarg player[THISACTOR].boot_amount 0
+      {
+        setvar RETURN 7
+        break
+      }
+      ifvarg player[THISACTOR].shield_amount 0
+        setvar RETURN -1
+    }
+    else
+    {
+      ifvarvarl player[THISACTOR].inven_icon RETURN
+        nullop
+      else
+      {
+        setvar RETURN -1
+        setplayer[THISACTOR].inven_icon 8
+      }
+    }
+    ifvare RETURN -1
+    ifvare player[THISACTOR].inven_icon 8
+      quote 38
+  }
+endevent
+
+onevent EVENT_INVENTORYLEFT
+  setvar INVICON 100
+  ifvarg player[THISACTOR].shield_amount 0
+  {
+    ifvare player[THISACTOR].inven_icon 8
+    {
+      ifvarg player[THISACTOR].boot_amount 0
+      {
+        setvar RETURN 7
+        break
+      }
+      ifvarg player[THISACTOR].scuba_amount 0
+      {
+        setvar RETURN 6
+        break
+      }
+      ifvarg player[THISACTOR].heat_amount 0
+      {
+        setvar RETURN 5
+        break
+      }
+      ifvarg player[THISACTOR].jetpack_amount 0
+      {
+        setvar RETURN 4
+        break
+      }
+      ifvarg player[THISACTOR].holoduke_amount 0
+      {
+        setvar RETURN 3
+        break
+      }
+      ifvarg player[THISACTOR].steroids_amount 0
+      {
+        setvar RETURN 2
+        break
+      }
+      ifvarg player[THISACTOR].firstaid_amount 0
+      {
+        setvar RETURN 1
+        break
+      }
+      ifvarg player[THISACTOR].shield_amount 0
+        setvar RETURN -1
+    }
+    else
+    {
+      ifvarvarg player[THISACTOR].inven_icon RETURN
+        nullop
+      else
+      {
+        setvar RETURN -1
+        setplayer[THISACTOR].inven_icon 8
+      }
+    }
+    ifvare RETURN -1
+    ifvare player[THISACTOR].inven_icon 8
+      quote 38
+  }
+endevent
+
+state event_resetplayer_3
+  setvar INVICON 0
+  setvar LASTINVICON 0
+ends
+
+onevent EVENT_INVENTORY
+  setvar INVICON 100
+endevent
+
+onevent EVENT_USEMEDKIT
+  ifvarg player[THISACTOR].firstaid_amount 0
+    setvar INVICON 100
+  ifvarg player[THISACTOR].firstaid_amount 0
+  ifvarl sprite[THISACTOR].extra MAXPLAYERHEALTH
+  {
+    setvar SOUNDTEMP 1
+    ifvarl sprite[THISACTOR].extra HUD_LOW_AMOUNT
+    {
+      ifrnd 128
+        sound BLEED_SPEECH
+      else
+        sound DUKE_USEMEDKIT
+    }
+    else
+      sound DUKE_USEMEDKIT
+    setvar SOUNDTEMP 0
+  }
+endevent
+
+state event_sound_1
+  ifvare RETURN DUKE_USEMEDKIT
+  ifvare SOUNDTEMP 0
+    setvar RETURN -1
+ends
+
+onevent EVENT_USESTEROIDS
+  ifvarg player[THISACTOR].steroids_amount 0
+    setvar INVICON 100
+endevent
+
+onevent EVENT_HOLODUKEON
+  ifvarg player[THISACTOR].holoduke_amount 0
+    setvar INVICON 100
+endevent
+
+onevent EVENT_HOLODUKEOFF
+  ifvarg player[THISACTOR].holoduke_amount 0
+    setvar INVICON 100
+endevent
+
+onevent EVENT_USEJETPACK
+  ifvarg player[THISACTOR].jetpack_amount 0
+    setvar INVICON 100
+endevent
+
+onevent EVENT_USENIGHTVISION
+  ifvarg player[THISACTOR].heat_amount 0
+    setvar INVICON 100
+endevent
+

@@ -1,0 +1,3029 @@
+
+
+// Actors
+
+move NULLMOVE 0
+
+state event_loadactor_2
+  ifspritepal 69
+  {
+    cstator 32768
+    spritepal 0
+  }
+ends
+
+useractor notenemy BAG WEAK state breakobject enda
+
+useractor notenemy PIG REALLYTOUGH state breakobject enda
+
+useractor notenemy TORSO MEDIUMSTRENGTH state breakobject enda
+
+useractor notenemy HANNIBAL TOUGH state breakobject enda
+
+useractor notenemy GUY1 TOUGH state breakobject enda
+
+useractor notenemy GUY2 TOUGH state breakobject enda
+
+useractor notenemy FEM6PAD TOUGH state femcode enda
+
+useractor notenemy FEMPOD1 TOUGH state femcode enda
+
+useractor notenemy FEMPOD2 TOUGH state femcode enda
+
+useractor notenemy FEMPOD3 TOUGH state femcode enda
+
+state event_loadactor_3
+  ifactor FEMHATCH1
+    cactor PODFEM1
+  ifactor FEMHATCH2
+    cactor FEM5
+  ifactor FEMHATCH3
+    cactor FEM6
+ends
+
+state event_game_4
+  switch sprite[THISACTOR].picnum
+  case PODFEM1
+  case FEM5
+  case FEM6
+    ifinwater
+      nullop
+    else
+    ifvare LOAD 0
+    {
+      ifmultiplayer
+      ifvarn COOP 1
+        killit
+      addvar TOTALFEMALES 1
+    }
+  break
+  endswitch
+ends
+
+state event_game_5
+  ifactor APLAYER
+  ifvarn sprite[THISACTOR].owner -1
+  ifvarvarl sprite[THISACTOR].yvel MULTIMODE
+  {
+    ifvare player[YVEL].pals_time 32
+    ifvare player[YVEL].pals 0 0
+    ifvare player[YVEL].pals 1 32
+    ifvare player[YVEL].pals 2 0
+      palfrom 32 0 0 32
+  }
+ends
+
+defineprojectile HBOMBAMMO PROJ_WORKSLIKE 6
+defineprojectile HBOMBAMMO PROJ_BOUNCES 0
+defineprojectile HBOMBAMMO PROJ_EXTRA HANDBOMB_WEAPON_STRENGTH
+defineprojectile HBOMBAMMO PROJ_HITRADIUS PIPEBOMBRADIUS
+defineprojectile HBOMBAMMO PROJ_SPAWNS -1
+defineprojectile HBOMBAMMO PROJ_ISOUND -1
+defineprojectile HBOMBAMMO PROJ_CSTAT 32768
+
+state event_spawn_2
+  ifactor GROWAMMO
+    spriteflags 64
+ends
+
+useractor notenemy GROWSPRITEICON
+  fall
+  ifmove RESPAWN_ACTOR_FLAG
+    state respawnit
+  else
+  ifp pshrunk
+    nullop
+  else
+  ifp palive
+  ifpdistl RETRIEVEDISTANCE
+  ifcount 6
+  ifcanseetarget
+  {
+    ifgotweaponce 0
+      break
+    ifvare player[THISACTOR].gotweapon GROW_WEAPON 0
+    {
+      getplayer[THISACTOR].subweapon ATEMP
+      setvar ATEMP2 1
+      shiftvarl ATEMP2 GROW_WEAPON
+      orvarvar ATEMP ATEMP2
+      setplayer[THISACTOR].subweapon ATEMP
+    }
+    addweapon GROW_WEAPON 10
+    setplayer[THISACTOR].gotweapon GROW_WEAPON 1
+    setplayer[THISACTOR].gotweapon SHRINKER_WEAPON 1
+    quote 60
+    ifspawnedby GROWSPRITEICON
+      state getweaponcode
+    else
+      state quikweaponget
+  }
+enda
+
+useractor notenemy DUMDUMSAMMO
+  fall
+  ifmove RESPAWN_ACTOR_FLAG
+    state respawnit
+  else
+  ifp pshrunk
+    nullop
+  else
+  ifp palive
+  ifpdistl RETRIEVEDISTANCE
+  ifcount 6
+  ifcanseetarget
+  {
+    ifvare WPSUB1 1
+      addammo PISTOL_WEAPON PISTOLAMMOAMOUNT
+    else
+    {
+      ifvare WPSUB1AMMO MAXDUMDUMAMMO
+        break
+      addvar WPSUB1AMMO PISTOLAMMOAMOUNT
+      ifvarg WPSUB1AMMO MAXDUMDUMAMMO
+        setvar WPSUB1AMMO MAXDUMDUMAMMO
+    }
+    quote 126
+    ifspawnedby DUMDUMSAMMO
+      state getcode
+    else
+      state quikget
+  }
+enda
+
+useractor notenemy EXPSHOTGUNAMMO
+  fall
+  ifmove RESPAWN_ACTOR_FLAG
+    state respawnit
+  else
+  ifp pshrunk
+    nullop
+  else
+  ifp palive
+  ifpdistl RETRIEVEDISTANCE
+  ifcount 6
+  ifcanseetarget
+  {
+    ifvare WPSUB2 1
+      addammo SHOTGUN_WEAPON SHOTGUNAMMOAMOUNT
+    else
+    {
+      ifvare WPSUB2AMMO MAXEXPSHOTGUNAMMO
+        break
+      addvar WPSUB2AMMO SHOTGUNAMMOAMOUNT
+      ifvarg WPSUB2AMMO MAXEXPSHOTGUNAMMO
+        setvar WPSUB2AMMO MAXEXPSHOTGUNAMMO
+    }
+    quote 127
+    ifspawnedby EXPSHOTGUNAMMO
+      state getcode
+    else
+      state quikget
+  }
+enda
+
+useractor notenemy HEATSEEKAMMO
+  fall
+  ifmove RESPAWN_ACTOR_FLAG
+    state respawnit
+  else
+  ifp pshrunk
+    nullop
+  else
+  ifp palive
+  ifpdistl RETRIEVEDISTANCE
+  ifcount 6
+  ifcanseetarget
+  {
+    ifvare WPSUB7 1
+      addammo DEVISTATOR_WEAPON DEVISTATORAMMOAMOUNT
+    else
+    {
+      ifvare WPSUB7AMMO MAXHEATSEEKAMMO
+        break
+      addvar WPSUB7AMMO DEVISTATORAMMOAMOUNT
+      ifvarg WPSUB7AMMO MAXHEATSEEKAMMO
+        setvar WPSUB7AMMO MAXHEATSEEKAMMO
+    }
+    quote 130
+    ifspawnedby HEATSEEKAMMO
+      state getcode
+    else
+      state quikget
+  }
+enda
+
+state event_loadactor_4
+  switch sprite[THISACTOR].picnum
+  case GROWSPRITEICON
+  case DUMDUMSAMMO
+  case EXPSHOTGUNAMMO
+  case HEATSEEKAMMO
+    ifspritepal 0
+      nullop
+    else
+    ifmultiplayer
+      spritepal 0
+    else
+      killit
+    cstat 0
+  break
+  endswitch
+ends
+
+state event_egs_4
+  switch sprite[THISACTOR].picnum
+  case GROWSPRITEICON
+  case DUMDUMSAMMO
+  case EXPSHOTGUNAMMO
+  case HEATSEEKAMMO
+    getactor[THISACTOR].z Z
+    subvar Z 8192
+    setactor[THISACTOR].z Z
+    setactor[THISACTOR].zvel -1024
+    state rf
+  break
+  endswitch
+ends
+
+state event_spawn_3
+  switch sprite[THISACTOR].picnum
+  case GROWSPRITEICON
+  case DUMDUMSAMMO
+  case EXPSHOTGUNAMMO
+  case HEATSEEKAMMO
+    setvar ATEMP 0 getuserdef .player_skill ATEMP
+    ifvarvarl ATEMP sprite[THISACTOR].lotag
+      killit
+    ifactor DUMDUMSAMMO
+      sizeat 16 16
+    else
+      sizeat 32 32
+  break
+  endswitch
+ends
+
+state event_spawn_8
+  ifactor WATERSPLASH2
+  {
+    getsector[THISACTOR].floorpicnum ATEMP
+    ifvare ATEMP FLOORSLIME
+      spritepal 8
+  }
+ends
+
+state event_spawn_9
+  ifactor BLOODPOOL
+  {
+    ifspawnedby BLOODPOOL
+      nullop
+    else
+    ifspawnedby NUKEBARREL
+      nullop
+    else
+    ifspawnedby TIRE
+      nullop
+    else
+    ifspritepal 1
+      nullop
+    else
+      spritepal 2
+  }
+ends
+
+state event_game_6
+  switch sprite[THISACTOR].picnum
+  case JIBS1
+  case JIBS2
+  case JIBS3
+  case JIBS4
+  case JIBS5
+  case JIBS6
+  case HEADJIB1
+  case ARMJIB1
+  case LEGJIB1
+  case LIZMANHEAD1
+  case LIZMANARM1
+  case LIZMANLEG1
+  case DUKETORSO
+  case DUKEGUN
+  case DUKELEG
+  case BLOODSPLAT1
+  case BLOODSPLAT2
+  case BLOODSPLAT3
+  case BLOODSPLAT4
+    ifvare LOAD 0
+      spritepal 0
+  break
+  endswitch
+ends
+
+state flip
+  ifrnd 128
+    cstator 4
+  ifactor EXPLOSION2
+    nullop
+  else
+  ifrnd 128
+    cstator 8
+ends
+
+state exp
+  ifactor FIRESMOKE
+  {
+    setvar ATEMP 96
+    setvar ATEMP2 512
+  }
+  else
+  ifvare ALT 2
+  {
+    setvar ATEMP 48
+    ifactor FIREBALL
+      setvar ATEMP2 1024
+    ifactor FIRECIRCLE
+      setvar ATEMP2 2560
+  }
+  else
+  ifvare ALT 3
+  {
+    ifactor FIREBALL
+    {
+      setvar ATEMP 36
+      setvar ATEMP2 192
+    }
+    ifactor FIRECIRCLE
+    {
+      setvar ATEMP 18
+      setvar ATEMP2 256
+    }
+  }
+  else
+  ifvare ALT 4
+  {
+    setvar ATEMP 24
+    ifactor FIREBALL
+      setvar ATEMP2 192
+    ifactor FIRECIRCLE
+      setvar ATEMP2 512
+  }
+  else
+  ifvare ALT 5
+  {
+    setvar ATEMP 24
+    setvar ATEMP2 384
+  }
+  else
+  ifvare ALT 6
+  {
+    ifvarl ALT2 PLASMA_FLASH_AMOUNT
+    {
+      setvar ATEMP 24
+      ifactor FIREBALL
+        setvar ATEMP2 80
+      ifactor FIRECIRCLE
+        setvar ATEMP2 160
+    }
+    else
+    {
+      setvar ATEMP 72
+      ifactor FIREBALL
+        setvar ATEMP2 1024
+      ifactor FIRECIRCLE
+        setvar ATEMP2 2560
+    }
+  }
+  else
+  {
+    setvar ATEMP 24
+    ifactor FIREBALL
+      setvar ATEMP2 256
+    ifactor FIRECIRCLE
+      setvar ATEMP2 384
+  }
+
+  setvarvar ATEMP3 COUNT
+  shiftvarl ATEMP3 8
+  divvarvar ATEMP3 ATEMP
+  ifvarg ATEMP3 255
+    setvar ATEMP3 255
+  setactor[THISACTOR].alpha ATEMP3
+
+  ifvarvarg COUNT ATEMP
+    killit
+  else
+    addvar COUNT 1
+
+  setvar ATEMP4 0
+  ifvare ALT 3
+    setvar ATEMP4 1
+  ifvare ALT 4
+  ifactor FIREBALL
+    setvar ATEMP4 1
+  ifvare ATEMP4 0
+  {
+    setvarvar ATEMP3 COUNT
+    ifvare ALT 5
+    {
+      mulvar ATEMP3 -1
+      addvarvar ATEMP3 ATEMP
+    }
+    mulvarvar ATEMP3 ATEMP2
+    divvarvar ATEMP3 ATEMP
+  }
+  else
+  {
+    setvarvar ATEMP3 COUNT
+    shiftvarl ATEMP3 9
+    ifactor FIREBALL
+    ifvare ALT 3
+    {
+      mulvar ATEMP3 3
+      divvar ATEMP3 2
+    }
+    divvarvar ATEMP3 ATEMP
+    sin ATEMP3 ATEMP3
+    mulvarvar ATEMP3 ATEMP2
+    shiftvarr ATEMP3 14
+  }
+
+  shiftvarr ATEMP3 2
+  ifvarg ATEMP3 255
+  {
+    ifactor FIREBALL
+      cactor FIREBALLTEMP
+    ifactor FIRECIRCLE
+      cactor FIRECIRCLETEMP
+    shiftvarr ATEMP3 4
+    ifvarg ATEMP3 255
+      killit
+  }
+  else
+  {
+    ifactor FIREBALLTEMP
+      cactor FIREBALL
+    ifactor FIRECIRCLETEMP
+      cactor FIRECIRCLE
+  }
+  setactor[THISACTOR].xrepeat ATEMP3
+  setactor[THISACTOR].yrepeat ATEMP3
+
+  setsprite THISACTOR SPAWNX SPAWNY SPAWNZ
+  setactor[THISACTOR].htbposx SPAWNX
+  setactor[THISACTOR].htbposy SPAWNY
+  setactor[THISACTOR].htbposz SPAWNZ
+ends
+
+useractor notenemy FIRESMOKE state exp enda
+useractor notenemy FIREBALL state exp enda
+useractor notenemy FIRECIRCLE state exp enda
+useractor notenemy FIREBALLTEMP state exp enda
+useractor notenemy FIRECIRCLETEMP state exp enda
+
+state event_egs_8
+  ifactor FIRESMOKE
+  {
+    cstat 128
+    state flip
+
+    ifspawnedby EXPLOSION2
+    {
+      getactorvar[OWNER].OWNER ATEMP
+      switch sprite[ATEMP].picnum
+      case SHOTSPARK1
+      case TRIPBOMB
+        setvar ALT 1
+      break
+      endswitch
+    }
+    ifspawnedby PIGCOP
+      setvar ALT 1
+
+    ifvare ALT 1
+      spritepal 50
+    else
+      spritepal 62
+
+    getactor[THISACTOR].x SPAWNX
+    getactor[THISACTOR].y SPAWNY
+    getactor[THISACTOR].z SPAWNZ
+    state exp
+  }
+  ifactor FIREBALL
+  {
+    setactor[THISACTOR].ang 0
+    cstat 128
+
+    ifspawnedby FIREBALL
+    {
+      cstator 8
+      getactorvar[OWNER].ALT ALT
+      getactorvar[OWNER].ALT2 ALT2
+    }
+    else
+    {
+      ifspawnedby DUKECAR
+        setvar ALT 2
+      ifspawnedby HELECOPT
+        setvar ALT 2
+      ifspawnedby EXPLOSION2
+      {
+        getactorvar[OWNER].OWNER ATEMP
+        switch sprite[ATEMP].picnum
+        case GRENADE
+        case HEAVYHBOMB
+//        case HBOMBAMMO
+          setvar ALT 3
+        break
+        case RPG
+          setvar ALT 4
+        break
+        endswitch
+      }
+      ifspawnedby SHRINKEREXPLOSION
+        setvar ALT 5
+      ifspawnedby FORCERIPPLE
+      {
+        setvar ALT 6
+        getactorvar[OWNER].ALT ALT2
+      }
+
+      spawn FIREBALL
+    }
+
+    setactor[THISACTOR].angoff -42
+    setactor[THISACTOR].pitch 17
+    setactor[THISACTOR].roll 122
+
+    ifvare ALT 2
+      spritepal 67
+    else
+    ifvare ALT 3
+      spritepal 64
+    else
+    ifvare ALT 4
+      spritepal 67
+    else
+    ifvare ALT 5
+      spritepal 65
+    else
+    ifvare ALT 6
+      spritepal 66
+    else
+      spritepal 63
+
+    getactor[THISACTOR].x SPAWNX
+    getactor[THISACTOR].y SPAWNY
+    getactor[THISACTOR].z SPAWNZ
+    state exp
+  }
+  ifactor FIRECIRCLE
+  {
+    setactor[THISACTOR].ang 0
+    cstat 128
+
+    ifspawnedby DUKECAR
+      setvar ALT 2
+    ifspawnedby HELECOPT
+      setvar ALT 2
+    ifspawnedby EXPLOSION2
+    {
+      getactorvar[OWNER].OWNER ATEMP
+      switch sprite[ATEMP].picnum
+      case GRENADE
+      case HEAVYHBOMB
+//      case HBOMBAMMO
+        setvar ALT 3
+      break
+      case RPG
+        setvar ALT 4
+      break
+      endswitch
+    }
+    ifspawnedby FORCERIPPLE
+    {
+      setvar ALT 6
+      getactorvar[OWNER].OWNER ATEMP
+      getactorvar[ATEMP].ALT ALT2
+    }
+
+    ifvare ALT 2
+      spritepal 67
+    else
+    ifvare ALT 3
+      spritepal 69
+    else
+    ifvare ALT 4
+      spritepal 70
+    else
+    ifvare ALT 6
+    {
+      ifvarl ALT2 PLASMA_FLASH_AMOUNT
+        spritepal 71
+      else
+        spritepal 72
+    }
+    else
+      spritepal 68
+
+    getactor[THISACTOR].x SPAWNX
+    getactor[THISACTOR].y SPAWNY
+    getactor[THISACTOR].z SPAWNZ
+    state exp
+  }
+
+  ifactor EXPLOSION2
+  {
+    ifspawnedby DUKECAR
+      nullop
+    else
+    ifspawnedby HELECOPT
+      nullop
+    else
+    ifspawnedby SHOTSPARK1
+      spawn FIRESMOKE
+    else
+    ifspawnedby RPG
+    {
+      spawn FIRESMOKE
+      spawn FIREBALL
+      spawn FIRECIRCLE
+    }
+    else
+    ifspawnedby TRIPBOMB
+      spawn FIRESMOKE
+    else
+    ifspawnedby RECON
+      nullop
+    else
+    {
+      spawn FIREBALL
+      spawn FIRECIRCLE
+      ifspawnedby SEENINE
+      ifvarn sprite[OWNER].pal 0
+        break
+      spawn FIRESMOKE
+    }
+  }
+  ifactor SHRINKEREXPLOSION
+    spawn FIREBALL
+  ifactor PIGCOP
+  ifspawnedby RECON
+    spawn FIRESMOKE
+ends
+
+state event_spawn_10
+  ifactor FORCERIPPLE
+  ifspawnedby PLASMASHOT
+  {
+    spawn FIREBALL
+    spawn FIRECIRCLE
+  }
+ends
+
+state event_killit_1
+  ifactor DUKECAR
+  {
+    spawn FIREBALL
+    spawn FIRECIRCLE
+    setvar TILT RECOIL_AMOUNT
+  }
+  ifactor HELECOPT
+  {
+    spawn FIREBALL
+    spawn FIRECIRCLE
+    setvar TILT RECOIL_AMOUNT
+  }
+ends
+
+define EXP_ANIM_TIME            128
+
+state event_animatesprites_3
+  switch sprite[THISACTOR].picnum
+  case FIREBALL
+  case FIREBALLTEMP
+    setvarvar ATEMP totalclock
+    shiftvarl ATEMP 11
+    ifvarand sprite[THISACTOR].cstat 8
+      mulvar ATEMP -1
+    divvar ATEMP EXP_ANIM_TIME
+    andvar ATEMP 2047
+    settspr[THISACTOR].tsprang ATEMP
+  break
+  endswitch
+ends
+
+state event_game_7
+  ifactor SHOTSPARK1
+  ifvare LOAD 0
+  {
+    ifvarg sprite[THISACTOR].htg_t 8 -1
+    {
+      getactor[THISACTOR].htg_t 8 ATEMP
+      ifvarand sprite[ATEMP].cstat 8
+        nullop
+      else
+      ifvarand sprite[ATEMP].cstat 32
+        nullop
+      else
+      {
+        cstat 32768
+        break
+      }
+    }
+    cstat 128
+    state flip
+  }
+ends
+
+state event_spawn_11
+  ifactor SMALLSMOKE
+  {
+    cstat 128
+    ifspawnedby GRENADE
+      cstator 2
+    ifspawnedby MORTER
+      cstator 2
+    state flip
+  }
+ends
+
+state event_game_8
+  ifactor SMALLSMOKE
+  ifspawnedby SHOTSPARK1
+    killit
+  ifactor JIBS6
+  ifspawnedby SHOTSPARK1
+  {
+    getactorvar[OWNER].OWNER ATEMP
+    ifvarn sprite[ATEMP].statnum MAXSTATUS
+    ifvare sprite[ATEMP].picnum APLAYER
+      killit
+  }
+  ifactor SHOTSPARK1
+  ifvare LOAD 0
+  ifvarg sprite[THISACTOR].htg_t 8 -1
+  {
+// not working with growspark
+    getactor[THISACTOR].htg_t 8 ATEMP
+    switch sprite[ATEMP].picnum
+    case NEWBEAST
+    case NEWBEASTSTAYPUT
+    case NEWBEASTJUMP
+    case NEWBEASTHANG
+    case NEWBEASTHANGDEAD
+      espawn JIBS6
+      ifvare sprite[ATEMP].pal 6
+        setactor[RETURN].pal 6
+      getactor[RETURN].z Z
+      addvar Z 1024
+      setsprite RETURN sprite[THISACTOR].x sprite[THISACTOR].y Z
+      setactor[RETURN].xvel 16
+      setactor[RETURN].xrepeat 24
+      setactor[RETURN].yrepeat 24
+      randvar ANG -63
+      addvar ANG 32
+      addvarvar ANG sprite[RETURN].ang
+      setactor[RETURN].ang ANG
+    break
+    endswitch
+  }
+ends
+
+state event_game_9
+  ifactor TRANSPORTERBEAM
+  ifvare LOAD 0
+  {
+    sizeat 40 40
+    state flip
+  }
+ends
+
+action STARDUSTFRAMES 0 11 1 1 4
+useractor notenemy SPARKLE 0 STARDUSTFRAMES
+  ifactioncount 21
+    killit
+enda
+
+state event_spawn_12
+  ifactor SPARKLE
+  {
+    sizeat 64 64
+    state flip
+    spriteflags 4
+    setactor[THISACTOR].shade -127
+  }
+ends
+
+state event_killit_2
+  ifactor BURNING
+    spawn SMALLSMOKE
+  ifactor FIRE
+    spawn SMALLSMOKE
+  ifactor BURNING2
+    spawn SMALLSMOKE
+  ifactor FIRE2
+    spawn SMALLSMOKE
+ends
+
+define TRACKS_FREQUENCY         1
+
+state event_egs_9
+  ifactor FOOTPRINTS
+  ifrnd TRACKS_FREQUENCY
+    sound TRACKS_SPEECH
+ends
+
+state event_game_10
+  switch sprite[THISACTOR].picnum
+  case DUKECAR
+  case HELECOPT
+  ifvare LOAD 0
+  {
+    getactor[THISACTOR].zvel ATEMP
+    shiftvarr ATEMP 1
+    setactor[THISACTOR].zvel ATEMP
+  }
+  break
+  endswitch
+ends
+
+// Enemies
+
+state event_spawn_12b
+  ifactor EGG
+  ifvarg sprite[THISACTOR].extra 0
+  ifvare MONSTERS_OFF 0
+  {
+    setvar AWHILE 0
+    whilevarvarn AWHILE MULTIMODE
+    {
+      getplayer[AWHILE].max_actors_killed ATEMP
+      addvar ATEMP 1
+      setplayer[AWHILE].max_actors_killed ATEMP
+      addvar AWHILE 1
+    }
+  }
+ends
+
+state event_loadactor_5
+  ifactor RESPAWN
+  ifvare sprite[THISACTOR].hitag TANK
+    killit
+ends
+
+state event_game_11
+  ifactor BOSS1
+  {
+    ifvarg sprite[THISACTOR].extra 0
+    ifvare sprite[THISACTOR].htextra -1
+    ifvare sprite[THISACTOR].statnum STAT_ACTOR
+    ifvare LASTSTATNUM STAT_ZOMBIEACTOR
+    {
+      setvar SOUNDTEMP 1
+      ifspritepal 0
+        globalsound SURGEON_SPEECH
+      else
+        globalsound BOS1_RECOG
+      setvar SOUNDTEMP 0
+    }
+    getactor[THISACTOR].statnum LASTSTATNUM
+  }
+ends
+
+state event_spawn_13
+  ifactor BOSS1
+  ifvarg OWNER -1
+  {
+    setvar SOUNDTEMP 1
+    ifspritepal 0
+      globalsound SURGEON_SPEECH
+    else
+      globalsound BOS1_RECOG
+    setvar SOUNDTEMP 0
+  }
+  ifactor BOSS2
+  ifvarg sprite[THISACTOR].xrepeat 0
+  ifvarg sprite[THISACTOR].yrepeat 0
+  {
+    ifspritepal 0
+    {
+      sizeat 128 128
+      clipdist 255
+    }
+    else
+    {
+      sizeat 64 64
+      clipdist 124
+    }
+  }
+ends
+
+state event_sound_2
+  ifvare SOUNDTEMP 0
+  ifvare RETURN BOS1_RECOG
+    setvar RETURN -1
+ends
+
+state corpsehit
+  ifhitweapon
+  {
+    guts JIBS6 6
+    ifwasweapon RADIUSEXPLOSION
+    {
+      state standard_jibs
+      ifactor LIZTROOPDSPRITE
+        state troop_body_jibs
+      ifactor LIZMANDEADSPRITE
+        state liz_body_jibs
+      sound SQUISHED
+      killit
+    }
+    ifwasweapon RPG
+    {
+      state standard_jibs
+      ifactor LIZTROOPDSPRITE
+        state troop_body_jibs
+      ifactor LIZMANDEADSPRITE
+        state liz_body_jibs
+      sound SQUISHED
+      killit
+    }
+    ifdead
+    {
+      state standard_jibs
+      ifactor LIZTROOPDSPRITE
+        state troop_body_jibs
+      ifactor LIZMANDEADSPRITE
+        state liz_body_jibs
+      sound SQUISHED
+      killit
+    }
+  }
+ends
+
+spriteshadow LIZTROOPDSPRITE
+spritenvg LIZTROOPDSPRITE
+
+useractor notenemy LIZTROOPDSPRITE TROOPSTRENGTH
+  fall
+  move 0
+  state checksquished
+  state corpsehit
+/*
+  ifaction ATROOPPLAYDEAD
+  {
+    ifcount PLAYDEADTIME
+    {
+      addkills -1
+      soundonce PRED_ROAM
+      cactor LIZTROOP
+      cstat 257
+      strength 1
+      ai AITROOPSHOOTING
+    }
+    else
+    ifp pfacing
+      resetcount
+    break
+  }
+*/
+  ifaction AENEMYDEAD
+  ifvare RESPAWN_MONSTERS 1
+  ifcount RESPAWNACTORTIME
+  {
+    spawn TRANSPORTERSTAR
+    addkills -1
+    cactor LIZTROOP
+    cstat 257
+    strength TROOPSTRENGTH
+    state checktrooppalette
+    ai AITROOPSEEKENEMY
+  }
+enda
+
+spriteshadow PIGCOPDEADSPRITE
+spritenvg PIGCOPDEADSPRITE
+
+useractor notenemy PIGCOPDEADSPRITE PIGCOPSTRENGTH
+  fall
+  move 0
+  state checksquished
+  state corpsehit
+  ifaction AENEMYDEAD
+  ifvare RESPAWN_MONSTERS 1
+  ifcount RESPAWNACTORTIME
+  {
+    spawn TRANSPORTERSTAR
+    addkills -1
+    cactor PIGCOP
+    cstat 257
+    strength PIGCOPSTRENGTH
+    ai AIPIGSEEKENEMY
+  }
+enda
+
+spriteshadow OCTADEADSPRITE
+spritenvg OCTADEADSPRITE
+
+useractor notenemy OCTADEADSPRITE OCTASTRENGTH
+  fall
+  move 0
+  state checksquished
+  state corpsehit
+  ifaction AENEMYDEAD
+  ifvare RESPAWN_MONSTERS 1
+  ifcount RESPAWNACTORTIME
+  {
+    spawn TRANSPORTERSTAR
+    addkills -1
+    cactor OCTABRAIN
+    cstat 257
+    strength OCTASTRENGTH
+    ai AIOCTAGETENEMY
+  }
+enda
+
+spriteshadow LIZMANDEADSPRITE
+spritenvg LIZMANDEADSPRITE
+
+useractor notenemy LIZMANDEADSPRITE LIZSTRENGTH
+  fall
+  move 0
+  state checksquished
+  state corpsehit
+  ifaction AENEMYDEAD
+  ifvare RESPAWN_MONSTERS 1
+  ifcount RESPAWNACTORTIME
+  {
+    spawn TRANSPORTERSTAR
+    addkills -1
+    cactor LIZMAN
+    cstat 257
+    strength LIZSTRENGTH
+    ai AILIZGETENEMY
+  }
+enda
+
+spriteshadow COMMANDERDSPRITE
+spritenvg COMMANDERDSPRITE
+
+useractor notenemy COMMANDERDSPRITE COMMANDERSTRENGTH
+  fall
+  move 0
+  state checksquished
+  state corpsehit
+  ifaction AENEMYDEAD
+  ifvare RESPAWN_MONSTERS 1
+  ifcount RESPAWNACTORTIME
+  {
+    spawn TRANSPORTERSTAR
+    addkills -1
+    cactor COMMANDER
+    cstat 257
+    strength COMMANDERSTRENGTH
+    ai AICOMMSHOOT
+  }
+enda
+
+spriteshadow NEWBEASTDSPRITE
+spritenvg NEWBEASTDSPRITE
+
+useractor notenemy NEWBEASTDSPRITE NEWBEASTSTRENGTH
+  spritepal 6
+  fall
+  move 0
+  state checksquished
+  state corpsehit
+  ifaction AENEMYDEAD
+  ifvare RESPAWN_MONSTERS 1
+  ifcount RESPAWNACTORTIME
+  {
+    spawn TRANSPORTERSTAR
+    addkills -1
+    cactor NEWBEAST
+    cstat 257
+    strength NEWBEASTSTRENGTH
+    ai AINEWBEASTGETENEMY
+  }
+  getlastpal
+enda
+
+spriteshadow BOSS1DSPRITE
+spritenvg BOSS1DSPRITE
+
+useractor notenemy BOSS1DSPRITE BOSS1DSTRENGTH
+  fall
+  move 0
+  state corpsehit
+  ifaction AENEMYDEAD
+  ifvare RESPAWN_MONSTERS 1
+  ifcount RESPAWNACTORTIME
+  {
+    spawn TRANSPORTERSTAR
+    addkills -1
+    cactor BOSS1
+    cstat 257
+    strength BOSS1PALSTRENGTH
+    ai AIBOSS1SEEKENEMY
+  }
+enda
+
+spriteshadow BOSS3DSPRITE
+spritenvg BOSS3DSPRITE
+
+useractor notenemy BOSS3DSPRITE BOSS3DSTRENGTH
+  fall
+  move 0
+  state corpsehit
+  ifaction AENEMYDEAD
+  ifvare RESPAWN_MONSTERS 1
+  ifcount RESPAWNACTORTIME
+  {
+    spawn TRANSPORTERSTAR
+    addkills -1
+    cactor BOSS3
+    cstat 257
+    strength BOSS3PALSTRENGTH
+    ai AIBOSS3SEEKENEMY
+  }
+enda
+
+spriteshadow BOSS2DSPRITE
+spritenvg BOSS2DSPRITE
+
+useractor notenemy BOSS2DSPRITE 1
+  fall
+  move 0
+  state corpsehit
+  ifaction AENEMYDEAD
+  ifvare RESPAWN_MONSTERS 1
+  ifcount RESPAWNACTORTIME
+  {
+    spawn TRANSPORTERSTAR
+    addkills -1
+    cactor BOSS2
+    cstat 257
+    strength 1
+    ai AIBOSS2SEEKENEMY
+  }
+enda
+
+state event_loadactor_6
+  switch sprite[THISACTOR].picnum
+  case LIZTROOPDSPRITE
+  case PIGCOPDEADSPRITE
+  case OCTADEADSPRITE
+  case LIZMANDEADSPRITE
+  case COMMANDERDSPRITE
+  case NEWBEASTDSPRITE
+  case BOSS1DSPRITE
+  case BOSS3DSPRITE
+  case BOSS2DSPRITE
+    cstator 256
+  break
+  endswitch
+ends
+
+state event_sound_3
+  ifvare CENSORSHIP 1
+  {
+    ifvare RETURN GENERIC_AMBIENCE13
+      setvar RETURN PAY_SPEECH
+    ifvare RETURN JIBBED_ACTOR2
+      setvar RETURN DUKE_GETWEAPON1
+    ifvare RETURN JIBBED_ACTOR4
+      setvar RETURN DUKE_GETWEAPON2
+    ifvare RETURN DUKE_TALKTOBOSSFALL
+      setvar RETURN DISEASE_SPEECH
+    ifvare RETURN JIBBED_ACTOR13
+      setvar RETURN HURT_SPEECH
+    ifvare RETURN DUKE_KILLED5
+      setvar RETURN KICK_HIT
+    ifvare RETURN RIPHEADNECK
+      setvar RETURN PERFECT_SPEECH
+    ifvare RETURN GENERIC_AMBIENCE23
+      setvar RETURN RIDE_SPEECH
+    ifvare RETURN JIBBED_ACTOR14
+      setvar RETURN LUCKY_SPEECH
+    ifvare RETURN JIBBED_ACTOR15
+      setvar RETURN SUCKAS_SPEECH
+  }
+ends
+
+// Effectors
+
+state event_loadactor_7
+  ifactor SECTOREFFECTOR
+  ifvare sprite[THISACTOR].lotag 30
+  ifvarn sprite[THISACTOR].pal 0
+  {
+    getsector[THISACTOR].lotag ATEMP
+    ifvare ATEMP 31
+    {
+      getactor[THISACTOR].x LASTX
+      getactor[THISACTOR].y LASTY
+      espawn ACTIVATOR
+      setactor[RETURN].lotag sprite[THISACTOR].hitag
+    }
+  }
+ends
+
+define SUBWAY_DELAY             300
+
+state event_game_13
+  ifactor SECTOREFFECTOR
+  {
+    ifvare sprite[THISACTOR].lotag 77
+    {
+      headspritesect ATEMPSPRITES sprite[THISACTOR].sectnum
+      setvarvar AHEAD ATEMPSPRITES
+      whilevarn ATEMPSPRITES -1
+      {
+        ifvare sprite[ATEMPSPRITES].picnum APLAYER
+        ifvarn sprite[ATEMPSPRITES].owner -1
+        ifvarvarl sprite[ATEMPSPRITES].yvel MULTIMODE
+        ifvarg sprite[ATEMPSPRITES].extra 0
+        ifvarvarg sprite[ATEMPSPRITES].z sprite[THISACTOR].z
+          setsector[THISACTOR].lotag -1
+
+        nextspritesect ATEMPSPRITES ATEMPSPRITES
+        ifvarvare ATEMPSPRITES AHEAD
+          setvar ATEMPSPRITES -1
+      }
+      getsector[THISACTOR].lotag ATEMP
+      ifvare ATEMP -1
+        killit
+    }
+    ifvare sprite[THISACTOR].lotag 30
+    ifvarn sprite[THISACTOR].pal 0
+    {
+      getsector[THISACTOR].lotag ATEMP
+      ifvare ATEMP 31
+      {
+        setvar ATEMP2 0
+        ifvarvare sprite[THISACTOR].x LASTX
+        ifvarvare sprite[THISACTOR].y LASTY
+          setvar ATEMP2 1
+        ifvare ATEMP2 1
+        {
+          ifvare COUNT SUBWAY_DELAY
+            operateactivators sprite[THISACTOR].hitag 0
+          else
+            addvar COUNT 1
+        }
+        else
+        {
+          ifvarg COUNT 0
+            soundonce SUBWAY
+          setvar COUNT 0
+        }
+        getactor[THISACTOR].x LASTX
+        getactor[THISACTOR].y LASTY
+      }
+    }
+  }
+ends
+
+// Switches
+
+state event_spawn_14
+  ifactor NUKEBUTTON
+  ifvarn sprite[THISACTOR].lotag 0
+  {
+    setvar ATEMP 0 getuserdef .noexits ATEMP
+    ifvare ATEMP 1
+      killit
+  }
+ends
+
+state event_game_14
+  ifvare sprite[THISACTOR].lotag -1
+  {
+    setvar ATEMP 0 getuserdef .noexits ATEMP
+    ifvare ATEMP 0
+    {
+      getactor[THISACTOR].picnum ATEMP2
+      subvarvar ATEMP2 SLOTDOOR
+      ifvarg ATEMP2 0
+      ifvarl ATEMP2 2
+        setvar ATEMP2 0
+      addvarvar ATEMP2 SLOTDOOR
+      subvarvar ATEMP2 LIGHTSWITCH
+      ifvarg ATEMP2 0
+      ifvarl ATEMP2 2
+        setvar ATEMP2 0
+      addvarvar ATEMP2 LIGHTSWITCH
+      subvarvar ATEMP2 SPACEDOORSWITCH
+      ifvarg ATEMP2 0
+      ifvarl ATEMP2 2
+        setvar ATEMP2 0
+      addvarvar ATEMP2 SPACEDOORSWITCH
+      subvarvar ATEMP2 SPACELIGHTSWITCH
+      ifvarg ATEMP2 0
+      ifvarl ATEMP2 2
+        setvar ATEMP2 0
+      addvarvar ATEMP2 SPACELIGHTSWITCH
+      subvarvar ATEMP2 FRANKENSTINESWITCH
+      ifvarg ATEMP2 0
+      ifvarl ATEMP2 2
+        setvar ATEMP2 0
+      addvarvar ATEMP2 FRANKENSTINESWITCH
+      subvarvar ATEMP2 MULTISWITCH
+      ifvarg ATEMP2 0
+      ifvarl ATEMP2 4
+        setvar ATEMP2 0
+      addvarvar ATEMP2 MULTISWITCH
+      subvarvar ATEMP2 DIPSWITCH
+      ifvarg ATEMP2 0
+      ifvarl ATEMP2 2
+        setvar ATEMP2 0
+      addvarvar ATEMP2 DIPSWITCH
+      subvarvar ATEMP2 DIPSWITCH2
+      ifvarg ATEMP2 0
+      ifvarl ATEMP2 2
+        setvar ATEMP2 0
+      addvarvar ATEMP2 DIPSWITCH2
+      subvarvar ATEMP2 TECHSWITCH
+      ifvarg ATEMP2 0
+      ifvarl ATEMP2 2
+        setvar ATEMP2 0
+      addvarvar ATEMP2 TECHSWITCH
+      subvarvar ATEMP2 DIPSWITCH3
+      ifvarg ATEMP2 0
+      ifvarl ATEMP2 2
+        setvar ATEMP2 0
+      addvarvar ATEMP2 DIPSWITCH3
+      subvarvar ATEMP2 LIGHTSWITCH2
+      ifvarg ATEMP2 0
+      ifvarl ATEMP2 2
+        setvar ATEMP2 0
+      addvarvar ATEMP2 LIGHTSWITCH2
+      subvarvar ATEMP2 POWERSWITCH1
+      ifvarg ATEMP2 0
+      ifvarl ATEMP2 2
+        setvar ATEMP2 0
+      addvarvar ATEMP2 POWERSWITCH1
+      subvarvar ATEMP2 LOCKSWITCH1
+      ifvarg ATEMP2 0
+      ifvarl ATEMP2 2
+        setvar ATEMP2 0
+      addvarvar ATEMP2 LOCKSWITCH1
+      subvarvar ATEMP2 POWERSWITCH2
+      ifvarg ATEMP2 0
+      ifvarl ATEMP2 2
+        setvar ATEMP2 0
+      addvarvar ATEMP2 POWERSWITCH2
+      subvarvar ATEMP2 HANDSWITCH
+      ifvarg ATEMP2 0
+      ifvarl ATEMP2 2
+        setvar ATEMP2 0
+      addvarvar ATEMP2 HANDSWITCH
+      subvarvar ATEMP2 PULLSWITCH
+      ifvarg ATEMP2 0
+      ifvarl ATEMP2 2
+        setvar ATEMP2 0
+      addvarvar ATEMP2 PULLSWITCH
+      subvarvar ATEMP2 ALIENSWITCH
+      ifvarg ATEMP2 0
+      ifvarl ATEMP2 2
+        setvar ATEMP2 0
+      addvarvar ATEMP2 ALIENSWITCH
+      switch ATEMP2
+      case ACCESSSWITCH
+      case SLOTDOOR
+      case LIGHTSWITCH
+      case SPACEDOORSWITCH
+      case SPACELIGHTSWITCH
+      case FRANKENSTINESWITCH
+      case MULTISWITCH
+      case DIPSWITCH
+      case DIPSWITCH2
+      case TECHSWITCH
+      case DIPSWITCH3
+      case ACCESSSWITCH2
+      case LIGHTSWITCH2
+      case POWERSWITCH1
+      case LOCKSWITCH1
+      case POWERSWITCH2
+      case HANDSWITCH
+      case PULLSWITCH
+      case ALIENSWITCH
+        ifvarg LASTPICNUM -1
+        ifvarvarn LASTPICNUM sprite[THISACTOR].picnum
+        ifvarg ENDLEVEL -1
+          setvar ENDLEVEL END_TIME
+        getactor[THISACTOR].picnum LASTPICNUM
+      break
+      endswitch
+    }
+  }
+ends
+
+state event_animatesprites_4
+  switch sprite[THISACTOR].picnum
+  case VIEWSCREEN
+  case VIEWSCREEN2
+    settspr[THISACTOR].tsprpicnum sprite[THISACTOR].picnum
+  break
+  endswitch
+ends
+
+// Projectiles
+
+state event_egs_11
+  ifactor SHOTSPARK1
+    randvar ALT 4
+ends
+
+state event_sound_4
+  ifvare RETURN PISTOL_RICOCHET
+  ifactor SHOTSPARK1
+  {
+    ifvare ALT 1
+      setvar RETURN PISTOL_RICOCHET2
+    ifvare ALT 2
+      setvar RETURN PISTOL_RICOCHET3
+    ifvare ALT 3
+      setvar RETURN PISTOL_RICOCHET4
+    ifvare ALT 4
+      setvar RETURN PISTOL_RICOCHET5
+  }
+ends
+
+state event_game_15
+  ifspawnedby BOSS3
+  ifvare LOAD 0
+  {
+    switch sprite[THISACTOR].picnum
+    case RPG
+    case FREEZEBLAST
+      sizeat 21 21
+    break
+    endswitch
+  }
+  ifspawnedby BOSS2
+  ifvare LOAD 0
+  {
+    switch sprite[THISACTOR].picnum
+    case RPG
+    case FREEZEBLAST
+    case COOLEXPLOSION1
+    case PLASMASHOT
+      getactor[OWNER].x X
+      getactor[OWNER].y Y
+      getactor[OWNER].z Z
+
+      getactor[OWNER].xrepeat ATEMP
+      getactor[OWNER].picnum ATEMP2
+      mulvarvar ATEMP tilesizy[ATEMP2]
+      shiftvarl ATEMP 1
+      subvarvar Z ATEMP
+      setvar ATEMP 4
+      shiftvarl ATEMP 8
+      addvarvar Z ATEMP
+
+      setvar ATEMP 7
+      shiftvarl ATEMP 8
+      subvarvar Z ATEMP
+      getactor[OWNER].ang ANG
+      addvar ANG 1024
+      addvar ANG 96
+      mulvar ANG -1
+      sin ATEMP ANG
+      shiftvarr ATEMP 7
+      addvarvar X ATEMP
+      cos ATEMP ANG
+      shiftvarr ATEMP 7
+      addvarvar Y ATEMP
+
+      ifactor COOLEXPLOSION1
+      {
+        setvar ATEMP -84 // -4
+        shiftvarl ATEMP 7
+      }
+      else
+      {
+        setvar ATEMP 0 // 24
+        ifactor FREEZEBLAST
+          addvar ATEMP 3
+        shiftvarl ATEMP 8
+      }
+      mulvarvar ATEMP sprite[OWNER].xrepeat
+      shiftvarr ATEMP 7
+      addvarvar Z ATEMP
+
+      ifactor COOLEXPLOSION1
+      {
+        getactor[OWNER].ang ANG
+        addvar ANG 16
+        randvar ATEMP 31
+        subvarvar ANG ATEMP
+      }
+      else
+      {
+        getplayer[THISACTOR].oposx ANGX
+        getplayer[THISACTOR].oposy ANGY
+        subvarvar ANGX X
+        subvarvar ANGY Y
+        getangle ANG ANGX ANGY
+
+        setvarvar ATEMP ANG
+        mulvar ATEMP -1
+        addvar ATEMP 512
+        andvar ATEMP 2047
+        sin ATEMP2 ATEMP
+        mulvarvar ATEMP2 sprite[OWNER].xrepeat
+        shiftvarr ATEMP2 10
+        addvarvar X ATEMP2
+        cos ATEMP2 ATEMP
+        mulvarvar ATEMP2 sprite[OWNER].xrepeat
+        shiftvarr ATEMP2 10
+        addvarvar Y ATEMP2
+      }
+      getplayer[THISACTOR].oposz ZVEL
+      subvarvar ZVEL Z
+      setvar ATEMP 3
+      shiftvarl ATEMP 8
+      addvarvar ZVEL ATEMP
+      mulvarvar ZVEL sprite[THISACTOR].xvel
+      getplayer[THISACTOR].i ATEMP2
+      setactor[THISACTOR].x X
+      setactor[THISACTOR].y Y
+      ldist ATEMP THISACTOR ATEMP2
+      divvarvar ZVEL ATEMP
+
+      ifactor COOLEXPLOSION1
+        nullop
+      else
+      {
+        ifactor FREEZEBLAST
+        {
+          setvar ATEMP 2
+          shiftvarl ATEMP 4
+          subvarvar ZVEL ATEMP
+        }
+
+        setvarvar ATEMP ANG
+        mulvar ATEMP -1
+        sin ATEMP2 ATEMP
+        mulvarvar ATEMP2 sprite[OWNER].xrepeat
+        shiftvarr ATEMP2 7
+        divvar ATEMP2 -28 // 56
+        addvarvar X ATEMP2
+        cos ATEMP2 ATEMP
+        mulvarvar ATEMP2 sprite[OWNER].xrepeat
+        shiftvarr ATEMP2 7
+        divvar ATEMP2 -28 // 56
+        addvarvar Y ATEMP2
+
+        setvar ATEMP -8 // 8
+        mulvarvar ATEMP sprite[OWNER].xrepeat
+        shiftvarr ATEMP 7
+        addvarvar ANG ATEMP
+      }
+      randvar ATEMP 255
+      addvarvar ANG ATEMP
+      addvar ANG -128
+
+      setactor[THISACTOR].htbposx X
+      setactor[THISACTOR].htbposy Y
+      setactor[THISACTOR].htbposz Z
+
+      ifactor COOLEXPLOSION1
+        nullop
+      else
+      {
+        setvarvar ATEMP ANG
+        addvar ATEMP 348
+        addvar ATEMP 512
+        mulvar ATEMP -1
+        sin ATEMP2 ATEMP
+        divvar ATEMP2 448
+        addvarvar X ATEMP2
+        cos ATEMP2 ATEMP
+        divvar ATEMP2 448
+        addvarvar Y ATEMP2
+
+        setvar ATEMP 1
+        shiftvarl ATEMP 8
+        subvarvar Z ATEMP
+      }
+
+      setactor[THISACTOR].x X
+      setactor[THISACTOR].y Y
+      setactor[THISACTOR].z Z
+      setactor[THISACTOR].ang ANG
+      setactor[THISACTOR].zvel ZVEL
+    break
+    endswitch
+  }
+ends
+
+state event_spawn_15
+  ifactor EXPLOSION2
+  {
+    cstat 128
+    state flip
+    getactor[THISACTOR].cstat CSTAT
+  }
+ends
+
+state event_game_16
+  ifactor EXPLOSION2
+    setactor[THISACTOR].cstat CSTAT
+  ifactor COOLEXPLOSION1
+    cstator 2
+ends
+
+define MISSILE_FOV              256
+
+state checktarget
+  ifvare sprite[ASET].statnum MAXSTATUS
+  {
+    setvar ASET -1
+    break
+  }
+  ifvarvare ASET OWNER
+  {
+    setvar ASET -1
+    break
+  }
+  ifvarand sprite[ASET].cstat 256
+    nullop
+  else
+  {
+    setvar ASET -1
+    break
+  }
+  ifvarl sprite[ASET].extra 1
+  {
+    setvar ASET -1
+    break
+  }
+  ifspawnedby APLAYER
+  {
+    ifvare sprite[ASET].picnum APLAYER
+    ifmultiplayer
+    {
+      switch COOP
+      case 0
+      case 2
+      break
+      case 3
+      case 4
+        getactor[OWNER].yvel ATEMPB
+        getactor[ASET].yvel ATEMPB2
+        ifvarvare player[ATEMPB].team player[ATEMPB2].team
+          setvar ASET -1
+      break
+      default
+        setvar ASET -1
+      break
+      endswitch
+      ifvare ASET -1
+        break
+    }
+  }
+  else
+  ifvarn sprite[ASET].picnum APLAYER
+  {
+    setvar ASET -1
+    break
+  }
+  ifvarn sprite[ASET].picnum APLAYER
+  {
+    getactor[ASET].picnum ATEMPB
+    subvar ATEMPB GREENSLIME
+    ifvarg ATEMPB 0
+    ifvarl ATEMPB 8
+      setvar ATEMPB 0
+    addvar ATEMPB GREENSLIME
+    switch ATEMPB
+    case EGG
+    case SHARK
+    case LIZTROOP
+    case LIZTROOPRUNNING
+    case LIZTROOPSTAYPUT
+    case LIZTROOPSHOOT
+    case LIZTROOPJETPACK
+    case LIZTROOPONTOILET
+    case LIZTROOPJUSTSIT
+    case LIZTROOPDUCKING
+    case CANNON
+    case OCTABRAIN
+    case OCTABRAINSTAYPUT
+    case DRONE
+    case COMMANDER
+    case COMMANDERSTAYPUT
+    case RECON
+    case TANK
+    case PIGCOP
+    case PIGCOPSTAYPUT
+    case PIGCOPDIVE
+    case LIZMAN
+    case LIZMANSTAYPUT
+    case LIZMANSPITTING
+    case LIZMANJUMP
+    case ROTATEGUN
+    case GREENSLIME
+    case BOSS1
+    case BOSS1STAYPUT
+    case BOSS2
+    case BOSS3
+    case NEWBEAST
+    case NEWBEASTSTAYPUT
+    case NEWBEASTJUMP
+    case NEWBEASTHANG
+    case NEWBEASTHANGDEAD
+    case BOSS4
+    case BOSS4STAYPUT
+    break
+    default
+      setvar ASET -1
+    break
+    endswitch
+    ifvare ASET -1
+      break
+  }
+  ifvare sprite[ASET].picnum APLAYER
+  {
+    getactor[ASET].yvel ATEMPB
+    getplayer[ATEMPB].posz Z
+    addvar Z 256
+  }
+  else
+  {
+    getactor[ASET].z Z
+    getactor[ASET].picnum ATEMPB3
+    setvarvar ATEMPB tilesizy[ATEMPB3]
+    mulvarvar ATEMPB sprite[ASET].yrepeat
+    mulvar ATEMPB -37
+    shiftvarr ATEMPB 4
+    setvar ATEMPB2 0 // setvarvar ATEMPB2 tileoffy[ATEMPB3]
+    mulvarvar ATEMPB2 sprite[ASET].yrepeat
+    shiftvarl ATEMPB2 2
+    addvarvar Z ATEMPB
+    subvarvar Z ATEMPB2
+  }
+  cansee sprite[THISACTOR].x sprite[THISACTOR].y sprite[THISACTOR].z sprite[THISACTOR].sectnum
+         sprite[ASET].x sprite[ASET].y Z sprite[ASET].sectnum
+         ATEMPB
+  ifvare ATEMPB 0
+  {
+    setvar ASET -1
+    break
+  }
+  getactor[ASET].x ANGX
+  getactor[ASET].y ANGY
+  subvarvar ANGX sprite[THISACTOR].x
+  subvarvar ANGY sprite[THISACTOR].y
+  getangle ANG ANGX ANGY
+  getincangle ATEMPB PROJANG ANG
+  ifvarl ATEMPB 0
+    mulvar ATEMPB -1
+  ifvarg ATEMPB MISSILE_FOV
+  {
+    setvar ASET -1
+    break
+  }
+  ldist ANGX THISACTOR ASET
+  getactor[ASET].z ANGZ
+  subvarvar ANGZ sprite[THISACTOR].z
+  shiftvarr ANGZ 4
+  getangle ANG ANGX ANGZ
+  setvarvar XVEL PROJXVEL
+  ifvarl XVEL 0
+    mulvar XVEL -1
+  setvarvar ZVEL PROJZVEL
+  shiftvarr ZVEL 4
+  divvar ZVEL -1
+  getangle ANGZ XVEL ZVEL
+  getincangle ATEMPB ANGZ ANG
+  ifvarl ATEMPB 0
+    mulvar ATEMPB -1
+  ifvarg ATEMPB MISSILE_FOV
+    setvar ASET -1
+ends
+
+state targetseek
+  setvar ATEMPSECTORS 0
+  whilevarvarn ATEMPSECTORS NUMSECTORS
+  {
+    headspritesect ATEMPSPRITES ATEMPSECTORS
+    setvarvar AHEAD ATEMPSPRITES
+    whilevarn ATEMPSPRITES -1
+    {
+      setvarvar ASET ATEMPSPRITES
+      state checktarget
+      ifvarg ASET -1
+      {
+        ifvarg ATARGET -1
+        {
+          ldist ATEMPB ATEMPSPRITES THISACTOR
+          ldist ATEMPB2 ATEMPB THISACTOR
+          ifvarvarl ATEMPB ATEMPB2
+            setvarvar ATARGET ATEMPSPRITES
+        }
+        else
+          setvarvar ATARGET ASET
+      }
+
+      nextspritesect ATEMPSPRITES ATEMPSPRITES
+      ifvarvare ATEMPSPRITES AHEAD
+        setvar ATEMPSPRITES -1
+    }
+    addvar ATEMPSECTORS 1
+  }
+ends
+
+define MISSILE_TURN_ANG         32
+define MISSILE_TURN_Z_ANG       16
+
+state heatseek
+  ifvarg ATARGET -1
+  {
+    setvarvar ASET ATARGET
+    state checktarget
+    setvarvar ATARGET ASET
+  }
+  ifvare ATARGET -1
+    break
+
+  getactor[ATARGET].x ANGX
+  getactor[ATARGET].y ANGY
+  subvarvar ANGX sprite[THISACTOR].x
+  subvarvar ANGY sprite[THISACTOR].y
+  getangle ANG ANGX ANGY
+
+  getincangle ATEMP2 PROJANG ANG
+  ifvarn ATEMP2 0
+  {
+    setvarvar ATEMP3 ATEMP2
+    ifvarl ATEMP3 0
+      mulvar ATEMP3 -1
+    ifvarg ATEMP3 MISSILE_TURN_ANG
+      setvar ATEMP3 MISSILE_TURN_ANG
+
+    ifvarl ATEMP2 0
+      subvarvar PROJANG ATEMP3
+    else
+      addvarvar PROJANG ATEMP3
+    andvar PROJANG 2047
+
+    setactor[THISACTOR].ang PROJANG
+  }
+
+  ifvare sprite[ATARGET].picnum APLAYER
+  {
+    getactor[ATARGET].yvel ATEMP
+    getplayer[ATEMP].posz Z
+    addvar Z 256
+  }
+  else
+  {
+    getactor[ATARGET].z Z
+    getactor[ATARGET].picnum ATEMP3
+    setvarvar ATEMP tilesizy[ATEMP3]
+    mulvarvar ATEMP sprite[ATARGET].yrepeat
+    mulvar ATEMP -37
+    shiftvarr ATEMP 4
+    setvar ATEMP2 0 // setvarvar ATEMP2 tileoffy[ATEMP3]
+    mulvarvar ATEMP2 sprite[ATARGET].yrepeat
+    shiftvarl ATEMP2 2
+    addvarvar Z ATEMP
+    subvarvar Z ATEMP2
+  }
+  subvarvar Z sprite[THISACTOR].z
+
+  setvarvar ATEMP PROJXVEL
+  mulvarvar ATEMP Z
+  ldist ATEMP2 THISACTOR ATARGET
+  divvarvar ATEMP ATEMP2
+
+  subvarvar ATEMP PROJZVEL
+  ifvarn ATEMP 0
+  {
+    setvarvar ATEMP2 ATEMP
+    setvarvar ATEMP3 MISSILE_TURN_Z_ANG
+    mulvarvar ATEMP3 sprite[THISACTOR].xvel
+    shiftvarr ATEMP3 5
+    ifvarl ATEMP2 -1
+      mulvar ATEMP2 -1
+    ifvarvarg ATEMP2 ATEMP3
+      setvarvar ATEMP2 ATEMP3
+
+    ifvarl ATEMP 0
+      subvarvar PROJZVEL ATEMP2
+    else
+      addvarvar PROJZVEL ATEMP2
+
+    setactor[THISACTOR].zvel PROJZVEL
+  }
+ends
+
+define MISSILE_SPIN_OFFSET      128
+define MISSILE_SPIN_RANGE       4096
+
+state rpgspin
+  setvarvar ANG COUNT
+  shiftvarl ANG 10
+  mulvarvar ANG PROJXVEL
+  divvar ANG MISSILE_SPIN_RANGE
+
+  setvarvar ATEMP POS
+  ifvarg ATEMP 3
+  {
+    mulvar ANG -1
+    subvar ATEMP 4
+  }
+  shiftvarl ATEMP 9
+  addvarvar ANG ATEMP
+
+  sin ANGX ANG
+  mulvar ANGX MISSILE_SPIN_OFFSET
+  shiftvarr ANGX 14
+
+  cos ATEMP ANG
+  mulvar ATEMP MISSILE_SPIN_OFFSET
+  mulvar ATEMP -1
+  shiftvarr ATEMP 10
+
+  setvarvar XVEL PROJXVEL
+  ifvarl XVEL 0
+    mulvar XVEL -1
+  shiftvarl XVEL 5
+  setvarvar ZVEL PROJZVEL
+  mulvar ZVEL -1
+  getangle ANG XVEL ZVEL
+
+  sin ANGY ANG
+  mulvarvar ANGY ATEMP
+  shiftvarr ANGY 18
+
+  cos ANGZ ANG
+  mulvarvar ANGZ ATEMP
+  shiftvarr ANGZ 14
+
+
+  setvarvar ANG COUNT
+  subvar ANG 1
+  shiftvarl ANG 10
+  mulvarvar ANG PROJXVEL
+  divvar ANG MISSILE_SPIN_RANGE
+
+  setvarvar ATEMP POS
+  ifvarg ATEMP 3
+  {
+    mulvar ANG -1
+    subvar ATEMP 4
+  }
+  shiftvarl ATEMP 9
+  addvarvar ANG ATEMP
+
+  sin X ANG
+  mulvar X MISSILE_SPIN_OFFSET
+  shiftvarr X 14
+
+  cos ATEMP ANG
+  mulvar ATEMP MISSILE_SPIN_OFFSET
+  mulvar ATEMP -1
+  shiftvarr ATEMP 10
+
+  setvarvar XVEL PROJXVEL
+  ifvarl XVEL 0
+    mulvar XVEL -1
+  shiftvarl XVEL 5
+  setvarvar ZVEL PROJZVEL
+  mulvar ZVEL -1
+  getangle ANG XVEL ZVEL
+
+  sin Y ANG
+  mulvarvar Y ATEMP
+  shiftvarr Y 18
+
+  cos Z ANG
+  mulvarvar Z ATEMP
+  shiftvarr Z 14
+
+
+  subvarvar ANGX X
+  ifinwater
+    shiftvarl ANGX 1
+  subvarvar ANGY Y
+  addvarvar ANGY PROJXVEL
+  getangle ANG ANGY ANGX
+  addvarvar ANG PROJANG
+  setactor[THISACTOR].ang ANG
+
+  setvarvar XVEL ANGY
+  mulvarvar XVEL XVEL
+  setvarvar ATEMP ANGX
+  mulvarvar ATEMP ATEMP
+  addvarvar XVEL ATEMP
+  sqrt XVEL XVEL
+  setactor[THISACTOR].xvel XVEL
+
+  subvarvar ANGZ Z
+  ifinwater
+    shiftvarl ANGZ 1
+  setvarvar ZVEL ANGZ
+  mulvarvar ZVEL XVEL
+  divvarvar ZVEL PROJXVEL
+  addvarvar ZVEL PROJZVEL
+  setactor[THISACTOR].zvel ZVEL
+
+  addvar COUNT 1
+ends
+
+state event_egs_12
+  ifactor RPG
+  {
+    ifspawnedby APLAYER
+    {
+      getactor[OWNER].yvel ATEMP
+      getplayervar[ATEMP].WPSUB7 ATEMP2
+      ifvare ATEMP2 1
+        setvar ALT 1
+    }
+    ifvare ALT 1
+      randvar POS 7
+  }
+ends
+
+state event_game_17
+  ifactor RPG
+  ifvare ALT 1
+  {
+    ifvare LOAD 0
+    {
+      getactor[THISACTOR].ang PROJANG
+      getactor[THISACTOR].xvel PROJXVEL
+      getactor[THISACTOR].zvel PROJZVEL
+      state targetseek
+    }
+    state heatseek
+    state rpgspin
+  }
+ends
+
+useractor notenemy MISSILELIGHT
+  move NULLMOVE geth
+  killit
+enda
+
+state event_spawn_16
+  ifactor MISSILELIGHT
+  {
+    sizeat 64 32
+    cstat 130
+    spriteflags 68
+    setactor[THISACTOR].shade -127
+  }
+ends
+
+state event_game_18
+  ifactor RPG
+  ifvarn LOAD 0
+  {
+    espawn MISSILELIGHT
+    setactor[RETURN].htbposx sprite[THISACTOR].htbposx
+    setactor[RETURN].htbposy sprite[THISACTOR].htbposy
+    setactor[RETURN].htbposz sprite[THISACTOR].htbposz
+  }
+ends
+
+define SPRITE_VIEW_OFFSET 4
+
+state event_animatesprites_5
+  ifactor MISSILELIGHT
+  {
+    gettspr[THISACTOR].tsprx x
+    gettspr[THISACTOR].tspry y
+    gettspr[THISACTOR].tsprz z
+    ifvarvarg x camerax
+      addvar x 1
+    ifvarvarl x camerax
+      addvar x -1
+    ifvarvarg y cameray
+      addvar y 1
+    ifvarvarl y cameray
+      addvar y -1
+    ifvarvarg z cameraz
+      addvar z 1
+    ifvarvarl z cameraz
+      addvar z -1
+    settspr[THISACTOR].tsprx x
+    settspr[THISACTOR].tspry y
+    settspr[THISACTOR].tsprz z
+  }
+ends
+
+defineprojectile DUMDUM PROJ_WORKSLIKE 1
+defineprojectile DUMDUM PROJ_EXTRA DUMDUM_WEAPON_STRENGTH
+defineprojectile DUMDUM PROJ_DECAL BULLETHOLE
+defineprojectile DUMDUM PROJ_XREPEAT 9
+defineprojectile DUMDUM PROJ_YREPEAT 9
+
+defineprojectile EXPSHOTGUN PROJ_WORKSLIKE 1
+defineprojectile EXPSHOTGUN PROJ_EXTRA 0
+defineprojectile EXPSHOTGUN PROJ_DECAL BULLETHOLE
+defineprojectile EXPSHOTGUN PROJ_SPAWNS SHOTSPARK1
+defineprojectile EXPSHOTGUN PROJ_ISOUND PISTOL_RICOCHET
+defineprojectile EXPSHOTGUN PROJ_XREPEAT 9
+defineprojectile EXPSHOTGUN PROJ_YREPEAT 9
+defineprojectile EXPSHOTGUN PROJ_SXREPEAT 10
+defineprojectile EXPSHOTGUN PROJ_SYREPEAT 10
+
+defineprojectile EXPSHOTGUNBLAST PROJ_WORKSLIKE 6
+defineprojectile EXPSHOTGUNBLAST PROJ_BOUNCES 0
+defineprojectile EXPSHOTGUNBLAST PROJ_EXTRA EXPSHELL_WEAPON_STRENGTH
+defineprojectile EXPSHOTGUNBLAST PROJ_HITRADIUS EXPSHELLBLASTRADIUS
+defineprojectile EXPSHOTGUNBLAST PROJ_SPAWNS -1
+defineprojectile EXPSHOTGUNBLAST PROJ_ISOUND -1
+defineprojectile EXPSHOTGUNBLAST PROJ_CSTAT 32768
+
+define HITSCAN_RADIUS_OFFSET    64
+define HITSCAN_EXP_OFFSET       256
+
+state event_pregame_1
+  ifactor SHOTSPARK1
+  ifvare sprite[THISACTOR].yvel EXPSHOTGUN
+  {
+    ifvarg sprite[THISACTOR].htg_t 7 -1
+    {
+      getsector[THISACTOR].ceilingz ATEMP
+      ifvarvare sprite[THISACTOR].z ATEMP
+      {
+        getsector[THISACTOR].ceilingstat ATEMP2
+        ifvarand ATEMP2 1
+        {
+          getsector[THISACTOR].ceilingpal ATEMP3
+          ifvare ATEMP3 0
+            break
+        }
+      }
+    }
+    sound RPG_EXPLODE
+
+    getactor[THISACTOR].ang ANG
+    mulvar ANG -1
+    addvar ANG 1536
+
+    getactor[THISACTOR].x X
+    getactor[THISACTOR].y Y
+    getactor[THISACTOR].z Z
+
+    ifvarg sprite[THISACTOR].htg_t 6 -1
+    {
+      sin ATEMP ANG
+      mulvar ATEMP HITSCAN_RADIUS_OFFSET
+      shiftvarr ATEMP 14
+      addvarvar X ATEMP
+
+      cos ATEMP ANG
+      mulvar ATEMP HITSCAN_RADIUS_OFFSET
+      shiftvarr ATEMP 14
+      addvarvar Y ATEMP
+    }
+    else
+    ifvare sprite[THISACTOR].htg_t 8 -1
+    ifvarg sprite[THISACTOR].htg_t 7 -1
+    {
+      setvar ATEMP HITSCAN_RADIUS_OFFSET
+      shiftvarl ATEMP 4
+      getflorzofslope sprite[THISACTOR].sectnum sprite[THISACTOR].x sprite[THISACTOR].y ATEMP2
+      getceilzofslope sprite[THISACTOR].sectnum sprite[THISACTOR].x sprite[THISACTOR].y ATEMP3
+      subvarvar ATEMP2 ATEMP3
+      shiftvarr ATEMP2 1
+      getactor[THISACTOR].z ATEMP4
+      subvarvar ATEMP4 ATEMP3
+      ifvarvarg ATEMP4 ATEMP2
+        subvarvar Z ATEMP
+      else
+        addvarvar Z ATEMP
+    }
+
+    eshoot EXPSHOTGUNBLAST
+    setsprite RETURN X Y Z
+    setactor[RETURN].yvel 0
+    setactor[RETURN].owner OWNER
+
+    getactor[THISACTOR].x X
+    getactor[THISACTOR].y Y
+    getactor[THISACTOR].z Z
+
+    sin ATEMP ANG
+    mulvar ATEMP HITSCAN_EXP_OFFSET
+    shiftvarr ATEMP 14
+    addvarvar X ATEMP
+
+    cos ATEMP ANG
+    mulvar ATEMP HITSCAN_EXP_OFFSET
+    shiftvarr ATEMP 14
+    addvarvar Y ATEMP
+
+    ifvare sprite[THISACTOR].htg_t 6 -1
+    ifvare sprite[THISACTOR].htg_t 8 -1
+    ifvarg sprite[THISACTOR].htg_t 7 -1
+    {
+      setvar ATEMP HITSCAN_EXP_OFFSET
+      shiftvarl ATEMP 4
+      getflorzofslope sprite[THISACTOR].sectnum sprite[THISACTOR].x sprite[THISACTOR].y ATEMP2
+      getceilzofslope sprite[THISACTOR].sectnum sprite[THISACTOR].x sprite[THISACTOR].y ATEMP3
+      subvarvar ATEMP2 ATEMP3
+      shiftvarr ATEMP2 1
+      getactor[THISACTOR].z ATEMP4
+      subvarvar ATEMP4 ATEMP3
+      ifvarvarg ATEMP4 ATEMP2
+        subvarvar Z ATEMP
+      else
+        addvarvar Z ATEMP
+    }
+
+    espawn EXPLOSION2
+    setsprite RETURN X Y Z
+    setactor[RETURN].htbposx X
+    setactor[RETURN].htbposy Y
+    setactor[RETURN].htbposz Z
+  }
+ends
+
+defineprojectile GRENADE PROJ_WORKSLIKE 16582
+defineprojectile GRENADE PROJ_SPAWNS EXPLOSION2
+defineprojectile GRENADE PROJ_VEL 768
+defineprojectile GRENADE PROJ_DROP -384
+defineprojectile GRENADE PROJ_EXTRA GRENADE_WEAPON_STRENGTH
+defineprojectile GRENADE PROJ_HITRADIUS GRENADEBLASTRADIUS
+defineprojectile GRENADE PROJ_RANGE 64
+defineprojectile GRENADE PROJ_BSOUND -1
+defineprojectile GRENADE PROJ_ISOUND PIPEBOMB_EXPLODE
+defineprojectile GRENADE PROJ_OFFSET 224
+defineprojectile GRENADE PROJ_CLIPDIST 24
+defineprojectile GRENADE PROJ_CSTAT 0
+defineprojectile GRENADE PROJ_XREPEAT 16
+defineprojectile GRENADE PROJ_YREPEAT 16
+
+define GRENADE_DELAY            4
+define GRENADE_MAX_DROP         16
+define GRENADE_STOP_VEL         4
+define GRENADE_RANGE            512
+
+action GRENADEFALL 0
+action GRENADEONFLOOR 0
+action GRENADEONCEILING 0
+
+useractor notenemy GRENADE 0 GRENADEFALL enda
+
+state event_game_19
+  ifactor GRENADE
+  {
+    setthisprojectile[THISACTOR].drop 0
+
+    addvar COUNT 1
+    ifaction GRENADEONFLOOR
+    {
+      setvar COUNT2 0
+      addvar COUNT3 1
+    }
+    addvar COUNT2 1
+
+    ifvarg COUNT GRENADE_DELAY
+    {
+      ifinwater
+        spawn WATERBUBBLE
+      else
+        spawn SMALLSMOKE
+    }
+
+    ifvarl sprite[THISACTOR].htmovflag -16384
+    ifvarg sprite[THISACTOR].htmovflag -32767
+    {
+      setvar ATEMP 0
+      getactor[THISACTOR].htmovflag ATEMP2
+      addvar ATEMP2 32768
+      getwall[ATEMP2].cstat ATEMP3
+      ifvarand ATEMP3 1
+        nullop
+      else
+      {
+        getwall[ATEMP2].overpicnum ATEMP4
+        ifvare ATEMP4 GLASS2
+          setvar ATEMP4 -1
+        else
+        {
+          subvar ATEMP4 GLASS2
+          ifvare ATEMP4 1
+            setvar ATEMP4 0
+          addvar ATEMP4 GLASS2
+        }
+        switch ATEMP4
+        case STAINGLASS1
+        case GLASS2
+          getwall[ATEMP2].nextsector ATEMP5
+          ifvarg ATEMP5 -1
+          {
+            getflorzofslope ATEMP5 sprite[THISACTOR].x sprite[THISACTOR].y ATEMP6
+            ifvarvarl sprite[THISACTOR].z ATEMP6
+            {
+              getceilzofslope ATEMP5 sprite[THISACTOR].x sprite[THISACTOR].y ATEMP7
+              ifvarvarg sprite[THISACTOR].z ATEMP7
+                setvar ATEMP 1
+            }
+          }
+        break
+        endswitch
+      }
+      ifvare ATEMP 0
+      {
+        getwall[ATEMP2].point2 ATEMP3
+        getwall[ATEMP3].x ANGX
+        getwall[ATEMP3].y ANGY
+        subvarvar ANGX wall[ATEMP2].x
+        subvarvar ANGY wall[ATEMP2].y
+        getangle ATEMP2 ANGX ANGY
+        subvarvar PROJANG ATEMP2
+        mulvar PROJANG -1
+        addvarvar PROJANG ATEMP2
+        andvar PROJANG 2047
+        sound PIPEBOMB_BOUNCE
+      }
+      shiftvarr PROJXVEL 1
+      shiftvarr PROJZVEL 1
+    }
+    setactor[THISACTOR].ang PROJANG
+
+    setactor[THISACTOR].zvel 0
+    setvarvar ZVEL PROJZVEL
+    ifinouterspace
+      nullop
+    else
+    {
+      getprojectile[GRENADE].drop ATEMP
+      mulvar ATEMP -1
+      mulvarvar ATEMP COUNT2
+      addvarvar ZVEL ATEMP
+    }
+    ifvarg ZVEL 0
+    {
+      getprojectile[GRENADE].drop ATEMP
+      mulvar ATEMP -1
+      mulvar ATEMP GRENADE_MAX_DROP
+      ifvarvarg ZVEL ATEMP
+      {
+        ifvarvarg ATEMP PROJZVEL
+          setvarvar ZVEL ATEMP
+        else
+          setvarvar ZVEL PROJZVEL
+      }
+    }
+    ifinwater
+      shiftvarr ZVEL 1
+
+    setvar ATEMP 0
+    getflorzofslope sprite[THISACTOR].sectnum sprite[THISACTOR].x sprite[THISACTOR].y Z
+    getsector[THISACTOR].lotag ATEMP2
+    ifvare ATEMP2 1
+      addvar Z 6144
+    subvarvar Z sprite[THISACTOR].z
+    shiftvarl Z 1
+    ifvarvarg ZVEL Z
+    {
+      getsector[THISACTOR].floorbunch ATEMP3
+      ifvarg ATEMP3 -1
+      {
+        getsector[THISACTOR].floorstat ATEMP4
+        ifvarand ATEMP4 2048
+          setvar ATEMP3 -1
+      }
+      ifvare ATEMP3 -1
+      {
+        setvarvar ZVEL Z
+        ifvarn ATEMP2 1
+          orvar ATEMP 1
+      }
+    }
+    getceilzofslope sprite[THISACTOR].sectnum sprite[THISACTOR].x sprite[THISACTOR].y Z
+    subvarvar Z sprite[THISACTOR].z
+    shiftvarl Z 1
+    ifvarvarl ZVEL Z
+    {
+      getsector[THISACTOR].ceilingbunch ATEMP2
+      ifvarg ATEMP2 -1
+      {
+        getsector[THISACTOR].ceilingstat ATEMP3
+        ifvarand ATEMP3 2048
+          setvar ATEMP2 -1
+      }
+      ifvare ATEMP2 -1
+      {
+        setvarvar ZVEL Z
+        ifinwater
+          nullop
+        else
+          orvar ATEMP 2
+      }
+    }
+
+    movesprite THISACTOR 0 0 ZVEL CLIPMASK1 ATEMP2
+    ifvarl sprite[THISACTOR].htmovflag 0
+    ifvarg sprite[THISACTOR].htmovflag -16383
+    ifvare ATEMP 0
+    {
+      getactor[THISACTOR].htmovflag ATEMP2
+      addvar ATEMP2 16384
+      ifvarand sprite[ATEMP2].cstat 32
+      {
+        ifvarvarg sprite[THISACTOR].z sprite[ATEMP2].z
+          orvar ATEMP 1
+        ifvarvarl sprite[THISACTOR].z sprite[ATEMP2].z
+        {
+          ifinwater
+            nullop
+          else
+            orvar ATEMP 2
+        }
+      }
+    }
+    ifvarand ATEMP 2
+    {
+      ifaction GRENADEONCEILING
+        nullop
+      else
+        shiftvarr PROJXVEL 1
+    }
+    action GRENADEFALL
+    ifvarand ATEMP 2
+      action GRENADEONCEILING
+    ifvarand ATEMP 1
+    {
+      action GRENADEONFLOOR
+      setvar PROJZVEL 0
+    }
+
+    setvarvar XVEL PROJXVEL
+    setvarvar ATEMP COUNT3
+    mulvar ATEMP GRENADE_STOP_VEL
+    subvarvar XVEL ATEMP
+    ifvarl XVEL 0
+      setvar XVEL 0
+    setactor[THISACTOR].xvel XVEL
+
+    ifvarg COUNT GRENADE_DELAY
+    {
+      setvar ATEMP 0
+      ifvare ALT 1
+        setvar ATEMP 1
+      ifvare ATEMP 0
+      ifvarl sprite[THISACTOR].htmovflag 0
+      ifvarg sprite[THISACTOR].htmovflag -16383
+      {
+        getactor[THISACTOR].htmovflag ATEMP2
+        addvar ATEMP2 16384
+        ifvare sprite[ATEMP2].picnum APLAYER
+          setvar ATEMP 1
+        else
+        {
+          getactor[ATEMP2].picnum ATEMP3
+          subvar ATEMP3 GREENSLIME
+          ifvarg ATEMP3 0
+          ifvarl ATEMP3 8
+            setvar ATEMP3 0
+          addvar ATEMP3 GREENSLIME
+          switch ATEMP3
+          case EGG
+          case SHARK
+          case LIZTROOP
+          case LIZTROOPRUNNING
+          case LIZTROOPSTAYPUT
+          case LIZTROOPSHOOT
+          case LIZTROOPJETPACK
+          case LIZTROOPONTOILET
+          case LIZTROOPJUSTSIT
+          case LIZTROOPDUCKING
+          case CANNON
+          case OCTABRAIN
+          case OCTABRAINSTAYPUT
+          case DRONE
+          case COMMANDER
+          case COMMANDERSTAYPUT
+          case RECON
+          case TANK
+          case PIGCOP
+          case PIGCOPSTAYPUT
+          case PIGCOPDIVE
+          case LIZMAN
+          case LIZMANSTAYPUT
+          case LIZMANSPITTING
+          case LIZMANJUMP
+          case ROTATEGUN
+          case GREENSLIME
+          case BOSS1
+          case BOSS1STAYPUT
+          case BOSS2
+          case BOSS3
+          case NEWBEAST
+          case NEWBEASTSTAYPUT
+          case NEWBEASTJUMP
+          case NEWBEASTHANG
+          case NEWBEASTHANGDEAD
+          case BOSS4
+          case BOSS4STAYPUT
+            setvar ATEMP 1
+          break
+          endswitch
+        }
+      }
+      ifvare ATEMP 0
+      {
+        setvar ATEMPSECTORS 0
+        whilevarvarn ATEMPSECTORS NUMSECTORS
+        {
+          headspritesect ATEMPSPRITES ATEMPSECTORS
+          setvarvar AHEAD ATEMPSPRITES
+          whilevarn ATEMPSPRITES -1
+          {
+            setvar ATEMP2 0
+            ifvarand sprite[ATEMPSPRITES].cstat 256
+            {
+              ifvare sprite[ATEMPSPRITES].picnum APLAYER
+                setvar ATEMP2 1
+              else
+              {
+                getactor[ATEMPSPRITES].picnum ATEMP2
+                subvar ATEMP2 GREENSLIME
+                ifvarg ATEMP2 0
+                ifvarl ATEMP2 8
+                  setvar ATEMP2 0
+                addvar ATEMP2 GREENSLIME
+                switch ATEMP2
+                case EGG
+                case SHARK
+                case LIZTROOP
+                case LIZTROOPRUNNING
+                case LIZTROOPSTAYPUT
+                case LIZTROOPSHOOT
+                case LIZTROOPJETPACK
+                case LIZTROOPONTOILET
+                case LIZTROOPJUSTSIT
+                case LIZTROOPDUCKING
+                case CANNON
+                case OCTABRAIN
+                case OCTABRAINSTAYPUT
+                case DRONE
+                case COMMANDER
+                case COMMANDERSTAYPUT
+                case RECON
+                case TANK
+                case PIGCOP
+                case PIGCOPSTAYPUT
+                case PIGCOPDIVE
+                case LIZMAN
+                case LIZMANSTAYPUT
+                case LIZMANSPITTING
+                case LIZMANJUMP
+                case ROTATEGUN
+                case GREENSLIME
+                case BOSS1
+                case BOSS1STAYPUT
+                case BOSS2
+                case BOSS3
+                case NEWBEAST
+                case NEWBEASTSTAYPUT
+                case NEWBEASTJUMP
+                case NEWBEASTHANG
+                case NEWBEASTHANGDEAD
+                case BOSS4
+                case BOSS4STAYPUT
+                  setvar ATEMP2 1
+                break
+                endswitch
+              }
+            }
+            ifvarvarn sprite[ATEMPSPRITES].hitag 0
+            {
+              switch sprite[ATEMPSPRITES].picnum
+              case CRACK1
+              case CRACK2
+              case CRACK3
+              case CRACK4
+                setvar ATEMP2 1
+              break
+              endswitch
+            }
+            ifvare ATEMP2 1
+            {
+              dist ATEMP3 THISACTOR ATEMPSPRITES
+              ifvarg ATEMP3 GRENADE_RANGE
+                nullop
+              else
+                canseespr THISACTOR ATEMPSPRITES ATEMP
+            }
+            ifvarn ATEMPSPRITES -1
+            {
+              nextspritesect ATEMPSPRITES ATEMPSPRITES
+              ifvarvare ATEMPSPRITES AHEAD
+                setvar ATEMPSPRITES -1
+            }
+          }
+          ifvarvarn ATEMPSECTORS NUMSECTORS
+            addvar ATEMPSECTORS 1
+        }
+      }
+      ifvare ATEMP 1
+        setactor[THISACTOR].yvel 0
+      else
+        setactor[THISACTOR].yvel 1
+    }
+    else
+      setvar ALT 0
+  }
+ends
+
+useractor notenemy GRENADEHIT 1
+  ifvare sprite[OWNER].statnum MAXSTATUS
+    killit
+  ifhitweapon
+    setactorvar[OWNER].ALT 1
+  setactor[THISACTOR].x sprite[OWNER].x
+  setactor[THISACTOR].y sprite[OWNER].y
+  setactor[THISACTOR].z sprite[OWNER].z
+  changespritesect THISACTOR sprite[OWNER].sectnum
+enda
+
+state event_egs_13
+  ifactor GRENADE
+  {
+    spriteflags 64
+    spawn GRENADEHIT
+    getactor[THISACTOR].xvel PROJXVEL
+    getactor[THISACTOR].zvel PROJZVEL
+    getactor[THISACTOR].ang PROJANG
+  }
+  ifactor GRENADEHIT
+  {
+    cstat 33024
+    clipdist 0
+  }
+  ifactor EXPLOSION2
+  ifspawnedby GRENADE
+  {
+    debris SCRAP1 4
+    debris SCRAP6 4
+  }
+ends
+
+define GRENADE_ANIM_DELAY       16
+
+state event_animatesprites_6
+  ifactor GRENADE
+  {
+    ifaction GRENADEONFLOOR
+      setvar ATEMP GRENADEGROUND
+    else
+      setvar ATEMP GRENADE
+    setvarvar ATEMP2 PROJXVEL
+    setvarvar ATEMP3 COUNT3
+    mulvar ATEMP3 GRENADE_STOP_VEL
+    subvarvar ATEMP2 ATEMP3
+    ifvarg ATEMP2 0
+    {
+      setvarvar ATEMP3 totalclock
+      divvar ATEMP3 GRENADE_ANIM_DELAY
+      setvarvar ATEMP4 ATEMP3
+      divvar ATEMP4 5
+      mulvar ATEMP4 5
+      subvarvar ATEMP3 ATEMP4
+      ifvarg ATEMP3 2
+      {
+        gettspr[THISACTOR].tsprcstat ATEMP4
+        ifaction GRENADEONFLOOR
+          orvar ATEMP4 4
+        else
+          orvar ATEMP4 8
+        settspr[THISACTOR].tsprcstat ATEMP4
+
+        mulvar ATEMP3 -1
+        addvar ATEMP3 5
+      }
+      addvarvar ATEMP ATEMP3
+    }
+    settspr[THISACTOR].tsprpicnum ATEMP
+  }
+ends
+
+onevent EVENT_GETAUTOAIMANGLE
+  ifvare player[THISACTOR].curr_weapon RPG_WEAPON
+    setvar AUTOAIMANGLE 0
+endevent
+
+defineprojectile PLASMASHOT PROJ_WORKSLIKE 65546
+defineprojectile PLASMASHOT PROJ_SPAWNS FORCERIPPLE
+defineprojectile PLASMASHOT PROJ_VEL 680
+defineprojectile PLASMASHOT PROJ_EXTRA PLASMA_WEAPON_STRENGTH
+defineprojectile PLASMASHOT PROJ_EXTRA_RAND 3
+defineprojectile PLASMASHOT PROJ_HITRADIUS PLASMASHOTBLASTRADIUS
+defineprojectile PLASMASHOT PROJ_TRAIL -1
+defineprojectile PLASMASHOT PROJ_ISOUND RPG_EXPLODE
+defineprojectile PLASMASHOT PROJ_OFFSET 224
+defineprojectile PLASMASHOT PROJ_CLIPDIST 24
+defineprojectile PLASMASHOT PROJ_CSTAT 128
+defineprojectile PLASMASHOT PROJ_XREPEAT 24
+defineprojectile PLASMASHOT PROJ_YREPEAT 24
+defineprojectile PLASMASHOT PROJ_SXREPEAT 64
+defineprojectile PLASMASHOT PROJ_SYREPEAT 64
+
+define BOSS_PLASMA_CHARGE       20
+
+state event_egs_14
+  ifactor PLASMASHOT
+  {
+    spriteflags 68
+    setactor[THISACTOR].shade -127
+
+    ifspawnedby APLAYER
+    {
+      getactor[OWNER].yvel ATEMP
+      getplayervar[ATEMP].WPCHARGE ATEMP2
+      setvar ALT PLASMA_CHARGE_AMOUNT
+      subvar ALT 1
+      mulvarvar ALT ATEMP2
+      divvar ALT PLASMA_CHARGE_TIME
+      addvar ALT 1
+    }
+    else
+    ifspawnedby BOSS2
+      setvar ALT BOSS_PLASMA_CHARGE
+    else
+      setvar ALT 1
+
+    ifvarg ALT 1
+    {
+      setvarvar ATEMP ALT
+      subvar ATEMP 1
+      shiftvarl ATEMP 9
+      setvar ATEMP2 PLASMA_CHARGE_AMOUNT
+      subvar ATEMP2 1
+      divvarvar ATEMP ATEMP2
+      cos ATEMP ATEMP
+      mulvar ATEMP -1
+      addvar ATEMP 16384
+
+      setvar ATEMP2 PLASMA_CHARGE_STRENGTH
+      subvar ATEMP2 PLASMA_WEAPON_STRENGTH
+      mulvarvar ATEMP2 ATEMP
+      shiftvarr ATEMP2 14
+      addvar ATEMP2 PLASMA_WEAPON_STRENGTH
+      setprojectile[PLASMASHOT].extra ATEMP2
+
+      setvar ATEMP2 PLASMACHARGEBLASTRADIUS
+      subvar ATEMP2 PLASMASHOTBLASTRADIUS
+      mulvarvar ATEMP2 ATEMP
+      shiftvarr ATEMP2 14
+      addvar ATEMP2 PLASMASHOTBLASTRADIUS
+      setprojectile[PLASMASHOT].hitradius ATEMP2
+    }
+    else
+    {
+      setprojectile[PLASMASHOT].extra PLASMA_WEAPON_STRENGTH
+      setprojectile[PLASMASHOT].hitradius PLASMASHOTBLASTRADIUS
+    }
+    ifvarl ALT PLASMA_FLASH_AMOUNT
+      setprojectile[PLASMASHOT].isound RPG_EXPLODE
+    else
+      setprojectile[PLASMASHOT].isound PLASMA_WAVE
+  }
+  ifactor FORCERIPPLE
+  ifspawnedby PLASMASHOT
+    getactorvar[OWNER].ALT ALT
+ends
+
+state event_spawn_17
+  ifactor FORCERIPPLE
+  ifspawnedby PLASMASHOT
+  {
+    cstat 128
+    spriteflags 4
+    setactor[THISACTOR].shade -127
+    ifvarl ALT PLASMA_FLASH_AMOUNT
+      nullop
+    else
+    {
+      quake 16
+      headspritestat AHEAD STAT_PLAYER
+      whilevarn AHEAD -1
+      {
+        ifvarn sprite[AHEAD].owner -1
+        ifvarvarl sprite[AHEAD].yvel MULTIMODE
+        ifvarg sprite[AHEAD].extra 0
+        {
+          getactor[AHEAD].yvel ATEMP
+          cansee player[ATEMP].posx player[ATEMP].posy player[ATEMP].posz player[ATEMP].cursectnum
+                 sprite[THISACTOR].x sprite[THISACTOR].y sprite[THISACTOR].z sprite[THISACTOR].sectnum
+                 ATEMP2
+          ifvare ATEMP2 1
+          {
+            getactor[AHEAD].yvel ATEMP3
+            setplayer[ATEMP3].pals_time 64
+            setplayer[ATEMP3].pals 0 63
+            setplayer[ATEMP3].pals 1 63
+            setplayer[ATEMP3].pals 2 63
+          }
+        }
+        nextspritestat AHEAD AHEAD
+      }
+    }
+  }
+ends
+
+state event_game_20
+  ifactor PLASMASHOT
+  ifvarg ALT 1
+  ifvare LOAD 0
+  {
+    setvarvar ATEMP ALT
+    subvar ATEMP 1
+    shiftvarl ATEMP 9
+    setvar ATEMP2 PLASMA_CHARGE_AMOUNT
+    subvar ATEMP2 1
+    divvarvar ATEMP ATEMP2
+    cos ATEMP ATEMP
+    mulvar ATEMP -1
+    addvar ATEMP 16384
+
+    getprojectile[PLASMASHOT].xrepeat ATEMP2
+    setvarvar ATEMP3 ATEMP2
+    mulvarvar ATEMP3 ATEMP
+    shiftvarr ATEMP3 14
+    addvarvar ATEMP2 ATEMP3
+    setactor[THISACTOR].xrepeat ATEMP2
+
+    getprojectile[PLASMASHOT].yrepeat ATEMP2
+    setvarvar ATEMP3 ATEMP2
+    mulvarvar ATEMP3 ATEMP
+    shiftvarr ATEMP3 14
+    addvarvar ATEMP2 ATEMP3
+    setactor[THISACTOR].yrepeat ATEMP2
+  }
+ends
+
+state event_spawn_18
+  ifactor FRAMEEFFECT1
+  ifspawnedby MORTER
+  {
+    spawn SMALLSMOKE
+    killit
+  }
+ends
+
+// End
+
+state event_game_21
+  setvar LOAD 1
+ends
+
+// Temporary
+
+onevent EVENT_ANIMATESPRITES
+  state event_animatesprites_1
+  state event_animatesprites_2
+  state event_animatesprites_3
+  state event_animatesprites_4
+  state event_animatesprites_5
+  state event_animatesprites_6
+endevent
+
+onevent EVENT_DISPLAYREST
+  state event_displayrest_1
+  state event_displayrest_2
+  state event_displayrest_3
+  state event_displayrest_4
+  state event_displayrest_4b
+  state event_displayrest_5
+  state event_displayrest_5b
+  state event_displayrest_6
+  state event_displayrest_7
+endevent
+
+onevent EVENT_DISPLAYROOMS
+  state event_displayrooms_1
+  state event_displayrooms_2
+  state event_displayrooms_2b
+  state event_displayrooms_3
+  state event_displayrooms_4
+  state event_displayrooms_4b
+  state event_displayrooms_5
+endevent
+
+onevent EVENT_DISPLAYSBAR
+  state event_displaysbar_1
+  state event_displaysbar_2
+  state event_displaysbar_3
+  state event_displaysbar_3b
+  state event_displaysbar_3c
+endevent
+
+onevent EVENT_DOFIRE
+  state event_dofire_1
+  state event_dofire_2
+endevent
+
+onevent EVENT_DRAWWEAPON
+  state event_drawweapon_1
+  state event_drawweapon_2
+endevent
+
+onevent EVENT_EGS
+  state event_egs_0
+  state event_egs_0b
+  state event_egs_0c
+  state event_egs_1
+  state event_egs_2
+  state event_egs_4
+  state event_egs_8
+  state event_egs_9
+  state event_egs_11
+  state event_egs_12
+  state event_egs_13
+  state event_egs_14
+endevent
+
+onevent EVENT_GAME
+  state event_game_0
+  state event_game_0x1
+  state event_game_0x2
+  state event_game_0b
+  state event_game_0c
+  state event_game_1
+  state event_game_3
+  state event_game_4
+  state event_game_5
+  state event_game_6
+  state event_game_7
+  state event_game_8
+  state event_game_9
+  state event_game_10
+  state event_game_11
+  state event_game_13
+  state event_game_14
+  state event_game_15
+  state event_game_16
+  state event_game_17
+  state event_game_18
+  state event_game_19
+  state event_game_20
+  state event_game_21
+endevent
+
+onevent EVENT_LOADACTOR
+  state event_loadactor_1
+  state event_loadactor_1b
+  state event_loadactor_2
+  state event_loadactor_3
+  state event_loadactor_4
+  state event_loadactor_5
+  state event_loadactor_6
+  state event_loadactor_7
+endevent
+
+onevent EVENT_KILLIT
+  state event_killit_1
+  state event_killit_2
+endevent
+
+onevent EVENT_PREGAME
+  state event_pregame_0
+  state event_pregame_1
+endevent
+
+onevent EVENT_RESETPLAYER
+  state event_resetplayer_1
+  state event_resetplayer_2
+  state event_resetplayer_3
+endevent
+
+onevent EVENT_SOUND
+  state event_sound_0
+  state event_sound_1
+  state event_sound_2
+  state event_sound_3
+  state event_sound_4
+endevent
+
+onevent EVENT_SPAWN
+  state event_spawn_1
+  state event_spawn_2
+  state event_spawn_3
+  state event_spawn_8
+  state event_spawn_9
+  state event_spawn_10
+  state event_spawn_11
+  state event_spawn_12
+  state event_spawn_12b
+  state event_spawn_13
+  state event_spawn_14
+  state event_spawn_15
+  state event_spawn_16
+  state event_spawn_17
+  state event_spawn_18
+endevent
+

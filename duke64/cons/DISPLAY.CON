@@ -1,0 +1,1620 @@
+
+
+define START_TIME               64
+define END_TIME                 16
+
+define RESERVED_QUOTE 255
+define RESERVED_QUOTE_2 254
+
+definequote RESERVED_QUOTE <Please Leave Blank>
+definequote RESERVED_QUOTE_2 <Please Leave Blank>
+
+state blackscreen
+  setvar z 322
+  shiftvarl z 16
+  addvar z -1
+  divvarvar z tilesizx[0]
+  addvar z 1
+  setvar TEMP 202
+  shiftvarl TEMP 16
+  addvar TEMP -1
+  divvarvar TEMP tilesizy[0]
+  addvar TEMP 1
+  ifvarvarg TEMP z
+    setvarvar z TEMP
+  rotatespritea 160 100 z 0
+                0 127 4 1032 0
+                0 0 xdim ydim
+ends
+
+state reset_drawing
+  setvar x 0
+  setvar y 0
+  setvar x16 0
+  setvar y16 0
+  setvar z 65536
+  setvar z2 65536
+  setvar ang 0
+  setvar shade 0
+  setvar pal 0
+  setvar orientation 0
+  setvar alpha 0
+ends
+
+state reset_text
+  setvar textang 0
+  setvar spacewidth 0
+  setvar lineheight 0
+  setvar letterspacing 0
+  setvar linespacing 0
+  setvar textorientation 0
+ends
+
+state draw_alpha
+  ifvarg rendmode 0
+  {
+    setvarvar screenalpha alpha
+    ifvarl screenalpha 0
+      setvar screenalpha 0
+    ifvarg screenalpha 254
+      setvar screenorientation -1
+  }
+  else
+  {
+    setvarvar TEMPB alpha
+    mulvar TEMPB 6
+    shiftvarr TEMPB 8
+    ifvarg TEMPB 4
+      setvar screenorientation -1
+    else
+    {
+      setvar screenalpha 0
+      ifvarg TEMPB 2
+        orvar screenorientation 33
+      else
+      ifvarg TEMPB 0
+        orvar screenorientation 1
+    }
+  }
+ends
+
+state draw_code
+  state draw_alpha
+  ifvare screenorientation -1
+    break
+
+  ifvarand screenorientation 2048
+  {
+    setvarvar screenx x
+    shiftvarl screenx 16
+    addvarvar screenx x16
+    setvarvar screeny y
+    shiftvarl screeny 16
+    addvarvar screeny y16
+  }
+  else
+  {
+    setvarvar screenx x16
+    shiftvarr screenx 16
+    addvarvar screenx x
+    setvarvar screeny y16
+    shiftvarr screeny 16
+    addvarvar screeny y
+  }
+  setvarvar screenz z
+  setvarvar screenz2 z2
+
+  ifvarand screenorientation 1024
+    nullop
+  else
+  {
+    ifvare POSX 1
+      orvar screenorientation 256
+    ifvare POSX 2
+      orvar screenorientation 512
+  }
+ends
+
+state draw_text
+  setvarvar screenspacewidth spacewidth
+  setvarvar screenlineheight lineheight
+  setvarvar screenletterspacing letterspacing
+  setvarvar screenlinespacing linespacing
+  ifvarand screenorientation 2048
+  {
+    shiftvarl screenspacewidth 16
+    shiftvarl screenlineheight 16
+    shiftvarl screenletterspacing 16
+    shiftvarl screenlinespacing 16
+  }
+ends
+
+state aspectset
+  ifvarvare screenz screenz2
+    break
+  ifvarl screenz 1
+    break
+  ifvarl screenz2 1
+    break
+
+  setvarvar aspect screenz2
+  shiftvarl aspect 6
+  divvarvar aspect screenz
+  mulvar aspect 8
+  ifvarand screenorientation 1024
+  {
+    mulvarvar aspect ydim
+    divvarvar aspect xdim
+  }
+  else
+  {
+    mulvar aspect 3
+    divvar aspect 4
+  }
+  divvar aspect 5
+  addvar aspect 1
+  shiftvarl aspect 10
+  setaspect 65536 aspect
+
+  ifvarand screenorientation 1024
+    nullop
+  else
+  {
+    setvar TEMPB 0
+    ifvarand screenorientation 256
+      setvar TEMPB 1
+    ifvarand screenorientation 512
+      setvar TEMPB 1
+    ifvare TEMPB 1
+    {
+      setvar TEMPB2 320
+      shiftvarl TEMPB2 6
+      mulvarvar TEMPB2 xdim
+      mulvar TEMPB2 3
+      divvarvar TEMPB2 ydim
+      divvar TEMPB2 4
+      shiftvarl TEMPB2 10
+      setvarvar TEMPB3 320
+      shiftvarl TEMPB3 16
+      subvarvar TEMPB2 TEMPB3
+      shiftvarr TEMPB2 1
+      ifvarand screenorientation 256
+        mulvar TEMPB2 -1
+      addvarvar screenx TEMPB2
+    }
+
+    setvar TEMPB 160
+    shiftvarl TEMPB 16
+    subvarvar screenx TEMPB
+    shiftvarr screenx 10
+    mulvarvar screenx ydim
+    mulvar screenx 4
+    divvarvar screenx xdim
+    divvar screenx 3
+    shiftvarl screenx 10
+    addvarvar screenx TEMPB
+  }
+
+  setvar TEMPB 100
+  shiftvarl TEMPB 16
+  subvarvar screeny TEMPB
+  shiftvarr screeny 10
+  mulvarvar screeny screenz
+  divvarvar screeny screenz2
+  ifvarand screenorientation 1024
+    nullop
+  else
+  {
+    mulvarvar screeny ydim
+    mulvar screeny 4
+    divvarvar screeny xdim
+    divvar screeny 3
+  }
+  shiftvarl screeny 10
+  addvarvar screeny TEMPB
+
+  ifvarand screenorientation 1024
+    nullop
+  else
+  {
+    mulvarvar screenz ydim
+    mulvar screenz 4
+    divvarvar screenz xdim
+    divvar screenz 3
+    orvar screenorientation 1024
+  }
+ends
+
+state aspectreset
+  ifvare aspect -1
+    break
+  setvarvar TEMPB ydim
+  shiftvarl TEMPB 16
+  mulvar TEMPB 8
+  divvarvar TEMPB xdim
+  divvar TEMPB 5
+  setaspect 65536 TEMPB
+  setvar aspect -1
+ends
+
+state reset_gamehud
+  state reset_drawing
+  setvarvar x1 windowx1
+  setvarvar y1 windowy1
+  setvarvar x2 windowx2
+  setvarvar y2 windowy2
+  setvar POSX 0
+  setvar POSY 0
+ends
+
+state draw_gamehud_scale
+  setvarvar screenorientation orientation
+  orvar screenorientation 2048
+  state draw_code
+
+  ifvarn POSX 1
+  {
+    ifvare POSX 0
+      setvar TEMPB2 160
+    ifvare POSX 2
+    {
+      setvar TEMPB2 320
+      orvar screenorientation 512
+    }
+    shiftvarl TEMPB2 16
+    addvarvar screenx TEMPB2
+  }
+  else
+    orvar screenorientation 256
+
+  ifvarn POSY 1
+  {
+    ifvare POSY 0
+      setvar TEMPB2 100
+    ifvare POSY 2
+      setvar TEMPB2 200
+    shiftvarl TEMPB2 16
+    addvarvar screeny TEMPB2
+  }
+ends
+
+state draw_gamehud
+  state draw_gamehud_scale
+  ifvare screenorientation -1
+    break
+  state aspectset
+  rotatespritea screenx screeny screenz ang
+                tilenum shade pal screenorientation screenalpha
+                x1 y1 x2 y2
+  state aspectreset
+ends
+
+onevent EVENT_DISPLAYCROSSHAIR
+  setvar RETURN -1
+  setvar CROSSHAIR 0 getuserdef .crosshair CROSSHAIR
+endevent
+
+state event_displaysbar_1
+  ifp pdead
+    nullop
+  else
+  ifvare CROSSHAIR 1
+  {
+    state reset_gamehud
+    getplayer[THISACTOR].look_ang x
+    shiftvarr x 1
+    mulvar x -1
+    setvar ATEMP 0 getuserdef .crosshairscale z
+    shiftvarl z 16
+    divvar z 100
+    setvarvar z2 z
+    setvar tilenum CROSSHAIR
+    state draw_gamehud
+  }
+  setvar CROSSHAIR 0
+ends
+
+state reset_hand
+  state reset_drawing
+  setvarvar x1 windowx1
+  setvarvar y1 windowy1
+  setvarvar x2 windowx2
+  setvarvar y2 windowy2
+  setvar POSX 0
+  setvar POSY 0
+ends
+
+state rotate_hand
+  setvarvar screenorientation orientation
+  orvar screenorientation 2048
+  state draw_code
+  ifvare screenorientation -1
+    break
+  ifvarn POSX 1
+  {
+    ifvare POSX 2
+      setvar TEMPB 320
+    else
+      setvar TEMPB 160
+    shiftvarl TEMPB 16
+    addvarvar screenx TEMPB
+  }
+  ifvarn POSY 1
+  {
+    ifvare POSY 2
+      setvar TEMPB 200
+    else
+      setvar TEMPB 100
+    shiftvarl TEMPB 16
+    addvarvar screeny TEMPB
+  }
+
+  state aspectset
+  rotatespritea screenx screeny screenz ang
+                tilenum shade pal screenorientation screenalpha
+                x1 y1 x2 y2
+  state aspectreset
+ends
+
+state event_drawweapon_1
+  ifvarg ACCESSTEMP 0
+  {
+    state reset_hand
+    setvar POSY 2
+    setvarvar shade gs
+    getsector[THISACTOR].floorpal pal
+
+    setvar x -17
+    setvar y -48
+    switch ACCESSTEMP
+    case 1
+      addvar x 25
+      addvar y 100
+    break
+    case 2
+      addvar x 23
+      addvar y 92
+    break
+    case 3
+      addvar x 19
+      addvar y 76
+    break
+    case 4
+      addvar x 11
+      addvar y 44
+    break
+    case 5
+      addvar x 6
+      addvar y 24
+    break
+    case 16
+      addvar x 3
+      addvar y 12
+    break
+    case 17
+      addvar x 9
+      addvar y 36
+    break
+    case 18
+      addvar x 11
+      addvar y 44
+    break
+    case 19
+      addvar x 19
+      addvar y 76
+    break
+    case 20
+      addvar x 23
+      addvar y 92
+    break
+    endswitch
+
+    ifvarg ACCESSTEMP 15
+    {
+      setvar tilenum HANDHOLDINGLASER
+      addvar tilenum 2
+    }
+    else
+    ifvarg ACCESSTEMP 10
+    {
+      setvar tilenum HANDHOLDINGLASER
+      addvar tilenum 1
+    }
+    else
+    {
+      setvar ang 1024
+      setvar orientation 4
+      setvar tilenum HANDHOLDINGACCESS2
+      getplayer[THISACTOR].access_spritenum TEMP
+      ifvare sprite[TEMP].pal 21
+        nullop
+      else
+      ifvare sprite[TEMP].pal 23
+        addvar tilenum 1
+      else
+        addvar tilenum 2
+      state rotate_hand
+
+      setvar tilenum HANDHOLDINGACCESS2
+      addvar tilenum 3
+    }
+    state rotate_hand
+
+    setvar RETURN -1
+    return
+  }
+ends
+
+state event_displayrooms_1
+  ifvare ROOMSTEMP 0
+  {
+    getplayer[THISACTOR].access_incs ACCESSTEMP
+    setplayer[THISACTOR].access_incs 0
+  }
+ends
+
+state event_displayrest_1
+  ifvare ROOMSTEMP 1
+    setplayer[THISACTOR].access_incs ACCESSTEMP
+ends
+
+state event_displayrooms_2
+  ifvare ROOMSTEMP 0
+  {
+    getplayer[THISACTOR].pals 0 PALS0TEMP
+    getplayer[THISACTOR].pals 1 PALS1TEMP
+    getplayer[THISACTOR].pals 2 PALS2TEMP
+    getplayer[THISACTOR].pals_time PALSTIMETEMP
+    getplayer[THISACTOR].heat_on HEATTEMP
+
+    ifvarg rendmode 0
+    {
+      setplayer[THISACTOR].pals 0 0
+      setplayer[THISACTOR].pals 1 0
+      setplayer[THISACTOR].pals 2 0
+      setplayer[THISACTOR].pals_time 0
+      setplayer[THISACTOR].heat_on 0
+    }
+  }
+  ifvarg rendmode 0
+    setgamepalette 0
+  else
+  {
+    ifvare HEATTEMP 1
+      setgamepalette 2
+    else
+    {
+      setgamepalette 0
+      ifvarn camerasect -1
+      {
+        getsector[camerasect].lotag TEMPB
+        ifvare TEMPB 2
+          setgamepalette 1
+      }
+    }
+  }
+  ifvare NEW_SHADING 1
+  {
+    setplayer[THISACTOR].visibility DEFAULTVISIBILITY
+    setuserdef .const_visibility DEFAULTVISIBILITY
+  }
+ends
+
+state event_displayrest_2
+  ifvare ROOMSTEMP 1
+  {
+    setplayer[THISACTOR].heat_on HEATTEMP
+    setplayer[THISACTOR].pals 0 PALS0TEMP
+    setplayer[THISACTOR].pals 1 PALS1TEMP
+    setplayer[THISACTOR].pals 2 PALS2TEMP
+    setplayer[THISACTOR].pals_time PALSTIMETEMP
+  }
+  ifvare NEW_SHADING 1
+  {
+    setplayer[THISACTOR].visibility DEFAULTVISIBILITY
+    setuserdef .const_visibility DEFAULTVISIBILITY
+  }
+ends
+
+state event_game_1
+  ifactor APLAYER
+  ifvarn sprite[THISACTOR].owner -1
+  ifvarvarl sprite[THISACTOR].yvel MULTIMODE
+  ifvare NEW_SHADING 1
+  {
+    setplayer[THISACTOR].visibility DEFAULTVISIBILITY
+    setuserdef .const_visibility DEFAULTVISIBILITY
+  }
+ends
+
+state displaytint
+  ifvarg PALSTIMETEMP 0
+  {
+    state reset_drawing
+    setvar tilenum TINT
+    setvar x 160
+    setvar y 100
+    setvar orientation 1032
+
+    setvarvar shade PALS0TEMP
+    addvarvar shade PALS1TEMP
+    addvarvar shade PALS2TEMP
+    divvar shade 3
+    ifvarg PALS0TEMP 0
+    ifvare PALS1TEMP 0
+    ifvare PALS2TEMP 0
+    {
+      setvar pal 1
+      setvarvar shade PALS0TEMP
+    }
+    ifvare PALS0TEMP 0
+    ifvarg PALS1TEMP 0
+    ifvare PALS2TEMP 0
+    {
+      setvar pal 2
+      setvarvar shade PALS1TEMP
+    }
+    ifvare PALS0TEMP 0
+    ifvare PALS1TEMP 0
+    ifvarg PALS2TEMP 0
+    {
+      setvar pal 3
+      setvarvar shade PALS2TEMP
+    }
+    ifvarg PALS0TEMP 0
+    ifvarg PALS1TEMP 0
+    ifvare PALS2TEMP 0
+    {
+      setvar pal 4
+      setvarvar shade PALS0TEMP
+      setvarvar shade PALS1TEMP
+      divvar shade 2
+    }
+    ifvare PALS0TEMP 0
+    ifvarg PALS1TEMP 0
+    ifvarg PALS2TEMP 0
+    {
+      setvar pal 5
+      setvarvar shade PALS0TEMP
+      setvarvar shade PALS2TEMP
+      divvar shade 2
+    }
+    ifvarg PALS0TEMP 0
+    ifvare PALS1TEMP 0
+    ifvarg PALS2TEMP 0
+    {
+      setvar pal 6
+      setvarvar shade PALS1TEMP
+      setvarvar shade PALS2TEMP
+      divvar shade 2
+    }
+
+    mulvar shade -1
+    addvar shade 64
+    shiftvarr shade 1
+
+    setvarvar alpha PALSTIMETEMP
+    mulvar alpha -1
+    addvar alpha 64
+    shiftvarl alpha 2
+    ifvarl alpha 0
+      setvar alpha 0
+
+    rotatespritea x y z ang
+                  tilenum shade pal orientation alpha
+                  windowx1 windowy1 windowx2 windowy2
+  }
+ends
+
+state event_displaysbar_2
+  ifvarg PALSTIME -1
+    state blackscreen
+  ifvarg rendmode 0
+    state displaytint
+ends
+
+state event_displayrooms_2b
+  ifvare rendmode 0
+  {
+    ifvarg ENDLEVEL 0
+      setvarvar TEMP ENDLEVEL
+    else
+    {
+      setvarvar TEMP GAMETIME
+      mulvar TEMP -1
+      addvar TEMP START_TIME
+    }
+    ifvarg TEMP 0
+    {
+      setplayer[THISACTOR].pals 0 0
+      setplayer[THISACTOR].pals 1 0
+      setplayer[THISACTOR].pals 2 0
+      setvarvar TEMP2 TEMP
+      subvar TEMP2 1
+      shiftvarl TEMP2 6
+      ifvarg ENDLEVEL -1
+        divvar TEMP2 END_TIME
+      else
+        divvar TEMP2 START_TIME
+      addvar TEMP2 1
+      setplayer[THISACTOR].pals_time TEMP2
+    }
+  }
+ends
+
+state event_displayrest_3
+  ifvare DISPLAYSCREEN 0
+  ifvarg rendmode 0
+  {
+    ifvarg ENDLEVEL 0
+      setvarvar TEMP ENDLEVEL
+    else
+    {
+      setvarvar TEMP GAMETIME
+      mulvar TEMP -1
+      addvar TEMP START_TIME
+    }
+    ifvarg TEMP 0
+    {
+      setvar z 322
+      shiftvarl z 16
+      addvar z -1
+      divvarvar z tilesizx[0]
+      addvar z 1
+      setvar TEMP2 202
+      shiftvarl TEMP2 16
+      addvar TEMP2 -1
+      divvarvar TEMP2 tilesizy[0]
+      addvar TEMP2 1
+      ifvarvarg TEMP2 z
+        setvarvar z TEMP2
+      setvar orientation 1032
+
+      ifvarg ENDLEVEL -1
+        setvar TEMP2 END_TIME
+      else
+        setvar TEMP2 START_TIME
+      setvarvar alpha TEMP
+      mulvar alpha -1
+      addvarvar alpha TEMP2
+      shiftvarl alpha 8
+      divvarvar alpha TEMP2
+
+      rotatespritea 160 100 z 0
+                    0 127 4 1032 alpha
+                    windowx1 windowy1 windowx2 windowy2
+    }
+  }
+ends
+
+state event_displayrooms_3
+  ifvarg SKY -1
+  {
+    setvar x 160
+    shiftvarl x 16
+
+    setvar y -20
+    shiftvarl y 16
+
+    setvar TEMP 35
+    shiftvarl TEMP 12
+    setvarvar TEMP2 camerahoriz
+    subvar TEMP2 300
+    shiftvarl TEMP2 5
+    divvar TEMP2 25
+    cos TEMP2 TEMP2
+    mulvar TEMP2 -1
+    addvar TEMP2 16384
+    addvarvar TEMP TEMP2
+
+    setvarvar TEMP2 TEMP
+    shiftvarl TEMP2 7
+    addvarvar y TEMP2
+
+    setvarvar TEMP2 camerahoriz
+    subvar TEMP2 300
+    mulvarvar TEMP2 TEMP
+    shiftvarl TEMP2 3
+    divvar TEMP2 25
+    addvarvar y TEMP2
+
+    setvarvar z TEMP
+    shiftvarl z 4
+
+    setvar ang 0
+    setvar shade 0
+    setvarvar pal SKY
+    setvar tilenum SKYLAYER
+    setvar orientation 3136
+    setvar alpha 0
+    rotatespritea x y z ang
+                  tilenum shade pal orientation alpha
+                  windowx1 windowy1 windowx2 windowy2
+  }
+ends
+
+state event_loadactor_1
+  getactor[THISACTOR].mdflags ATEMP
+  orvar ATEMP SPREXT_TSPRACCESS
+  setactor[THISACTOR].mdflags ATEMP
+ends
+
+state event_egs_1
+  getactor[THISACTOR].mdflags ATEMP
+  orvar ATEMP SPREXT_TSPRACCESS
+  setactor[THISACTOR].mdflags ATEMP
+ends
+
+state gamepal
+  ifvare HEATTEMP 1
+  ifvarn pal 4
+  {
+    switch pal
+    case 1
+      setvar pal 132
+    break
+    case 2
+      setvar pal 164
+    break
+    case 6
+    case 8
+    case 14
+      setvar pal 196
+    break
+    default
+      setvar pal 100
+    break
+    endswitch
+
+    setvarvar TEMPB shade
+    ifvarl TEMPB 0
+      setvar TEMPB 0
+    ifvarg TEMPB 31
+      setvar TEMPB 31
+    addvarvar pal TEMPB
+  }
+ends
+
+state displaypal
+  ifvarn camerasect -1
+  {
+    getsector[camerasect].lotag TEMPB
+    ifvare TEMPB 2
+    {
+      ifvarg rendmode 0
+        setvar pal 1
+      else
+        setvar pal 0
+    }
+  }
+  state gamepal
+ends
+
+state displayshade
+  ifvare NEW_SHADING 1
+  ifvarl shade 0
+    setvar shade -96
+  ifvare HEATTEMP 1
+  ifvarg shade 0
+    setvar shade 0
+ends
+
+state displaysprite
+  gettspr[THISACTOR].tsprcstat TEMP
+  ifvarand TEMP 2048
+    getactor[THISACTOR].shade shade
+  else
+  {
+    gettspr[THISACTOR].tsprsectnum TEMP2
+    ifoutside
+      getactorvar[TEMP2].CEILINGSHADE shade
+    else
+      getactorvar[TEMP2].FLOORSHADE shade
+  }
+
+  setvar TEMP 0
+  getactor[THISACTOR].picnum TEMP2
+  subvar TEMP2 GREENSLIME
+  ifvarg TEMP2 0
+  ifvarl TEMP2 8
+    setvar TEMP2 0
+  addvar TEMP2 GREENSLIME
+  switch TEMP2
+  case BLOODPOOL
+  case PUKE
+  case FOOTPRINTS
+  case FOOTPRINTS2
+  case FOOTPRINTS3
+  case FOOTPRINTS4
+    ifvare sprite[THISACTOR].shade 127
+      getactor[THISACTOR].shade shade
+  break
+  case RESPAWNMARKERRED
+  case RESPAWNMARKERYELLOW
+  case RESPAWNMARKERGREEN
+  case NEON1
+  case NEON2
+  case NEON3
+  case NEON4
+  case NEON5
+  case NEON6
+    getactor[THISACTOR].shade shade
+  break
+  case CHAIR3
+  case GREENSLIME
+  break
+  case BLOODSPLAT1
+  case BLOODSPLAT2
+  case BLOODSPLAT3
+  case BLOODSPLAT4
+    ifspritepal 6
+      setvar shade -127
+  break
+  case BULLETHOLE
+  case CRACK1
+  case CRACK2
+  case CRACK3
+  case CRACK4
+    setvar shade 16
+  break
+  default
+    setvar TEMP 1
+  break
+  endswitch
+  ifvare TEMP 1
+  {
+    gettspr[THISACTOR].tsprcstat TEMP2
+    ifvarand TEMP2 16
+      getactor[THISACTOR].shade shade
+    ifvarand TEMP2 2048
+      getactor[THISACTOR].shade shade
+    ifvarg sprite[THISACTOR].extra 0
+    ifvarn sprite[THISACTOR].picnum GREENSLIME
+    {
+      switch sprite[THISACTOR].picnum
+      case EGG
+      case SHARK
+      case LIZTROOP
+      case LIZTROOPRUNNING
+      case LIZTROOPSTAYPUT
+      case LIZTROOPSHOOT
+      case LIZTROOPJETPACK
+      case LIZTROOPONTOILET
+      case LIZTROOPJUSTSIT
+      case LIZTROOPDUCKING
+      case CANNON
+      case OCTABRAIN
+      case OCTABRAINSTAYPUT
+      case DRONE
+      case COMMANDER
+      case COMMANDERSTAYPUT
+      case RECON
+      case TANK
+      case PIGCOP
+      case PIGCOPSTAYPUT
+      case PIGCOPDIVE
+      case LIZMAN
+      case LIZMANSTAYPUT
+      case LIZMANSPITTING
+      case LIZMANJUMP
+      case ROTATEGUN
+      case BOSS1
+      case BOSS1STAYPUT
+      case BOSS2
+      case BOSS3
+      case NEWBEAST
+      case NEWBEASTSTAYPUT
+      case NEWBEASTJUMP
+      case NEWBEASTHANG
+      case BOSS4
+        getactor[THISACTOR].shade shade
+      break
+      endswitch
+    }
+    ifvare sprite[THISACTOR].statnum STAT_PLAYER
+      getactor[THISACTOR].shade shade
+  }
+
+  ifvarl shade -127
+    setvar shade -127
+  ifvarg shade 128
+    setvar shade 127
+
+  ifactor NATURALLIGHTNING
+    setvar shade -127
+
+  getactorvar[TEMP].FLOORPAL pal
+  ifvare pal 0
+    getactor[THISACTOR].pal pal
+  getactor[THISACTOR].picnum TEMP
+  subvar TEMP SCRAP6
+  ifvarg TEMP 0
+  ifvarl TEMP 8
+    setvar TEMP 0
+  addvar TEMP SCRAP6
+  subvar TEMP MONEY
+  ifvare TEMP 1
+    setvar TEMP 0
+  addvar TEMP MONEY
+  subvar TEMP MAIL
+  ifvare TEMP 1
+    setvar TEMP 0
+  addvar TEMP MAIL
+  subvar TEMP PAPER
+  ifvare TEMP 1
+    setvar TEMP 0
+  addvar TEMP PAPER
+  switch TEMP
+  case DUKELYINGDEAD
+  case PUKE
+  case MONEY
+  case MAIL
+  case PAPER
+  case TRIPBOMB
+  case FORCESPHERE
+  case BURNING
+  case BURNING2
+  case ATOMICHEALTH
+  case VIEWSCREEN
+  case VIEWSCREEN2
+  case SHRINKSPARK
+  case GROWSPARK
+  case RPG
+  case RECON
+    getactor[THISACTOR].pal pal
+  break
+  case BLOODPOOL
+  case FOOTPRINTS
+  case FOOTPRINTS2
+  case FOOTPRINTS3
+  case FOOTPRINTS4
+    ifspritepal 6
+      setvar shade -127
+    else
+      getactor[THISACTOR].pal pal
+  break
+  case CRYSTALAMMO
+    setvarvar shade totalclock
+    andvar shade 127
+    shiftvarl shade 4
+    sin shade shade
+    shiftvarr shade 10
+    getactor[THISACTOR].pal pal
+  break
+  case APLAYER
+    ifvare sprite[THISACTOR].owner -1
+    {
+      getactor[THISACTOR].yvel TEMP2
+      getplayer[TEMP2].palookup pal
+      getsector[THISACTOR].floorpal TEMP3
+      ifvarn TEMP3 0
+        setvarvar pal TEMP3
+    }
+  break
+  case JIBS1
+  case JIBS2
+  case JIBS3
+  case JIBS4
+  case JIBS5
+  case JIBS6
+  case HEADJIB1
+  case LEGJIB1
+  case ARMJIB1
+  case LIZMANHEAD1
+  case LIZMANARM1
+  case LIZMANLEG1
+  case DUKELEG
+  case DUKEGUN
+  case DUKETORSO
+    ifspritepal 6
+      setvar shade -120
+    else
+      getactor[THISACTOR].pal pal
+  break
+  case SCRAP1
+  case SCRAP2
+  case SCRAP3
+  case SCRAP4
+  case SCRAP5
+  case SCRAP6
+    subvar shade 6
+  break
+  case WATERBUBBLE
+    gettspr[THISACTOR].tsprsectnum TEMP2
+    getsector[TEMP2].ceilingpicnum TEMP3
+    ifvare TEMP3 FLOORSLIME
+      setvar pal 7
+  break
+  default
+    setvar TEMP 0
+  break
+  endswitch
+
+  switch sprite[THISACTOR].picnum
+  case LASERLINE
+    gettspr[THISACTOR].tsprsectnum TEMP2
+    getsector[TEMP2].lotag TEMP3
+    ifvare TEMP3 2
+      setvar pal 8
+    setvar shade -127
+  break
+  case EXPLOSION2
+  case EXPLOSION2BOT
+  case FREEZEBLAST
+  case ATOMICHEALTH
+  case FIRELASER
+  case SHRINKSPARK
+  case GROWSPARK
+  case CHAINGUN
+  case SHRINKEREXPLOSION
+  case RPG
+  case FLOORFLAME
+  case FIRE
+  case FIRE2
+  case BURNING
+  case BURNING2
+  case COOLEXPLOSION1
+    setvar shade -127
+  break
+  case PLAYERONWATER
+    getactor[THISACTOR].owner TEMP2
+    getactor[TEMP2].shade shade
+  break
+  case FRAMEEFFECT1
+    ifvarg sprite[THISACTOR].owner -1
+    {
+      getactor[THISACTOR].owner TEMP2
+      ifvarl sprite[TEMP2].statnum MAXSTATUS
+      {
+        ifvarand sprite[TEMP2].cstat 32768
+          nullop
+        else
+        {
+          setvarvar pal sprite[TEMP2].pal
+          setvarvar shade sprite[TEMP2].shade
+        }
+      }
+    }
+  break
+  endswitch
+
+  ifvarand sprite[THISACTOR].htflags SFLAG_NOSHADE
+    getactor[THISACTOR].shade shade
+  ifvarand sprite[THISACTOR].htflags SFLAG_NOPAL
+    getactor[THISACTOR].pal pal
+ends
+
+state event_animatesprites_1
+  gettspr[THISACTOR].tsprstatnum TEMP
+  ifvare TEMP TSPR_TEMP
+    break
+
+  gettspr[THISACTOR].tsprshade shade
+  gettspr[THISACTOR].tsprpal pal
+  ifvare HEATTEMP 1
+    state displaysprite
+
+  switch sprite[THISACTOR].pal
+  case 21
+  case 23
+    getactor[THISACTOR].picnum TEMP
+    subvar TEMP ACCESSSWITCH
+    ifvarg TEMP 0
+    ifvarl TEMP 2
+      setvar TEMP 0
+    addvar TEMP ACCESSSWITCH
+    subvar TEMP ACCESSSWITCH2
+    ifvarg TEMP 0
+    ifvarl TEMP 2
+      setvar TEMP 0
+    addvar TEMP ACCESSSWITCH2
+    ifvare TEMP ACCESSCARD
+    {
+      ifspritepal 21
+        settspr[THISACTOR].tsprpicnum 65
+      ifspritepal 23
+        settspr[THISACTOR].tsprpicnum 66
+      gettspr[THISACTOR].tsprsectnum TEMP2
+      getactorvar[TEMP2].FLOORPAL pal
+    }
+    ifvare TEMP ACCESSSWITCH
+    {
+      gettspr[THISACTOR].tsprpicnum TEMP2
+      subvar TEMP2 ACCESSSWITCH
+      ifspritepal 21
+        addvar TEMP2 172
+      ifspritepal 23
+        addvar TEMP2 174
+      settspr[THISACTOR].tsprpicnum TEMP2
+      gettspr[THISACTOR].tsprsectnum TEMP2
+      getactorvar[TEMP2].FLOORPAL pal
+    }
+    ifvare TEMP ACCESSSWITCH2
+    {
+      gettspr[THISACTOR].tsprpicnum TEMP2
+      subvar TEMP2 ACCESSSWITCH2
+      ifspritepal 21
+        addvar TEMP2 176
+      ifspritepal 23
+        addvar TEMP2 178
+      settspr[THISACTOR].tsprpicnum TEMP2
+      gettspr[THISACTOR].tsprsectnum TEMP2
+      getactorvar[TEMP2].FLOORPAL pal
+    }
+  break
+  endswitch
+  ifactor GROWAMMO
+  {
+    setvarvar shade totalclock
+    andvar shade 127
+    shiftvarl shade 4
+    sin shade shade
+    shiftvarr shade 10
+  }
+
+  ifvare NEW_SHADING 1
+  {
+    setvar TEMP 0
+    ifvare sprite[THISACTOR].statnum STAT_PLAYER
+      setvar TEMP 1
+    ifvarg sprite[THISACTOR].extra 0
+    ifvarn sprite[THISACTOR].picnum GREENSLIME
+    {
+      switch sprite[THISACTOR].picnum
+      case EGG
+      case SHARK
+      case LIZTROOP
+      case LIZTROOPRUNNING
+      case LIZTROOPSTAYPUT
+      case LIZTROOPSHOOT
+      case LIZTROOPJETPACK
+      case LIZTROOPONTOILET
+      case LIZTROOPJUSTSIT
+      case LIZTROOPDUCKING
+      case CANNON
+      case OCTABRAIN
+      case OCTABRAINSTAYPUT
+      case DRONE
+      case COMMANDER
+      case COMMANDERSTAYPUT
+      case RECON
+      case TANK
+      case PIGCOP
+      case PIGCOPSTAYPUT
+      case PIGCOPDIVE
+      case LIZMAN
+      case LIZMANSTAYPUT
+      case LIZMANSPITTING
+      case LIZMANJUMP
+      case ROTATEGUN
+      case BOSS1
+      case BOSS1STAYPUT
+      case BOSS2
+      case BOSS3
+      case NEWBEAST
+      case NEWBEASTSTAYPUT
+      case NEWBEASTJUMP
+      case NEWBEASTHANG
+      case BOSS4
+        setvar TEMP 1
+      break
+      endswitch
+    }
+    ifvare TEMP 1
+    {
+      getactor[THISACTOR].shade shade
+      getactor[THISACTOR].sectnum TEMP3
+      ifoutside
+        getactorvar[TEMP3].CEILINGSHADE TEMP2
+      else
+        getactorvar[TEMP3].FLOORSHADE TEMP2
+      subvarvar TEMP2 shade
+      ifvare TEMP2 1
+        addvarvar shade TEMP2
+    }
+  }
+  ifactor BOSS2
+  ifspritepal 0
+  ifoutside
+  {
+    gettspr[THISACTOR].tsprsectnum TEMP3
+    getactorvar[TEMP3].FLOORSHADE TEMP
+    getactorvar[TEMP3].CEILINGSHADE TEMP2
+    ifvarl TEMP 0
+    ifvarg TEMP2 -1
+    {
+      subvar shade -96
+      subvar TEMP -96
+      subvar TEMP2 -96
+      subvarvar shade TEMP2
+      mulvarvar shade TEMP
+      addvar shade -1
+      divvarvar shade TEMP2
+      addvar shade 1
+      addvarvar shade TEMP
+      addvar shade -96
+    }
+  }
+
+  state displaypal
+  state displayshade
+
+  settspr[THISACTOR].tsprpal pal
+  settspr[THISACTOR].tsprshade shade
+
+  ifvarg rendmode 0
+  {
+    switch sprite[THISACTOR].picnum
+    case FIRELASER
+    case TRANSPORTERSTAR
+    case SHRINKSPARK
+    case SHRINKEREXPLOSION
+    case FORCERIPPLE
+    case EXPLOSION2
+    case BURNING
+    case FIRE
+    case BURNING2
+    case FIRE2
+    case SMALLSMOKE
+    case GROWSPARK
+    case LASERLINE
+    case SHOTSPARK1
+    case PLASMASHOT
+    case MISSILELIGHT
+    case TRANSPORTERBEAM
+    case SPARKLE
+    case FIRESMOKE
+    case FIREBALL
+    case FIRECIRCLE
+    case FIREBALLTEMP
+    case FIRECIRCLETEMP
+      settspr[THISACTOR].tsprshade -128
+      gettspr[THISACTOR].tsprcstat TEMP
+      ifvarand TEMP 2
+        xorvar TEMP 2
+      ifvarand TEMP 512
+        xorvar TEMP 512
+      orvar TEMP 8192
+      settspr[THISACTOR].tsprcstat TEMP
+    break
+    endswitch
+    switch sprite[THISACTOR].picnum
+    case EXPLOSION2
+    case BURNING
+    case FIRE
+    case BURNING2
+    case FIRE2
+      settspr[THISACTOR].tsprpal 51
+    break
+    case FIRELASER
+    case SHOTSPARK1
+    case MISSILELIGHT
+      settspr[THISACTOR].tsprpal 52
+    break
+    case SMALLSMOKE
+      settspr[THISACTOR].tsprpal 54
+    break
+    case SHRINKSPARK
+    case SHRINKEREXPLOSION
+      settspr[THISACTOR].tsprpal 55
+    break
+    case GROWSPARK
+      settspr[THISACTOR].tsprpal 56
+    break
+    case LASERLINE
+      settspr[THISACTOR].tsprpal 57
+    break
+    case FORCERIPPLE
+    case PLASMASHOT
+    case TRANSPORTERBEAM
+      settspr[THISACTOR].tsprpal 58
+    break
+    case TRANSPORTERSTAR
+      settspr[THISACTOR].tsprpal 60
+    break
+    case SPARKLE
+      settspr[THISACTOR].tsprpal 61
+    break
+    case FIRESMOKE
+    case FIREBALL
+    case FIRECIRCLE
+    case FIREBALLTEMP
+    case FIRECIRCLETEMP
+      settspr[THISACTOR].tsprpal sprite[THISACTOR].pal
+    break
+    endswitch
+  }
+ends
+
+state censor
+  ifvare CENSORSHIP 1
+  {
+    switch tilenum
+    case 568
+      setvar tilenum 3613
+    break
+    case 577
+      setvar tilenum 3614
+    break
+    case NAKED1
+      setvar tilenum 3980
+    break
+    case 766
+      setvar tilenum 3587
+    break
+    case 784
+      setvar tilenum 3981
+    break
+    case STATUEFLASH
+      setvar tilenum STATUE
+    break
+    case FEMPIC5
+      setvar tilenum 3588
+    break
+    case FEMPIC6
+      setvar tilenum 3591
+    break
+    case FEMPIC7
+      setvar tilenum 3590
+    break
+    case 954
+    case 1160
+      setvar tilenum 3982
+    break
+    case 955
+    case 1014
+      setvar tilenum 3983
+    break
+    case 956
+      setvar tilenum 3984
+    break
+    case 957
+    case 1161
+      setvar tilenum 3985
+    break
+    case 1007
+      setvar tilenum 3597
+    break
+    case 1008
+      setvar tilenum 3598
+    break
+    case 1012
+    case 1162
+      setvar tilenum 3986
+    break
+    case 1013
+    case 1164
+      setvar tilenum 3987
+    break
+    case 1054
+      setvar tilenum 3600
+    break
+    case 1163
+      setvar tilenum 3988
+    break
+    case 1165
+      setvar tilenum 3989
+    break
+    case 1166
+      setvar tilenum 3990
+    break
+    case 1074
+      setvar tilenum 3601
+    break
+    case 1280
+      setvar tilenum 3991
+    break
+    case PODFEM1
+      setvar tilenum FEMHATCH1
+    break
+    case 1298
+      setvar tilenum 3998
+    break
+    case FEM1
+      setvar tilenum 4003
+    break
+    case FEM5
+      setvar tilenum FEMHATCH2
+    break
+    case FEM6
+      setvar tilenum FEMHATCH3
+    break
+    case 3421
+      setvar tilenum 4008
+    break
+    case FEM9
+      setvar tilenum 4011
+    break
+    case 4498
+      setvar tilenum 3589
+    break
+    case 4491
+      setvar tilenum 4017
+    break
+    endswitch
+  }
+  else
+  {
+    switch tilenum
+    case NAKED1
+      ifactor NAKED1
+      ifstrength MEDIUMSTRENGTH
+        setvar tilenum 3980
+    break
+    case 3587
+      setvar tilenum 766
+    break
+    case 3588
+      setvar tilenum FEMPIC5
+    break
+    case 3589
+      setvar tilenum 4498
+    break
+    case 3590
+      setvar tilenum FEMPIC7
+    break
+    case 3591
+      setvar tilenum FEMPIC6
+    break
+    case 3597
+      setvar tilenum 1007
+    break
+    case 3598
+      setvar tilenum 1008
+    break
+    case 3600
+      setvar tilenum 1054
+    break
+    case 3601
+      setvar tilenum 1074
+    break
+    case 3613
+      setvar tilenum 568
+    break
+    case 3614
+      setvar tilenum 577
+    break
+    endswitch
+  }
+ends
+
+state event_animatesprites_2
+  gettspr[THISACTOR].tsprpicnum tilenum
+  state censor
+  settspr[THISACTOR].tsprpicnum tilenum
+ends
+
+state event_displayrooms_4
+  ifvare ROOMSTEMP 0
+  {
+    setvar TEMPSECTORS 0
+    whilevarvarn TEMPSECTORS NUMSECTORS
+    {
+      getsector[TEMPSECTORS].floorpicnum tilenum
+      setactorvar[TEMPSECTORS].FLOORPICNUM tilenum
+      state censor
+      ifvarg SKY -1
+      {
+        getsector[TEMPSECTORS].floorstat TEMP2
+        ifvarand TEMP2 1
+          setvar tilenum BLANKTILE
+      }
+      setsector[TEMPSECTORS].floorpicnum tilenum
+      getsector[TEMPSECTORS].floorpal pal
+      getsector[TEMPSECTORS].floorshade shade
+      setactorvar[TEMPSECTORS].FLOORPAL pal
+      setactorvar[TEMPSECTORS].FLOORSHADE shade
+      state displaypal
+      state displayshade
+      setsector[TEMPSECTORS].floorpal pal
+      setsector[TEMPSECTORS].floorshade shade
+
+      getsector[TEMPSECTORS].ceilingpicnum tilenum
+      setactorvar[TEMPSECTORS].CEILINGPICNUM tilenum
+      state censor
+      ifvarg SKY -1
+      {
+        getsector[TEMPSECTORS].ceilingstat TEMP2
+        ifvarand TEMP2 1
+          setvar tilenum BLANKTILE
+      }
+      setsector[TEMPSECTORS].ceilingpicnum tilenum
+      getsector[TEMPSECTORS].ceilingpal pal
+      getsector[TEMPSECTORS].ceilingshade shade
+      setactorvar[TEMPSECTORS].CEILINGPAL pal
+      setactorvar[TEMPSECTORS].CEILINGSHADE shade
+      state displaypal
+      state displayshade
+      setsector[TEMPSECTORS].ceilingpal pal
+      setsector[TEMPSECTORS].ceilingshade shade
+
+      ifvare NEW_SHADING 1
+      {
+        getsector[TEMPSECTORS].visibility shade
+        setactorvar[TEMPSECTORS].SECTORVISIBILITY shade
+        setsector[TEMPSECTORS].visibility 0
+      }
+
+      getsector[TEMPSECTORS].wallptr TEMPWALLS
+      setvar TEMPSECTORWALLS 0
+      getsector[TEMPSECTORS].wallnum TEMP
+      whilevarvarn TEMPSECTORWALLS TEMP
+      {
+        getwall[TEMPWALLS].picnum tilenum
+        setactorvar[TEMPWALLS].WALLPICNUM tilenum
+        state censor
+        setwall[TEMPWALLS].picnum tilenum
+        getwall[TEMPWALLS].overpicnum tilenum
+        setactorvar[TEMPWALLS].WALLOVERPICNUM tilenum
+        state censor
+        setwall[TEMPWALLS].overpicnum tilenum
+        getwall[TEMPWALLS].pal pal
+        getwall[TEMPWALLS].shade shade
+        setactorvar[TEMPWALLS].WALLPAL pal
+        setactorvar[TEMPWALLS].WALLSHADE shade
+        state displaypal
+        state displayshade
+        setwall[TEMPWALLS].pal pal
+        setwall[TEMPWALLS].shade shade
+
+        addvar TEMPWALLS 1
+        addvar TEMPSECTORWALLS 1
+      }
+      addvar TEMPSECTORS 1
+    }
+  }
+ends
+
+state event_displayrest_4
+  ifvare ROOMSTEMP 1
+  {
+    setvar TEMPSECTORS 0
+    whilevarvarn TEMPSECTORS NUMSECTORS
+    {
+      getactorvar[TEMPSECTORS].FLOORPICNUM tilenum
+      setsector[TEMPSECTORS].floorpicnum tilenum
+      getactorvar[TEMPSECTORS].FLOORSHADE shade
+      setsector[TEMPSECTORS].floorshade shade
+      getactorvar[TEMPSECTORS].FLOORPAL pal
+      setsector[TEMPSECTORS].floorpal pal
+
+      getactorvar[TEMPSECTORS].CEILINGPICNUM tilenum
+      setsector[TEMPSECTORS].ceilingpicnum tilenum
+      getactorvar[TEMPSECTORS].CEILINGSHADE shade
+      setsector[TEMPSECTORS].ceilingshade shade
+      getactorvar[TEMPSECTORS].CEILINGPAL pal
+      setsector[TEMPSECTORS].ceilingpal pal
+
+      ifvare NEW_SHADING 1
+      {
+        getactorvar[TEMPSECTORS].SECTORVISIBILITY shade
+        setsector[TEMPSECTORS].visibility shade
+      }
+
+      addvar TEMPSECTORS 1
+    }
+    setvar TEMPWALLS 0
+    whilevarvarn TEMPWALLS NUMWALLS
+    {
+      getactorvar[TEMPWALLS].WALLPICNUM tilenum
+      setwall[TEMPWALLS].picnum tilenum
+      getactorvar[TEMPWALLS].WALLOVERPICNUM tilenum
+      setwall[TEMPWALLS].overpicnum tilenum
+      getactorvar[TEMPWALLS].WALLPAL pal
+      setwall[TEMPWALLS].pal pal
+      getactorvar[TEMPWALLS].WALLSHADE shade
+      setwall[TEMPWALLS].shade shade
+
+      addvar TEMPWALLS 1
+    }
+  }
+ends
+
+state event_displayrooms_4b
+  setvar ROOMSTEMP 1
+ends
+
+state event_displayrest_4b
+  setvar ROOMSTEMP 0
+ends
+

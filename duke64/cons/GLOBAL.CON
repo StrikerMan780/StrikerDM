@@ -1,0 +1,656 @@
+
+
+state event_egs_0
+  getactor[THISACTOR].owner OWNER
+ends
+
+state event_game_0
+  ifactor APLAYER
+    getactor[THISACTOR].yvel YVEL
+ends
+
+// Game
+
+state episodesettings
+  ifvare VOLUME 0
+    setvar SCREENMODE SCREEN_BRIEFING
+ends
+
+state levelsettings
+  ifvare VOLUME 0
+  {
+    ifvare LEVEL 1
+    ifvarg ASET 0
+      setvar NEXTLEVEL 7
+    ifvare LEVEL 7
+      setvar NEXTLEVEL 2
+    ifvare LEVEL 6
+    {
+      setvar SCREENMODE SCREEN_VICTORY1
+      setvar NEXTVOLUME 1
+      setvar NEXTLEVEL 0
+    }
+  }
+  ifvare VOLUME 1
+  {
+    ifvare LEVEL 7
+    ifvarg ASET 0
+      setvar NEXTLEVEL 10
+    ifvare LEVEL 10
+      setvar NEXTLEVEL 8
+    ifvare LEVEL 9
+    {
+      setvar SCREENMODE SCREEN_VICTORY2
+      setvar NEXTVOLUME 2
+      setvar NEXTLEVEL 0
+    }
+  }
+  ifvare VOLUME 2
+  {
+    ifvare LEVEL 4
+    ifvarg ASET 0
+      setvar NEXTLEVEL 9
+    ifvare LEVEL 9
+      setvar NEXTLEVEL 5
+    ifvare LEVEL 7
+    ifvarg ASET 0
+      setvar NEXTLEVEL 10
+    ifvare LEVEL 10
+      setvar NEXTLEVEL 8
+    ifvare LEVEL 8
+    {
+      setvar SCREENMODE SCREEN_VICTORY3
+      ifmultiplayer
+      ifvarn COOP 1
+      {
+        setvar NEXTVOLUME 3
+        setvar NEXTLEVEL 0
+        break
+      }
+      setvar NEXTLEVEL -1
+    }
+  }
+  ifvare VOLUME 3
+  {
+    ifvare LEVEL 2
+    {
+      ifvarg ASET 0
+        setvar NEXTLEVEL 3
+      else
+      {
+        setvar NEXTVOLUME 0
+        setvar NEXTLEVEL 0
+      }
+    }
+    ifvare LEVEL 3
+    {
+      setvar NEXTVOLUME 0
+      setvar NEXTLEVEL 0
+    }
+  }
+ends
+
+state screenorder
+  ifvarand SCREENMODE SCREEN_BRIEFING
+    setvar CURRSCREEN SCREEN_BRIEFING
+  else
+  ifvarand SCREENMODE SCREEN_VICTORY1
+    setvar CURRSCREEN SCREEN_VICTORY1
+  else
+  ifvarand SCREENMODE SCREEN_VICTORY2
+    setvar CURRSCREEN SCREEN_VICTORY2
+  else
+  ifvarand SCREENMODE SCREEN_VICTORY3
+    setvar CURRSCREEN SCREEN_VICTORY3
+  else
+  ifvarand SCREENMODE SCREEN_BONUS
+    setvar CURRSCREEN SCREEN_BONUS
+  else
+  ifvarand SCREENMODE SCREEN_DMBONUS
+    setvar CURRSCREEN SCREEN_DMBONUS
+  else
+  ifvarand SCREENMODE SCREEN_CREDITS
+    setvar CURRSCREEN SCREEN_CREDITS
+ends
+
+state displayscreen
+  ifvarand player[myconnectindex].gm MODE_DEMO
+    setvar SCREENMODE 0
+  ifvare SCREENMODE 0
+  {
+    setvar DISPLAYSCREEN -1
+    break
+  }
+  setvar DISPLAYSCREEN 1
+  setvar SCREENCOUNT 0
+  setvar ENDSCREEN -1
+  state screenorder
+ends
+
+useractor notenemy MAPCODE
+  ifvare DISPLAYSCREEN 0
+    addvar GAMETIME 1
+  setvarvar SMOOTHCLOCK totalclock
+  setvar STARTLEVELTEMP 0
+
+  ifvare DISPLAYSCREEN -1
+    setvar DISPLAYSCREEN 0
+  ifvare DISPLAYSCREEN 0
+  ifvare ENDLEVEL -2
+  {
+    ifvare NEXTLEVEL -1
+    {
+      startlevel 0 0
+      setuserdef .eog 1
+    }
+    else
+      startlevel NEXTVOLUME NEXTLEVEL
+    setvar ENDLEVEL -1
+    break
+  }
+  ifvare DISPLAYSCREEN 1
+  {
+    ifvarg CURRSCREEN 0
+    {
+      ifvare SCREENCOUNT 0
+      {
+        getuserdef .volume_number ATEMP
+        setuserdef .volume_number MAXVOLUMES
+        starttrack 0
+        setuserdef .volume_number ATEMP
+        stopallsounds
+      }
+      addvar SCREENCOUNT 1
+      ifvarg ENDSCREEN -1
+      {
+        setvar ATEMP FADE_TIME
+        shiftvarr ATEMP 2
+        ifvarvare ENDSCREEN ATEMP
+          xorvarvar SCREENMODE CURRSCREEN
+        else
+          addvar ENDSCREEN 1
+      }
+      else
+      {
+        setvar ATEMP 1
+        ifvarn CURRSCREEN SCREEN_BONUS
+        ifvarn CURRSCREEN SCREEN_DMBONUS
+        ifvare ENDLEVEL -2
+        ifvare NEXTLEVEL -1
+          setvar ATEMP 0
+        ifvare ATEMP 1
+        {
+          setvar ATEMP2 0
+          setvar AWHILE 0
+          whilevarvarn AWHILE numplayers // MULTIMODE
+          {
+            getinput[AWHILE].bits ATEMP3
+            ifvarand ATEMP3 INPUT_RUNNING
+              xorvar ATEMP3 INPUT_RUNNING
+            ifvarand ATEMP3 INPUT_AIM_MODE
+              xorvar ATEMP3 INPUT_AIM_MODE
+            ifvarg ATEMP3 0
+            {
+              setvar ATEMP2 1
+              setvarvar AWHILE numplayers // MULTIMODE
+            }
+            else
+              addvar AWHILE 1
+          }
+          ifvare ATEMP2 1
+          {
+            ifvare CURRSCREEN SCREEN_BRIEFING
+              xorvarvar SCREENMODE CURRSCREEN
+            else
+            {
+              setvar ENDSCREEN FADE_TIME
+              shiftvarr ENDSCREEN 2
+              subvarvar ENDSCREEN SCREENCOUNT
+              ifvarl ENDSCREEN 0
+                setvar ENDSCREEN 0
+            }
+          }
+        }
+      }
+      ifvarvarand SCREENMODE CURRSCREEN
+      ifvare ENDSCREEN -1
+      {
+        switch CURRSCREEN
+        case SCREEN_BRIEFING
+          setvar ATEMP BRIEFING_FADE_TIME
+          addvar ATEMP BRIEFING_TEXT_TIME
+          addvar ATEMP BRIEFING_TEXT_TIME
+          addvar ATEMP BRIEFING_TEXT_TIME
+          addvar ATEMP BRIEFING_DUKE_TIME
+          addvar ATEMP BRIEFING_MONITOR_TIME
+          addvar ATEMP BRIEFING_PLANET_TIME
+          addvar ATEMP BRIEFING_WARNING_TIME
+          addvar ATEMP BRIEFING_ANIM_TIME
+          addvar ATEMP BRIEFING_ANIM_TIME
+          shiftvarr ATEMP 2
+          ifvarvare SCREENCOUNT ATEMP
+            xorvarvar SCREENMODE CURRSCREEN
+        break
+        case SCREEN_VICTORY1
+        case SCREEN_VICTORY2
+          setvar ATEMP FADE_TIME
+          setvar ATEMP2 VICTORY_TEXT_TIME
+          mulvar ATEMP2 5
+          addvarvar ATEMP ATEMP2
+          shiftvarr ATEMP 2
+          ifvarvare SCREENCOUNT ATEMP
+            setvar ENDSCREEN 0
+        break
+        case SCREEN_VICTORY3
+          setvar ATEMP VICTORY_ANIM_TIME
+          mulvar ATEMP 6
+          subvar ATEMP FADE_TIME
+          shiftvarr ATEMP 2
+          ifvarvare SCREENCOUNT ATEMP
+            setvar ENDSCREEN 0
+        break
+        case SCREEN_CREDITS
+          setvar ATEMP FADE_TIME
+          addvar ATEMP CREDITS_TIME
+          setvar ATEMP2 200
+          subvar ATEMP2 CREDITS_TEXT_LENGTH
+          setvar ATEMP3 CREDITS_BIGLINE_HEIGHT
+          mulvar ATEMP3 33
+          addvarvar ATEMP2 ATEMP3
+          setvar ATEMP3 CREDITS_NEWLINE_HEIGHT
+          mulvar ATEMP3 84
+          addvarvar ATEMP2 ATEMP3
+          shiftvarl ATEMP2 8
+          divvar ATEMP2 CREDITS_ROLL_SPEED
+          addvarvar ATEMP ATEMP2
+          addvar ATEMP CREDITS_TIME
+          shiftvarr ATEMP 2
+          ifvarvare SCREENCOUNT ATEMP
+            xorvarvar SCREENMODE CURRSCREEN
+        break
+        endswitch
+      }
+      ifvarvarand SCREENMODE CURRSCREEN
+        nullop
+      else
+        setvar CURRSCREEN 0
+    }
+    ifvare CURRSCREEN 0
+    {
+      ifvarg SCREENMODE 0
+      {
+        setvar SCREENCOUNT 0
+        setvar ENDSCREEN -1
+        state screenorder
+      }
+      else
+      {
+        setvar DISPLAYSCREEN -1
+        ifvare ENDLEVEL -1
+        {
+          stopallsounds
+          starttrackvar LEVEL
+        }
+      }
+    }
+  }
+
+  ifmultiplayer
+    nullop
+  else
+  ifvarg ENDLEVEL -1
+  ifvarl player[THISACTOR].last_extra 0
+    setvar ENDLEVEL -1
+  ifvarg ENDLEVEL -1
+  {
+    setvar ATEMP 0 getuserdef .noexits ATEMP
+    ifvare ATEMP 1
+      setvar ENDLEVEL -1
+  }
+  ifvarg ENDLEVEL -1
+  {
+    ifvare ENDLEVEL END_TIME
+    {
+      state displayscreen
+      setvar ENDLEVEL -2
+      ifvarg SCREENMODE 0
+      {
+        setplayer[THISACTOR].pals_time 0
+        ifmultiplayer
+        ifvarn COOP 1
+        {
+          setvar ATEMP2 0
+          ifvarg MULTIMODE 1
+          {
+            setvar AWHILE 1
+            ifvarvarg MULTIMODE AWHILE
+            whilevarvarn AWHILE MULTIMODE
+            {
+              setvarvar ATEMP3 ATEMP2
+              ifvarl ATEMP3 0
+                mulvar ATEMP3 -1
+              getplayer[ATEMP3].frag ATEMP4
+              subvarvar ATEMP4 player[ATEMP3].fraggedself
+              getplayer[AWHILE].frag ATEMP5
+              subvarvar ATEMP5 player[AWHILE].fraggedself
+              ifvarvarg ATEMP5 ATEMP4
+                setvarvar ATEMP2 AWHILE
+              else
+              ifvarvare ATEMP5 ATEMP4
+              {
+                setvarvar ATEMP2 AWHILE
+                mulvar ATEMP2 -1
+              }
+              addvar AWHILE 1
+            }
+          }
+          ifvarg ATEMP2 -1
+          {
+            getplayervar[ATEMP2].WINS ATEMP3
+            addvar ATEMP3 1
+            setplayervar[ATEMP2].WINS ATEMP3
+          }
+        }
+      }
+    }
+    else
+      addvar ENDLEVEL 1
+  }
+
+  setvar ATEMP 0 getuserdef .eog ATEMP
+  ifvare ATEMP 1
+    setuserdef .eog 0
+  setvar ATEMP 0
+  setvar AWHILE 0
+  whilevarvarn AWHILE MULTIMODE
+  {
+    ifvarand player[AWHILE].gm MODE_EOL
+    {
+      getplayer[AWHILE].gm ATEMP2
+      xorvar ATEMP2 MODE_EOL
+      setvar ATEMP3 0 getuserdef .recstat ATEMP3
+      ifvare ATEMP3 2
+        orvar ATEMP2 MODE_DEMO
+      else
+        orvar ATEMP2 MODE_GAME
+      setplayer[AWHILE].gm ATEMP2
+      getplayer[AWHILE].buttonpalette ASET
+      setvar ATEMP 1
+    }
+    addvar AWHILE 1
+  }
+  ifvare ATEMP 1
+  {
+    setuserdef .volume_number LASTVOLUME
+    setuserdef .level_number LASTLEVEL
+  }
+  else
+  {
+    setvarvar LASTVOLUME VOLUME
+    setvarvar LASTLEVEL LEVEL
+  }
+
+  ifvare ATEMP 1
+  ifvare ENDLEVEL -1
+  {
+    setvarvar NEXTVOLUME VOLUME
+    setvarvar NEXTLEVEL LEVEL
+    addvar NEXTLEVEL 1
+    state levelsettings
+    ifvare NEXTLEVEL -1
+      orvar SCREENMODE SCREEN_CREDITS
+    else
+      orvar SCREENMODE SCREEN_BONUS
+    ifmultiplayer
+    ifvarn COOP 1
+      setvar SCREENMODE SCREEN_DMBONUS
+    setvar ENDLEVEL 0
+  }
+enda
+
+state event_game_0x1
+  ifactor APLAYER
+  ifvarn sprite[THISACTOR].owner -1
+  ifvarvarl sprite[THISACTOR].yvel MULTIMODE
+  {
+    setvarvar ATEMP GAMETIME
+    subvar ATEMP START_TIME
+    subvarvar ATEMP ENDLEVEL
+    ifvarl ATEMP 0
+      setvar ATEMP 0
+    setplayer[THISACTOR].player_par ATEMP
+  }
+ends
+
+state event_spawn_1
+  ifactor APLAYER
+  ifvarn sprite[THISACTOR].owner -1
+  ifvarvarl sprite[THISACTOR].yvel MULTIMODE
+  {
+    setvar FRAG1 0
+    setvar FRAG2 0
+    setvar FRAG3 0
+    setvar FRAG4 0
+    setvar FRAG5 0
+    setvar FRAG6 0
+    setvar FRAG7 0
+    setvar FRAG8 0
+  }
+ends
+
+state event_game_0x2
+  ifvare DISPLAYSCREEN 1
+    break
+  ifactor APLAYER
+  ifvarn sprite[THISACTOR].owner -1
+  ifvarvarl sprite[THISACTOR].yvel MULTIMODE
+  ifvarvarn sprite[THISACTOR].yvel player[YVEL].frag_ps
+  {
+    getplayer[YVEL].frag_ps ATEMP
+    ifvare sprite[THISACTOR].yvel 0
+    {
+      getplayervar[ATEMP].FRAG1 ATEMP2
+      addvar ATEMP2 1
+      setplayervar[ATEMP].FRAG1 ATEMP2
+    }
+    ifvare sprite[THISACTOR].yvel 1
+    {
+      getplayervar[ATEMP].FRAG2 ATEMP2
+      addvar ATEMP2 1
+      setplayervar[ATEMP].FRAG2 ATEMP2
+    }
+    ifvare sprite[THISACTOR].yvel 2
+    {
+      getplayervar[ATEMP].FRAG3 ATEMP2
+      addvar ATEMP2 1
+      setplayervar[ATEMP].FRAG3 ATEMP2
+    }
+    ifvare sprite[THISACTOR].yvel 3
+    {
+      getplayervar[ATEMP].FRAG4 ATEMP2
+      addvar ATEMP2 1
+      setplayervar[ATEMP].FRAG4 ATEMP2
+    }
+    ifvare sprite[THISACTOR].yvel 4
+    {
+      getplayervar[ATEMP].FRAG5 ATEMP2
+      addvar ATEMP2 1
+      setplayervar[ATEMP].FRAG5 ATEMP2
+    }
+    ifvare sprite[THISACTOR].yvel 5
+    {
+      getplayervar[ATEMP].FRAG6 ATEMP2
+      addvar ATEMP2 1
+      setplayervar[ATEMP].FRAG6 ATEMP2
+    }
+    ifvare sprite[THISACTOR].yvel 6
+    {
+      getplayervar[ATEMP].FRAG7 ATEMP2
+      addvar ATEMP2 1
+      setplayervar[ATEMP].FRAG7 ATEMP2
+    }
+    ifvare sprite[THISACTOR].yvel 7
+    {
+      getplayervar[ATEMP].FRAG8 ATEMP2
+      addvar ATEMP2 1
+      setplayervar[ATEMP].FRAG8 ATEMP2
+    }
+  }
+ends
+
+state DisplaySky
+  ifvare VOLUME 0
+  {
+    ifvare LEVEL 0  setvar SKY 74
+    ifvare LEVEL 1  setvar SKY 75
+    ifvare LEVEL 2  setvar SKY 76
+    ifvare LEVEL 3  setvar SKY 77
+    ifvare LEVEL 4  setvar SKY 78
+    ifvare LEVEL 5  setvar SKY 79
+//    ifvare LEVEL 6  setvar SKY 80
+    ifvare LEVEL 7  setvar SKY 81
+  }
+  ifvare VOLUME 2
+  {
+    ifvare LEVEL 0  setvar SKY 81
+    ifvare LEVEL 1  setvar SKY 80
+    ifvare LEVEL 2  setvar SKY 82
+    ifvare LEVEL 3  setvar SKY 79
+    ifvare LEVEL 4  setvar SKY 78
+    ifvare LEVEL 5  setvar SKY 77  // Rabid Transit
+    ifvare LEVEL 6  setvar SKY 76
+    ifvare LEVEL 7  setvar SKY 75
+    ifvare LEVEL 8  setvar SKY 74
+    ifvare LEVEL 9  setvar SKY 74
+    ifvare LEVEL 10 setvar SKY 78
+  }
+  ifvare VOLUME 3
+  {
+    ifvare LEVEL 0  setvar SKY 83
+    ifvare LEVEL 1  setvar SKY 75
+//    ifvare LEVEL 2  setvar SKY 75
+    ifvare LEVEL 3  setvar SKY 84
+  }
+ends
+
+state event_egs_0b
+  ifactor MAPCODE
+  {
+    cstat 32768
+
+    setvar FEMALES 0
+    setvar TOTALFEMALES 0
+
+/*
+    ifvarand LOGO_FLAGS 8
+      xorvar LOGO_FLAGS 8
+*/
+    setvar GAMETIME 0
+    setvar STARTLEVELTEMP 1
+    setvar ENDLEVEL -1
+    setvar SCREENMODE 0
+
+    ifvarvarn LASTLEVEL LEVEL
+    {
+      setvar SKY 50
+      state DisplaySky
+    }
+
+    ifmultiplayer
+    ifvarn COOP 1
+      break
+    ifvare LEVEL 0
+    ifvare LASTLEVEL -1
+    {
+      state episodesettings
+      ifvarg SCREENMODE 0
+        state displayscreen
+    }
+  }
+ends
+
+state event_loadactor_1b
+  ifvare THISACTOR 0
+    spawn MAPCODE
+ends
+
+state event_egs_0c
+  ifactor APLAYER
+  ifvarn sprite[THISACTOR].owner -1
+  ifvarvarl sprite[THISACTOR].yvel MULTIMODE
+  ifvarn DISPLAYSCREEN 0
+    getsector[THISACTOR].lotag SECTLOTAGTEMP
+ends
+
+state event_game_0b
+  ifactor MAPCODE
+    setactor[THISACTOR].statnum STAT_ACTOR
+  else
+  {
+    ifactor APLAYER
+    ifvarn sprite[THISACTOR].owner -1
+    ifvarvarl sprite[THISACTOR].yvel MULTIMODE
+    {
+      ifvare DISPLAYSCREEN 1
+      {
+        ifvare STATNUMTEMP -1
+          getactor[THISACTOR].extra EXTRATEMP
+        setactor[THISACTOR].extra 0
+        setplayer[YVEL].dead_flag -1
+      }
+      ifvare DISPLAYSCREEN -1
+      ifvarn STATNUMTEMP -1
+      {
+        setactor[THISACTOR].extra EXTRATEMP
+        setplayer[YVEL].dead_flag -1
+      }
+      ifvare DISPLAYSCREEN 0
+      ifvarn STATNUMTEMP -1
+      {
+        setplayer[YVEL].dead_flag 0
+        ifvarn SECTLOTAGTEMP 0
+          setsector[THISACTOR].lotag SECTLOTAGTEMP
+        setplayer[YVEL].rotscrnang 0
+      }
+    }
+    ifvare DISPLAYSCREEN 1
+    ifvare STATNUMTEMP -1
+    {
+      getactor[THISACTOR].statnum STATNUMTEMP
+      setactor[THISACTOR].statnum 0
+    }
+    ifvare DISPLAYSCREEN 0
+    ifvarn STATNUMTEMP -1
+    {
+      setactor[THISACTOR].statnum STATNUMTEMP
+      setvar STATNUMTEMP -1
+    }
+  }
+  ifactor APLAYER
+  ifvarn sprite[THISACTOR].owner -1
+  ifvarvarl sprite[THISACTOR].yvel MULTIMODE
+  ifvare ENDLEVEL -2
+  ifmultiplayer
+  ifvarn COOP 1
+    resetplayer
+ends
+
+state event_pregame_0
+  ifvarn DISPLAYSCREEN 0
+    return
+ends
+
+state event_game_0c
+  ifvarn DISPLAYSCREEN 0
+    return
+ends
+
+state event_sound_0
+  ifvarn DISPLAYSCREEN 0
+  ifvarn THISACTOR -1
+  {
+    setvar RETURN -1
+    return
+  }
+ends
+

@@ -1,0 +1,404 @@
+
+
+// ******************
+// DEFINITIONS
+// ******************
+
+// Misc defines
+
+setdefname                      duke64.def
+
+setgamename                     Duke Nukem 64
+
+definegametype 0 19480          DukeMatch (Spawn)
+definegametype 1 46049          Cooperative Play
+definegametype 2 19480          DukeMatch (No Spawn)
+definegametype 3 216088         Team DM (Spawn)
+definegametype 4 213016         Team DM (No Spawn)
+
+// Default values
+
+define MODE_MENU                1
+define MODE_DEMO                2
+define MODE_GAME                4
+define MODE_EOL                 8
+define MODE_TYPE                16
+define MODE_RESTART             32
+define MODE_SENDTOWHOM          64
+define MODE_END                 128
+
+define TSPR_TEMP                99
+define STAT_MIRROREDACTOR       100
+
+define SPREXT_NOTMD             1
+define SPREXT_NOMDANIM          2
+define SPREXT_AWAY1             4
+define SPREXT_AWAY2             8
+define SPREXT_TSPRACCESS        16
+define SPREXT_TEMPINVISIBLE     32
+
+define INPUT_JUMP               1
+define INPUT_CROUCH             2
+define INPUT_FIRE               4
+define INPUT_AIM_UP             8
+define INPUT_AIM_DOWN           16
+define INPUT_RUNNING            32
+define INPUT_LOOK_LEFT          64
+define INPUT_LOOK_RIGHT         128
+define INPUT_WEAPON_1           256
+define INPUT_WEAPON_2           512
+define INPUT_WEAPON_3           768
+define INPUT_WEAPON_4           1024
+define INPUT_WEAPON_5           1280
+define INPUT_WEAPON_6           1536
+define INPUT_WEAPON_7           1792
+define INPUT_WEAPON_8           2048
+define INPUT_WEAPON_9           2304
+define INPUT_WEAPON_10          2560
+define INPUT_WEAPON_PREV        2816
+define INPUT_WEAPON_NEXT        3072
+define INPUT_STEROIDS           4096
+define INPUT_LOOK_UP            8192
+define INPUT_LOOK_DOWN          16384
+define INPUT_NIGHTVISION        32768
+define INPUT_MEDKIT             65536
+define INPUT_RESERVED           131072
+define INPUT_CENTER_VIEW        262144
+define INPUT_HOLSTER_WEAPON     524288
+define INPUT_INVENTORY_LEFT     1048576
+define INPUT_PAUSE              2097152
+define INPUT_QUICK_KICK         4194304
+define INPUT_AIM_MODE           8388608
+define INPUT_HOLODUKE           16777216
+define INPUT_JETPACK            33554432
+define INPUT_QUIT               67108864
+define INPUT_INVENTORY_RIGHT    134217728
+define INPUT_TURN_AROUND        268435456
+define INPUT_OPEN               536870912
+define INPUT_INVENTORY          1073741824
+define INPUT_ESC                2147483648
+
+// Pre-defined gamevars
+
+gamevar LOGO_FLAGS 2057 0
+
+gamevar WEAPON1_FIRESOUND PISTOL_FIRE 1
+gamevar WEAPON1_RELOADSOUND1 EJECT_CLIP 1
+gamevar WEAPON1_RELOADSOUND2 INSERT_CLIP 1
+gamevar WEAPON1_SELECTSOUND INSERT_CLIP 1
+gamevar WEAPON2_FIRESOUND SHOTGUN_FIRE 1
+gamevar WEAPON2_SOUND2SOUND SHOTGUN_COCK 1
+gamevar WEAPON2_SELECTSOUND SHOTGUN_COCK 1
+gamevar WEAPON3_FIRESOUND CHAINGUN_FIRE 1
+gamevar WEAPON3_SELECTSOUND SELECT_WEAPON 1
+gamevar WEAPON4_SELECTSOUND SELECT_WEAPON 1
+gamevar WEAPON6_INITIALSOUND SHRINKER_FIRE 1
+gamevar WEAPON6_SELECTSOUND SELECT_WEAPON 1
+gamevar WEAPON7_INITIALSOUND CAT_FIRE 1
+gamevar WEAPON7_SELECTSOUND SELECT_WEAPON 1
+gamevar WEAPON9_INITIALSOUND CAT_FIRE 1
+gamevar WEAPON9_FIRESOUND CAT_FIRE 1
+gamevar WEAPON9_SELECTSOUND SELECT_WEAPON 1
+gamevar WEAPON11_FIRESOUND EXPANDERSHOOT 1
+gamevar WEAPON11_SELECTSOUND SELECT_WEAPON 1
+
+gamevar WEAPON3_SHOTSPERBURST 2 1
+gamevar WEAPON3_FIRESOUND SMG_FIRE 1
+gamevar WEAPON4_FLAGS 256 1
+gamevar WEAPON4_SHOOTS GRENADE 1
+gamevar WEAPON4_FIRESOUND GRENADE_FIRE 1
+gamevar WEAPON7_FIREDELAY 4 1
+gamevar WEAPON7_TOTALTIME 30 1
+gamevar WEAPON7_FLAGS 0 1
+gamevar WEAPON7_HOLDDELAY 0 1
+gamevar WEAPON7_SHOTSPERBURST 0 1
+gamevar WEAPON7_INITIALSOUND 0 1
+gamevar WEAPON9_FIREDELAY 4 1
+gamevar WEAPON9_TOTALTIME 5 1
+gamevar WEAPON9_FLAGS 65536 1
+gamevar WEAPON9_SHOOTS PLASMASHOT 1
+gamevar WEAPON9_INITIALSOUND 0 1
+gamevar WEAPON9_FIRESOUND PLASMA_FIRE 1
+
+// Temporary gamevars
+
+gamevar TEMP 0 0
+gamevar TEMP2 0 0
+gamevar TEMP3 0 0
+gamevar TEMP4 0 0
+gamevar TEMP5 0 0
+gamevar TEMP6 0 0
+gamevar TEMP7 0 0
+gamevar TEMPB 0 0
+gamevar TEMPB2 0 0
+gamevar TEMPB3 0 0
+gamevar TEMPB4 0 0
+gamevar WHILE 0 0
+gamevar WHILE2 0 0
+gamevar WHILE3 0 0
+gamevar SET 0 0
+gamevar TEMPSECTORS 0 0
+gamevar TEMPWALLS 0 0
+gamevar TEMPSECTORWALLS 0 0
+gamevar TEMPSPRITES 0 0
+gamevar HEAD 0 0
+
+gamevar ATEMP 0 2
+gamevar ATEMP2 0 2
+gamevar ATEMP3 0 2
+gamevar ATEMP4 0 2
+gamevar ATEMP5 0 2
+gamevar ATEMP6 0 2
+gamevar ATEMP7 0 2
+gamevar ATEMPB 0 2
+gamevar ATEMPB2 0 2
+gamevar ATEMPB3 0 2
+gamevar AWHILE 0 2
+gamevar ASET 0 2
+gamevar ATEMPSECTORS 0 2
+gamevar ATEMPWALLS 0 2
+gamevar ATEMPSECTORWALLS 0 2
+gamevar ATEMPSPRITES 0 2
+gamevar AHEAD 0 2
+
+// Actor gamevars
+
+gamevar SOUNDTEMP 0 0
+
+gamevar OWN -1 2
+gamevar OWNER -1 2
+gamevar X 0 2
+gamevar Y 0 2
+gamevar Z 0 2
+gamevar SECT 0 2
+gamevar ANG 0 2
+gamevar ANGX 0 2
+gamevar ANGY 0 2
+gamevar ANGZ 0 2
+gamevar COUNT 0 2
+gamevar COUNT2 0 2
+gamevar COUNT3 0 2
+gamevar CSTAT 0 2
+gamevar XVEL 0 2
+gamevar YVEL 0 2
+gamevar ZVEL 0 2
+gamevar LOTAGSET 0 2
+gamevar HITAGSET 0 2
+gamevar LOAD 0 2
+gamevar ALT 0 2
+gamevar ALT2 0 2
+gamevar POS 0 2
+gamevar ATARGET -1 2
+gamevar STATNUMTEMP -1 2
+gamevar SPAWNX 0 2
+gamevar SPAWNY 0 2
+gamevar SPAWNZ 0 2
+gamevar LASTSTATNUM 0 2
+gamevar LASTX 0 2
+gamevar LASTY 0 2
+gamevar LASTPICNUM -1 2
+gamevar PROJANG 0 2
+gamevar PROJXVEL 0 2
+gamevar PROJZVEL 0 2
+
+// Player gamevars
+
+gamevar WPSUB1 0 1
+gamevar WPSUB1AMMO 0 1
+gamevar WPSUB1GOT 0 1
+gamevar WPSUB2 0 1
+gamevar WPSUB2AMMO 0 1
+gamevar WPSUB2GOT 0 1
+gamevar WPSUB7 0 1
+gamevar WPSUB7AMMO 0 1
+gamevar WPSUB7GOT 0 1
+gamevar STORE_PLAYER 0 1
+gamevar STORE_EXTRA 0 1
+gamevar STORE_CURR_WEAPON 0 1
+gamevar STORE_INVEN_ICON 0 1
+gamevar STORE_GOTWEAPON_1 0 1
+gamevar STORE_GOTWEAPON_2 0 1
+gamevar STORE_GOTWEAPON_3 0 1
+gamevar STORE_GOTWEAPON_4 0 1
+gamevar STORE_GOTWEAPON_5 0 1
+gamevar STORE_GOTWEAPON_6 0 1
+gamevar STORE_GOTWEAPON_7 0 1
+gamevar STORE_GOTWEAPON_8 0 1
+gamevar STORE_GOTWEAPON_9 0 1
+gamevar STORE_GOTWEAPON_11 0 1
+gamevar STORE_AMMO_AMOUNT_1 0 1
+gamevar STORE_AMMO_AMOUNT_2 0 1
+gamevar STORE_AMMO_AMOUNT_3 0 1
+gamevar STORE_AMMO_AMOUNT_4 0 1
+gamevar STORE_AMMO_AMOUNT_5 0 1
+gamevar STORE_AMMO_AMOUNT_6 0 1
+gamevar STORE_AMMO_AMOUNT_7 0 1
+gamevar STORE_AMMO_AMOUNT_8 0 1
+gamevar STORE_AMMO_AMOUNT_9 0 1
+gamevar STORE_AMMO_AMOUNT_11 0 1
+gamevar STORE_SHIELD_AMOUNT 0 1
+gamevar STORE_FIRSTAID_AMOUNT 0 1
+gamevar STORE_STEROIDS_AMOUNT 0 1
+gamevar STORE_HOLODUKE_AMOUNT 0 1
+gamevar STORE_JETPACK_AMOUNT 0 1
+gamevar STORE_HEAT_AMOUNT 0 1
+gamevar STORE_SCUBA_AMOUNT 0 1
+gamevar STORE_BOOT_AMOUNT 0 1
+gamevar STORE_SUBWEAPON 0 1
+gamevar STORE_WPSUB1 0 1
+gamevar STORE_WPSUB1AMMO 0 1
+gamevar STORE_WPSUB1GOT 0 1
+gamevar STORE_WPSUB2 0 1
+gamevar STORE_WPSUB2AMMO 0 1
+gamevar STORE_WPSUB2GOT 0 1
+gamevar STORE_WPSUB7 0 1
+gamevar STORE_WPSUB7AMMO 0 1
+gamevar STORE_WPSUB7GOT 0 1
+gamevar WPSELECT -1 1
+gamevar WPSELECTSUB1 0 1
+gamevar WPSELECTSUB2 0 1
+gamevar WPSELECTSUB7 0 1
+gamevar WPSWITCH -1 1
+gamevar WPCHARGE 0 1
+gamevar SHOTCOUNT 0 1
+gamevar SHOTANG 0 1
+gamevar PALS0 0 1
+gamevar PALS1 0 1
+gamevar PALS2 0 1
+gamevar PALSTIME -1 1
+
+gamevar EXTRATEMP 0 2
+gamevar SECTLOTAGTEMP 0 2
+
+// Map gamevars
+
+gamevar GAMETIME 0 0
+gamevar NEXTLEVEL 0 0
+gamevar NEXTVOLUME 0 0
+gamevar LASTLEVEL -1 0
+gamevar LASTVOLUME -1 0
+gamevar STARTLEVELTEMP 0 0
+gamevar ENDLEVEL -1 0
+gamevar SKY 0 0
+gamevar SCREENCOUNT 0 0
+gamevar ENDSCREEN -1 0
+gamevar DISPLAYSCREEN 0 0
+gamevar CURRSCREEN 0 0
+gamevar SCREENMODE 0 0
+
+gamevar TIMEBEFOREEXITTEMP 0 1
+
+// Display gamevars
+
+gamevar ROOMSTEMP 0 0
+gamevar SBARTEMP 0 0
+gamevar PALS0TEMP 0 0
+gamevar PALS1TEMP 0 0
+gamevar PALS2TEMP 0 0
+gamevar PALSTIMETEMP 0 0
+gamevar HEATTEMP 0 0
+gamevar ACCESSTEMP 0 0
+gamevar QUOTETEMP 0 0
+
+gamevar SECTORVISIBILITY 0 2
+gamevar FLOORPICNUM 0 2
+gamevar FLOORSHADE 0 2
+gamevar FLOORPAL 0 2
+gamevar CEILINGPICNUM 0 2
+gamevar CEILINGSHADE 0 2
+gamevar CEILINGPAL 0 2
+gamevar WALLPICNUM 0 2
+gamevar WALLOVERPICNUM 0 2
+gamevar WALLSHADE 0 2
+gamevar WALLPAL 0 2
+
+// Drawing gamevars
+
+gamevar x 0 0
+gamevar y 0 0
+gamevar x16 0 0
+gamevar y16 0 0
+gamevar z 0 0
+gamevar z2 0 0
+gamevar ang 0 0
+gamevar pal 0 0
+gamevar shade 0 0
+gamevar tilenum 0 0
+gamevar orientation 0 0
+gamevar alpha 0 0
+gamevar x1 0 0
+gamevar x2 0 0
+gamevar y1 0 0
+gamevar y2 0 0
+gamevar POSX 0 0
+gamevar POSY 0 0
+gamevar string 0 0
+gamevar textang 0 0
+gamevar spacewidth 0 0
+gamevar lineheight 0 0
+gamevar letterspacing 0 0
+gamevar linespacing 0 0
+gamevar textorientation 0 0
+gamevar screenx 0 0
+gamevar screeny 0 0
+gamevar screenz 0 0
+gamevar screenz2 0 0
+gamevar screenshade 0 0
+gamevar screenorientation 0 0
+gamevar screenalpha 0 0
+gamevar screenspacewidth 0 0
+gamevar screenlineheight 0 0
+gamevar screenletterspacing 0 0
+gamevar screenlinespacing 0 0
+gamevar screentextorientation 0 0
+gamevar aspect -1 0
+
+// Screen gamevars
+
+gamevar PIDTEMP 0 0
+gamevar CLOCKTEMP -1 0
+gamevar DISPLAYCOUNT 0 0
+gamevar SYNC 0 0
+gamevar LASTCLOCK -1 0
+gamevar SMOOTHCLOCK 0 0
+gamevar LASTGAMETIME -1 0
+gamevar LASTDISPLAYCOUNT -1 0
+gamevar FEMALES 0 0
+gamevar TOTALFEMALES 0 0
+gamevar FRAG1 0 1
+gamevar FRAG2 0 1
+gamevar FRAG3 0 1
+gamevar FRAG4 0 1
+gamevar FRAG5 0 1
+gamevar FRAG6 0 1
+gamevar FRAG7 0 1
+gamevar FRAG8 0 1
+
+gamevar WINS 0 1
+
+// HUD gamevars
+
+gamevar SCREENSIZE 0 0
+gamevar CROSSHAIR 0 0
+
+gamevar INVICON 0 1
+gamevar LASTINVICON 0 1
+gamevar STWPPOS 0 1
+gamevar STWPSELECT 0 1
+gamevar STWPCOUNT -1 1
+gamevar STWPCOUNT2 -1 1
+
+// Weapon gamevars
+
+gamevar TILT 0 1
+gamevar WPPOS 0 1
+gamevar WPSUBTEMP 0 1
+gamevar WPRANDX 0 1
+gamevar WPRANDX2 0 1
+gamevar WPRANDY 0 1
+gamevar WPRANDY2 0 1
+gamevar WPRANDZ 0 1
+gamevar WPRANDZ2 0 1
+gamevar WPRANDTEMP 0 1
+gamevar WPRANDTEMP2 0 1
+

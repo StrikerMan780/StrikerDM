@@ -1,0 +1,1055 @@
+
+
+define HUD_LOW_AMOUNT           30
+define WPBAR_ICONS              6
+
+define HUD_DEFAULT              1
+define HUD_SPLIT_HALF           2
+define HUD_SPLIT_QUARTER        3
+
+define QUOTE_POS_X              1
+define QUOTE_POS_Y              9
+define HUD_SCORE_X              3
+define HUD_SCORE_Y              -4
+define TIME_POS_Y               4
+define QUOTE_FADE_TIME          8
+
+define HUD_LEFTBAR_X            38
+define HUD_LEFTBAR_Y            -15
+define HUD_RIGHTBAR_X           -39
+define HUD_RIGHTBAR_Y           -15
+define HUD_ICON_HEIGHT          15
+define HUD_SLIDE_X              38
+define HUD_SLIDE_Y              -14
+define HUD_SLIDE_RANGE          100
+define HUD_SLIDE_TIME           96
+
+define HUD_HEALTH_X             15
+define HUD_HEALTH_Y             -18
+define HUD_AMMO_X               53
+define HUD_AMMO_Y               -16
+define HUD_AMMOICON_X           55
+define HUD_AMMOICON_Y           -21
+define HUD_AMMOICON_SHADE       9
+
+define HUD_INV_X                -23
+define HUD_INV_Y                -19
+define HUD_INVICON_X            -40
+define HUD_INVICON_Y            -18
+define HUD_CARD1_X              -61
+define HUD_CARD1_Y              -24
+define HUD_CARD2_X              -65
+define HUD_CARD2_Y              -17
+define HUD_CARD3_X              -66
+define HUD_CARD3_Y              -9
+
+define HUD_CARD_X               -9
+define HUD_CARD_Y               7
+define HUD_CARD_RANGE           10
+
+define HUD2_HEALTH_X            3
+define HUD2_HEALTH_Y            2
+define HUD2_AMMO_X              3
+define HUD2_AMMO_Y              -3
+
+define WPBAR_Y                  -19
+define WPBAR_RANGE              120
+define WPBAR_ICON_HEIGHT        15
+define WPBAR_RISE_TIME          2
+define WPBAR_MOVE_TIME          5
+define WPBAR_DROP_TIME          15
+
+state event_displaysbar_3
+  ifvare SBARTEMP 0
+  {
+    getplayer[THISACTOR].fta QUOTETEMP
+    setplayer[THISACTOR].fta 0
+  }
+ends
+
+state event_displayrest_6
+  ifvare SBARTEMP 1
+    setplayer[THISACTOR].fta QUOTETEMP
+ends
+
+state displayquote
+  ifvarg QUOTETEMP 0
+  {
+    state reset_screen
+    state reset_text
+    setvar y QUOTE_POS_Y
+    shiftvarl y 1
+    setvar shade QUOTE_SHADE
+/*
+    setvarvar TEMP totalclock
+    shiftvarl TEMP 5
+    andvar TEMP 2047
+    sin TEMP TEMP
+    shiftvarr TEMP 11
+    addvarvar shade TEMP
+*/
+    getactor[THISACTOR].yvel SET
+    state textcolor
+    setvar tilenum STARTALPHANUM
+    setvar orientation 16
+    ifvare rendmode 0
+    {
+      ifvarl QUOTETEMP 5
+        orvar orientation 1
+      ifvarl QUOTETEMP 3
+        orvar orientation 32
+    }
+    else
+    ifvarl QUOTETEMP QUOTE_FADE_TIME
+    {
+      setvarvar alpha QUOTETEMP
+      mulvar alpha -1
+      addvar alpha QUOTE_FADE_TIME
+      shiftvarl alpha 8
+      divvar alpha QUOTE_FADE_TIME
+    }
+    setvar POSY 1
+    getplayer[THISACTOR].ftq string
+    setvar textorientation 82
+    state draw_screen_text
+  }
+ends
+
+state reset_hud
+  state reset_drawing
+  setvar x1 0
+  setvar y1 0
+  setvarvar x2 xdim
+  setvarvar y2 ydim
+  setvar POSX 0
+  setvar POSY 0
+ends
+
+state draw_hud_scale
+  setvarvar screenorientation orientation
+  orvar screenorientation 2056
+  state draw_code
+
+  setvar TEMPB 0 getuserdef .statusbarscale TEMPB
+  mulvarvar screenz TEMPB
+  divvar screenz 100
+  mulvarvar screenz2 TEMPB
+  divvar screenz2 100
+
+  mulvarvar screenx TEMPB
+  divvar screenx 100
+
+  ifvarn POSX 1
+  {
+    ifvare POSX 0
+      setvar TEMPB2 160
+    ifvare POSX 2
+    {
+      setvar TEMPB2 320
+      orvar screenorientation 512
+    }
+    shiftvarl TEMPB2 16
+    addvarvar screenx TEMPB2
+  }
+  else
+    orvar screenorientation 256
+
+  mulvarvar screeny TEMPB
+  divvar screeny 100
+
+  ifvarn POSY 1
+  {
+    ifvare POSY 0
+      setvar TEMPB2 100
+    ifvare POSY 2
+      setvar TEMPB2 200
+    shiftvarl TEMPB2 16
+    addvarvar screeny TEMPB2
+  }
+ends
+
+state draw_hud
+  state draw_hud_scale
+  ifvare screenorientation -1
+    break
+  state aspectset
+  rotatespritea screenx screeny screenz ang
+                tilenum shade pal screenorientation screenalpha
+                x1 y1 x2 y2
+  state aspectreset
+ends
+
+state draw_hud_text
+  state draw_hud_scale
+  ifvare screenorientation -1
+    break
+  state draw_text
+  state aspectset
+  screentext tilenum screenx screeny screenz
+             ang textang string shade pal
+             screenorientation screenalpha screenspacewidth screenlineheight
+             screenletterspacing screenlinespacing textorientation
+             x1 y1 x2 y2
+  state aspectreset
+ends
+
+state fragsbar
+  setvar TEMP 0
+  ifmultiplayer
+  ifvarn COOP 1
+    setvar TEMP 1
+  ifvare TEMP 1
+  {
+    state reset_hud
+    state reset_text
+    setvar x HUD_SCORE_X
+    setvar y HUD_SCORE_Y
+    setvar shade QUOTE_SHADE
+    getactor[THISACTOR].yvel SET
+    state textcolor
+    setvar tilenum STARTALPHANUM
+    setvar orientation 16
+    setvar POSX 2
+    setvar POSY 1
+    setvar string RESERVED_QUOTE
+    redefinequote RESERVED_QUOTE %d
+    getplayer[THISACTOR].frag TEMP
+    subvarvar TEMP player[THISACTOR].fraggedself
+    qsprintf RESERVED_QUOTE RESERVED_QUOTE TEMP
+    setvar textorientation 81
+    state draw_hud_text
+  }
+ends
+
+state iconscale
+  setvarvar TEMPB tilesizx[tilenum]
+  andvar TEMPB 1
+  mulvarvar TEMPB z
+  shiftvarr TEMPB 1
+  subvarvar x16 TEMPB
+
+  setvarvar TEMPB tilesizy[tilenum]
+  andvar TEMPB 1
+  mulvarvar TEMPB z2
+  shiftvarr TEMPB 1
+  subvarvar y16 TEMPB
+ends
+
+state statusbar
+  ifvare SCREENSIZE 0
+    break
+
+  state reset_hud
+  setvar TEMP 1
+  ifvare SCREENSIZE HUD_DEFAULT
+  {
+    setvarvar TEMP2 totalclock
+    subvarvar TEMP2 CLOCKTEMP
+    shiftvarl TEMP2 1
+    ifvarl TEMP2 HUD_SLIDE_TIME
+      setvar TEMP 0
+  }
+  ifvare SCREENSIZE HUD_DEFAULT
+  {
+    ifvarl TEMP2 HUD_SLIDE_TIME
+    {
+      setvarvar TEMP3 totalclock
+      subvarvar TEMP3 CLOCKTEMP
+      shiftvarl TEMP3 10
+      divvar TEMP3 HUD_SLIDE_TIME
+      sin TEMP3 TEMP3
+      mulvar TEMP3 -1
+      addvar TEMP3 16384
+      mulvar TEMP3 HUD_SLIDE_RANGE
+      shiftvarr TEMP3 14
+    }
+
+    setvar x HUD_LEFTBAR_X
+    ifvarl TEMP2 HUD_SLIDE_TIME
+      subvarvar x TEMP3
+    setvar y HUD_LEFTBAR_Y
+    setvar tilenum STBARLEFT
+    setvar POSX 1
+    setvar POSY 2
+    state draw_hud
+
+    setvar x HUD_RIGHTBAR_X
+    ifvarl TEMP2 HUD_SLIDE_TIME
+      addvarvar x TEMP3
+    setvar tilenum STBARRIGHT
+    setvar POSX 2
+    state draw_hud
+  }
+  ifvare TEMP 1
+  {
+    state reset_text
+    ifvare SCREENSIZE HUD_SPLIT_QUARTER
+    {
+      setvar x HUD2_HEALTH_X
+      setvar y HUD2_HEALTH_Y
+      setvar tilenum BIGALPHANUM
+      setvar textorientation 1056848
+    }
+    else
+    {
+      setvar x HUD_HEALTH_X
+      setvar y HUD_HEALTH_Y
+      setvar tilenum STARTALPHANUM
+      setvar textorientation 82
+    }
+    getplayer[THISACTOR].last_extra TEMP2
+    ifspritepal 1
+    ifvarl TEMP2 2
+      setvar TEMP2 1
+    ifvarl TEMP2 HUD_LOW_AMOUNT
+      setvar pal PAL_STRONG_RED
+    else
+      setvar pal 0
+    setvar orientation 16
+    setvar POSX 1
+    ifvare SCREENSIZE HUD_SPLIT_QUARTER
+      setvar POSY 1
+    else
+      setvar POSY 2
+    setvar string RESERVED_QUOTE
+    redefinequote RESERVED_QUOTE %d
+    qsprintf RESERVED_QUOTE RESERVED_QUOTE TEMP2
+    state draw_hud_text
+
+    ifvare WPSELECT -1
+      getplayer[THISACTOR].curr_weapon TEMP2
+    else
+      setvarvar TEMP2 WPSELECT
+    ifvarn TEMP2 KNEE_WEAPON
+    {
+      setvar POSX 1
+      setvar POSY 2
+      ifvarn SCREENSIZE HUD_SPLIT_QUARTER
+      {
+        setvar x HUD_AMMOICON_X
+        setvar y HUD_AMMOICON_Y
+        setvar y16 HUD_ICON_HEIGHT
+        shiftvarl y16 15
+        setvar z HUD_ICON_HEIGHT
+        shiftvarl z 16
+        setvar pal 0
+        setvar shade HUD_AMMOICON_SHADE
+        switch TEMP2
+        case PISTOL_WEAPON
+          setvarvar TEMP3 WPSUB1
+          ifvare WPSELECTSUB1 1
+            xorvar TEMP3 1
+          ifvare TEMP3 1
+            setvar tilenum DUMDUMSAMMO
+          else
+            setvar tilenum AMMO
+        break
+        case SHOTGUN_WEAPON
+          setvarvar TEMP3 WPSUB2
+          ifvare WPSELECTSUB2 1
+            xorvar TEMP3 1
+          ifvare TEMP3 1
+            setvar tilenum EXPSHOTGUNAMMO
+          else
+            setvar tilenum SHOTGUNAMMO
+        break
+        case CHAINGUN_WEAPON
+          setvar tilenum BATTERYAMMO
+        break
+        case RPG_WEAPON
+          setvar tilenum RPGAMMO
+        break
+        case HANDBOMB_WEAPON
+        case HANDREMOTE_WEAPON
+          setvar tilenum HBOMBAMMO
+        break
+        case SHRINKER_WEAPON
+          setvar tilenum CRYSTALAMMO
+        break
+        case GROW_WEAPON
+          setvar tilenum GROWAMMO
+        break
+        case DEVISTATOR_WEAPON
+          setvarvar TEMP3 WPSUB7
+          ifvare WPSELECTSUB7 1
+            xorvar TEMP3 1
+          ifvare TEMP3 1
+            setvar tilenum HEATSEEKAMMO
+          else
+            setvar tilenum DEVISTATORAMMO
+        break
+        case TRIPBOMB_WEAPON
+          ifvarn SCREENSIZE HUD_SPLIT_QUARTER
+            setvar tilenum TRIPBOMBSPRITE
+        break
+        case FREEZE_WEAPON
+          ifvarn SCREENSIZE HUD_SPLIT_QUARTER
+            setvar tilenum FREEZEAMMO
+        break
+        endswitch
+        divvarvar z tilesizy[tilenum]
+        setvarvar z2 z
+        state iconscale
+        setvar orientation 0
+        state draw_hud
+        setvar x16 0
+        setvar y16 0
+      }
+
+      getplayer[THISACTOR].ammo_amount TEMP2 TEMP3
+      switch TEMP2
+      case PISTOL_WEAPON
+        setvarvar TEMP4 WPSUB1
+        ifvare WPSELECTSUB1 1
+        {
+          xorvar TEMP4 1
+          setvarvar TEMP3 WPSUB1AMMO
+        }
+        ifvare TEMP4 1
+          setvar pal PAL_STRONG_YELLOW
+      break
+      case SHOTGUN_WEAPON
+        setvarvar TEMP4 WPSUB2
+        ifvare WPSELECTSUB2 1
+        {
+          xorvar TEMP4 1
+          setvarvar TEMP3 WPSUB2AMMO
+        }
+        ifvare TEMP4 1
+          setvar pal PAL_STRONG_YELLOW
+      break
+      case HANDREMOTE_WEAPON
+        getplayer[THISACTOR].ammo_amount HANDBOMB_WEAPON TEMP3
+      break
+      case DEVISTATOR_WEAPON
+        setvarvar TEMP4 WPSUB7
+        ifvare WPSELECTSUB7 1
+        {
+          xorvar TEMP4 1
+          setvarvar TEMP3 WPSUB7AMMO
+        }
+        ifvare TEMP4 1
+          setvar pal PAL_STRONG_YELLOW
+      break
+      endswitch
+      setvar shade 0
+      setvar orientation 16
+      ifvare SCREENSIZE HUD_SPLIT_QUARTER
+      {
+        setvar x HUD2_AMMO_X
+        setvar y HUD2_AMMO_Y
+        setvar tilenum STARTALPHANUM
+        setvar textorientation 84
+      }
+      else
+      {
+        setvar x HUD_AMMO_X
+        setvar y HUD_AMMO_Y
+        setvar tilenum INVNUM
+        setvar textorientation 524288
+      }
+      setvar z 65536
+      setvar z2 65536
+      redefinequote RESERVED_QUOTE %d
+      qsprintf RESERVED_QUOTE RESERVED_QUOTE TEMP3
+      state draw_hud_text
+    }
+    setvar pal 0
+    ifvarn player[THISACTOR].inven_icon 0
+    {
+      setvar TEMP2 1
+      ifvare SCREENSIZE HUD_SPLIT_QUARTER
+      ifvare INVICON 0
+        setvar TEMP2 0
+      ifvare TEMP2 1
+      {
+        setvar x HUD_INVICON_X
+        setvar y HUD_INVICON_Y
+        setvar z HUD_ICON_HEIGHT
+        shiftvarl z 16
+        setvar orientation 0
+        ifvare SCREENSIZE HUD_SPLIT_QUARTER
+        {
+          ifvare rendmode 0
+          {
+            ifvarl INVICON 5
+              orvar orientation 1
+            ifvarl INVICON 3
+              orvar orientation 32
+          }
+          else
+          ifvarl INVICON QUOTE_FADE_TIME
+          {
+            setvarvar alpha INVICON
+            mulvar alpha -1
+            addvar alpha QUOTE_FADE_TIME
+            shiftvarl alpha 8
+            divvar alpha QUOTE_FADE_TIME
+          }
+        }
+        switch player[THISACTOR].inven_icon
+        case 1
+          setvar tilenum FIRSTAID
+          setvar TEMP3 0
+          getplayer[THISACTOR].firstaid_amount TEMP4
+          mulvar TEMP4 100
+          divvar TEMP4 FIRSTAID_AMOUNT
+        break
+        case 2
+          setvar tilenum STEROIDS
+          setvar TEMP3 0
+          getplayer[THISACTOR].steroids_amount TEMP4
+          mulvar TEMP4 100
+          divvar TEMP4 STEROID_AMOUNT
+        break
+        case 3
+          setvar tilenum HOLODUKE
+          ifvarg player[THISACTOR].holoduke_on 0
+            setvar TEMP3 2
+          else
+            setvar TEMP3 1
+          getplayer[THISACTOR].holoduke_amount TEMP4
+          mulvar TEMP4 100
+          divvar TEMP4 HOLODUKE_AMOUNT
+        break
+        case 4
+          setvar tilenum JETPACK
+          ifp pjetpack
+            setvar TEMP3 2
+          else
+            setvar TEMP3 1
+          getplayer[THISACTOR].jetpack_amount TEMP4
+          ifvarg TEMP4 0
+            addvar TEMP4 1
+          mulvar TEMP4 100
+          divvar TEMP4 JETPACK_AMOUNT
+        break
+        case 5
+          setvar tilenum HEATSENSOR
+          ifvare player[THISACTOR].heat_on 1
+            setvar TEMP3 2
+          else
+            setvar TEMP3 1
+          getplayer[THISACTOR].heat_amount TEMP4
+          mulvar TEMP4 100
+          divvar TEMP4 HEAT_AMOUNT
+        break
+        case 6
+          setvar tilenum AIRTANK
+          setvar TEMP3 3
+          getplayer[THISACTOR].scuba_amount TEMP4
+          mulvar TEMP4 100
+          divvar TEMP4 SCUBA_AMOUNT
+        break
+        case 7
+          setvar tilenum BOOTS
+          setvar TEMP3 3
+          getplayer[THISACTOR].boot_amount TEMP4
+          mulvar TEMP4 100
+          divvar TEMP4 BOOT_AMOUNT
+        break
+        case 8
+          setvar tilenum SHIELD
+          setvar TEMP3 3
+          getplayer[THISACTOR].shield_amount TEMP4
+          mulvar TEMP4 100
+          divvar TEMP4 SHIELD_AMOUNT
+        break
+        endswitch
+        divvarvar z tilesizy[tilenum]
+        setvarvar z2 z
+        setvar POSX 2
+        setvar POSY 2
+        setvar y16 HUD_ICON_HEIGHT
+        shiftvarl y16 15
+        state iconscale
+        state draw_hud
+        setvar x16 0
+        setvar y16 0
+        setvar z 65536
+        setvar z2 65536
+        orvar orientation 16
+        ifvarl TEMP4 HUD_LOW_AMOUNT
+          setvar pal PAL_STRONG_YELLOW
+        else
+          setvar pal 0
+        ifvarg TEMP3 0
+        {
+          setvar x HUD_INV_X
+          setvar y HUD_INV_Y
+          setvar tilenum INVMODE
+          ifvare TEMP3 1
+            addvar tilenum 2
+          ifvare TEMP3 2
+            addvar tilenum 1
+          state draw_hud
+        }
+
+        setvar x HUD_INV_X
+        setvar y HUD_INV_Y
+        addvar y FONT_NEWLINE_HEIGHT
+        setvar tilenum INVNUM
+        ifvarl TEMP4 0
+          setvar TEMP4 0
+        redefinequote RESERVED_QUOTE %d
+        qsprintf RESERVED_QUOTE RESERVED_QUOTE TEMP4
+        setvar textorientation 524288
+        state draw_hud_text
+
+        qstrdim TEMP3 TEMP4 tilenum x y z
+        textang string orientation spacewidth lineheight
+        letterspacing linespacing textorientation
+        x1 y1 x2 y2
+        addvarvar x TEMP3
+        setvar tilenum INVNUM
+        addvar tilenum -1
+        state draw_hud
+      }
+    }
+    ifvarg player[THISACTOR].got_access 0
+    {
+      setvar pal 0
+      setvar orientation 0
+      setvar alpha 0
+      setvar TEMP2 0
+      ifmultiplayer
+      ifvarn COOP 1
+        setvar TEMP2 1
+      ifvare TEMP2 0
+      {
+        ifvare SCREENSIZE HUD_DEFAULT
+        {
+          setvar POSX 2
+          setvar POSY 2
+        }
+        else
+        {
+          setvar y HUD_CARD_Y
+          setvar POSX 2
+          setvar POSY 1
+        }
+        ifvarand player[THISACTOR].got_access 1
+        {
+          ifvare SCREENSIZE HUD_DEFAULT
+          {
+            setvar x HUD_CARD1_X
+            setvar y HUD_CARD1_Y
+          }
+          else
+          {
+            setvar x HUD_CARD_X
+            subvar x HUD_CARD_RANGE
+            subvar x HUD_CARD_RANGE
+          }
+          setvar tilenum STCARD1
+          state draw_hud
+        }
+        ifvarand player[THISACTOR].got_access 2
+        {
+          ifvare SCREENSIZE HUD_DEFAULT
+          {
+            setvar x HUD_CARD2_X
+            setvar y HUD_CARD2_Y
+          }
+          else
+          {
+            setvar x HUD_CARD_X
+            subvar x HUD_CARD_RANGE
+          }
+          setvar tilenum STCARD2
+          state draw_hud
+        }
+        ifvarand player[THISACTOR].got_access 4
+        {
+          ifvare SCREENSIZE HUD_DEFAULT
+          {
+            setvar x HUD_CARD3_X
+            setvar y HUD_CARD3_Y
+          }
+          else
+          {
+            setvar x HUD_CARD_X
+            setvar y HUD_CARD_Y
+          }
+          setvar tilenum STCARD3
+          state draw_hud
+        }
+      }
+    }
+  }
+
+  ifvare SCREENSIZE HUD_DEFAULT
+  {
+    setvarvar TEMP totalclock
+    subvarvar TEMP CLOCKTEMP
+    ifvarl TEMP HUD_SLIDE_TIME
+    {
+      setvarvar TEMP2 TEMP
+      shiftvarl TEMP2 10
+      divvar TEMP2 HUD_SLIDE_TIME
+      sin TEMP2 TEMP2
+      mulvar TEMP2 -1
+      addvar TEMP2 16384
+      mulvar TEMP2 HUD_SLIDE_RANGE
+      shiftvarr TEMP2 14
+
+      state reset_hud
+      setvar x HUD_SLIDE_X
+      subvarvar x TEMP2
+      setvar y HUD_SLIDE_Y
+      setvar tilenum STBARSLIDE
+      setvar POSX 1
+      setvar POSY 2
+      state draw_hud
+
+      mulvar x -1
+      setvar ang 1024
+      setvar orientation 4
+      setvar POSX 2
+      state draw_hud
+    }
+  }
+ends
+
+state weaponswitch
+  ifvarg WHILE 0
+  {
+    switch TEMPB
+    case KNEE_WEAPON
+      setvar TEMPB PISTOL_WEAPON
+    break
+    case PISTOL_WEAPON
+      setvar TEMPB SHOTGUN_WEAPON
+    break
+    case SHOTGUN_WEAPON
+      setvar TEMPB CHAINGUN_WEAPON
+    break
+    case CHAINGUN_WEAPON
+      setvar TEMPB RPG_WEAPON
+    break
+    case RPG_WEAPON
+      setvar TEMPB HANDBOMB_WEAPON
+    break
+    case HANDBOMB_WEAPON
+    case HANDREMOTE_WEAPON
+      setvar TEMPB SHRINKER_WEAPON
+    break
+    case SHRINKER_WEAPON
+      setvar TEMPB GROW_WEAPON
+    break
+    case GROW_WEAPON
+      setvar TEMPB DEVISTATOR_WEAPON
+    break
+    case DEVISTATOR_WEAPON
+      setvar TEMPB TRIPBOMB_WEAPON
+    break
+    case TRIPBOMB_WEAPON
+      setvar TEMPB FREEZE_WEAPON
+    break
+    case FREEZE_WEAPON
+      setvar TEMPB KNEE_WEAPON
+    break
+    endswitch
+  }
+  ifvarl WHILE 0
+  {
+    switch TEMPB
+    case KNEE_WEAPON
+      setvar TEMPB FREEZE_WEAPON
+    break
+    case PISTOL_WEAPON
+      setvar TEMPB KNEE_WEAPON
+    break
+    case SHOTGUN_WEAPON
+      setvar TEMPB PISTOL_WEAPON
+    break
+    case CHAINGUN_WEAPON
+      setvar TEMPB SHOTGUN_WEAPON
+    break
+    case RPG_WEAPON
+      setvar TEMPB CHAINGUN_WEAPON
+    break
+    case HANDBOMB_WEAPON
+    case HANDREMOTE_WEAPON
+      setvar TEMPB RPG_WEAPON
+    break
+    case SHRINKER_WEAPON
+      setvar TEMPB HANDBOMB_WEAPON
+    break
+    case GROW_WEAPON
+      setvar TEMPB SHRINKER_WEAPON
+    break
+    case DEVISTATOR_WEAPON
+      setvar TEMPB GROW_WEAPON
+    break
+    case TRIPBOMB_WEAPON
+      setvar TEMPB DEVISTATOR_WEAPON
+    break
+    case FREEZE_WEAPON
+      setvar TEMPB TRIPBOMB_WEAPON
+    break
+    endswitch
+  }
+ends
+
+state statusweapon
+  ifvarg STWPCOUNT -1
+  {
+    setvar WHILE WPBAR_ICONS
+    shiftvarr WHILE 1
+    ifvarg WPBAR_ICONS 0
+      addvar WHILE 1
+    whilevarn WHILE 0
+    {
+      ifvarg WHILE 0
+        subvar WHILE 1
+      mulvar WHILE -1
+
+      setvarvar TEMPB STWPSELECT
+      ifvarn WHILE 0
+      {
+        setvarvar WHILE2 WHILE
+        ifvarl WHILE2 0
+          mulvar WHILE2 -1
+        whilevarn WHILE2 0
+        {
+          state weaponswitch
+          setvar WHILE3 0
+          whilevarn WHILE3 1
+          {
+            switch TEMPB
+            case KNEE_WEAPON
+              ifvare player[THISACTOR].gotweapon KNEE_WEAPON 1
+                setvar WHILE3 1
+            break
+            case HANDBOMB_WEAPON
+            case HANDREMOTE_WEAPON
+              ifvare player[THISACTOR].gotweapon HANDBOMB_WEAPON 1
+              {
+                ifvarg player[THISACTOR].ammo_amount HANDBOMB_WEAPON 0
+                  setvar WHILE3 1
+                else
+                {
+                  ifvarn WPSELECT HANDREMOTE_WEAPON
+                  ifvare PIPEBOMB_CONTROL 1
+                  {
+                    setvar TEMPSECTORS 0
+                    whilevarvarn TEMPSECTORS NUMSECTORS
+                    {
+                      headspritesect TEMPSPRITES TEMPSECTORS
+                      setvarvar HEAD TEMPSPRITES
+                      whilevarn TEMPSPRITES -1
+                      {
+                        ifvare sprite[TEMPSPRITES].picnum HEAVYHBOMB
+                        ifvarvare sprite[TEMPSPRITES].owner THISACTOR
+                        ifvare sprite[TEMPSPRITES].htg_t 6 2
+                        {
+                          setvar WHILE3 1
+                          setvar TEMPSPRITES -1
+                          setvarvar TEMPSECTORS NUMSECTORS
+                        }
+                        ifvarn TEMPSPRITES -1
+                        {
+                          nextspritesect TEMPSPRITES TEMPSPRITES
+                          ifvarvare TEMPSPRITES HEAD
+                            setvar TEMPSPRITES -1
+                        }
+                      }
+                      ifvarvarn TEMPSECTORS NUMSECTORS
+                        addvar TEMPSECTORS 1
+                    }
+                  }
+                }
+              }
+            break
+            default
+              ifvare player[THISACTOR].gotweapon TEMPB 1
+              ifvarg player[THISACTOR].ammo_amount TEMPB 0
+                setvar WHILE3 1
+            break
+            endswitch
+            ifvare WHILE3 0
+              state weaponswitch
+          }
+          subvar WHILE2 1
+        }
+      }
+      switch TEMPB
+      case KNEE_WEAPON
+        setvar tilenum BOOTS
+      break
+      case PISTOL_WEAPON
+        setvar tilenum FIRSTGUNSPRITE
+      break
+      case SHOTGUN_WEAPON
+        setvar tilenum SHOTGUNSPRITE
+      break
+      case CHAINGUN_WEAPON
+        setvar tilenum CHAINGUNSPRITE
+      break
+      case RPG_WEAPON
+        setvar tilenum RPGSPRITE
+      break
+      case HANDBOMB_WEAPON
+      case HANDREMOTE_WEAPON
+        setvar tilenum HEAVYHBOMB
+      break
+      case SHRINKER_WEAPON
+        setvar tilenum SHRINKERSPRITE
+      break
+      case GROW_WEAPON
+        setvar tilenum GROWSPRITEICON
+      break
+      case DEVISTATOR_WEAPON
+        setvar tilenum DEVISTATORSPRITE
+      break
+      case TRIPBOMB_WEAPON
+        setvar tilenum TRIPBOMBSPRITE
+      break
+      case FREEZE_WEAPON
+        setvar tilenum FREEZESPRITE
+      break
+      endswitch
+
+      state reset_gamehud
+      setvar POSY 2
+
+      setvar y16 WPBAR_Y
+      shiftvarl y16 16
+      ifvarl STWPCOUNT WPBAR_RISE_TIME
+      {
+        setvarvar TEMPB STWPCOUNT
+        setvar TEMPB2 WPBAR_ICON_HEIGHT
+        shiftvarr TEMPB2 1
+        subvarvar TEMPB2 WPBAR_Y
+        shiftvarl TEMPB2 16
+        mulvarvar TEMPB TEMPB2
+        divvar TEMPB WPBAR_RISE_TIME
+        mulvar TEMPB -1
+        addvarvar TEMPB TEMPB2
+        addvarvar y16 TEMPB
+      }
+      ifvarg STWPCOUNT WEAPON_SWITCH_TIME
+      {
+        setvarvar TEMPB STWPCOUNT
+        subvarvar TEMPB WEAPON_SWITCH_TIME
+        setvar TEMPB2 WPBAR_ICON_HEIGHT
+        shiftvarr TEMPB2 1
+        subvarvar TEMPB2 WPBAR_Y
+        shiftvarl TEMPB2 16
+        mulvarvar TEMPB TEMPB2
+        divvar TEMPB WPBAR_DROP_TIME
+        addvarvar y16 TEMPB
+      }
+
+      ifvarg WPBAR_ICONS 1
+      {
+        ifvare STWPPOS 0
+          setvar TEMPB 0
+        else
+        ifvare STWPCOUNT2 -1
+          setvar TEMPB 0
+        else
+        {
+          setvarvar TEMPB STWPCOUNT2
+          mulvar TEMPB -1
+          addvar TEMPB WPBAR_MOVE_TIME
+          ifvare STWPPOS 2
+            mulvar TEMPB -1
+          mulvar TEMPB 2184
+          divvar TEMPB WPBAR_ICONS
+          divvar TEMPB WPBAR_MOVE_TIME
+        }
+        setvarvar TEMPB2 WHILE
+        mulvar TEMPB2 2184
+        divvar TEMPB2 WPBAR_ICONS
+        addvarvar TEMPB TEMPB2
+
+        ifvarg TEMPB 1024
+          break
+        ifvarl TEMPB -1024
+          break
+
+        sin x16 TEMPB
+        mulvar x16 WPBAR_RANGE
+        shiftvarl x16 1
+
+        ifvarl TEMPB 0
+          mulvar TEMPB -1
+
+        cos z TEMPB
+        addvar z 49152
+
+        cos shade TEMPB
+        mulvar shade -1
+        addvar shade 16384
+        shiftvarr shade 9
+
+        cos alpha TEMPB
+        addvar alpha 16384
+        mulvar alpha -1
+        addvar alpha 32768
+        shiftvarr alpha 7
+      }
+      mulvar z WPBAR_ICON_HEIGHT
+      divvarvar z tilesizy[tilenum]
+      setvarvar z2 z
+      state iconscale
+      state draw_gamehud
+    }
+  }
+ends
+
+state event_displaysbar_3b
+  setvar RETURN -1
+
+  setvar TEMP 0 getuserdef .screen_size TEMP
+  ifvarg TEMP 0
+  {
+    ifvarg TEMP 7
+    {
+      setvar TEMP2 0 getuserdef .statusbarmode TEMP2
+      ifvare TEMP2 1
+        setvar SCREENSIZE HUD_SPLIT_HALF
+      else
+        setvar SCREENSIZE HUD_DEFAULT
+    }
+    else
+    ifvarg TEMP 3
+      setvar SCREENSIZE HUD_SPLIT_QUARTER
+  }
+  else
+    setvar SCREENSIZE 0
+
+  ifvarn DISPLAYSCREEN 0
+    setvar CLOCKTEMP -1
+  ifvare CLOCKTEMP -1
+    setvarvar CLOCKTEMP totalclock
+  ifvarvarg CLOCKTEMP totalclock
+    setvarvar CLOCKTEMP totalclock
+
+  state displayquote
+  ifvarg player[THISACTOR].newowner -1
+  {
+    getuserdef .camerasprite TEMP
+    ifvare TEMP -1
+      break
+  }
+  ifspritepal 1
+    nullop
+  else
+  ifp pdead
+    break
+  state statusweapon
+  state statusbar
+  state fragsbar
+ends
+
+state event_displaysbar_3c
+  setvar SBARTEMP 1
+ends
+
+state event_displayrest_7
+  setvar SBARTEMP 0
+ends
+

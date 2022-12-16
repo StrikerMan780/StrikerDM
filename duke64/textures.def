@@ -1,0 +1,1891 @@
+
+
+undeftexturerange 21   29   undefmodelrange 21   29
+undeftexture      32        undefmodel      32
+undeftexturerange 37   42   undefmodelrange 37   42
+undeftexturerange 44   47   undefmodelrange 44   47
+undeftexture      49        undefmodel      49
+undeftexturerange 51   57   undefmodelrange 51   57
+undeftexturerange 59   61   undefmodelrange 59   61
+undeftexturerange 84   88   undefmodelrange 84   88
+undeftexturerange 120  121  undefmodelrange 120  121
+undeftexturerange 130  131  undefmodelrange 130  131
+undeftexturerange 170  171  undefmodelrange 170  171
+undeftexture      743       undefmodel      743
+undeftexturerange 901  902  undefmodelrange 901  902
+undeftexturerange 1289 1292 undefmodelrange 1289 1292
+undeftexturerange 1348 1351 undefmodelrange 1348 1351
+undeftexture      1354      undefmodel      1354
+undeftexture      1625      undefmodel      1625
+undeftexturerange 1630 1635 undefmodelrange 1630 1635
+undeftexturerange 1646 1649 undefmodelrange 1646 1649
+undeftexturerange 1656 1659 undefmodelrange 1656 1659
+undeftexturerange 1671 1704 undefmodelrange 1671 1704
+undeftexturerange 1715 1717 undefmodelrange 1715 1717
+undeftexturerange 1720 1727 undefmodelrange 1720 1727
+undeftexturerange 1730 1734 undefmodelrange 1730 1734
+undeftexturerange 1730 1734 undefmodelrange 1730 1734
+undeftexturerange 1738 1742 undefmodelrange 1738 1742
+undeftexturerange 1744 1751 undefmodelrange 1744 1751
+undeftexturerange 1754 1755 undefmodelrange 1754 1755
+undeftexturerange 1890 1906 undefmodelrange 1890 1906
+undeftexturerange 2000 2019 undefmodelrange 2000 2019
+undeftexturerange 2025 2027 undefmodelrange 2025 2027
+undeftexturerange 2030 2037 undefmodelrange 2030 2037
+undeftexturerange 2040 2052 undefmodelrange 2040 2052
+undeftexturerange 2055 2060 undefmodelrange 2055 2060
+undeftexturerange 2270 2283 undefmodelrange 2270 2283
+undeftexturerange 2310 2323 undefmodelrange 2310 2323
+undeftexturerange 2448 2451 undefmodelrange 2448 2451
+undeftexture      2492      undefmodel      2492
+undeftexturerange 2521 2522 undefmodelrange 2521 2522
+undeftexture      2523      undefmodel      2523
+undeftexturerange 2524 2525 undefmodelrange 2524 2525
+undeftexturerange 2528 2529 undefmodelrange 2528 2529
+undeftexture      2531      undefmodel      2531
+undeftexturerange 2536 2539 undefmodelrange 2536 2539
+undeftexturerange 2544 2545 undefmodelrange 2544 2545
+undeftexture      2548      undefmodel      2548
+undeftexture      2554      undefmodel      2554
+undeftexture      2556      undefmodel      2556
+undeftexture      2566      undefmodel      2566
+undeftexture      2570      undefmodel      2570
+undeftexturerange 2572 2574 undefmodelrange 2572 2574
+undeftexturerange 2595 2601 undefmodelrange 2595 2601
+undeftexturerange 2605 2611 undefmodelrange 2605 2611
+undeftexturerange 2613 2619 undefmodelrange 2613 2619
+                            undefmodelrange 2710 2758
+undeftexturerange 2822 2879 undefmodelrange 2822 2879
+undeftexturerange 2929 2965 undefmodelrange 2929 2965
+undeftexturerange 3002 3009 undefmodelrange 3002 3009
+undeftexture      3022      undefmodel      3022
+undeftexturerange 3370 3372 undefmodelrange 3370 3372
+
+animtilerange 37   39   5 2
+animtilerange 3602 3604 3 2
+animtilerange 3728 3729 6 2
+animtilerange 3874 3877 3 2
+animtilerange 3878 3881 3 2
+animtilerange 3841 3844 3 2
+animtilerange 3845 3848 3 2
+animtilerange 3922 3924 2 2
+
+animtilerange 1312 1316 0 0
+
+tilefromtexture 21 { file "tiles/0021.png" }
+texture 21 { pal 0 { file "tiles/0021.png" nocompress nodownsize } }
+tilefromtexture 22 { file "tiles/0022.png" }
+texture 22 { pal 0 { file "tiles/0022.png" nocompress nodownsize } }
+tilefromtexture 23 { file "tiles/0023.png" }
+texture 23 { pal 0 { file "tiles/0023.png" nocompress nodownsize } }
+tilefromtexture 24 { file "tiles/0024.png" }
+texture 24 { pal 0 { file "tiles/0024.png" nocompress nodownsize } }
+tilefromtexture 25 { file "tiles/0025.png" }
+texture 25 { pal 0 { file "tiles/0025.png" nocompress nodownsize } }
+tilefromtexture 26 { file "tiles/0026.png" }
+texture 26 { pal 0 { file "tiles/0026.png" nocompress nodownsize } }
+tilefromtexture 27 { file "tiles/0027.png" }
+texture 27 { pal 0 { file "tiles/0027.png" nocompress nodownsize } }
+tilefromtexture 28 { file "tiles/0028.png" }
+texture 28 { pal 0 { file "tiles/0028.png" nocompress nodownsize } }
+tilefromtexture 29 { file "tiles/0029.png" }
+texture 29 { pal 0 { file "tiles/0029.png" nocompress nodownsize } }
+tilefromtexture 32 { file "tiles/0032.png" }
+texture 32 { pal 0 { file "tiles/0032.png" nocompress nodownsize } }
+tilefromtexture 34 { file "tiles/0034.png" }
+texture 34 { pal 0 { file "tiles/0034.png" nocompress nodownsize } }
+tilefromtexture 37 { file "tiles/0037.png" }
+texture 37 { pal 0 { file "tiles/0037.png" nocompress nodownsize } }
+tilefromtexture 38 { file "tiles/0038.png" }
+texture 38 { pal 0 { file "tiles/0038.png" nocompress nodownsize } }
+tilefromtexture 39 { file "tiles/0039.png" }
+texture 39 { pal 0 { file "tiles/0039.png" nocompress nodownsize } }
+tilefromtexture 40 { file "tiles/0040.png" }
+texture 40 { pal 0 { file "tiles/0040.png" nocompress nodownsize } }
+tilefromtexture 41 { file "tiles/0041.png" }
+texture 41 { pal 0 { file "tiles/0041.png" nocompress nodownsize } }
+tilefromtexture 42 { file "tiles/0042.png" }
+texture 42 { pal 0 { file "tiles/0042.png" nocompress nodownsize } }
+tilefromtexture 43 { file "tiles/0043.png" }
+texture 43 { pal 0 { file "tiles/0043.png" nocompress nodownsize } }
+tilefromtexture 44 { file "tiles/0044.png" }
+texture 44 { pal 0 { file "tiles/0044.png" nocompress nodownsize } }
+tilefromtexture 45 { file "tiles/0045.png" }
+texture 45 { pal 0 { file "tiles/0045.png" nocompress nodownsize } }
+tilefromtexture 46 { file "tiles/0046.png" }
+texture 46 { pal 0 { file "tiles/0046.png" nocompress nodownsize } }
+tilefromtexture 47 { file "tiles/0047.png" }
+texture 47 { pal 0 { file "tiles/0047.png" nocompress nodownsize } }
+tilefromtexture 49 { file "tiles/0049.png" }
+texture 49 { pal 0 { file "tiles/0049.png" nocompress nodownsize } }
+tilefromtexture 50 { file "tiles/0050.png" }
+texture 50 { pal 0 { file "tiles/0050.png" nocompress nodownsize } }
+tilefromtexture 51 { file "tiles/0051.png" }
+texture 51 { pal 0 { file "tiles/0051.png" nocompress nodownsize } }
+tilefromtexture 52 { file "tiles/0052.png" }
+texture 52 { pal 0 { file "tiles/0052.png" nocompress nodownsize } }
+tilefromtexture 53 { file "tiles/0053.png" }
+texture 53 { pal 0 { file "tiles/0053.png" nocompress nodownsize } }
+tilefromtexture 54 { file "tiles/0054.png" }
+texture 54 { pal 0 { file "tiles/0054.png" nocompress nodownsize } }
+tilefromtexture 55 { file "tiles/0055.png" }
+texture 55 { pal 0 { file "tiles/0055.png" nocompress nodownsize } }
+tilefromtexture 56 { file "tiles/0056.png" }
+texture 56 { pal 0 { file "tiles/0056.png" nocompress nodownsize } }
+tilefromtexture 57 { file "tiles/0057.png" }
+texture 57 { pal 0 { file "tiles/0057.png" nocompress nodownsize } }
+tilefromtexture 59 { file "tiles/0059.png" }
+texture 59 { pal 0 { file "tiles/0059.png" nocompress nodownsize } }
+tilefromtexture 60 { file "tiles/0060.png" }
+texture 60 { pal 0 { file "tiles/0060.png" nocompress nodownsize } }
+tilefromtexture 61 { file "tiles/0061.png" }
+texture 61 { pal 0 { file "tiles/0061.png" nocompress nodownsize } }
+tilefromtexture 65 { file "tiles/0065.png" }
+texture 65 { pal 0 { file "tiles/0065.png" nocompress nodownsize } }
+tilefromtexture 66 { file "tiles/0066.png" }
+texture 66 { pal 0 { file "tiles/0066.png" nocompress nodownsize } }
+tilefromtexture 120 { file "tiles/0120.png" }
+texture 120 { pal 0 { file "tiles/0120.png" nocompress nodownsize } }
+tilefromtexture 121 { file "tiles/0121.png" }
+texture 121 { pal 0 { file "tiles/0121.png" nocompress nodownsize } }
+tilefromtexture 130 { file "tiles/0130.png" }
+texture 130 { pal 0 { file "tiles/0130.png" nocompress nodownsize } }
+tilefromtexture 131 { file "tiles/0131.png" }
+texture 131 { pal 0 { file "tiles/0131.png" nocompress nodownsize } }
+tilefromtexture 170 { file "tiles/0170.png" }
+texture 170 { pal 0 { file "tiles/0170.png" nocompress nodownsize } }
+tilefromtexture 171 { file "tiles/0171.png" }
+texture 171 { pal 0 { file "tiles/0171.png" nocompress nodownsize } }
+tilefromtexture 172 { file "tiles/0172.png" }
+texture 172 { pal 0 { file "tiles/0172.png" nocompress nodownsize } }
+tilefromtexture 173 { file "tiles/0173.png" }
+texture 173 { pal 0 { file "tiles/0173.png" nocompress nodownsize } }
+tilefromtexture 174 { file "tiles/0174.png" }
+texture 174 { pal 0 { file "tiles/0174.png" nocompress nodownsize } }
+tilefromtexture 175 { file "tiles/0175.png" }
+texture 175 { pal 0 { file "tiles/0175.png" nocompress nodownsize } }
+tilefromtexture 176 { file "tiles/0176.png" }
+texture 176 { pal 0 { file "tiles/0176.png" nocompress nodownsize } }
+tilefromtexture 177 { file "tiles/0177.png" }
+texture 177 { pal 0 { file "tiles/0177.png" nocompress nodownsize } }
+tilefromtexture 178 { file "tiles/0178.png" }
+texture 178 { pal 0 { file "tiles/0178.png" nocompress nodownsize } }
+tilefromtexture 179 { file "tiles/0179.png" }
+texture 179 { pal 0 { file "tiles/0179.png" nocompress nodownsize } }
+tilefromtexture 743 { file "tiles/temp/0743.png" }
+texture 743 { pal 0 { file "tiles/0743.png" nocompress nodownsize } }
+tilefromtexture 901 { file "tiles/0901.png" }
+texture 901 { pal 0 { file "tiles/0901.png" nocompress nodownsize } }
+tilefromtexture 902 { file "tiles/0902.png" }
+texture 902 { pal 0 { file "tiles/0902.png" nocompress nodownsize } }
+tilefromtexture 1075 { file "tiles/1075.png" }
+texture 1075 { pal 0 { file "tiles/1075.png" nocompress nodownsize } }
+tilefromtexture 1289 { file "tiles/1289.png" }
+texture 1289 { pal 0 { file "tiles/1289.png" nocompress nodownsize } }
+tilefromtexture 1290 { file "tiles/1290.png" }
+texture 1290 { pal 0 { file "tiles/1290.png" nocompress nodownsize } }
+tilefromtexture 1291 { file "tiles/1291.png" }
+texture 1291 { pal 0 { file "tiles/1291.png" nocompress nodownsize } }
+tilefromtexture 1292 { file "tiles/1292.png" }
+texture 1292 { pal 0 { file "tiles/1292.png" nocompress nodownsize } }
+tilefromtexture 1348 { file "tiles/1348.png" }
+texture 1348 { pal 0 { file "tiles/1348.png" nocompress nodownsize } }
+tilefromtexture 1349 { file "tiles/1349.png" }
+texture 1349 { pal 0 { file "tiles/1349.png" nocompress nodownsize } }
+tilefromtexture 1350 { file "tiles/1350.png" }
+texture 1350 { pal 0 { file "tiles/1350.png" nocompress nodownsize } }
+tilefromtexture 1351 { file "tiles/1351.png" }
+texture 1351 { pal 0 { file "tiles/1351.png" nocompress nodownsize } }
+tilefromtexture 1354 { file "tiles/1354.png" }
+texture 1354 { pal 0 { file "tiles/1354.png" nocompress nodownsize } }
+tilefromtexture 1405 { file "tiles/1405.png" xoff -1 yoff 1 }
+texture 1405 { pal 0 { file "tiles/1405.png" nocompress nodownsize } }
+tilefromtexture 1406 { file "tiles/1406.png" xoff 5 yoff 1 }
+texture 1406 { pal 0 { file "tiles/1406.png" nocompress nodownsize } }
+tilefromtexture 1407 { file "tiles/1407.png" xoff 3 yoff 1 }
+texture 1407 { pal 0 { file "tiles/1407.png" nocompress nodownsize } }
+tilefromtexture 1408 { file "tiles/1408.png" xoff 1 yoff 1 }
+texture 1408 { pal 0 { file "tiles/1408.png" nocompress nodownsize } }
+tilefromtexture 1409 { file "tiles/1409.png" yoff 1 }
+texture 1409 { pal 0 { file "tiles/1409.png" nocompress nodownsize } }
+tilefromtexture 1420 { file "tiles/1420.png" xoff 1 yoff 1 }
+texture 1420 { pal 0 { file "tiles/1420.png" nocompress nodownsize } }
+tilefromtexture 1421 { file "tiles/1421.png" yoff 1 }
+texture 1421 { pal 0 { file "tiles/1421.png" nocompress nodownsize } }
+tilefromtexture 1422 { file "tiles/1422.png" yoff 1 }
+texture 1422 { pal 0 { file "tiles/1422.png" nocompress nodownsize } }
+tilefromtexture 1423 { file "tiles/1423.png" yoff 1 }
+texture 1423 { pal 0 { file "tiles/1423.png" nocompress nodownsize } }
+tilefromtexture 1424 { file "tiles/1424.png" xoff -4 yoff 1 }
+texture 1424 { pal 0 { file "tiles/1424.png" nocompress nodownsize } }
+tilefromtexture 1425 { file "tiles/1425.png" xoff 2 yoff 1 }
+texture 1425 { pal 0 { file "tiles/1425.png" nocompress nodownsize } }
+tilefromtexture 1426 { file "tiles/1426.png" xoff 1 yoff 1 }
+texture 1426 { pal 0 { file "tiles/1426.png" nocompress nodownsize } }
+tilefromtexture 1427 { file "tiles/1427.png" yoff 1 }
+texture 1427 { pal 0 { file "tiles/1427.png" nocompress nodownsize } }
+tilefromtexture 1428 { file "tiles/1428.png" yoff 1 }
+texture 1428 { pal 0 { file "tiles/1428.png" nocompress nodownsize } }
+tilefromtexture 1429 { file "tiles/1429.png" xoff -3 yoff 1 }
+texture 1429 { pal 0 { file "tiles/1429.png" nocompress nodownsize } }
+tilefromtexture 1430 { file "tiles/1430.png" yoff 1 }
+texture 1430 { pal 0 { file "tiles/1430.png" nocompress nodownsize } }
+tilefromtexture 1431 { file "tiles/1431.png" xoff 9 yoff 1 }
+texture 1431 { pal 0 { file "tiles/1431.png" nocompress nodownsize } }
+tilefromtexture 1432 { file "tiles/1432.png" xoff 7 yoff 1 }
+texture 1432 { pal 0 { file "tiles/1432.png" nocompress nodownsize } }
+tilefromtexture 1433 { file "tiles/1433.png" xoff 1 yoff 1 }
+texture 1433 { pal 0 { file "tiles/1433.png" nocompress nodownsize } }
+tilefromtexture 1434 { file "tiles/1434.png" xoff -2 yoff 1 }
+texture 1434 { pal 0 { file "tiles/1434.png" nocompress nodownsize } }
+tilefromtexture 1435 { file "tiles/1435.png" yoff 1 }
+texture 1435 { pal 0 { file "tiles/1435.png" nocompress nodownsize } }
+tilefromtexture 1436 { file "tiles/1436.png" xoff 10 yoff 1 }
+texture 1436 { pal 0 { file "tiles/1436.png" nocompress nodownsize } }
+tilefromtexture 1437 { file "tiles/1437.png" xoff 3 yoff 1 }
+texture 1437 { pal 0 { file "tiles/1437.png" nocompress nodownsize } }
+tilefromtexture 1438 { file "tiles/1438.png" xoff -1 yoff 1 }
+texture 1438 { pal 0 { file "tiles/1438.png" nocompress nodownsize } }
+tilefromtexture 1439 { file "tiles/1439.png" yoff 1 }
+texture 1439 { pal 0 { file "tiles/1439.png" nocompress nodownsize } }
+tilefromtexture 1440 { file "tiles/1440.png" xoff 1 yoff 1 }
+texture 1440 { pal 0 { file "tiles/1440.png" nocompress nodownsize } }
+tilefromtexture 1441 { file "tiles/1441.png" xoff 12 yoff 1 }
+texture 1441 { pal 0 { file "tiles/1441.png" nocompress nodownsize } }
+tilefromtexture 1442 { file "tiles/1442.png" xoff 8 yoff 1 }
+texture 1442 { pal 0 { file "tiles/1442.png" nocompress nodownsize } }
+tilefromtexture 1443 { file "tiles/1443.png" yoff 1 }
+texture 1443 { pal 0 { file "tiles/1443.png" nocompress nodownsize } }
+tilefromtexture 1444 { file "tiles/1444.png" xoff -2 yoff 1 }
+texture 1444 { pal 0 { file "tiles/1444.png" nocompress nodownsize } }
+tilefromtexture 1445 { file "tiles/1445.png" xoff 4 yoff 1 }
+texture 1445 { pal 0 { file "tiles/1445.png" nocompress nodownsize } }
+tilefromtexture 1446 { file "tiles/1446.png" xoff 8 yoff 1 }
+texture 1446 { pal 0 { file "tiles/1446.png" nocompress nodownsize } }
+tilefromtexture 1447 { file "tiles/1447.png" yoff 1 }
+texture 1447 { pal 0 { file "tiles/1447.png" nocompress nodownsize } }
+tilefromtexture 1448 { file "tiles/1448.png" yoff 1 }
+texture 1448 { pal 0 { file "tiles/1448.png" nocompress nodownsize } }
+tilefromtexture 1449 { file "tiles/1449.png" xoff -6 yoff 1 }
+texture 1449 { pal 0 { file "tiles/1449.png" nocompress nodownsize } }
+tilefromtexture 1450 { file "tiles/1450.png" xoff 6 yoff 1 }
+texture 1450 { pal 0 { file "tiles/1450.png" nocompress nodownsize } }
+tilefromtexture 1451 { file "tiles/1451.png" xoff 9 yoff 1 }
+texture 1451 { pal 0 { file "tiles/1451.png" nocompress nodownsize } }
+tilefromtexture 1452 { file "tiles/1452.png" xoff 13 yoff 1 }
+texture 1452 { pal 0 { file "tiles/1452.png" nocompress nodownsize } }
+tilefromtexture 1453 { file "tiles/1453.png" yoff 1 }
+texture 1453 { pal 0 { file "tiles/1453.png" nocompress nodownsize } }
+tilefromtexture 1454 { file "tiles/1454.png" xoff -9 yoff 1 }
+texture 1454 { pal 0 { file "tiles/1454.png" nocompress nodownsize } }
+tilefromtexture 1455 { file "tiles/1455.png" xoff 1 yoff 1 }
+texture 1455 { pal 0 { file "tiles/1455.png" nocompress nodownsize } }
+tilefromtexture 1456 { file "tiles/1456.png" xoff 5 yoff 1 }
+texture 1456 { pal 0 { file "tiles/1456.png" nocompress nodownsize } }
+tilefromtexture 1457 { file "tiles/1457.png" yoff 1 }
+texture 1457 { pal 0 { file "tiles/1457.png" nocompress nodownsize } }
+tilefromtexture 1458 { file "tiles/1458.png" yoff 1 }
+texture 1458 { pal 0 { file "tiles/1458.png" nocompress nodownsize } }
+tilefromtexture 1459 { file "tiles/1459.png" yoff 1 }
+texture 1459 { pal 0 { file "tiles/1459.png" nocompress nodownsize } }
+tilefromtexture 1460 { file "tiles/1460.png" yoff 1 }
+texture 1460 { pal 0 { file "tiles/1460.png" nocompress nodownsize } }
+tilefromtexture 1461 { file "tiles/1461.png" xoff 10 yoff -1 }
+texture 1461 { pal 0 { file "tiles/1461.png" nocompress nodownsize } }
+tilefromtexture 1462 { file "tiles/1462.png" xoff 4 yoff 1 }
+texture 1462 { pal 0 { file "tiles/1462.png" nocompress nodownsize } }
+tilefromtexture 1463 { file "tiles/1463.png" yoff 1 }
+texture 1463 { pal 0 { file "tiles/1463.png" nocompress nodownsize } }
+tilefromtexture 1464 { file "tiles/1464.png" yoff 1 }
+texture 1464 { pal 0 { file "tiles/1464.png" nocompress nodownsize } }
+tilefromtexture 1465 { file "tiles/1465.png" xoff 3 yoff 1 }
+texture 1465 { pal 0 { file "tiles/1465.png" nocompress nodownsize } }
+tilefromtexture 1466 { file "tiles/1466.png" yoff 1 }
+texture 1466 { pal 0 { file "tiles/1466.png" nocompress nodownsize } }
+tilefromtexture 1467 { file "tiles/1467.png" yoff 1 }
+texture 1467 { pal 0 { file "tiles/1467.png" nocompress nodownsize } }
+tilefromtexture 1468 { file "tiles/1468.png" yoff 1 }
+texture 1468 { pal 0 { file "tiles/1468.png" nocompress nodownsize } }
+tilefromtexture 1469 { file "tiles/1469.png" yoff 1 }
+texture 1469 { pal 0 { file "tiles/1469.png" nocompress nodownsize } }
+tilefromtexture 1491 { file "tiles/1491.png" yoff 1 }
+texture 1491 { pal 0 { file "tiles/1491.png" nocompress nodownsize } }
+tilefromtexture 1492 { file "tiles/1492.png" yoff 1 }
+texture 1492 { pal 0 { file "tiles/1492.png" nocompress nodownsize } }
+tilefromtexture 1493 { file "tiles/1493.png" xoff -6 yoff 1 }
+texture 1493 { pal 0 { file "tiles/1493.png" nocompress nodownsize } }
+tilefromtexture 1494 { file "tiles/1494.png" yoff 1 }
+texture 1494 { pal 0 { file "tiles/1494.png" nocompress nodownsize } }
+tilefromtexture 1495 { file "tiles/1495.png" yoff 1 }
+texture 1495 { pal 0 { file "tiles/1495.png" nocompress nodownsize } }
+tilefromtexture 1496 { file "tiles/1496.png" yoff 1 }
+texture 1496 { pal 0 { file "tiles/1496.png" nocompress nodownsize } }
+tilefromtexture 1497 { file "tiles/1497.png" xoff 5 yoff 1 }
+texture 1497 { pal 0 { file "tiles/1497.png" nocompress nodownsize } }
+tilefromtexture 1498 { file "tiles/1498.png" yoff 1 }
+texture 1498 { pal 0 { file "tiles/1498.png" nocompress nodownsize } }
+tilefromtexture 1499 { file "tiles/1499.png" yoff 1 }
+texture 1499 { pal 0 { file "tiles/1499.png" nocompress nodownsize } }
+tilefromtexture 1500 { file "tiles/1500.png" yoff 1 }
+texture 1500 { pal 0 { file "tiles/1500.png" nocompress nodownsize } }
+tilefromtexture 1501 { file "tiles/1501.png" yoff 1 }
+texture 1501 { pal 0 { file "tiles/1501.png" nocompress nodownsize } }
+tilefromtexture 1502 { file "tiles/1502.png" yoff 1 }
+texture 1502 { pal 0 { file "tiles/1502.png" nocompress nodownsize } }
+tilefromtexture 1503 { file "tiles/1503.png" yoff 1 }
+texture 1503 { pal 0 { file "tiles/1503.png" nocompress nodownsize } }
+tilefromtexture 1504 { file "tiles/1504.png" yoff 1 }
+texture 1504 { pal 0 { file "tiles/1504.png" nocompress nodownsize } }
+tilefromtexture 1505 { file "tiles/1505.png" xoff 8 yoff 1 }
+texture 1505 { pal 0 { file "tiles/1505.png" nocompress nodownsize } }
+tilefromtexture 1511 { file "tiles/1511.png" yoff 1 }
+texture 1511 { pal 0 { file "tiles/1511.png" nocompress nodownsize } }
+tilefromtexture 1512 { file "tiles/1512.png" xoff -2 yoff 33 }
+texture 1512 { pal 0 { file "tiles/1512.png" nocompress nodownsize } }
+tilefromtexture 1513 { file "tiles/1513.png" xoff 3 yoff 30 }
+texture 1513 { pal 0 { file "tiles/1513.png" nocompress nodownsize } }
+tilefromtexture 1514 { file "tiles/1514.png" xoff 2 yoff 33 }
+texture 1514 { pal 0 { file "tiles/1514.png" nocompress nodownsize } }
+tilefromtexture 1515 { file "tiles/1515.png" yoff 29 }
+texture 1515 { pal 0 { file "tiles/1515.png" nocompress nodownsize } }
+tilefromtexture 1518 { file "tiles/1518.png" yoff 38 }
+texture 1518 { pal 0 { file "tiles/1518.png" nocompress nodownsize } }
+texture 1625 { pal 52 { file "blend/1625_2.png" nocompress nodownsize alphacut 0 } }
+texture 1630 { pal 60 { file "blend/1630_10.png" nocompress nodownsize alphacut 0 } }
+texture 1631 { pal 60 { file "blend/1631_10.png" nocompress nodownsize alphacut 0 } }
+texture 1632 { pal 60 { file "blend/1632_10.png" nocompress nodownsize alphacut 0 } }
+texture 1633 { pal 60 { file "blend/1633_10.png" nocompress nodownsize alphacut 0 } }
+texture 1634 { pal 60 { file "blend/1634_10.png" nocompress nodownsize alphacut 0 } }
+texture 1635 { pal 60 { file "blend/1635_10.png" nocompress nodownsize alphacut 0 } }
+texture 1646 { pal 55 { file "blend/1646_5.png" nocompress nodownsize alphacut 0 } }
+texture 1647 { pal 55 { file "blend/1647_5.png" nocompress nodownsize alphacut 0 } }
+texture 1648 { pal 55 { file "blend/1648_5.png" nocompress nodownsize alphacut 0 } }
+texture 1649 { pal 55 { file "blend/1649_5.png" nocompress nodownsize alphacut 0 } }
+texture 1656 { pal 55 { file "blend/1656_5.png" nocompress nodownsize alphacut 0 } }
+texture 1657 { pal 55 { file "blend/1657_5.png" nocompress nodownsize alphacut 0 } }
+texture 1658 { pal 55 { file "blend/1658_5.png" nocompress nodownsize alphacut 0 } }
+texture 1659 { pal 55 { file "blend/1659_5.png" nocompress nodownsize alphacut 0 } }
+texture 1671 { pal 58 { file "blend/1671_8.png" nocompress nodownsize alphacut 0 } }
+texture 1672 { pal 58 { file "blend/1672_8.png" nocompress nodownsize alphacut 0 } }
+texture 1673 { pal 58 { file "blend/1673_8.png" nocompress nodownsize alphacut 0 } }
+texture 1674 { pal 58 { file "blend/1674_8.png" nocompress nodownsize alphacut 0 } }
+texture 1675 { pal 58 { file "blend/1675_8.png" nocompress nodownsize alphacut 0 } }
+texture 1676 { pal 58 { file "blend/1676_8.png" nocompress nodownsize alphacut 0 } }
+texture 1677 { pal 58 { file "blend/1677_8.png" nocompress nodownsize alphacut 0 } }
+texture 1678 { pal 58 { file "blend/1678_8.png" nocompress nodownsize alphacut 0 } }
+texture 1679 { pal 58 { file "blend/1679_8.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 1680 { file "tiles/1680.png" xoff 1 yoff -3 }
+texture 1680 { pal 0 { file "tiles/1680.png" nocompress nodownsize } }
+tilefromtexture 1681 { file "tiles/1681.png" xoff 2 yoff -3 }
+texture 1681 { pal 0 { file "tiles/1681.png" nocompress nodownsize } }
+tilefromtexture 1682 { file "tiles/1682.png" xoff 1 yoff -3 }
+texture 1682 { pal 0 { file "tiles/1682.png" nocompress nodownsize } }
+tilefromtexture 1683 { file "tiles/1683.png" xoff 3 yoff -3 }
+texture 1683 { pal 0 { file "tiles/1683.png" nocompress nodownsize } }
+tilefromtexture 1684 { file "tiles/1684.png" xoff -3 yoff -3 }
+texture 1684 { pal 0 { file "tiles/1684.png" nocompress nodownsize } }
+tilefromtexture 1685 { file "tiles/1685.png" xoff 1 yoff -3 }
+texture 1685 { pal 0 { file "tiles/1685.png" nocompress nodownsize } }
+tilefromtexture 1686 { file "tiles/1686.png" xoff 5 yoff -3 }
+texture 1686 { pal 0 { file "tiles/1686.png" nocompress nodownsize } }
+tilefromtexture 1687 { file "tiles/1687.png" xoff 1 yoff -3 }
+texture 1687 { pal 0 { file "tiles/1687.png" nocompress nodownsize } }
+tilefromtexture 1688 { file "tiles/1688.png" xoff 4 yoff -3 }
+texture 1688 { pal 0 { file "tiles/1688.png" nocompress nodownsize } }
+tilefromtexture 1689 { file "tiles/1689.png" xoff -2 yoff -3 }
+texture 1689 { pal 0 { file "tiles/1689.png" nocompress nodownsize } }
+tilefromtexture 1690 { file "tiles/1690.png" yoff -3 }
+texture 1690 { pal 0 { file "tiles/1690.png" nocompress nodownsize } }
+tilefromtexture 1691 { file "tiles/1691.png" xoff 10 yoff -3 }
+texture 1691 { pal 0 { file "tiles/1691.png" nocompress nodownsize } }
+tilefromtexture 1692 { file "tiles/1692.png" xoff 3 yoff -3 }
+texture 1692 { pal 0 { file "tiles/1692.png" nocompress nodownsize } }
+tilefromtexture 1693 { file "tiles/1693.png" yoff -3 }
+texture 1693 { pal 0 { file "tiles/1693.png" nocompress nodownsize } }
+tilefromtexture 1694 { file "tiles/1694.png" yoff -3 }
+texture 1694 { pal 0 { file "tiles/1694.png" nocompress nodownsize } }
+tilefromtexture 1695 { file "tiles/1695.png" xoff 1 yoff -3 }
+texture 1695 { pal 0 { file "tiles/1695.png" nocompress nodownsize } }
+tilefromtexture 1696 { file "tiles/1696.png" xoff 8 yoff -3 }
+texture 1696 { pal 0 { file "tiles/1696.png" nocompress nodownsize } }
+tilefromtexture 1697 { file "tiles/1697.png" xoff 3 yoff -3 }
+texture 1697 { pal 0 { file "tiles/1697.png" nocompress nodownsize } }
+tilefromtexture 1698 { file "tiles/1698.png" xoff 1 yoff -3 }
+texture 1698 { pal 0 { file "tiles/1698.png" nocompress nodownsize } }
+tilefromtexture 1699 { file "tiles/1699.png" xoff -3 yoff -3 }
+texture 1699 { pal 0 { file "tiles/1699.png" nocompress nodownsize } }
+tilefromtexture 1700 { file "tiles/1700.png" xoff 3 yoff -3 }
+texture 1700 { pal 0 { file "tiles/1700.png" nocompress nodownsize } }
+tilefromtexture 1701 { file "tiles/1701.png" xoff 2 yoff -3 }
+texture 1701 { pal 0 { file "tiles/1701.png" nocompress nodownsize } }
+tilefromtexture 1702 { file "tiles/1702.png" xoff -1 yoff -3 }
+texture 1702 { pal 0 { file "tiles/1702.png" nocompress nodownsize } }
+tilefromtexture 1703 { file "tiles/1703.png" xoff 4 yoff -2 }
+texture 1703 { pal 0 { file "tiles/1703.png" nocompress nodownsize } }
+tilefromtexture 1704 { file "tiles/1704.png" xoff -3 yoff -2 }
+texture 1704 { pal 0 { file "tiles/1704.png" nocompress nodownsize } }
+tilefromtexture 1715 { file "tiles/1715.png" yoff -3 }
+texture 1715 { pal 0 { file "tiles/1715.png" nocompress nodownsize } }
+tilefromtexture 1716 { file "tiles/1716.png" xoff 5 yoff -3 }
+texture 1716 { pal 0 { file "tiles/1716.png" nocompress nodownsize } }
+tilefromtexture 1717 { file "tiles/1717.png" xoff 2 yoff -3 }
+texture 1717 { pal 0 { file "tiles/1717.png" nocompress nodownsize } }
+tilefromtexture 1720 { file "tiles/1720.png" }
+texture 1720 { pal 0 { file "tiles/1720.png" nocompress nodownsize } }
+tilefromtexture 1721 { file "tiles/1721.png" }
+texture 1721 { pal 0 { file "tiles/1721.png" nocompress nodownsize } }
+tilefromtexture 1722 { file "tiles/1722.png" }
+texture 1722 { pal 0 { file "tiles/1722.png" nocompress nodownsize } }
+tilefromtexture 1723 { file "tiles/1723.png" }
+texture 1723 { pal 0 { file "tiles/1723.png" nocompress nodownsize } }
+tilefromtexture 1724 { file "tiles/1724.png" }
+texture 1724 { pal 0 { file "tiles/1724.png" nocompress nodownsize } }
+tilefromtexture 1725 { file "tiles/1725.png" }
+texture 1725 { pal 0 { file "tiles/1725.png" nocompress nodownsize } }
+tilefromtexture 1726 { file "tiles/1726.png" }
+texture 1726 { pal 0 { file "tiles/1726.png" nocompress nodownsize } }
+tilefromtexture 1727 { file "tiles/1727.png" }
+texture 1727 { pal 0 { file "tiles/1727.png" nocompress nodownsize } }
+tilefromtexture 1730 { file "tiles/1730.png" yoff -3 }
+texture 1730 { pal 0 { file "tiles/1730.png" nocompress nodownsize } }
+tilefromtexture 1731 { file "tiles/1731.png" xoff 2 yoff -3 }
+texture 1731 { pal 0 { file "tiles/1731.png" nocompress nodownsize } }
+tilefromtexture 1732 { file "tiles/1732.png" yoff -3 }
+texture 1732 { pal 0 { file "tiles/1732.png" nocompress nodownsize } }
+tilefromtexture 1733 { file "tiles/1733.png" yoff -3 }
+texture 1733 { pal 0 { file "tiles/1733.png" nocompress nodownsize } }
+tilefromtexture 1734 { file "tiles/1734.png" yoff -3 }
+texture 1734 { pal 0 { file "tiles/1734.png" nocompress nodownsize } }
+tilefromtexture 1738 { file "tiles/1738.png" yoff -3 }
+texture 1738 { pal 0 { file "tiles/1738.png" nocompress nodownsize } }
+tilefromtexture 1739 { file "tiles/1739.png" yoff -3 }
+texture 1739 { pal 0 { file "tiles/1739.png" nocompress nodownsize } }
+tilefromtexture 1740 { file "tiles/1740.png" yoff -3 }
+texture 1740 { pal 0 { file "tiles/1740.png" nocompress nodownsize } }
+tilefromtexture 1741 { file "tiles/1741.png" yoff -3 }
+texture 1741 { pal 0 { file "tiles/1741.png" nocompress nodownsize } }
+tilefromtexture 1742 { file "tiles/1742.png" }
+texture 1742 { pal 0 { file "tiles/1742.png" nocompress nodownsize } }
+tilefromtexture 1744 { file "tiles/1744.png" xoff -3 yoff -3 }
+texture 1744 { pal 0 { file "tiles/1744.png" nocompress nodownsize } }
+tilefromtexture 1745 { file "tiles/1745.png" xoff 8 yoff -3 }
+texture 1745 { pal 0 { file "tiles/1745.png" nocompress nodownsize } }
+tilefromtexture 1746 { file "tiles/1746.png" xoff 15 yoff -3 }
+texture 1746 { pal 0 { file "tiles/1746.png" nocompress nodownsize } }
+tilefromtexture 1747 { file "tiles/1747.png" xoff 5 yoff -3 }
+texture 1747 { pal 0 { file "tiles/1747.png" nocompress nodownsize } }
+tilefromtexture 1748 { file "tiles/1748.png" xoff 7 yoff -3 }
+texture 1748 { pal 0 { file "tiles/1748.png" nocompress nodownsize } }
+tilefromtexture 1749 { file "tiles/1749.png" xoff -4 yoff -3 }
+texture 1749 { pal 0 { file "tiles/1749.png" nocompress nodownsize } }
+tilefromtexture 1750 { file "tiles/1750.png" xoff 7 yoff -3 }
+texture 1750 { pal 0 { file "tiles/1750.png" nocompress nodownsize } }
+tilefromtexture 1751 { file "tiles/1751.png" xoff 14 yoff -3 }
+texture 1751 { pal 0 { file "tiles/1751.png" nocompress nodownsize } }
+tilefromtexture 1754 { file "tiles/1754.png" xoff 6 yoff -3 }
+texture 1754 { pal 0 { file "tiles/1754.png" nocompress nodownsize } }
+tilefromtexture 1755 { file "tiles/1755.png" xoff 7 yoff -3 }
+texture 1755 { pal 0 { file "tiles/1755.png" nocompress nodownsize } }
+tilefromtexture 1780 { file "tiles/1780.png" yoff 19 }
+texture 1780 { pal 0 { file "tiles/1780.png" nocompress nodownsize } }
+tilefromtexture 1781 { file "tiles/1781.png" yoff 20 }
+texture 1781 { pal 0 { file "tiles/1781.png" nocompress nodownsize } }
+tilefromtexture 1782 { file "tiles/1782.png" yoff 20 }
+texture 1782 { pal 0 { file "tiles/1782.png" nocompress nodownsize } }
+tilefromtexture 1783 { file "tiles/1783.png" yoff 19 }
+texture 1783 { pal 0 { file "tiles/1783.png" nocompress nodownsize } }
+tilefromtexture 1784 { file "tiles/1784.png" yoff 20 }
+texture 1784 { pal 0 { file "tiles/1784.png" nocompress nodownsize } }
+tilefromtexture 1785 { file "tiles/1785.png" xoff -1 yoff 19 }
+texture 1785 { pal 0 { file "tiles/1785.png" nocompress nodownsize } }
+tilefromtexture 1786 { file "tiles/1786.png" yoff 19 }
+texture 1786 { pal 0 { file "tiles/1786.png" nocompress nodownsize } }
+tilefromtexture 1787 { file "tiles/1787.png" yoff 18 }
+texture 1787 { pal 0 { file "tiles/1787.png" nocompress nodownsize } }
+tilefromtexture 1788 { file "tiles/1788.png" yoff 19 }
+texture 1788 { pal 0 { file "tiles/1788.png" nocompress nodownsize } }
+tilefromtexture 1789 { file "tiles/1789.png" xoff 5 yoff 19 }
+texture 1789 { pal 0 { file "tiles/1789.png" nocompress nodownsize } }
+tilefromtexture 1790 { file "tiles/1790.png" yoff 19 }
+texture 1790 { pal 0 { file "tiles/1790.png" nocompress nodownsize } }
+tilefromtexture 1791 { file "tiles/1791.png" xoff 15 yoff 18 }
+texture 1791 { pal 0 { file "tiles/1791.png" nocompress nodownsize } }
+tilefromtexture 1792 { file "tiles/1792.png" xoff 13 yoff 18 }
+texture 1792 { pal 0 { file "tiles/1792.png" nocompress nodownsize } }
+tilefromtexture 1793 { file "tiles/1793.png" xoff -6 yoff 19 }
+texture 1793 { pal 0 { file "tiles/1793.png" nocompress nodownsize } }
+tilefromtexture 1794 { file "tiles/1794.png" xoff 3 yoff 19 }
+texture 1794 { pal 0 { file "tiles/1794.png" nocompress nodownsize } }
+tilefromtexture 1795 { file "tiles/1795.png" xoff 2 yoff 19 }
+texture 1795 { pal 0 { file "tiles/1795.png" nocompress nodownsize } }
+tilefromtexture 1796 { file "tiles/1796.png" xoff 23 yoff 18 }
+texture 1796 { pal 0 { file "tiles/1796.png" nocompress nodownsize } }
+tilefromtexture 1797 { file "tiles/1797.png" xoff 24 yoff 18 }
+texture 1797 { pal 0 { file "tiles/1797.png" nocompress nodownsize } }
+tilefromtexture 1798 { file "tiles/1798.png" xoff 6 yoff 18 }
+texture 1798 { pal 0 { file "tiles/1798.png" nocompress nodownsize } }
+tilefromtexture 1799 { file "tiles/1799.png" xoff -2 yoff 18 }
+texture 1799 { pal 0 { file "tiles/1799.png" nocompress nodownsize } }
+tilefromtexture 1890 { file "tiles/1890.png" }
+texture 1890 { pal 0 { file "tiles/1890.png" nocompress nodownsize }
+               pal 51 { file "blend/1890_1.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 1891 { file "tiles/1891.png" }
+texture 1891 { pal 0 { file "tiles/1891.png" nocompress nodownsize }
+               pal 51 { file "blend/1891_1.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 1892 { file "tiles/1892.png" }
+texture 1892 { pal 0 { file "tiles/1892.png" nocompress nodownsize }
+               pal 51 { file "blend/1892_1.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 1893 { file "tiles/1893.png" }
+texture 1893 { pal 0 { file "tiles/1893.png" nocompress nodownsize }
+               pal 51 { file "blend/1893_1.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 1894 { file "tiles/1894.png" }
+texture 1894 { pal 0 { file "tiles/1894.png" nocompress nodownsize }
+               pal 51 { file "blend/1894_1.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 1895 { file "tiles/1895.png" }
+texture 1895 { pal 0 { file "tiles/1895.png" nocompress nodownsize }
+               pal 51 { file "blend/1895_1.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 1896 { file "tiles/1896.png" }
+texture 1896 { pal 0 { file "tiles/1896.png" nocompress nodownsize }
+               pal 51 { file "blend/1896_1.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 1897 { file "tiles/1897.png" }
+texture 1897 { pal 0 { file "tiles/1897.png" nocompress nodownsize }
+               pal 51 { file "blend/1897_1.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 1898 { file "tiles/1898.png" }
+texture 1898 { pal 0 { file "tiles/1898.png" nocompress nodownsize }
+               pal 51 { file "blend/1898_1.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 1899 { file "tiles/1899.png" }
+texture 1899 { pal 0 { file "tiles/1899.png" nocompress nodownsize }
+               pal 51 { file "blend/1899_1.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 1900 { file "tiles/1900.png" }
+texture 1900 { pal 0 { file "tiles/1900.png" nocompress nodownsize }
+               pal 51 { file "blend/1900_1.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 1901 { file "tiles/1901.png" }
+texture 1901 { pal 0 { file "tiles/1901.png" nocompress nodownsize }
+               pal 51 { file "blend/1901_1.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 1902 { file "tiles/1902.png" }
+texture 1902 { pal 0 { file "tiles/1902.png" nocompress nodownsize }
+               pal 51 { file "blend/1902_1.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 1903 { file "tiles/1903.png" }
+texture 1903 { pal 0 { file "tiles/1903.png" nocompress nodownsize }
+               pal 51 { file "blend/1903_1.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 1904 { file "tiles/1904.png" }
+texture 1904 { pal 0 { file "tiles/1904.png" nocompress nodownsize }
+               pal 51 { file "blend/1904_1.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 1905 { file "tiles/1905.png" }
+texture 1905 { pal 0 { file "tiles/1905.png" nocompress nodownsize }
+               pal 51 { file "blend/1905_1.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 1906 { file "tiles/1906.png" }
+texture 1906 { pal 0 { file "tiles/1906.png" nocompress nodownsize }
+               pal 51 { file "blend/1906_1.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 2000 { file "tiles/2000.png" xoff 1 yoff -3 }
+texture 2000 { pal 0 { file "tiles/2000.png" nocompress nodownsize } }
+tilefromtexture 2001 { file "tiles/2001.png" xoff 9 yoff -3 }
+texture 2001 { pal 0 { file "tiles/2001.png" nocompress nodownsize } }
+tilefromtexture 2002 { file "tiles/2002.png" xoff 7 yoff -3 }
+texture 2002 { pal 0 { file "tiles/2002.png" nocompress nodownsize } }
+tilefromtexture 2003 { file "tiles/2003.png" xoff -1 yoff -3 }
+texture 2003 { pal 0 { file "tiles/2003.png" nocompress nodownsize } }
+tilefromtexture 2004 { file "tiles/2004.png" xoff -3 yoff -3 }
+texture 2004 { pal 0 { file "tiles/2004.png" nocompress nodownsize } }
+tilefromtexture 2005 { file "tiles/2005.png" xoff 2 yoff -3 }
+texture 2005 { pal 0 { file "tiles/2005.png" nocompress nodownsize } }
+tilefromtexture 2006 { file "tiles/2006.png" xoff 12 yoff -3 }
+texture 2006 { pal 0 { file "tiles/2006.png" nocompress nodownsize } }
+tilefromtexture 2007 { file "tiles/2007.png" xoff 11 yoff -3 }
+texture 2007 { pal 0 { file "tiles/2007.png" nocompress nodownsize } }
+tilefromtexture 2008 { file "tiles/2008.png" yoff -3 }
+texture 2008 { pal 0 { file "tiles/2008.png" nocompress nodownsize } }
+tilefromtexture 2009 { file "tiles/2009.png" xoff -2 yoff -3 }
+texture 2009 { pal 0 { file "tiles/2009.png" nocompress nodownsize } }
+tilefromtexture 2010 { file "tiles/2010.png" xoff 3 yoff -3 }
+texture 2010 { pal 0 { file "tiles/2010.png" nocompress nodownsize } }
+tilefromtexture 2011 { file "tiles/2011.png" xoff 14 yoff -3 }
+texture 2011 { pal 0 { file "tiles/2011.png" nocompress nodownsize } }
+tilefromtexture 2012 { file "tiles/2012.png" xoff 8 yoff -3 }
+texture 2012 { pal 0 { file "tiles/2012.png" nocompress nodownsize } }
+tilefromtexture 2013 { file "tiles/2013.png" xoff 2 yoff -3 }
+texture 2013 { pal 0 { file "tiles/2013.png" nocompress nodownsize } }
+tilefromtexture 2014 { file "tiles/2014.png" xoff -2 yoff -3 }
+texture 2014 { pal 0 { file "tiles/2014.png" nocompress nodownsize } }
+tilefromtexture 2015 { file "tiles/2015.png" xoff 3 yoff -3 }
+texture 2015 { pal 0 { file "tiles/2015.png" nocompress nodownsize } }
+tilefromtexture 2016 { file "tiles/2016.png" xoff 7 yoff -3 }
+texture 2016 { pal 0 { file "tiles/2016.png" nocompress nodownsize } }
+tilefromtexture 2017 { file "tiles/2017.png" xoff 13 yoff -3 }
+texture 2017 { pal 0 { file "tiles/2017.png" nocompress nodownsize } }
+tilefromtexture 2018 { file "tiles/2018.png" xoff -2 yoff -3 }
+texture 2018 { pal 0 { file "tiles/2018.png" nocompress nodownsize } }
+tilefromtexture 2019 { file "tiles/2019.png" xoff -3 yoff -3 }
+texture 2019 { pal 0 { file "tiles/2019.png" nocompress nodownsize } }
+tilefromtexture 2025 { file "tiles/2025.png" xoff 6 yoff -3 }
+texture 2025 { pal 0 { file "tiles/2025.png" nocompress nodownsize } }
+tilefromtexture 2026 { file "tiles/2026.png" xoff 4 yoff -3 }
+texture 2026 { pal 0 { file "tiles/2026.png" nocompress nodownsize } }
+tilefromtexture 2027 { file "tiles/2027.png" xoff -4 yoff -3 }
+texture 2027 { pal 0 { file "tiles/2027.png" nocompress nodownsize } }
+tilefromtexture 2030 { file "tiles/2030.png" yoff -3 }
+texture 2030 { pal 0 { file "tiles/2030.png" nocompress nodownsize } }
+tilefromtexture 2031 { file "tiles/2031.png" xoff 5 yoff -3 }
+texture 2031 { pal 0 { file "tiles/2031.png" nocompress nodownsize } }
+tilefromtexture 2032 { file "tiles/2032.png" yoff -3 }
+texture 2032 { pal 0 { file "tiles/2032.png" nocompress nodownsize } }
+tilefromtexture 2033 { file "tiles/2033.png" yoff -3 }
+texture 2033 { pal 0 { file "tiles/2033.png" nocompress nodownsize } }
+tilefromtexture 2034 { file "tiles/2034.png" xoff -6 yoff -3 }
+texture 2034 { pal 0 { file "tiles/2034.png" nocompress nodownsize } }
+tilefromtexture 2035 { file "tiles/2035.png" xoff 3 yoff -3 }
+texture 2035 { pal 0 { file "tiles/2035.png" nocompress nodownsize } }
+tilefromtexture 2036 { file "tiles/2036.png" xoff 10 yoff -3 }
+texture 2036 { pal 0 { file "tiles/2036.png" nocompress nodownsize } }
+tilefromtexture 2037 { file "tiles/2037.png" xoff 4 yoff -3 }
+texture 2037 { pal 0 { file "tiles/2037.png" nocompress nodownsize } }
+tilefromtexture 2040 { file "tiles/2040.png" }
+texture 2040 { pal 0 { file "tiles/2040.png" nocompress nodownsize } }
+tilefromtexture 2041 { file "tiles/2041.png" }
+texture 2041 { pal 0 { file "tiles/2041.png" nocompress nodownsize } }
+tilefromtexture 2042 { file "tiles/2042.png" }
+texture 2042 { pal 0 { file "tiles/2042.png" nocompress nodownsize } }
+tilefromtexture 2043 { file "tiles/2043.png" }
+texture 2043 { pal 0 { file "tiles/2043.png" nocompress nodownsize } }
+tilefromtexture 2044 { file "tiles/2044.png" }
+texture 2044 { pal 0 { file "tiles/2044.png" nocompress nodownsize } }
+tilefromtexture 2045 { file "tiles/2045.png" yoff -3 }
+texture 2045 { pal 0 { file "tiles/2045.png" nocompress nodownsize } }
+tilefromtexture 2046 { file "tiles/2046.png" yoff -3 }
+texture 2046 { pal 0 { file "tiles/2046.png" nocompress nodownsize } }
+tilefromtexture 2047 { file "tiles/2047.png" yoff -3 }
+texture 2047 { pal 0 { file "tiles/2047.png" nocompress nodownsize } }
+tilefromtexture 2048 { file "tiles/2048.png" yoff -3 }
+texture 2048 { pal 0 { file "tiles/2048.png" nocompress nodownsize } }
+tilefromtexture 2049 { file "tiles/2049.png" yoff -3 }
+texture 2049 { pal 0 { file "tiles/2049.png" nocompress nodownsize } }
+tilefromtexture 2050 { file "tiles/2050.png" yoff -3 }
+texture 2050 { pal 0 { file "tiles/2050.png" nocompress nodownsize } }
+tilefromtexture 2051 { file "tiles/2051.png" xoff 6 yoff -3 }
+texture 2051 { pal 0 { file "tiles/2051.png" nocompress nodownsize } }
+tilefromtexture 2052 { file "tiles/2052.png" xoff 5 yoff -3 }
+texture 2052 { pal 0 { file "tiles/2052.png" nocompress nodownsize } }
+tilefromtexture 2055 { file "tiles/2055.png" xoff 9 yoff -3 }
+texture 2055 { pal 0 { file "tiles/2055.png" nocompress nodownsize } }
+tilefromtexture 2056 { file "tiles/2056.png" xoff -7 yoff -3 }
+texture 2056 { pal 0 { file "tiles/2056.png" nocompress nodownsize } }
+tilefromtexture 2057 { file "tiles/2057.png" xoff -11 yoff -3 }
+texture 2057 { pal 0 { file "tiles/2057.png" nocompress nodownsize } }
+tilefromtexture 2058 { file "tiles/2058.png" xoff -7 yoff -3 }
+texture 2058 { pal 0 { file "tiles/2058.png" nocompress nodownsize } }
+tilefromtexture 2059 { file "tiles/2059.png" yoff -3 }
+texture 2059 { pal 0 { file "tiles/2059.png" nocompress nodownsize } }
+tilefromtexture 2060 { file "tiles/2060.png" yoff -3 }
+texture 2060 { pal 0 { file "tiles/2060.png" nocompress nodownsize } }
+texture 2270 { pal 51 { file "blend/2270_1.png" nocompress nodownsize alphacut 0 } }
+texture 2271 { pal 51 { file "blend/2271_1.png" nocompress nodownsize alphacut 0 } }
+texture 2272 { pal 51 { file "blend/2272_1.png" nocompress nodownsize alphacut 0 } }
+texture 2273 { pal 51 { file "blend/2273_1.png" nocompress nodownsize alphacut 0 } }
+texture 2274 { pal 51 { file "blend/2274_1.png" nocompress nodownsize alphacut 0 } }
+texture 2275 { pal 51 { file "blend/2275_1.png" nocompress nodownsize alphacut 0 } }
+texture 2276 { pal 51 { file "blend/2276_1.png" nocompress nodownsize alphacut 0 } }
+texture 2277 { pal 51 { file "blend/2277_1.png" nocompress nodownsize alphacut 0 } }
+texture 2278 { pal 51 { file "blend/2278_1.png" nocompress nodownsize alphacut 0 } }
+texture 2279 { pal 51 { file "blend/2279_1.png" nocompress nodownsize alphacut 0 } }
+texture 2280 { pal 51 { file "blend/2280_1.png" nocompress nodownsize alphacut 0 } }
+texture 2281 { pal 51 { file "blend/2281_1.png" nocompress nodownsize alphacut 0 } }
+texture 2282 { pal 51 { file "blend/2282_1.png" nocompress nodownsize alphacut 0 } }
+texture 2283 { pal 51 { file "blend/2283_1.png" nocompress nodownsize alphacut 0 } }
+texture 2310 { pal 51 { file "blend/2310_1.png" nocompress nodownsize alphacut 0 } }
+texture 2311 { pal 51 { file "blend/2311_1.png" nocompress nodownsize alphacut 0 } }
+texture 2312 { pal 51 { file "blend/2312_1.png" nocompress nodownsize alphacut 0 } }
+texture 2313 { pal 51 { file "blend/2313_1.png" nocompress nodownsize alphacut 0 } }
+texture 2314 { pal 51 { file "blend/2314_1.png" nocompress nodownsize alphacut 0 } }
+texture 2315 { pal 51 { file "blend/2315_1.png" nocompress nodownsize alphacut 0 } }
+texture 2316 { pal 51 { file "blend/2316_1.png" nocompress nodownsize alphacut 0 } }
+texture 2317 { pal 51 { file "blend/2317_1.png" nocompress nodownsize alphacut 0 } }
+texture 2318 { pal 51 { file "blend/2318_1.png" nocompress nodownsize alphacut 0 } }
+texture 2319 { pal 51 { file "blend/2319_1.png" nocompress nodownsize alphacut 0 } }
+texture 2320 { pal 51 { file "blend/2320_1.png" nocompress nodownsize alphacut 0 } }
+texture 2321 { pal 51 { file "blend/2321_1.png" nocompress nodownsize alphacut 0 } }
+texture 2322 { pal 51 { file "blend/2322_1.png" nocompress nodownsize alphacut 0 } }
+texture 2323 { pal 51 { file "blend/2323_1.png" nocompress nodownsize alphacut 0 } }
+texture 2448 { pal 56 { file "blend/2448_6.png" nocompress nodownsize alphacut 0 } }
+texture 2449 { pal 56 { file "blend/2449_6.png" nocompress nodownsize alphacut 0 } }
+texture 2450 { pal 56 { file "blend/2450_6.png" nocompress nodownsize alphacut 0 } }
+texture 2451 { pal 56 { file "blend/2451_6.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 2521 { file "tiles/2521.png" xoff -3 yoff 1 }
+texture 2521 { pal 0 { file "tiles/2521.png" nocompress nodownsize } }
+tilefromtexture 2522 { file "tiles/2522.png" xoff -4 yoff 1 }
+texture 2522 { pal 0 { file "tiles/2522.png" nocompress nodownsize } }
+tilefromtexture 2523 { file "tiles/2523.png" xoff -4 yoff -4 }
+//texture 2523 { pal 0 { file "tiles/2523.png" nocompress nodownsize } }
+tilefromtexture 2524 { file "tiles/2524.png" xoff -17 yoff 8 }
+tilefromtexture 2525 { file "tiles/2525.png" xoff -17 yoff 8 }
+tilefromtexture 2528 { file "tiles/2528.png" xoff -75 yoff -6 }
+tilefromtexture 2529 { file "tiles/2529.png" xoff -35 yoff -1 }
+tilefromtexture 2531 { file "tiles/2531.png" xoff -7 yoff -6 }
+tilefromtexture 2536 { file "tiles/2536.png" xoff -6 yoff 32 }
+tilefromtexture 2539 { file "tiles/2539.png" }
+texture 2539 { pal 0 { file "tiles/2539.png" nocompress nodownsize } }
+tilefromtexture 2544 { file "tiles/2544.png" xoff -50 yoff -55 }
+tilefromtexture 2545 { file "tiles/2545.png" xoff -121 yoff 5 }
+texture 2545 { pal 0 { file "tiles/2545.png" nocompress nodownsize } }
+tilefromtexture 2548 { file "tiles/2548.png" xoff 17 yoff 18 }
+tilefromtexture 2554 { file "tiles/2554.png" xoff -7 yoff 15 }
+tilefromtexture 2556 { file "tiles/2556.png" xoff -7 yoff 15 }
+tilefromtexture 2566 { file "tiles/2566.png" xoff -7 }
+texture 2566 { pal 0 { file "tiles/2566.png" nocompress nodownsize } }
+tilefromtexture 2570 { file "tiles/2570.png" xoff 31 yoff 12 }
+tilefromtexture 2572 { file "tiles/2572.png" xoff 46 yoff 9 }
+tilefromtexture 2573 { file "tiles/2573.png" xoff -26 yoff 27 }
+tilefromtexture 2574 { file "tiles/2574.png" xoff -20 yoff -4 }
+tilefromtexture 2595 { file "tiles/2595.png" }
+texture 2595 { pal 0 { file "tiles/2595.png" nocompress nodownsize }
+               pal 52 { file "blend/2595_2.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 2596 { file "tiles/2596.png" }
+texture 2596 { pal 0 { file "tiles/2596.png" nocompress nodownsize }
+               pal 52 { file "blend/2596_2.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 2597 { file "tiles/2597.png" }
+texture 2597 { pal 0 { file "tiles/2597.png" nocompress nodownsize }
+               pal 52 { file "blend/2597_2.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 2598 { file "tiles/2598.png" }
+texture 2598 { pal 0 { file "tiles/2598.png" nocompress nodownsize }
+               pal 52 { file "blend/2598_2.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 2599 { file "tiles/2599.png" }
+texture 2599 { pal 0 { file "tiles/2599.png" nocompress nodownsize }
+               pal 52 { file "blend/2599_2.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 2600 { file "tiles/2600.png" }
+texture 2600 { pal 0 { file "tiles/2600.png" nocompress nodownsize }
+               pal 52 { file "blend/2600_2.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 2601 { file "tiles/2601.png" }
+texture 2601 { pal 0 { file "tiles/2601.png" nocompress nodownsize }
+               pal 52 { file "blend/2601_2.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 2605 { file "tiles/2605.png" }
+texture 2605 { pal 0 { file "tiles/2605.png" nocompress nodownsize } }
+tilefromtexture 2606 { file "tiles/2606.png" xoff 15 }
+texture 2606 { pal 0 { file "tiles/2606.png" nocompress nodownsize } }
+tilefromtexture 2607 { file "tiles/2607.png" xoff 29 yoff -2 }
+texture 2607 { pal 0 { file "tiles/2607.png" nocompress nodownsize } }
+tilefromtexture 2608 { file "tiles/2608.png" xoff 41 }
+texture 2608 { pal 0 { file "tiles/2608.png" nocompress nodownsize } }
+tilefromtexture 2609 { file "tiles/2609.png" xoff 27 }
+texture 2609 { pal 0 { file "tiles/2609.png" nocompress nodownsize } }
+tilefromtexture 2610 { file "tiles/2610.png" xoff 11 yoff 1 }
+texture 2610 { pal 0 { file "tiles/2610.png" nocompress nodownsize } }
+tilefromtexture 2611 { file "tiles/2611.png" xoff 1 }
+texture 2611 { pal 0 { file "tiles/2611.png" nocompress nodownsize } }
+tilefromtexture 2613 { file "tiles/2613.png" xoff -70 yoff -42 }
+tilefromtexture 2616 { file "tiles/2616.png" xoff -37 yoff -15 }
+tilefromtexture 2617 { file "tiles/2617.png" xoff -11 yoff -17 }
+tilefromtexture 2618 { file "tiles/2618.png" xoff 16 yoff -4 }
+tilefromtexture 2619 { file "tiles/2619.png" xoff 8 yoff -8 }
+tilefromtexture 2822 { file "tiles/2822.png" }
+tilefromtexture 2822 { file "tiles/2822.png" yoff 2 }
+texture 2822 { pal 0 { file "tiles/2822.png" nocompress nodownsize } }
+tilefromtexture 2823 { file "tiles/2823.png" yoff 3 }
+texture 2823 { pal 0 { file "tiles/2823.png" nocompress nodownsize } }
+tilefromtexture 2824 { file "tiles/2824.png" yoff 2 }
+texture 2824 { pal 0 { file "tiles/2824.png" nocompress nodownsize } }
+tilefromtexture 2825 { file "tiles/2825.png" yoff 2 }
+texture 2825 { pal 0 { file "tiles/2825.png" nocompress nodownsize } }
+tilefromtexture 2826 { file "tiles/2826.png" yoff 2 }
+texture 2826 { pal 0 { file "tiles/2826.png" nocompress nodownsize } }
+tilefromtexture 2827 { file "tiles/2827.png" yoff 2 }
+texture 2827 { pal 0 { file "tiles/2827.png" nocompress nodownsize } }
+tilefromtexture 2828 { file "tiles/2828.png" }
+texture 2828 { pal 0 { file "tiles/2828.png" nocompress nodownsize } }
+tilefromtexture 2829 { file "tiles/2829.png" yoff 2 }
+texture 2829 { pal 0 { file "tiles/2829.png" nocompress nodownsize } }
+tilefromtexture 2830 { file "tiles/2830.png" yoff 2 }
+texture 2830 { pal 0 { file "tiles/2830.png" nocompress nodownsize } }
+tilefromtexture 2831 { file "tiles/2831.png" yoff 2 }
+texture 2831 { pal 0 { file "tiles/2831.png" nocompress nodownsize } }
+tilefromtexture 2832 { file "tiles/2832.png" yoff 2 }
+texture 2832 { pal 0 { file "tiles/2832.png" nocompress nodownsize } }
+tilefromtexture 2833 { file "tiles/2833.png" }
+texture 2833 { pal 0 { file "tiles/2833.png" nocompress nodownsize } }
+tilefromtexture 2834 { file "tiles/2834.png" yoff 3 }
+texture 2834 { pal 0 { file "tiles/2834.png" nocompress nodownsize } }
+tilefromtexture 2835 { file "tiles/2835.png" xoff -1 }
+texture 2835 { pal 0 { file "tiles/2835.png" nocompress nodownsize } }
+tilefromtexture 2836 { file "tiles/2836.png" xoff -1 yoff 2 }
+texture 2836 { pal 0 { file "tiles/2836.png" nocompress nodownsize } }
+tilefromtexture 2837 { file "tiles/2837.png" yoff 2 }
+texture 2837 { pal 0 { file "tiles/2837.png" nocompress nodownsize } }
+tilefromtexture 2838 { file "tiles/2838.png" xoff 1 yoff 2 }
+texture 2838 { pal 0 { file "tiles/2838.png" nocompress nodownsize } }
+tilefromtexture 2839 { file "tiles/2839.png" yoff 2 }
+texture 2839 { pal 0 { file "tiles/2839.png" nocompress nodownsize } }
+tilefromtexture 2840 { file "tiles/2840.png" yoff 2 }
+texture 2840 { pal 0 { file "tiles/2840.png" nocompress nodownsize } }
+tilefromtexture 2841 { file "tiles/2841.png" yoff 2 }
+texture 2841 { pal 0 { file "tiles/2841.png" nocompress nodownsize } }
+tilefromtexture 2842 { file "tiles/2842.png" yoff 2 }
+texture 2842 { pal 0 { file "tiles/2842.png" nocompress nodownsize } }
+tilefromtexture 2843 { file "tiles/2843.png" yoff 2 }
+texture 2843 { pal 0 { file "tiles/2843.png" nocompress nodownsize } }
+tilefromtexture 2844 { file "tiles/2844.png" yoff 2 }
+texture 2844 { pal 0 { file "tiles/2844.png" nocompress nodownsize } }
+tilefromtexture 2845 { file "tiles/2845.png" yoff 2 }
+texture 2845 { pal 0 { file "tiles/2845.png" nocompress nodownsize } }
+tilefromtexture 2846 { file "tiles/2846.png" yoff 2 }
+texture 2846 { pal 0 { file "tiles/2846.png" nocompress nodownsize } }
+tilefromtexture 2847 { file "tiles/2847.png" yoff 2 }
+texture 2847 { pal 0 { file "tiles/2847.png" nocompress nodownsize } }
+tilefromtexture 2848 { file "tiles/2848.png" yoff 2 }
+texture 2848 { pal 0 { file "tiles/2848.png" nocompress nodownsize } }
+tilefromtexture 2849 { file "tiles/2849.png" yoff 2 }
+texture 2849 { pal 0 { file "tiles/2849.png" nocompress nodownsize } }
+tilefromtexture 2850 { file "tiles/2850.png" yoff 3 }
+texture 2850 { pal 0 { file "tiles/2850.png" nocompress nodownsize } }
+tilefromtexture 2851 { file "tiles/2851.png" yoff 2 }
+texture 2851 { pal 0 { file "tiles/2851.png" nocompress nodownsize } }
+tilefromtexture 2852 { file "tiles/2852.png" xoff -1 yoff 2 }
+texture 2852 { pal 0 { file "tiles/2852.png" nocompress nodownsize } }
+tilefromtexture 2853 { file "tiles/2853.png" yoff 2 }
+texture 2853 { pal 0 { file "tiles/2853.png" nocompress nodownsize } }
+tilefromtexture 2854 { file "tiles/2854.png" yoff 2 }
+texture 2854 { pal 0 { file "tiles/2854.png" nocompress nodownsize } }
+tilefromtexture 2855 { file "tiles/2855.png" yoff 2 }
+texture 2855 { pal 0 { file "tiles/2855.png" nocompress nodownsize } }
+tilefromtexture 2856 { file "tiles/2856.png" yoff 2 }
+texture 2856 { pal 0 { file "tiles/2856.png" nocompress nodownsize } }
+tilefromtexture 2857 { file "tiles/2857.png" yoff 2 }
+texture 2857 { pal 0 { file "tiles/2857.png" nocompress nodownsize } }
+tilefromtexture 2858 { file "tiles/2858.png" yoff 2 }
+texture 2858 { pal 0 { file "tiles/2858.png" nocompress nodownsize } }
+tilefromtexture 2859 { file "tiles/2859.png" yoff 2 }
+texture 2859 { pal 0 { file "tiles/2859.png" nocompress nodownsize } }
+tilefromtexture 2860 { file "tiles/2860.png" yoff 2 }
+texture 2860 { pal 0 { file "tiles/2860.png" nocompress nodownsize } }
+tilefromtexture 2861 { file "tiles/2861.png" yoff 2 }
+texture 2861 { pal 0 { file "tiles/2861.png" nocompress nodownsize } }
+tilefromtexture 2862 { file "tiles/2862.png" yoff 2 }
+texture 2862 { pal 0 { file "tiles/2862.png" nocompress nodownsize } }
+tilefromtexture 2863 { file "tiles/2863.png" yoff 2 }
+texture 2863 { pal 0 { file "tiles/2863.png" nocompress nodownsize } }
+tilefromtexture 2864 { file "tiles/2864.png" yoff 2 }
+texture 2864 { pal 0 { file "tiles/2864.png" nocompress nodownsize } }
+tilefromtexture 2865 { file "tiles/2865.png" yoff 2 }
+texture 2865 { pal 0 { file "tiles/2865.png" nocompress nodownsize } }
+tilefromtexture 2866 { file "tiles/2866.png" xoff -1 yoff 2 }
+texture 2866 { pal 0 { file "tiles/2866.png" nocompress nodownsize } }
+tilefromtexture 2867 { file "tiles/2867.png" yoff 2 }
+texture 2867 { pal 0 { file "tiles/2867.png" nocompress nodownsize } }
+tilefromtexture 2868 { file "tiles/2868.png" yoff 2 }
+texture 2868 { pal 0 { file "tiles/2868.png" nocompress nodownsize } }
+tilefromtexture 2869 { file "tiles/2869.png" yoff 2 }
+texture 2869 { pal 0 { file "tiles/2869.png" nocompress nodownsize } }
+tilefromtexture 2870 { file "tiles/2870.png" yoff 1 }
+texture 2870 { pal 0 { file "tiles/2870.png" nocompress nodownsize } }
+tilefromtexture 2871 { file "tiles/2871.png" yoff 2 }
+texture 2871 { pal 0 { file "tiles/2871.png" nocompress nodownsize } }
+tilefromtexture 2872 { file "tiles/2872.png" yoff 2 }
+texture 2872 { pal 0 { file "tiles/2872.png" nocompress nodownsize } }
+tilefromtexture 2873 { file "tiles/2873.png" yoff 2 }
+texture 2873 { pal 0 { file "tiles/2873.png" nocompress nodownsize } }
+tilefromtexture 2874 { file "tiles/2874.png" yoff 2 }
+texture 2874 { pal 0 { file "tiles/2874.png" nocompress nodownsize } }
+tilefromtexture 2875 { file "tiles/2875.png" yoff 2 }
+texture 2875 { pal 0 { file "tiles/2875.png" nocompress nodownsize } }
+tilefromtexture 2876 { file "tiles/2876.png" xoff -1 yoff 2 }
+texture 2876 { pal 0 { file "tiles/2876.png" nocompress nodownsize } }
+tilefromtexture 2877 { file "tiles/2877.png" yoff 2 }
+texture 2877 { pal 0 { file "tiles/2877.png" nocompress nodownsize } }
+tilefromtexture 2878 { file "tiles/2878.png" yoff 2 }
+texture 2878 { pal 0 { file "tiles/2878.png" nocompress nodownsize } }
+tilefromtexture 2879 { file "tiles/2879.png" yoff 2 }
+texture 2879 { pal 0 { file "tiles/2879.png" nocompress nodownsize } }
+tilefromtexture 2929 { file "tiles/2929.png" }
+tilefromtexture 2929 { file "tiles/2929.png" }
+texture 2929 { pal 0 { file "tiles/2929.png" nocompress nodownsize } }
+tilefromtexture 2930 { file "tiles/2930.png" yoff 5 }
+texture 2930 { pal 0 { file "tiles/2930.png" nocompress nodownsize } }
+tilefromtexture 2931 { file "tiles/2931.png" yoff 5 }
+texture 2931 { pal 0 { file "tiles/2931.png" nocompress nodownsize } }
+tilefromtexture 2932 { file "tiles/2932.png" yoff 5 }
+texture 2932 { pal 0 { file "tiles/2932.png" nocompress nodownsize } }
+tilefromtexture 2933 { file "tiles/2933.png" yoff 5 }
+texture 2933 { pal 0 { file "tiles/2933.png" nocompress nodownsize } }
+tilefromtexture 2934 { file "tiles/2934.png" yoff 5 }
+texture 2934 { pal 0 { file "tiles/2934.png" nocompress nodownsize } }
+tilefromtexture 2935 { file "tiles/2935.png" yoff 5 }
+texture 2935 { pal 0 { file "tiles/2935.png" nocompress nodownsize } }
+tilefromtexture 2936 { file "tiles/2936.png" yoff 5 }
+texture 2936 { pal 0 { file "tiles/2936.png" nocompress nodownsize } }
+tilefromtexture 2937 { file "tiles/2937.png" yoff 5 }
+texture 2937 { pal 0 { file "tiles/2937.png" nocompress nodownsize } }
+tilefromtexture 2938 { file "tiles/2938.png" yoff 5 }
+texture 2938 { pal 0 { file "tiles/2938.png" nocompress nodownsize } }
+tilefromtexture 2939 { file "tiles/2939.png" yoff 5 }
+texture 2939 { pal 0 { file "tiles/2939.png" nocompress nodownsize } }
+tilefromtexture 2940 { file "tiles/2940.png" xoff -4 yoff 5 }
+texture 2940 { pal 0 { file "tiles/2940.png" nocompress nodownsize } }
+tilefromtexture 2941 { file "tiles/2941.png" xoff -4 yoff 5 }
+texture 2941 { pal 0 { file "tiles/2941.png" nocompress nodownsize } }
+tilefromtexture 2942 { file "tiles/2942.png" xoff -4 yoff 5 }
+texture 2942 { pal 0 { file "tiles/2942.png" nocompress nodownsize } }
+tilefromtexture 2943 { file "tiles/2943.png" xoff -4 yoff 5 }
+texture 2943 { pal 0 { file "tiles/2943.png" nocompress nodownsize } }
+tilefromtexture 2944 { file "tiles/2944.png" xoff -4 yoff 5 }
+texture 2944 { pal 0 { file "tiles/2944.png" nocompress nodownsize } }
+tilefromtexture 2945 { file "tiles/2945.png" xoff -4 yoff 5 }
+texture 2945 { pal 0 { file "tiles/2945.png" nocompress nodownsize } }
+tilefromtexture 2946 { file "tiles/2946.png" xoff -4 yoff 5 }
+texture 2946 { pal 0 { file "tiles/2946.png" nocompress nodownsize } }
+tilefromtexture 2947 { file "tiles/2947.png" xoff -4 yoff 5 }
+texture 2947 { pal 0 { file "tiles/2947.png" nocompress nodownsize } }
+tilefromtexture 2948 { file "tiles/2948.png" xoff -2 yoff 5 }
+texture 2948 { pal 0 { file "tiles/2948.png" nocompress nodownsize } }
+tilefromtexture 2949 { file "tiles/2949.png" xoff -4 yoff 5 }
+texture 2949 { pal 0 { file "tiles/2949.png" nocompress nodownsize } }
+tilefromtexture 2950 { file "tiles/2950.png" xoff -4 yoff 5 }
+texture 2950 { pal 0 { file "tiles/2950.png" nocompress nodownsize } }
+tilefromtexture 2951 { file "tiles/2951.png" xoff -4 yoff 5 }
+texture 2951 { pal 0 { file "tiles/2951.png" nocompress nodownsize } }
+tilefromtexture 2952 { file "tiles/2952.png" xoff -4 yoff 5 }
+texture 2952 { pal 0 { file "tiles/2952.png" nocompress nodownsize } }
+tilefromtexture 2953 { file "tiles/2953.png" xoff -4 yoff 5 }
+texture 2953 { pal 0 { file "tiles/2953.png" nocompress nodownsize } }
+tilefromtexture 2954 { file "tiles/2954.png" xoff -4 yoff 5 }
+texture 2954 { pal 0 { file "tiles/2954.png" nocompress nodownsize } }
+tilefromtexture 2955 { file "tiles/2955.png" xoff -4 yoff 5 }
+texture 2955 { pal 0 { file "tiles/2955.png" nocompress nodownsize } }
+tilefromtexture 2956 { file "tiles/2956.png" xoff -4 yoff 5 }
+texture 2956 { pal 0 { file "tiles/2956.png" nocompress nodownsize } }
+tilefromtexture 2957 { file "tiles/2957.png" xoff -4 yoff 5 }
+texture 2957 { pal 0 { file "tiles/2957.png" nocompress nodownsize } }
+tilefromtexture 2958 { file "tiles/2958.png" xoff -4 yoff 5 }
+texture 2958 { pal 0 { file "tiles/2958.png" nocompress nodownsize } }
+tilefromtexture 2959 { file "tiles/2959.png" xoff -4 yoff 5 }
+texture 2959 { pal 0 { file "tiles/2959.png" nocompress nodownsize } }
+tilefromtexture 2960 { file "tiles/2960.png" xoff -4 yoff 5 }
+texture 2960 { pal 0 { file "tiles/2960.png" nocompress nodownsize } }
+tilefromtexture 2961 { file "tiles/2961.png" xoff -4 yoff 5 }
+texture 2961 { pal 0 { file "tiles/2961.png" nocompress nodownsize } }
+tilefromtexture 2962 { file "tiles/2962.png" xoff -4 yoff 5 }
+texture 2962 { pal 0 { file "tiles/2962.png" nocompress nodownsize } }
+tilefromtexture 2963 { file "tiles/2963.png" xoff -4 yoff 5 }
+texture 2963 { pal 0 { file "tiles/2963.png" nocompress nodownsize } }
+tilefromtexture 2964 { file "tiles/2964.png" xoff -4 yoff 5 }
+texture 2964 { pal 0 { file "tiles/2964.png" nocompress nodownsize } }
+tilefromtexture 2965 { file "tiles/2965.png" xoff -4 yoff 5 }
+texture 2965 { pal 0 { file "tiles/2965.png" nocompress nodownsize } }
+tilefromtexture 3002 { file "tiles/3002.png" xoff -1 yoff -1 }
+texture 3002 { pal 0 { file "tiles/3002.png" nocompress nodownsize } }
+tilefromtexture 3003 { file "tiles/3003.png" xoff -1 }
+texture 3003 { pal 0 { file "tiles/3003.png" nocompress nodownsize } }
+tilefromtexture 3004 { file "tiles/3004.png" xoff -2 yoff 5 }
+texture 3004 { pal 0 { file "tiles/3004.png" nocompress nodownsize } }
+tilefromtexture 3005 { file "tiles/3005.png" xoff -4 yoff 5 }
+texture 3005 { pal 0 { file "tiles/3005.png" nocompress nodownsize } }
+tilefromtexture 3006 { file "tiles/3006.png" xoff -1 yoff 1 }
+texture 3006 { pal 0 { file "tiles/3006.png" nocompress nodownsize } }
+tilefromtexture 3007 { file "tiles/3007.png" xoff -1 yoff 4 }
+texture 3007 { pal 0 { file "tiles/3007.png" nocompress nodownsize } }
+tilefromtexture 3008 { file "tiles/3008.png" }
+texture 3008 { pal 0 { file "tiles/3008.png" nocompress nodownsize } }
+tilefromtexture 3009 { file "tiles/3009.png" }
+texture 3009 { pal 0 { file "tiles/3009.png" nocompress nodownsize } }
+tilefromtexture 3022 { file "tiles/3022.png" }
+texture 3022 { pal 0 { file "tiles/3022.png" nocompress nodownsize } }
+tilefromtexture 3370 { file "tiles/temp/3370.png" }
+texture 3370 { pal 0 { file "tiles/3370.png" nocompress nodownsize } }
+tilefromtexture 3371 { file "tiles/temp/3371.png" }
+texture 3371 { pal 0 { file "tiles/3371.png" nocompress nodownsize } }
+tilefromtexture 3372 { file "tiles/temp/3372.png" }
+texture 3372 { pal 0 { file "tiles/3372.png" nocompress nodownsize } }
+tilefromtexture 3585 { file "tiles/3585.png" }
+texture 3585 { pal 0 { file "tiles/3585.png" nocompress nodownsize } }
+tilefromtexture 3586 { file "tiles/3586.png" }
+texture 3586 { pal 0 { file "tiles/3586.png" nocompress nodownsize } }
+tilefromtexture 3587 { file "tiles/3587.png" }
+texture 3587 { pal 0 { file "tiles/3587.png" nocompress nodownsize } }
+tilefromtexture 3588 { file "tiles/3588.png" }
+texture 3588 { pal 0 { file "tiles/3588.png" nocompress nodownsize } }
+tilefromtexture 3589 { file "tiles/3589.png" }
+texture 3589 { pal 0 { file "tiles/3589.png" nocompress nodownsize } }
+tilefromtexture 3590 { file "tiles/3590.png" }
+texture 3590 { pal 0 { file "tiles/3590.png" nocompress nodownsize } }
+tilefromtexture 3591 { file "tiles/3591.png" }
+texture 3591 { pal 0 { file "tiles/3591.png" nocompress nodownsize } }
+tilefromtexture 3592 { file "tiles/3592.png" }
+texture 3592 { pal 0 { file "tiles/3592.png" nocompress nodownsize } }
+tilefromtexture 3593 { file "tiles/3593.png" }
+texture 3593 { pal 0 { file "tiles/3593.png" nocompress nodownsize } }
+tilefromtexture 3594 { file "tiles/3594.png" }
+texture 3594 { pal 0 { file "tiles/3594.png" nocompress nodownsize } }
+tilefromtexture 3595 { file "tiles/3595.png" }
+texture 3595 { pal 0 { file "tiles/3595.png" nocompress nodownsize } }
+tilefromtexture 3596 { file "tiles/3596.png" }
+tilefromtexture 3597 { file "tiles/3597.png" }
+texture 3597 { pal 0 { file "tiles/3597.png" nocompress nodownsize } }
+tilefromtexture 3598 { file "tiles/3598.png" }
+texture 3598 { pal 0 { file "tiles/3598.png" nocompress nodownsize } }
+tilefromtexture 3600 { file "tiles/3600.png" }
+texture 3600 { pal 0 { file "tiles/3600.png" nocompress nodownsize } }
+tilefromtexture 3601 { file "tiles/3601.png" }
+texture 3601 { pal 0 { file "tiles/3601.png" nocompress nodownsize } }
+tilefromtexture 3602 { file "tiles/3602.png" }
+texture 3602 { pal 0 { file "tiles/3602.png" nocompress nodownsize } }
+tilefromtexture 3603 { file "tiles/3603.png" }
+texture 3603 { pal 0 { file "tiles/3603.png" nocompress nodownsize } }
+tilefromtexture 3604 { file "tiles/3604.png" }
+texture 3604 { pal 0 { file "tiles/3604.png" nocompress nodownsize } }
+tilefromtexture 3605 { file "tiles/3605.png" }
+texture 3605 { pal 0 { file "tiles/3605.png" nocompress nodownsize } }
+tilefromtexture 3606 { file "tiles/3606.png" }
+texture 3606 { pal 0 { file "tiles/3606.png" nocompress nodownsize } }
+tilefromtexture 3607 { file "tiles/3607.png" }
+texture 3607 { pal 0 { file "tiles/3607.png" nocompress nodownsize } }
+tilefromtexture 3608 { file "tiles/3608.png" }
+texture 3608 { pal 0 { file "tiles/3608.png" nocompress nodownsize } }
+tilefromtexture 3610 { file "tiles/temp/3610.png" }
+texture 3610 { pal 0 { file "tiles/3610.png" nocompress nodownsize } }
+tilefromtexture 3612 { file "tiles/temp/3612.png" }
+texture 3612 { pal 0 { file "tiles/3612.png" nocompress nodownsize } }
+tilefromtexture 3613 { file "tiles/3613.png" }
+texture 3613 { pal 0 { file "tiles/3613.png" nocompress nodownsize } }
+tilefromtexture 3614 { file "tiles/3614.png" }
+texture 3614 { pal 0 { file "tiles/3614.png" nocompress nodownsize } }
+tilefromtexture 3615 { file "tiles/3615.png" }
+texture 3615 { pal 0 { file "tiles/3615.png" nocompress nodownsize } }
+tilefromtexture 3616 { file "tiles/3616.png" }
+texture 3616 { pal 0 { file "tiles/3616.png" nocompress nodownsize } }
+tilefromtexture 3618 { file "tiles/3618.png" }
+texture 3618 { pal 0 { file "tiles/3618.png" nocompress nodownsize } }
+tilefromtexture 3619 { file "tiles/3619.png" }
+texture 3619 { pal 0 { file "tiles/3619.png" nocompress nodownsize } }
+tilefromtexture 3620 { file "tiles/3620.png" }
+texture 3620 { pal 0 { file "tiles/3620.png" nocompress nodownsize } }
+tilefromtexture 3621 { file "tiles/3621.png" }
+texture 3621 { pal 0 { file "tiles/3621.png" nocompress nodownsize } }
+tilefromtexture 3622 { file "tiles/3622.png" }
+texture 3622 { pal 0 { file "tiles/3622.png" nocompress nodownsize } }
+tilefromtexture 3623 { file "tiles/3623.png" }
+texture 3623 { pal 0 { file "tiles/3623.png" nocompress nodownsize } }
+tilefromtexture 3624 { file "tiles/3624.png" }
+texture 3624 { pal 0 { file "tiles/3624.png" nocompress nodownsize } }
+tilefromtexture 3625 { file "tiles/3625.png" }
+texture 3625 { pal 0 { file "tiles/3625.png" nocompress nodownsize } }
+tilefromtexture 3627 { file "tiles/3627.png" }
+texture 3627 { pal 0 { file "tiles/3627.png" nocompress nodownsize } }
+tilefromtexture 3628 { file "tiles/3628.png" }
+texture 3628 { pal 0 { file "tiles/3628.png" nocompress nodownsize } }
+tilefromtexture 3630 { file "tiles/3630.png" }
+texture 3630 { pal 0 { file "tiles/3630.png" nocompress nodownsize } }
+tilefromtexture 3631 { file "tiles/3631.png" }
+texture 3631 { pal 0 { file "tiles/3631.png" nocompress nodownsize } }
+tilefromtexture 3632 { file "tiles/3632.png" }
+texture 3632 { pal 0 { file "tiles/3632.png" nocompress nodownsize } }
+tilefromtexture 3633 { file "tiles/3633.png" }
+texture 3633 { pal 0 { file "tiles/3633.png" nocompress nodownsize } }
+tilefromtexture 3634 { file "tiles/3634.png" }
+texture 3634 { pal 0 { file "tiles/3634.png" nocompress nodownsize } }
+tilefromtexture 3635 { file "tiles/3635.png" }
+texture 3635 { pal 0 { file "tiles/3635.png" nocompress nodownsize } }
+tilefromtexture 3636 { file "tiles/3636.png" }
+texture 3636 { pal 0 { file "tiles/3636.png" nocompress nodownsize } }
+tilefromtexture 3637 { file "tiles/3637.png" }
+texture 3637 { pal 0 { file "tiles/3637.png" nocompress nodownsize } }
+tilefromtexture 3638 { file "tiles/3638.png" xoff 5 }
+texture 3638 { pal 0 { file "tiles/3638.png" nocompress nodownsize } }
+tilefromtexture 3639 { file "tiles/3639.png" xoff -16 yoff 9 }
+texture 3639 { pal 0 { file "tiles/3639.png" nocompress nodownsize } }
+tilefromtexture 3640 { file "tiles/3640.png" xoff -13 yoff 9 }
+texture 3640 { pal 0 { file "tiles/3640.png" nocompress nodownsize } }
+tilefromtexture 3641 { file "tiles/3641.png" xoff -1 yoff 16 }
+texture 3641 { pal 0 { file "tiles/3641.png" nocompress nodownsize } }
+tilefromtexture 3642 { file "tiles/3642.png" yoff 8 }
+texture 3642 { pal 0 { file "tiles/3642.png" nocompress nodownsize } }
+tilefromtexture 3643 { file "tiles/3643.png" }
+texture 3643 { pal 0 { file "tiles/3643.png" nocompress nodownsize } }
+tilefromtexture 3644 { file "tiles/3644.png" }
+texture 3644 { pal 0 { file "tiles/3644.png" nocompress nodownsize } }
+tilefromtexture 3645 { file "tiles/3645.png" }
+texture 3645 { pal 0 { file "tiles/3645.png" nocompress nodownsize } }
+tilefromtexture 3646 { file "tiles/3646.png" }
+texture 3646 { pal 0 { file "tiles/3646.png" nocompress nodownsize } }
+tilefromtexture 3647 { file "tiles/3647.png" }
+texture 3647 { pal 0 { file "tiles/3647.png" nocompress nodownsize } }
+tilefromtexture 3648 { file "tiles/3648.png" }
+texture 3648 { pal 0 { file "tiles/3648.png" nocompress nodownsize } }
+tilefromtexture 3649 { file "tiles/3649.png" }
+texture 3649 { pal 0 { file "tiles/3649.png" nocompress nodownsize } }
+tilefromtexture 3650 { file "tiles/3650.png" }
+texture 3650 { pal 0 { file "tiles/3650.png" nocompress nodownsize } }
+tilefromtexture 3651 { file "tiles/3651.png" }
+texture 3651 { pal 0 { file "tiles/3651.png" nocompress nodownsize } }
+tilefromtexture 3652 { file "tiles/3652.png" }
+texture 3652 { pal 0 { file "tiles/3652.png" nocompress nodownsize } }
+tilefromtexture 3653 { file "tiles/3653.png" }
+texture 3653 { pal 0 { file "tiles/3653.png" nocompress nodownsize } }
+tilefromtexture 3654 { file "tiles/3654.png" }
+texture 3654 { pal 0 { file "tiles/3654.png" nocompress nodownsize } }
+tilefromtexture 3655 { file "tiles/3655.png" }
+texture 3655 { pal 0 { file "tiles/3655.png" nocompress nodownsize } }
+tilefromtexture 3656 { file "tiles/3656.png" }
+texture 3656 { pal 0 { file "tiles/3656.png" nocompress nodownsize } }
+tilefromtexture 3657 { file "tiles/3657.png" }
+texture 3657 { pal 0 { file "tiles/3657.png" nocompress nodownsize } }
+tilefromtexture 3658 { file "tiles/3658.png" }
+texture 3658 { pal 0 { file "tiles/3658.png" nocompress nodownsize } }
+tilefromtexture 3659 { file "tiles/3659.png" }
+texture 3659 { pal 0 { file "tiles/3659.png" nocompress nodownsize }
+               pal 54 { file "blend/3659_4.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3660 { file "tiles/3660.png" }
+texture 3660 { pal 0 { file "tiles/3660.png" nocompress nodownsize }
+               pal 54 { file "blend/3660_4.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3661 { file "tiles/3661.png" }
+texture 3661 { pal 0 { file "tiles/3661.png" nocompress nodownsize }
+               pal 54 { file "blend/3661_4.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3662 { file "tiles/3662.png" }
+texture 3662 { pal 0 { file "tiles/3662.png" nocompress nodownsize }
+               pal 54 { file "blend/3662_4.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3663 { file "tiles/3663.png" }
+texture 3663 { pal 0 { file "tiles/3663.png" nocompress nodownsize }
+               pal 54 { file "blend/3663_4.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3664 { file "tiles/3664.png" }
+texture 3664 { pal 0 { file "tiles/3664.png" nocompress nodownsize }
+               pal 54 { file "blend/3664_4.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3665 { file "tiles/3665.png" }
+texture 3665 { pal 0 { file "tiles/3665.png" nocompress nodownsize }
+               pal 54 { file "blend/3665_4.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3666 { file "tiles/3666.png" }
+texture 3666 { pal 0 { file "tiles/3666.png" nocompress nodownsize }
+               pal 54 { file "blend/3666_4.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3667 { file "tiles/3667.png" }
+texture 3667 { pal 0 { file "tiles/3667.png" nocompress nodownsize }
+               pal 54 { file "blend/3667_4.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3668 { file "tiles/3668.png" }
+texture 3668 { pal 0 { file "tiles/3668.png" nocompress nodownsize } }
+tilefromtexture 3669 { file "tiles/3669.png" }
+texture 3669 { pal 0 { file "tiles/3669.png" nocompress nodownsize } }
+tilefromtexture 3670 { file "tiles/3670.png" }
+tilefromtexture 3672 { file "tiles/3672.png" }
+texture 3672 { pal 0 { file "tiles/3672.png" nocompress nodownsize } }
+tilefromtexture 3673 { file "tiles/3673.png" }
+texture 3673 { pal 0 { file "tiles/3673.png" nocompress nodownsize } }
+tilefromtexture 3674 { file "tiles/3674.png" }
+texture 3674 { pal 0 { file "tiles/3674.png" nocompress nodownsize } }
+tilefromtexture 3676 { file "tiles/3676.png" }
+texture 3676 { pal 0 { file "tiles/3676.png" nocompress nodownsize } }
+tilefromtexture 3677 { file "tiles/3677.png" }
+texture 3677 { pal 0 { file "tiles/3677.png" nocompress nodownsize } }
+tilefromtexture 3678 { file "tiles/3678.png" }
+texture 3678 { pal 0 { file "tiles/3678.png" nocompress nodownsize } }
+tilefromtexture 3679 { file "tiles/3679.png" }
+texture 3679 { pal 0 { file "tiles/3679.png" nocompress nodownsize } }
+tilefromtexture 3681 { file "tiles/3681.png" }
+texture 3681 { pal 0 { file "tiles/3681.png" nocompress nodownsize } }
+tilefromtexture 3682 { file "tiles/3682.png" }
+texture 3682 { pal 0 { file "tiles/3682.png" nocompress nodownsize } }
+tilefromtexture 3683 { file "tiles/3683.png" }
+texture 3683 { pal 0 { file "tiles/3683.png" nocompress nodownsize } }
+tilefromtexture 3684 { file "tiles/3684.png" }
+texture 3684 { pal 0 { file "tiles/3684.png" nocompress nodownsize } }
+tilefromtexture 3685 { file "tiles/3685.png" }
+texture 3685 { pal 0 { file "tiles/3685.png" nocompress nodownsize } }
+tilefromtexture 3686 { file "tiles/3686.png" }
+texture 3686 { pal 0 { file "tiles/3686.png" nocompress nodownsize } }
+tilefromtexture 3687 { file "tiles/3687.png" }
+texture 3687 { pal 0 { file "tiles/3687.png" nocompress nodownsize } }
+tilefromtexture 3688 { file "tiles/3688.png" xoff 1 yoff -1 }
+texture 3688 { pal 0 { file "tiles/3688.png" nocompress nodownsize } }
+tilefromtexture 3689 { file "tiles/3689.png" yoff 1 }
+texture 3689 { pal 0 { file "tiles/3689.png" nocompress nodownsize } }
+tilefromtexture 3690 { file "tiles/3690.png" }
+texture 3690 { pal 0 { file "tiles/3690.png" nocompress nodownsize } }
+tilefromtexture 3691 { file "tiles/3691.png" }
+texture 3691 { pal 0 { file "tiles/3691.png" nocompress nodownsize } }
+tilefromtexture 3692 { file "tiles/3692.png" }
+texture 3692 { pal 0 { file "tiles/3692.png" nocompress nodownsize } }
+tilefromtexture 3693 { file "tiles/3693.png" }
+texture 3693 { pal 0 { file "tiles/3693.png" nocompress nodownsize } }
+tilefromtexture 3694 { file "tiles/3694.png" }
+texture 3694 { pal 0 { file "tiles/3694.png" nocompress nodownsize } }
+tilefromtexture 3695 { file "tiles/3695.png" }
+texture 3695 { pal 0 { file "tiles/3695.png" nocompress nodownsize } }
+tilefromtexture 3696 { file "tiles/3696.png" }
+texture 3696 { pal 0 { file "tiles/3696.png" nocompress nodownsize } }
+tilefromtexture 3697 { file "tiles/3697.png" }
+texture 3697 { pal 0 { file "tiles/3697.png" nocompress nodownsize } }
+tilefromtexture 3698 { file "tiles/3698.png" }
+texture 3698 { pal 0 { file "tiles/3698.png" nocompress nodownsize } }
+tilefromtexture 3702 { file "tiles/3702.png" }
+texture 3702 { pal 0 { file "tiles/3702.png" nocompress nodownsize } }
+tilefromtexture 3703 { file "tiles/3703.png" }
+texture 3703 { pal 0 { file "tiles/3703.png" nocompress nodownsize } }
+tilefromtexture 3704 { file "tiles/3704.png" }
+texture 3704 { pal 0 { file "tiles/3704.png" nocompress nodownsize } }
+tilefromtexture 3705 { file "tiles/3705.png" }
+texture 3705 { pal 0 { file "tiles/3705.png" nocompress nodownsize } }
+tilefromtexture 3706 { file "tiles/3706.png" }
+texture 3706 { pal 0 { file "tiles/3706.png" nocompress nodownsize } }
+tilefromtexture 3707 { file "tiles/3707.png" }
+texture 3707 { pal 0 { file "tiles/3707.png" nocompress nodownsize } }
+tilefromtexture 3713 { file "tiles/3713.png" xoff 44 yoff 16 }
+texture 3713 { pal 0 { file "tiles/3713.png" nocompress nodownsize } }
+tilefromtexture 3714 { file "tiles/3714.png" xoff 44 yoff 16 }
+texture 3714 { pal 0 { file "tiles/3714.png" nocompress nodownsize } }
+tilefromtexture 3715 { file "tiles/3715.png" xoff 44 yoff 16 }
+texture 3715 { pal 0 { file "tiles/3715.png" nocompress nodownsize } }
+tilefromtexture 3716 { file "tiles/3716.png" xoff -26 }
+texture 3716 { pal 0 { file "tiles/3716.png" nocompress nodownsize } }
+tilefromtexture 3723 { file "tiles/3723.png" }
+texture 3723 { pal 0 { file "tiles/3723.png" nocompress nodownsize } }
+tilefromtexture 3724 { file "tiles/3724.png" }
+texture 3724 { pal 0 { file "tiles/3724.png" nocompress nodownsize } }
+tilefromtexture 3727 { file "tiles/3727.png" }
+texture 3727 { pal 0 { file "tiles/3727.png" nocompress nodownsize } }
+tilefromtexture 3728 { file "tiles/3728.png" }
+texture 3728 { pal 0 { file "tiles/3728.png" nocompress nodownsize } }
+tilefromtexture 3729 { file "tiles/3729.png" }
+texture 3729 { pal 0 { file "tiles/3729.png" nocompress nodownsize } }
+tilefromtexture 3730 { file "tiles/3730.png" }
+texture 3730 { pal 0 { file "tiles/3730.png" nocompress nodownsize } }
+tilefromtexture 3732 { file "tiles/3732.png" }
+texture 3732 { pal 0 { file "tiles/3732.png" nocompress nodownsize } }
+tilefromtexture 3733 { file "tiles/temp/3733.png" }
+texture 3733 { pal 0 { file "tiles/3733.png" nocompress nodownsize } }
+tilefromtexture 3734 { file "tiles/temp/3734.png" }
+texture 3734 { pal 0 { file "tiles/3734.png" nocompress nodownsize } }
+tilefromtexture 3735 { file "tiles/temp/3735.png" }
+texture 3735 { pal 0 { file "tiles/3735.png" nocompress nodownsize } }
+tilefromtexture 3736 { file "tiles/3736.png" }
+texture 3736 { pal 0 { file "tiles/3736.png" nocompress nodownsize } }
+tilefromtexture 3737 { file "tiles/3737.png" }
+texture 3737 { pal 0 { file "tiles/3737.png" nocompress nodownsize } }
+tilefromtexture 3738 { file "tiles/3738.png" }
+texture 3738 { pal 0 { file "tiles/3738.png" nocompress nodownsize } }
+tilefromtexture 3739 { file "tiles/3739.png" }
+texture 3739 { pal 0 { file "tiles/3739.png" nocompress nodownsize } }
+tilefromtexture 3740 { file "tiles/3740.png" }
+texture 3740 { pal 0 { file "tiles/3740.png" nocompress nodownsize } }
+tilefromtexture 3741 { file "tiles/3741.png" }
+texture 3741 { pal 0 { file "tiles/3741.png" nocompress nodownsize } }
+tilefromtexture 3742 { file "tiles/3742.png" }
+texture 3742 { pal 0 { file "tiles/3742.png" nocompress nodownsize } }
+tilefromtexture 3743 { file "tiles/3743.png" }
+texture 3743 { pal 0 { file "tiles/3743.png" nocompress nodownsize } }
+tilefromtexture 3744 { file "tiles/3744.png" }
+texture 3744 { pal 0 { file "tiles/3744.png" nocompress nodownsize } }
+tilefromtexture 3745 { file "tiles/3745.png" }
+texture 3745 { pal 0 { file "tiles/3745.png" nocompress nodownsize } }
+tilefromtexture 3746 { file "tiles/3746.png" }
+texture 3746 { pal 0 { file "tiles/3746.png" nocompress nodownsize } }
+tilefromtexture 3747 { file "tiles/3747.png" }
+texture 3747 { pal 0 { file "tiles/3747.png" nocompress nodownsize } }
+tilefromtexture 3748 { file "tiles/3748.png" }
+texture 3748 { pal 0 { file "tiles/3748.png" nocompress nodownsize } }
+tilefromtexture 3749 { file "tiles/3749.png" }
+texture 3749 { pal 0 { file "tiles/3749.png" nocompress nodownsize } }
+tilefromtexture 3750 { file "tiles/temp/3750.png" }
+texture 3750 { pal 0 { file "tiles/3750.png" nocompress nodownsize } }
+tilefromtexture 3751 { file "tiles/temp/3751.png" }
+texture 3751 { pal 0 { file "tiles/3751.png" nocompress nodownsize } }
+tilefromtexture 3752 { file "tiles/3752.png" }
+texture 3752 { pal 0 { file "tiles/3752.png" nocompress nodownsize } }
+tilefromtexture 3753 { file "tiles/3753.png" }
+texture 3753 { pal 0 { file "tiles/3753.png" nocompress nodownsize } }
+tilefromtexture 3754 { file "tiles/3754.png" }
+texture 3754 { pal 0 { file "tiles/3754.png" nocompress nodownsize } }
+tilefromtexture 3755 { file "tiles/3755.png" }
+texture 3755 { pal 0 { file "tiles/3755.png" nocompress nodownsize } }
+tilefromtexture 3756 { file "tiles/3756.png" }
+texture 3756 { pal 0 { file "tiles/3756.png" nocompress nodownsize } }
+tilefromtexture 3759 { file "tiles/3759.png" }
+texture 3759 { pal 0 { file "tiles/3759.png" nocompress nodownsize } }
+tilefromtexture 3760 { file "tiles/3760.png" }
+texture 3760 { pal 0 { file "tiles/3760.png" nocompress nodownsize } }
+tilefromtexture 3761 { file "tiles/3761.png" }
+texture 3761 { pal 0 { file "tiles/3761.png" nocompress nodownsize } }
+tilefromtexture 3763 { file "tiles/3763.png" }
+texture 3763 { pal 0 { file "tiles/3763.png" nocompress nodownsize } }
+tilefromtexture 3764 { file "tiles/3764.png" }
+texture 3764 { pal 0 { file "tiles/3764.png" nocompress nodownsize } }
+tilefromtexture 3765 { file "tiles/3765.png" }
+texture 3765 { pal 0 { file "tiles/3765.png" nocompress nodownsize } }
+tilefromtexture 3770 { file "tiles/3770.png" }
+texture 3770 { pal 0 { file "tiles/3770.png" nocompress nodownsize } }
+tilefromtexture 3771 { file "tiles/3771.png" }
+texture 3771 { pal 0 { file "tiles/3771.png" nocompress nodownsize } }
+tilefromtexture 3772 { file "tiles/3772.png" }
+texture 3772 { pal 0 { file "tiles/3772.png" nocompress nodownsize } }
+tilefromtexture 3773 { file "tiles/3773.png" }
+texture 3773 { pal 0 { file "tiles/3773.png" nocompress nodownsize } }
+tilefromtexture 3774 { file "tiles/3774.png" }
+texture 3774 { pal 0 { file "tiles/3774.png" nocompress nodownsize } }
+tilefromtexture 3775 { file "tiles/3775.png" }
+texture 3775 { pal 0 { file "tiles/3775.png" nocompress nodownsize } }
+tilefromtexture 3776 { file "tiles/3776.png" }
+texture 3776 { pal 0 { file "tiles/3776.png" nocompress nodownsize } }
+tilefromtexture 3777 { file "tiles/3777.png" }
+texture 3777 { pal 0 { file "tiles/3777.png" nocompress nodownsize } }
+tilefromtexture 3778 { file "tiles/3778.png" }
+texture 3778 { pal 0 { file "tiles/3778.png" nocompress nodownsize } }
+tilefromtexture 3779 { file "tiles/3779.png" }
+texture 3779 { pal 0 { file "tiles/3779.png" nocompress nodownsize } }
+tilefromtexture 3780 { file "tiles/3780.png" }
+texture 3780 { pal 0 { file "tiles/3780.png" nocompress nodownsize } }
+tilefromtexture 3781 { file "tiles/3781.png" }
+texture 3781 { pal 0 { file "tiles/3781.png" nocompress nodownsize } }
+tilefromtexture 3782 { file "tiles/3782.png" }
+texture 3782 { pal 0 { file "tiles/3782.png" nocompress nodownsize } }
+tilefromtexture 3783 { file "tiles/3783.png" }
+texture 3783 { pal 0 { file "tiles/3783.png" nocompress nodownsize } }
+tilefromtexture 3784 { file "tiles/3784.png" }
+texture 3784 { pal 0 { file "tiles/3784.png" nocompress nodownsize } }
+tilefromtexture 3789 { file "tiles/3789.png" xoff -122 yoff -1 }
+texture 3789 { pal 0 { file "tiles/3789.png" nocompress nodownsize } }
+tilefromtexture 3790 { file "tiles/3790.png" xoff -83 yoff -48 }
+texture 3790 { pal 0 { file "tiles/3790.png" nocompress nodownsize } }
+tilefromtexture 3791 { file "tiles/3791.png" xoff -92 yoff -52 }
+texture 3791 { pal 0 { file "tiles/3791.png" nocompress nodownsize } }
+tilefromtexture 3792 { file "tiles/3792.png" xoff -122 yoff -1 }
+texture 3792 { pal 0 { file "tiles/3792.png" nocompress nodownsize } }
+tilefromtexture 3796 { file "tiles/3796.png" }
+texture 3796 { pal 0 { file "tiles/3796.png" nocompress nodownsize } }
+tilefromtexture 3797 { file "tiles/3797.png" yoff 30 }
+texture 3797 { pal 0 { file "tiles/3797.png" nocompress nodownsize } }
+tilefromtexture 3798 { file "tiles/3798.png" yoff 30 }
+texture 3798 { pal 0 { file "tiles/3798.png" nocompress nodownsize } }
+tilefromtexture 3799 { file "tiles/3799.png" yoff 30 }
+texture 3799 { pal 0 { file "tiles/3799.png" nocompress nodownsize } }
+tilefromtexture 3800 { file "tiles/3800.png" yoff 30 }
+texture 3800 { pal 0 { file "tiles/3800.png" nocompress nodownsize } }
+tilefromtexture 3801 { file "tiles/3801.png" yoff 30 }
+texture 3801 { pal 0 { file "tiles/3801.png" nocompress nodownsize } }
+tilefromtexture 3802 { file "tiles/3802.png" yoff 30 }
+texture 3802 { pal 0 { file "tiles/3802.png" nocompress nodownsize } }
+tilefromtexture 3803 { file "tiles/3803.png" yoff 30 }
+texture 3803 { pal 0 { file "tiles/3803.png" nocompress nodownsize } }
+tilefromtexture 3804 { file "tiles/3804.png" }
+texture 3804 { pal 0 { file "tiles/3804.png" nocompress nodownsize } }
+tilefromtexture 3805 { file "tiles/3805.png" yoff 1 }
+texture 3805 { pal 0 { file "tiles/3805.png" nocompress nodownsize } }
+tilefromtexture 3806 { file "tiles/3806.png" yoff 1 }
+texture 3806 { pal 0 { file "tiles/3806.png" nocompress nodownsize } }
+tilefromtexture 3807 { file "tiles/3807.png" yoff 1 }
+texture 3807 { pal 0 { file "tiles/3807.png" nocompress nodownsize } }
+tilefromtexture 3808 { file "tiles/3808.png" yoff 1 }
+texture 3808 { pal 0 { file "tiles/3808.png" nocompress nodownsize } }
+tilefromtexture 3809 { file "tiles/3809.png" xoff -5 yoff 1 }
+texture 3809 { pal 0 { file "tiles/3809.png" nocompress nodownsize } }
+tilefromtexture 3815 { file "tiles/3815.png" }
+texture 3815 { pal 0 { file "tiles/3815.png" nocompress nodownsize } }
+tilefromtexture 3816 { file "tiles/3816.png" }
+texture 3816 { pal 0 { file "tiles/3816.png" nocompress nodownsize } }
+tilefromtexture 3817 { file "tiles/3817.png" }
+texture 3817 { pal 0 { file "tiles/3817.png" nocompress nodownsize } }
+tilefromtexture 3818 { file "tiles/3818.png" }
+texture 3818 { pal 0 { file "tiles/3818.png" nocompress nodownsize } }
+tilefromtexture 3819 { file "tiles/3819.png" }
+texture 3819 { pal 0 { file "tiles/3819.png" nocompress nodownsize } }
+tilefromtexture 3820 { file "tiles/3820.png" }
+texture 3820 { pal 0 { file "tiles/3820.png" nocompress nodownsize } }
+tilefromtexture 3821 { file "tiles/3821.png" }
+texture 3821 { pal 0 { file "tiles/3821.png" nocompress nodownsize } }
+tilefromtexture 3822 { file "tiles/3822.png" }
+texture 3822 { pal 0 { file "tiles/3822.png" nocompress nodownsize } }
+tilefromtexture 3823 { file "tiles/3823.png" }
+texture 3823 { pal 0 { file "tiles/3823.png" nocompress nodownsize } }
+tilefromtexture 3824 { file "tiles/3824.png" }
+texture 3824 { pal 0 { file "tiles/3824.png" nocompress nodownsize } }
+tilefromtexture 3830 { file "tiles/3830.png" }
+texture 3830 { pal 0 { file "tiles/3830.png" nocompress nodownsize } }
+tilefromtexture 3831 { file "tiles/3831.png" }
+texture 3831 { pal 0 { file "tiles/3831.png" nocompress nodownsize } }
+tilefromtexture 3832 { file "tiles/3832.png" }
+texture 3832 { pal 0 { file "tiles/3832.png" nocompress nodownsize } }
+tilefromtexture 3833 { file "tiles/3833.png" }
+texture 3833 { pal 0 { file "tiles/3833.png" nocompress nodownsize } }
+tilefromtexture 3841 { file "tiles/3841.png" }
+texture 3841 { pal 0 { file "tiles/3841.png" nocompress nodownsize }
+               pal 58 { file "blend/3841_8.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3842 { file "tiles/3842.png" }
+texture 3842 { pal 0 { file "tiles/3842.png" nocompress nodownsize }
+               pal 58 { file "blend/3842_8.png" nocompress nodownsize alphacut 0 }
+               pal 59 { file "blend/3842_9.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3843 { file "tiles/3843.png" }
+texture 3843 { pal 0 { file "tiles/3843.png" nocompress nodownsize }
+               pal 58 { file "blend/3843_8.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3844 { file "tiles/3844.png" }
+texture 3844 { pal 0 { file "tiles/3844.png" nocompress nodownsize }
+               pal 58 { file "blend/3844_8.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3845 { file "tiles/3845.png" }
+texture 3845 { pal 0 { file "tiles/3845.png" nocompress nodownsize }
+               pal 52 { file "blend/3845_2.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3846 { file "tiles/3846.png" }
+texture 3846 { pal 0 { file "tiles/3846.png" nocompress nodownsize }
+               pal 52 { file "blend/3846_2.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3847 { file "tiles/3847.png" }
+texture 3847 { pal 0 { file "tiles/3847.png" nocompress nodownsize }
+               pal 52 { file "blend/3847_2.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3848 { file "tiles/3848.png" }
+texture 3848 { pal 0 { file "tiles/3848.png" nocompress nodownsize }
+               pal 52 { file "blend/3848_2.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3849 { file "tiles/3849.png" }
+tilefromtexture 3850 { file "tiles/3850.png" xoff 65 yoff -11 }
+tilefromtexture 3851 { file "tiles/3851.png" xoff 65 yoff -11 }
+tilefromtexture 3852 { file "tiles/3852.png" xoff 74 yoff -11 }
+tilefromtexture 3853 { file "tiles/3853.png" xoff 74 yoff -11 }
+tilefromtexture 3863 { file "tiles/3863.png" }
+texture 3863 { pal 0 { file "tiles/3863.png" nocompress nodownsize } }
+tilefromtexture 3864 { file "tiles/3864.png" }
+texture 3864 { pal 0 { file "tiles/3864.png" nocompress nodownsize } }
+tilefromtexture 3865 { file "tiles/3865.png" }
+texture 3865 { pal 0 { file "tiles/3865.png" nocompress nodownsize } }
+tilefromtexture 3866 { file "tiles/3866.png" }
+texture 3866 { pal 0 { file "tiles/3866.png" nocompress nodownsize } }
+tilefromtexture 3874 { file "tiles/3874.png" }
+texture 3874 { pal 0 { file "tiles/3874.png" nocompress nodownsize } }
+tilefromtexture 3875 { file "tiles/3875.png" }
+texture 3875 { pal 0 { file "tiles/3875.png" nocompress nodownsize } }
+tilefromtexture 3876 { file "tiles/3876.png" }
+texture 3876 { pal 0 { file "tiles/3876.png" nocompress nodownsize } }
+tilefromtexture 3877 { file "tiles/3877.png" }
+texture 3877 { pal 0 { file "tiles/3877.png" nocompress nodownsize } }
+tilefromtexture 3878 { file "tiles/3878.png" }
+texture 3878 { pal 0 { file "tiles/3878.png" nocompress nodownsize } }
+tilefromtexture 3879 { file "tiles/3879.png" }
+texture 3879 { pal 0 { file "tiles/3879.png" nocompress nodownsize } }
+tilefromtexture 3880 { file "tiles/3880.png" }
+texture 3880 { pal 0 { file "tiles/3880.png" nocompress nodownsize } }
+tilefromtexture 3881 { file "tiles/3881.png" }
+texture 3881 { pal 0 { file "tiles/3881.png" nocompress nodownsize } }
+tilefromtexture 3883 { file "tiles/3883.png" }
+texture 3883 { pal 0 { file "tiles/3883.png" nocompress nodownsize } }
+tilefromtexture 3884 { file "tiles/3884.png" alphacut 1 xoff 47 yoff 30 }
+texture 3884 { pal 0 { file "tiles/3884.png" nocompress nodownsize } }
+tilefromtexture 3885 { file "tiles/3885.png" alphacut 1 xoff 25 yoff 41 }
+texture 3885 { pal 0 { file "tiles/3885.png" nocompress nodownsize } }
+tilefromtexture 3886 { file "tiles/3886.png" alphacut 1 xoff 41 yoff 23 }
+texture 3886 { pal 0 { file "tiles/3886.png" nocompress nodownsize } }
+tilefromtexture 3887 { file "tiles/3887.png" }
+texture 3887 { pal 0 { file "tiles/3887.png" nocompress nodownsize } }
+tilefromtexture 3888 { file "tiles/3888.png" }
+texture 3888 { pal 0 { file "tiles/3888.png" nocompress nodownsize } }
+tilefromtexture 3889 { file "tiles/3889.png" }
+texture 3889 { pal 0 { file "tiles/3889.png" nocompress nodownsize } }
+tilefromtexture 3890 { file "tiles/3890.png" }
+texture 3890 { pal 0 { file "tiles/3890.png" nocompress nodownsize } }
+tilefromtexture 3891 { file "tiles/3891.png" }
+texture 3891 { pal 0 { file "tiles/3891.png" nocompress nodownsize } }
+tilefromtexture 3892 { file "tiles/3892.png" }
+texture 3892 { pal 0 { file "tiles/3892.png" nocompress nodownsize } }
+tilefromtexture 3893 { file "tiles/3893.png" }
+texture 3893 { pal 0 { file "tiles/3893.png" nocompress nodownsize } }
+tilefromtexture 3894 { file "tiles/3894.png" }
+texture 3894 { pal 0 { file "tiles/3894.png" nocompress nodownsize } }
+tilefromtexture 3895 { file "tiles/3895.png" }
+texture 3895 { pal 0 { file "tiles/3895.png" nocompress nodownsize } }
+tilefromtexture 3896 { file "tiles/3896.png" }
+texture 3896 { pal 0 { file "tiles/3896.png" nocompress nodownsize } }
+tilefromtexture 3897 { file "tiles/3897.png" }
+texture 3897 { pal 0 { file "tiles/3897.png" nocompress nodownsize } }
+tilefromtexture 3898 { file "tiles/3898.png" }
+texture 3898 { pal 0 { file "tiles/3898.png" nocompress nodownsize }
+               pal 58 { file "blend/3898_8.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3899 { file "tiles/3899.png" }
+texture 3899 { pal 0 { file "tiles/3899.png" nocompress nodownsize }
+               pal 58 { file "blend/3899_8.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3900 { file "tiles/3900.png" }
+texture 3900 { pal 0 { file "tiles/3900.png" nocompress nodownsize }
+               pal 58 { file "blend/3900_8.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3901 { file "tiles/3901.png" }
+texture 3901 { pal 0 { file "tiles/3901.png" nocompress nodownsize }
+               pal 58 { file "blend/3901_8.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3902 { file "tiles/3902.png" }
+texture 3902 { pal 0 { file "tiles/3902.png" nocompress nodownsize }
+               pal 58 { file "blend/3902_8.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3903 { file "tiles/3903.png" }
+texture 3903 { pal 0 { file "tiles/3903.png" nocompress nodownsize }
+               pal 58 { file "blend/3903_8.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3904 { file "tiles/3904.png" }
+texture 3904 { pal 0 { file "tiles/3904.png" nocompress nodownsize }
+               pal 58 { file "blend/3904_8.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3905 { file "tiles/3905.png" }
+texture 3905 { pal 0 { file "tiles/3905.png" nocompress nodownsize }
+               pal 58 { file "blend/3905_8.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3906 { file "tiles/3906.png" }
+texture 3906 { pal 0 { file "tiles/3906.png" nocompress nodownsize }
+               pal 58 { file "blend/3906_8.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3907 { file "tiles/3907.png" }
+texture 3907 { pal 0 { file "tiles/3907.png" nocompress nodownsize }
+               pal 58 { file "blend/3907_8.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3909 { file "tiles/3909.png" }
+texture 3909 { pal 0 { file "tiles/3909.png" nocompress nodownsize } }
+tilefromtexture 3910 { file "tiles/3910.png" }
+texture 3910 { pal 0 { file "tiles/3910.png" nocompress nodownsize } }
+tilefromtexture 3911 { file "tiles/3911.png" }
+texture 3911 { pal 0 { file "tiles/3911.png" nocompress nodownsize } }
+tilefromtexture 3912 { file "tiles/3912.png" }
+texture 3912 { pal 0 { file "tiles/3912.png" nocompress nodownsize } }
+tilefromtexture 3913 { file "tiles/3913.png" }
+texture 3913 { pal 0 { file "tiles/3913.png" nocompress nodownsize } }
+tilefromtexture 3914 { file "tiles/3914.png" }
+texture 3914 { pal 0 { file "tiles/3914.png" nocompress nodownsize } }
+tilefromtexture 3915 { file "tiles/3915.png" }
+texture 3915 { pal 0 { file "tiles/3915.png" nocompress nodownsize } }
+tilefromtexture 3916 { file "tiles/3916.png" }
+texture 3916 { pal 0 { file "tiles/3916.png" nocompress nodownsize } }
+tilefromtexture 3917 { file "tiles/3917.png" }
+texture 3917 { pal 0 { file "tiles/3917.png" nocompress nodownsize } }
+tilefromtexture 3918 { file "tiles/3918.png" }
+texture 3918 { pal 0 { file "tiles/3918.png" nocompress nodownsize } }
+tilefromtexture 3919 { file "tiles/3919.png" }
+texture 3919 { pal 0 { file "tiles/3919.png" nocompress nodownsize }
+               pal 51 { file "blend/3919_1.png" nocompress nodownsize alphacut 0 }
+               pal 53 { file "blend/3919_3.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3920 { file "tiles/3920.png" }
+texture 3920 { pal 0 { file "tiles/3920.png" nocompress nodownsize } }
+tilefromtexture 3921 { file "tiles/3921.png" }
+texture 3921 { pal 0 { file "tiles/3921.png" nocompress nodownsize } }
+tilefromtexture 3922 { file "tiles/3922.png" alphacut 1 xoff -64 }
+texture 3922 { pal 0 { file "tiles/3922.png" nocompress nodownsize }
+               pal 57 { file "blend/3922_7.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3923 { file "tiles/3923.png" alphacut 1 xoff -64 }
+texture 3923 { pal 0 { file "tiles/3923.png" nocompress nodownsize }
+               pal 57 { file "blend/3923_7.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3924 { file "tiles/3924.png" alphacut 1 xoff -64 }
+texture 3924 { pal 0 { file "tiles/3924.png" nocompress nodownsize }
+               pal 57 { file "blend/3924_7.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3925 { file "tiles/3925.png" }
+texture 3925 { pal 0 { file "tiles/3925.png" nocompress nodownsize } }
+tilefromtexture 3926 { file "tiles/3926.png" }
+texture 3926 { pal 0 { file "tiles/3926.png" nocompress nodownsize } }
+tilefromtexture 3927 { file "tiles/3927.png" }
+texture 3927 { pal 0 { file "tiles/3927.png" nocompress nodownsize } }
+tilefromtexture 3928 { file "tiles/3928.png" }
+tilefromtexture 3929 { file "tiles/3929.png" }
+tilefromtexture 3930 { file "tiles/3930.png" }
+texture 3930 { pal 0 { file "tiles/3930.png" nocompress nodownsize } }
+tilefromtexture 3931 { file "tiles/3931.png" }
+tilefromtexture 3932 { file "tiles/3932.png" }
+texture 3932 { pal 0 { file "tiles/3932.png" nocompress nodownsize } }
+tilefromtexture 3933 { file "tiles/3933.png" }
+texture 3933 { pal 0 { file "tiles/3933.png" nocompress nodownsize } }
+tilefromtexture 3934 { file "tiles/3934.png" }
+tilefromtexture 3936 { file "tiles/3936.png" }
+texture 3936 { pal 0 { file "tiles/3936.png" nocompress nodownsize } }
+tilefromtexture 3937 { file "tiles/3937.png" }
+texture 3937 { pal 0 { file "tiles/3937.png" nocompress nodownsize } }
+tilefromtexture 3938 { file "tiles/3938.png" }
+texture 3938 { pal 0 { file "tiles/3938.png" nocompress nodownsize } }
+tilefromtexture 3939 { file "tiles/3939.png" }
+texture 3939 { pal 0 { file "tiles/3939.png" nocompress nodownsize } }
+tilefromtexture 3940 { file "tiles/3940.png" }
+texture 3940 { pal 0 { file "tiles/3940.png" nocompress nodownsize } }
+tilefromtexture 3941 { file "tiles/3941.png" }
+texture 3941 { pal 0 { file "tiles/3941.png" nocompress nodownsize } }
+tilefromtexture 3942 { file "tiles/3942.png" }
+texture 3942 { pal 0 { file "tiles/3942.png" nocompress nodownsize } }
+tilefromtexture 3943 { file "tiles/3943.png" }
+texture 3943 { pal 0 { file "tiles/3943.png" nocompress nodownsize } }
+tilefromtexture 3944 { file "tiles/3944.png" }
+texture 3944 { pal 0 { file "tiles/3944.png" nocompress nodownsize } }
+tilefromtexture 3945 { file "tiles/3945.png" }
+texture 3945 { pal 0 { file "tiles/3945.png" nocompress nodownsize } }
+tilefromtexture 3946 { file "tiles/3946.png" }
+texture 3946 { pal 0 { file "tiles/3946.png" nocompress nodownsize } }
+tilefromtexture 3947 { file "tiles/3947.png" }
+texture 3947 { pal 0 { file "tiles/3947.png" nocompress nodownsize } }
+tilefromtexture 3948 { file "tiles/3948.png" }
+texture 3948 { pal 0 { file "tiles/3948.png" nocompress nodownsize } }
+tilefromtexture 3949 { file "tiles/3949.png" }
+texture 3949 { pal 0 { file "tiles/3949.png" nocompress nodownsize } }
+tilefromtexture 3950 { file "tiles/3950.png" }
+texture 3950 { pal 0 { file "tiles/3950.png" nocompress nodownsize } }
+tilefromtexture 3951 { file "tiles/3951.png" }
+texture 3951 { pal 0 { file "tiles/3951.png" nocompress nodownsize } }
+tilefromtexture 3952 { file "tiles/3952.png" }
+texture 3952 { pal 0 { file "tiles/3952.png" nocompress nodownsize } }
+tilefromtexture 3953 { file "tiles/3953.png" alphacut 1 yoff -16 }
+texture 3953 { pal 0 { file "tiles/3953.png" nocompress nodownsize }
+               pal 61 { file "blend/3953_11.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3954 { file "tiles/3954.png" alphacut 1 yoff -16 }
+texture 3954 { pal 0 { file "tiles/3954.png" nocompress nodownsize }
+               pal 61 { file "blend/3954_11.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3955 { file "tiles/3955.png" alphacut 1 yoff -16 }
+texture 3955 { pal 0 { file "tiles/3955.png" nocompress nodownsize }
+               pal 61 { file "blend/3955_11.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3956 { file "tiles/3956.png" alphacut 1 yoff -16 }
+texture 3956 { pal 0 { file "tiles/3956.png" nocompress nodownsize }
+               pal 61 { file "blend/3956_11.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3957 { file "tiles/3957.png" alphacut 1 yoff -16 }
+texture 3957 { pal 0 { file "tiles/3957.png" nocompress nodownsize }
+               pal 61 { file "blend/3957_11.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3958 { file "tiles/3958.png" alphacut 1 yoff -16 }
+texture 3958 { pal 0 { file "tiles/3958.png" nocompress nodownsize }
+               pal 61 { file "blend/3958_11.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3959 { file "tiles/3959.png" alphacut 1 yoff -16 }
+texture 3959 { pal 0 { file "tiles/3959.png" nocompress nodownsize }
+               pal 61 { file "blend/3959_11.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3960 { file "tiles/3960.png" alphacut 1 yoff -16 }
+texture 3960 { pal 0 { file "tiles/3960.png" nocompress nodownsize }
+               pal 61 { file "blend/3960_11.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3961 { file "tiles/3961.png" alphacut 1 yoff -16 }
+texture 3961 { pal 0 { file "tiles/3961.png" nocompress nodownsize }
+               pal 61 { file "blend/3961_11.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3962 { file "tiles/3962.png" alphacut 1 yoff -16 }
+texture 3962 { pal 0 { file "tiles/3962.png" nocompress nodownsize }
+               pal 61 { file "blend/3962_11.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3963 { file "tiles/3963.png" alphacut 1 yoff -16 }
+texture 3963 { pal 0 { file "tiles/3963.png" nocompress nodownsize }
+               pal 61 { file "blend/3963_11.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3976 { file "tiles/3976.png" }
+texture 3976 { pal 0 { file "tiles/3976.png" nocompress nodownsize }
+               pal 50 { file "blend/sky_0.png" nocompress nodownsize alphacut 0 }
+               pal 74 { file "blend/sky_24.png" nocompress nodownsize alphacut 0 }
+               pal 75 { file "blend/sky_25.png" nocompress nodownsize alphacut 0 }
+               pal 76 { file "blend/sky_26.png" nocompress nodownsize alphacut 0 }
+               pal 77 { file "blend/sky_27.png" nocompress nodownsize alphacut 0 }
+               pal 78 { file "blend/sky_28.png" nocompress nodownsize alphacut 0 }
+               pal 79 { file "blend/sky_29.png" nocompress nodownsize alphacut 0 }
+               pal 80 { file "blend/sky_30.png" nocompress nodownsize alphacut 0 }
+               pal 81 { file "blend/sky_31.png" nocompress nodownsize alphacut 0 }
+               pal 82 { file "blend/sky_32.png" nocompress nodownsize alphacut 0 }
+               pal 83 { file "blend/sky_33.png" nocompress nodownsize alphacut 0 }
+               pal 84 { file "blend/sky_34.png" nocompress nodownsize alphacut 0 } }
+tilefromtexture 3978 { file "tiles/3978.png" }
+texture 3978 { pal 0 { file "tiles/3978.png" nocompress nodownsize } }
+
+tilefromtexture 4021 { file "tiles/temp/blank256.png" }
+tilefromtexture 4022 { file "tiles/temp/blank256.png" }
+tilefromtexture 4023 { file "tiles/temp/blank256.png" }
+tilefromtexture 4024 { file "tiles/temp/blank256.png" } // tilefromtexture 4094 { file "tiles/temp/blank4096.png" }
+tilefromtexture 4025 { file "tiles/temp/blank256.png" } // tilefromtexture 4095 { file "tiles/temp/blank4096.png" }
+
+texture 4021 { pal 0 { file "tiles/3658.png" nocompress nodownsize }
+               pal 50 { file "blend/3658_0.png" nocompress nodownsize alphacut 0 }
+               pal 62 { file "blend/3658_12.png" nocompress nodownsize alphacut 0 } }
+
+model "models/firecircle.md3" {
+   scale 4
+   zadd 50
+
+   skin { pal 0 file "tiles/3674.png" nocompress nodownsize }
+   skin { pal 67 file "blend/3674_17.png" nocompress nodownsize alphacut 0 }
+   skin { pal 68 file "blend/3674_18.png" nocompress nodownsize alphacut 0 }
+   skin { pal 69 file "blend/3674_19.png" nocompress nodownsize alphacut 0 }
+   skin { pal 70 file "blend/3674_20.png" nocompress nodownsize alphacut 0 }
+   skin { pal 71 file "blend/3674_21.png" nocompress nodownsize alphacut 0 }
+   skin { pal 72 file "blend/3674_22.png" nocompress nodownsize alphacut 0 }
+
+   frame { name "frame1" tile 4022 }
+}
+
+model "models/fireball.md3" {
+   scale 4
+   zadd 50
+
+   skin { pal 0 file "tiles/3921.png" nocompress nodownsize }
+   skin { pal 63 file "blend/3921_13.png" nocompress nodownsize alphacut 0 }
+   skin { pal 64 file "blend/3921_14.png" nocompress nodownsize alphacut 0 }
+   skin { pal 65 file "blend/3921_15.png" nocompress nodownsize alphacut 0 }
+   skin { pal 66 file "blend/3921_16.png" nocompress nodownsize alphacut 0 }
+   skin { pal 67 file "blend/3921_17.png" nocompress nodownsize alphacut 0 }
+
+   frame { name "frame1" tile 4023 }
+}
+
+model "models/firecircle.md3" {
+   scale 64
+   zadd 3.125 // zadd 50
+
+   skin { pal 0 file "tiles/3674.png" nocompress nodownsize }
+   skin { pal 67 file "blend/3674_17.png" nocompress nodownsize alphacut 0 }
+   skin { pal 68 file "blend/3674_18.png" nocompress nodownsize alphacut 0 }
+   skin { pal 69 file "blend/3674_19.png" nocompress nodownsize alphacut 0 }
+   skin { pal 70 file "blend/3674_20.png" nocompress nodownsize alphacut 0 }
+   skin { pal 71 file "blend/3674_21.png" nocompress nodownsize alphacut 0 }
+   skin { pal 72 file "blend/3674_22.png" nocompress nodownsize alphacut 0 }
+
+   frame { name "frame1" tile 4024 }
+}
+
+model "models/fireball.md3" {
+   scale 64
+   zadd 3.125 // zadd 50
+
+   skin { pal 0 file "tiles/3921.png" nocompress nodownsize }
+   skin { pal 63 file "blend/3921_13.png" nocompress nodownsize alphacut 0 }
+   skin { pal 64 file "blend/3921_14.png" nocompress nodownsize alphacut 0 }
+   skin { pal 65 file "blend/3921_15.png" nocompress nodownsize alphacut 0 }
+   skin { pal 66 file "blend/3921_16.png" nocompress nodownsize alphacut 0 }
+   skin { pal 67 file "blend/3921_17.png" nocompress nodownsize alphacut 0 }
+
+   frame { name "frame1" tile 4025 }
+}
+
+model "models/boss.md3" {
+   scale 0.5
+
+   skin { surface 0 pal 0 file "tiles/temp/3668.png" nocompress nodownsize }
+   skin { surface 1 pal 0 file "tiles/3657.png" nocompress nodownsize }
+   skin { surface 2 pal 0 file "tiles/3656.png" nocompress nodownsize }
+   skin { surface 3 pal 0 file "tiles/3648.png" nocompress nodownsize }
+   skin { surface 4 pal 0 file "tiles/3647.png" nocompress nodownsize }
+   skin { surface 5 pal 0 file "tiles/3649.png" nocompress nodownsize }
+   skin { surface 6 pal 0 file "tiles/3653.png" nocompress nodownsize }
+   skin { surface 7 pal 0 file "tiles/3650.png" nocompress nodownsize }
+   skin { surface 8 pal 0 file "tiles/3651.png" nocompress nodownsize }
+   skin { surface 9 pal 0 file "tiles/3652.png" nocompress nodownsize }
+   skin { surface 10 pal 0 file "tiles/3669.png" nocompress nodownsize }
+   skin { surface 11 pal 0 file "tiles/3723.png" nocompress nodownsize }
+   skin { surface 12 pal 0 file "tiles/temp/3668.png" nocompress nodownsize }
+   skin { surface 13 pal 0 file "tiles/temp/3668.png" nocompress nodownsize }
+   skin { surface 14 pal 0 file "tiles/temp/3668.png" nocompress nodownsize }
+   skin { surface 15 pal 0 file "tiles/3669.png" nocompress nodownsize }
+   skin { surface 16 pal 0 file "tiles/3646.png" nocompress nodownsize }
+   skin { surface 17 pal 0 file "tiles/3655.png" nocompress nodownsize }
+   skin { surface 18 pal 0 file "tiles/3643.png" nocompress nodownsize }
+   skin { surface 19 pal 0 file "tiles/3644.png" nocompress nodownsize }
+   skin { surface 20 pal 0 file "tiles/3654.png" nocompress nodownsize }
+   skin { surface 21 pal 0 file "tiles/3645.png" nocompress nodownsize }
+
+   anim { frame0 "walk1" frame1 "walk4" fps 3 flags 0 }
+   frame { name "walk1" tile0 2710 tile1 2729 smoothduration 0.333 }
+
+   anim { frame0 "shot1" frame1 "shot2" fps 6 flags 0 }
+   frame { name "shot1" tile0 2730 tile1 2739 smoothduration 0.166 }
+
+   anim { frame0 "lob1" frame1 "lob6" fps 4.75 flags 0 }
+   frame { name "lob1" tile0 2740 tile1 2749 smoothduration 0.210 }
+
+   anim { frame0 "flintch1" frame1 "flintch1" fps 3 flags 0 }
+   frame { name "flintch1" tile 2750 smoothduration 0.333 }
+
+   anim { frame0 "dying1" frame1 "dying3" fps 2.5 flags 1 }
+   frame { name "dying1" tile0 2751 tile1 2757 smoothduration 0.4 }
+
+   frame { name "dying3" tile 2758 smoothduration 0 }
+}
+
+texture 2524 { pal 0 { file "tiles/2524.png" nocompress nodownsize } }
+texture 2525 { pal 0 { file "tiles/2525.png" nocompress nodownsize } }
+texture 2528 { pal 0 { file "tiles/2528.png" nocompress nodownsize } }
+texture 2529 { pal 0 { file "tiles/2529.png" nocompress nodownsize } }
+texture 2531 { pal 0 { file "tiles/2531.png" nocompress nodownsize } }
+texture 2536 { pal 0 { file "tiles/2536.png" nocompress nodownsize } }
+texture 2544 { pal 0 { file "tiles/2544.png" nocompress nodownsize } }
+texture 2548 { pal 0 { file "tiles/2548.png" nocompress nodownsize } }
+texture 2554 { pal 0 { file "tiles/2554.png" nocompress nodownsize } }
+texture 2556 { pal 0 { file "tiles/2556.png" nocompress nodownsize } }
+texture 2570 { pal 0 { file "tiles/2570.png" nocompress nodownsize } }
+texture 2572 { pal 0 { file "tiles/2572.png" nocompress nodownsize } }
+texture 2573 { pal 0 { file "tiles/2573.png" nocompress nodownsize } }
+texture 2574 { pal 0 { file "tiles/2574.png" nocompress nodownsize } }
+texture 2613 { pal 0 { file "tiles/2613.png" nocompress nodownsize } }
+texture 2616 { pal 0 { file "tiles/2616.png" nocompress nodownsize } }
+texture 2617 { pal 0 { file "tiles/2617.png" nocompress nodownsize } }
+texture 2618 { pal 0 { file "tiles/2618.png" nocompress nodownsize } }
+texture 2619 { pal 0 { file "tiles/2619.png" nocompress nodownsize } }
+texture 3596 { pal 0 { file "tiles/3596.png" nocompress nodownsize } }
+texture 3670 { pal 0 { file "tiles/3670.png" nocompress nodownsize } }
+texture 3849 { pal 0 { file "tiles/3849.png" nocompress nodownsize } }
+texture 3850 { pal 0 { file "tiles/3850.png" nocompress nodownsize } }
+texture 3851 { pal 0 { file "tiles/3851.png" nocompress nodownsize } }
+texture 3852 { pal 0 { file "tiles/3852.png" nocompress nodownsize } }
+texture 3853 { pal 0 { file "tiles/3853.png" nocompress nodownsize } }
+texture 3928 { pal 0 { file "tiles/3928.png" nocompress nodownsize } }
+texture 3929 { pal 0 { file "tiles/3929.png" nocompress nodownsize } }
+texture 3931 { pal 0 { file "tiles/3931.png" nocompress nodownsize } }
+texture 3934 { pal 0 { file "tiles/3934.png" nocompress nodownsize } }
+
+dummytile 2462 65536 65536 // fix status bar scale
+dummytile 2499 65536 65536 // remove "Duke Nukem 3D" from menu
+dummytile 2503 65536 65536 // remove "Plutonium Pack" from menu
+dummytile 2457 65536 65536 // remove title bar from menu
+dummytile 4020 320 200
+
+animtilerange 3991 3994 4 2
+animtilerange 3995 3997 7 1
+animtilerange 3998 4002 5 2
+animtilerange 4003 4007 4 1
+animtilerange 4008 4010 4 1
+animtilerange 4011 4016 4 1
+
+texture 2492 { pal 0 { file "tiles/temp/drealms.png" nocompress nodownsize } }
+tilefromtexture 3980 { file "tiles/0603.png" yoff -85 }
+texture 3980 { pal 0 { file "tiles/0603.png" nocompress nodownsize } }
+tilefromtexture 3981 { file "tiles/temp/0784.png" }
+texture 3981 { pal 0 { file "tiles/0784.png" nocompress nodownsize } }
+tilefromtexture 3982 { file "tiles/0954.png" }
+texture 3982 { pal 0 { file "tiles/0954.png" nocompress nodownsize } }
+tilefromtexture 3983 { file "tiles/0955.png" }
+texture 3983 { pal 0 { file "tiles/0955.png" nocompress nodownsize } }
+tilefromtexture 3984 { file "tiles/0956.png" }
+texture 3984 { pal 0 { file "tiles/0956.png" nocompress nodownsize } }
+tilefromtexture 3985 { file "tiles/0957.png" }
+texture 3985 { pal 0 { file "tiles/0957.png" nocompress nodownsize } }
+tilefromtexture 3986 { file "tiles/1012.png" }
+texture 3986 { pal 0 { file "tiles/1012.png" nocompress nodownsize } }
+tilefromtexture 3987 { file "tiles/1013.png" }
+texture 3987 { pal 0 { file "tiles/1013.png" nocompress nodownsize } }
+tilefromtexture 3988 { file "tiles/1163.png" }
+texture 3988 { pal 0 { file "tiles/1163.png" nocompress nodownsize } }
+tilefromtexture 3989 { file "tiles/1165.png" }
+texture 3989 { pal 0 { file "tiles/1165.png" nocompress nodownsize } }
+tilefromtexture 3990 { file "tiles/1166.png" }
+texture 3990 { pal 0 { file "tiles/1166.png" nocompress nodownsize } }
+tilefromtexture 3991 { file "tiles/temp/1280.png" }
+texture 3991 { pal 0 { file "tiles/1280.png" nocompress nodownsize } }
+tilefromtexture 3992 { file "tiles/temp/1281.png" }
+texture 3992 { pal 0 { file "tiles/1281.png" nocompress nodownsize } }
+tilefromtexture 3993 { file "tiles/temp/1282.png" }
+texture 3993 { pal 0 { file "tiles/1282.png" nocompress nodownsize } }
+tilefromtexture 3994 { file "tiles/temp/1283.png" }
+texture 3994 { pal 0 { file "tiles/1283.png" nocompress nodownsize } }
+tilefromtexture 3995 { file "tiles/1294.png" }
+texture 3995 { pal 0 { file "tiles/1294.png" nocompress nodownsize } }
+tilefromtexture 3996 { file "tiles/1295.png" }
+texture 3996 { pal 0 { file "tiles/1295.png" nocompress nodownsize } }
+tilefromtexture 3997 { file "tiles/1296.png" }
+texture 3997 { pal 0 { file "tiles/1296.png" nocompress nodownsize } }
+tilefromtexture 3998 { file "tiles/1298.png" }
+texture 3998 { pal 0 { file "tiles/1298.png" nocompress nodownsize } }
+tilefromtexture 3999 { file "tiles/1299.png" }
+texture 3999 { pal 0 { file "tiles/1299.png" nocompress nodownsize } }
+tilefromtexture 4000 { file "tiles/1300.png" }
+texture 4000 { pal 0 { file "tiles/1300.png" nocompress nodownsize } }
+tilefromtexture 4001 { file "tiles/1301.png" }
+texture 4001 { pal 0 { file "tiles/1301.png" nocompress nodownsize } }
+tilefromtexture 4002 { file "tiles/1302.png" }
+texture 4002 { pal 0 { file "tiles/1302.png" nocompress nodownsize } }
+tilefromtexture 4003 { file "tiles/1312.png" }
+texture 4003 { pal 0 { file "tiles/1312.png" nocompress nodownsize } }
+tilefromtexture 4004 { file "tiles/1313.png" }
+texture 4004 { pal 0 { file "tiles/1313.png" nocompress nodownsize } }
+tilefromtexture 4005 { file "tiles/1314.png" }
+texture 4005 { pal 0 { file "tiles/1314.png" nocompress nodownsize } }
+tilefromtexture 4006 { file "tiles/1315.png" }
+texture 4006 { pal 0 { file "tiles/1315.png" nocompress nodownsize } }
+tilefromtexture 4007 { file "tiles/1316.png" }
+texture 4007 { pal 0 { file "tiles/1316.png" nocompress nodownsize } }
+tilefromtexture 4008 { file "tiles/temp/3421.png" }
+texture 4008 { pal 0 { file "tiles/3421.png" nocompress nodownsize } }
+tilefromtexture 4009 { file "tiles/temp/3422.png" }
+texture 4009 { pal 0 { file "tiles/3422.png" nocompress nodownsize } }
+tilefromtexture 4010 { file "tiles/temp/3423.png" }
+texture 4010 { pal 0 { file "tiles/3423.png" nocompress nodownsize } }
+tilefromtexture 4011 { file "tiles/3450.png" }
+texture 4011 { pal 0 { file "tiles/3450.png" nocompress nodownsize } }
+tilefromtexture 4012 { file "tiles/3451.png" }
+texture 4012 { pal 0 { file "tiles/3451.png" nocompress nodownsize } }
+tilefromtexture 4013 { file "tiles/3452.png" }
+texture 4013 { pal 0 { file "tiles/3452.png" nocompress nodownsize } }
+tilefromtexture 4014 { file "tiles/3453.png" }
+texture 4014 { pal 0 { file "tiles/3453.png" nocompress nodownsize } }
+tilefromtexture 4015 { file "tiles/3454.png" }
+texture 4015 { pal 0 { file "tiles/3454.png" nocompress nodownsize } }
+tilefromtexture 4016 { file "tiles/3455.png" }
+texture 4016 { pal 0 { file "tiles/3455.png" nocompress nodownsize } }
+tilefromtexture 4017 { file "tiles/4491.png" }
+texture 4017 { pal 0 { file "tiles/4491.png" nocompress nodownsize } }
+
+texture 4020 { pal 0 { file "blend/temp/tint_0.png" nocompress nodownsize }
+               pal 1 { file "blend/temp/tint_1.png" nocompress nodownsize }
+               pal 2 { file "blend/temp/tint_2.png" nocompress nodownsize }
+               pal 3 { file "blend/temp/tint_3.png" nocompress nodownsize }
+               pal 4 { file "blend/temp/tint_4.png" nocompress nodownsize }
+               pal 5 { file "blend/temp/tint_5.png" nocompress nodownsize }
+               pal 6 { file "blend/temp/tint_6.png" nocompress nodownsize } }
+

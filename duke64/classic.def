@@ -1,0 +1,260 @@
+
+
+makepalookup { pal 30  red 0  green 0  blue 0  remappal 2   }
+makepalookup { pal 31  red 0  green 0  blue 0  remappal 7   }
+makepalookup { pal 32  red 0  green 0  blue 0  remappal 1   }
+makepalookup { pal 33  red 0  green 0  blue 0  remappal 8   }
+makepalookup { pal 34  red 0  green 0  blue 0  remappal 10  }
+makepalookup { pal 35  red 0  green 0  blue 0  remappal 1   }
+makepalookup { pal 36  red 0  green 0  blue 0  remappal 10  }
+makepalookup { pal 38  red 0  green 0  blue 0  remappal 6   }
+makepalookup { pal 39  red 0  green 0  blue 0  remappal 2   }
+
+makepalookup { pal 50  red 0  green 0  blue 0  remappal 4   }
+makepalookup { pal 53  red 0  green 0  blue 0  remappal 3   }
+makepalookup { pal 59  red 0  green 0  blue 0  remappal 8   }
+makepalookup { pal 83  red 0  green 0  blue 0  remappal 4   }
+makepalookup { pal 84  red 0  green 0  blue 0  remappal 2   }
+
+makepalookup { pal 3   red 0  green 0  blue 0  remappal 0   }
+makepalookup { pal 5   red 0  green 0  blue 0  remappal 0   }
+makepalookup { pal 6   red 0  green 0  blue 0  remappal 8   }
+makepalookup { pal 7   red 0  green 0  blue 0  remappal 0   }
+makepalookup { pal 9   red 0  green 0  blue 0  remappal 0   }
+makepalookup { pal 10  red 0  green 0  blue 0  remappal 0   }
+makepalookup { pal 14  red 0  green 0  blue 0  remappal 8   }
+
+makepalookup { pal 132 red 0  green 0  blue 0  remappal 1   }
+makepalookup { pal 133 red 0  green 0  blue 0  remappal 1   }
+makepalookup { pal 134 red 0  green 0  blue 0  remappal 1   }
+makepalookup { pal 135 red 0  green 0  blue 0  remappal 1   }
+makepalookup { pal 136 red 0  green 0  blue 0  remappal 1   }
+makepalookup { pal 137 red 0  green 0  blue 0  remappal 1   }
+makepalookup { pal 138 red 0  green 0  blue 0  remappal 1   }
+makepalookup { pal 139 red 0  green 0  blue 0  remappal 1   }
+makepalookup { pal 140 red 0  green 0  blue 0  remappal 1   }
+makepalookup { pal 141 red 0  green 0  blue 0  remappal 1   }
+makepalookup { pal 142 red 0  green 0  blue 0  remappal 1   }
+makepalookup { pal 143 red 0  green 0  blue 0  remappal 1   }
+makepalookup { pal 144 red 0  green 0  blue 0  remappal 1   }
+makepalookup { pal 145 red 0  green 0  blue 0  remappal 1   }
+makepalookup { pal 146 red 0  green 0  blue 0  remappal 1   }
+makepalookup { pal 147 red 0  green 0  blue 0  remappal 1   }
+makepalookup { pal 148 red 0  green 0  blue 0  remappal 1   }
+makepalookup { pal 149 red 0  green 0  blue 0  remappal 1   }
+makepalookup { pal 150 red 0  green 0  blue 0  remappal 1   }
+makepalookup { pal 151 red 0  green 0  blue 0  remappal 1   }
+makepalookup { pal 152 red 0  green 0  blue 0  remappal 1   }
+makepalookup { pal 153 red 0  green 0  blue 0  remappal 1   }
+makepalookup { pal 154 red 0  green 0  blue 0  remappal 1   }
+makepalookup { pal 155 red 0  green 0  blue 0  remappal 1   }
+makepalookup { pal 156 red 0  green 0  blue 0  remappal 1   }
+makepalookup { pal 157 red 0  green 0  blue 0  remappal 1   }
+makepalookup { pal 158 red 0  green 0  blue 0  remappal 1   }
+makepalookup { pal 159 red 0  green 0  blue 0  remappal 1   }
+makepalookup { pal 160 red 0  green 0  blue 0  remappal 1   }
+makepalookup { pal 161 red 0  green 0  blue 0  remappal 1   }
+makepalookup { pal 162 red 0  green 0  blue 0  remappal 1   }
+makepalookup { pal 163 red 0  green 0  blue 0  remappal 1   }
+
+makepalookup { pal 164 red 0  green 0  blue 0  remappal 2   }
+makepalookup { pal 165 red 0  green 0  blue 0  remappal 2   }
+makepalookup { pal 166 red 0  green 0  blue 0  remappal 2   }
+makepalookup { pal 167 red 0  green 0  blue 0  remappal 2   }
+makepalookup { pal 168 red 0  green 0  blue 0  remappal 2   }
+makepalookup { pal 169 red 0  green 0  blue 0  remappal 2   }
+makepalookup { pal 170 red 0  green 0  blue 0  remappal 2   }
+makepalookup { pal 171 red 0  green 0  blue 0  remappal 2   }
+makepalookup { pal 172 red 0  green 0  blue 0  remappal 2   }
+makepalookup { pal 173 red 0  green 0  blue 0  remappal 2   }
+makepalookup { pal 174 red 0  green 0  blue 0  remappal 2   }
+makepalookup { pal 175 red 0  green 0  blue 0  remappal 2   }
+makepalookup { pal 176 red 0  green 0  blue 0  remappal 2   }
+makepalookup { pal 177 red 0  green 0  blue 0  remappal 2   }
+makepalookup { pal 178 red 0  green 0  blue 0  remappal 2   }
+makepalookup { pal 179 red 0  green 0  blue 0  remappal 2   }
+makepalookup { pal 180 red 0  green 0  blue 0  remappal 2   }
+makepalookup { pal 181 red 0  green 0  blue 0  remappal 2   }
+makepalookup { pal 182 red 0  green 0  blue 0  remappal 2   }
+makepalookup { pal 183 red 0  green 0  blue 0  remappal 2   }
+makepalookup { pal 184 red 0  green 0  blue 0  remappal 2   }
+makepalookup { pal 185 red 0  green 0  blue 0  remappal 2   }
+makepalookup { pal 186 red 0  green 0  blue 0  remappal 2   }
+makepalookup { pal 187 red 0  green 0  blue 0  remappal 2   }
+makepalookup { pal 188 red 0  green 0  blue 0  remappal 2   }
+makepalookup { pal 189 red 0  green 0  blue 0  remappal 2   }
+makepalookup { pal 190 red 0  green 0  blue 0  remappal 2   }
+makepalookup { pal 191 red 0  green 0  blue 0  remappal 2   }
+makepalookup { pal 192 red 0  green 0  blue 0  remappal 2   }
+makepalookup { pal 193 red 0  green 0  blue 0  remappal 2   }
+makepalookup { pal 194 red 0  green 0  blue 0  remappal 2   }
+makepalookup { pal 195 red 0  green 0  blue 0  remappal 2   }
+
+makepalookup { pal 196 red 0  green 0  blue 0  remappal 8   }
+makepalookup { pal 197 red 0  green 0  blue 0  remappal 8   }
+makepalookup { pal 198 red 0  green 0  blue 0  remappal 8   }
+makepalookup { pal 199 red 0  green 0  blue 0  remappal 8   }
+makepalookup { pal 200 red 0  green 0  blue 0  remappal 8   }
+makepalookup { pal 201 red 0  green 0  blue 0  remappal 8   }
+makepalookup { pal 202 red 0  green 0  blue 0  remappal 8   }
+makepalookup { pal 203 red 0  green 0  blue 0  remappal 8   }
+makepalookup { pal 204 red 0  green 0  blue 0  remappal 8   }
+makepalookup { pal 205 red 0  green 0  blue 0  remappal 8   }
+makepalookup { pal 206 red 0  green 0  blue 0  remappal 8   }
+makepalookup { pal 207 red 0  green 0  blue 0  remappal 8   }
+makepalookup { pal 208 red 0  green 0  blue 0  remappal 8   }
+makepalookup { pal 209 red 0  green 0  blue 0  remappal 8   }
+makepalookup { pal 210 red 0  green 0  blue 0  remappal 8   }
+makepalookup { pal 211 red 0  green 0  blue 0  remappal 8   }
+makepalookup { pal 212 red 0  green 0  blue 0  remappal 8   }
+makepalookup { pal 213 red 0  green 0  blue 0  remappal 8   }
+makepalookup { pal 214 red 0  green 0  blue 0  remappal 8   }
+makepalookup { pal 215 red 0  green 0  blue 0  remappal 8   }
+makepalookup { pal 216 red 0  green 0  blue 0  remappal 8   }
+makepalookup { pal 217 red 0  green 0  blue 0  remappal 8   }
+makepalookup { pal 218 red 0  green 0  blue 0  remappal 8   }
+makepalookup { pal 219 red 0  green 0  blue 0  remappal 8   }
+makepalookup { pal 220 red 0  green 0  blue 0  remappal 8   }
+makepalookup { pal 221 red 0  green 0  blue 0  remappal 8   }
+makepalookup { pal 222 red 0  green 0  blue 0  remappal 8   }
+makepalookup { pal 223 red 0  green 0  blue 0  remappal 8   }
+makepalookup { pal 224 red 0  green 0  blue 0  remappal 8   }
+makepalookup { pal 225 red 0  green 0  blue 0  remappal 8   }
+makepalookup { pal 226 red 0  green 0  blue 0  remappal 8   }
+makepalookup { pal 227 red 0  green 0  blue 0  remappal 8   }
+
+tilefromtexture 1890 { file "blend/classic/1890.png" }
+texture 1890 { pal 0 { file "blend/classic/1890.png" nocompress nodownsize } }
+tilefromtexture 1891 { file "blend/classic/1891.png" }
+texture 1891 { pal 0 { file "blend/classic/1891.png" nocompress nodownsize } }
+tilefromtexture 1892 { file "blend/classic/1892.png" }
+texture 1892 { pal 0 { file "blend/classic/1892.png" nocompress nodownsize } }
+tilefromtexture 1893 { file "blend/classic/1893.png" }
+texture 1893 { pal 0 { file "blend/classic/1893.png" nocompress nodownsize } }
+tilefromtexture 1894 { file "blend/classic/1894.png" }
+texture 1894 { pal 0 { file "blend/classic/1894.png" nocompress nodownsize } }
+tilefromtexture 1895 { file "blend/classic/1895.png" }
+texture 1895 { pal 0 { file "blend/classic/1895.png" nocompress nodownsize } }
+tilefromtexture 1896 { file "blend/classic/1896.png" }
+texture 1896 { pal 0 { file "blend/classic/1896.png" nocompress nodownsize } }
+tilefromtexture 1897 { file "blend/classic/1897.png" }
+texture 1897 { pal 0 { file "blend/classic/1897.png" nocompress nodownsize } }
+tilefromtexture 1898 { file "blend/classic/1898.png" }
+texture 1898 { pal 0 { file "blend/classic/1898.png" nocompress nodownsize } }
+tilefromtexture 1899 { file "blend/classic/1899.png" }
+texture 1899 { pal 0 { file "blend/classic/1899.png" nocompress nodownsize } }
+tilefromtexture 1900 { file "blend/classic/1900.png" }
+texture 1900 { pal 0 { file "blend/classic/1900.png" nocompress nodownsize } }
+tilefromtexture 1901 { file "blend/classic/1901.png" }
+texture 1901 { pal 0 { file "blend/classic/1901.png" nocompress nodownsize } }
+tilefromtexture 1902 { file "blend/classic/1902.png" }
+texture 1902 { pal 0 { file "blend/classic/1902.png" nocompress nodownsize } }
+tilefromtexture 1903 { file "blend/classic/1903.png" }
+texture 1903 { pal 0 { file "blend/classic/1903.png" nocompress nodownsize } }
+tilefromtexture 1904 { file "blend/classic/1904.png" }
+texture 1904 { pal 0 { file "blend/classic/1904.png" nocompress nodownsize } }
+tilefromtexture 1905 { file "blend/classic/1905.png" }
+texture 1905 { pal 0 { file "blend/classic/1905.png" nocompress nodownsize } }
+tilefromtexture 1906 { file "blend/classic/1906.png" }
+texture 1906 { pal 0 { file "blend/classic/1906.png" nocompress nodownsize } }
+tilefromtexture 2595 { file "blend/classic/2595.png" }
+texture 2595 { pal 0 { file "blend/classic/2595.png" nocompress nodownsize } }
+tilefromtexture 2596 { file "blend/classic/2596.png" }
+texture 2596 { pal 0 { file "blend/classic/2596.png" nocompress nodownsize } }
+tilefromtexture 2597 { file "blend/classic/2597.png" }
+texture 2597 { pal 0 { file "blend/classic/2597.png" nocompress nodownsize } }
+tilefromtexture 2598 { file "blend/classic/2598.png" }
+texture 2598 { pal 0 { file "blend/classic/2598.png" nocompress nodownsize } }
+tilefromtexture 2599 { file "blend/classic/2599.png" }
+texture 2599 { pal 0 { file "blend/classic/2599.png" nocompress nodownsize } }
+tilefromtexture 2600 { file "blend/classic/2600.png" }
+texture 2600 { pal 0 { file "blend/classic/2600.png" nocompress nodownsize } }
+tilefromtexture 2601 { file "blend/classic/2601.png" }
+texture 2601 { pal 0 { file "blend/classic/2601.png" nocompress nodownsize } }
+tilefromtexture 3659 { file "blend/classic/3659.png" }
+texture 3659 { pal 0 { file "blend/classic/3659.png" nocompress nodownsize } }
+tilefromtexture 3660 { file "blend/classic/3660.png" }
+texture 3660 { pal 0 { file "blend/classic/3660.png" nocompress nodownsize } }
+tilefromtexture 3661 { file "blend/classic/3661.png" }
+texture 3661 { pal 0 { file "blend/classic/3661.png" nocompress nodownsize } }
+tilefromtexture 3662 { file "blend/classic/3662.png" }
+texture 3662 { pal 0 { file "blend/classic/3662.png" nocompress nodownsize } }
+tilefromtexture 3663 { file "blend/classic/3663.png" }
+texture 3663 { pal 0 { file "blend/classic/3663.png" nocompress nodownsize } }
+tilefromtexture 3664 { file "blend/classic/3664.png" }
+texture 3664 { pal 0 { file "blend/classic/3664.png" nocompress nodownsize } }
+tilefromtexture 3665 { file "blend/classic/3665.png" }
+texture 3665 { pal 0 { file "blend/classic/3665.png" nocompress nodownsize } }
+tilefromtexture 3666 { file "blend/classic/3666.png" }
+texture 3666 { pal 0 { file "blend/classic/3666.png" nocompress nodownsize } }
+tilefromtexture 3667 { file "blend/classic/3667.png" }
+texture 3667 { pal 0 { file "blend/classic/3667.png" nocompress nodownsize } }
+tilefromtexture 3841 { file "blend/classic/3841.png" }
+texture 3841 { pal 0 { file "blend/classic/3841.png" nocompress nodownsize } }
+tilefromtexture 3842 { file "blend/classic/3842.png" }
+texture 3842 { pal 0 { file "blend/classic/3842.png" nocompress nodownsize } }
+tilefromtexture 3843 { file "blend/classic/3843.png" }
+texture 3843 { pal 0 { file "blend/classic/3843.png" nocompress nodownsize } }
+tilefromtexture 3844 { file "blend/classic/3844.png" }
+texture 3844 { pal 0 { file "blend/classic/3844.png" nocompress nodownsize } }
+tilefromtexture 3845 { file "blend/classic/3845.png" }
+texture 3845 { pal 0 { file "blend/classic/3845.png" nocompress nodownsize } }
+tilefromtexture 3846 { file "blend/classic/3846.png" }
+texture 3846 { pal 0 { file "blend/classic/3846.png" nocompress nodownsize } }
+tilefromtexture 3847 { file "blend/classic/3847.png" }
+texture 3847 { pal 0 { file "blend/classic/3847.png" nocompress nodownsize } }
+tilefromtexture 3848 { file "blend/classic/3848.png" }
+texture 3848 { pal 0 { file "blend/classic/3848.png" nocompress nodownsize } }
+tilefromtexture 3898 { file "blend/classic/3898.png" }
+texture 3898 { pal 0 { file "blend/classic/3898.png" nocompress nodownsize } }
+tilefromtexture 3899 { file "blend/classic/3899.png" }
+texture 3899 { pal 0 { file "blend/classic/3899.png" nocompress nodownsize } }
+tilefromtexture 3900 { file "blend/classic/3900.png" }
+texture 3900 { pal 0 { file "blend/classic/3900.png" nocompress nodownsize } }
+tilefromtexture 3901 { file "blend/classic/3901.png" }
+texture 3901 { pal 0 { file "blend/classic/3901.png" nocompress nodownsize } }
+tilefromtexture 3902 { file "blend/classic/3902.png" }
+texture 3902 { pal 0 { file "blend/classic/3902.png" nocompress nodownsize } }
+tilefromtexture 3903 { file "blend/classic/3903.png" }
+texture 3903 { pal 0 { file "blend/classic/3903.png" nocompress nodownsize } }
+tilefromtexture 3904 { file "blend/classic/3904.png" }
+texture 3904 { pal 0 { file "blend/classic/3904.png" nocompress nodownsize } }
+tilefromtexture 3905 { file "blend/classic/3905.png" }
+texture 3905 { pal 0 { file "blend/classic/3905.png" nocompress nodownsize } }
+tilefromtexture 3906 { file "blend/classic/3906.png" }
+texture 3906 { pal 0 { file "blend/classic/3906.png" nocompress nodownsize } }
+tilefromtexture 3907 { file "blend/classic/3907.png" }
+texture 3907 { pal 0 { file "blend/classic/3907.png" nocompress nodownsize } }
+tilefromtexture 3919 { file "blend/classic/3919.png" }
+texture 3919 { pal 0 { file "blend/classic/3919.png" nocompress nodownsize } }
+tilefromtexture 3922 { file "blend/classic/3922.png" alphacut 1 xoff -64 }
+texture 3922 { pal 0 { file "blend/classic/3922.png" nocompress nodownsize } }
+tilefromtexture 3923 { file "blend/classic/3923.png" alphacut 1 xoff -64 }
+texture 3923 { pal 0 { file "blend/classic/3923.png" nocompress nodownsize } }
+tilefromtexture 3924 { file "blend/classic/3924.png" alphacut 1 xoff -64 }
+texture 3924 { pal 0 { file "blend/classic/3924.png" nocompress nodownsize } }
+tilefromtexture 3953 { file "blend/classic/3953.png" alphacut 1 yoff -16 }
+texture 3953 { pal 0 { file "blend/classic/3953.png" nocompress nodownsize } }
+tilefromtexture 3954 { file "blend/classic/3954.png" alphacut 1 yoff -16 }
+texture 3954 { pal 0 { file "blend/classic/3954.png" nocompress nodownsize } }
+tilefromtexture 3955 { file "blend/classic/3955.png" alphacut 1 yoff -16 }
+texture 3955 { pal 0 { file "blend/classic/3955.png" nocompress nodownsize } }
+tilefromtexture 3956 { file "blend/classic/3956.png" alphacut 1 yoff -16 }
+texture 3956 { pal 0 { file "blend/classic/3956.png" nocompress nodownsize } }
+tilefromtexture 3957 { file "blend/classic/3957.png" alphacut 1 yoff -16 }
+texture 3957 { pal 0 { file "blend/classic/3957.png" nocompress nodownsize } }
+tilefromtexture 3958 { file "blend/classic/3958.png" alphacut 1 yoff -16 }
+texture 3958 { pal 0 { file "blend/classic/3958.png" nocompress nodownsize } }
+tilefromtexture 3959 { file "blend/classic/3959.png" alphacut 1 yoff -16 }
+texture 3959 { pal 0 { file "blend/classic/3959.png" nocompress nodownsize } }
+tilefromtexture 3960 { file "blend/classic/3960.png" alphacut 1 yoff -16 }
+texture 3960 { pal 0 { file "blend/classic/3960.png" nocompress nodownsize } }
+tilefromtexture 3961 { file "blend/classic/3961.png" alphacut 1 yoff -16 }
+texture 3961 { pal 0 { file "blend/classic/3961.png" nocompress nodownsize } }
+tilefromtexture 3962 { file "blend/classic/3962.png" alphacut 1 yoff -16 }
+texture 3962 { pal 0 { file "blend/classic/3962.png" nocompress nodownsize } }
+tilefromtexture 3963 { file "blend/classic/3963.png" alphacut 1 yoff -16 }
+texture 3963 { pal 0 { file "blend/classic/3963.png" nocompress nodownsize } }
+tilefromtexture 3976 { file "blend/classic/3976.png" }
+texture 3976 { pal 0 { file "blend/classic/3976.png" nocompress nodownsize } }
+

@@ -1,0 +1,2109 @@
+
+
+define PAL_BLACK                4
+define PAL_BLUE                 1
+define PAL_RED                  2
+define PAL_GREEN                8
+define PAL_STRONG_RED           30
+define PAL_STRONG_YELLOW        31
+define PAL_STRONG_CYAN          32
+define PAL_STRONG_GREEN         33
+define PAL_STRONG_PURPLE        34
+define PAL_SMOOTH_AZURE         35
+define PAL_SMOOTH_PURPLE        36
+define PAL_SMOOTH_BLUE          37
+define PAL_SMOOTH_ORANGE        38
+define PAL_AVERAGE_RED          39
+
+define SCREEN_BONUS             1
+define SCREEN_DMBONUS           2
+define SCREEN_BRIEFING          4
+define SCREEN_VICTORY1          8
+define SCREEN_VICTORY2          16
+define SCREEN_VICTORY3          32
+define SCREEN_CREDITS           64
+
+define MAX_PLAYERS_SCORE        3
+
+define SCREEN_WIDTH             276
+define SCREEN_HEIGHT            208
+
+define FADE_TIME                64
+define MENU_FADE_TIME           16
+
+define PROD_TOP_Y               -60
+define PROD_BOTTOM_Y            40
+define PROD_BOTTOM_RANGE        120
+
+define TITLE_LOGO1_Y            38
+define TITLE_LOGO2_Y            88
+define TITLE_LOGO_TIME          64
+
+define FONT_NEWLINE_HEIGHT      10
+define FONT_BIGLINE_HEIGHT      17
+define FONT_PARAGRAPH_HEIGHT    25
+define QUOTE_SHADE              4
+
+define BRIEFING_TEXT_Y          4
+define BRIEFING_DUKECAR_RANGE   100
+define BRIEFING_ZOOM_X          14
+define BRIEFING_ZOOM_Y          16
+define BRIEFING_FADE_TIME       128
+define BRIEFING_TEXT_TIME       704
+define BRIEFING_DUKECAR_TIME    512
+define BRIEFING_ZOOM_TIME       32
+define BRIEFING_DUKE_TIME       544
+define BRIEFING_WAIT_TIME       64
+define BRIEFING_FOCUS_TIME      320
+define BRIEFING_MONITOR_TIME    192
+define BRIEFING_PLANET_TIME     640
+define BRIEFING_WARNING_TIME    320
+define BRIEFING_ANIM_TIME       256
+
+define BONUS_HEADER_Y           14
+define BONUS_SCORE_X            -20
+define BONUS_SCORE_Y            54
+define BONUS_SCORE_RANGE        130
+define BONUS_FOOTER_Y           -19
+define BONUS_GLOW_SHADE         9
+define BONUS_GLOW_TIME          256
+define BONUS_STAT_TIME          64
+define BONUS_COCK_TIME          160
+define BONUS_ANIM_TIME          16
+
+define DMBONUS_TABLE_X          -73
+define DMBONUS_TABLE_Y          60
+define DMBONUS_COL1_RANGE       65
+define DMBONUS_COL1SPAN_RANGE   45
+define DMBONUS_COL2_RANGE       25
+define DMBONUS_COL3_RANGE       35
+define DMBONUS_COL4_RANGE       30
+define DMBONUS_EDGE_SHADE       9
+
+define VICTORY_TEXT_Y           -44
+define VICTORY_TEXT_TIME        512
+define VICTORY_ANIM_TIME        256
+
+define CREDITS_TEXT_LENGTH      16
+define CREDITS_NEWLINE_HEIGHT   15
+define CREDITS_BIGLINE_HEIGHT   20
+define CREDITS_TIME             256
+define CREDITS_ROLL_SPEED       32
+
+state textcolor
+  getplayer[SET].palookup TEMPB
+  switch TEMPB
+  case 0
+  case 9
+    setvar pal PAL_STRONG_CYAN
+  break
+  case 10
+    setvar pal PAL_STRONG_GREEN
+  break
+  case 11
+    setvar pal PAL_STRONG_PURPLE
+  break
+  case 12
+    setvar pal PAL_STRONG_YELLOW
+  break
+  default
+    setvar pal 0
+  break
+  endswitch
+ends
+
+state reset_screen
+  state reset_drawing
+  setvar x1 0
+  setvar y1 0
+  setvarvar x2 xdim
+  setvarvar y2 ydim
+  setvar POSX 0
+  setvar POSY 0
+ends
+
+state aspectset_background
+  ifvarl screenz 1
+    break
+  ifvarl screenz2 1
+    break
+
+  setvarvar aspect screenz2
+  shiftvarl aspect 6
+  divvarvar aspect screenz
+  shiftvarl aspect 4
+  mulvar aspect SCREEN_WIDTH
+  mulvar aspect 5
+  divvar aspect 8
+  divvar aspect 208
+  shiftvarl aspect 3
+  ifvarand screenorientation 1024
+  {
+    mulvarvar aspect ydim
+    divvarvar aspect xdim
+  }
+  else
+  {
+    mulvar aspect 3
+    divvar aspect 4
+  }
+  divvar aspect 5
+  shiftvarl aspect 6
+  setaspect 65536 aspect
+
+  ifvarand screenorientation 1024
+    nullop
+  else
+  {
+    setvar TEMPB 0
+    ifvarand screenorientation 256
+      setvar TEMPB 1
+    ifvarand screenorientation 512
+      setvar TEMPB 1
+    ifvare TEMPB 1
+    {
+      setvar TEMPB2 320
+      shiftvarl TEMPB2 6
+      mulvarvar TEMPB2 xdim
+      mulvar TEMPB2 3
+      divvarvar TEMPB2 ydim
+      divvar TEMPB2 4
+      shiftvarl TEMPB2 10
+      setvarvar TEMPB3 320
+      shiftvarl TEMPB3 16
+      subvarvar TEMPB2 TEMPB3
+      shiftvarr TEMPB2 1
+      ifvarand screenorientation 256
+        mulvar TEMPB2 -1
+      addvarvar screenx TEMPB2
+    }
+
+    setvar TEMPB 160
+    shiftvarl TEMPB 16
+    subvarvar screenx TEMPB
+    shiftvarr screenx 6
+    mulvar screenx 320
+    divvar screenx SCREEN_WIDTH
+    mulvarvar screenx ydim
+    mulvar screenx 4
+    divvarvar screenx xdim
+    divvar screenx 3
+    shiftvarl screenx 6
+    addvarvar screenx TEMPB
+  }
+
+  setvar TEMPB 100
+  shiftvarl TEMPB 16
+  subvarvar screeny TEMPB
+  shiftvarr screeny 10
+  mulvarvar screeny screenz
+  divvarvar screeny screenz2
+  shiftvarl screeny 4
+  mulvar screeny 320
+  divvar screeny SCREEN_WIDTH
+  ifvarand screenorientation 1024
+    nullop
+  else
+  {
+    mulvarvar screeny ydim
+    mulvar screeny 4
+    divvarvar screeny xdim
+    divvar screeny 3
+  }
+  shiftvarl screeny 6
+  addvarvar screeny TEMPB
+
+  mulvar screenz 320
+  divvar screenz SCREEN_WIDTH
+  ifvarand screenorientation 1024
+    nullop
+  else
+  {
+    mulvarvar screenz ydim
+    mulvar screenz 4
+    divvarvar screenz xdim
+    divvar screenz 3
+    orvar screenorientation 1024
+  }
+ends
+
+state window_background
+  subvar x1 160
+  subvar x2 160
+  subvar y1 100
+  subvar y2 100
+
+  mulvarvar x1 ydim
+  mulvar x1 4
+  divvar x1 SCREEN_WIDTH
+  divvar x1 3
+  mulvarvar x2 ydim
+  mulvar x2 4
+  divvar x2 SCREEN_WIDTH
+  divvar x2 3
+  mulvarvar y1 ydim
+  divvar y1 208
+  mulvarvar y2 ydim
+  divvar y2 208
+
+  setvarvar TEMPB xdim
+  shiftvarr TEMPB 1
+  addvarvar x1 TEMPB
+  addvarvar x2 TEMPB
+  setvarvar TEMPB ydim
+  shiftvarr TEMPB 1
+  addvarvar y1 TEMPB
+  addvarvar y2 TEMPB
+ends
+
+state draw_screen_scale
+  setvarvar screenorientation orientation
+  orvar screenorientation 2056
+  state draw_code
+  ifvarn POSX 1
+  {
+    ifvare POSX 2
+      setvar TEMPB 320
+    else
+      setvar TEMPB 160
+    shiftvarl TEMPB 16
+    addvarvar screenx TEMPB
+  }
+  ifvarn POSY 1
+  {
+    ifvare POSY 2
+      setvar TEMPB 200
+    else
+      setvar TEMPB 100
+    shiftvarl TEMPB 16
+    addvarvar screeny TEMPB
+  }
+ends
+
+state draw_background
+  state draw_screen_scale
+  ifvare screenorientation -1
+    break
+  state aspectset_background
+  rotatespritea screenx screeny screenz ang
+                tilenum shade pal screenorientation screenalpha
+                x1 y1 x2 y2
+  state aspectreset
+ends
+
+state draw_screen
+  state draw_screen_scale
+  ifvare screenorientation -1
+    break
+  state aspectset
+  rotatespritea screenx screeny screenz ang
+                tilenum shade pal screenorientation screenalpha
+                x1 y1 x2 y2
+  state aspectreset
+ends
+
+state draw_screen_text
+  state draw_screen_scale
+  ifvare screenorientation -1
+    break
+  state draw_text
+
+  state aspectset
+  screentext tilenum screenx screeny screenz
+             ang textang string shade pal
+             screenorientation screenalpha screenspacewidth screenlineheight
+             screenletterspacing screenlinespacing textorientation
+             x1 y1 x2 y2
+  state aspectreset
+ends
+
+state titlescreen
+  state reset_screen
+  setvar tilenum NEWMENUSCREEN
+  state draw_background
+  ifvare current_menu 0
+  {
+    setvar y TITLE_LOGO1_Y
+    ifvarg DISPLAYCOUNT TITLE_LOGO_TIME
+      nullop
+    else
+    {
+      setvarvar z DISPLAYCOUNT
+      shiftvarl z 16
+      divvar z TITLE_LOGO_TIME
+      setvarvar z2 z
+    }
+    setvar tilenum MENUTITLE1
+    ifvarl DISPLAYCOUNT MENU_FADE_TIME
+    {
+      setvarvar alpha DISPLAYCOUNT
+      mulvar alpha -1
+      addvar alpha MENU_FADE_TIME
+      shiftvarl alpha 8
+      divvar alpha MENU_FADE_TIME
+    }
+    setvar POSY 1
+    state draw_background
+    setvar TEMP TITLE_LOGO_TIME
+    mulvar TEMP 2
+    ifvarg DISPLAYCOUNT TITLE_LOGO_TIME
+    {
+      setvar y TITLE_LOGO2_Y
+      ifvarvarg DISPLAYCOUNT TEMP
+        setvar z 65536
+      else
+      {
+        setvarvar z DISPLAYCOUNT
+        subvar z TITLE_LOGO_TIME
+        mulvar z -1
+        addvarvar z TEMP
+        subvar z TITLE_LOGO_TIME
+        shiftvarl z 16
+        divvarvar z TITLE_LOGO_TIME
+        addvar z 65536
+      }
+      setvarvar z2 z
+      setvar tilenum MENUTITLE2
+      state draw_background
+    }
+  }
+  setvar TEMP TITLE_LOGO_TIME
+  mulvar TEMP 2
+  ifvarvarl DISPLAYCOUNT TEMP
+    nullop
+  else
+  ifsound TITLE_MUSIC
+    nullop
+  else
+    screensound TITLE_MUSIC
+  ifvare DISPLAYCOUNT 0
+  ifvare SYNC 1
+    screensound FLY_BY
+ends
+
+onevent EVENT_GETMENUTILE
+  setvar RETURN -1
+  state blackscreen
+
+  ifvarn THISACTOR -1
+  {
+    ifvarand player[THISACTOR].gm MODE_MENU
+      nullop
+    else
+      setvar CLOCKTEMP -1
+  }
+  ifvarvarn totalclock LASTCLOCK
+    setvar SYNC 1
+  else
+    setvar SYNC 0
+  setvarvar LASTCLOCK totalclock
+  ifvare CLOCKTEMP -1
+    setvarvar CLOCKTEMP totalclock
+  ifvarvarg CLOCKTEMP totalclock
+    setvarvar CLOCKTEMP totalclock
+
+  ifvarn THISACTOR -1
+  {
+    getplayer[THISACTOR].i PIDTEMP
+    setplayer[THISACTOR].i -1
+  }
+
+  setvarvar DISPLAYCOUNT totalclock
+  subvarvar DISPLAYCOUNT CLOCKTEMP
+  addvar DISPLAYCOUNT -64
+  state titlescreen
+
+  ifvarn THISACTOR -1
+    setplayer[THISACTOR].i PIDTEMP
+endevent
+
+state draw_score
+  setvarvar screenorientation orientation
+  orvar screenorientation 2056
+  state draw_code
+  ifvarg MAX_PLAYERS_SCORE 0
+  ifvarg MULTIMODE MAX_PLAYERS_SCORE
+  {
+    setvar TEMPB MAX_PLAYERS_SCORE
+    addvar TEMPB 2
+    setvarvar TEMPB2 MULTIMODE
+    addvar TEMPB2 2
+    mulvarvar screenx TEMPB
+    divvarvar screenx TEMPB2
+  }
+  ifvarn POSX 1
+  {
+    ifvare POSX 2
+      setvar TEMPB 320
+    else
+      setvar TEMPB 160
+    shiftvarl TEMPB 16
+    addvarvar screenx TEMPB
+  }
+  setvar TEMPB DMBONUS_TABLE_Y
+  shiftvarl TEMPB 16
+  subvarvar screeny TEMPB
+  ifvarg MAX_PLAYERS_SCORE 0
+  ifvarg MULTIMODE MAX_PLAYERS_SCORE
+  {
+    setvar TEMPB2 MAX_PLAYERS_SCORE
+    addvar TEMPB2 2
+    setvarvar TEMPB3 MULTIMODE
+    addvar TEMPB3 2
+    mulvarvar screeny TEMPB2
+    divvarvar screeny TEMPB3
+  }
+  addvarvar screeny TEMPB
+  ifvarn POSY 1
+  {
+    ifvare POSY 2
+      setvar TEMPB 200
+    else
+      setvar TEMPB 100
+    shiftvarl TEMPB 16
+    addvarvar screeny TEMPB
+  }
+  setvarvar screenz z
+  ifvarg MAX_PLAYERS_SCORE 0
+  ifvarg MULTIMODE MAX_PLAYERS_SCORE
+  {
+    setvar TEMPB MAX_PLAYERS_SCORE
+    addvar TEMPB 2
+    setvarvar TEMPB2 MULTIMODE
+    addvar TEMPB2 2
+    mulvarvar screenz TEMPB
+    divvarvar screenz TEMPB2
+    mulvarvar screenz2 TEMPB
+    divvarvar screenz2 TEMPB2
+  }
+
+  ifvare screenorientation -1
+    break
+  state draw_text
+
+  state aspectset
+  screentext tilenum screenx screeny screenz
+             ang textang string shade pal
+             screenorientation screenalpha screenspacewidth screenlineheight
+             screenletterspacing screenlinespacing textorientation
+             x1 y1 x2 y2
+  state aspectreset
+ends
+
+state displaybonus
+  state reset_screen
+  ifvare CURRSCREEN SCREEN_DMBONUS
+  {
+    setvar shade QUOTE_SHADE
+    setvar pal PAL_SMOOTH_BLUE
+    setvar tilenum NEWMENUSCREEN
+    state draw_background
+  }
+  else
+  {
+    setvar tilenum NEWBONUSSCREEN
+    state draw_background
+    addvar tilenum 1
+    setvar TEMP BONUS_STAT_TIME
+    mulvar TEMP 5
+    subvar TEMP 1
+    addvar TEMP FADE_TIME
+    addvar TEMP BONUS_COCK_TIME
+    ifvarvarg DISPLAYCOUNT TEMP
+      addvar tilenum 1
+    addvar TEMP BONUS_ANIM_TIME
+    ifvarvarg DISPLAYCOUNT TEMP
+      addvar tilenum 1
+    addvar TEMP BONUS_ANIM_TIME
+    ifvarvarg DISPLAYCOUNT TEMP
+      addvar tilenum 1
+    addvar TEMP BONUS_ANIM_TIME
+    ifvarvarg DISPLAYCOUNT TEMP
+      subvar tilenum 1
+    state draw_background
+  }
+
+  state reset_text
+  setvar POSY 1
+  setvar y BONUS_HEADER_Y
+  ifvare CURRSCREEN SCREEN_DMBONUS
+    setvar pal PAL_SMOOTH_ORANGE
+  else
+    setvar pal PAL_SMOOTH_AZURE
+  setvar shade 0
+  setvar tilenum BIGALPHANUM
+  setvar orientation 16
+  setvar textorientation 1056850
+  setvar string RESERVED_QUOTE
+  ifvare CURRSCREEN SCREEN_DMBONUS
+    redefinequote RESERVED_QUOTE MULTIPLAYER TOTALS
+  else
+    qgetsysstr RESERVED_QUOTE STR_MAPNAME
+  state draw_screen_text
+
+  addvar y FONT_BIGLINE_HEIGHT
+  ifvare CURRSCREEN SCREEN_DMBONUS
+    qgetsysstr RESERVED_QUOTE STR_MAPNAME
+  else
+  {
+    setvar tilenum STARTALPHANUM
+    setvar textorientation 82
+    redefinequote RESERVED_QUOTE COMPLETED
+  }
+  state draw_screen_text
+
+  ifvare CURRSCREEN SCREEN_DMBONUS
+  {
+    setvar shade DMBONUS_EDGE_SHADE
+
+    setvar TEMP DMBONUS_COL2_RANGE
+    mulvarvar TEMP MULTIMODE
+    shiftvarr TEMP 1
+
+    setvar x DMBONUS_TABLE_X
+    subvarvar x TEMP
+    setvar y DMBONUS_TABLE_Y
+    setvar pal 0
+    setvar tilenum STARTALPHANUM
+    setvar textorientation 88
+    redefinequote RESERVED_QUOTE PLAYER
+    state draw_score
+
+    addvar x DMBONUS_COL1_RANGE
+    setvar WHILE 0
+    whilevarvarn WHILE MULTIMODE
+    {
+      setvar shade QUOTE_SHADE
+      redefinequote RESERVED_QUOTE %d
+      setvarvar TEMP WHILE
+      addvar TEMP 1
+      qsprintf RESERVED_QUOTE RESERVED_QUOTE TEMP
+      setvarvar SET WHILE
+      state textcolor
+      state draw_score
+      addvar WHILE 1
+      ifvarvarn WHILE MULTIMODE
+        addvar x DMBONUS_COL2_RANGE
+    }
+    setvar pal 0
+    setvar shade DMBONUS_EDGE_SHADE
+    addvar x DMBONUS_COL3_RANGE
+    redefinequote RESERVED_QUOTE K
+    state draw_score
+    setvar pal PAL_SMOOTH_BLUE
+    setvar shade QUOTE_SHADE
+    addvar x DMBONUS_COL4_RANGE
+    redefinequote RESERVED_QUOTE WINS
+    state draw_score
+
+    setvar WHILE 0
+    whilevarvarn WHILE MULTIMODE
+    {
+      setvar x DMBONUS_TABLE_X
+      setvar TEMP2 DMBONUS_COL2_RANGE
+      mulvarvar TEMP2 MULTIMODE
+      shiftvarr TEMP2 1
+      subvarvar x TEMP2
+      addvar x DMBONUS_COL1SPAN_RANGE
+      addvar y FONT_BIGLINE_HEIGHT
+      setvarvar SET WHILE
+      state textcolor
+      setvar tilenum STARTALPHANUM
+      redefinequote RESERVED_QUOTE %d
+      setvarvar TEMP2 WHILE
+      addvar TEMP2 1
+      qsprintf RESERVED_QUOTE RESERVED_QUOTE TEMP2
+      setvar textorientation 88
+      state draw_score
+
+      subvar x DMBONUS_COL1SPAN_RANGE
+      addvar x DMBONUS_COL1_RANGE
+      setvar shade 0
+      setvar WHILE2 0
+      whilevarvarn WHILE2 MULTIMODE
+      {
+        ifvarvare WHILE WHILE2
+        {
+          setvar pal PAL_AVERAGE_RED
+          getplayer[WHILE].fraggedself TEMP2
+        }
+        else
+        {
+          setvar pal 0
+          ifvare WHILE2 0
+            getplayervar[WHILE].FRAG1 TEMP2
+          else
+          ifvare WHILE2 1
+            getplayervar[WHILE].FRAG2 TEMP2
+          else
+          ifvare WHILE2 2
+            getplayervar[WHILE].FRAG3 TEMP2
+          else
+          ifvare WHILE2 3
+            getplayervar[WHILE].FRAG4 TEMP2
+          else
+          ifvare WHILE2 4
+            getplayervar[WHILE].FRAG5 TEMP2
+          else
+          ifvare WHILE2 5
+            getplayervar[WHILE].FRAG6 TEMP2
+          else
+          ifvare WHILE2 6
+            getplayervar[WHILE].FRAG7 TEMP2
+          else
+          ifvare WHILE2 7
+            getplayervar[WHILE].FRAG8 TEMP2
+          else
+            setvar TEMP2 0
+        }
+        redefinequote RESERVED_QUOTE %d
+        qsprintf RESERVED_QUOTE RESERVED_QUOTE TEMP2
+        state draw_score
+        addvar WHILE2 1
+        ifvarvarn WHILE2 MULTIMODE
+          addvar x DMBONUS_COL2_RANGE
+      }
+      setvar pal 0
+      setvar shade DMBONUS_EDGE_SHADE
+      addvar x DMBONUS_COL3_RANGE
+      redefinequote RESERVED_QUOTE %d
+      getplayer[WHILE].frag TEMP2
+      subvarvar TEMP2 player[WHILE].fraggedself
+      qsprintf RESERVED_QUOTE RESERVED_QUOTE TEMP2
+      state draw_score
+      setvar pal PAL_SMOOTH_BLUE
+      setvar shade QUOTE_SHADE
+      addvar x DMBONUS_COL4_RANGE
+      setvar tilenum BIGALPHANUM
+      redefinequote RESERVED_QUOTE %d
+      getplayervar[WHILE].WINS TEMP2
+      qsprintf RESERVED_QUOTE RESERVED_QUOTE TEMP2
+      setvar textorientation 1056856
+      state draw_score
+      addvar WHILE 1
+    }
+
+    setvar pal 0
+    setvar shade DMBONUS_EDGE_SHADE
+    setvar x DMBONUS_TABLE_X
+    setvar TEMP2 DMBONUS_COL2_RANGE
+    mulvarvar TEMP2 MULTIMODE
+    shiftvarr TEMP2 1
+    subvarvar x TEMP2
+    addvar y FONT_BIGLINE_HEIGHT
+    setvar tilenum STARTALPHANUM
+    setvar textorientation 88
+    redefinequote RESERVED_QUOTE DEATHS
+    state draw_score
+
+    addvar x DMBONUS_COL1_RANGE
+    setvar WHILE 0
+    whilevarvarn WHILE MULTIMODE
+    {
+      redefinequote RESERVED_QUOTE %d
+      setvar TEMP 0
+      setvar WHILE2 0
+      whilevarvarn WHILE2 MULTIMODE
+      {
+        ifvarvare WHILE WHILE2
+          getplayer[WHILE2].fraggedself TEMP2
+        else
+        ifvare WHILE 0
+          getplayervar[WHILE2].FRAG1 TEMP2
+        else
+        ifvare WHILE 1
+          getplayervar[WHILE2].FRAG2 TEMP2
+        else
+        ifvare WHILE 2
+          getplayervar[WHILE2].FRAG3 TEMP2
+        else
+        ifvare WHILE 3
+          getplayervar[WHILE2].FRAG4 TEMP2
+        else
+        ifvare WHILE 4
+          getplayervar[WHILE2].FRAG5 TEMP2
+        else
+        ifvare WHILE 5
+          getplayervar[WHILE2].FRAG6 TEMP2
+        else
+        ifvare WHILE 6
+          getplayervar[WHILE2].FRAG7 TEMP2
+        else
+        ifvare WHILE 7
+          getplayervar[WHILE2].FRAG8 TEMP2
+        else
+          setvar TEMP2 0
+        addvarvar TEMP TEMP2
+        addvar WHILE2 1
+      }
+      qsprintf RESERVED_QUOTE RESERVED_QUOTE TEMP
+      state draw_score
+      addvar WHILE 1
+      ifvarvarn WHILE MULTIMODE
+        addvar x DMBONUS_COL2_RANGE
+    }
+  }
+  else
+  {
+    setvar TEMP FADE_TIME
+    subvar TEMP 1
+    ifvarvarg DISPLAYCOUNT TEMP
+    {
+      setvar x BONUS_SCORE_X
+      setvar y BONUS_SCORE_Y
+      setvar pal PAL_GREEN
+      setvar shade 0
+      setvar textorientation 80
+      redefinequote RESERVED_QUOTE ENEMIES KILLED
+      state draw_screen_text
+      addvar x BONUS_SCORE_RANGE
+      redefinequote RESERVED_QUOTE %d
+      qsprintf RESERVED_QUOTE RESERVED_QUOTE player[THISACTOR].actors_killed
+      state draw_screen_text
+    }
+    addvar TEMP BONUS_STAT_TIME
+    ifvarvarg DISPLAYCOUNT TEMP
+    {
+      addvar y FONT_NEWLINE_HEIGHT
+      setvar x BONUS_SCORE_X
+      setvar pal PAL_RED
+      redefinequote RESERVED_QUOTE ENEMIES LEFT
+      state draw_screen_text
+      addvar x BONUS_SCORE_RANGE
+      redefinequote RESERVED_QUOTE %d
+      getplayer[THISACTOR].max_actors_killed TEMP2
+      subvarvar TEMP2 player[THISACTOR].actors_killed
+      ifvarl TEMP2 0
+        setvar TEMP2 0
+      qsprintf RESERVED_QUOTE RESERVED_QUOTE TEMP2
+      state draw_screen_text
+    }
+    addvar TEMP BONUS_STAT_TIME
+    ifvarvarg DISPLAYCOUNT TEMP
+    {
+      addvar y FONT_PARAGRAPH_HEIGHT
+      setvar x BONUS_SCORE_X
+      setvar pal PAL_GREEN
+      redefinequote RESERVED_QUOTE SECRETS FOUND
+      state draw_screen_text
+      addvar x BONUS_SCORE_RANGE
+      redefinequote RESERVED_QUOTE %d
+      qsprintf RESERVED_QUOTE RESERVED_QUOTE player[THISACTOR].secret_rooms
+      state draw_screen_text
+    }
+    addvar TEMP BONUS_STAT_TIME
+    ifvarvarg DISPLAYCOUNT TEMP
+    {
+      addvar y FONT_NEWLINE_HEIGHT
+      setvar x BONUS_SCORE_X
+      setvar pal PAL_RED
+      redefinequote RESERVED_QUOTE SECRETS MISSED
+      state draw_screen_text
+      addvar x BONUS_SCORE_RANGE
+      redefinequote RESERVED_QUOTE %d
+      getplayer[THISACTOR].max_secret_rooms TEMP2
+      subvarvar TEMP2 player[THISACTOR].secret_rooms
+      qsprintf RESERVED_QUOTE RESERVED_QUOTE TEMP2
+      state draw_screen_text
+    }
+    addvar TEMP BONUS_STAT_TIME
+    ifvarvarg DISPLAYCOUNT TEMP
+    {
+      addvar y FONT_PARAGRAPH_HEIGHT
+      setvar x BONUS_SCORE_X
+      setvar pal PAL_GREEN
+      redefinequote RESERVED_QUOTE BABES SAVED
+      state draw_screen_text
+      addvar x BONUS_SCORE_RANGE
+      redefinequote RESERVED_QUOTE %d
+      qsprintf RESERVED_QUOTE RESERVED_QUOTE FEMALES
+      state draw_screen_text
+    }
+    addvar TEMP BONUS_STAT_TIME
+    ifvarvarg DISPLAYCOUNT TEMP
+    {
+      addvar y FONT_NEWLINE_HEIGHT
+      setvar x BONUS_SCORE_X
+      setvar pal PAL_RED
+      redefinequote RESERVED_QUOTE BABES LEFT
+      state draw_screen_text
+      addvar x BONUS_SCORE_RANGE
+      redefinequote RESERVED_QUOTE %d
+      setvarvar TEMP2 TOTALFEMALES
+      subvarvar TEMP2 FEMALES
+      qsprintf RESERVED_QUOTE RESERVED_QUOTE TEMP2
+      state draw_screen_text
+    }
+  }
+
+  setvar POSY 2
+
+  setvar x 0
+  setvar y BONUS_FOOTER_Y
+  subvar y FONT_NEWLINE_HEIGHT
+  ifvare CURRSCREEN SCREEN_DMBONUS
+  {
+    subvar y FONT_PARAGRAPH_HEIGHT
+    setvar shade QUOTE_SHADE
+    setvar tilenum BIGALPHANUM
+    setvar textorientation 1056850
+    setvar TEMP 0
+    ifvarg MULTIMODE 1
+    {
+      setvar WHILE 1
+      ifvarvarg MULTIMODE WHILE
+      whilevarvarn WHILE MULTIMODE
+      {
+        setvarvar TEMP2 TEMP
+        ifvarl TEMP2 0
+          mulvar TEMP2 -1
+        getplayer[TEMP2].frag TEMP3
+        subvarvar TEMP3 player[TEMP2].fraggedself
+        getplayer[WHILE].frag TEMP4
+        subvarvar TEMP4 player[WHILE].fraggedself
+        ifvarvarg TEMP4 TEMP3
+          setvarvar TEMP WHILE
+        else
+        ifvarvare TEMP4 TEMP3
+        {
+          setvarvar TEMP WHILE
+          mulvar TEMP -1
+        }
+        addvar WHILE 1
+      }
+    }
+    ifvarg TEMP -1
+    {
+      redefinequote RESERVED_QUOTE %s WINS
+      getpname RESERVED_QUOTE_2 TEMP
+      qsprintf RESERVED_QUOTE RESERVED_QUOTE RESERVED_QUOTE_2
+      setvarvar SET TEMP
+      state textcolor
+    }
+    else
+    {
+      redefinequote RESERVED_QUOTE DRAW
+      setvar pal 0
+    }
+    state draw_screen_text
+    addvar y FONT_PARAGRAPH_HEIGHT
+  }
+  ifvarn NEXTLEVEL -1
+  {
+    setvarvar shade DISPLAYCOUNT
+    shiftvarl shade 10
+    divvar shade BONUS_GLOW_TIME
+    andvar shade 1023
+    sin shade shade
+    mulvar shade -1
+    addvar shade 16384
+    mulvar shade BONUS_GLOW_SHADE
+    shiftvarr shade 14
+    setvar textorientation 82
+
+/*
+    ifvarn CURRSCREEN SCREEN_DMBONUS
+    {
+      subvar y FONT_NEWLINE_HEIGHT
+      setvar pal PAL_SMOOTH_PURPLE
+      setvar tilenum STARTALPHANUM
+      redefinequote RESERVED_QUOTE PRESS OPEN TO SAVE GAME
+      state draw_screen_text
+      addvar y FONT_NEWLINE_HEIGHT
+    }
+*/
+    setvar pal 0
+    setvar tilenum STARTALPHANUM
+    redefinequote RESERVED_QUOTE PRESS ANY KEY OR BUTTON TO ENTER
+    state draw_screen_text
+
+    addvar y FONT_NEWLINE_HEIGHT
+    setvar tilenum BIGALPHANUM
+    setvar textorientation 1056850
+    getuserdef .volume_number TEMP
+    getuserdef .level_number TEMP2
+    setuserdef .volume_number NEXTVOLUME
+    setuserdef .level_number NEXTLEVEL
+    qgetsysstr RESERVED_QUOTE STR_MAPNAME
+    setuserdef .volume_number TEMP
+    setuserdef .level_number TEMP2
+    state draw_screen_text
+  }
+
+  ifvare SYNC 1
+  {
+    ifvarn CURRSCREEN SCREEN_DMBONUS
+    {
+      setvar TEMP FADE_TIME
+      ifvarvare DISPLAYCOUNT TEMP
+        screensound RPG_EXPLODE
+      addvar TEMP BONUS_STAT_TIME
+      ifvarvare DISPLAYCOUNT TEMP
+        screensound RPG_EXPLODE
+      addvar TEMP BONUS_STAT_TIME
+      ifvarvare DISPLAYCOUNT TEMP
+        screensound RPG_EXPLODE
+      addvar TEMP BONUS_STAT_TIME
+      ifvarvare DISPLAYCOUNT TEMP
+        screensound RPG_EXPLODE
+      addvar TEMP BONUS_STAT_TIME
+      ifvarvare DISPLAYCOUNT TEMP
+        screensound RPG_EXPLODE
+      addvar TEMP BONUS_STAT_TIME
+      ifvarvare DISPLAYCOUNT TEMP
+        screensound RPG_EXPLODE
+      addvar TEMP BONUS_COCK_TIME
+      ifvarvare DISPLAYCOUNT TEMP
+        screensound SHOTGUN_COCK
+    }
+    setvarvar TEMP ENDSCREEN
+    shiftvarl TEMP 2
+    addvarvar TEMP totalclock
+    subvarvar TEMP SMOOTHCLOCK
+    ifvare TEMP 0
+      screensound RPG_EXPLODE
+  }
+ends
+
+state textline
+  setvar tilenum STARTALPHANUM
+  state draw_screen_text
+  addvar y FONT_NEWLINE_HEIGHT
+ends
+
+state displaybriefing
+  state reset_screen
+
+  ifvarl DISPLAYCOUNT BRIEFING_FADE_TIME
+  {
+    setvar tilenum NEWMENUSCREEN
+    state draw_background
+    break
+  }
+
+  setvar TEMP5 -1
+  addvar TEMP5 BRIEFING_FADE_TIME
+  setvarvar TEMP4 TEMP5
+  addvar TEMP5 BRIEFING_TEXT_TIME
+  ifvarvarg DISPLAYCOUNT TEMP4
+  {
+    setvar TEMP 0
+    setvarvar TEMP2 TEMP4
+    setvarvar TEMP3 TEMP5
+  }
+  setvarvar TEMP4 TEMP5
+  addvar TEMP5 BRIEFING_TEXT_TIME
+  ifvarvarg DISPLAYCOUNT TEMP4
+  {
+    setvar TEMP 1
+    setvarvar TEMP2 TEMP4
+    setvarvar TEMP3 TEMP5
+  }
+  setvarvar TEMP4 TEMP5
+  addvar TEMP5 BRIEFING_TEXT_TIME
+  ifvarvarg DISPLAYCOUNT TEMP4
+  {
+    setvar TEMP 2
+    setvarvar TEMP2 TEMP4
+    setvarvar TEMP3 TEMP5
+  }
+  setvarvar TEMP4 TEMP5
+  addvar TEMP5 BRIEFING_DUKE_TIME
+  ifvarvarg DISPLAYCOUNT TEMP4
+  {
+    setvar TEMP 3
+    setvarvar TEMP2 TEMP4
+    setvarvar TEMP3 TEMP5
+  }
+  setvarvar TEMP4 TEMP5
+  addvar TEMP5 BRIEFING_MONITOR_TIME
+  ifvarvarg DISPLAYCOUNT TEMP4
+  {
+    setvar TEMP 4
+    setvarvar TEMP2 TEMP4
+    setvarvar TEMP3 TEMP5
+  }
+  setvarvar TEMP4 TEMP5
+  addvar TEMP5 BRIEFING_PLANET_TIME
+  ifvarvarg DISPLAYCOUNT TEMP4
+  {
+    setvar TEMP 5
+    setvarvar TEMP2 TEMP4
+    setvarvar TEMP3 TEMP5
+  }
+  setvarvar TEMP4 TEMP5
+  addvar TEMP5 BRIEFING_WARNING_TIME
+  ifvarvarg DISPLAYCOUNT TEMP4
+  {
+    setvar TEMP 6
+    setvarvar TEMP2 TEMP4
+    setvarvar TEMP3 TEMP5
+  }
+  setvarvar TEMP4 TEMP5
+  addvar TEMP5 BRIEFING_ANIM_TIME
+  ifvarvarg DISPLAYCOUNT TEMP4
+  {
+    setvar TEMP 7
+    setvarvar TEMP2 TEMP4
+    setvarvar TEMP3 TEMP5
+  }
+  setvarvar TEMP4 TEMP5
+  addvar TEMP5 BRIEFING_ANIM_TIME
+  ifvarvarg DISPLAYCOUNT TEMP4
+  {
+    setvar TEMP 8
+    setvarvar TEMP2 TEMP4
+    setvarvar TEMP3 TEMP5
+  }
+  addvar TEMP2 1
+  addvar TEMP3 1
+
+  ifvare TEMP 1
+  {
+    setvar tilenum BRIEFINGSCREEN
+
+    setvarvar alpha TEMP2
+    mulvar alpha -1
+    addvarvar alpha DISPLAYCOUNT
+    ifvarg alpha BRIEFING_FADE_TIME
+      setvar alpha BRIEFING_FADE_TIME
+    mulvar alpha -1
+    addvar alpha BRIEFING_FADE_TIME
+    shiftvarl alpha 8
+    divvar alpha BRIEFING_FADE_TIME
+
+    state draw_background
+  }
+  ifvare TEMP 2
+  {
+    setvar tilenum BRIEFINGSCREEN
+    state draw_background
+
+    setvarvar TEMP4 TEMP3
+    subvarvar TEMP4 DISPLAYCOUNT
+    ifvarl TEMP4 BRIEFING_DUKECAR_TIME
+    {
+      setvarvar x1 tilesizx[tilenum]
+      shiftvarr x1 1
+      mulvar x1 -1
+      addvar x1 160
+      setvarvar x2 x1
+      addvarvar x2 tilesizx[tilenum]
+      setvarvar y1 tilesizy[tilenum]
+      shiftvarr y1 1
+      mulvar y1 -1
+      addvar y1 100
+      setvarvar y2 y1
+      addvarvar y2 tilesizy[tilenum]
+      state window_background
+
+      setvarvar x tilesizx[tilenum]
+      shiftvarr x 1
+      mulvar x -1
+      ifvarl TEMP4 BRIEFING_ZOOM_TIME
+      {
+        setvar x16 BRIEFING_DUKECAR_RANGE
+        shiftvarl x16 16
+
+        shiftvarl z 2
+        divvar z 3
+      }
+      else
+      {
+        setvarvar TEMP5 DISPLAYCOUNT
+        subvarvar TEMP5 TEMP2
+        subvar TEMP5 BRIEFING_TEXT_TIME
+        addvar TEMP5 BRIEFING_DUKECAR_TIME
+        setvarvar x16 TEMP5
+        mulvar x16 BRIEFING_DUKECAR_RANGE
+        shiftvarl x16 12
+        setvar TEMP6 BRIEFING_DUKECAR_TIME
+        subvar TEMP6 BRIEFING_ZOOM_TIME
+        divvarvar x16 TEMP6
+        shiftvarl x16 4
+
+        setvarvar z TEMP5
+        shiftvarl z 9
+        divvarvar z TEMP6
+        cos z z
+        mulvar z -1
+        addvar z 16384
+        mulvarvar z z
+        shiftvarr z 10
+        divvar z 3
+      }
+      setvarvar z2 z
+
+      addvar tilenum 1
+      state draw_background
+    }
+  }
+  ifvare TEMP 3
+  {
+    setvarvar TEMP4 TEMP3
+    subvarvar TEMP4 DISPLAYCOUNT
+    ifvarg TEMP4 BRIEFING_FOCUS_TIME
+    {
+      setvarvar TEMP5 DISPLAYCOUNT
+      subvarvar TEMP5 TEMP2
+      ifvarg TEMP5 BRIEFING_WAIT_TIME
+      {
+        setvarvar z TEMP4
+        subvar z BRIEFING_FOCUS_TIME
+        shiftvarl z 18
+        divvar z 10
+        setvar TEMP6 BRIEFING_DUKE_TIME
+        subvar TEMP6 BRIEFING_WAIT_TIME
+        subvar TEMP6 BRIEFING_FOCUS_TIME
+        divvarvar z TEMP6
+      }
+      else
+      {
+        setvar z 262144
+        divvar z 10
+      }
+      addvarvar z 65536
+      setvarvar z2 z
+    }
+
+    setvar tilenum BRIEFINGSCREEN
+    addvar tilenum 2
+    state draw_background
+  }
+  ifvare TEMP 4
+  {
+    setvar tilenum BRIEFINGSCREEN
+    addvar tilenum 4
+    state draw_background
+  }
+  ifvare TEMP 5
+  {
+    setvar tilenum BRIEFINGSCREEN
+    addvar tilenum 3
+    state draw_background
+
+    setvarvar TEMP4 DISPLAYCOUNT
+    subvarvar TEMP4 TEMP2
+    ifvarg TEMP4 BRIEFING_WAIT_TIME
+    {
+      setvarvar alpha TEMP4
+      subvar alpha BRIEFING_WAIT_TIME
+      mulvar alpha -1
+      setvar TEMP5 BRIEFING_PLANET_TIME
+      subvar TEMP5 BRIEFING_WAIT_TIME
+      subvar TEMP5 BRIEFING_FOCUS_TIME
+      addvarvar alpha TEMP5
+      shiftvarl alpha 8
+      divvarvar alpha TEMP5
+
+      addvar tilenum 2
+      state draw_background
+    }
+  }
+  ifvare TEMP 6
+  {
+    setvar tilenum BRIEFINGSCREEN
+    addvar tilenum 3
+    setvarvar TEMP4 DISPLAYCOUNT
+    subvarvar TEMP4 TEMP2
+    divvar TEMP4 BRIEFING_ZOOM_TIME
+    ifvarg TEMP4 7
+      setvar TEMP4 1
+    else
+      andvar TEMP4 1
+    ifvare TEMP4 0
+    {
+      setvarvar x1 tilesizx[tilenum]
+      shiftvarr x1 1
+      mulvar x1 -1
+      addvar x1 160
+      setvarvar x2 x1
+      addvarvar x2 tilesizx[tilenum]
+      setvarvar y1 tilesizy[tilenum]
+      shiftvarr y1 1
+      mulvar y1 -1
+      addvar y1 100
+      setvarvar y2 y1
+      addvarvar y2 tilesizy[tilenum]
+      state window_background
+
+      setvarvar x tilesizx[tilenum]
+      shiftvarr x 1
+      mulvar x -1
+      setvarvar y tilesizy[tilenum]
+      shiftvarr y 1
+      mulvar y -1
+      setvarvar z DISPLAYCOUNT
+      subvarvar z TEMP2
+      shiftvarl z 16
+      mulvar z 13
+      divvar z 10
+      divvar z BRIEFING_ZOOM_TIME
+      divvar z 7
+      addvar z 65536
+      setvar orientation 16
+      setvarvar z2 z
+
+      setvarvar x16 DISPLAYCOUNT
+      subvarvar x16 TEMP2
+      mulvar x16 BRIEFING_ZOOM_X
+      shiftvarl x16 8
+      mulvar x16 23
+      divvar x16 10
+      divvar x16 BRIEFING_ZOOM_TIME
+      divvar x16 7
+      shiftvarl x16 8
+      mulvar x16 -1
+
+      setvarvar y16 DISPLAYCOUNT
+      subvarvar y16 TEMP2
+      mulvar y16 BRIEFING_ZOOM_Y
+      shiftvarl y16 8
+      mulvar y16 23
+      divvar y16 10
+      divvar y16 BRIEFING_ZOOM_TIME
+      divvar y16 7
+      shiftvarl y16 8
+      mulvar y16 -1
+    }
+    else
+      addvar tilenum 3
+    state draw_background
+  }
+  ifvare TEMP 7
+  {
+    setvar TEMP4 320
+    addvarvar TEMP4 tilesizx[BRIEFINGSCREEN]
+    setvarvar x DISPLAYCOUNT
+    subvarvar x TEMP2
+    mulvarvar x TEMP4
+    divvar x BRIEFING_ANIM_TIME
+    shiftvarr TEMP4 1
+    subvarvar x TEMP4
+    setvarvar x x
+    setvarvar y x
+    mulvar x -1
+    divvar y 3
+    setvar tilenum BRIEFINGSCREEN
+    addvar tilenum 7
+    state draw_background
+  }
+  ifvare TEMP 8
+  {
+    setvarvar z DISPLAYCOUNT
+    subvarvar z TEMP2
+    shiftvarl z 16
+    mulvar z 12
+    divvar z 10
+    divvar z BRIEFING_ANIM_TIME
+    setvar TEMP4 524288
+    divvar TEMP4 10
+    addvarvar z TEMP4
+    setvarvar z2 z
+    setvar tilenum BRIEFINGSCREEN
+    addvar tilenum 8
+    state draw_background
+  }
+
+  ifvare ENDSCREEN -1
+  {
+    setvar x16 0
+    setvar y16 0
+    setvar x1 0
+    setvar y1 0
+    setvarvar x2 xdim
+    setvarvar y2 ydim
+
+    setvar x 0
+    setvar y BRIEFING_TEXT_Y
+    setvar z 65536
+    setvar z2 65536
+    setvar ang 0
+    setvar shade 0
+    setvar pal 0
+    setvar orientation 16
+
+    mulvar TEMP2 -1
+    addvarvar TEMP2 DISPLAYCOUNT
+    subvarvar TEMP3 DISPLAYCOUNT
+
+    ifvarg TEMP2 FADE_TIME
+    {
+      setvarvar alpha TEMP3
+      ifvarg alpha FADE_TIME
+        setvar alpha FADE_TIME
+    }
+    else
+      setvarvar alpha TEMP2
+    mulvar alpha -1
+    addvar alpha FADE_TIME
+    shiftvarl alpha 8
+    divvar alpha FADE_TIME
+
+    state reset_text
+    setvar POSY 1
+    setvar textorientation 82
+
+    setvar string RESERVED_QUOTE
+    ifvare TEMP 0
+    {
+      redefinequote RESERVED_QUOTE WHEN WE LAST SAW DUKE NUKEM, THE
+      state textline
+      redefinequote RESERVED_QUOTE EARTH'S ONLY REMAINING HOPE HAD
+      state textline
+      redefinequote RESERVED_QUOTE SINGLE-HANDEDLY DEFEATED THE
+      state textline
+      redefinequote RESERVED_QUOTE DESPICABLE DR. PROTON AND HIS
+      state textline
+      redefinequote RESERVED_QUOTE LEGION OF EVIL ROBOTS.
+      state textline
+    }
+    ifvare TEMP 1
+    {
+      redefinequote RESERVED_QUOTE WITH PROTON OUT OF THE WAY, DUKE
+      state textline
+      redefinequote RESERVED_QUOTE RETURNED HOME TO A HERO'S
+      state textline
+      redefinequote RESERVED_QUOTE WELCOME, AND WAS IMMEDIATELY
+      state textline
+      redefinequote RESERVED_QUOTE ABDUCTED BY RIGELATINS - BEINGS
+      state textline
+      redefinequote RESERVED_QUOTE GENERALLY KNOWN AS ALIEN SCUM
+      state textline
+      redefinequote RESERVED_QUOTE FROM THE SEWERS OF SPACE.
+      state textline
+    }
+    ifvare TEMP 2
+    {
+      redefinequote RESERVED_QUOTE USING EXPLOSIVES WISELY HIDDEN
+      state textline
+      redefinequote RESERVED_QUOTE INSIDE A MOLAR, DUKE ESCAPED,
+      state textline
+      redefinequote RESERVED_QUOTE DESTROYED THE RIGELATIN
+      state textline
+      redefinequote RESERVED_QUOTE MOTHERSHIP AND CRUISED HOME IN A
+      state textline
+      redefinequote RESERVED_QUOTE STOLEN, YET SUITABLY COOL, SHIP.
+      state textline
+    }
+    ifvare TEMP 3
+    {
+      redefinequote RESERVED_QUOTE HIS LONG HAUL BACK TO EARTH,
+      state textline
+      redefinequote RESERVED_QUOTE SHORTENED BY THOUGHTS OF ADORING
+      state textline
+      redefinequote RESERVED_QUOTE CROWDS, CURVACEOUS BEACHES...
+      state textline
+    }
+    ifvare TEMP 5
+    {
+      setvar pal PAL_GREEN
+      redefinequote RESERVED_QUOTE AND NO MORE FREAKIN' ALIENS!
+      state textline
+    }
+    ifvare TEMP 6
+    {
+      setvar pal PAL_RED
+      redefinequote RESERVED_QUOTE WARNING!! INCOMING!!
+      state textline
+    }
+    ifvare TEMP 7
+    {
+      setvar pal PAL_GREEN
+      redefinequote RESERVED_QUOTE HEY, EARTH? ANYBODY LISTENING? I
+      state textline
+      redefinequote RESERVED_QUOTE GOT A LITTLE PROB...
+      state textline
+    }
+  }
+
+  ifvare SYNC 1
+  {
+    setvar TEMP BRIEFING_FADE_TIME
+    addvar TEMP BRIEFING_TEXT_TIME
+    addvar TEMP BRIEFING_TEXT_TIME
+    addvar TEMP BRIEFING_TEXT_TIME
+    setvarvar TEMP2 TEMP
+    subvar TEMP2 BRIEFING_DUKECAR_TIME
+    ifvarvare DISPLAYCOUNT TEMP2
+      screensound WAR_AMBIENCE2
+    addvar TEMP BRIEFING_DUKE_TIME
+    addvar TEMP BRIEFING_MONITOR_TIME
+    addvar TEMP BRIEFING_PLANET_TIME
+    ifvarvare DISPLAYCOUNT TEMP
+      screensound TELEPORTER
+    setvarvar TEMP2 TEMP
+    addvar TEMP2 BRIEFING_ZOOM_TIME
+    addvar TEMP2 BRIEFING_ZOOM_TIME
+    ifvarvare DISPLAYCOUNT TEMP2
+      screensound INTRUDER_ALERT
+    addvar TEMP2 BRIEFING_ZOOM_TIME
+    addvar TEMP2 BRIEFING_ZOOM_TIME
+    ifvarvare DISPLAYCOUNT TEMP2
+      screensound JIBBED_ACTOR3
+    addvar TEMP BRIEFING_WARNING_TIME
+    ifvarvare DISPLAYCOUNT TEMP
+      screensound FLY_BY
+    addvar TEMP BRIEFING_ANIM_TIME
+    ifvarvare DISPLAYCOUNT TEMP
+      screensound RPG_EXPLODE
+  }
+ends
+
+state displayvictory
+  state reset_screen
+
+  ifvare CURRSCREEN SCREEN_VICTORY2
+    setvar tilenum VICTORY2SCREEN
+  else
+    setvar tilenum VICTORY1SCREEN
+  state draw_background
+
+  ifvarg DISPLAYCOUNT FADE_TIME
+  ifvare ENDSCREEN -1
+  {
+    setvar y VICTORY_TEXT_Y
+    setvar orientation 16
+
+    setvarvar TEMP DISPLAYCOUNT
+    subvar TEMP FADE_TIME
+    divvar TEMP VICTORY_TEXT_TIME
+
+    setvarvar TEMP2 TEMP
+    mulvar TEMP2 VICTORY_TEXT_TIME
+    mulvar TEMP2 -1
+    addvarvar TEMP2 DISPLAYCOUNT
+    subvarvar TEMP2 FADE_TIME
+    setvarvar TEMP3 TEMP2
+    mulvar TEMP3 -1
+    addvar TEMP3 VICTORY_TEXT_TIME
+
+    ifvarg TEMP2 FADE_TIME
+    {
+      setvarvar alpha TEMP3
+      ifvarg alpha FADE_TIME
+        setvar alpha FADE_TIME
+    }
+    else
+      setvarvar alpha TEMP2
+    mulvar alpha -1
+    addvar alpha FADE_TIME
+    shiftvarl alpha 8
+    divvar alpha FADE_TIME
+
+    state reset_text
+    setvar POSY 2
+    setvar textorientation 82
+
+    setvar string RESERVED_QUOTE
+    ifvare CURRSCREEN SCREEN_VICTORY2
+    {
+      switch TEMP
+      case 0
+        setvar pal PAL_STRONG_GREEN
+        redefinequote RESERVED_QUOTE NOBODY MESSES WITH DUKE NUKEM!
+        state textline
+        redefinequote RESERVED_QUOTE TIME FOR THAT VACATION, AND NO
+        state textline
+        redefinequote RESERVED_QUOTE MORE FREAKIN' ALIENS!!
+        state textline
+      break
+      case 1
+        redefinequote RESERVED_QUOTE A HOLOGRAM FLICKERED ON, AND AN
+        state textline
+        redefinequote RESERVED_QUOTE INCREDIBLY UGLY FACE SPOKE AN
+        state textline
+        redefinequote RESERVED_QUOTE OMINOUS MESSAGE.
+        state textline
+      break
+      case 2
+        setvar pal PAL_STRONG_PURPLE
+        redefinequote RESERVED_QUOTE THE MOON ASSAULT OVERLORD HAS
+        state textline
+        redefinequote RESERVED_QUOTE BEEN DEFEATED, AS HAS OUR
+        state textline
+        redefinequote RESERVED_QUOTE BATTLELORD ON EARTH.
+        state textline
+      break
+      case 3
+        setvar pal PAL_STRONG_PURPLE
+        redefinequote RESERVED_QUOTE BUT WHILE DUKE NUKEM HAS BEEN
+        state textline
+        redefinequote RESERVED_QUOTE DISTRACTED, OUR MAIN ATTACK
+        state textline
+        redefinequote RESERVED_QUOTE FORCE HAS BEGUN IT'S FINAL
+        state textline
+        redefinequote RESERVED_QUOTE ASSAULT ON EARTH.
+        state textline
+      break
+      case 4
+        setvar pal PAL_STRONG_PURPLE
+        redefinequote RESERVED_QUOTE WE SHALL OBLITERATE ALL
+        state textline
+        redefinequote RESERVED_QUOTE RESISTANCE!
+        state textline
+      break
+      endswitch
+    }
+    else
+    {
+      switch TEMP
+      case 0
+        redefinequote RESERVED_QUOTE AFTER WIPING THE BLOOD AND
+        state textline
+        redefinequote RESERVED_QUOTE BRAINS FROM HIS BOOTS, DUKE
+        state textline
+        redefinequote RESERVED_QUOTE EXPLORED THE ALIEN CRAFT.
+        state textline
+      break
+      case 1
+        redefinequote RESERVED_QUOTE MONITORS SHOWED A TITANIC ALIEN
+        state textline
+        redefinequote RESERVED_QUOTE SHIP HOVERING ABOVE EARTH, WITH
+        state textline
+        redefinequote RESERVED_QUOTE DOZENS OF SMALLER CRAFT
+        state textline
+        redefinequote RESERVED_QUOTE OFF-LOADING COCOON-LIKE PODS.
+        state textline
+      break
+      case 2
+        redefinequote RESERVED_QUOTE ONE SHOWED THEM IN CLOSE-UP.
+        state textline
+        redefinequote RESERVED_QUOTE THEY ALL HELD WOMEN, STILL
+        state textline
+        redefinequote RESERVED_QUOTE ALIVE, JUST LIKE THE ONES DUKE
+        state textline
+        redefinequote RESERVED_QUOTE HAD ENCOUNTERED.
+        state textline
+      break
+      case 3
+        redefinequote RESERVED_QUOTE DUKE GLOWERED IN THE PALE GREEN
+        state textline
+        redefinequote RESERVED_QUOTE MONITOR LIGHT, AND SET THE
+        state textline
+        redefinequote RESERVED_QUOTE AUTO-DESTRUCT SEQUENCE ON THE
+        state textline
+        redefinequote RESERVED_QUOTE ALIEN SHIP.
+        state textline
+      break
+      case 4
+        redefinequote RESERVED_QUOTE HE STARED AT THE SCREEN ONCE
+        state textline
+        redefinequote RESERVED_QUOTE MORE...
+        state textline
+      break
+      endswitch
+    }
+  }
+ends
+
+state displayvictoryanim
+  state reset_screen
+
+  setvarvar tilenum DISPLAYCOUNT
+  divvar tilenum VICTORY_ANIM_TIME
+  addvar tilenum VICTORY3SCREEN
+  state draw_background
+
+  ifvare SYNC 1
+  {
+    setvar TEMP VICTORY_ANIM_TIME
+    ifvarvare DISPLAYCOUNT TEMP
+      screensound DUKE_GASP
+    addvar TEMP VICTORY_ANIM_TIME
+    addvar TEMP VICTORY_ANIM_TIME
+    ifvarvare DISPLAYCOUNT TEMP
+      screensound SQUISHED
+    addvar TEMP VICTORY_ANIM_TIME
+    ifvarvare DISPLAYCOUNT TEMP
+      screensound CHEER_HOLD
+    addvar TEMP VICTORY_ANIM_TIME
+    ifvarvare DISPLAYCOUNT TEMP
+      screensound ENDSEQVOL3SND2
+  }
+ends
+
+state creditsfade
+  setvarvar TEMP y
+  shiftvarl TEMP 16
+  addvarvar TEMP y16
+  setvar TEMP2 200
+  addvar TEMP2 CREDITS_TEXT_LENGTH
+  shiftvarl TEMP2 16
+  shiftvarr TEMP2 1
+  ifvarvarg TEMP TEMP2
+  {
+    setvar alpha 200
+    subvar alpha CREDITS_TEXT_LENGTH
+    shiftvarl alpha 16
+    mulvar alpha -1
+    addvarvar alpha TEMP
+  }
+  else
+  {
+    setvarvar alpha TEMP
+    mulvar alpha -1
+  }
+  setvar TEMP2 FADE_TIME
+  mulvar TEMP2 CREDITS_ROLL_SPEED
+  shiftvarl TEMP2 8
+  addvarvar alpha TEMP2
+  divvar alpha FADE_TIME
+  divvar alpha CREDITS_ROLL_SPEED
+ends
+
+state creditsline
+  setvarvar TEMP y
+  shiftvarl TEMP 16
+  addvarvar TEMP y16
+  setvar TEMP2 200
+  subvar TEMP2 CREDITS_TEXT_LENGTH
+  shiftvarl TEMP2 16
+  ifvarvarg TEMP TEMP2
+    break
+  ifvarg TEMP 0
+  {
+    setvar tilenum STARTALPHANUM
+    state creditsfade
+    setvar textorientation 82
+    state draw_screen_text
+  }
+  addvar y CREDITS_NEWLINE_HEIGHT
+ends
+
+state creditstitle
+  setvarvar TEMP y
+  shiftvarl TEMP 16
+  addvarvar TEMP y16
+  setvar TEMP2 200
+  subvar TEMP2 CREDITS_TEXT_LENGTH
+  shiftvarl TEMP2 16
+  ifvarvarg TEMP TEMP2
+    break
+  ifvarg TEMP 0
+  {
+    setvar tilenum BIGALPHANUM
+    state creditsfade
+    setvar textorientation 1056850
+    state draw_screen_text
+  }
+  addvar y CREDITS_BIGLINE_HEIGHT
+ends
+
+state displaycredits
+  state reset_screen
+  setvar tilenum NEWMENUSCREEN
+  state draw_background
+
+  state reset_text
+  setvar y 200
+  subvar y CREDITS_TEXT_LENGTH
+  setvarvar y16 DISPLAYCOUNT
+  subvar y16 FADE_TIME
+  subvar y16 CREDITS_TIME
+  mulvar y16 CREDITS_ROLL_SPEED
+  shiftvarl y16 8
+  mulvar y16 -1
+  setvar string RESERVED_QUOTE
+  setvar orientation 16
+  setvar POSY 1
+
+  redefinequote RESERVED_QUOTE DUKE NUKEM 64
+  state creditstitle
+  addvar y CREDITS_BIGLINE_HEIGHT
+  redefinequote RESERVED_QUOTE DEVELOPED BY
+  state creditstitle
+  redefinequote RESERVED_QUOTE EUROCOM ENTERTAINMENT SOFTWARE
+  state creditsline
+  addvar y CREDITS_NEWLINE_HEIGHT
+  redefinequote RESERVED_QUOTE PRODUCER
+  state creditstitle
+  redefinequote RESERVED_QUOTE RICK RAYMO
+  state creditsline
+  addvar y CREDITS_NEWLINE_HEIGHT
+  redefinequote RESERVED_QUOTE PROGRAMMING
+  state creditstitle
+  redefinequote RESERVED_QUOTE ASHLEY FINNEY
+  state creditsline
+  redefinequote RESERVED_QUOTE SIMON MILLS
+  state creditsline
+  addvar y CREDITS_NEWLINE_HEIGHT
+  redefinequote RESERVED_QUOTE LEVEL DESIGN
+  state creditstitle
+  redefinequote RESERVED_QUOTE BILL BEACHAM
+  state creditsline
+  redefinequote RESERVED_QUOTE KEV HARVEY
+  state creditsline
+  addvar y CREDITS_NEWLINE_HEIGHT
+  redefinequote RESERVED_QUOTE GRAPHICS
+  state creditstitle
+  redefinequote RESERVED_QUOTE STEVE BAMFORD
+  state creditsline
+  redefinequote RESERVED_QUOTE ANDY BEE
+  state creditsline
+  redefinequote RESERVED_QUOTE ROB BENTON
+  state creditsline
+  redefinequote RESERVED_QUOTE NICK DRY
+  state creditsline
+  redefinequote RESERVED_QUOTE PAUL GREGORY
+  state creditsline
+  redefinequote RESERVED_QUOTE DARREN HYLAND
+  state creditsline
+  redefinequote RESERVED_QUOTE ADRIAN MANNION
+  state creditsline
+  addvar y CREDITS_NEWLINE_HEIGHT
+  redefinequote RESERVED_QUOTE AUDIO
+  state creditstitle
+  redefinequote RESERVED_QUOTE NEIL BALDWIN
+  state creditsline
+  redefinequote RESERVED_QUOTE STEVE DUCKWORTH
+  state creditsline
+  addvar y CREDITS_NEWLINE_HEIGHT
+  redefinequote RESERVED_QUOTE PROJECT MANAGEMENT
+  state creditstitle
+  redefinequote RESERVED_QUOTE HUGH BINNS
+  state creditsline
+  redefinequote RESERVED_QUOTE BILL BEACHAM
+  state creditsline
+  addvar y CREDITS_NEWLINE_HEIGHT
+  redefinequote RESERVED_QUOTE QUALITY APPROVAL
+  state creditstitle
+  redefinequote RESERVED_QUOTE MIKE BOTHAM
+  state creditsline
+  redefinequote RESERVED_QUOTE ANDY COLLINS
+  state creditsline
+  redefinequote RESERVED_QUOTE AARON JENKINS
+  state creditsline
+  addvar y CREDITS_NEWLINE_HEIGHT
+  redefinequote RESERVED_QUOTE GT EUROPE PRODUCER
+  state creditstitle
+  redefinequote RESERVED_QUOTE ROB LETTS
+  state creditsline
+  addvar y CREDITS_NEWLINE_HEIGHT
+  redefinequote RESERVED_QUOTE EUROPEAN LOCALISATION
+  state creditstitle
+  redefinequote RESERVED_QUOTE CARA MCMULLAN
+  state creditsline
+  addvar y CREDITS_NEWLINE_HEIGHT
+  redefinequote RESERVED_QUOTE MANUAL
+  state creditstitle
+  redefinequote RESERVED_QUOTE NIC LAVROFF
+  state creditsline
+  redefinequote RESERVED_QUOTE BILL BEACHAM
+  state creditsline
+  addvar y CREDITS_NEWLINE_HEIGHT
+  redefinequote RESERVED_QUOTE VOICE TALENT
+  state creditstitle
+  redefinequote RESERVED_QUOTE JON ST. JOHN AS 'DUKE NUKEM'
+  state creditsline
+  addvar y CREDITS_NEWLINE_HEIGHT
+  redefinequote RESERVED_QUOTE SPECIAL THANKS TO
+  state creditstitle
+  redefinequote RESERVED_QUOTE PAUL BATES
+  state creditsline
+  redefinequote RESERVED_QUOTE TIM ROGERS
+  state creditsline
+  redefinequote RESERVED_QUOTE MAT SNEAP
+  state creditsline
+  redefinequote RESERVED_QUOTE MR WHIPPLE AND THE MARIO CLUB
+  state creditsline
+  redefinequote RESERVED_QUOTE KEN SILVERMAN
+  state creditsline
+  redefinequote RESERVED_QUOTE TODD REPLOGLE
+  state creditsline
+  redefinequote RESERVED_QUOTE SCOTT MILLER
+  state creditsline
+  redefinequote RESERVED_QUOTE GEORGE BROUSSARD
+  state creditsline
+  redefinequote RESERVED_QUOTE TONY KEE
+  state creditsline
+  redefinequote RESERVED_QUOTE DAN HARNETT
+  state creditsline
+  redefinequote RESERVED_QUOTE MAX TAYLOR
+  state creditsline
+  redefinequote RESERVED_QUOTE STEW KOSOY
+  state creditsline
+  redefinequote RESERVED_QUOTE GRAEME BOXALL
+  state creditsline
+  redefinequote RESERVED_QUOTE JIM TRIPP
+  state creditsline
+  addvar y CREDITS_NEWLINE_HEIGHT
+  addvar y CREDITS_BIGLINE_HEIGHT
+  redefinequote RESERVED_QUOTE DUKE NUKEM 3D
+  state creditstitle
+  addvar y CREDITS_BIGLINE_HEIGHT
+  redefinequote RESERVED_QUOTE 3D REALMS TEAM
+  state creditstitle
+  addvar y CREDITS_BIGLINE_HEIGHT
+  redefinequote RESERVED_QUOTE ORIGINAL CONCEPT
+  state creditstitle
+  redefinequote RESERVED_QUOTE TODD REPLOGLE
+  state creditsline
+  redefinequote RESERVED_QUOTE ALLEN H. BLUM III
+  state creditsline
+  addvar y CREDITS_NEWLINE_HEIGHT
+  redefinequote RESERVED_QUOTE EXECUTIVE PRODUCER
+  state creditstitle
+  redefinequote RESERVED_QUOTE GEORGE BROUSSARD
+  state creditsline
+  addvar y CREDITS_NEWLINE_HEIGHT
+  redefinequote RESERVED_QUOTE PRODUCER
+  state creditstitle
+  redefinequote RESERVED_QUOTE GREG MALONE
+  state creditsline
+  addvar y CREDITS_NEWLINE_HEIGHT
+  redefinequote RESERVED_QUOTE BUILD ENGINE AND TOOLS
+  state creditstitle
+  redefinequote RESERVED_QUOTE KEN SILVERMAN
+  state creditsline
+  addvar y CREDITS_NEWLINE_HEIGHT
+  redefinequote RESERVED_QUOTE GAME PROGRAMMING
+  state creditstitle
+  redefinequote RESERVED_QUOTE TODD REPLOGLE
+  state creditsline
+  addvar y CREDITS_NEWLINE_HEIGHT
+  redefinequote RESERVED_QUOTE NETWORK LAYER
+  state creditstitle
+  redefinequote RESERVED_QUOTE MARK DOCHTERMANN
+  state creditsline
+  addvar y CREDITS_NEWLINE_HEIGHT
+  redefinequote RESERVED_QUOTE MAP DESIGN
+  state creditstitle
+  redefinequote RESERVED_QUOTE ALLEN H. BLUM III
+  state creditsline
+  redefinequote RESERVED_QUOTE RICHARD GRAY
+  state creditsline
+  addvar y CREDITS_NEWLINE_HEIGHT
+  redefinequote RESERVED_QUOTE 3D MODELLING
+  state creditstitle
+  redefinequote RESERVED_QUOTE CHUCK JONES
+  state creditsline
+  redefinequote RESERVED_QUOTE SAPPHIRE
+  state creditsline
+  addvar y CREDITS_NEWLINE_HEIGHT
+  redefinequote RESERVED_QUOTE ARTWORK
+  state creditstitle
+  redefinequote RESERVED_QUOTE DIRK JONES
+  state creditsline
+  redefinequote RESERVED_QUOTE STEPHEN HORNBACK
+  state creditsline
+  redefinequote RESERVED_QUOTE JAMES STOREY
+  state creditsline
+  redefinequote RESERVED_QUOTE DAVID DEMARET
+  state creditsline
+  redefinequote RESERVED_QUOTE DOUGLAS R. WOOD
+  state creditsline
+  addvar y CREDITS_NEWLINE_HEIGHT
+  redefinequote RESERVED_QUOTE SOUND ENGINE
+  state creditstitle
+  redefinequote RESERVED_QUOTE JIM DOSE
+  state creditsline
+  addvar y CREDITS_NEWLINE_HEIGHT
+  redefinequote RESERVED_QUOTE SOUND AND MUSIC
+  state creditstitle
+  redefinequote RESERVED_QUOTE ROBERT PRINCE
+  state creditsline
+  redefinequote RESERVED_QUOTE LEE JACKSON
+  state creditsline
+  addvar y CREDITS_NEWLINE_HEIGHT
+  redefinequote RESERVED_QUOTE VOICE PRODUCER
+  state creditstitle
+  redefinequote RESERVED_QUOTE LANI MINELLA
+  state creditsline
+  addvar y CREDITS_NEWLINE_HEIGHT
+  redefinequote RESERVED_QUOTE VOICE TALENT
+  state creditstitle
+  redefinequote RESERVED_QUOTE JON ST. JOHN AS 'DUKE NUKEM'
+  state creditsline
+ends
+
+music SPECIALMUS BLANK.VOC
+
+state event_displayrest_5
+  ifvare DISPLAYSCREEN 0
+    setvar LASTDISPLAYCOUNT -1
+  else
+  {
+    setvarvar DISPLAYCOUNT SCREENCOUNT
+    shiftvarl DISPLAYCOUNT 2
+    setvarvar TEMP totalclock
+    subvarvar TEMP SMOOTHCLOCK
+    ifvarg TEMP 3
+      setvar TEMP 3
+    addvarvar DISPLAYCOUNT TEMP
+    ifvarvarn DISPLAYCOUNT LASTDISPLAYCOUNT
+      setvar SYNC 1
+    else
+      setvar SYNC 0
+    setvarvar LASTDISPLAYCOUNT DISPLAYCOUNT
+
+    getplayer[THISACTOR].i PIDTEMP
+    setplayer[THISACTOR].i -1
+
+    state blackscreen
+
+    switch CURRSCREEN
+    case SCREEN_BRIEFING
+    case SCREEN_CREDITS
+      ifsound TITLE_MUSIC
+        nullop
+      else
+        screensound TITLE_MUSIC
+    break
+    case SCREEN_BONUS
+    case SCREEN_DMBONUS
+      setvar TEMP 1 // if music is on
+      ifvare TEMP 1
+      {
+        ifsound BONUSMUSIC
+          nullop
+        else
+          screensound BONUSMUSIC
+      }
+    break
+    endswitch
+
+    switch CURRSCREEN
+    case SCREEN_BRIEFING
+      state displaybriefing
+    break
+    case SCREEN_VICTORY1
+    case SCREEN_VICTORY2
+      state displayvictory
+    break
+    case SCREEN_VICTORY3
+      state displayvictoryanim
+    break
+    case SCREEN_BONUS
+    case SCREEN_DMBONUS
+      state displaybonus
+    break
+    case SCREEN_CREDITS
+      state displaycredits
+    break
+    endswitch
+
+    setplayer[THISACTOR].i PIDTEMP
+  }
+ends
+
+state event_displayrooms_5
+  ifvarn DISPLAYSCREEN 0
+  {
+    setplayer[THISACTOR].pals 0 0
+    setplayer[THISACTOR].pals 1 0
+    setplayer[THISACTOR].pals 2 0
+    setplayer[THISACTOR].pals_time 0
+    setplayer[THISACTOR].heat_on 0
+    setgamepalette 0
+
+    setvarvar TEMPB SCREENCOUNT
+    shiftvarl TEMPB 2
+    setvarvar TEMPB2 totalclock
+    subvarvar TEMPB2 SMOOTHCLOCK
+    ifvarg TEMPB2 3
+      setvar TEMPB2 3
+    addvarvar TEMPB TEMPB2
+    ifvare CURRSCREEN SCREEN_BRIEFING
+    ifvare ENDSCREEN -1
+    {
+      ifvarl TEMPB BRIEFING_FADE_TIME
+      {
+        setvarvar TEMPB2 TEMPB
+        shiftvarl TEMPB2 6
+        divvar TEMPB2 BRIEFING_FADE_TIME
+        setplayer[THISACTOR].pals_time TEMPB2
+      }
+      else
+      {
+        setvar TEMPB2 BRIEFING_FADE_TIME
+        addvar TEMPB2 BRIEFING_TEXT_TIME
+        addvar TEMPB2 BRIEFING_TEXT_TIME
+        addvar TEMPB2 BRIEFING_TEXT_TIME
+        addvar TEMPB2 BRIEFING_DUKE_TIME
+        addvar TEMPB2 BRIEFING_MONITOR_TIME
+        addvar TEMPB2 BRIEFING_PLANET_TIME
+        addvar TEMPB2 BRIEFING_WARNING_TIME
+        addvar TEMPB2 BRIEFING_ANIM_TIME
+        addvar TEMPB2 BRIEFING_WAIT_TIME
+        ifvarvarg TEMPB TEMPB2
+        {
+          setvarvar TEMPB3 TEMPB
+          subvarvar TEMPB3 TEMPB2
+          shiftvarl TEMPB3 6
+          setvar TEMPB4 BRIEFING_ANIM_TIME
+          subvar TEMPB4 BRIEFING_WAIT_TIME
+          divvarvar TEMPB3 TEMPB4
+          setplayer[THISACTOR].pals_time TEMPB3
+        }
+      }
+      break
+    }
+    setvarvar TEMPB2 ENDSCREEN
+    ifvarg ENDSCREEN -1
+    {
+      shiftvarl TEMPB2 2
+      setvarvar TEMPB3 totalclock
+      subvarvar TEMPB3 SMOOTHCLOCK
+      ifvarg TEMPB3 3
+        setvar TEMPB3 3
+      addvarvar TEMPB2 TEMPB3
+    }
+    ifvarvarg TEMPB FADE_TIME
+    ifvarl TEMPB2 1
+      break
+    setvarvar TEMPB3 TEMPB
+    mulvar TEMPB3 -1
+    addvar TEMPB3 FADE_TIME
+    ifvarvarg TEMPB2 TEMPB3
+      setvarvar TEMPB3 TEMPB2
+    shiftvarl TEMPB3 6
+    divvar TEMPB3 FADE_TIME
+    setplayer[THISACTOR].pals_time TEMPB3
+  }
+ends
+
+state displayloading
+  state blackscreen
+  ifvare LASTLEVEL -1
+  {
+    ifvare VOLUME 0
+    ifvare LEVEL 0
+      state displaybriefing
+  }
+  else
+  ifvarg rendmode 0
+    state displaytint
+ends
+
+onevent EVENT_GETLOADTILE
+  setvar RETURN -1
+  state displayloading
+
+  state reset_screen
+  state reset_text
+  setvar y -20
+  setvar tilenum STARTALPHANUM
+  setvar orientation 16
+  setvar POSY 2
+  setvar textorientation 82
+  setvar string RESERVED_QUOTE
+  redefinequote RESERVED_QUOTE Loading map . . .
+  state draw_screen_text
+endevent
+
+state event_displayrest_5b
+  ifvare STARTLEVELTEMP 1
+    state displayloading
+ends
+
+onevent EVENT_DISPLAYMENUREST
+  ifvare STARTLEVELTEMP 1
+    state displayloading
+endevent
+
+onevent EVENT_ENTERLEVEL
+  ifvare STARTLEVELTEMP 1
+    state displayloading
+endevent
+
