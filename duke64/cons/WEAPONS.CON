@@ -14,81 +14,86 @@ state reset_weapon
   setvar WPPOS 0
 ends
 
-state draw_weapon
-  setvarvar screenorientation orientation
-  orvar screenorientation 2048
-  state draw_alpha
-  ifvare screenorientation -1
-    break
+defstate draw_weapon
+	setvarvar screenorientation orientation
+	orvar screenorientation 2048
+	state draw_alpha
+	
+	ifvare screenorientation -1
+		break
 
-  setvarvar TEMPB looking_angSR1
-  setvarvar TEMPB2 looking_arc
-  ifvarn POSX 0
-  {
-    setvar TEMPB 320
-    subvar TEMPB SCREEN_WIDTH
-    shiftvarr TEMPB 1
-    ifvare POSX 1
-      mulvar TEMPB -1
-    shiftvarl TEMPB2 1
-    ifvare POSX 2
-      orvar screenorientation 512
-    else
-      orvar screenorientation 256
-  }
-  shiftvarl TEMPB 16
-  addvarvar screenx TEMPB
-  shiftvarl TEMPB2 16
-  addvarvar screeny TEMPB2
+	setvarvar TEMPB looking_angSR1
+	setvarvar TEMPB2 looking_arc
+	ifvarn POSX 0
+	{
+		setvar TEMPB 320
+		subvar TEMPB SCREEN_WIDTH
+		shiftvarr TEMPB 1
+		
+		ifvare POSX 1
+			mulvar TEMPB -1
+			
+		shiftvarl TEMPB2 1
+		
+		ifvare POSX 2
+			orvar screenorientation 512
+		else
+			orvar screenorientation 256
+	}
+	
+	shiftvarl TEMPB 16
+	addvarvar screenx TEMPB
+	shiftvarl TEMPB2 16
+	addvarvar screeny TEMPB2
 
-  setvar TEMPB 0 getuserdef .weaponscale TEMPB
-  ifvarn TEMPB 100
-  {
-    shiftvarr screenx 10
-    shiftvarr screeny 10
+	getuserdef[].weaponscale TEMPB
+	ifvarn TEMPB 100
+	{
+		shiftvarr screenx 10
+		shiftvarr screeny 10
 
-    mulvarvar screenx TEMPB
-    divvar screenx 100
-    mulvarvar screeny TEMPB
-    divvar screeny 100
-    mulvarvar screenz TEMPB
-    divvar screenz 100
-    mulvarvar screenz2 TEMPB
-    divvar screenz2 100
-    ifvarn POSX 1
-    {
-      setvar TEMPB3 320
-      shiftvarl TEMPB3 6
-      setvarvar TEMPB2 TEMPB3
-      mulvarvar TEMPB2 TEMPB
-      divvar TEMPB2 100
-      mulvar TEMPB2 -1
-      addvarvar TEMPB2 TEMPB3
-      ifvare POSX 0
-        shiftvarr TEMPB2 1
-      addvarvar screenx TEMPB2
-    }
-    setvar TEMPB3 200
-    shiftvarl TEMPB3 6
-    setvarvar TEMPB2 TEMPB3
-    mulvarvar TEMPB2 TEMPB
-    divvar TEMPB2 100
-    mulvar TEMPB2 -1
-    addvarvar TEMPB2 TEMPB3
-    addvarvar screeny TEMPB2
+		mulvarvar screenx TEMPB
+		divvar screenx 100
+		mulvarvar screeny TEMPB
+		divvar screeny 100
+		mulvarvar screenz TEMPB
+		divvar screenz 100
+		mulvarvar screenz2 TEMPB
+		divvar screenz2 100
+		ifvarn POSX 1
+		{
+		  setvar TEMPB3 320
+		  shiftvarl TEMPB3 6
+		  setvarvar TEMPB2 TEMPB3
+		  mulvarvar TEMPB2 TEMPB
+		  divvar TEMPB2 100
+		  mulvar TEMPB2 -1
+		  addvarvar TEMPB2 TEMPB3
+		  ifvare POSX 0
+			shiftvarr TEMPB2 1
+		  addvarvar screenx TEMPB2
+		}
+		setvar TEMPB3 200
+		shiftvarl TEMPB3 6
+		setvarvar TEMPB2 TEMPB3
+		mulvarvar TEMPB2 TEMPB
+		divvar TEMPB2 100
+		mulvar TEMPB2 -1
+		addvarvar TEMPB2 TEMPB3
+		addvarvar screeny TEMPB2
 
-    shiftvarl screenx 10
-    shiftvarl screeny 10
-  }
+		shiftvarl screenx 10
+		shiftvarl screeny 10
+	}
+	
+	orvar screenorientation 4096 // RS_LERP
 
-  state aspectset
-  rotatespritea screenx screeny screenz ang
-                tilenum shade pal screenorientation screenalpha
-                x1 y1 x2 y2
-  state aspectreset
+	state aspectset
+	rotatespritea screenx screeny screenz ang tilenum shade pal screenorientation screenalpha x1 y1 x2 y2
+	state aspectreset
 ends
 
-state weaponstatic
+defstate weaponstatic
   ifvare WPPOS 1
     setvar screenx 22
   else
@@ -181,196 +186,211 @@ state hudknee
   }
 ends
 
-state hudpistol
-  state reset_weapon
-  setvar WPPOS 2
+defstate hudpistol
+	state reset_weapon
+	setvar WPPOS 2
 
-  ifvare weaponcount 0
-    setvar WPRANDZ 0
-  switch weaponcount
-  case 1
-  case 2
-    setvar x -104
-    setvar y 1
-    ifvare weaponcount 2
-      addvar x 6
-    ifvare SYNC 1
-    ifvarn sprite[THISACTOR].pal 1
-    {
-      displayrandvar WPRANDZ 32768
-      addvar WPRANDZ 49152
-    }
-    setvarvar z WPRANDZ
-    setvarvar z2 WPRANDZ
-    setvarvar shade gs
-    getsector[THISACTOR].floorpal pal
-    ifvare pal 0
-      setvar pal 51
-    ifvarg rendmode 0
-    {
-      setvar pal 51
-      setvar shade -128
-    }
-    setvar tilenum MUZZLEFLASH
-    state weaponbob
-    state draw_weapon
-  break
-  endswitch
+	ifvare weaponcount 0
+		setvar WPRANDZ 0
 
-  setvar z 65536
-  setvar z2 65536
-  setvarvar shade gs
-  getsector[THISACTOR].floorpal pal
-  ifvarg weaponcount 9
-  {
-    ifvarg weaponcount 14
-    {
-      setvar x -147
-      setvar y 76
-      switch weaponcount
-      case 15
-        addvar y 20
-      break
-      case 16
-        addvar x 2
-        addvar y 12
-      break
-      case 17
-        addvar x 4
-        addvar y 4
-      break
-      case 18
-        addvar x 6
-        addvar y -4
-      break
-      case 19
-        addvar x 8
-        addvar y -12
-      break
-      case 20
-      case 21
-      case 22
-        addvar y -35
-      break
-      case 23
-      case 24
-        addvar x 20
-        addvar y -35
-      break
-      case 25
-      case 26
-        addvar x 20
-        addvar y -15
-      break
-      endswitch
-      setvar tilenum HAND
-      setvar POSX 2
-      setvar TEMP MAX_WEAPONS
-      addvarvar TEMP currentweapon
-      addvar TEMP 1
-      guniqhudid TEMP
-      state weaponstatic
-      state draw_weapon
-    }
-    ifvarl weaponcount 20
-    {
-      setvar x -98
-      setvar y 53
-      switch weaponcount
-      case 11
-        addvar x -8
-        addvar y 16
-      break
-      case 12
-        addvar x -16
-        addvar y 32
-      break
-      case 13
-        addvar x -24
-        addvar y 48
-      break
-      case 14
-        addvar x -32
-        addvar y 64
-      break
-      case 15
-        addvar y 20
-      break
-      case 16
-        addvar x 2
-        addvar y 12
-      break
-      case 17
-        addvar x 4
-        addvar y 4
-      break
-      case 18
-        addvar x 6
-        addvar y -4
-      break
-      case 19
-        addvar x 8
-        addvar y -12
-      break
-      endswitch
-      setvar tilenum FALLINGCLIP
-      setvar POSX 2
-      setvar TEMP MAX_WEAPONS
-      mulvar TEMP 2
-      addvarvar TEMP currentweapon
-      addvar TEMP 1
-      guniqhudid TEMP
-      state weaponstatic
-      state draw_weapon
-    }
-  }
-  setvarvar TEMP currentweapon
-  addvar TEMP 1
-  guniqhudid TEMP
-  ifvarg weaponcount 4
-  {
-    setvar tilenum FIRSTGUNRELOAD
-    switch weaponcount
-    case 5
-    case 6
-    case 7
-    case 8
-    case 9
-      setvar x -128
-      setvar y 30
-    break
-    default
-      setvar x -98
-      setvar y 21
-      ifvarg weaponcount 24
-      {
-        addvar x 10
-        addvar y 15
-      }
-      addvar tilenum 1
-    break
-    endswitch
-    setvar POSX 2
-    state weaponstatic
-    state draw_weapon
-  }
-  else
-  {
-    setvar x -74
-    setvar y 44
-    ifvare weaponcount 2
-      addvar x 6
-    setvar tilenum FIRSTGUN
-    switch weaponcount
-    case 1
-    case 2
-      addvar tilenum 1
-    break
-    endswitch
-    setvar POSX 0
-    state weaponbob
-    state draw_weapon
-  }
+	switch weaponcount
+		case 1
+		case 2
+			setvar x -104
+			setvar y 1
+			
+			ifvare weaponcount 2
+				addvar x 6
+				
+			ifvare SYNC 1
+			ifvarn sprite[THISACTOR].pal 1
+			{
+				displayrandvar WPRANDZ 32768
+				addvar WPRANDZ 49152
+			}
+			setvarvar z WPRANDZ
+			setvarvar z2 WPRANDZ
+			setvarvar shade gs
+			
+			getsector[THISACTOR].floorpal pal
+			ifvare pal 0
+				setvar pal 51
+			ifvarg rendmode 0
+			{
+				setvar pal 51
+				setvar shade -128
+			}
+			
+			setvar tilenum MUZZLEFLASH
+			state weaponbob
+			state draw_weapon
+			break
+	endswitch
+
+	setvar z 65536
+	setvar z2 65536
+	setvarvar shade gs
+	getsector[THISACTOR].floorpal pal
+
+	ifvarg weaponcount 9
+	{
+		ifvarg weaponcount 14
+		{
+			setvar x -147
+			setvar y 76
+			switch weaponcount
+				case 15
+					addvar y 20
+					break
+				case 16
+					addvar x 2
+					addvar y 12
+					break
+				case 17
+					addvar x 4
+					addvar y 4
+					break
+				case 18
+					addvar x 6
+					addvar y -4
+					break
+				case 19
+					addvar x 8
+					addvar y -12
+					break
+				case 20
+				case 21
+				case 22
+					addvar y -35
+					break
+				case 23
+				case 24
+					addvar x 20
+					addvar y -35
+					break
+				case 25
+				case 26
+					addvar x 20
+					addvar y -15
+					break
+			endswitch
+	
+			setvar tilenum HAND
+			setvar POSX 2
+			setvar TEMP MAX_WEAPONS
+			addvarvar TEMP currentweapon
+			addvar TEMP 1
+			guniqhudid TEMP
+			state weaponstatic
+			state draw_weapon
+		}
+
+		ifvarl weaponcount 20
+		{
+			setvar x -98
+			setvar y 53
+			switch weaponcount
+				case 11
+					addvar x -8
+					addvar y 16
+					break
+				case 12
+					addvar x -16
+					addvar y 32
+					break
+				case 13
+					addvar x -24
+					addvar y 48
+					break
+				case 14
+					addvar x -32
+					addvar y 64
+					break
+				case 15
+					addvar y 20
+					break
+				case 16
+					addvar x 2
+					addvar y 12
+					break
+				case 17
+					addvar x 4
+					addvar y 4
+					break
+				case 18
+					addvar x 6
+					addvar y -4
+					break
+				case 19
+					addvar x 8
+					addvar y -12
+					break
+			endswitch
+
+			setvar tilenum FALLINGCLIP
+			setvar POSX 2
+			setvar TEMP MAX_WEAPONS
+			mulvar TEMP 2
+			addvarvar TEMP currentweapon
+			addvar TEMP 1
+			guniqhudid TEMP
+			state weaponstatic
+			state draw_weapon
+		}
+	}
+
+	setvarvar TEMP currentweapon
+	addvar TEMP 1
+	guniqhudid TEMP
+
+	ifvarg weaponcount 4
+	{
+		setvar tilenum FIRSTGUNRELOAD
+		switch weaponcount
+			case 5
+			case 6
+			case 7
+			case 8
+			case 9
+				setvar x -128
+				setvar y 30
+				break
+			default
+				setvar x -98
+				setvar y 21
+				ifvarg weaponcount 24
+				{
+					addvar x 10
+					addvar y 15
+				}
+				addvar tilenum 1
+    			break
+		endswitch
+
+		setvar POSX 2
+		state weaponstatic
+		state draw_weapon
+	}
+	else
+	{
+		setvar x -74
+		setvar y 44
+		
+		ifvare weaponcount 2
+			addvar x 6
+			
+		setvar tilenum FIRSTGUN
+		switch weaponcount
+			case 1
+			case 2
+				addvar tilenum 1
+				break
+		endswitch
+
+		setvar POSX 0
+		state weaponbob
+		state draw_weapon
+	}
 ends
 
 state hudshotgun
@@ -1113,7 +1133,7 @@ state hudplasma
   state draw_weapon
 ends
 
-state event_drawweapon_2
+defstate event_drawweapon_2
   ifvarvare LASTGAMETIME GAMETIME
     setvar SYNC 0
   else

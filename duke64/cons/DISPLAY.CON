@@ -50,7 +50,7 @@ state reset_text
   setvar textorientation 0
 ends
 
-state draw_alpha
+defstate draw_alpha
   ifvarg rendmode 0
   {
     setvarvar screenalpha alpha
@@ -443,45 +443,46 @@ ends
 
 
 state event_displayrooms_2
-  ifvare ROOMSTEMP 0
-  {
-    getplayer[THISACTOR].pals 0 PALS0TEMP
-    getplayer[THISACTOR].pals 1 PALS1TEMP
-    getplayer[THISACTOR].pals 2 PALS2TEMP
-    getplayer[THISACTOR].pals_time PALSTIMETEMP
-    getplayer[THISACTOR].heat_on HEATTEMP
+	ifvare ROOMSTEMP 0
+	{
+		getplayer[THISACTOR].pals 0 PALS0TEMP
+		getplayer[THISACTOR].pals 1 PALS1TEMP
+		getplayer[THISACTOR].pals 2 PALS2TEMP
+		getplayer[THISACTOR].pals_time PALSTIMETEMP
+		getplayer[THISACTOR].heat_on HEATTEMP
 
-    ifvarg rendmode 0
-    {
-      setplayer[THISACTOR].pals 0 0
-      setplayer[THISACTOR].pals 1 0
-      setplayer[THISACTOR].pals 2 0
-      setplayer[THISACTOR].pals_time 0
-      setplayer[THISACTOR].heat_on 0
-    }
-  }
-  ifvarg rendmode 0
-    setgamepalette 0
-  else
-  {
-    ifvare HEATTEMP 1
-      setgamepalette 2
-    else
-    {
-      setgamepalette 0
-      ifvarn camerasect -1
-      {
-        getsector[camerasect].lotag TEMPB
-        ifvare TEMPB 2
-          setgamepalette 1
-      }
-    }
-  }
-  ifvare NEW_SHADING 1
-  {
-    setplayer[THISACTOR].visibility DEFAULTVISIBILITY
-    setuserdef .const_visibility DEFAULTVISIBILITY
-  }
+		ifvarg rendmode 0
+		{
+			setplayer[THISACTOR].pals 0 0
+			setplayer[THISACTOR].pals 1 0
+			setplayer[THISACTOR].pals 2 0
+			setplayer[THISACTOR].pals_time 0
+			setplayer[THISACTOR].heat_on 0
+		}
+	}
+	
+	ifvarg rendmode 0
+		setgamepalette 0
+	else
+	{
+		ifvare HEATTEMP 1
+			setgamepalette 2
+		else
+		{
+			setgamepalette 0
+			ifvarn camerasect -1
+			{
+				ifvare sector[camerasect].lotag 2
+					setgamepalette 1
+			}
+		}
+	}
+	
+	ifvare NEW_SHADING 1
+	{
+		setplayer[THISACTOR].visibility DEFAULTVISIBILITY
+		setuserdef .const_visibility DEFAULTVISIBILITY
+	}
 ends
 
 state event_displayrest_2
@@ -729,41 +730,40 @@ state event_egs_1
   setactor[THISACTOR].mdflags ATEMP
 ends
 
-state gamepal
-  ifvare HEATTEMP 1
-  ifvarn pal 4
-  {
-    switch pal
-    case 1
-      setvar pal 132
-    break
-    case 2
-      setvar pal 164
-    break
-    case 6
-    case 8
-    case 14
-      setvar pal 196
-    break
-    default
-      setvar pal 100
-    break
-    endswitch
+defstate gamepal
+	ifvare HEATTEMP 1
+	ifvarn pal 4
+	{
+		switch pal
+			case 1
+				setvar pal 132
+			break
+			case 2
+				setvar pal 164
+			break
+			case 6
+			case 8
+			case 14
+				setvar pal 196
+			break
+			default
+				setvar pal 100
+				break
+		endswitch
 
-    setvarvar TEMPB shade
-    ifvarl TEMPB 0
-      setvar TEMPB 0
-    ifvarg TEMPB 31
-      setvar TEMPB 31
-    addvarvar pal TEMPB
-  }
+		setvarvar TEMPB shade
+		ifvarl TEMPB 0
+			setvar TEMPB 0
+		ifvarg TEMPB 31
+			setvar TEMPB 31
+		addvarvar pal TEMPB
+	}
 ends
 
-state displaypal
+defstate displaypal
   ifvarn camerasect -1
   {
-    getsector[camerasect].lotag TEMPB
-    ifvare TEMPB 2
+    ifvare sector[camerasect].lotag 2
     {
       ifvarg rendmode 0
         setvar pal 1
@@ -775,12 +775,12 @@ state displaypal
 ends
 
 state displayshade
-  ifvare NEW_SHADING 1
-  ifvarl shade 0
-    setvar shade -96
-  ifvare HEATTEMP 1
-  ifvarg shade 0
-    setvar shade 0
+	ifvare NEW_SHADING 1
+	ifvarl shade 0
+		setvar shade -96
+	ifvare HEATTEMP 1
+	ifvarg shade 0
+		setvar shade 0
 ends
 
 state displaysprite

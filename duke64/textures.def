@@ -720,6 +720,7 @@ tilefromtexture 2525 { file "tiles/2525.png" xoff -17 yoff 8 }
 tilefromtexture 2528 { file "tiles/2528.png" xoff -75 yoff -6 }
 tilefromtexture 2529 { file "tiles/2529.png" xoff -35 yoff -1 }
 tilefromtexture 2531 { file "tiles/2531.png" xoff -7 yoff -6 }
+tilefromtexture 2532 { file "tiles/2532.png" xoff -32 yoff 0 }
 tilefromtexture 2536 { file "tiles/2536.png" xoff -6 yoff 32 }
 tilefromtexture 2539 { file "tiles/2539.png" }
 texture 2539 { pal 0 { file "tiles/2539.png" nocompress nodownsize } }
