@@ -2893,7 +2893,7 @@ onevent EVENT_ANIMATESPRITES
 endevent
 
 onevent EVENT_DISPLAYREST
-  state event_displayrest_1
+  //state event_displayrest_1
   state event_displayrest_2
   state event_displayrest_3
   state event_displayrest_4
@@ -2905,7 +2905,7 @@ onevent EVENT_DISPLAYREST
 endevent
 
 onevent EVENT_DISPLAYROOMS
-  state event_displayrooms_1
+  //state event_displayrooms_1
   state event_displayrooms_2
   state event_displayrooms_2b
   state event_displayrooms_3
@@ -2928,8 +2928,12 @@ onevent EVENT_DOFIRE
 endevent
 
 onevent EVENT_DRAWWEAPON
-  state event_drawweapon_1
+  //state event_drawweapon_1
   state event_drawweapon_2
+endevent
+
+onevent EVENT_DISPLAYACCESS
+	state event_displayaccess_1
 endevent
 
 onevent EVENT_EGS

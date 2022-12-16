@@ -713,98 +713,96 @@ state event_dofire_2
 					endswitch
 				}
 			}
-	}
-	else
-		setvar ATEMP 0
+		}
+		else
+			setvar ATEMP 0
 		
-	ifvare ATEMP 1
-	{
-		setvarvar SHOTCOUNT WEAPON3_SHOTSPERBURST
-		getplayer[THISACTOR].ang SHOTANG
-		setvarvar ATEMP2 SHOTANG
-		addvar ATEMP2 SMG_SHOT_OFFSET
-		andvar ATEMP2 2047
-		setplayer[THISACTOR].ang ATEMP2
-	}
-	else
-		setvar SHOTCOUNT 0
-
-	setvar WEAPON3_SPAWN -1
-	ifvare predicting 0 // NetDuke32 safeguard
-	{
-		setvar AWHILE 0
-		whilevarvarn AWHILE WEAPON3_SHOTSPERBURST
+		ifvare ATEMP 1
 		{
-			espawnvar SHELL
+			setvarvar SHOTCOUNT WEAPON3_SHOTSPERBURST
+			getplayer[THISACTOR].ang SHOTANG
+			setvarvar ATEMP2 SHOTANG
+			addvar ATEMP2 SMG_SHOT_OFFSET
+			andvar ATEMP2 2047
+			setplayer[THISACTOR].ang ATEMP2
+		}
+		else
+			setvar SHOTCOUNT 0
 
-			getactor[RETURN].x X
-			getactor[RETURN].y Y
-			getplayer[THISACTOR].ang ANG
+		setvar WEAPON3_SPAWN -1
+		ifvare predicting 0 // NetDuke32 safeguard
+		{
+			setvar AWHILE 0
+			whilevarvarn AWHILE WEAPON3_SHOTSPERBURST
+			{
+				espawnvar SHELL
 
-			mulvar ANG -1
-			addvar ANG 512
-			ifvare AWHILE 1
-				addvar ANG 320
-			else
-				addvar ANG -320
+				getactor[RETURN].x X
+				getactor[RETURN].y Y
+				getplayer[THISACTOR].ang ANG
 
-			sin ATEMP2 ANG
-			shiftvarl ATEMP2 7
-			shiftvarr ATEMP2 14
-			addvarvar X ATEMP2
-
-			cos ATEMP2 ANG
-			shiftvarl ATEMP2 7
-			shiftvarr ATEMP2 14
-			addvarvar Y ATEMP2
-
-			setactor[RETURN].x X
-			setactor[RETURN].y Y
-			setactor[RETURN].htbposx X
-			setactor[RETURN].htbposy Y
-			updatesectorz X Y sprite[RETURN].z SECT
-			ifvarg SECT -1
-				changespritesect RETURN SECT
-
-			getactor[RETURN].ang ANG
-			addvar ANG 512
-			ifvare AWHILE 1
-				addvar ANG -512
-			else
+				mulvar ANG -1
 				addvar ANG 512
-			andvar ANG 2047
-			setactor[RETURN].ang ANG
+				ifvare AWHILE 1
+					addvar ANG 320
+				else
+					addvar ANG -320
 
-			getactor[RETURN].zvel ZVEL
-			shiftvarl ZVEL 2
-			setactor[RETURN].zvel ZVEL
+				sin ATEMP2 ANG
+				shiftvarl ATEMP2 7
+				shiftvarr ATEMP2 14
+				addvarvar X ATEMP2
 
-			setvar RETURN 0
-			addvar AWHILE 1
+				cos ATEMP2 ANG
+				shiftvarl ATEMP2 7
+				shiftvarr ATEMP2 14
+				addvarvar Y ATEMP2
+
+				setactor[RETURN].x X
+				setactor[RETURN].y Y
+				setactor[RETURN].htbposx X
+				setactor[RETURN].htbposy Y
+				updatesectorz X Y sprite[RETURN].z SECT
+				ifvarg SECT -1
+					changespritesect RETURN SECT
+
+				getactor[RETURN].ang ANG
+				addvar ANG 512
+				ifvare AWHILE 1
+					addvar ANG -512
+				else
+					addvar ANG 512
+				andvar ANG 2047
+				setactor[RETURN].ang ANG
+
+				getactor[RETURN].zvel ZVEL
+				shiftvarl ZVEL 2
+				setactor[RETURN].zvel ZVEL
+
+				setvar RETURN 0
+				addvar AWHILE 1
+			}
 		}
 	}
-}
 ends
 
-onevent EVENT_EGS
-	ifactor SHOTSPARK1
-	ifspawnedby APLAYER
+onevent EVENT_POSTWEAPONSHOOT
+	ifvare player[THISACTOR].curr_weapon CHAINGUN_WEAPON
 	{
-		getactor[OWNER].yvel ATEMP
-		ifvare player[ATEMP].curr_weapon CHAINGUN_WEAPON
+		ifvare player[THISACTOR].curr_weapon CHAINGUN_WEAPON
 		{
-			getplayervar[ATEMP].SHOTCOUNT ATEMP2
+			getplayervar[THISACTOR].SHOTCOUNT ATEMP2
 			ifvarg ATEMP2 0
 			{
-				getplayervar[ATEMP].SHOTANG ATEMP3
+				getplayervar[THISACTOR].SHOTANG ATEMP3
 				ifvare ATEMP2 2
 				{
 					subvar ATEMP3 SMG_SHOT_OFFSET
 					andvar ATEMP3 2047
 				}
-				setplayer[ATEMP].ang ATEMP3
+				setplayer[THISACTOR].ang ATEMP3
 				subvar ATEMP2 1
-				setplayervar[ATEMP].SHOTCOUNT ATEMP2
+				setplayervar[THISACTOR].SHOTCOUNT ATEMP2
 			}
 		}
 	}

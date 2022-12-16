@@ -297,7 +297,7 @@ gamevar PALS1TEMP 0 0
 gamevar PALS2TEMP 0 0
 gamevar PALSTIMETEMP 0 0
 gamevar HEATTEMP 0 0
-gamevar ACCESSTEMP 0 0
+//gamevar ACCESSTEMP 0 0
 gamevar QUOTETEMP 0 0
 
 gamevar SECTORVISIBILITY 0 2
