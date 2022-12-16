@@ -221,7 +221,7 @@ state fragsbar
   }
 ends
 
-state iconscale
+defstate iconscale
   setvarvar TEMPB tilesizx[tilenum]
   andvar TEMPB 1
   mulvarvar TEMPB z
@@ -793,211 +793,224 @@ state weaponswitch
 ends
 
 state statusweapon
-  ifvarg STWPCOUNT -1
-  {
-    setvar WHILE WPBAR_ICONS
-    shiftvarr WHILE 1
-    ifvarg WPBAR_ICONS 0
-      addvar WHILE 1
-    whilevarn WHILE 0
-    {
-      ifvarg WHILE 0
-        subvar WHILE 1
-      mulvar WHILE -1
+	ifvarg STWPCOUNT -1
+	{
+		setvar WHILE WPBAR_ICONS
+		shiftvarr WHILE 1
+		ifvarg WPBAR_ICONS 0
+			addvar WHILE 1
+		whilevarn WHILE 0
+		{
+			ifvarg WHILE 0
+				subvar WHILE 1
+				
+			mulvar WHILE -1
 
-      setvarvar TEMPB STWPSELECT
-      ifvarn WHILE 0
-      {
-        setvarvar WHILE2 WHILE
-        ifvarl WHILE2 0
-          mulvar WHILE2 -1
-        whilevarn WHILE2 0
-        {
-          state weaponswitch
-          setvar WHILE3 0
-          whilevarn WHILE3 1
-          {
-            switch TEMPB
-            case KNEE_WEAPON
-              ifvare player[THISACTOR].gotweapon KNEE_WEAPON 1
-                setvar WHILE3 1
-            break
-            case HANDBOMB_WEAPON
-            case HANDREMOTE_WEAPON
-              ifvare player[THISACTOR].gotweapon HANDBOMB_WEAPON 1
-              {
-                ifvarg player[THISACTOR].ammo_amount HANDBOMB_WEAPON 0
-                  setvar WHILE3 1
-                else
-                {
-                  ifvarn WPSELECT HANDREMOTE_WEAPON
-                  ifvare PIPEBOMB_CONTROL 1
-                  {
-                    setvar TEMPSECTORS 0
-                    whilevarvarn TEMPSECTORS NUMSECTORS
-                    {
-                      headspritesect TEMPSPRITES TEMPSECTORS
-                      setvarvar HEAD TEMPSPRITES
-                      whilevarn TEMPSPRITES -1
-                      {
-                        ifvare sprite[TEMPSPRITES].picnum HEAVYHBOMB
-                        ifvarvare sprite[TEMPSPRITES].owner THISACTOR
-                        ifvare sprite[TEMPSPRITES].htg_t 6 2
-                        {
-                          setvar WHILE3 1
-                          setvar TEMPSPRITES -1
-                          setvarvar TEMPSECTORS NUMSECTORS
-                        }
-                        ifvarn TEMPSPRITES -1
-                        {
-                          nextspritesect TEMPSPRITES TEMPSPRITES
-                          ifvarvare TEMPSPRITES HEAD
-                            setvar TEMPSPRITES -1
-                        }
-                      }
-                      ifvarvarn TEMPSECTORS NUMSECTORS
-                        addvar TEMPSECTORS 1
-                    }
-                  }
-                }
-              }
-            break
-            default
-              ifvare player[THISACTOR].gotweapon TEMPB 1
-              ifvarg player[THISACTOR].ammo_amount TEMPB 0
-                setvar WHILE3 1
-            break
-            endswitch
-            ifvare WHILE3 0
-              state weaponswitch
-          }
-          subvar WHILE2 1
-        }
-      }
-      switch TEMPB
-      case KNEE_WEAPON
-        setvar tilenum BOOTS
-      break
-      case PISTOL_WEAPON
-        setvar tilenum FIRSTGUNSPRITE
-      break
-      case SHOTGUN_WEAPON
-        setvar tilenum SHOTGUNSPRITE
-      break
-      case CHAINGUN_WEAPON
-        setvar tilenum CHAINGUNSPRITE
-      break
-      case RPG_WEAPON
-        setvar tilenum RPGSPRITE
-      break
-      case HANDBOMB_WEAPON
-      case HANDREMOTE_WEAPON
-        setvar tilenum HEAVYHBOMB
-      break
-      case SHRINKER_WEAPON
-        setvar tilenum SHRINKERSPRITE
-      break
-      case GROW_WEAPON
-        setvar tilenum GROWSPRITEICON
-      break
-      case DEVISTATOR_WEAPON
-        setvar tilenum DEVISTATORSPRITE
-      break
-      case TRIPBOMB_WEAPON
-        setvar tilenum TRIPBOMBSPRITE
-      break
-      case FREEZE_WEAPON
-        setvar tilenum FREEZESPRITE
-      break
-      endswitch
+			setvarvar TEMPB STWPSELECT
+			ifvarn WHILE 0
+			{
+				setvarvar WHILE2 WHILE
+				ifvarl WHILE2 0
+					mulvar WHILE2 -1
+					
+				whilevarn WHILE2 0
+				{
+					state weaponswitch
+					setvar WHILE3 0
+					whilevarn WHILE3 1
+					{
+						switch TEMPB
+							case KNEE_WEAPON
+								ifvare player[THISACTOR].gotweapon KNEE_WEAPON 1
+									setvar WHILE3 1
+								break
+							case HANDBOMB_WEAPON
+							case HANDREMOTE_WEAPON
+								ifvare player[THISACTOR].gotweapon HANDBOMB_WEAPON 1
+								{
+									ifvarg player[THISACTOR].ammo_amount HANDBOMB_WEAPON 0
+										setvar WHILE3 1
+									else
+									{
+										ifvarn WPSELECT HANDREMOTE_WEAPON
+										ifvare PIPEBOMB_CONTROL 1
+										{
+											setvar TEMPSECTORS 0
+											whilevarvarn TEMPSECTORS NUMSECTORS
+											{
+												headspritesect TEMPSPRITES TEMPSECTORS
+												setvarvar HEAD TEMPSPRITES
+												whilevarn TEMPSPRITES -1
+												{
+													ifvare sprite[TEMPSPRITES].picnum HEAVYHBOMB
+													ifvarvare sprite[TEMPSPRITES].owner THISACTOR
+													ifvare sprite[TEMPSPRITES].htg_t 6 2
+													{
+														setvar WHILE3 1
+														setvar TEMPSPRITES -1
+														setvarvar TEMPSECTORS NUMSECTORS
+													}
+													ifvarn TEMPSPRITES -1
+													{
+														nextspritesect TEMPSPRITES TEMPSPRITES
+														ifvarvare TEMPSPRITES HEAD
+															setvar TEMPSPRITES -1
+													}
+												}
+												ifvarvarn TEMPSECTORS NUMSECTORS
+													addvar TEMPSECTORS 1
+											}
+										}
+									}
+								}
+								break
+							default
+								ifvare player[THISACTOR].gotweapon TEMPB 1
+								ifvarg player[THISACTOR].ammo_amount TEMPB 0
+									setvar WHILE3 1
+									break
+						endswitch
+						
+						ifvare WHILE3 0
+							state weaponswitch
+					}
+					subvar WHILE2 1
+				}
+			}
+			switch TEMPB
+				case KNEE_WEAPON
+					setvar tilenum BOOTS
+					break
+				case PISTOL_WEAPON
+					setvar tilenum FIRSTGUNSPRITE
+					break
+				case SHOTGUN_WEAPON
+					setvar tilenum SHOTGUNSPRITE
+					break
+				case CHAINGUN_WEAPON
+					setvar tilenum CHAINGUNSPRITE
+					break
+				case RPG_WEAPON
+					setvar tilenum RPGSPRITE
+					break
+				case HANDBOMB_WEAPON
+				case HANDREMOTE_WEAPON
+					setvar tilenum HEAVYHBOMB
+					break
+				case SHRINKER_WEAPON
+					setvar tilenum SHRINKERSPRITE
+					break
+				case GROW_WEAPON
+					setvar tilenum GROWSPRITEICON
+					break
+				case DEVISTATOR_WEAPON
+					setvar tilenum DEVISTATORSPRITE
+					break
+				case TRIPBOMB_WEAPON
+					setvar tilenum TRIPBOMBSPRITE
+					break
+				case FREEZE_WEAPON
+					setvar tilenum FREEZESPRITE
+					break
+			endswitch
+			
+			setvarvar TEMPB2 WHILE
+			addvar TEMPB2 150
+			guniqhudid TEMPB2
 
-      state reset_gamehud
-      setvar POSY 2
+			state reset_gamehud
+			setvar POSY 2
 
-      setvar y16 WPBAR_Y
-      shiftvarl y16 16
-      ifvarl STWPCOUNT WPBAR_RISE_TIME
-      {
-        setvarvar TEMPB STWPCOUNT
-        setvar TEMPB2 WPBAR_ICON_HEIGHT
-        shiftvarr TEMPB2 1
-        subvarvar TEMPB2 WPBAR_Y
-        shiftvarl TEMPB2 16
-        mulvarvar TEMPB TEMPB2
-        divvar TEMPB WPBAR_RISE_TIME
-        mulvar TEMPB -1
-        addvarvar TEMPB TEMPB2
-        addvarvar y16 TEMPB
-      }
-      ifvarg STWPCOUNT WEAPON_SWITCH_TIME
-      {
-        setvarvar TEMPB STWPCOUNT
-        subvarvar TEMPB WEAPON_SWITCH_TIME
-        setvar TEMPB2 WPBAR_ICON_HEIGHT
-        shiftvarr TEMPB2 1
-        subvarvar TEMPB2 WPBAR_Y
-        shiftvarl TEMPB2 16
-        mulvarvar TEMPB TEMPB2
-        divvar TEMPB WPBAR_DROP_TIME
-        addvarvar y16 TEMPB
-      }
+			setvar y16 WPBAR_Y
+			shiftvarl y16 16
+			ifvarl STWPCOUNT WPBAR_RISE_TIME
+			{
+				setvarvar TEMPB STWPCOUNT
+				setvar TEMPB2 WPBAR_ICON_HEIGHT
+				shiftvarr TEMPB2 1
+				subvarvar TEMPB2 WPBAR_Y
+				shiftvarl TEMPB2 16
+				mulvarvar TEMPB TEMPB2
+				divvar TEMPB WPBAR_RISE_TIME
+				mulvar TEMPB -1
+				addvarvar TEMPB TEMPB2
+				addvarvar y16 TEMPB
+			}
+			ifvarg STWPCOUNT WEAPON_SWITCH_TIME
+			{
+				setvarvar TEMPB STWPCOUNT
+				subvarvar TEMPB WEAPON_SWITCH_TIME
+				setvar TEMPB2 WPBAR_ICON_HEIGHT
+				shiftvarr TEMPB2 1
+				subvarvar TEMPB2 WPBAR_Y
+				shiftvarl TEMPB2 16
+				mulvarvar TEMPB TEMPB2
+				divvar TEMPB WPBAR_DROP_TIME
+				addvarvar y16 TEMPB
+			}
 
-      ifvarg WPBAR_ICONS 1
-      {
-        ifvare STWPPOS 0
-          setvar TEMPB 0
-        else
-        ifvare STWPCOUNT2 -1
-          setvar TEMPB 0
-        else
-        {
-          setvarvar TEMPB STWPCOUNT2
-          mulvar TEMPB -1
-          addvar TEMPB WPBAR_MOVE_TIME
-          ifvare STWPPOS 2
-            mulvar TEMPB -1
-          mulvar TEMPB 2184
-          divvar TEMPB WPBAR_ICONS
-          divvar TEMPB WPBAR_MOVE_TIME
-        }
-        setvarvar TEMPB2 WHILE
-        mulvar TEMPB2 2184
-        divvar TEMPB2 WPBAR_ICONS
-        addvarvar TEMPB TEMPB2
+			ifvarg WPBAR_ICONS 1
+			{
+				ifvare STWPPOS 0
+					setvar TEMPB 0
+				else ifvare STWPCOUNT2 -1
+					setvar TEMPB 0
+				else
+				{
+					setvarvar TEMPB STWPCOUNT2
+					mulvar TEMPB -1
+					addvar TEMPB WPBAR_MOVE_TIME
+					
+					ifvare STWPPOS 2
+						mulvar TEMPB -1
+						
+					mulvar TEMPB 2184
+					divvar TEMPB WPBAR_ICONS
+					divvar TEMPB WPBAR_MOVE_TIME
+				}
+				
+				setvarvar TEMPB2 WHILE
+				mulvar TEMPB2 2184
+				divvar TEMPB2 WPBAR_ICONS
+				addvarvar TEMPB TEMPB2
 
-        ifvarg TEMPB 1024
-          break
-        ifvarl TEMPB -1024
-          break
+				ifvarg TEMPB 1024
+					break
+				ifvarl TEMPB -1024
+					break
 
-        sin x16 TEMPB
-        mulvar x16 WPBAR_RANGE
-        shiftvarl x16 1
+				sin x16 TEMPB
+				mulvar x16 WPBAR_RANGE
+				shiftvarl x16 1
 
-        ifvarl TEMPB 0
-          mulvar TEMPB -1
+				ifvarl TEMPB 0
+					mulvar TEMPB -1
 
-        cos z TEMPB
-        addvar z 49152
+				cos z TEMPB
+				addvar z 49152
 
-        cos shade TEMPB
-        mulvar shade -1
-        addvar shade 16384
-        shiftvarr shade 9
+				cos shade TEMPB
+				mulvar shade -1
+				addvar shade 16384
+				shiftvarr shade 9
 
-        cos alpha TEMPB
-        addvar alpha 16384
-        mulvar alpha -1
-        addvar alpha 32768
-        shiftvarr alpha 7
-      }
-      mulvar z WPBAR_ICON_HEIGHT
-      divvarvar z tilesizy[tilenum]
-      setvarvar z2 z
-      state iconscale
-      state draw_gamehud
-    }
-  }
+				cos alpha TEMPB
+				addvar alpha 16384
+				mulvar alpha -1
+				addvar alpha 32768
+				shiftvarr alpha 7
+			}
+			mulvar z WPBAR_ICON_HEIGHT
+			divvarvar z tilesizy[tilenum]
+			setvarvar z2 z
+		
+			orvar orientation 4096 // RS_LERP
+			orvar orientation 8192 // RS_FORCELERP
+			state iconscale
+			state draw_gamehud
+			guniqhudid 0
+		}
+	}
 ends
 
 state event_displaysbar_3b

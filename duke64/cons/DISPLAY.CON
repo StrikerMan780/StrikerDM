@@ -247,7 +247,7 @@ state reset_gamehud
   setvar POSY 0
 ends
 
-state draw_gamehud_scale
+defstate draw_gamehud_scale
   setvarvar screenorientation orientation
   orvar screenorientation 2048
   state draw_code
@@ -278,7 +278,7 @@ state draw_gamehud_scale
   }
 ends
 
-state draw_gamehud
+defstate draw_gamehud
   state draw_gamehud_scale
   ifvare screenorientation -1
     break
