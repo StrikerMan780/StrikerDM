@@ -354,14 +354,17 @@ state rotate_hand
   state aspectreset
 ends
 
-state event_displayaccess_1
-    state reset_hand
+onevent EVENT_DISPLAYACCESS
+	state reset_hand
     setvar POSY 2
     setvarvar shade gs
     getsector[THISACTOR].floorpal pal
 
     setvar x -17
     setvar y -48
+	
+	guniqhudid 1
+	
     switch player[THISACTOR].access_incs
     case 1
       addvar x 25
@@ -421,6 +424,9 @@ state event_displayaccess_1
       setvar ang 1024
       setvar orientation 4
       setvar tilenum HANDHOLDINGACCESS2
+	  orvar orientation 4096 // RS_LERP
+	  orvar orientation 8192 // RS_FORCELERP
+	
       getplayer[THISACTOR].access_spritenum TEMP
       ifvare sprite[TEMP].pal 21
         nullop
@@ -434,11 +440,14 @@ state event_displayaccess_1
       setvar tilenum HANDHOLDINGACCESS2
       addvar tilenum 3
     }
+    
+	orvar orientation 4096 // RS_LERP
+	orvar orientation 8192 // RS_FORCELERP
     state rotate_hand
+	guniqhudid 0
 
     setvar RETURN 1
-ends
-
+endevent
 
 state event_displayrooms_2
 	ifvare ROOMSTEMP 0
@@ -510,7 +519,7 @@ state event_game_1
   }
 ends
 
-state displaytint
+defstate displaytint
   ifvarg PALSTIMETEMP 0
   {
     state reset_drawing

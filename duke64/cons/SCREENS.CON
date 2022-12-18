@@ -90,7 +90,7 @@ define CREDITS_BIGLINE_HEIGHT   20
 define CREDITS_TIME             256
 define CREDITS_ROLL_SPEED       32
 
-state textcolor
+defstate textcolor
   getplayer[SET].palookup TEMPB
   switch TEMPB
   case 0

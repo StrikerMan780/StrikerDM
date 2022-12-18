@@ -114,7 +114,7 @@ state screenorder
 ends
 
 state displayscreen
-	ifvarand player[myconnectindex].gm MODE_DEMO
+	ifvarand player[].gm MODE_DEMO
 		setvar SCREENMODE 0
 	ifvare SCREENMODE 0
 	{
@@ -391,24 +391,19 @@ useractor notenemy MAPCODE
 		setuserdef .eog 0
 		
 	setvar ATEMP 0
-	setvar AWHILE 0
-	whilevarvarn AWHILE MULTIMODE
+	ifvarand player[].gm MODE_EOL
 	{
-		ifvarand player[AWHILE].gm MODE_EOL
-		{
-			getplayer[AWHILE].gm ATEMP2
-			xorvar ATEMP2 MODE_EOL
-			setvar ATEMP3 0 getuserdef .recstat ATEMP3
-			ifvare ATEMP3 2
-				orvar ATEMP2 MODE_DEMO
-			else
-				orvar ATEMP2 MODE_GAME
-				
-			setplayer[AWHILE].gm ATEMP2
-			getplayer[AWHILE].buttonpalette ASET
-			setvar ATEMP 1
-		}
-		addvar AWHILE 1
+		getplayer[].gm ATEMP2
+		xorvar ATEMP2 MODE_EOL
+		setvar ATEMP3 0 getuserdef .recstat ATEMP3
+		ifvare ATEMP3 2
+			orvar ATEMP2 MODE_DEMO
+		else
+			orvar ATEMP2 MODE_GAME
+			
+		setplayer[].gm ATEMP2
+		getplayer[].buttonpalette ASET
+		setvar ATEMP 1
 	}
 	
 	ifvare ATEMP 1

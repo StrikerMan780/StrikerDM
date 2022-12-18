@@ -327,12 +327,7 @@ defstate pcode
     }
     ifvare TIMEBEFOREEXITTEMP 1
     {
-      setvar AWHILE 0
-      whilevarvarn AWHILE MULTIMODE
-      {
-        setplayer[AWHILE].gm MODE_EOL
-        addvar AWHILE 1
-      }
+        setplayer[myconnectindex].gm MODE_EOL
     }
   }
 

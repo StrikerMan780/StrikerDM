@@ -276,7 +276,7 @@ defstate hudpistol
 			endswitch
 	
 			setvar tilenum HAND
-			setvar POSX 2
+			//setvar POSX 2
 			setvar TEMP MAX_WEAPONS
 			addvarvar TEMP currentweapon
 			addvar TEMP 1
@@ -328,7 +328,7 @@ defstate hudpistol
 			endswitch
 
 			setvar tilenum FALLINGCLIP
-			setvar POSX 2
+			//setvar POSX 2
 			setvar TEMP MAX_WEAPONS
 			mulvar TEMP 2
 			addvarvar TEMP currentweapon
@@ -367,7 +367,7 @@ defstate hudpistol
     			break
 		endswitch
 
-		setvar POSX 2
+		//setvar POSX 2
 		state weaponstatic
 		state draw_weapon
 	}
@@ -393,12 +393,12 @@ defstate hudpistol
 	}
 ends
 
-state hudshotgun
+defstate hudshotgun
   state reset_weapon
   setvarvar shade gs
   getsector[THISACTOR].floorpal pal
-  ifvarg weaponcount 8
-    setvar POSX 2
+  //ifvarg weaponcount 8
+    //setvar POSX 2
   setvar WPPOS 2
   setvarvar TEMP currentweapon
   addvar TEMP 1
@@ -586,11 +586,11 @@ state hudsmg
   state draw_weapon
 ends
 
-state hudgrenade
+defstate hudgrenade
   state reset_weapon
   setvarvar shade gs
   getsector[THISACTOR].floorpal pal
-  setvar POSX 2
+  //setvar POSX 2
   setvar WPPOS 2
   setvarvar TEMP currentweapon
   addvar TEMP 1
@@ -1015,7 +1015,7 @@ ends
 
 state hudplasma
   state reset_weapon
-  setvar POSX 2
+  //setvar POSX 2
   setvar WPPOS 2
   ifvare weaponcount 0
   {

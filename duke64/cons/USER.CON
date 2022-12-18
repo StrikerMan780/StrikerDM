@@ -696,7 +696,7 @@ definesound DUKE_USEMEDKIT      sounds/ahh04.wav          0   0   255  4   0
 definesound DUKE_TAKEPILLS      sounds/gulp01.wav         0   0   255  4   0
 definesound DUKETALKTOBOSS      duknuk14.voc       0   0   255  12  0
 definesound BOSSTALKTODUKE      !boss.voc          0   0   255  0   0
-definesound SHRINKER_HIT        thud.wav           0   0   3    0   0
+definesound SHRINKER_HIT        sounds/thud.wav           0   0   3    0   0
 definesound SOMETHINGFROZE      freeze.voc         0   0   3    0   0
 
 // Duke Equipment Sounds

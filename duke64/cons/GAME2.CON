@@ -751,6 +751,8 @@ state event_game_8
   ifactor SMALLSMOKE
   ifspawnedby SHOTSPARK1
     killit
+	
+/*
   ifactor JIBS6
   ifspawnedby SHOTSPARK1
   {
@@ -759,6 +761,8 @@ state event_game_8
     ifvare sprite[ATEMP].picnum APLAYER
       killit
   }
+*/
+  
   ifactor SHOTSPARK1
   ifvare LOAD 0
   ifvarg sprite[THISACTOR].htg_t 8 -1
@@ -1297,142 +1301,160 @@ state event_spawn_14
 ends
 
 state event_game_14
-  ifvare sprite[THISACTOR].lotag -1
-  {
-    setvar ATEMP 0 getuserdef .noexits ATEMP
-    ifvare ATEMP 0
-    {
-      getactor[THISACTOR].picnum ATEMP2
-      subvarvar ATEMP2 SLOTDOOR
-      ifvarg ATEMP2 0
-      ifvarl ATEMP2 2
-        setvar ATEMP2 0
-      addvarvar ATEMP2 SLOTDOOR
-      subvarvar ATEMP2 LIGHTSWITCH
-      ifvarg ATEMP2 0
-      ifvarl ATEMP2 2
-        setvar ATEMP2 0
-      addvarvar ATEMP2 LIGHTSWITCH
-      subvarvar ATEMP2 SPACEDOORSWITCH
-      ifvarg ATEMP2 0
-      ifvarl ATEMP2 2
-        setvar ATEMP2 0
-      addvarvar ATEMP2 SPACEDOORSWITCH
-      subvarvar ATEMP2 SPACELIGHTSWITCH
-      ifvarg ATEMP2 0
-      ifvarl ATEMP2 2
-        setvar ATEMP2 0
-      addvarvar ATEMP2 SPACELIGHTSWITCH
-      subvarvar ATEMP2 FRANKENSTINESWITCH
-      ifvarg ATEMP2 0
-      ifvarl ATEMP2 2
-        setvar ATEMP2 0
-      addvarvar ATEMP2 FRANKENSTINESWITCH
-      subvarvar ATEMP2 MULTISWITCH
-      ifvarg ATEMP2 0
-      ifvarl ATEMP2 4
-        setvar ATEMP2 0
-      addvarvar ATEMP2 MULTISWITCH
-      subvarvar ATEMP2 DIPSWITCH
-      ifvarg ATEMP2 0
-      ifvarl ATEMP2 2
-        setvar ATEMP2 0
-      addvarvar ATEMP2 DIPSWITCH
-      subvarvar ATEMP2 DIPSWITCH2
-      ifvarg ATEMP2 0
-      ifvarl ATEMP2 2
-        setvar ATEMP2 0
-      addvarvar ATEMP2 DIPSWITCH2
-      subvarvar ATEMP2 TECHSWITCH
-      ifvarg ATEMP2 0
-      ifvarl ATEMP2 2
-        setvar ATEMP2 0
-      addvarvar ATEMP2 TECHSWITCH
-      subvarvar ATEMP2 DIPSWITCH3
-      ifvarg ATEMP2 0
-      ifvarl ATEMP2 2
-        setvar ATEMP2 0
-      addvarvar ATEMP2 DIPSWITCH3
-      subvarvar ATEMP2 LIGHTSWITCH2
-      ifvarg ATEMP2 0
-      ifvarl ATEMP2 2
-        setvar ATEMP2 0
-      addvarvar ATEMP2 LIGHTSWITCH2
-      subvarvar ATEMP2 POWERSWITCH1
-      ifvarg ATEMP2 0
-      ifvarl ATEMP2 2
-        setvar ATEMP2 0
-      addvarvar ATEMP2 POWERSWITCH1
-      subvarvar ATEMP2 LOCKSWITCH1
-      ifvarg ATEMP2 0
-      ifvarl ATEMP2 2
-        setvar ATEMP2 0
-      addvarvar ATEMP2 LOCKSWITCH1
-      subvarvar ATEMP2 POWERSWITCH2
-      ifvarg ATEMP2 0
-      ifvarl ATEMP2 2
-        setvar ATEMP2 0
-      addvarvar ATEMP2 POWERSWITCH2
-      subvarvar ATEMP2 HANDSWITCH
-      ifvarg ATEMP2 0
-      ifvarl ATEMP2 2
-        setvar ATEMP2 0
-      addvarvar ATEMP2 HANDSWITCH
-      subvarvar ATEMP2 PULLSWITCH
-      ifvarg ATEMP2 0
-      ifvarl ATEMP2 2
-        setvar ATEMP2 0
-      addvarvar ATEMP2 PULLSWITCH
-      subvarvar ATEMP2 ALIENSWITCH
-      ifvarg ATEMP2 0
-      ifvarl ATEMP2 2
-        setvar ATEMP2 0
-      addvarvar ATEMP2 ALIENSWITCH
-      switch ATEMP2
-      case ACCESSSWITCH
-      case SLOTDOOR
-      case LIGHTSWITCH
-      case SPACEDOORSWITCH
-      case SPACELIGHTSWITCH
-      case FRANKENSTINESWITCH
-      case MULTISWITCH
-      case DIPSWITCH
-      case DIPSWITCH2
-      case TECHSWITCH
-      case DIPSWITCH3
-      case ACCESSSWITCH2
-      case LIGHTSWITCH2
-      case POWERSWITCH1
-      case LOCKSWITCH1
-      case POWERSWITCH2
-      case HANDSWITCH
-      case PULLSWITCH
-      case ALIENSWITCH
-        ifvarg LASTPICNUM -1
-        ifvarvarn LASTPICNUM sprite[THISACTOR].picnum
-        ifvarg ENDLEVEL -1
-          setvar ENDLEVEL END_TIME
-        getactor[THISACTOR].picnum LASTPICNUM
-      break
-      endswitch
-    }
-  }
+	ifvare sprite[THISACTOR].lotag -1
+	{
+		setvar ATEMP 0 getuserdef .noexits ATEMP
+		ifvare ATEMP 0
+		{
+			getactor[THISACTOR].picnum ATEMP2
+			subvarvar ATEMP2 SLOTDOOR
+			ifvarg ATEMP2 0
+			ifvarl ATEMP2 2
+				setvar ATEMP2 0
+				
+			addvarvar ATEMP2 SLOTDOOR
+			subvarvar ATEMP2 LIGHTSWITCH
+			ifvarg ATEMP2 0
+			ifvarl ATEMP2 2
+				setvar ATEMP2 0
+				
+			addvarvar ATEMP2 LIGHTSWITCH
+			subvarvar ATEMP2 SPACEDOORSWITCH
+			ifvarg ATEMP2 0
+			ifvarl ATEMP2 2
+				setvar ATEMP2 0
+				
+			addvarvar ATEMP2 SPACEDOORSWITCH
+			subvarvar ATEMP2 SPACELIGHTSWITCH
+			ifvarg ATEMP2 0
+			ifvarl ATEMP2 2
+				setvar ATEMP2 0
+				
+			addvarvar ATEMP2 SPACELIGHTSWITCH
+			subvarvar ATEMP2 FRANKENSTINESWITCH
+			ifvarg ATEMP2 0
+			ifvarl ATEMP2 2
+				setvar ATEMP2 0
+				
+			addvarvar ATEMP2 FRANKENSTINESWITCH
+			subvarvar ATEMP2 MULTISWITCH
+			ifvarg ATEMP2 0
+			ifvarl ATEMP2 4
+				setvar ATEMP2 0
+				
+			addvarvar ATEMP2 MULTISWITCH
+			subvarvar ATEMP2 DIPSWITCH
+			ifvarg ATEMP2 0
+			ifvarl ATEMP2 2
+				setvar ATEMP2 0
+			
+			addvarvar ATEMP2 DIPSWITCH
+			subvarvar ATEMP2 DIPSWITCH2
+			ifvarg ATEMP2 0
+			ifvarl ATEMP2 2
+				setvar ATEMP2 0
+			
+			addvarvar ATEMP2 DIPSWITCH2
+			subvarvar ATEMP2 TECHSWITCH
+			ifvarg ATEMP2 0
+			ifvarl ATEMP2 2
+				setvar ATEMP2 0
+			
+			addvarvar ATEMP2 TECHSWITCH
+			subvarvar ATEMP2 DIPSWITCH3
+			ifvarg ATEMP2 0
+			ifvarl ATEMP2 2
+				setvar ATEMP2 0
+			
+			addvarvar ATEMP2 DIPSWITCH3
+			subvarvar ATEMP2 LIGHTSWITCH2
+			ifvarg ATEMP2 0
+			ifvarl ATEMP2 2
+				setvar ATEMP2 0
+			
+			addvarvar ATEMP2 LIGHTSWITCH2
+			subvarvar ATEMP2 POWERSWITCH1
+			ifvarg ATEMP2 0
+			ifvarl ATEMP2 2
+				setvar ATEMP2 0
+			
+			addvarvar ATEMP2 POWERSWITCH1
+			subvarvar ATEMP2 LOCKSWITCH1
+			ifvarg ATEMP2 0
+			ifvarl ATEMP2 2
+				setvar ATEMP2 0
+			
+			addvarvar ATEMP2 LOCKSWITCH1
+			subvarvar ATEMP2 POWERSWITCH2
+			ifvarg ATEMP2 0
+			ifvarl ATEMP2 2
+				setvar ATEMP2 0
+			
+			addvarvar ATEMP2 POWERSWITCH2
+			subvarvar ATEMP2 HANDSWITCH
+			ifvarg ATEMP2 0
+			ifvarl ATEMP2 2
+				setvar ATEMP2 0
+			
+			addvarvar ATEMP2 HANDSWITCH
+			subvarvar ATEMP2 PULLSWITCH
+			ifvarg ATEMP2 0
+			ifvarl ATEMP2 2
+				setvar ATEMP2 0
+			
+			addvarvar ATEMP2 PULLSWITCH
+			subvarvar ATEMP2 ALIENSWITCH
+			ifvarg ATEMP2 0
+			ifvarl ATEMP2 2
+				setvar ATEMP2 0
+			
+			addvarvar ATEMP2 ALIENSWITCH
+			switch ATEMP2
+				case ACCESSSWITCH
+				case SLOTDOOR
+				case LIGHTSWITCH
+				case SPACEDOORSWITCH
+				case SPACELIGHTSWITCH
+				case FRANKENSTINESWITCH
+				case MULTISWITCH
+				case DIPSWITCH
+				case DIPSWITCH2
+				case TECHSWITCH
+				case DIPSWITCH3
+				case ACCESSSWITCH2
+				case LIGHTSWITCH2
+				case POWERSWITCH1
+				case LOCKSWITCH1
+				case POWERSWITCH2
+				case HANDSWITCH
+				case PULLSWITCH
+				case ALIENSWITCH
+					ifvarg LASTPICNUM -1
+					ifvarvarn LASTPICNUM sprite[THISACTOR].picnum
+					ifvarg ENDLEVEL -1
+						setvar ENDLEVEL END_TIME
+				
+					getactor[THISACTOR].picnum LASTPICNUM
+				break
+			endswitch
+		}
+	}
 ends
 
 state event_animatesprites_4
-  switch sprite[THISACTOR].picnum
-  case VIEWSCREEN
-  case VIEWSCREEN2
-    settspr[THISACTOR].tsprpicnum sprite[THISACTOR].picnum
-  break
-  endswitch
+	switch sprite[THISACTOR].picnum
+		case VIEWSCREEN
+		case VIEWSCREEN2
+			settspr[THISACTOR].tsprpicnum sprite[THISACTOR].picnum
+			break
+	endswitch
 ends
 
 // Projectiles
 
 state event_egs_11
-  ifactor SHOTSPARK1
-    randvar ALT 4
+	ifactor SHOTSPARK1
+		randvar ALT 4
 ends
 
 state event_sound_4
@@ -2930,10 +2952,6 @@ endevent
 onevent EVENT_DRAWWEAPON
   //state event_drawweapon_1
   state event_drawweapon_2
-endevent
-
-onevent EVENT_DISPLAYACCESS
-	state event_displayaccess_1
 endevent
 
 onevent EVENT_EGS
