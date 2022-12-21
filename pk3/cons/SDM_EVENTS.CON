@@ -3565,19 +3565,16 @@ onevent EVENT_PROCESSINPUT
 		{
 			ifp pdead
 			{
-				getplayer[THISACTOR].sound_pitch TEMP
-				ifvare TEMP 0
+				ifvare player[].sound_pitch 0
 				{
 					randvar TEMP -128
 					addvar TEMP -128
 					setplayer[THISACTOR].sound_pitch TEMP
 				}
 				
-				getplayer[THISACTOR].cursectnum TEMP
-				ifvarg TEMP -1
+				ifvarg player[].cursectnum -1
 				{
-					getsector[TEMP].floorshade TEMP2
-					ifvarg TEMP2 24
+					ifvarg sector[player.cursectnum].floorshade 24
 					{
 						setvar HITAG_MEMORY 666
 					}
@@ -3592,11 +3589,9 @@ onevent EVENT_PROCESSINPUT
 					ifvare TEMP 0
 					{
 						dist TEMP APPARITION_SPRITEID THISACTOR
-						getactor[APPARITION_SPRITEID].cstat TEMP2
-						ifvarand TEMP2 32768
+						ifvarand sprite[APPARITION_SPRITEID].cstat 32768
 							setvar TEMP 9999999
 						
-						getplayer[THISACTOR].sound_pitch TEMP2
 						ifvarl TEMP 4096
 						{
 							shiftvarr TEMP 1
@@ -3605,7 +3600,7 @@ onevent EVENT_PROCESSINPUT
 							mulvar TEMP2 -1
 							setplayer[THISACTOR].sound_pitch TEMP2
 						}
-						else ifvarn TEMP2 0
+						else ifvarn player[].sound_pitch 0
 						{
 							setplayer[THISACTOR].sound_pitch 0
 						}

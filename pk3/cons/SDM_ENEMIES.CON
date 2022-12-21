@@ -899,7 +899,7 @@ actor FIREFLYGROWEFFECT 0 GROW_FRAMES
 		killit
 	}	
 	else ifcount 1 { }
-	ifcount 0
+	else ifcount 0
 	{
 		sizeat 32 32
 		cstator 2

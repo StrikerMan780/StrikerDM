@@ -705,9 +705,9 @@ state rescueme
 		}
 		
 		ifcount 69 { }
-		ifcount 68
+		else ifcount 68
 		{
-			ifrnd 16
+			ifrnd 32
 				state duke_rescued_babe_response
 		}
 		
