@@ -275,7 +275,7 @@ state jib_sounds
 			}
 			else
 			{
-				randvar RANDOM_SOUND 70
+				randvar RANDOM_SOUND 71
 				switch RANDOM_SOUND
 					case 0: actorsound LASTHITBY JIBBED_ACTOR1 break
 					case 1: actorsound LASTHITBY JIBBED_ACTOR2 break
@@ -348,6 +348,7 @@ state jib_sounds
 					case 68: actorsound LASTHITBY NEWDUKEGIB52 break
 					case 69: actorsound LASTHITBY NEWDUKEGIB53 break
 					case 70: actorsound LASTHITBY NEWDUKEGIB54 break
+					case 71: actorsound LASTHITBY NEWDUKEGIB55 break
 				endswitch
 			}
 		}
@@ -483,8 +484,7 @@ state handle_jumppad
 			getflorzofslope player[].cursectnum player[].posx player[].posy TEMP
 			subvar TEMP 16384 // Subtract height
 			
-			getplayer[THISACTOR].posz TEMP2
-			ifvarvarg TEMP2 TEMP // Touching floor?
+			ifvarvarg player[].posz TEMP // Touching floor?
 			{
 				sound JUMPPADSOUND
 				setplayer[THISACTOR].on_ground 0 // No longer on the ground.
@@ -504,7 +504,7 @@ state handle_jumppad
 					subvarvar TEMP2 SECTOR_JUMPZ[TEMP]
 				}
 					
-				setplayer[THISACTOR].poszv TEMP2 // Launch				
+				setplayer[THISACTOR].poszv TEMP2 // Launch
 				setvar JUMPPAD_HIT 1 // They're in the air.
 					
 				// Set X/Y Velocities
@@ -520,9 +520,8 @@ state handle_jumppad
 		else
 		{
 			getplayer[THISACTOR].truefz TEMP
-			getplayer[THISACTOR].posz TEMP2
 			subvar TEMP 16384 // Subtract height
-			ifvarvarg TEMP2 TEMP // Touching floor?
+			ifvarvarg player[].posz TEMP // Touching floor?
 			{
 				setplayer[THISACTOR].falling_counter 0 // Prevent fall damage
 			}
@@ -569,19 +568,13 @@ state handle_jumppad_movement
 ends
 
 state handle_lowgravity
-	getplayer[THISACTOR].poszv TEMP
-	ifvarg TEMP 512
-	{
+	ifvarg player[].poszv 512
 		setplayer[THISACTOR].poszv 512
-	}
 	
 	setplayer[THISACTOR].falling_counter 0
 	
-	getplayer[THISACTOR].jumping_counter TEMP
-	ifvare TEMP 1261 
-	{
+	ifvare player[].jumping_counter 1261 
 		setplayer[THISACTOR].jumping_counter 902
-	}
 ends
 
 state handle_sectortypes
@@ -591,25 +584,16 @@ state handle_sectortypes
 		ifvarg TEMP -1
 		{
 			ifvarand SECTOR_TYPES[TEMP] SECTORTYPE_LOWGRAVITY
-			{
 				state handle_lowgravity
-			}
-		}
-		
-		getplayer[THISACTOR].cursectnum TEMP
-		ifvarg TEMP -1
-		{
+			
 			ifvarand SECTOR_TYPES[TEMP] SECTORTYPE_JUMPPAD
-			{
 				state handle_jumppad
-			}
 		}
 		
 		getplayer[THISACTOR].cursectnum TEMP4
 		ifvarg TEMP4 -1
 		{
-			getsector[TEMP4].lotag TEMP
-			ifvare TEMP 256
+			ifvare sector[TEMP4].lotag 256
 			{
 				getplayer[THISACTOR].posx TEMP
 				getplayer[THISACTOR].posy TEMP2
@@ -748,14 +732,10 @@ ends
 
 state spawn_random_fire
 	// Fire Sprites
-	
-	getactor[THISACTOR].picnum STATE_TEMP1
-	gettiledata[STATE_TEMP1].xsize STATE_TEMP2
-	gettiledata[STATE_TEMP1].ysize STATE_TEMP3
-	getactor[THISACTOR].xrepeat TEMP
-	getactor[THISACTOR].yrepeat TEMP2
-	mulvarvar STATE_TEMP2 TEMP
-	mulvarvar STATE_TEMP3 TEMP2
+	gettiledata[].xsize STATE_TEMP2
+	gettiledata[].ysize STATE_TEMP3
+	mulvarvar STATE_TEMP2 sprite[].xrepeat
+	mulvarvar STATE_TEMP3 sprite[].yrepeat
 	
 	setvarvar TEMP2 STATE_TEMP2
 	addvarvar TEMP2 STATE_TEMP3
@@ -803,9 +783,7 @@ state spawn_random_fire
 ends
 
 state stop_player_burn
-	getplayer[THISACTOR].i TEMP
-	getactorvar[TEMP].BURNING_TICS TEMP
-	ifvarg TEMP 0
+	ifvarg actorvar[player.i].BURNING_TICS 0
 	{
 		setplayervar[THISACTOR].STOP_BURNING 1
 		state spawn_random_whispysmoke
@@ -828,10 +806,8 @@ defstate generic_burn_death
 	state jib_sounds
 	
 	espawn BURNTENEMY
-	getactor[THISACTOR].xrepeat TEMP
-	setactor[RETURN].xrepeat TEMP
-	getactor[THISACTOR].yrepeat TEMP
-	setactor[RETURN].yrepeat TEMP
+	setactor[RETURN].xrepeat sprite[].xrepeat
+	setactor[RETURN].yrepeat sprite[].yrepeat
 	
 	getactor[THISACTOR].picnum TEMP
 	ifactor NEWBEAST // Special case for NEWBEAST.
@@ -871,8 +847,7 @@ state gore_movement
 	getactor[THISACTOR].zvel TEMP
 	ifvarl TEMP 6144
 	{
-		getsector[THISACTOR].lotag TEMP2
-		ifvare TEMP2 2
+		ifvare sector[].lotag 2
 		{
 			ifvarl TEMP 1024
 			{
@@ -1246,7 +1221,7 @@ ends
 // STATE_PARAM1 = Target Sprite
 // STATE_PARAM2 = Z movement only distance (0 = None)
 // STATE_PARAM3 = Maximum angle change per tic (0 = No Limit)
-state home_on_target
+defstate home_on_target
 	getactor[THISACTOR].xvel STATE_TEMP3 // Get our velocity, don't overwrite this until the end.
 	ifvarl STATE_TEMP3 1 // No velocity, can't do shit jack, bail.
 		break
@@ -1256,12 +1231,10 @@ state home_on_target
 	{
 		// Get X/Y positions for angle
 		getactor[STATE_PARAM1].x STATE_TEMP1
-		getactor[THISACTOR].x STATE_TEMP3
-		subvarvar STATE_TEMP1 STATE_TEMP3
+		subvarvar STATE_TEMP1 sprite[].x
 		
 		getactor[STATE_PARAM1].y STATE_TEMP2
-		getactor[THISACTOR].y STATE_TEMP3
-		subvarvar STATE_TEMP2 STATE_TEMP3
+		subvarvar STATE_TEMP2 sprite[].y
 		
 		getangle STATE_TEMP3 STATE_TEMP1 STATE_TEMP2
 		ifvare STATE_PARAM3 0
@@ -1330,7 +1303,7 @@ state home_on_target
 		setvarvar DEST_Z -STATE_TEMP3
 		
 	// Finally done with the STATE_TEMP vars, can use them for whatever from here on.
-			
+	
 	getactor[THISACTOR].x STATE_TEMP1
 	getactor[THISACTOR].y STATE_TEMP2
 	getactor[THISACTOR].z STATE_TEMP3
@@ -1529,35 +1502,27 @@ ends
 
 // STATE_PARAM1 = Shield Type
 defstate get_shield_particle_pal
-	ifvare STATE_PARAM1 SHIELDTYPE_FIRE
-	{
-		setvar STATE_RETURN 2
-		break
-	}
+	switch STATE_PARAM1
+		case SHIELDTYPE_FIRE:
+			setvar STATE_RETURN 2
+			break
+			
+		case SHIELDTYPE_WATER:
+			setvar STATE_RETURN 1
+			break
 	
-	ifvare STATE_PARAM1 SHIELDTYPE_WATER
-	{
-		setvar STATE_RETURN 1
-		break
-	}
+		case SHIELDTYPE_EARTH:
+			setvar STATE_RETURN 7
+			break
 	
-	ifvare STATE_PARAM1 SHIELDTYPE_EARTH
-	{
-		setvar STATE_RETURN 7
-		break
-	}
+		case SHIELDTYPE_WOOD:
+			setvar STATE_RETURN 0
+			break
 	
-	ifvare STATE_PARAM1 SHIELDTYPE_WOOD
-	{
-		setvar STATE_RETURN 0
-		break
-	}
-	
-	ifvare STATE_PARAM1 SHIELDTYPE_METAL
-	{
-		setvar STATE_RETURN 27
-		break
-	}
+		case SHIELDTYPE_METAL:
+			setvar STATE_RETURN 27
+			break
+	endswitch
 ends
 
 // STATE_PARAM1 = amount
@@ -1670,10 +1635,8 @@ defstate zap_a_cunt
 			
 		getactor[CURSPRITE].x TEMP
 		getactor[CURSPRITE].y TEMP2
-		getplayer[THISACTOR].posx SPAWN_ORIGX
-		getplayer[THISACTOR].posy SPAWN_ORIGY
-		subvarvar TEMP SPAWN_ORIGX
-		subvarvar TEMP2 SPAWN_ORIGY
+		subvarvar TEMP player[].posx
+		subvarvar TEMP2 player[].posy
 		getangle SPAWN_ORIGANG TEMP TEMP2
 		getincangle TEMP2 SPECIAL_ATTACK_ANG SPAWN_ORIGANG
 		shiftvarr TEMP2 1
@@ -1791,4 +1754,14 @@ defstate handle_special_attacks
 		for CURSPRITE spritesofstatus STAT_STANDABLE
 			state zap_a_cunt
 	}
+ends
+
+defstate enable_xyrepeat_interp
+	getactor[THISACTOR].mdflags STATE_TEMP1
+	orvar STATE_TEMP1 16
+	setactor[THISACTOR].mdflags STATE_TEMP1
+	
+	orvar ANIMATE_FLAGS ANIMATE_FLAG_INTERPXYREPEAT
+	getactor[THISACTOR].xrepeat ANIMATE_OLDXREPEAT
+	getactor[THISACTOR].yrepeat ANIMATE_OLDYREPEAT
 ends

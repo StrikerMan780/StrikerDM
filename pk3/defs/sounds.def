@@ -264,6 +264,7 @@ sound { id NEWDUKEGIB51 file "sounds/duke/gib/Duke_UltraRareGib_01.ogg" priority
 sound { id NEWDUKEGIB52 file "sounds/duke/gib/Duke64_DidntFeelSoLucky.wav" priority 255 type SFX_DUKETALK }
 sound { id NEWDUKEGIB53 file "sounds/duke/gib/Duke64_InAPerfectWorld.wav" priority 255 type SFX_DUKETALK }
 sound { id NEWDUKEGIB54 file "sounds/duke/gib/Duke_ShutYouUp.wav" priority 255 type SFX_DUKETALK }
+sound { id NEWDUKEGIB55 file "sounds/duke/pissin01.ogg" priority 255 type SFX_DUKETALK }
 
 sound { id DUKE_FLAME01 file "sounds/duke/flame/duke_flame01.wav" priority 255 type SFX_DUKETALK }
 sound { id DUKE_FLAME02 file "sounds/duke/flame/duke_flame02.wav" priority 255 type SFX_DUKETALK }

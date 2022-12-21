@@ -1138,8 +1138,7 @@ actor BURNEDCORPSE 0
 	{
 		ifspawnedby BURNTENEMY
 		{
-			setactor[THISACTOR].mdflags 16
-			setvar ANIMATE_FLAGS ANIMATE_FLAG_INTERPXYREPEAT
+			state enable_xyrepeat_interp
 			ifrnd 128
 				cstator 4
 		}
@@ -1150,9 +1149,6 @@ actor BURNEDCORPSE 0
         //cstator 128
         action BURNEDCORPSETHINK
     }
-	
-	getactor[THISACTOR].xrepeat ANIMATE_OLDXREPEAT
-	getactor[THISACTOR].yrepeat ANIMATE_OLDYREPEAT
 	
     ifcount 350 { }
     else
@@ -1189,8 +1185,7 @@ actor BURNTENEMY 0
 		ifrnd 128
 			cstator 4
 		
-		setactor[THISACTOR].mdflags 16
-		setvar ANIMATE_FLAGS ANIMATE_FLAG_INTERPXYREPEAT
+		state enable_xyrepeat_interp
 		
 		espawn FIREEXPLOSION
 		gettiledata[PICNUM_MEMORY].xsize TEMP
@@ -1205,9 +1200,6 @@ actor BURNTENEMY 0
 		
 		action ANULLACTION
 	}
-	
-	getactor[THISACTOR].xrepeat ANIMATE_OLDXREPEAT
-	getactor[THISACTOR].yrepeat ANIMATE_OLDYREPEAT
 	
 	ifaction ANULLACTION
 	{
@@ -1729,6 +1721,7 @@ actor ARCTRAPZAP 0
 	{
 		cstator 2
 		setactor[THISACTOR].blend 255
+		state enable_xyrepeat_interp
 		action ARC_ANIM1
 	}
 	
@@ -2200,17 +2193,14 @@ spritenoshade BABE_BEAM
 actor BABE_BEAM 0
 	ifaction 0
 	{
-		setvar ANIMATE_FLAGS ANIMATE_FLAG_INTERPXYREPEAT
+		state enable_xyrepeat_interp
 		
 		move BEAMOUT getv noclip
 		
 		action ANULLACTION
 	}
 	
-	getactor[THISACTOR].xrepeat ANIMATE_OLDXREPEAT
-	getactor[THISACTOR].yrepeat ANIMATE_OLDYREPEAT
-	
-	setvarvar TEMP ANIMATE_OLDXREPEAT
+	getactor[THISACTOR].xrepeat TEMP
 	subvar TEMP 4
 	setactor[THISACTOR].xrepeat TEMP
 	

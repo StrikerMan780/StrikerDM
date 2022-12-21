@@ -110,7 +110,7 @@ state G_DrawTileScaled
 	ifvarand hud_orientation DRAWEAP_NOLERP
 	{
 		ifvarand hud_orientation RS_LERP
-			subvar hud_orientation RS_LERP
+			xorvar hud_orientation RS_LERP
 			
 		subvar hud_orientation DRAWEAP_NOLERP
 	}
@@ -122,16 +122,16 @@ state G_DrawTileScaled
 	setvarvar hud_scale hud_scale_memory // Restore old scale.
 		
 	ifvarand hud_orientation RS_AUTO
-		subvar hud_orientation RS_AUTO
+		xorvar hud_orientation RS_AUTO
 
 	ifvarand hud_orientation RS_LERP
-		subvar hud_orientation RS_LERP
+		xorvar hud_orientation RS_LERP
 		
 	ifvarand hud_orientation RS_FORCELERP
-		subvar hud_orientation RS_FORCELERP
+		xorvar hud_orientation RS_FORCELERP
 	
 	ifvarand hud_orientation RS_YFLIP
-		subvar hud_angle 1024
+		xorvar hud_angle 1024
 ends
 
 state G_DrawWeaponTile
@@ -705,13 +705,13 @@ state check_alt_weapons
 	}
 ends
 
-state do_recoil
+defstate do_recoil
 	// Break out if we're in multiplayer, and are not in the first phase of prediction.
 	ifvarg numplayers 1
 	ifvarn predicting 1
 		break
 		
-	state check_using_secondary	
+	state check_using_secondary
 	switch STATE_PARAM1
 		case DEVISTATOR_WEAPON:
 			ifvare STATE_RETURN WEAP_SECONDARY
@@ -775,7 +775,7 @@ state do_recoil
 	endswitch
 ends
 
-state handle_recoil
+defstate handle_recoil
 	ifvarg RECOIL_AMOUNT 0
 	ifvarg RECOIL_SPEED 0
 	{

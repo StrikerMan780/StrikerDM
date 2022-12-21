@@ -116,9 +116,8 @@ onevent EVENT_DISPLAYSBAR // !UNSYNCHRONIZED!
 		break
 	}
 
-	getuserdef[].screen_size CL_TEMP1
-	ifvarl CL_TEMP1 8
-	ifvarg CL_TEMP1 0
+	ifvarl userdef[].screen_size 8
+	ifvarg userdef[].screen_size 0
 	{
 		//setuserdef[].statusbarscale 100
 		

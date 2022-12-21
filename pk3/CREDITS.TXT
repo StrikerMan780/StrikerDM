@@ -8,6 +8,7 @@ Striker - Most Weapons, various foley.
 KunaiKitsune - Some of the bullet impact and gore splatter sounds.
 Digital Extremes - Railgun sound (Lanka from Warframe)
 Perkristian - HD Versions of several Duke3D sounds. (From his pk_duke3d_sfx pack.)
+Dzierzan - Some Duke HD sound pack sounds (like dscrem04.wav)
 Jon St. John - DNF/Manhattan/World Tour Duke voices.
 
 Sprites

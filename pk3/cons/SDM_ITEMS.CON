@@ -91,18 +91,15 @@ actor ARMORBONER WEAK
 	ifcount 6
 	ifcanseetarget
 	{
-		getplayer[THISACTOR].shield_amount TEMP
-		ifvarl TEMP 200
+		ifvarl player[].shield_amount 200
 		{
 			setplayer[THISACTOR].max_shield_amount 200
 			addinventory GET_SHIELD 2
 			setplayer[THISACTOR].max_shield_amount SHIELD_AMOUNT
 			quote 128
 			
-			ifvarg TEMP 200
-			{
-				setplayer[THISACTOR].shield_amount 200
-			}
+			ifvarg player[].shield_amount 200
+				setplayer[THISACTOR].shield_amount 200 // Clamp
 			
 			ifspawnedby ARMORBONER
 				state getcode_doomitem
@@ -1467,7 +1464,8 @@ defstate shield_shared
 					killit // Actor doesn't match, kill.
 			}
 			
-			ifvarl playervar[sprite[OWNER].yvel].SHIELD_HEALTH 1
+			getactor[OWNER].yvel STATE_PARAM1 // Player
+			ifvarl playervar[STATE_PARAM1].SHIELD_HEALTH 1
 			{
 				ifvarn STATNUM_MEMORY 69
 				{
@@ -1477,8 +1475,6 @@ defstate shield_shared
 					setactor[RETURN].xrepeat sprite[].xrepeat
 					setactor[RETURN].yrepeat sprite[].yrepeat
 					setvar RETURN 0
-					
-					setvarvar STATE_PARAM1 TEMP // Player
 					
 					// Type
 					ifactor FIRESHIELD
@@ -1495,7 +1491,7 @@ defstate shield_shared
 					setvar STATE_PARAM3 32 // Intensity
 					state do_shield_flash
 					
-					setplayervar[TEMP].SHIELD_TYPE SHIELDTYPE_NONE
+					setplayervar[STATE_PARAM1].SHIELD_TYPE SHIELDTYPE_NONE
 				}
 				killit
 			}

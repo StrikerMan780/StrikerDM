@@ -193,12 +193,6 @@ onevent EVENT_DOFIRE
 				break
 			}
 			
-			subvar DEVASTATOR_AMMO 1
-			ifvarl DEVASTATOR_AMMO 0
-			{
-				setvar DEVASTATOR_AMMO 0
-			}
-			
 			getplayer[THISACTOR].hbomb_hold_delay TEMP
 			ifvare TEMP 1
 			{
@@ -231,13 +225,18 @@ onevent EVENT_DOFIRE
 endevent
 
 // This will need to be ported to mainline
-onevent EVENT_FIREEVERYOTHER
+onevent EVENT_PREWEAPONSHOOT
 	state player_updateweapons
 	
 	getplayer[THISACTOR].curr_weapon STATE_PARAM1
 	
 	ifvare STATE_PARAM1 DEVISTATOR_WEAPON
+	{
 		subvar DEVASTATOR_AMMO 1
+		
+		ifvarl DEVASTATOR_AMMO 0
+			setvar DEVASTATOR_AMMO 0
+	}
 endevent
 
 onevent EVENT_FIRE

@@ -751,7 +751,7 @@ definesound STEAM_HISSING       sounds/steamhis.wav       0   0   0   0 10240
 definesound BAR_MUSIC           barmusic.voc       0   0 254   2   0
 definesound STORE_MUSIC         muzak028.voc       0   0 254   0 6144
 definesound STORE_MUSIC_BROKE   muzakdie.voc       0   0   0   0 6144
-definesound DUKE_SCREAM         DSCREM04.voc       0   0   0   0   0
+definesound DUKE_SCREAM         sounds/duke/dscrem04.wav       0   0   0   0   0
 definesound KILLME              killme.voc      -128   0   0   0   0
 
 // Miscellaneous Sounds

@@ -1135,6 +1135,12 @@ onevent EVENT_PREGAME
 	{
 		getactor[THISACTOR].htg_t 1 EXTRA_MEMORY
 	}
+	
+	ifvarand ANIMATE_FLAGS ANIMATE_FLAG_INTERPXYREPEAT
+	{
+		getactor[THISACTOR].xrepeat ANIMATE_OLDXREPEAT
+		getactor[THISACTOR].yrepeat ANIMATE_OLDYREPEAT
+	}
 endevent
 
 onevent EVENT_GAME
@@ -2775,14 +2781,10 @@ state do_active_maphacks
 		switch LEVEL
 			case 5: // Tiberius Station
 				setvar CL_TEMP1 576
-				getactor[CL_TEMP1].picnum CL_TEMP2
-				getactor[CL_TEMP1].sectnum CL_TEMP3
-				getactor[CL_TEMP1].ang CL_TEMP4
-				getactor[CL_TEMP1].hitag CL_TEMP5
-				ifvare CL_TEMP2 MUSICANDSFX
-				ifvare CL_TEMP3 258
-				ifvare CL_TEMP4 1536
-				ifvare CL_TEMP5 1500
+				ifvare sprite[CL_TEMP1].picnum MUSICANDSFX
+				ifvare sprite[CL_TEMP1].sectnum 258
+				ifvare sprite[CL_TEMP1].ang 1536
+				ifvare sprite[CL_TEMP1].hitag 1500
 				{
 					userquote 200
 					
@@ -2833,12 +2835,9 @@ state do_active_maphacks
 				}
 			case 9: // Spin Cycle
 				setvar CL_TEMP1 245
-				getactor[CL_TEMP1].picnum CL_TEMP2
-				getactor[CL_TEMP1].sectnum CL_TEMP3
-				getactor[CL_TEMP1].ang CL_TEMP4
-				ifvare CL_TEMP2 RESPAWN
-				ifvare CL_TEMP3 76
-				ifvare CL_TEMP4 1280
+				ifvare sprite[CL_TEMP1].picnum RESPAWN
+				ifvare sprite[CL_TEMP1].sectnum 76
+				ifvare sprite[CL_TEMP1].ang 1280
 				{
 					userquote 200
 					
@@ -2865,14 +2864,10 @@ state do_active_maphacks
 		switch LEVEL
 			case 10: // Freeway
 				setvar CL_TEMP1 493
-				getactor[CL_TEMP1].picnum CL_TEMP2
-				getactor[CL_TEMP1].sectnum CL_TEMP3
-				getactor[CL_TEMP1].ang CL_TEMP4
-				getactor[CL_TEMP1].hitag CL_TEMP5
-				ifvare CL_TEMP2 CAMERA1
-				ifvare CL_TEMP3 82
-				ifvare CL_TEMP4 1024
-				ifvare CL_TEMP5 384
+				ifvare sprite[CL_TEMP1].picnum CAMERA1
+				ifvare sprite[CL_TEMP1].sectnum 82
+				ifvare sprite[CL_TEMP1].ang 1024
+				ifvare sprite[CL_TEMP1].hitag 384
 				{
 					userquote 200
 					
@@ -2929,12 +2924,9 @@ state do_active_maphacks
 		switch LEVEL
 			case 1: // Duke Burger
 				setvar CL_TEMP1 673
-				getactor[CL_TEMP1].picnum CL_TEMP2
-				getactor[CL_TEMP1].sectnum CL_TEMP3
-				getactor[CL_TEMP1].ang CL_TEMP4
-				ifvare CL_TEMP2 FOOTPRINTS2
-				ifvare CL_TEMP3 42
-				ifvare CL_TEMP4 1536
+				ifvare sprite[CL_TEMP1].picnum FOOTPRINTS2
+				ifvare sprite[CL_TEMP1].sectnum 42
+				ifvare sprite[CL_TEMP1].ang 1536
 				{
 					userquote 200
 					
@@ -2971,14 +2963,10 @@ state do_active_maphacks
 				break
 			case 10: // Area 51
 				setvar CL_TEMP1 1254
-				getactor[CL_TEMP1].picnum CL_TEMP2
-				getactor[CL_TEMP1].sectnum CL_TEMP3
-				getactor[CL_TEMP1].ang CL_TEMP4
-				getactor[CL_TEMP1].hitag CL_TEMP5
-				ifvare CL_TEMP2 SEENINE
-				ifvare CL_TEMP3 659
-				ifvare CL_TEMP4 1536
-				ifvare CL_TEMP5 130
+				ifvare sprite[CL_TEMP1].picnum SEENINE
+				ifvare sprite[CL_TEMP1].sectnum 659
+				ifvare sprite[CL_TEMP1].ang 1536
+				ifvare sprite[CL_TEMP1].hitag 130
 				{
 					userquote 200
 					
