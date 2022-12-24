@@ -61,12 +61,15 @@ state levelsettings
     {
       setvar SCREENMODE SCREEN_VICTORY3
       ifmultiplayer
-      ifvarn COOP 1
-      {
-        setvar NEXTVOLUME 3
-        setvar NEXTLEVEL 0
-        break
-      }
+	  {
+		  ifvarand gametype_flags 1 { }
+		  else
+		  {
+			setvar NEXTVOLUME 3
+			setvar NEXTLEVEL 0
+			break
+		  }
+	  }
       setvar NEXTLEVEL -1
     }
   }
@@ -116,6 +119,7 @@ ends
 state displayscreen
 	ifvarand player[].gm MODE_DEMO
 		setvar SCREENMODE 0
+		
 	ifvare SCREENMODE 0
 	{
 		setvar DISPLAYSCREEN -1
@@ -131,7 +135,6 @@ useractor notenemy MAPCODE
 	ifvare DISPLAYSCREEN 0
 		addvar GAMETIME 1
 		
-	setvarvar SMOOTHCLOCK totalclock
 	setvar STARTLEVELTEMP 0
 
 	ifvare DISPLAYSCREEN -1
@@ -345,38 +348,41 @@ useractor notenemy MAPCODE
 			{
 				setplayer[THISACTOR].pals_time 0
 				ifmultiplayer
-				ifvarn COOP 1
 				{
-					setvar ATEMP2 0
-					ifvarg MULTIMODE 1
+					ifvarand gametype_flags 1 { }
+					else
 					{
-						setvar AWHILE 1
-						ifvarvarg MULTIMODE AWHILE
-						whilevarvarn AWHILE MULTIMODE
+						setvar ATEMP2 0
+						ifvarg MULTIMODE 1
 						{
-							setvarvar ATEMP3 ATEMP2
-							ifvarl ATEMP3 0
-								mulvar ATEMP3 -1
-								
-							getplayer[ATEMP3].frag ATEMP4
-							subvarvar ATEMP4 player[ATEMP3].fraggedself
-							getplayer[AWHILE].frag ATEMP5
-							subvarvar ATEMP5 player[AWHILE].fraggedself
-							ifvarvarg ATEMP5 ATEMP4
-								setvarvar ATEMP2 AWHILE
-							else ifvarvare ATEMP5 ATEMP4
+							setvar AWHILE 1
+							ifvarvarg MULTIMODE AWHILE
+							whilevarvarn AWHILE MULTIMODE
 							{
-								setvarvar ATEMP2 AWHILE
-								mulvar ATEMP2 -1
+								setvarvar ATEMP3 ATEMP2
+								ifvarl ATEMP3 0
+									mulvar ATEMP3 -1
+									
+								getplayer[ATEMP3].frag ATEMP4
+								subvarvar ATEMP4 player[ATEMP3].fraggedself
+								getplayer[AWHILE].frag ATEMP5
+								subvarvar ATEMP5 player[AWHILE].fraggedself
+								ifvarvarg ATEMP5 ATEMP4
+									setvarvar ATEMP2 AWHILE
+								else ifvarvare ATEMP5 ATEMP4
+								{
+									setvarvar ATEMP2 AWHILE
+									mulvar ATEMP2 -1
+								}
+								addvar AWHILE 1
 							}
-							addvar AWHILE 1
 						}
-					}
-					ifvarg ATEMP2 -1
-					{
-						getplayervar[ATEMP2].WINS ATEMP3
-						addvar ATEMP3 1
-						setplayervar[ATEMP2].WINS ATEMP3
+						ifvarg ATEMP2 -1
+						{
+							getplayervar[ATEMP2].WINS ATEMP3
+							addvar ATEMP3 1
+							setplayervar[ATEMP2].WINS ATEMP3
+						}
 					}
 				}
 			}
@@ -402,8 +408,9 @@ useractor notenemy MAPCODE
 			orvar ATEMP2 MODE_GAME
 			
 		setplayer[].gm ATEMP2
-		getplayer[].buttonpalette ASET
+		getplayer[EXITPLAYER].buttonpalette ASET
 		setvar ATEMP 1
+		setvar EXITPLAYER 0
 	}
 	
 	ifvare ATEMP 1
@@ -431,8 +438,11 @@ useractor notenemy MAPCODE
 			orvar SCREENMODE SCREEN_BONUS
 			
 		ifmultiplayer
-		ifvarn COOP 1
-			setvar SCREENMODE SCREEN_DMBONUS
+		{
+			ifvarand gametype_flags 1 { }
+			else
+				setvar SCREENMODE SCREEN_DMBONUS
+		}
 			
 		setvar ENDLEVEL 0
 	}
@@ -586,9 +596,13 @@ state event_egs_0b
       state DisplaySky
     }
 
-    ifmultiplayer
-    ifvarn COOP 1
-      break
+	ifmultiplayer
+	{
+		ifvarand gametype_flags 1 { }
+		else
+			break
+	}
+	  
     ifvare LEVEL 0
     ifvare LASTLEVEL -1
     {
@@ -656,13 +670,17 @@ state event_game_0b
       setvar STATNUMTEMP -1
     }
   }
-  ifactor APLAYER
-  ifvarn sprite[THISACTOR].owner -1
-  ifvarvarl sprite[THISACTOR].yvel MULTIMODE
-  ifvare ENDLEVEL -2
-  ifmultiplayer
-  ifvarn COOP 1
-    resetplayer
+  
+	ifactor APLAYER
+	ifvarn sprite[THISACTOR].owner -1
+	ifvarvarl sprite[THISACTOR].yvel MULTIMODE
+	ifvare ENDLEVEL -2
+	ifmultiplayer
+	{
+		ifvarand gametype_flags 1 { }
+		else
+			resetplayer
+	}
 ends
 
 state event_pregame_0

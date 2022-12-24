@@ -231,108 +231,118 @@ state wpselect
 ends
 
 state tiltamount
-  setvar TILT RECOIL_AMOUNT
-  switch player[THISACTOR].curr_weapon
-  case PISTOL_WEAPON
-  case CHAINGUN_WEAPON
-    shiftvarr TILT 2
-  break
-  case SHOTGUN_WEAPON
-  case SHRINKER_WEAPON
-  case GROW_WEAPON
-    shiftvarr TILT 1
-  break
-  endswitch
+	setvar TILT RECOIL_AMOUNT
+	switch player[THISACTOR].curr_weapon
+		case PISTOL_WEAPON
+		case CHAINGUN_WEAPON
+			shiftvarr TILT 2
+			break
+		case SHOTGUN_WEAPON
+		case SHRINKER_WEAPON
+		case GROW_WEAPON
+			shiftvarr TILT 1
+			break
+	endswitch
 ends
 
-state tilt
-  ifvare player[THISACTOR].holster_weapon 1
-    break
-  ifvare player[THISACTOR].curr_weapon PISTOL_WEAPON
-  ifvarvare player[THISACTOR].kickback_pic WEAPON1_FIREDELAY
-    state tiltamount
-  ifvare player[THISACTOR].curr_weapon SHOTGUN_WEAPON
-  ifvarvare player[THISACTOR].kickback_pic WEAPON2_FIREDELAY
-    state tiltamount
-  ifvare player[THISACTOR].curr_weapon CHAINGUN_WEAPON
-  ifvarvare player[THISACTOR].kickback_pic WEAPON3_FIREDELAY
-  {
-    ifvare WEAPON3_SHOTSPERBURST 1
-    ifrnd 64
-      state tiltamount
-    ifvarg WEAPON3_SHOTSPERBURST 1
-    ifrnd 128
-      state tiltamount
-  }
-  ifvare player[THISACTOR].curr_weapon RPG_WEAPON
-  ifvarvare player[THISACTOR].kickback_pic WEAPON4_FIREDELAY
-  {
-    setvar TILT RECOIL_AMOUNT
-    state tiltamount
-  }
-  ifvare player[THISACTOR].curr_weapon SHRINKER_WEAPON
-  ifvarg player[THISACTOR].kickback_pic 0
-  {
-    state tiltamount
-    shiftvarr TILT 1
-    ifrnd 128
-      mulvar TILT -1
-    randvarvar TILT TILT
-  }
-  ifvare player[THISACTOR].curr_weapon DEVISTATOR_WEAPON
-  ifvarvare player[THISACTOR].kickback_pic WEAPON7_FIREDELAY
-  {
-    setvar TILT RECOIL_AMOUNT
-    state tiltamount
-  }
-  ifvare player[THISACTOR].curr_weapon FREEZE_WEAPON
-  ifvarg WPCHARGE 1
-  {
-    state tiltamount
-    shiftvarr TILT 1
-    ifrnd 128
-      mulvar TILT -1
-    mulvarvar TILT WPCHARGE
-    divvar TILT PLASMA_CHARGE_TIME
-    randvarvar TILT TILT
-  }
-  ifvare player[THISACTOR].curr_weapon GROW_WEAPON
-  ifvarvare player[THISACTOR].kickback_pic WEAPON11_FIREDELAY
-  {
-    state tiltamount
-    shiftvarr TILT 1
-    ifrnd 128
-      mulvar TILT -1
-    randvarvar TILT TILT
-  }
+defstate tilt
+	ifvare player[THISACTOR].holster_weapon 1
+		break
+		
+	ifvare player[THISACTOR].curr_weapon PISTOL_WEAPON
+	ifvarvare player[THISACTOR].kickback_pic WEAPON1_FIREDELAY
+		state tiltamount
+	ifvare player[THISACTOR].curr_weapon SHOTGUN_WEAPON
+	ifvarvare player[THISACTOR].kickback_pic WEAPON2_FIREDELAY
+		state tiltamount
+		
+	ifvare player[THISACTOR].curr_weapon CHAINGUN_WEAPON
+	ifvarvare player[THISACTOR].kickback_pic WEAPON3_FIREDELAY
+	{
+		ifvare WEAPON3_SHOTSPERBURST 1
+		ifrnd 64
+			state tiltamount
+			
+		ifvarg WEAPON3_SHOTSPERBURST 1
+		ifrnd 128
+			state tiltamount
+	}
+	
+	ifvare player[THISACTOR].curr_weapon RPG_WEAPON
+	ifvarvare player[THISACTOR].kickback_pic WEAPON4_FIREDELAY
+	{
+		setvar TILT RECOIL_AMOUNT
+		state tiltamount
+	}
+	
+	ifvare player[THISACTOR].curr_weapon SHRINKER_WEAPON
+	ifvarg player[THISACTOR].kickback_pic 0
+	{
+		state tiltamount
+		shiftvarr TILT 1
+		ifrnd 128
+			mulvar TILT -1
+		randvarvar TILT TILT
+	}
+	
+	ifvare player[THISACTOR].curr_weapon DEVISTATOR_WEAPON
+	ifvarvare player[THISACTOR].kickback_pic WEAPON7_FIREDELAY
+	{
+		setvar TILT RECOIL_AMOUNT
+		state tiltamount
+	}
+	ifvare player[THISACTOR].curr_weapon FREEZE_WEAPON
+	ifvarg WPCHARGE 1
+	{
+		state tiltamount
+		shiftvarr TILT 1
+		ifrnd 128
+			mulvar TILT -1
+		mulvarvar TILT WPCHARGE
+		divvar TILT PLASMA_CHARGE_TIME
+		randvarvar TILT TILT
+	}
+	
+	ifvare player[THISACTOR].curr_weapon GROW_WEAPON
+	ifvarvare player[THISACTOR].kickback_pic WEAPON11_FIREDELAY
+	{
+		state tiltamount
+		shiftvarr TILT 1
+		ifrnd 128
+			mulvar TILT -1
+		randvarvar TILT TILT
+	}
 ends
 
 defstate pcode
-  ifvarn player[THISACTOR].timebeforeexit 0
-  {
-    setvar ATEMP 0 getuserdef .noexits ATEMP
-    ifvare ATEMP 0
-      getplayer[THISACTOR].timebeforeexit TIMEBEFOREEXITTEMP
-    setplayer[THISACTOR].timebeforeexit 0
-  }
-  ifvarg TIMEBEFOREEXITTEMP 1
-  ifvarg player[THISACTOR].last_extra 0
-  {
-    subvar TIMEBEFOREEXITTEMP 1
-    ifvare TIMEBEFOREEXITTEMP 130
-    ifvarg player[THISACTOR].customexitsound 0
-    {
-      quote 102
-      sound PIG_CAPTURE_DUKE
-    }
-    ifvare TIMEBEFOREEXITTEMP 1
-    {
-        setplayer[myconnectindex].gm MODE_EOL
-    }
-  }
+	ifvarn player[THISACTOR].timebeforeexit 0
+	{
+		setvar ATEMP 0 getuserdef .noexits ATEMP
+		ifvare ATEMP 0
+			getplayer[THISACTOR].timebeforeexit TIMEBEFOREEXITTEMP
+			
+		setplayer[THISACTOR].timebeforeexit 0
+	}
+	
+	ifvarg TIMEBEFOREEXITTEMP 1
+	ifvarg player[THISACTOR].last_extra 0
+	{
+		subvar TIMEBEFOREEXITTEMP 1
+		ifvare TIMEBEFOREEXITTEMP 130
+		ifvarg player[THISACTOR].customexitsound 0
+		{
+			quote 102
+			sound PIG_CAPTURE_DUKE
+		}
+		ifvare TIMEBEFOREEXITTEMP 1
+		{
+			setuserdef[].limit_hit 0
+			setplayer[].gm MODE_EOL
+		}
+	}
 
-  state deathscreen
-  setplayer[THISACTOR].invdisptime 0
+	state deathscreen
+	setplayer[THISACTOR].invdisptime 0
 
   ifvarg INVICON 0
     subvar INVICON 1
@@ -430,20 +440,6 @@ defstate pcode
       addvar STWPCOUNT2 1
   }
 
-  state tilt
-  ifvarg TILT 0
-  {
-    ifvarvarg TILT player[THISACTOR].horizoff
-      setplayer[THISACTOR].horizoff TILT
-    subvar TILT 1
-  }
-  ifvarl TILT 0
-  {
-    ifvarvarl TILT player[THISACTOR].horizoff
-      setplayer[THISACTOR].horizoff TILT
-    addvar TILT 1
-  }
-
   ifvare sprite[THISACTOR].htpicnum SHRINKSPARK
   {
     setvar ATEMP 0 getuserdef .god ATEMP
@@ -456,7 +452,7 @@ defstate pcode
   ifvarvare sprite[THISACTOR].htowner THISACTOR
     setactor[THISACTOR].htextra -1
   ifmultiplayer
-  ifvare COOP 1
+  ifvarand gametype_flags 1
   {
     getactor[THISACTOR].htowner ATEMP
     ifvarn sprite[ATEMP].statnum MAXSTATUS

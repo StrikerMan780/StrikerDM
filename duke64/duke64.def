@@ -1,4 +1,4 @@
-globalflags 5 // GLOBAL_NO_GL_TILESHADES | GLOBAL_NO_GL_FOGSHADE
+globalflags 1 // GLOBAL_NO_GL_TILESHADES
 
 //include art.def
 //include duke3d_hrp.def

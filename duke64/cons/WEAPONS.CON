@@ -115,7 +115,7 @@ defstate weaponstatic
   setvarvar screenz2 z2
 ends
 
-state weaponbob
+defstate weaponbob
   ifvare WPPOS 1
     setvar screenx 22
   else
@@ -394,76 +394,121 @@ defstate hudpistol
 ends
 
 defstate hudshotgun
-  state reset_weapon
-  setvarvar shade gs
-  getsector[THISACTOR].floorpal pal
-  //ifvarg weaponcount 8
-    //setvar POSX 2
-  setvar WPPOS 2
-  setvarvar TEMP currentweapon
-  addvar TEMP 1
-  guniqhudid TEMP
+	state reset_weapon
+	setvar WPPOS 2
+	
+	ifvare weaponcount 0
+		setvar WPRANDZ 0
+	
+	setvarvar TEMP currentweapon
+	addvar TEMP 2
+	guniqhudid TEMP
+	switch weaponcount
+		case 3
+		case 4
+			setvar x -96
+			setvar y 20
+			
+			ifvare weaponcount 4
+			{
+				addvar x 15
+				addvar y 15
+			}
+				
+			ifvare SYNC 1
+			ifvarn sprite[THISACTOR].pal 1
+			{
+				displayrandvar WPRANDZ 32768
+				addvar WPRANDZ 49152
+			}
+			setvarvar z WPRANDZ
+			setvarvar z2 WPRANDZ
+			setvarvar shade gs
+			
+			getsector[THISACTOR].floorpal pal
+			ifvare pal 0
+				setvar pal 51
+			ifvarg rendmode 0
+			{
+				setvar pal 51
+				setvar shade -128
+			}
+			
+			setvar tilenum MUZZLEFLASH
+			state weaponbob
+			state draw_weapon
+			break
+	endswitch
+	
+	setvar z 65536
+	setvar z2 65536
+	setvarvar shade gs
+	getsector[THISACTOR].floorpal pal
 
-  setvar tilenum SHOTGUN
-  switch weaponcount
-  case 0
-  case 1
-  case 2
-  case 3
-  case 4
-  case 5
-  case 6
-  case 7
-  case 8
-    setvar x -122
-    setvar y 2
-    ifvarg weaponcount 3
-    ifvarl weaponcount 8
-    {
-      addvar x 15
-      addvar y 15
-    }
-  break
-  case 9
-  case 10
-  case 11
-  case 12
-    setvar x -110
-    setvar y 20
-    addvar tilenum 3
-  break
-  case 13
-  case 14
-  case 15
-  case 27
-  case 28
-  case 29
-    setvar x -70
-    setvar y 10
-    addvar tilenum 4
-  break
-  case 16
-  case 17
-  case 22
-  case 23
-  case 24
-  case 25
-  case 26
-    setvar x -34
-    setvar y -4
-    addvar tilenum 5
-  break
-  case 18
-  case 19
-  case 20
-  case 21
-    setvar x -28
-    setvar y -4
-    addvar tilenum 6
-  break
-  endswitch
-  state weaponbob
-  state draw_weapon
+	setvarvar TEMP currentweapon
+	addvar TEMP 1
+	guniqhudid TEMP
+
+	setvar tilenum SHOTGUN
+	switch weaponcount
+		case 0
+		case 1
+		case 2
+		case 3
+		case 4
+		case 5
+		case 6
+		case 7
+		case 8
+			setvar x -122
+			setvar y 2
+			ifvarg weaponcount 3
+			ifvarl weaponcount 8
+			{
+				addvar x 15
+				addvar y 15
+			}
+			break
+		case 9
+		case 10
+		case 11
+		case 12
+			setvar x -110
+			setvar y 20
+			addvar tilenum 3
+			break
+		case 13
+		case 14
+		case 15
+		case 27
+		case 28
+		case 29
+			setvar x -70
+			setvar y 10
+			addvar tilenum 4
+			break
+		case 16
+		case 17
+		case 22
+		case 23
+		case 24
+		case 25
+		case 26
+			setvar x -34
+			setvar y -4
+			addvar tilenum 5
+			break
+		case 18
+		case 19
+		case 20
+		case 21
+			setvar x -28
+			setvar y -4
+			addvar tilenum 6
+			break
+	endswitch
+	state weaponbob
+	state draw_weapon
 ends
 
 state hudsmg

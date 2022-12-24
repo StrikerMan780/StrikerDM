@@ -194,10 +194,14 @@ state draw_hud_text
 ends
 
 state fragsbar
-  setvar TEMP 0
-  ifmultiplayer
-  ifvarn COOP 1
-    setvar TEMP 1
+	setvar TEMP 0
+	ifmultiplayer
+	{
+		ifvarand gametype_flags 1 { }
+		else
+			setvar TEMP 1
+	}
+	
   ifvare TEMP 1
   {
     state reset_hud
@@ -612,9 +616,13 @@ state statusbar
       setvar orientation 0
       setvar alpha 0
       setvar TEMP2 0
-      ifmultiplayer
-      ifvarn COOP 1
-        setvar TEMP2 1
+		ifmultiplayer
+		{
+			ifvarand gametype_flags 1 { }
+			else
+				setvar TEMP2 1
+		}
+		
       ifvare TEMP2 0
       {
         ifvare SCREENSIZE HUD_DEFAULT
@@ -1055,7 +1063,7 @@ state event_displaysbar_3b
     break
   state statusweapon
   state statusbar
-  state fragsbar
+  //state fragsbar
 ends
 
 state event_displaysbar_3c

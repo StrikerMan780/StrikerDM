@@ -42,22 +42,24 @@ state event_loadactor_3
 ends
 
 state event_game_4
-  switch sprite[THISACTOR].picnum
-  case PODFEM1
-  case FEM5
-  case FEM6
-    ifinwater
-      nullop
-    else
-    ifvare LOAD 0
-    {
-      ifmultiplayer
-      ifvarn COOP 1
-        killit
-      addvar TOTALFEMALES 1
-    }
-  break
-  endswitch
+	switch sprite[THISACTOR].picnum
+		case PODFEM1
+		case FEM5
+		case FEM6
+			ifinwater
+				nullop
+			else ifvare LOAD 0
+			{
+				ifmultiplayer
+				{
+					ifvarand gametype_flags 1 { }
+					else
+						killit
+				}
+				addvar TOTALFEMALES 1
+			}
+			break
+	endswitch
 ends
 
 state event_game_5
@@ -1687,23 +1689,21 @@ state checktarget
     ifvare sprite[ASET].picnum APLAYER
     ifmultiplayer
     {
-      switch COOP
-      case 0
-      case 2
-      break
-      case 3
-      case 4
-        getactor[OWNER].yvel ATEMPB
-        getactor[ASET].yvel ATEMPB2
-        ifvarvare player[ATEMPB].team player[ATEMPB2].team
-          setvar ASET -1
-      break
-      default
-        setvar ASET -1
-      break
-      endswitch
-      ifvare ASET -1
-        break
+		ifvarand gametype_flags 4096 // GAMETYPE_PLAYERSFRIENDLY
+		{
+			setvar ASET -1
+			break
+		}
+		else ifvarand gametype_flags 65536 // GAMETYPE_TDM
+		{
+			getactor[OWNER].yvel ATEMPB
+			getactor[ASET].yvel ATEMPB2
+			ifvarvare player[ATEMPB].team player[ATEMPB2].team
+			{
+				setvar ASET -1
+				break
+			}
+		}
     }
   }
   else
@@ -2904,6 +2904,39 @@ state event_game_21
 ends
 
 // Temporary
+
+onevent EVENT_PROCESSINPUT
+	state tilt
+	ifvarg TILT 0
+	{
+		ifvarvarg TILT player[THISACTOR].horizoff
+			setplayer[THISACTOR].horizoff TILT
+		subvar TILT 1
+	}
+	ifvarl TILT 0
+	{
+		ifvarvarl TILT player[THISACTOR].horizoff
+		setplayer[THISACTOR].horizoff TILT
+		addvar TILT 1
+	}
+	
+	ifvare predicting 0
+	{
+		ifvarg player[].fist_incs 0
+			setvarvar EXITPLAYER userdef.vm_player
+		else ifvarg player[].timebeforeexit 0
+			setvarvar EXITPLAYER userdef.vm_player
+	}
+
+	ifvarg numplayers 1
+	ifvarn predicting 1
+		break
+		
+	ifvarvarn userdef.vm_player myconnectindex
+		break
+		
+	setvarvar SMOOTHCLOCK totalclock
+endevent
 
 onevent EVENT_ANIMATESPRITES
   state event_animatesprites_1

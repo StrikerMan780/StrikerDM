@@ -10,11 +10,11 @@ setdefname                      duke64.def
 
 setgamename                     Duke Nukem 64
 
-definegametype 0 19480          DukeMatch (Spawn)
-definegametype 1 46049          Cooperative Play
-definegametype 2 19480          DukeMatch (No Spawn)
-definegametype 3 216088         Team DM (Spawn)
-definegametype 4 213016         Team DM (No Spawn)
+//definegametype 0 19480          DukeMatch (Spawn)
+//definegametype 1 46049          Cooperative Play
+//definegametype 2 19480          DukeMatch (No Spawn)
+//definegametype 3 216088         Team DM (Spawn)
+//definegametype 4 213016         Team DM (No Spawn)
 
 // Default values
 
@@ -272,6 +272,7 @@ gamevar SECTLOTAGTEMP 0 2
 
 // Map gamevars
 
+gamevar EXITPLAYER 0 0
 gamevar GAMETIME 0 0
 gamevar NEXTLEVEL 0 0
 gamevar NEXTVOLUME 0 0
@@ -290,79 +291,79 @@ gamevar TIMEBEFOREEXITTEMP 0 1
 
 // Display gamevars
 
-gamevar ROOMSTEMP 0 0
-gamevar SBARTEMP 0 0
+gamevar ROOMSTEMP 0 GAMEVAR_NOMULTI
+gamevar SBARTEMP 0 GAMEVAR_NOMULTI
 gamevar PALS0TEMP 0 0
 gamevar PALS1TEMP 0 0
 gamevar PALS2TEMP 0 0
 gamevar PALSTIMETEMP 0 0
-gamevar HEATTEMP 0 0
+gamevar HEATTEMP 0 GAMEVAR_NOMULTI
 //gamevar ACCESSTEMP 0 0
 gamevar QUOTETEMP 0 0
 
-gamevar SECTORVISIBILITY 0 2
-gamevar FLOORPICNUM 0 2
-gamevar FLOORSHADE 0 2
-gamevar FLOORPAL 0 2
-gamevar CEILINGPICNUM 0 2
-gamevar CEILINGSHADE 0 2
-gamevar CEILINGPAL 0 2
-gamevar WALLPICNUM 0 2
-gamevar WALLOVERPICNUM 0 2
-gamevar WALLSHADE 0 2
-gamevar WALLPAL 0 2
+gamevar SECTORVISIBILITY 0 GAMEVAR_NOMULTI_PERACTOR
+gamevar FLOORPICNUM 0 GAMEVAR_NOMULTI_PERACTOR
+gamevar FLOORSHADE 0 GAMEVAR_NOMULTI_PERACTOR
+gamevar FLOORPAL 0 GAMEVAR_NOMULTI_PERACTOR
+gamevar CEILINGPICNUM 0 GAMEVAR_NOMULTI_PERACTOR
+gamevar CEILINGSHADE 0 GAMEVAR_NOMULTI_PERACTOR
+gamevar CEILINGPAL 0 GAMEVAR_NOMULTI_PERACTOR
+gamevar WALLPICNUM 0 GAMEVAR_NOMULTI_PERACTOR
+gamevar WALLOVERPICNUM 0 GAMEVAR_NOMULTI_PERACTOR
+gamevar WALLSHADE 0 GAMEVAR_NOMULTI_PERACTOR
+gamevar WALLPAL 0 GAMEVAR_NOMULTI_PERACTOR
 
 // Drawing gamevars
 
-gamevar x 0 0
-gamevar y 0 0
-gamevar x16 0 0
-gamevar y16 0 0
-gamevar z 0 0
-gamevar z2 0 0
-gamevar ang 0 0
-gamevar pal 0 0
-gamevar shade 0 0
-gamevar tilenum 0 0
-gamevar orientation 0 0
-gamevar alpha 0 0
-gamevar x1 0 0
-gamevar x2 0 0
-gamevar y1 0 0
-gamevar y2 0 0
-gamevar POSX 0 0
-gamevar POSY 0 0
-gamevar string 0 0
-gamevar textang 0 0
-gamevar spacewidth 0 0
-gamevar lineheight 0 0
-gamevar letterspacing 0 0
-gamevar linespacing 0 0
-gamevar textorientation 0 0
-gamevar screenx 0 0
-gamevar screeny 0 0
-gamevar screenz 0 0
-gamevar screenz2 0 0
-gamevar screenshade 0 0
-gamevar screenorientation 0 0
-gamevar screenalpha 0 0
-gamevar screenspacewidth 0 0
-gamevar screenlineheight 0 0
-gamevar screenletterspacing 0 0
-gamevar screenlinespacing 0 0
-gamevar screentextorientation 0 0
-gamevar aspect -1 0
+gamevar x 0 GAMEVAR_NOMULTI
+gamevar y 0 GAMEVAR_NOMULTI
+gamevar x16 0 GAMEVAR_NOMULTI
+gamevar y16 0 GAMEVAR_NOMULTI
+gamevar z 0 GAMEVAR_NOMULTI
+gamevar z2 0 GAMEVAR_NOMULTI
+gamevar ang 0 GAMEVAR_NOMULTI
+gamevar pal 0 GAMEVAR_NOMULTI
+gamevar shade 0 GAMEVAR_NOMULTI
+gamevar tilenum 0 GAMEVAR_NOMULTI
+gamevar orientation 0 GAMEVAR_NOMULTI
+gamevar alpha 0 GAMEVAR_NOMULTI
+gamevar x1 0 GAMEVAR_NOMULTI
+gamevar x2 0 GAMEVAR_NOMULTI
+gamevar y1 0 GAMEVAR_NOMULTI
+gamevar y2 0 GAMEVAR_NOMULTI
+gamevar POSX 0 GAMEVAR_NOMULTI
+gamevar POSY 0 GAMEVAR_NOMULTI
+gamevar string 0 GAMEVAR_NOMULTI
+gamevar textang 0 GAMEVAR_NOMULTI
+gamevar spacewidth 0 GAMEVAR_NOMULTI
+gamevar lineheight 0 GAMEVAR_NOMULTI
+gamevar letterspacing 0 GAMEVAR_NOMULTI
+gamevar linespacing 0 GAMEVAR_NOMULTI
+gamevar textorientation 0 GAMEVAR_NOMULTI
+gamevar screenx 0 GAMEVAR_NOMULTI
+gamevar screeny 0 GAMEVAR_NOMULTI
+gamevar screenz 0 GAMEVAR_NOMULTI
+gamevar screenz2 0 GAMEVAR_NOMULTI
+gamevar screenshade 0 GAMEVAR_NOMULTI
+gamevar screenorientation 0 GAMEVAR_NOMULTI
+gamevar screenalpha 0 GAMEVAR_NOMULTI
+gamevar screenspacewidth 0 GAMEVAR_NOMULTI
+gamevar screenlineheight 0 GAMEVAR_NOMULTI
+gamevar screenletterspacing 0 GAMEVAR_NOMULTI
+gamevar screenlinespacing 0 GAMEVAR_NOMULTI
+gamevar screentextorientation 0 GAMEVAR_NOMULTI
+gamevar aspect -1 GAMEVAR_NOMULTI
 
 // Screen gamevars
 
-gamevar PIDTEMP 0 0
-gamevar CLOCKTEMP -1 0
-gamevar DISPLAYCOUNT 0 0
-gamevar SYNC 0 0
-gamevar LASTCLOCK -1 0
-gamevar SMOOTHCLOCK 0 0
-gamevar LASTGAMETIME -1 0
-gamevar LASTDISPLAYCOUNT -1 0
+gamevar PIDTEMP 0 GAMEVAR_NOMULTI
+gamevar CLOCKTEMP -1 GAMEVAR_NOMULTI
+gamevar DISPLAYCOUNT 0 GAMEVAR_NOMULTI
+gamevar SYNC 0 GAMEVAR_NOMULTI
+gamevar LASTCLOCK -1 GAMEVAR_NOMULTI
+gamevar SMOOTHCLOCK 0 GAMEVAR_NOMULTI
+gamevar LASTGAMETIME -1 GAMEVAR_NOMULTI
+gamevar LASTDISPLAYCOUNT -1 GAMEVAR_NOMULTI
 gamevar FEMALES 0 0
 gamevar TOTALFEMALES 0 0
 gamevar FRAG1 0 1
@@ -378,8 +379,8 @@ gamevar WINS 0 1
 
 // HUD gamevars
 
-gamevar SCREENSIZE 0 0
-gamevar CROSSHAIR 0 0
+gamevar SCREENSIZE 0 GAMEVAR_NOMULTI
+gamevar CROSSHAIR 0 GAMEVAR_NOMULTI
 
 gamevar INVICON 0 1
 gamevar LASTINVICON 0 1

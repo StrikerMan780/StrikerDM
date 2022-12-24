@@ -464,7 +464,7 @@ state event_displayrooms_2
 			setplayer[THISACTOR].pals 1 0
 			setplayer[THISACTOR].pals 2 0
 			setplayer[THISACTOR].pals_time 0
-			setplayer[THISACTOR].heat_on 0
+			//setplayer[THISACTOR].heat_on 0
 		}
 	}
 	
@@ -495,7 +495,7 @@ ends
 state event_displayrest_2
   ifvare ROOMSTEMP 1
   {
-    setplayer[THISACTOR].heat_on HEATTEMP
+    //setplayer[THISACTOR].heat_on HEATTEMP
     setplayer[THISACTOR].pals 0 PALS0TEMP
     setplayer[THISACTOR].pals 1 PALS1TEMP
     setplayer[THISACTOR].pals 2 PALS2TEMP
@@ -1486,8 +1486,7 @@ state event_displayrooms_4
       state censor
       ifvarg SKY -1
       {
-        getsector[TEMPSECTORS].floorstat TEMP2
-        ifvarand TEMP2 1
+        ifvarand sector[TEMPSECTORS].floorstat 1
           setvar tilenum BLANKTILE
       }
       setsector[TEMPSECTORS].floorpicnum tilenum
@@ -1505,8 +1504,7 @@ state event_displayrooms_4
       state censor
       ifvarg SKY -1
       {
-        getsector[TEMPSECTORS].ceilingstat TEMP2
-        ifvarand TEMP2 1
+        ifvarand sector[TEMPSECTORS].ceilingstat 1
           setvar tilenum BLANKTILE
       }
       setsector[TEMPSECTORS].ceilingpicnum tilenum
@@ -1601,11 +1599,11 @@ state event_displayrest_4
   }
 ends
 
-state event_displayrooms_4b
+defstate event_displayrooms_4b
   setvar ROOMSTEMP 1
 ends
 
-state event_displayrest_4b
+defstate event_displayrest_4b
   setvar ROOMSTEMP 0
 ends
 
