@@ -57,48 +57,48 @@ gamevar windowx2 0 0 //  (system) (pointer) (read only)
 gamevar windowy1 0 0 //  (system) (pointer) (read only)
 gamevar windowy2 0 0 //  (system) (pointer) (read only)
 */
-gamevar fastweapcnt 0 CLIENTONLY_PERPLAYER
+gamevar fastweapcnt 0 GAMEVAR_NOMULTI_PERPLAYER
 
-gamevar hud_tilenum 0 CLIENTONLY_PERPLAYER 
+gamevar hud_tilenum 0 GAMEVAR_NOMULTI
 
-gamevar hud_x 0 CLIENTONLY_PERPLAYER 
-gamevar hud_x_memory 0 CLIENTONLY_PERPLAYER 
-gamevar hud_y 0 CLIENTONLY_PERPLAYER 
-gamevar hud_y_memory 0 CLIENTONLY_PERPLAYER 
+gamevar hud_x 0 GAMEVAR_NOMULTI
+gamevar hud_x_memory 0 GAMEVAR_NOMULTI
+gamevar hud_y 0 GAMEVAR_NOMULTI
+gamevar hud_y_memory 0 GAMEVAR_NOMULTI
 
-gamevar hud_scale 65536 CLIENTONLY_PERPLAYER 
-gamevar hud_scale_memory 65536 CLIENTONLY_PERPLAYER
+gamevar hud_scale 65536 GAMEVAR_NOMULTI
+gamevar hud_scale_memory 65536 GAMEVAR_NOMULTI
 
-gamevar hud_angle 0 CLIENTONLY_PERPLAYER 
-gamevar hud_shade 0 CLIENTONLY_PERPLAYER 
-gamevar hud_pal 0 CLIENTONLY_PERPLAYER 
-gamevar hud_orientation 0 CLIENTONLY_PERPLAYER 
-gamevar hud_alpha 0 CLIENTONLY_PERPLAYER
+gamevar hud_angle 0 GAMEVAR_NOMULTI
+gamevar hud_shade 0 GAMEVAR_NOMULTI
+gamevar hud_pal 0 GAMEVAR_NOMULTI
+gamevar hud_orientation 0 GAMEVAR_NOMULTI
+gamevar hud_alpha 0 GAMEVAR_NOMULTI
 
-gamevar hud_fistsign 0 CLIENTONLY_PERPLAYER 
-gamevar hud_totaltime 0 CLIENTONLY_PERPLAYER 
+gamevar hud_fistsign 0 GAMEVAR_NOMULTI
+gamevar hud_totaltime 0 GAMEVAR_NOMULTI
 
-gamevar hud_shadef 0 CLIENTONLY_PERPLAYER 
-gamevar hud_palf 0 CLIENTONLY_PERPLAYER 
+gamevar hud_shadef 0 GAMEVAR_NOMULTI
+gamevar hud_palf 0 GAMEVAR_NOMULTI
 
 // It is unfortunate that we need so many temporary gamevars.
-gamevar hud_temp 0 CLIENTONLY_PERPLAYER 
-gamevar hud_temp2 0 CLIENTONLY_PERPLAYER 
-gamevar hud_temp3 0 CLIENTONLY_PERPLAYER 
-gamevar hud_temp4 0 CLIENTONLY_PERPLAYER 
-gamevar hud_timer 0 CLIENTONLY_PERPLAYER 
+gamevar hud_temp 0 GAMEVAR_NOMULTI
+gamevar hud_temp2 0 GAMEVAR_NOMULTI
+gamevar hud_temp3 0 GAMEVAR_NOMULTI
+gamevar hud_temp4 0 GAMEVAR_NOMULTI
+gamevar hud_timer 0 GAMEVAR_NOMULTI
 
 /*
 // The following temporary gamevars are named differently because they are used
 // in G_Draw[...] which would overwrite their values if used elsewhere.
 */
-gamevar hud_G_Draw_temp 0 CLIENTONLY_PERPLAYER 
-gamevar hud_G_Draw_temp2 0 CLIENTONLY_PERPLAYER 
+gamevar hud_G_Draw_temp 0 GAMEVAR_NOMULTI
+gamevar hud_G_Draw_temp2 0 GAMEVAR_NOMULTI
 
-gamevar weapon_sway 0 CLIENTONLY_PERPLAYER 
-gamevar weapon_pos 0 CLIENTONLY_PERPLAYER 
-gamevar weaponscale 0 CLIENTONLY_PERPLAYER 
-gamevar playerid 0 CLIENTONLY_PERPLAYER 
+gamevar weapon_sway 0 GAMEVAR_NOMULTI
+gamevar weapon_pos 0 GAMEVAR_NOMULTI
+gamevar weaponscale 0 GAMEVAR_NOMULTI
+gamevar playerid 0 GAMEVAR_NOMULTI
 
 // ******************
 // Custom Weapon Vars
