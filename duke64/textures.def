@@ -1481,12 +1481,12 @@ model "models/fireball.md3" {
    scale 4
    zadd 50
 
-   skin { pal 0 file "tiles/3921.png" nocompress nodownsize }
-   skin { pal 63 file "blend/3921_13.png" nocompress nodownsize alphacut 0 }
-   skin { pal 64 file "blend/3921_14.png" nocompress nodownsize alphacut 0 }
-   skin { pal 65 file "blend/3921_15.png" nocompress nodownsize alphacut 0 }
-   skin { pal 66 file "blend/3921_16.png" nocompress nodownsize alphacut 0 }
-   skin { pal 67 file "blend/3921_17.png" nocompress nodownsize alphacut 0 }
+   skin { pal 0 file "tiles/3921.png" nocompress nodownsize forcefilter }
+   skin { pal 63 file "blend/3921_13.png" nocompress nodownsize forcefilter alphacut 0 }
+   skin { pal 64 file "blend/3921_14.png" nocompress nodownsize forcefilter alphacut 0 }
+   skin { pal 65 file "blend/3921_15.png" nocompress nodownsize forcefilter alphacut 0 }
+   skin { pal 66 file "blend/3921_16.png" nocompress nodownsize forcefilter alphacut 0 }
+   skin { pal 67 file "blend/3921_17.png" nocompress nodownsize forcefilter alphacut 0 }
 
    frame { name "frame1" tile 4023 }
 }
@@ -1510,12 +1510,12 @@ model "models/fireball.md3" {
    scale 64
    zadd 3.125 // zadd 50
 
-   skin { pal 0 file "tiles/3921.png" nocompress nodownsize }
-   skin { pal 63 file "blend/3921_13.png" nocompress nodownsize alphacut 0 }
-   skin { pal 64 file "blend/3921_14.png" nocompress nodownsize alphacut 0 }
-   skin { pal 65 file "blend/3921_15.png" nocompress nodownsize alphacut 0 }
-   skin { pal 66 file "blend/3921_16.png" nocompress nodownsize alphacut 0 }
-   skin { pal 67 file "blend/3921_17.png" nocompress nodownsize alphacut 0 }
+   skin { pal 0 file "tiles/3921.png" nocompress nodownsize forcefilter }
+   skin { pal 63 file "blend/3921_13.png" nocompress nodownsize forcefilter alphacut 0 }
+   skin { pal 64 file "blend/3921_14.png" nocompress nodownsize forcefilter alphacut 0 }
+   skin { pal 65 file "blend/3921_15.png" nocompress nodownsize forcefilter alphacut 0 }
+   skin { pal 66 file "blend/3921_16.png" nocompress nodownsize forcefilter alphacut 0 }
+   skin { pal 67 file "blend/3921_17.png" nocompress nodownsize forcefilter alphacut 0 }
 
    frame { name "frame1" tile 4025 }
 }
