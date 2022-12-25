@@ -1570,26 +1570,31 @@ actor TRANSPORTERSTAR 0 TRANSFOWARD
 enda
 
 action BEAMFOWARD 0  6  1  1  9
-actor TRANSPORTERBEAM 0 BEAMFOWARD
-
-	getsector[THISACTOR].floorpicnum TEMP
-	switch TEMP
+actor TRANSPORTERBEAM 0
+	ifaction 0
 	{
-		case 3520:
-		case 3521:
-		case 3522:
-		case 3523:
-			spawn DOOM_TELEFOG
-			killit
-			break
+		getsector[THISACTOR].floorpicnum TEMP
+		switch TEMP
+		{
+			case 3520:
+			case 3521:
+			case 3522:
+			case 3523:
+				spawn DOOM_TELEFOG
+				killit
+				break
+		}
+		endswitch
+		
+		state enable_xyrepeat_interp
+		action BEAMFOWARD
 	}
-	endswitch
 	
-  sizeto 32 64
-  sizeto 32 64
-  sizeto 32 64
-  ifactioncount 6
-    killit
+	sizeto 32 64
+	sizeto 32 64
+	sizeto 32 64
+	ifactioncount 6
+		killit
 enda
 
 state getcode
