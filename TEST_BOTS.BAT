@@ -21,13 +21,13 @@ IF ERRORLEVEL 4 SET NUMBOTS=5
 IF ERRORLEVEL 5 SET NUMBOTS=6
 IF ERRORLEVEL 6 SET NUMBOTS=7
 IF ERRORLEVEL 7 SET NUMBOTS=8
-start netduke32 -nosetup -tx -c1 -m -j%GRP_PATH% /q%NUMBOTS% /a -map %MAP%
+start netduke32 -nosetup -t23 -c1 -m -j%GRP_PATH% /q%NUMBOTS% /a -map %MAP%
 goto END
 
 :NOAI
-start netduke32 -nosetup -tx -c1 -m -j%GRP_PATH% /q16 -map %MAP%
+start netduke32 -nosetup -t23 -c1 -m -j%GRP_PATH% /q16 -map %MAP%
 goto END
 
-REM gdb --args netduke32.exe -nosetup -tx -c1 -m -q16 -jD:/Modding/GitHub/StrikerDM/pk3 -map maps/THERMALBASE.MAP
+REM gdb --args netduke32.exe -nosetup -t23 -c1 -m -q16 -jD:/Modding/GitHub/StrikerDM/pk3 -map maps/THERMALBASE.MAP
 
 :END
